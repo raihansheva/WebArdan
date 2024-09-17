@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/StyleMain/main.css">
 </head>
 <body>
+    {{-- navbar area --}}
     <nav class="navbar">
         <div class="area-kiri-navbar">
             {{-- <div class="image-brand"></div> --}}
@@ -38,6 +39,54 @@
             </div>
         </div>
     </nav>
+    {{-- ------- --}}
+
+
+    {{-- main content area --}}
+    <main class="main">
+        @yield('content')
+    </main>
+    {{-- ------- --}}
+
+    <footer class="footer">
+      <div class="top-footer">
+        <div class="area-kiri-footer">
+          <div class="area-group-kiri">
+            <div class="area-text-contact">
+              <h1 class="text-contact">CONTACT US</h1>
+            </div>
+            <div class="area-footer-address">
+              <p class="footer-address">Email : example@gmail.com</p>
+              <p class="footer-address">Telepon : +62 085862839923 </p>
+              <p class="footer-address">Alamat :lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+        <div class="area-kanan-footer">
+          <div class="area-group-kanan">
+            <div class="area-text-socmed">
+              <h1 class="text-socmed">Social Media</h1>
+            </div>
+            <div class="area-footer-socmed">
+              <div class="kotak-socmed"></div>
+              <div class="kotak-socmed"></div>
+              <div class="kotak-socmed"></div>
+              <div class="kotak-socmed"></div>
+            </div>
+            <div class="area-text-socmed2">
+              <h1 class="text-socmed2">Get it on</h1>
+            </div>
+            <div class="area-footer-download">
+              <div class="kotak-download"></div>
+              <div class="kotak-download"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="bottom-footer">
+            <h1 class="text-copyRight">CopyRight 2024</h1>
+        </div>
+    </footer>
 </body>
 <script>
     // JavaScript untuk toggle dropdown saat diklik
