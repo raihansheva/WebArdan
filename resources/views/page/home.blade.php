@@ -38,13 +38,29 @@
             </div>
         </div>
     </section>
+    <section class="page-2">
+        <div class="area-program">
+            <div class="area-header-program">
+                <h1 class="title-program">PROGRAM</h1>
+            </div>
+            <div class="area-content-program">
+                <div class="area-tombol">
+                    <div class="tombol-kiri"></div>
+                    <div class="tombol-kanan"></div>
+                </div>
+                <div class="area-content-box-program">
+                    <div class="box-program"></div>
+                    <div class="box-program"></div>
+                    <div class="box-program"></div>
+                    <div class="box-program"></div>
+                    <div class="box-program"></div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="audio-player-container">
-        <!-- <svg id="visual" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-              <path id="wave" fill="#0066FF" stroke-linecap="round" stroke-linejoin="miter"></path>
-          </svg> -->
         <svg id="visual" viewBox="0 0 900 600" width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
-            <!-- Layer 1 -->
-            <path id="layer1" fill="#fa7268" stroke="#fa7268" stroke-width="2" stroke-linecap="round"></path>
+            <path id="layer1" fill="#FF004D" stroke="#FF004D" stroke-width="2" stroke-linecap="round"></path>
         </svg>
         <div class="content">
             <div class="control-btn">
@@ -86,4 +102,3 @@
     <script src="js/playlist.js"></script>
     <script src="js/home.js"></script>
 @endsection
-{{--  --}}

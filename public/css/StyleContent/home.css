@@ -1,6 +1,7 @@
 .page-1 {
     width: auto;
-    height: 100vh;
+    /* height: 100vh; */
+    padding: 0px 64px 0px;
 }
 
 .area-streaming {
@@ -147,6 +148,100 @@
     border-radius: 10px;
 }
 /* ---------------------- */
+
+
+/* area-program */
+.page-2{
+    width: 100%;
+    height: 500px;
+    background-color: #ffdb00;
+}
+
+.area-program{
+    width: 100%;
+    /* height: 100%; */
+    background-color: #ffdb00;
+}
+
+.area-header-program{
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    /* border: 1px black solid; */
+}
+
+.title-program{
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    font-size: 49px;
+    margin: 0px;
+    padding-top: 20px;
+}
+
+.area-tombol {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.tombol-kiri, .tombol-kanan {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #FF004D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 100%;
+    transform: translateY(240%);
+    -webkit-transform: translateY(240%);
+    -moz-transform: translateY(240%);
+    -ms-transform: translateY(240%);
+    -o-transform: translateY(240%);
+}
+
+.tombol-kiri {
+    left: -20;
+}
+
+.tombol-kanan {
+    right: -20;
+}
+
+
+.area-content-program{
+    width: auto;
+    height: auto;
+    /* border: 1px black solid; */
+    margin: 10px 60px 0px 60px;
+}
+
+.area-content-box-program {
+    width: 100%;
+    display: flex;
+    gap: 20px; 
+    overflow: hidden;
+    box-sizing: border-box; 
+    padding: 0 10px; 
+}
+
+.box-program {
+    flex: 0 0 calc(25% - 15px); 
+    height: 313px; 
+    background-color: #f0f0f0; 
+    border-radius: 20px;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* --------------------------- */
+
+
+
+
 
 /* Styling untuk wadah audio player */
 .audio-player-container {
@@ -344,3 +439,4 @@
     -ms-transform: scale(3, 3);
     -o-transform: scale(3, 3);
 }
+/* --------------------- */
