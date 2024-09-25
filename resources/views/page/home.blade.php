@@ -58,6 +58,79 @@
             </div>
         </div>
     </section>
+    <section class="page-3">
+        <div class="area-info-news">
+            <div class="line-info"></div>
+            <div class="area-content-info-news">
+                <div class="area-content-info">
+                    <div class="header-info">
+                        <h1 class="title-info">Info</h1>
+                    </div>
+                    <div class="content-info">
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                        <div class="box-info"></div>
+                    </div>
+                    <div class="area-bottom-info">
+                        <h1 class="title-bottom-info">Show more</h1>
+                    </div>
+                </div>
+                <div class="area-content-news">
+                    <div class="header-news">
+                        <h1 class="title-news">Top News</h1>
+                    </div>
+                    <div class="content-news">
+                        <div class="box-news">
+                            <div class="area-image">
+                                
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+                                
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+                                
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+                                
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+                                
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="audio-player-container">
         <svg id="visual" viewBox="0 0 900 600" width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
             <path id="layer1" fill="#FF004D" stroke="#FF004D" stroke-width="2" stroke-linecap="round"></path>
