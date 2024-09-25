@@ -136,23 +136,23 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.forEach(link => link.classList.remove('active'));
     };
 
-    // Menggunakan IntersectionObserver untuk melacak setiap section
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                removeActiveClasses();
-                const activeLink = document.querySelector(`.link[href="#${entry.target.id}"]`);
-                activeLink.classList.add('active'); // Tambahkan kelas 'active' ke link yang sesuai
-            }
-        });
-    }, {
-        threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
-    });
+    // // Menggunakan IntersectionObserver untuk melacak setiap section
+    // const observer = new IntersectionObserver((entries) => {
+    //     entries.forEach(entry => {
+    //         if (entry.isIntersecting) {
+    //             removeActiveClasses();
+    //             const activeLink = document.querySelector(`.link[href="#${entry.target.id}"]`);
+    //             activeLink.classList.add('active'); // Tambahkan kelas 'active' ke link yang sesuai
+    //         }
+    //     });
+    // }, {
+    //     threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
+    // });
 
-    // Memantau setiap section
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+    // // Memantau setiap section
+    // sections.forEach(section => {
+    //     observer.observe(section);
+    // });
 });
 
 

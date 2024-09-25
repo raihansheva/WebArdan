@@ -229,6 +229,27 @@ tombolKanan.addEventListener('click', () => {
     });
 });
 
+// caraousel announcer
+const tombolKiriA = document.querySelector('.tombol-kiri-announcer');
+const tombolKananA = document.querySelector('.tombol-kanan-announcer');
+const areaContentBoxA = document.querySelector('.area-content-box-announcer');
+
+// Menggeser ke kiri
+tombolKiriA.addEventListener('click', () => {
+    areaContentBoxA.scrollBy({
+        left: -330, // Geser 300px ke kiri
+        behavior: 'smooth' // Animasi smooth saat menggeser
+    });
+});
+
+// Menggeser ke kanan
+tombolKananA.addEventListener('click', () => {
+    areaContentBoxA.scrollBy({
+        left: 330, // Geser 300px ke kanan
+        behavior: 'smooth' // Animasi smooth saat menggeser
+    });
+});
+
 
 // timer
 // Mengambil elemen HTML
