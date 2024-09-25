@@ -16,15 +16,15 @@
         </div>
         <div class="area-kanan-navbar">
             <div class="menu-link-navbar">
-                <a class="link" href=""><p>Home</p></a>
+                <a class="link" href="#home"><p>Home</p></a>
                 <div class="dropdown">
                     <a class="link dropText" id="dropdown-toggle">Media & Program<i class="arrow-down"></i></a>
                     <div class="dropdown-content" id="dropdown-menu">
-                      <a href="#">Program</a>
+                      <a href="#program">Program</a>
                       <div class="line"></div>
-                      <a href="#">Info News</a>
+                      <a href="#info-news">Info News</a>
                       <div class="line"></div>
-                      <a href="#">Event</a>
+                      <a href="#event">Event</a>
                       <div class="line"></div>
                       <a href="#">Playlist Youtube</a>
                       <div class="line"></div>
@@ -110,6 +110,51 @@ window.onclick = function(event) {
     }
   }
 };
+
+document.querySelectorAll('.link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute('href'));
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+        const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+
+        // Sesuaikan posisi scroll dengan menambahkan offset height dari navbar
+        window.scrollTo({
+            top: targetTop - navbarHeight,
+            behavior: 'smooth'
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section'); // Mengambil semua section
+    const navLinks = document.querySelectorAll('.link');   // Mengambil semua link navbar
+
+    // Fungsi untuk menghapus kelas 'active' dari semua link
+    const removeActiveClasses = () => {
+        navLinks.forEach(link => link.classList.remove('active'));
+    };
+
+    // Menggunakan IntersectionObserver untuk melacak setiap section
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                removeActiveClasses();
+                const activeLink = document.querySelector(`.link[href="#${entry.target.id}"]`);
+                activeLink.classList.add('active'); // Tambahkan kelas 'active' ke link yang sesuai
+            }
+        });
+    }, {
+        threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
+    });
+
+    // Memantau setiap section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+
 
 </script>
 </html>

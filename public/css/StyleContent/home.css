@@ -1,3 +1,4 @@
+
 .page-1 {
     width: auto;
     /* height: 100vh; */
@@ -396,6 +397,209 @@
     font-size: 14px;
 }
 /* ------------------ */
+
+/* area-event */
+
+.page-4{
+    width: 100%;
+    height: auto;
+}
+
+.area-event{
+    width: auto;
+    height: 100vh;
+    margin: 0px 64px 0px 64px;
+    /* border: 1px white solid; */
+}
+
+.line-event {
+    width: auto;
+    border: 4px white solid;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.header-event{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px red solid; */
+    text-align: center;
+    margin-top: 55px;
+}
+
+.title-event{
+    font-size: 40px;
+    font-family: "Bebas Neue";
+    margin: 0px;
+    font-weight: 200;
+    color: white;
+}
+
+.area-content-event{
+    width: 100%;
+    height: 500px;
+    /* border: 1px blue solid; */
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* event kiri */
+.area-content-event-kiri{
+    width: 65%;
+    height: auto;
+    /* border: 1px greenyellow solid; */
+}
+
+.content-event-CD{
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-countdown{
+    width: 100%;
+    height: 100px;
+    background-color: #333333b9;
+    display: flex;
+    padding: 15px;
+}
+
+.countdown{
+    width: 60%;
+    height: 100%;
+    /* border: 1px white solid; */
+    display: flex;
+}
+
+.area-days-date{
+    width: 40%;
+    height: 100%;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.time-countdown{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Untuk memusatkan teks di tengah */
+    width: 25%;
+    height: auto;
+}
+
+.timer{
+    margin: 0px;
+    font-family: "Krub";
+    font-size: 38px;
+    color: white;
+    font-weight: 200;
+}
+
+.title-timer{
+    margin: 0px;
+    font-family: "Krub";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+}
+
+.box-days-date{
+    width: auto;
+    height: auto;
+}
+
+.date-month{
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year{
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+
+
+
+/* ---------- */
+
+
+/* event kanan */
+.area-content-event-kanan{
+    width: 35%;
+    height: auto;
+    /* border: 1px crimson solid; */
+    display: flex ;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content-event{
+    width: 100%;
+    height: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-days-date-right{
+    width: 100%;
+    height: 60px;
+    background-color: #333333b9;
+    display: flex;
+    padding: 15px;
+}
+
+.content-days-date-right{
+    width: 100%;
+    height: auto;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.box-days-date-right{
+    width: auto;
+    height: auto;
+}
+
+.date-month-right{
+    font-family: "Bebas Neue";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year-right{
+    font-family: "Bebas Neue";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+/* ------------- */
+
+
+/* -------------- */
+
+
+
+
+
 
 /* Styling untuk wadah audio player */
 .audio-player-container {

@@ -3,7 +3,7 @@
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @section('content')
-    <section class="page-1">
+    <section class="page-1" id="home">
         <div class="area-streaming">
             <div class="header-streaming">
                 <h1 class="title-streaming">ON AIR</h1>
@@ -38,7 +38,7 @@
             </div>
         </div>
     </section>
-    <section class="page-2">
+    <section class="page-2" id="program">
         <div class="area-program">
             <div class="area-header-program">
                 <h1 class="title-program">PROGRAM</h1>
@@ -58,7 +58,7 @@
             </div>
         </div>
     </section>
-    <section class="page-3">
+    <section class="page-3" id="info-news">
         <div class="area-info-news">
             <div class="line-info"></div>
             <div class="area-content-info-news">
@@ -88,45 +88,113 @@
                     <div class="content-news">
                         <div class="box-news">
                             <div class="area-image">
-                                
+
                             </div>
                             <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
                             </div>
                         </div>
                         <div class="box-news">
                             <div class="area-image">
-                                
+
                             </div>
                             <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
                             </div>
                         </div>
                         <div class="box-news">
                             <div class="area-image">
-                                
+
                             </div>
                             <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
                             </div>
                         </div>
                         <div class="box-news">
                             <div class="area-image">
-                                
+
                             </div>
                             <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
                             </div>
                         </div>
                         <div class="box-news">
                             <div class="area-image">
-                                
+
                             </div>
                             <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim voluptatem error molestias dicta minima? Voluptas!</p>
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-4" id="event">
+        <div class="area-event">
+            <div class="line-event"></div>
+            <div class="header-event">
+                <h1 class="title-event">EVENT</h1>
+            </div>
+            <div class="area-content-event">
+                <div class="area-content-event-kiri">
+                    <div class="content-event-CD">
+                        <div class="area-countdown">
+                            <div class="countdown">
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="days"></h2>
+                                    <span class="title-timer">Days</span>
+                                </div>
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="hours"></h2>
+                                    <span class="title-timer">Hours</span>
+                                </div>
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="minutes"></h2>
+                                    <span class="title-timer">Minutes</span>
+                                </div>
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="seconds"></h2>
+                                    <span class="title-timer">Second</span>
+                                </div>
+                            </div>
+                            <div class="area-days-date">
+                                <div class="box-days-date">
+                                    <h3 class="date-month">5 Oktober</h3>
+                                    <h3 class="year">2024</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="area-content-event-kanan">
+                    <div class="content-event">
+                        <div class="area-days-date-right">
+                            <div class="content-days-date-right">
+                                <div class="box-days-date-right">
+                                    <h3 class="date-month-right">12 Oktober</h3>
+                                    <h3 class="year-right">2024</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-event">
+                        <div class="area-days-date-right">
+                            <div class="content-days-date-right">
+                                <div class="box-days-date-right">
+                                    <h3 class="date-month-right">24 Oktober</h3>
+                                    <h3 class="year-right">2024</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -160,9 +228,9 @@
                         <span></span>
                     </div>
                     <!-- <div class="time">
-                    <span class="current">0:00</span>
-                    <span class="final">5:30</span>
-                  </div> -->
+                        <span class="current">0:00</span>
+                        <span class="final">5:30</span>
+                      </div> -->
                 </div>
             </div>
             <div class="music-titles">
