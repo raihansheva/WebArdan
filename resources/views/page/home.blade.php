@@ -387,7 +387,45 @@
             </div>
         </div>
     </section>
-
+    <section class="page-8">
+        <div class="area-schedule">
+            <div class="area-content-schedule">
+                <div class="header-schedule">
+                    <h1 class="title-schedule">Schedule</h1>
+                </div>
+                <div class="top-content-schedule">
+                    <div class="schedule">
+                        <p class="schedule-day">Monday</p>
+                    </div>
+                    <div class="schedule">
+                        <p class="schedule-day">Tuesday</p>
+                    </div>
+                    <div class="schedule">
+                        <p class="schedule-day">Wednesday</p>
+                    </div>
+                    <div class="schedule">
+                        <p class="schedule-day">Thursday</p>
+                    </div>
+                    <div class="schedule">
+                        <p class="schedule-day">Friday</p>
+                    </div>
+                    <div class="schedule">
+                        <p class="schedule-day">Saturday</p>
+                    </div>
+                    <div class="schedule">
+                        <p class="schedule-day">Sunday</p>
+                    </div>
+                </div>
+                <div class="content-schedule">
+                    <div class="box-schedule"></div>
+                    <div class="box-schedule"></div>
+                    <div class="box-schedule"></div>
+                    <div class="box-schedule"></div>
+                    <div class="box-schedule"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 

@@ -1107,13 +1107,98 @@ tbody tr {
     background-color: #f0f0f0;
     border-radius: 10px;
 }
-
+/* ---------------- */
 /* ---------------- */
 
+/* area-schedule */
+.page-8{
+    width: 100%;
+    height: 100vh;
+}
 
+.area-schedule{
+    width: auto;
+    height: 500px;
+    /* border: 1px #ff004d solid; */
+    margin: 0px 64px 0px 64px;
+}
 
+.area-content-schedule{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
 
-/* ---------------- */
+.header-schedule{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px red solid; */
+}
+
+.title-schedule{
+    font-family: "Bebas Neue";
+    font-size: 44px;
+    font-weight: 200;
+    margin: 0px;
+    color: white;
+}
+
+.top-content-schedule{
+    width: 100%;
+    height: 60px;
+    /* background-color: #ffffff; */
+    display: flex;
+}
+
+.schedule{
+    flex-grow: 1;
+    width: 150px;
+    height: auto;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    transition: 0.5s all ease-in-out;
+    -webkit-transition: 0.5s all ease-in-out;
+    -moz-transition: 0.5s all ease-in-out;
+    -ms-transition: 0.5s all ease-in-out;
+    -o-transition: 0.5s all ease-in-out;
+    cursor: pointer;
+}
+
+.schedule:hover{
+    background-color: #ffdb00;
+}
+
+.schedule-day{
+    margin: 0px;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 500;
+}
+
+/* content-schedule */
+.content-schedule {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 15px;
+    /* border: 1px red solid; */
+}
+
+.box-schedule {
+    height: 180px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* --------------- */
+
+/* ------------- */
 
 
 /* Styling untuk wadah audio player */
