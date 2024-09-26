@@ -32,10 +32,10 @@
                       <div class="line"></div>
                     </div>
                   </div>
-                <a class="link" href=""><p>Announcer</p></a>
-                <a class="link" href=""><p>Chart</p></a>
-                <a class="link" href=""><p>Schedule</p></a>
-                <a class="link" href=""><p>Contact</p></a>
+                <a class="link" href="#announcer"><p>Announcer</p></a>
+                <a class="link" href="#chart"><p>Chart</p></a>
+                <a class="link" href="#schedule"><p>Schedule</p></a>
+                <a class="link" href="#contact"><p>Contact</p></a>
             </div>
         </div>
     </nav>
@@ -48,7 +48,7 @@
     </main>
     {{-- ------- --}}
 
-    <footer class="footer">
+    <footer class="footer" id="contact">
       <div class="top-footer">
         <div class="area-kiri-footer">
           <div class="area-group-kiri">
@@ -136,23 +136,23 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.forEach(link => link.classList.remove('active'));
     };
 
-    // // Menggunakan IntersectionObserver untuk melacak setiap section
-    // const observer = new IntersectionObserver((entries) => {
-    //     entries.forEach(entry => {
-    //         if (entry.isIntersecting) {
-    //             removeActiveClasses();
-    //             const activeLink = document.querySelector(`.link[href="#${entry.target.id}"]`);
-    //             activeLink.classList.add('active'); // Tambahkan kelas 'active' ke link yang sesuai
-    //         }
-    //     });
-    // }, {
-    //     threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
-    // });
+    // Menggunakan IntersectionObserver untuk melacak setiap section
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                removeActiveClasses();
+                const activeLink = document.querySelector(`.link[href="#${entry.target.id}"]`);
+                activeLink.classList.add('active'); // Tambahkan kelas 'active' ke link yang sesuai
+            }
+        });
+    }, {
+        threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
+    });
 
-    // // Memantau setiap section
-    // sections.forEach(section => {
-    //     observer.observe(section);
-    // });
+    // Memantau setiap section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 });
 
 

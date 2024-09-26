@@ -260,7 +260,9 @@ body{
     width: auto;
     display: flex;
     height: 80%;
-    padding: 10px;
+    /* padding: 10px; */
+    /* border: 1px red solid; */
+    padding: 0px 64px 0px 64px;
 }
 
 /* area kiri footer */
@@ -269,13 +271,13 @@ body{
     height: auto;
     /* border: 1px black solid; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
 .area-group-kiri{
-    width: 650px;
-    height: 200px;
+    width: auto;
+    height: auto;
     /* border: 1px black solid; */
 }
 
@@ -311,11 +313,11 @@ body{
     height: auto;
     /* border: 1px black solid; */
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
 .area-group-kanan{
-    width: 650px;
+    width: auto;
     height: auto;
     /* border: 1px black solid; */
     display: flex;
@@ -333,7 +335,7 @@ body{
     font-family: "Bebas Neue";
     /* letter-spacing: 3px; */
     font-weight: 400;
-    font-size: 2.7rem;
+    font-size: 2rem;
 }
 .area-text-socmed2{
     width: max-content;
@@ -346,7 +348,7 @@ body{
     font-family: "Bebas Neue";
     /* letter-spacing: 3px; */
     font-weight: 400;
-    font-size: 2.7rem;
+    font-size: 2rem;
 }
 
 .area-footer-socmed{

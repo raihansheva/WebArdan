@@ -292,4 +292,51 @@ function updateCountdown() {
 // Memperbarui countdown setiap 1 detik (1000 ms)
 const countdownInterval = setInterval(updateCountdown, 1000);
 
+// Ambil elemen dari card A dan card B
+const cardA = document.querySelector('.card-A');
+const cardB = document.querySelector('.card-B');
+
+// Ambil tombol "Tonton Siaran" di card A dan card B
+const tontonSiaranBtnA = document.querySelector('.card-A .author');
+const tontonSiaranBtnB = document.querySelector('.card-B .view-B');
+
+// Tampilkan Card A saat pertama kali page load
+cardA.style.display = 'block';
+cardA.classList.add('show');
+
+// Fungsi untuk mengubah card dari tersembunyi ke terlihat
+function showCard(card) {
+    card.style.display = 'block';   // Pastikan elemen ditampilkan
+    setTimeout(() => {
+        card.classList.add('show'); // Tambahkan kelas untuk animasi fade-in
+        card.classList.remove('hide');
+    }, 10);  // Timeout kecil agar browser punya waktu untuk apply display block
+}
+
+// Fungsi untuk menyembunyikan card dengan animasi
+function hideCard(card) {
+    card.classList.remove('show');
+    card.classList.add('hide');
+    setTimeout(() => {
+        card.style.display = 'none';  // Setelah animasi, sembunyikan elemen
+    }, 500);  // Durasi sama dengan durasi transition
+}
+
+// Fungsi untuk berpindah dari Card A ke Card B
+tontonSiaranBtnA.addEventListener('click', function() {
+    hideCard(cardA);   // Sembunyikan Card A
+    setTimeout(() => {
+        showCard(cardB);   // Tampilkan Card B setelah Card A sembunyi
+    }, 500); // Tunggu sampai animasi sembunyi Card A selesai
+});
+
+// Fungsi untuk kembali dari Card B ke Card A
+tontonSiaranBtnB.addEventListener('click', function() {
+    hideCard(cardB);   // Sembunyikan Card B
+    setTimeout(() => {
+        showCard(cardA);   // Tampilkan Card A setelah Card B sembunyi
+    }, 500); // Tunggu sampai animasi sembunyi Card B selesai
+});
+
+
 

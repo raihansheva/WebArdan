@@ -10,7 +10,7 @@
             </div>
             <div class="content-streaming">
                 <div class="contentS-kiri">
-                    <div class="card">
+                    <div class="card-A">
                         <div class="card-body">
                             <div class="btn-play">
 
@@ -19,8 +19,20 @@
                         <div class="card-header">
                             <div class="author">
                             </div>
-                            <div class="view">
-                                <p class="text-watchS">Tonton Siaran</p>
+                            <div class="view" id="btn-tonton">
+                                <p class="text-watchS" >Tonton Siaran</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-B">
+                        <div class="card-body-B">
+                            <div class="btn-play-B">
+
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="view-B">
+                                <p class="text-watchS-B">Dengar Siaran</p>
                             </div>
                         </div>
                     </div>
@@ -199,7 +211,7 @@
             </div>
         </div>
     </section>
-    <section class="page-5">
+    <section class="page-5" id="podcast-video">
         <div class="area-podcast-video">
             <div class="area-content-PV">
                 <div class="area-content-podcast">
@@ -282,7 +294,7 @@
         </div>
     </section>
     <br>
-    <section class="page-6">
+    <section class="page-6" id="announcer">
         <div class="area-announcer">
             <div class="area-svg">
                 <svg width="434" height="667" viewBox="0 0 434 667" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -317,7 +329,7 @@
             </div>
         </div>
     </section>
-    <section class="page-7">
+    <section class="page-7" id="chart">
         <div class="line-announcer"></div>
         <div class="area-chart-artis">
             <div class="area-content-chart-artis">
@@ -387,7 +399,7 @@
             </div>
         </div>
     </section>
-    <section class="page-8">
+    <section class="page-8" id="schedule">
         <div class="area-schedule">
             <div class="area-content-schedule">
                 <div class="header-schedule">
