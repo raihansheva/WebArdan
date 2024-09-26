@@ -317,6 +317,76 @@
             </div>
         </div>
     </section>
+    <section class="page-7">
+        <div class="line-announcer"></div>
+        <div class="area-chart-artis">
+            <div class="area-content-chart-artis">
+                <div class="area-content-chart">
+                    <div class="content-chart">
+                        <div class="header-chart">
+                            <h1 class="title-chart">ARDAN CHART</h1>
+                        </div>
+                        <table class="chart">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ARTIST</th>
+                                    <th>-</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td></td>
+            
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jane Smith</td>
+                                    <td></td>
+                        
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Michael Brown</td>
+                                    <td></td>
+        
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Emily Davis</td>
+                                    <td></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Emily Davis</td>
+                                    <td></td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="bottom-chart">
+                            <div class="area-btn-chart">
+                                <h1 class="text-btn-chart">All Chart</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="area-content-artis">
+                    <div class="header-artis">
+                        <h1 class="title-artis">INFO ARTIS</h1>
+                    </div>
+                    <div class="content-artis">
+                        <div class="box-artis"></div>
+                        <div class="box-artis"></div>
+                        <div class="box-artis"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
