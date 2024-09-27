@@ -1,0 +1,807 @@
+
+/* Desktop dan Laptop */
+@media (max-width: 1920px) {
+    /* Gaya untuk monitor Full HD */
+}
+
+@media (max-width: 1440px) {
+    /* Gaya untuk desktop besar */
+}
+
+@media (max-width: 1366px) {
+    /* Gaya untuk laptop widescreen */
+}
+
+@media (max-width: 1280px) {
+    /* Gaya untuk laptop standar */
+}
+
+@media (max-width: 1024px) {
+    .page-1 {
+        padding: 0px 32px 0px;
+    }
+
+    .area-streaming {
+        height: 430px;
+        /* border: 1px red solid; */
+    }
+
+    .content-streaming {
+        flex-direction: row;
+        height: auto;
+        /* border: 1px green solid; */
+    }
+
+    .contentS-kiri{
+        width: 55%;
+        margin-right: 8px;
+        height: auto;
+    }
+
+    .contentS-kanan {
+        width: 45%;
+    }
+
+    .card-A .card-body , .card-B .card-body-B {
+        height: 200px;
+        padding: 25px;
+    }
+
+    .card-A .card-header .author {
+        width: 65%;
+        height: 50px;
+    }
+
+    .card-A .card-header .author::before {
+        width: 35%;
+        height: 50px;
+    }
+
+    .card-A .card-header .view{
+        height: 20px;
+        width: 28%;
+    }
+
+     .card-B  .view-B{
+        height: 20px;
+        width: 28%;
+        margin-top: 0px;
+    }
+
+    .text-watchS{
+        font-size: 14px;
+    }
+
+    .text-watchS-B{
+        font-size: 14px;
+    }
+
+    .title-streaming {
+        font-size: 2rem;
+    }
+
+    .title-nextP {
+        font-size: 1.6rem;
+    }
+
+    .area-nextP {
+        height: auto;
+    }
+
+    .area-thumbnail-nextP {
+        height: 150px;
+    }
+
+    /* area-program */
+    .page-2{
+        height: 450px;
+    }
+
+    .area-content-program{
+        margin: 10px 32px 0px 32px;
+    }
+
+    .title-program {
+        font-size: 40px;
+    }
+
+    .area-content-box-program {
+        gap: 15px; 
+    }
+
+    .box-program {
+        flex: 0 0 calc(33.33% - 15px); 
+        height: 250px;
+    }
+
+    .tombol-kiri,
+    .tombol-kanan {
+        transform: translateY(180%);
+    }
+    /* -------------- */
+
+    /* area-info-news */
+    .area-info-news {
+        margin: 0 30px; 
+    }
+
+    .line-info {
+        margin-top: 50px;
+    }
+
+    .area-content-info-news {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .area-content-info {
+        width: 65%; 
+    }
+
+    .content-info {
+        gap: 12px;
+    }
+
+    .box-info {
+        flex: 0 0 calc(50% - 8px); 
+        height: 165px; 
+    }
+
+    .title-info,
+    .title-news {
+        font-size: 40px; 
+    }
+
+    .area-content-news {
+        width: 40%; 
+        height: auto;
+    }
+
+    .box-news {
+        height: 60px;
+    }
+
+    .area-image {
+        width: 30%;
+    }
+
+    .area-text {
+        width: 70%;
+    }
+
+    .desk-news{
+        font-size: 12px;
+    }
+    /* ------------- */
+
+    /* area-event */
+    .area-event {
+        height: auto; 
+        margin: 0px 32px; 
+    }
+
+    .area-content-event{
+        height: 350px;
+    }
+    
+    .area-countdown{
+        height: 50px;
+    }
+
+    .area-days-date-right{
+        /* padding: 10px; */
+        height: 30px;
+    }
+
+    .title-event {
+        font-size: 32px;
+    }
+
+    .timer {
+        font-size: 24px;
+    }
+
+    .title-timer {
+        font-size: 14px; 
+    }
+
+    .date-month,
+    .year{
+        font-size: 20px; 
+    }
+    
+    .date-month-right,
+    .year-right {
+        font-size: 18px;
+    }
+    /* ---------- */
+
+
+
+    /* area-info-news */
+    /* area-podcast-video */
+    .area-podcast-video {
+        margin: 0px 32px 20px 32px;
+    }
+
+    .line-PV {
+        height: 400px; 
+    }
+
+    /* area-podcast */
+    .area-content-podcast {
+        width: 60%;
+    }
+
+    .title-podcast {
+        font-size: 38px; 
+    }
+
+    .text-podcast {
+        font-size: 16px; 
+    }
+
+    .content-podcast {
+        gap: 15px;
+    }
+
+    .card-podcast {
+        width: calc(50% - 8px); 
+        height: 355px; 
+    }
+
+    .card-podcast .card-body-podcast {
+        height: 60%;
+        padding: 20px; 
+    }
+
+    .card-podcast .card-header-podcast .author-podcast {
+        width: 50%;
+        height: 45px;
+    }
+    .card-podcast .card-header-podcast .author-podcast::before {
+
+        height: 50px;
+        width: 50%;
+    }
+
+    .card-podcast .card-header-podcast .view-podcast {
+        height: 20px;
+        width: 37%;
+        background-color: #ff004d;
+        border-radius: 8px;
+        padding: 10px;
+        /*margin-top: 5px;
+        */
+}
+
+    .text-watch-podcast {
+        color: white;
+        font-family: "Poppins";
+        font-size: 12px;
+    }
+
+    .card-text-podcast {
+        font-size: 24px; 
+    }
+
+    .card-image-podcast {
+        height: 130px; 
+    }
+    
+    .title-genre{
+        font-size: 14px;
+        margin: 4px 20px;
+    }
+    /* ------------------ */
+
+    /* area-video */
+    .area-content-video {
+        width: 35%; 
+    }
+
+    .title-video {
+        font-size: 38px;
+    }
+
+    .box-video {
+        height: 180px;
+    }
+
+    .text-video {
+        font-size: 16px;
+    }
+    /* -------------- */
+
+
+    
+    /* area-announcer */
+    .page-6 {
+        height: 100vh;
+    }
+
+    .svg-large {
+        display: none;
+    }
+    
+    .svg-small {
+        display: block;
+    }
+
+    .area-content-announcer {
+        width: 100%;
+        height: auto; 
+        top: 75px;
+        padding: 0px 32px 30px 32px;
+    }
+
+    .title-announcer {
+        font-size: 32px;
+    }
+
+    .content-announcer {
+        margin-top: 15px;
+    }
+
+    .area-tombol-announcer {
+        justify-content: space-between;
+    }
+
+    .tombol-kiri-announcer,
+    .tombol-kanan-announcer {
+        width: 40px;
+        height: 40px;
+        top: 90%; 
+        transform: translateY(200%);
+    }
+
+    .tombol-kiri-announcer {
+        left: -10px; 
+    }
+
+    .tombol-kanan-announcer {
+        right: -10px; 
+    }
+
+    .area-content-box-announcer {
+        gap: 15px;
+    }
+
+    .box-announcer {
+        flex: 0 0 calc(25% - 12px); 
+        height: 250px;
+    }
+
+    .line-announcer {
+        margin: 0px 32px;
+    }
+    /* ---------------------- */
+
+    /* area-chart-artis */
+    .area-content-chart-artis {
+        width: 100%;
+        height: auto;
+        display: flex;
+        gap: 20px;
+    }
+
+    .area-chart-artis {
+        width: auto;
+        height: 400px; 
+        margin-top: 40px; 
+    }
+
+    .area-content-chart {
+        width: 60%; 
+        height: auto;
+        background-color: #ffdb00;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content-chart {
+        width: 80%;
+    }
+
+    .title-chart {
+        font-size: 36px; 
+    }
+
+    .chart {
+        font-size: 16px;
+    }
+
+    thead tr {
+        font-size: 22px;
+    }
+
+    tbody tr {
+        font-size: 18px;
+    }
+
+    .area-content-artis {
+        width: 40%;
+        padding: 20px;
+    }
+
+    .title-artis {
+        font-size: 36px; 
+    }
+
+    .box-artis {
+        height: 100px;
+    }
+    /* ----------------- */
+    /* area-schedule */
+    .area-schedule {
+        width: auto;
+        height: auto;
+        margin: 0px 32px;
+    }
+
+    .area-content-schedule {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-schedule {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .title-schedule {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .top-content-schedule {
+        width: 100%;
+        height: 50px;
+    }
+
+    .schedule {
+        width: 120px; 
+        height: auto;
+        margin-top: 8px;
+        font-size: 16px; 
+    }
+
+    .schedule-day {
+        font-size: 16px;
+    }
+
+    .content-schedule {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .box-schedule {
+        height: 150px; 
+    }
+    /* ---------------- */
+
+
+    
+    /* area-audio-player */
+    .content {
+        /* padding: 0 15px; */
+        height: 60px;
+    }
+
+    .music-image {
+        width: 80px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: 120px;
+    }
+    
+    .music-titles .name{
+        font-size: 12px;
+    }
+
+    .music-titles .artist{
+        font-size: 12px;
+    }
+
+    .area-line {
+        width: 500px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .control-btn {
+        width: 150px;
+    }
+
+    #visual {
+        height: 160px;
+    }
+    /* ----------------- */
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .page-1 {
+        padding: 0px 20px 0px;
+    }
+
+    .area-streaming {
+        height: auto;
+    }
+
+    .content-streaming {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contentS-kiri{
+        width: 100%;
+        margin: 0px 0px 20px 0px;
+    }
+    
+    .contentS-kanan{
+        width: 50%;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .card-A .card-body, .card-B .card-body-B {
+        height: 300px;
+        padding: 20px;
+    }
+
+    .card-A .card-header .author {
+        height: 50px;
+    }
+
+    .card-A .card-header .author::before {
+        height: 50px;
+    }
+
+    .title-streaming {
+        font-size: 2.5rem;
+    }
+
+    .title-nextP {
+        font-size: 1.8rem;
+    }
+
+    .area-nextP {
+        height: 40%;
+    }
+
+    .area-thumbnail-nextP {
+        height: 200px;
+    }
+
+    /* area-program */
+    .title-program {
+        font-size: 36px; /* Mengurangi ukuran font untuk tablet */
+    }
+
+    .area-content-box-program {
+        gap: 15px; /* Mengurangi jarak antar box */
+    }
+
+    .box-program {
+        flex: 0 0 calc(50% - 15px); /* Mengubah lebar box menjadi 50% untuk tablet */
+        height: 250px; /* Mengurangi tinggi box */
+    }
+
+    .tombol-kiri,
+    .tombol-kanan {
+        transform: translateY(180%); /* Menyesuaikan posisi tombol */
+    }
+    /* ------------- */
+  
+
+    .content {
+        /* padding: 0 15px; */
+        height: 60px;
+    }
+
+    .music-image {
+        width: 70px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: 100px;
+    }
+    
+    .music-titles .name{
+        font-size: 10px;
+    }
+
+    .music-titles .artist{
+        font-size: 10px;
+    }
+
+    .area-line {
+        width: 500px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .control-btn {
+        width: 130px;
+    }
+
+    #visual {
+        height: 160px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Gaya untuk tablet kecil atau phablet */
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .page-1 {
+        padding: 0px 8px 0px;
+    }
+
+    .area-streaming {
+        height: auto;
+    }
+
+    .content-streaming {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contentS-kiri, .contentS-kanan {
+        width: 100%;
+        margin: 0px 0px 20px 0px;
+    }
+
+    .card-A .card-body, .card-B .card-body-B {
+        height: 200px;
+        padding: 15px;
+    }
+
+    .card-A .card-header .author {
+        height: 40px;
+    }
+
+    .card-A .card-header .author::before {
+        height: 50px;
+    }
+
+    .title-streaming {
+        font-size: 1.5rem;
+    }
+
+    .title-nextP {
+        font-size: 1.5rem;
+    }
+
+    .area-nextP {
+        height: auto;
+        padding: 10px;
+    }
+
+    .area-thumbnail-nextP {
+        height: 150px;
+    }
+
+    .area-info-news {
+        margin: 0px 20px 0px 20px;
+    }
+
+    .line-info {
+        margin-top: 30px;
+    }
+
+    .area-content-info-news {
+        gap: 20px;
+    }
+
+    .title-info,
+    .title-news {
+        font-size: 35px;
+    }
+
+    .box-info {
+        flex: 0 0 calc(100% - 8px);
+        height: 130px;
+    }
+
+    .box-news {
+        height: 50px;
+    }
+
+    .area-podcast-video {
+        margin: 0px 20px 10px 20px;
+    }
+
+    .title-podcast, .title-video {
+        font-size: 28px;
+    }
+
+    .content-podcast {
+        gap: 10px;
+    }
+
+    .card-podcast {
+        width: 100%;
+    }
+
+    .text-podcast {
+        font-size: 16px;
+    }
+
+    .box-video {
+        height: 150px;
+    }
+
+    .content-video {
+        gap: 5px;
+    }
+
+    .audio-player-container {
+        flex-direction: column; /* Ubah arah layout jadi vertikal */
+        align-items: center;
+        gap: 5px; /* Kurangi jarak antar elemen */
+        padding: 5px; /* Kurangi padding */
+        width: 100vw;
+    }
+
+    .content {
+        padding: 0 10px;
+        height: 50px;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .music-image {
+        width: 60px;
+        height: 40px;
+        padding: 5px;
+    }
+
+    .music-titles {
+        width: 100px;
+        font-size: 12px;
+        margin-left: 5px;
+    }
+
+    .area-line {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .control-btn {
+        width: 130px;
+        padding: 8px;
+    }
+
+    #visual {
+        height: 140px;
+    }
+
+    .progress-details {
+        height: 6px;
+    }
+
+    .progress-bar span {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    /* Gaya untuk smartphone medium */
+}
+
+@media (max-width: 320px) {
+    /* Gaya untuk smartphone kecil */
+}
+

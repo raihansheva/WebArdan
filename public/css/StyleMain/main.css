@@ -189,6 +189,61 @@ body{
         margin-bottom: 3px;
         margin-left: 10px;
     }
+
+
+    /* area-footer */
+    body .footer {
+        height: 300px; /* Tetap fleksibel */
+    }
+
+    .footer .top-footer {
+        height: auto; /* Biarkan fleksibel untuk konten */
+        height: 90%;
+        padding: 0px 32px;
+    }
+
+    .footer .area-kiri-footer { /* Tambahkan spesifisitas */
+        width: 50%; /* Biarkan layout tetap 50% */
+        align-items: center;
+    }
+
+    .footer .text-contact { /* Tambahkan spesifisitas */
+        font-size: 2rem; /* Kurangi ukuran font */
+    }
+
+    .footer .footer-address { /* Tambahkan spesifisitas */
+        font-size: 1.1rem; /* Kurangi ukuran font */
+    }
+
+    .footer .text-socmed, 
+    .footer .text-socmed2 { /* Tambahkan spesifisitas */
+        font-size: 1.8rem; /* Kurangi ukuran font */
+    }
+
+    .footer .footer-socmed { /* Tambahkan spesifisitas */
+        font-size: 1.2rem; /* Kurangi ukuran font */
+    }
+
+    .footer .kotak-socmed { /* Tambahkan spesifisitas */
+        width: 45px; /* Sesuaikan ukuran kotak social media */
+        height: 45px;
+    }
+
+    .footer .kotak-download { /* Tambahkan spesifisitas */
+        width: 160px; /* Kurangi ukuran kotak download */
+        height: 50px;
+    }
+
+    /* bottom footer */
+    .footer .bottom-footer { /* Tambahkan spesifisitas */
+        height: auto; /* Fleksibel untuk konten */
+        padding: 10px 0; /* Tambahkan padding vertikal */
+    }
+
+    .footer .text-copyRight { /* Tambahkan spesifisitas */
+        font-size: 16px; /* Kurangi ukuran font */
+    }
+    /* ----------- */
 }
 
 /* Untuk Mobile (width lebih kecil dari 768px) */

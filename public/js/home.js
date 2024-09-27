@@ -213,10 +213,23 @@ const tombolKiri = document.querySelector('.tombol-kiri');
 const tombolKanan = document.querySelector('.tombol-kanan');
 const areaContentBox = document.querySelector('.area-content-box-program');
 
+// Fungsi untuk mendapatkan lebar geseran yang sesuai berdasarkan ukuran layar
+const getScrollAmount = () => {
+    if (window.matchMedia("(max-width: 480px)").matches) {
+        return 150; // Geser 150px untuk ukuran layar kecil (mobile)
+    } else if (window.matchMedia("(max-width: 768px)").matches) {
+        return 220; // Geser 220px untuk ukuran tablet
+    } else if (window.matchMedia("(max-width: 1024px)").matches) {
+        return 310; // Geser 270px untuk ukuran tablet besar
+    } else {
+        return 330; // Geser 330px untuk ukuran layar lebih besar (desktop)
+    }
+};
+
 // Menggeser ke kiri
 tombolKiri.addEventListener('click', () => {
     areaContentBox.scrollBy({
-        left: -330, // Geser 300px ke kiri
+        left: -getScrollAmount(), // Gunakan fungsi untuk menentukan jumlah geseran
         behavior: 'smooth' // Animasi smooth saat menggeser
     });
 });
@@ -224,20 +237,33 @@ tombolKiri.addEventListener('click', () => {
 // Menggeser ke kanan
 tombolKanan.addEventListener('click', () => {
     areaContentBox.scrollBy({
-        left: 330, // Geser 300px ke kanan
+        left: getScrollAmount(), // Gunakan fungsi untuk menentukan jumlah geseran
         behavior: 'smooth' // Animasi smooth saat menggeser
     });
 });
 
-// caraousel announcer
+// carousel announcer
 const tombolKiriA = document.querySelector('.tombol-kiri-announcer');
 const tombolKananA = document.querySelector('.tombol-kanan-announcer');
 const areaContentBoxA = document.querySelector('.area-content-box-announcer');
 
+// Fungsi untuk mendapatkan lebar geseran yang sesuai berdasarkan ukuran layar
+const getScrollAmountA = () => {
+    if (window.matchMedia("(max-width: 480px)").matches) {
+        return 150; // Geser 150px untuk ukuran layar kecil (mobile)
+    } else if (window.matchMedia("(max-width: 768px)").matches) {
+        return 220; // Geser 220px untuk ukuran tablet
+    } else if (window.matchMedia("(max-width: 1024px)").matches) {
+        return 240; // Geser 270px untuk ukuran tablet besar
+    } else {
+        return 330; // Geser 330px untuk ukuran layar lebih besar (desktop)
+    }
+};
+
 // Menggeser ke kiri
 tombolKiriA.addEventListener('click', () => {
     areaContentBoxA.scrollBy({
-        left: -330, // Geser 300px ke kiri
+        left: -getScrollAmountA(), // Gunakan fungsi untuk menentukan jumlah geseran
         behavior: 'smooth' // Animasi smooth saat menggeser
     });
 });
@@ -245,7 +271,7 @@ tombolKiriA.addEventListener('click', () => {
 // Menggeser ke kanan
 tombolKananA.addEventListener('click', () => {
     areaContentBoxA.scrollBy({
-        left: 330, // Geser 300px ke kanan
+        left: getScrollAmountA(), // Gunakan fungsi untuk menentukan jumlah geseran
         behavior: 'smooth' // Animasi smooth saat menggeser
     });
 });

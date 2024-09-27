@@ -1,5 +1,6 @@
 @extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/home.css">
+<link rel="stylesheet" href="css/StyleContent/responsiveHome.css">
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @section('content')
@@ -297,17 +298,32 @@
     <section class="page-6" id="announcer">
         <div class="area-announcer">
             <div class="area-svg">
-                <svg width="434" height="667" viewBox="0 0 434 667" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.5015 596.014L17.5015 46.9919" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M68.0015 610L67.5265 18.0004" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M123.501 604.001L123.501 64.0012" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M181.001 627.003L181.001 47.0032" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M251.255 590L251.255 27.0034" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M309.001 616L309.001 47.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M371.001 649L371.001 62.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
-                    <path d="M415.533 610.001L415.533 81.9948" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
+                <!-- SVG default untuk media lebih dari 1024px -->
+                <svg class="svg-large" width="434" height="667" viewBox="0 0 434 667" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5015 596.014L17.5015 46.9919" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M68.0015 610L67.5265 18.0004" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M123.501 604.001L123.501 64.0012" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M181.001 627.003L181.001 47.0032" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M251.255 590L251.255 27.0034" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M309.001 616L309.001 47.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M371.001 649L371.001 62.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                    <path d="M415.533 610.001L415.533 81.9948" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
                 </svg>
+            
+                <!-- SVG untuk media dengan ukuran 1024px atau kurang -->
+                <svg class="svg-small" width="332" height="510" viewBox="0 0 332 510" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 455.526L14 36.1455" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M52.5752 466.209L52.2124 14" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M94.9697 461.626L94.9697 49.1384" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M138.892 479.197L138.892 36.1542" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M192.557 450.932V20.8771" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M236.667 470.792L236.667 36.1521" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M284.027 496L284.027 47.6102" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    <path d="M318.043 466.209L318.043 62.8831" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                    </svg>
+                    
             </div>
+            
             <div class="area-content-announcer">
                 <div class="header-announcer">
                     <h1 class="title-announcer">Announcer</h1>
