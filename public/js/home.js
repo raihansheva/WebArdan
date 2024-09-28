@@ -216,7 +216,7 @@ const areaContentBox = document.querySelector('.area-content-box-program');
 // Fungsi untuk mendapatkan lebar geseran yang sesuai berdasarkan ukuran layar
 const getScrollAmount = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-        return 150; // Geser 150px untuk ukuran layar kecil (mobile)
+        return 360; // Geser 150px untuk ukuran layar kecil (mobile)
     } else if (window.matchMedia("(max-width: 768px)").matches) {
         return 340; // Geser 220px untuk ukuran tablet
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
@@ -250,7 +250,7 @@ const areaContentBoxA = document.querySelector('.area-content-box-announcer');
 // Fungsi untuk mendapatkan lebar geseran yang sesuai berdasarkan ukuran layar
 const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-        return 150; // Geser 150px untuk ukuran layar kecil (mobile)
+        return 358; // Geser 150px untuk ukuran layar kecil (mobile)
     } else if (window.matchMedia("(max-width: 768px)").matches) {
         return 232; // Geser 220px untuk ukuran tablet
     } else if (window.matchMedia("(max-width: 1024px)").matches) {

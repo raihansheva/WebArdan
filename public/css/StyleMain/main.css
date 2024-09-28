@@ -466,7 +466,7 @@ body {
         background-color: #ffffff;
         border-radius: 15px;
     }
-    
+
     .progress-bar-mobile {
         width: 0%;
         height: inherit;
@@ -475,7 +475,7 @@ body {
         cursor: pointer;
         position: relative;
     }
-    
+
     .progress-bar-mobile span {
         position: absolute;
         width: 12px;
@@ -487,7 +487,7 @@ body {
         opacity: 0;
         transition: opacity 0.3s ease-out;
     }
-    
+
     .progress-details-mobile:hover .progress-bar-mobile span {
         opacity: 1;
     }
@@ -551,6 +551,211 @@ body {
     .link {
         font-size: 12px;
     }
+
+    /* area-footer */
+    body .footer {
+        height: auto; /* Tetap fleksibel */
+    }
+
+    .footer .top-footer {
+        height: auto; /* Biarkan fleksibel untuk konten */
+        height: 90%;
+        padding: 20px 8px 0px 8px;
+        flex-direction: column;
+        /* gap: 10px; */
+    }
+
+    .footer .area-kiri-footer {
+        /* Tambahkan spesifisitas */
+        width: 100%; /* Biarkan layout tetap 50% */
+        align-items: center;
+    }
+
+    .footer .area-group-kiri{
+        text-align: center;
+        /* border: 1px black solid; */
+    }
+
+    .footer .area-text-contact{
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer .area-footer-address{
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer .area-kanan-footer {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer .text-contact {
+        /* Tambahkan spesifisitas */
+        font-size: 1.2rem; /* Kurangi ukuran font */
+    }
+
+    .footer .footer-address {
+        /* Tambahkan spesifisitas */
+        font-weight: 300;
+        font-size: 0.8rem; /* Kurangi ukuran font */
+    }
+
+    .footer .text-socmed,
+    .footer .text-socmed2 {
+        /* Tambahkan spesifisitas */
+        font-size: 1.2rem; /* Kurangi ukuran font */
+        padding-top: 10px;
+    }
+
+    .footer .footer-socmed {
+        /* Tambahkan spesifisitas */
+        font-size: 1.2rem; /* Kurangi ukuran font */
+    }
+
+    .footer .area-footer-socmed {
+        margin-top: 8px;
+        gap: 10px;
+    }
+
+    .footer .kotak-socmed {
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+    }
+
+    .footer .area-footer-download {
+        margin-top: 8px;
+        gap: 10px;
+    }
+
+    .footer .kotak-download {
+        width: 130px;
+        height: 35px;
+        border-radius: 8px;
+    }
+
+    /* bottom footer */
+    .footer .bottom-footer {
+        /* Tambahkan spesifisitas */
+        height: auto; /* Fleksibel untuk konten */
+        padding: 10px 0; /* Tambahkan padding vertikal */
+    }
+
+    .footer .text-copyRight {
+        /* Tambahkan spesifisitas */
+        font-size: 10px; /* Kurangi ukuran font */
+    }
+    /* ----------- */
+    /* area-audio-mobile */
+    .area-audio-mobile {
+        width: 100%;
+        height: auto;
+        /* border: 1px red solid; */
+        display: flex;
+        flex-direction: column;
+        /* gap: 10px; */
+        /* border-top: 1px black solid; */
+    }
+
+    .area-image-audio-mobile {
+        width: auto;
+        height: auto;
+        /* border: 1px green solid; */
+        padding: 10px 15px 0px 15px;
+    }
+
+    .image-audio-mobile {
+        width: auto;
+        height: 65px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+    }
+
+    .area-line-progress-mobile {
+        width: auto;
+        height: auto;
+        /* border: 1px blue solid; */
+        margin-top: 10px;
+        margin-bottom: 5px;
+        padding: 0px 15px;
+    }
+
+    .progress-details-mobile {
+        width: 100%;
+        height: 5px;
+        background-color: #ffffff;
+        border-radius: 15px;
+    }
+
+    .progress-bar-mobile {
+        width: 0%;
+        height: inherit;
+        border-radius: inherit;
+        background-color: #ccff00;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .progress-bar-mobile span {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #ccff00;
+        border-radius: inherit;
+        transform: translateY(-25%);
+        right: -5px;
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+    }
+
+    .progress-details-mobile:hover .progress-bar-mobile span {
+        opacity: 1;
+    }
+
+    .control-btn-mobile {
+        /* margin-top: 50px; */
+        /* margin-bottom: 20px; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* border: 1px black solid; */
+        height: auto;
+        padding: 10px;
+        width: auto;
+        background-color: #333333;
+        gap: 5px;
+    }
+
+    .play-pause-mobile {
+        background-color: white;
+        border-radius: 50%;
+    }
+
+    .btn-play-mobile {
+        color: black !important;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .control-btn-mobile span {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+    }
 }
 /* <--------------------> */
 
@@ -578,7 +783,7 @@ body {
     height: auto;
     /* border: 1px black solid; */
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
 }
 
@@ -629,7 +834,7 @@ body {
     /* border: 1px black solid; */
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
 }
 
 .area-text-socmed {

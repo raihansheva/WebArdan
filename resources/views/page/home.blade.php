@@ -21,7 +21,7 @@
                             <div class="author">
                             </div>
                             <div class="view" id="btn-tonton">
-                                <p class="text-watchS" >Tonton Siaran</p>
+                                <p class="text-watchS">Tonton Siaran</p>
                             </div>
                         </div>
                     </div>
@@ -299,31 +299,53 @@
         <div class="area-announcer">
             <div class="area-svg">
                 <!-- SVG default untuk media lebih dari 1024px -->
-                <svg class="svg-large" width="434" height="667" viewBox="0 0 434 667" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.5015 596.014L17.5015 46.9919" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M68.0015 610L67.5265 18.0004" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M123.501 604.001L123.501 64.0012" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M181.001 627.003L181.001 47.0032" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M251.255 590L251.255 27.0034" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M309.001 616L309.001 47.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M371.001 649L371.001 62.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
-                    <path d="M415.533 610.001L415.533 81.9948" stroke="#FFDB00" stroke-width="35" stroke-linecap="round"/>
+                <svg class="svg-large" width="434" height="667" viewBox="0 0 434 667" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5015 596.014L17.5015 46.9919" stroke="#FFDB00" stroke-width="35"
+                        stroke-linecap="round" />
+                    <path d="M68.0015 610L67.5265 18.0004" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
+                    <path d="M123.501 604.001L123.501 64.0012" stroke="#FFDB00" stroke-width="35"
+                        stroke-linecap="round" />
+                    <path d="M181.001 627.003L181.001 47.0032" stroke="#FFDB00" stroke-width="35"
+                        stroke-linecap="round" />
+                    <path d="M251.255 590L251.255 27.0034" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
+                    <path d="M309.001 616L309.001 47.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
+                    <path d="M371.001 649L371.001 62.0005" stroke="#FFDB00" stroke-width="35" stroke-linecap="round" />
+                    <path d="M415.533 610.001L415.533 81.9948" stroke="#FFDB00" stroke-width="35"
+                        stroke-linecap="round" />
                 </svg>
-            
+
                 <!-- SVG untuk media dengan ukuran 1024px atau kurang -->
-                <svg class="svg-small" width="332" height="510" viewBox="0 0 332 510" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14 455.526L14 36.1455" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M52.5752 466.209L52.2124 14" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M94.9697 461.626L94.9697 49.1384" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M138.892 479.197L138.892 36.1542" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M192.557 450.932V20.8771" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M236.667 470.792L236.667 36.1521" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M284.027 496L284.027 47.6102" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
-                    <path d="M318.043 466.209L318.043 62.8831" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round"/>
+                <svg class="svg-small" width="332" height="510" viewBox="0 0 332 510" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 455.526L14 36.1455" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round" />
+                    <path d="M52.5752 466.209L52.2124 14" stroke="#FFDB00" stroke-width="26.7353"
+                        stroke-linecap="round" />
+                    <path d="M94.9697 461.626L94.9697 49.1384" stroke="#FFDB00" stroke-width="26.7353"
+                        stroke-linecap="round" />
+                    <path d="M138.892 479.197L138.892 36.1542" stroke="#FFDB00" stroke-width="26.7353"
+                        stroke-linecap="round" />
+                    <path d="M192.557 450.932V20.8771" stroke="#FFDB00" stroke-width="26.7353" stroke-linecap="round" />
+                    <path d="M236.667 470.792L236.667 36.1521" stroke="#FFDB00" stroke-width="26.7353"
+                        stroke-linecap="round" />
+                    <path d="M284.027 496L284.027 47.6102" stroke="#FFDB00" stroke-width="26.7353"
+                        stroke-linecap="round" />
+                    <path d="M318.043 466.209L318.043 62.8831" stroke="#FFDB00" stroke-width="26.7353"
+                        stroke-linecap="round" />
+                </svg>
+
+                <svg class="svg-small-mobile" width="259" height="452" viewBox="0 0 259 452" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 404.892L11 30.7564" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M41.0288 414.423L40.7464 10.9999" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M74.0308 410.335L74.0308 42.3475" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M108.222 426.01L108.222 30.7641" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M149.998 400.794V17.1352" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M184.335 418.512L184.335 30.7623" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M221.203 441L221.203 40.9842" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
+                    <path d="M247.683 414.423L247.683 54.6094" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
                     </svg>
-                    
             </div>
-            
+
             <div class="area-content-announcer">
                 <div class="header-announcer">
                     <h1 class="title-announcer">Announcer</h1>
@@ -367,31 +389,31 @@
                                     <td>1</td>
                                     <td>John Doe</td>
                                     <td></td>
-            
+
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Jane Smith</td>
                                     <td></td>
-                        
+
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>Michael Brown</td>
                                     <td></td>
-        
+
                                 </tr>
                                 <tr>
                                     <td>4</td>
                                     <td>Emily Davis</td>
                                     <td></td>
-                                    
+
                                 </tr>
                                 <tr>
                                     <td>5</td>
                                     <td>Emily Davis</td>
                                     <td></td>
-                                    
+
                                 </tr>
                             </tbody>
                         </table>
@@ -487,9 +509,9 @@
                         <span></span>
                     </div>
                     <!-- <div class="time">
-                                <span class="current">0:00</span>
-                                <span class="final">5:30</span>
-                              </div> -->
+                                        <span class="current">0:00</span>
+                                        <span class="final">5:30</span>
+                                      </div> -->
                 </div>
             </div>
             <div class="music-titles">
