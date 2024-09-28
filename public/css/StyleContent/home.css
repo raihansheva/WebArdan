@@ -1154,7 +1154,7 @@ tbody tr {
 .text-btn-chart{
     font-size: 18px;
     font-family: "Poppins";
-    margin: 5px 30px;
+    margin: 5px 20px;
     font-weight: 500;
     color: #ff004d;
 }
@@ -1208,7 +1208,7 @@ tbody tr {
 /* area-schedule */
 .page-8{
     width: 100%;
-    height: auto;
+    height: 100vh;
 }
 
 .area-schedule{

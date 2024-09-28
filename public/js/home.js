@@ -218,7 +218,7 @@ const getScrollAmount = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
         return 150; // Geser 150px untuk ukuran layar kecil (mobile)
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 220; // Geser 220px untuk ukuran tablet
+        return 340; // Geser 220px untuk ukuran tablet
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
         return 310; // Geser 270px untuk ukuran tablet besar
     } else {
@@ -252,7 +252,7 @@ const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
         return 150; // Geser 150px untuk ukuran layar kecil (mobile)
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 220; // Geser 220px untuk ukuran tablet
+        return 232; // Geser 220px untuk ukuran tablet
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
         return 240; // Geser 270px untuk ukuran tablet besar
     } else {

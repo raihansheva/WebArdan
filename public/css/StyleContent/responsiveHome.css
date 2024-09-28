@@ -484,7 +484,7 @@
     /* ---------------- */
 
 
-    
+
     /* area-audio-player */
     .content {
         /* padding: 0 15px; */
@@ -550,16 +550,20 @@
     }
 
     .card-A .card-body, .card-B .card-body-B {
-        height: 300px;
+        height: 270px;
         padding: 20px;
     }
 
     .card-A .card-header .author {
         height: 50px;
+        /* border: 1px green solid; */
+        width: 68%;
     }
 
     .card-A .card-header .author::before {
         height: 50px;
+        /* border: 1px red solid; */
+        width: 32%;
     }
 
     .title-streaming {
@@ -579,6 +583,11 @@
     }
 
     /* area-program */
+
+    .page-2{
+        height: 400px;
+    }
+
     .title-program {
         font-size: 36px; /* Mengurangi ukuran font untuk tablet */
     }
@@ -598,19 +607,417 @@
     }
     /* ------------- */
   
+    /* area-info-news */
+    .area-info-news {
+        margin: 0 20px; 
+    }
 
-    .content {
-        /* padding: 0 15px; */
+    .line-info {
+        margin-top: 50px;
+        border: 1px white solid;
+    }
+
+    .area-content-info-news {
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .area-content-info {
+        width: 65%; 
+    }
+
+    .content-info {
+        gap: 12px;
+    }
+
+    .box-info {
+        flex: 0 0 calc(33.33% - 8px); 
+        height: 100px; 
+    }
+
+    .title-info,
+    .title-news {
+        font-size: 34px; 
+    }
+
+    .area-content-news {
+        width: 40%; 
+        height: auto;
+    }
+
+    .content-news{
+        gap: 10px;
+    }
+
+    .box-news {
         height: 60px;
     }
 
+    .area-image {
+        width: 30%;
+    }
+
+    .area-text {
+        width: 70%;
+    }
+
+    .desk-news{
+        font-size: 8px;
+    }
+
+    .title-bottom-info{
+        font-size: 16px;
+    }
+
+    /* ------------- */
+
+    /* area-event */
+    .area-event {
+        height: auto; 
+        margin: 0px 20px; 
+    }
+
+    .area-content-event{
+        height: 320px;
+    }
+    
+    .area-countdown{
+        height: 50px;
+    }
+
+    .area-days-date-right{
+        /* padding: 10px; */
+        height: 25px;
+    }
+
+    .title-event {
+        font-size: 32px;
+    }
+
+    .timer {
+        font-size: 24px;
+    }
+
+    .title-timer {
+        font-size: 14px; 
+    }
+
+    .date-month,
+    .year{
+        font-size: 20px; 
+    }
+    
+    .date-month-right,
+    .year-right {
+        font-size: 16px;
+    }
+    /* ---------- */
+
+
+
+    /* area-info-news */
+    /* area-podcast-video */
+    .area-podcast-video {
+        margin: 0px 20px 10px 20px;
+    }
+
+    .area-content-PV{
+        gap: 30px;
+    }
+
+    .line-PV {
+        height: 400px; 
+    }
+
+    /* area-podcast */
+    .area-content-podcast {
+        width: 60%;
+    }
+
+    .title-podcast {
+        font-size: 30px; 
+    }
+
+    .text-podcast {
+        font-size: 12px; 
+    }
+
+    .content-podcast {
+        gap: 15px;
+    }
+
+    .card-podcast {
+        width: calc(50% - 8px); 
+        height: 225px; 
+    }
+
+    .card-podcast .card-body-podcast {
+        height: 68%;
+        padding: 10px; 
+        gap: 2px;
+    }
+
+    .card-podcast .card-header-podcast .author-podcast {
+        width: 48%;
+        height: 40px;
+    }
+    .card-podcast .card-header-podcast .author-podcast::before {
+        height: 42px;
+        width: 52%;
+    }
+
+    .card-podcast .card-header-podcast .view-podcast {
+        height: 12px;
+        width: 37%;
+        background-color: #ff004d;
+        border-radius: 8px;
+        padding: 10px;
+        /* margin-top: 10px; */
+       
+}
+
+    .text-watch-podcast {
+        color: white;
+        font-family: "Poppins";
+        font-size: 10px;
+    }
+
+    .card-text-podcast {
+        font-size: 20px; 
+    }
+
+    .card-image-podcast {
+        height: 85px; 
+    }
+    
+    .title-genre{
+        font-size: 11px;
+        margin: 2px 15px;
+    }
+    /* ------------------ */
+
+    /* area-video */
+    .area-content-video {
+        width: 35%; 
+    }
+
+    .title-video {
+        font-size: 30px;
+    }
+
+    .box-video {
+        height: 110px;
+    }
+
+    .link-text-video{
+        margin-top: 5px;
+    }
+
+    .text-video {
+        font-size: 14px;
+    }
+    /* -------------- */
+
+
+    
+    /* area-announcer */
+    .page-6 {
+        height: 100vh;
+    }
+
+    .svg-large {
+        display: none;
+    }
+    
+    .svg-small {
+        display: block;
+    }
+
+    .area-content-announcer {
+        width: 100%;
+        height: 330px; 
+        top: 70px;
+        padding: 0px 32px 30px 32px;
+    }
+
+    .title-announcer {
+        font-size: 32px;
+        margin: 20px 0px 5px 0px;
+    }
+
+    .content-announcer {
+        margin-top: 10px;
+    }
+
+    .area-tombol-announcer {
+        justify-content: space-between;
+    }
+
+    .tombol-kiri-announcer,
+    .tombol-kanan-announcer {
+        width: 40px;
+        height: 40px;
+        top: 90%; 
+        transform: translateY(200%);
+    }
+
+    .tombol-kiri-announcer {
+        left: -10px; 
+    }
+
+    .tombol-kanan-announcer {
+        right: -10px; 
+    }
+
+    .area-content-box-announcer {
+        gap: 15px;
+    }
+
+    .box-announcer {
+        flex: 0 0 calc(33.33% - 12px); 
+        height: 230px;
+    }
+
+    .line-announcer {
+        margin: 0px 32px;
+    }
+    /* ---------------------- */
+
+    /* area-chart-artis */
+    .area-content-chart-artis {
+        width: 100%;
+        height: auto;
+        display: flex;
+        gap: 20px;
+    }
+
+    .area-chart-artis {
+        width: auto;
+        height: auto; 
+        margin-top: 40px; 
+    }
+
+    .area-content-chart {
+        width: 65%; 
+        height: 380px;
+        background-color: #ffdb00;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content-chart {
+        width: 80%; 
+        /* height: 85%; */
+    }
+
+    .title-chart {
+        font-size: 30px; 
+    }
+
+    .chart {
+        font-size: 12px;
+    }
+
+    .text-btn-chart{
+        font-size: 12px;
+    }
+
+    thead tr {
+        font-size: 20px;
+        font-weight: 300;
+    }
+
+    tbody tr {
+        font-size: 16px;
+    }
+
+    .area-content-artis {
+        width: 35%;
+        padding: 15px;
+        /* height: 380px; */
+    }
+
+    .title-artis {
+        font-size: 30px; 
+    }
+
+    .box-artis {
+        height: 85px;
+    }
+    /* ----------------- */
+    /* area-schedule */
+
+    .page-8{
+        height: auto;
+        /* border: 1px red solid; */
+    }
+
+    .area-schedule {
+        width: auto;
+        height: auto;
+        margin: 0px 20px;
+    }
+
+    .area-content-schedule {
+        width: 100%;
+        /* height: auto; */
+        display: flex;
+        flex-direction: column;
+        /* border: 1px red solid; */
+    }
+
+    .header-schedule {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .title-schedule {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .top-content-schedule {
+        width: 100%;
+        height: 50px;
+    }
+
+    .schedule {
+        width: 120px; 
+        height: auto;
+        margin-top: 8px;
+        font-size: 16px; 
+    }
+
+    .schedule-day {
+        font-size: 14px;
+    }
+
+    .content-schedule {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .box-schedule {
+        height: 150px; 
+    }
+    /* ---------------- */
+
+
+    /* area-audio-player */
+    .content {
+        /* padding: 0 15px; */
+        height: 60px;
+        display: none;
+    }
+
     .music-image {
-        width: 70px;
+        width: 80px;
         height: 50px;
     }
 
     .music-titles {
-        width: 100px;
+        width: 120px;
     }
     
     .music-titles .name{
@@ -618,7 +1025,7 @@
     }
 
     .music-titles .artist{
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .area-line {
@@ -628,12 +1035,13 @@
     }
 
     .control-btn {
-        width: 130px;
+        width: 120px;
     }
 
     #visual {
         height: 160px;
     }
+    /* ----------------- */
 }
 
 @media (max-width: 600px) {
