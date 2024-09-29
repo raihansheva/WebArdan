@@ -4,7 +4,7 @@ const content = document.querySelector(".content"),
     musicName = content.querySelector(".music-titles .name"),
     musicArtist = content.querySelector(".music-titles .artist"),
     Audio = document.querySelector(".main-song"),
-    playBtn = content.querySelector(".play-pause"),
+    playBtn = document.querySelectorAll('.play-pause, .play-pause-mobile, .btn-play-streaming'), // Mengambil semua tombol play
     playBtnIcon = content.querySelector(".play-pause span"),
     prevBtn = content.querySelector("#prev"),
     nextBtn = content.querySelector("#next"),
@@ -15,10 +15,12 @@ const content = document.querySelector(".content"),
 
 let index = 1;
 
+// Memuat data saat halaman di-load
 window.addEventListener("load", () => {
     loadData(index);
 });
 
+// Fungsi untuk memuat data lagu berdasarkan indeks
 function loadData(indexValue) {
     musicName.innerHTML = songs[indexValue - 1].name;
     musicArtist.innerHTML = songs[indexValue - 1].artist;
@@ -26,25 +28,40 @@ function loadData(indexValue) {
     Audio.src = "music/" + songs[indexValue - 1].audio + ".mp3";
 }
 
-playBtn.addEventListener("click", () => {
-    const isMusicPaused = content.classList.contains("paused");
-    if (isMusicPaused) {
-        pauseSong();
-    } else {
-        playSong();
-    }
+// Menambahkan event listener pada semua tombol play (baik versi web maupun mobile)
+playBtn.forEach(button => {
+    button.addEventListener("click", () => {
+        const isMusicPaused = content.classList.contains("paused");
+        if (isMusicPaused) {
+            pauseSong();
+        } else {
+            playSong();
+        }
+    });
 });
 
+// Fungsi untuk memainkan lagu
 function playSong() {
     content.classList.add("paused");
-    playBtnIcon.innerHTML = "pause";
+    updatePlayBtnIcon("pause"); // Memperbarui ikon play untuk semua tombol
     Audio.play();
 }
 
+// Fungsi untuk menjeda lagu
 function pauseSong() {
     content.classList.remove("paused");
-    playBtnIcon.innerHTML = "play_arrow";
+    updatePlayBtnIcon("play_arrow"); // Memperbarui ikon play untuk semua tombol
     Audio.pause();
+}
+
+// Fungsi untuk memperbarui ikon tombol play
+function updatePlayBtnIcon(icon) {
+    playBtn.forEach(button => {
+        let iconElement = button.querySelector("span");
+        if (iconElement) {
+            iconElement.innerHTML = icon;
+        }
+    });
 }
 
 nextBtn.addEventListener("click", () => {
@@ -55,87 +72,48 @@ prevBtn.addEventListener("click", () => {
     prevSong();
 });
 
+// Fungsi untuk memainkan lagu selanjutnya
 function nextSong() {
     index++;
     if (index > songs.length) {
         index = 1;
-    } else {
-        index = index;
     }
     loadData(index);
     playSong();
 }
 
+// Fungsi untuk memainkan lagu sebelumnya
 function prevSong() {
     index--;
     if (index <= 0) {
         index = songs.length;
-    } else {
-        index = index;
     }
     loadData(index);
     playSong();
 }
 
+// Memperbarui progress bar sesuai dengan waktu audio
 Audio.addEventListener("timeupdate", (e) => {
-    const initialTime = e.target.currentTime; // Get current music time
-    const finalTime = e.target.duration; // Get music duration
+    const initialTime = e.target.currentTime; // Waktu lagu saat ini
+    const finalTime = e.target.duration; // Total durasi lagu
     let BarWidth = (initialTime / finalTime) * 100;
     progressBar.style.width = BarWidth + "%";
 
+    // Memungkinkan pengguna untuk mengklik progress bar dan mengubah waktu lagu
     progressDetails.addEventListener("click", (e) => {
-        let progressValue = progressDetails.clientWidth; // Get width of Progress Bar
-        let clickedOffsetX = e.offsetX; // get offset x value
-        let MusicDuration = Audio.duration; // get total music duration
+        let progressValue = progressDetails.clientWidth; // Lebar progress bar
+        let clickedOffsetX = e.offsetX; // Posisi klik
+        let MusicDuration = Audio.duration; // Total durasi musik
 
         Audio.currentTime = (clickedOffsetX / progressValue) * MusicDuration;
     });
-
-    //Timer Logic
-    // Audio.addEventListener("loadeddata", () => {
-    //   let finalTimeData = content.querySelector(".final");
-
-    //   //Update finalDuration
-    //   let AudioDuration = Audio.duration;
-    //   let finalMinutes = Math.floor(AudioDuration / 60);
-    //   let finalSeconds = Math.floor(AudioDuration % 60);
-    //   if (finalSeconds < 10) {
-    //     finalSeconds = "0" + finalSeconds;
-    //   }
-    //   finalTimeData.innerText = finalMinutes + ":" + finalSeconds;
-    // });
-
-    // //Update Current Duration
-    // let currentTimeData = content.querySelector(".current");
-    // let CurrentTime = Audio.currentTime;
-    // let currentMinutes = Math.floor(CurrentTime / 60);
-    // let currentSeconds = Math.floor(CurrentTime % 60);
-    // if (currentSeconds < 10) {
-    //   currentSeconds = "0" + currentSeconds;
-    // }
-    // currentTimeData.innerText = currentMinutes + ":" + currentSeconds;
-
-    // //repeat button logic
-    // repeatBtn.addEventListener("click", () => {
-    //   Audio.currentTime = 0;
-    // });
 });
 
-//Shuffle Logic
-// Shuffle.addEventListener("click", () => {
-//   var randIndex = Math.floor(Math.random() * songs.length) + 1; // Select random betwn 1 and song array length
-//   loadData(randIndex);
-//   playSong();
-// });
-
+// Ketika lagu berakhir, otomatis ke lagu berikutnya
 Audio.addEventListener("ended", () => {
-    index++;
-    if (index > songs.length) {
-        index = 1;
-    }
-    loadData(index);
-    playSong();
+    nextSong();
 });
+
 
 // Spectrum Audio Visualization
 const svg = document.getElementById("visual");
@@ -207,104 +185,96 @@ audio.addEventListener("play", () => {
 window.addEventListener("resize", () => {
     path.setAttribute("d", "");
 });
+// ----------------------------------------------
+
 
 // caraousel program
 const tombolKiri = document.querySelector('.tombol-kiri');
 const tombolKanan = document.querySelector('.tombol-kanan');
 const areaContentBox = document.querySelector('.area-content-box-program');
 
-// Fungsi untuk mendapatkan lebar geseran yang sesuai berdasarkan ukuran layar
 const getScrollAmount = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-        return 360; // Geser 150px untuk ukuran layar kecil (mobile)
+        return 360; 
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 340; // Geser 220px untuk ukuran tablet
+        return 340;
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        return 310; // Geser 270px untuk ukuran tablet besar
+        return 310; 
     } else {
-        return 330; // Geser 330px untuk ukuran layar lebih besar (desktop)
+        return 330; 
     }
 };
 
-// Menggeser ke kiri
 tombolKiri.addEventListener('click', () => {
     areaContentBox.scrollBy({
-        left: -getScrollAmount(), // Gunakan fungsi untuk menentukan jumlah geseran
-        behavior: 'smooth' // Animasi smooth saat menggeser
+        left: -getScrollAmount(),
+        behavior: 'smooth' 
     });
 });
 
-// Menggeser ke kanan
 tombolKanan.addEventListener('click', () => {
     areaContentBox.scrollBy({
-        left: getScrollAmount(), // Gunakan fungsi untuk menentukan jumlah geseran
-        behavior: 'smooth' // Animasi smooth saat menggeser
+        left: getScrollAmount(), 
+        behavior: 'smooth'
     });
 });
+// ---------------------------------------
 
 // carousel announcer
 const tombolKiriA = document.querySelector('.tombol-kiri-announcer');
 const tombolKananA = document.querySelector('.tombol-kanan-announcer');
 const areaContentBoxA = document.querySelector('.area-content-box-announcer');
 
-// Fungsi untuk mendapatkan lebar geseran yang sesuai berdasarkan ukuran layar
 const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-        return 358; // Geser 150px untuk ukuran layar kecil (mobile)
+        return 358;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 232; // Geser 220px untuk ukuran tablet
+        return 232; 
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        return 240; // Geser 270px untuk ukuran tablet besar
+        return 240; 
     } else {
-        return 330; // Geser 330px untuk ukuran layar lebih besar (desktop)
+        return 330;
     }
 };
 
-// Menggeser ke kiri
+
 tombolKiriA.addEventListener('click', () => {
     areaContentBoxA.scrollBy({
-        left: -getScrollAmountA(), // Gunakan fungsi untuk menentukan jumlah geseran
-        behavior: 'smooth' // Animasi smooth saat menggeser
+        left: -getScrollAmountA(), 
+        behavior: 'smooth'
     });
 });
 
-// Menggeser ke kanan
 tombolKananA.addEventListener('click', () => {
     areaContentBoxA.scrollBy({
-        left: getScrollAmountA(), // Gunakan fungsi untuk menentukan jumlah geseran
-        behavior: 'smooth' // Animasi smooth saat menggeser
+        left: getScrollAmountA(),
+        behavior: 'smooth'
     });
 });
+// ----------------------------------------
 
-
-// timer
-// Mengambil elemen HTML
+// countdown event
 const daysElement = document.getElementById('days');
 const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
 
-// Atur tanggal dan waktu target (format: 'YYYY-MM-DD HH:MM:SS')
 const countdownDate = new Date('2024-10-5 23:59:59').getTime();
 
-// Fungsi untuk memperbarui countdown setiap detik
 function updateCountdown() {
     const now = new Date().getTime();
     const timeRemaining = countdownDate - now;
 
-    // Hitung jumlah hari, jam, menit, dan detik yang tersisa
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-    // Tampilkan hasil ke elemen HTML
     daysElement.innerText = days < 10 ? '0' + days : days;
     hoursElement.innerText = hours < 10 ? '0' + hours : hours;
     minutesElement.innerText = minutes < 10 ? '0' + minutes : minutes;
     secondsElement.innerText = seconds < 10 ? '0' + seconds : seconds;
 
-    // Jika waktu sudah habis, tampilkan pesan
     if (timeRemaining < 0) {
         clearInterval(countdownInterval);
         daysElement.innerText = "00";
@@ -315,54 +285,77 @@ function updateCountdown() {
     }
 }
 
-// Memperbarui countdown setiap 1 detik (1000 ms)
 const countdownInterval = setInterval(updateCountdown, 1000);
+// ---------------------------------------
 
-// Ambil elemen dari card A dan card B
+
+// card-streaming
 const cardA = document.querySelector('.card-A');
 const cardB = document.querySelector('.card-B');
-
-// Ambil tombol "Tonton Siaran" di card A dan card B
 const tontonSiaranBtnA = document.querySelector('.card-A .author');
 const tontonSiaranBtnB = document.querySelector('.card-B .view-B');
 
-// Tampilkan Card A saat pertama kali page load
 cardA.style.display = 'block';
 cardA.classList.add('show');
 
-// Fungsi untuk mengubah card dari tersembunyi ke terlihat
 function showCard(card) {
-    card.style.display = 'block';   // Pastikan elemen ditampilkan
+    card.style.display = 'block';
     setTimeout(() => {
-        card.classList.add('show'); // Tambahkan kelas untuk animasi fade-in
+        card.classList.add('show');
         card.classList.remove('hide');
-    }, 10);  // Timeout kecil agar browser punya waktu untuk apply display block
+    }, 10);
 }
 
-// Fungsi untuk menyembunyikan card dengan animasi
 function hideCard(card) {
     card.classList.remove('show');
     card.classList.add('hide');
     setTimeout(() => {
-        card.style.display = 'none';  // Setelah animasi, sembunyikan elemen
-    }, 500);  // Durasi sama dengan durasi transition
+        card.style.display = 'none';
+    }, 500);
 }
 
-// Fungsi untuk berpindah dari Card A ke Card B
 tontonSiaranBtnA.addEventListener('click', function() {
-    hideCard(cardA);   // Sembunyikan Card A
+    hideCard(cardA); 
     setTimeout(() => {
-        showCard(cardB);   // Tampilkan Card B setelah Card A sembunyi
-    }, 500); // Tunggu sampai animasi sembunyi Card A selesai
+        showCard(cardB);
+    }, 500);
 });
 
-// Fungsi untuk kembali dari Card B ke Card A
 tontonSiaranBtnB.addEventListener('click', function() {
-    hideCard(cardB);   // Sembunyikan Card B
+    hideCard(cardB); 
     setTimeout(() => {
-        showCard(cardA);   // Tampilkan Card A setelah Card B sembunyi
-    }, 500); // Tunggu sampai animasi sembunyi Card B selesai
+        showCard(cardA);
+    }, 500); 
 });
+
+// youtube-player
+var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    var playlistID = document
+      .getElementById("player")
+      .getAttribute("data-pl");
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            playerVars: {
+                'listType': 'playlist',
+                'list': playlistID
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        event.target.playVideo();
+    }
 
 
 

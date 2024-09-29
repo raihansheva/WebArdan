@@ -328,6 +328,10 @@
         display: block;
     }
 
+    .svg-small-mobile{
+        display: none;
+    }
+
     .area-content-announcer {
         width: 100%;
         height: auto; 
@@ -1462,7 +1466,7 @@
         width: auto;
         height: auto; 
         margin-top: 40px; 
-        border: 1px red solid;
+        /* border: 1px red solid; */
     }
 
     .area-content-chart {

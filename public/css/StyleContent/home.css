@@ -1,4 +1,3 @@
-
 .page-1 {
     width: auto;
     /* height: 100vh; */
@@ -39,7 +38,6 @@
     margin-right: 10px;
 }
 
-
 .card-A {
     width: 100%;
     /* background-color: darkgrey; */
@@ -64,7 +62,9 @@
     padding: 30px;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
     gap: 12px;
     border-bottom-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -120,6 +120,21 @@
     font-family: "Poppins";
 }
 
+.btn-play-streaming{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #ffdb00;
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* card B */
 .card-B {
@@ -139,25 +154,24 @@
 }
 
 .card-B .card-body-B {
-    /*width: 100%;
-    */height: 70%;
+    width: auto;
+    height: 85%;
     background-color: white;
-    padding: 30px;
+    /* padding: 30px; */
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 12px;
-    border-radius: 20px ;
+    /* border-radius: 20px; */
 }
 
-.card-footer{
+.card-footer {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     margin-top: 8px;
 }
-
 
 .card-B .view-B {
     font-weight: 600;
@@ -170,31 +184,50 @@
     background-color: #ffdb00;
     border-radius: 12px;
     padding: 10px;
-    margin-top: 10px;
+    /* margin-top: 5px; */
     cursor: pointer;
 }
 
 .text-watchS-B {
     font-family: "Poppins";
 }
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: black; /* Optional: background color if needed */
+    /* border: 1px red solid; */
+}
+
+.video-container iframe,
+.video-container #player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
 /* ---------------------- */
 /* animasi */
 /* Kelas untuk menampilkan card dengan animasi */
-.card-A.show, .card-B.show {
+.card-A.show,
+.card-B.show {
     opacity: 1;
     transform: translateY(0);
     width: 100%;
 }
 
 /* Kelas untuk menyembunyikan card dengan animasi */
-.card-A.hide, .card-B.hide {
+.card-A.hide,
+.card-B.hide {
     opacity: 0;
     transform: translateY(20px);
 }
 /* ------- */
-
-
-
 
 /* konten streaming kanan */
 .contentS-kanan {
@@ -485,12 +518,12 @@
 /* ------------------ */
 
 /* area-event */
-.page-4{
+.page-4 {
     width: 100%;
     height: auto;
 }
 
-.area-event{
+.area-event {
     width: auto;
     height: auto;
     margin: 0px 64px 0px 64px;
@@ -504,7 +537,7 @@
     border-radius: 5px;
 }
 
-.header-event{
+.header-event {
     width: 100%;
     height: fit-content;
     /* border: 1px red solid; */
@@ -512,7 +545,7 @@
     margin-top: 55px;
 }
 
-.title-event{
+.title-event {
     font-size: 40px;
     font-family: "Bebas Neue";
     margin: 0px;
@@ -520,7 +553,7 @@
     color: white;
 }
 
-.area-content-event{
+.area-content-event {
     width: 100%;
     height: 500px;
     /* border: 1px blue solid; */
@@ -531,13 +564,13 @@
 }
 
 /* event kiri */
-.area-content-event-kiri{
+.area-content-event-kiri {
     width: 65%;
     height: auto;
     /* border: 1px greenyellow solid; */
 }
 
-.content-event-CD{
+.content-event-CD {
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
@@ -546,7 +579,7 @@
     align-items: end;
 }
 
-.area-countdown{
+.area-countdown {
     width: 100%;
     height: 100px;
     background-color: #333333b9;
@@ -554,14 +587,14 @@
     padding: 15px;
 }
 
-.countdown{
+.countdown {
     width: 60%;
     height: 100%;
     /* border: 1px white solid; */
     display: flex;
 }
 
-.area-days-date{
+.area-days-date {
     width: 40%;
     height: 100%;
     /* border: 1px red solid; */
@@ -571,7 +604,7 @@
     align-items: center;
 }
 
-.time-countdown{
+.time-countdown {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -580,7 +613,7 @@
     height: auto;
 }
 
-.timer{
+.timer {
     margin: 0px;
     font-family: "Krub";
     font-size: 38px;
@@ -588,7 +621,7 @@
     font-weight: 200;
 }
 
-.title-timer{
+.title-timer {
     margin: 0px;
     font-family: "Krub";
     font-size: 22px;
@@ -596,19 +629,19 @@
     font-weight: 200;
 }
 
-.box-days-date{
+.box-days-date {
     width: auto;
     height: auto;
 }
 
-.date-month{
+.date-month {
     font-family: "Bebas Neue";
     font-size: 30px;
     color: white;
     font-weight: 200;
     margin: 0px;
 }
-.year{
+.year {
     font-family: "Bebas Neue";
     font-size: 30px;
     color: white;
@@ -618,18 +651,17 @@
 
 /* ---------- */
 
-
 /* event kanan */
-.area-content-event-kanan{
+.area-content-event-kanan {
     width: 35%;
     height: auto;
     /* border: 1px crimson solid; */
-    display: flex ;
+    display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.content-event{
+.content-event {
     width: 100%;
     height: 50%;
     background-color: #f0f0f0;
@@ -638,7 +670,7 @@
     align-items: end;
 }
 
-.area-days-date-right{
+.area-days-date-right {
     width: 100%;
     height: 60px;
     background-color: #333333b9;
@@ -646,7 +678,7 @@
     padding: 15px;
 }
 
-.content-days-date-right{
+.content-days-date-right {
     width: 100%;
     height: auto;
     /* border: 1px red solid; */
@@ -656,19 +688,19 @@
     align-items: center;
 }
 
-.box-days-date-right{
+.box-days-date-right {
     width: auto;
     height: auto;
 }
 
-.date-month-right{
+.date-month-right {
     font-family: "Bebas Neue";
     font-size: 22px;
     color: white;
     font-weight: 200;
     margin: 0px;
 }
-.year-right{
+.year-right {
     font-family: "Bebas Neue";
     font-size: 22px;
     color: white;
@@ -678,28 +710,27 @@
 /* ------------- */
 /* -------------- */
 
-
 /* area-podcast-video */
-.page-5{
+.page-5 {
     width: 100%;
     height: auto;
 }
 
-.area-podcast-video{
+.area-podcast-video {
     width: auto;
     height: auto;
     margin: 0px 64px 20px 64px;
     /* border: 1px red solid; */
 }
 
-.area-content-PV{
+.area-content-PV {
     width: 100%;
     height: auto;
     display: flex;
     gap: 48px;
 }
 
-.line-PV{
+.line-PV {
     width: 1px;
     height: 500px;
     background-color: white;
@@ -708,13 +739,13 @@
 }
 
 /* area-podcast */
-.area-content-podcast{
+.area-content-podcast {
     width: 65%;
     height: 100%;
     /* border: 1px white solid; */
 }
 
-.header-podcast{
+.header-podcast {
     width: 100%;
     height: fit-content;
     /* border: 1px pink solid; */
@@ -723,32 +754,32 @@
     align-items: end;
 }
 
-.area-title-podcast{
+.area-title-podcast {
     width: 50%;
     height: 100%;
     /* border: 1px lightblue solid; */
 }
 
-.title-podcast{
+.title-podcast {
     font-size: 49px;
     font-weight: 200;
     font-family: "Bebas Neue";
-    margin: 0px ;
+    margin: 0px;
     color: white;
 }
 
-.area-text-podcast{
+.area-text-podcast {
     width: 50%;
     height: 100%;
     /* border: 1px lightblue solid; */
     text-align: right;
 }
 
-.text-podcast{
+.text-podcast {
     font-size: 20px;
     font-weight: 200;
     font-family: "Poppins";
-    margin: 0px ;
+    margin: 0px;
     color: #ffdb00;
 }
 
@@ -762,7 +793,9 @@
 }
 
 .card-podcast {
-    width: calc(50% - 10px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
+    width: calc(
+        50% - 10px
+    ); /* Membuat card mengambil 50% lebar, dengan margin antar card */
     height: 400px;
 }
 
@@ -789,13 +822,13 @@
     padding: 15px;
 }
 
-.head-body-podcast{
+.head-body-podcast {
     width: 100%;
     height: auto;
     /* border: 1px black solid; */
 }
 
-.genre{
+.genre {
     width: fit-content;
     height: fit-content;
     text-align: center;
@@ -803,26 +836,26 @@
     border-radius: 5px;
 }
 
-.title-genre{
+.title-genre {
     font-size: 18px;
     font-family: "Bebas Neue";
     font-weight: 200;
     margin: 5px 25px;
 }
 
-.area-card-text{
+.area-card-text {
     width: fit-content;
     height: fit-content;
 }
 
-.card-text-podcast{
+.card-text-podcast {
     font-size: 34px;
     margin: 0px;
     font-weight: 200;
     font-family: "Bebas Neue";
 }
 
-.card-image-podcast{
+.card-image-podcast {
     width: 100%;
     height: 160px;
     background-color: #f0f0f0;
@@ -879,19 +912,19 @@
 /* -------------- */
 
 /* area-video */
-.area-content-video{
+.area-content-video {
     width: 35%;
     height: 100%;
     /* border: 1px rgb(248, 0, 0) solid; */
 }
 
-.area-header-video{
+.area-header-video {
     width: 100%;
     height: fit-content;
     /* border: 1px lightseagreen solid; */
 }
 
-.title-video{
+.title-video {
     font-size: 49px;
     font-family: "Bebas Neue";
     font-weight: 200;
@@ -899,7 +932,7 @@
     margin: 0px;
 }
 
-.content-video{
+.content-video {
     width: 100%;
     height: auto;
     display: flex;
@@ -908,20 +941,20 @@
     gap: 5px;
 }
 
-.box-video{
+.box-video {
     width: 100%;
     height: 200px;
     background-color: #f0f0f0;
 }
 
-.link-text-video{
+.link-text-video {
     width: 100%;
     height: fit-content;
     text-align: center;
     margin-top: 10px;
 }
 
-.text-video{
+.text-video {
     font-size: 18px;
     font-weight: 200;
     font-family: "Poppins";
@@ -931,25 +964,23 @@
 
 /* --------------- */
 
-
 /* ---------- */
 
 /* area-announcer */
-.page-6{
+.page-6 {
     width: 100%;
     height: 100vh;
     /* border: 1px yellow solid; */
-
 }
 
-.area-announcer{
+.area-announcer {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
 }
 
-.area-svg{
+.area-svg {
     width: auto;
     height: auto;
     position: absolute;
@@ -965,7 +996,11 @@
     display: none;
 }
 
-.area-content-announcer{
+.svg-small-mobile {
+    display: none;
+}
+
+.area-content-announcer {
     width: 100%;
     height: 500px;
     background-color: #353535;
@@ -974,14 +1009,14 @@
     padding: 0px 64px 0px 64px;
 }
 
-.header-announcer{
+.header-announcer {
     width: 100%;
     height: auto;
     /* border: 1px black solid; */
     text-align: center;
 }
 
-.title-announcer{
+.title-announcer {
     font-size: 40px;
     font-family: "Bebas Neue";
     font-weight: 200;
@@ -989,7 +1024,7 @@
     color: #ffffff;
 }
 
-.content-announcer{
+.content-announcer {
     width: 100%;
     height: auto;
     /* border: 1px red solid; */
@@ -1051,7 +1086,7 @@
     box-sizing: border-box;
 }
 
-.line-announcer{
+.line-announcer {
     width: auto;
     height: 1px;
     background-color: white;
@@ -1060,19 +1095,19 @@
 /* ---------------- */
 
 /* area-chart -artis */
-.page-7{
+.page-7 {
     width: 100%;
     height: 100vh;
 }
 
-.area-chart-artis{
+.area-chart-artis {
     width: auto;
     height: 480px;
     /* margin: 20px 64px 0px 64px; */
     margin-top: 50px;
 }
 
-.area-content-chart-artis{
+.area-content-chart-artis {
     width: 100%;
     height: 100%;
     /* border: 1px red solid; */
@@ -1081,7 +1116,7 @@
 }
 
 /* area chart */
-.area-content-chart{
+.area-content-chart {
     width: 60%;
     height: 100%;
     background-color: #ffdb00;
@@ -1089,19 +1124,19 @@
     justify-content: center;
 }
 
-.content-chart{
+.content-chart {
     width: 70%;
     height: auto;
 }
 
-.header-chart{
+.header-chart {
     width: 100%;
     height: auto;
     /* border: 1px red solid; */
     margin-top: 25px;
 }
 
-.title-chart{
+.title-chart {
     font-size: 44px;
     font-family: "Bebas Neue";
     font-weight: 200;
@@ -1132,7 +1167,7 @@ tbody tr {
     border-bottom: 1px solid #000000;
 }
 
-.bottom-chart{
+.bottom-chart {
     width: 100%;
     height: auto;
     /* border: 1px red solid; */
@@ -1140,7 +1175,7 @@ tbody tr {
     justify-content: end;
 }
 
-.area-btn-chart{
+.area-btn-chart {
     width: auto;
     height: auto;
     border: 1px #ff004d solid;
@@ -1151,7 +1186,7 @@ tbody tr {
     -o-border-radius: 5px;
 }
 
-.text-btn-chart{
+.text-btn-chart {
     font-size: 18px;
     font-family: "Poppins";
     margin: 5px 20px;
@@ -1159,34 +1194,32 @@ tbody tr {
     color: #ff004d;
 }
 
-
 /* ------------ */
 
-
 /* area-artis */
-.area-content-artis{
+.area-content-artis {
     width: 40%;
     height: auto;
     background-color: #ffffff;
     padding: 25px 20px 0px 20px;
 }
 
-.header-artis{
+.header-artis {
     width: auto;
     height: fit-content;
     /* border: 1px red solid; */
-    
+
     /* margin-top: 25px; */
 }
 
-.title-artis{
+.title-artis {
     font-size: 44px;
     font-family: "Bebas Neue";
     font-weight: 200;
     margin: 0px;
 }
 
-.content-artis{
+.content-artis {
     width: auto;
     height: auto;
     /* border: 1px green solid; */
@@ -1196,7 +1229,7 @@ tbody tr {
     gap: 10px;
 }
 
-.box-artis{
+.box-artis {
     width: 100%;
     height: 110px;
     background-color: #f0f0f0;
@@ -1206,19 +1239,19 @@ tbody tr {
 /* ---------------- */
 
 /* area-schedule */
-.page-8{
+.page-8 {
     width: 100%;
     height: 100vh;
 }
 
-.area-schedule{
+.area-schedule {
     width: auto;
     height: 500px;
     /* border: 1px #ff004d solid; */
     margin: 0px 64px 0px 64px;
 }
 
-.area-content-schedule{
+.area-content-schedule {
     width: auto;
     height: auto;
     display: flex;
@@ -1226,13 +1259,13 @@ tbody tr {
     margin-bottom: 40px;
 }
 
-.header-schedule{
+.header-schedule {
     width: 100%;
     height: fit-content;
     /* border: 1px red solid; */
 }
 
-.title-schedule{
+.title-schedule {
     font-family: "Bebas Neue";
     font-size: 44px;
     font-weight: 200;
@@ -1240,14 +1273,14 @@ tbody tr {
     color: white;
 }
 
-.top-content-schedule{
+.top-content-schedule {
     width: 100%;
     height: 60px;
     /* background-color: #ffffff; */
     display: flex;
 }
 
-.schedule{
+.schedule {
     flex-grow: 1;
     width: 150px;
     height: auto;
@@ -1265,11 +1298,11 @@ tbody tr {
     cursor: pointer;
 }
 
-.schedule:hover{
+.schedule:hover {
     background-color: #ffdb00;
 }
 
-.schedule-day{
+.schedule-day {
     margin: 0px;
     font-size: 18px;
     font-family: "Poppins";
@@ -1296,7 +1329,6 @@ tbody tr {
 /* --------------- */
 
 /* ------------- */
-
 
 /* Styling untuk wadah audio player */
 .audio-player-container {

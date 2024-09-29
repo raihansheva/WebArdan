@@ -13,8 +13,8 @@
                 <div class="contentS-kiri">
                     <div class="card-A">
                         <div class="card-body">
-                            <div class="btn-play">
-
+                            <div class="btn-play-streaming">
+                                <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>
                         <div class="card-header">
@@ -27,8 +27,8 @@
                     </div>
                     <div class="card-B">
                         <div class="card-body-B">
-                            <div class="btn-play-B">
-
+                            <div class="video-container">
+                                <div id="player" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -334,16 +334,23 @@
                         stroke-linecap="round" />
                 </svg>
 
-                <svg class="svg-small-mobile" width="259" height="452" viewBox="0 0 259 452" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 404.892L11 30.7564" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M41.0288 414.423L40.7464 10.9999" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M74.0308 410.335L74.0308 42.3475" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M108.222 426.01L108.222 30.7641" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M149.998 400.794V17.1352" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M184.335 418.512L184.335 30.7623" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M221.203 441L221.203 40.9842" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    <path d="M247.683 414.423L247.683 54.6094" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round"/>
-                    </svg>
+                <svg class="svg-small-mobile" width="259" height="452" viewBox="0 0 259 452" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 404.892L11 30.7564" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round" />
+                    <path d="M41.0288 414.423L40.7464 10.9999" stroke="#FFDB00" stroke-width="20.8121"
+                        stroke-linecap="round" />
+                    <path d="M74.0308 410.335L74.0308 42.3475" stroke="#FFDB00" stroke-width="20.8121"
+                        stroke-linecap="round" />
+                    <path d="M108.222 426.01L108.222 30.7641" stroke="#FFDB00" stroke-width="20.8121"
+                        stroke-linecap="round" />
+                    <path d="M149.998 400.794V17.1352" stroke="#FFDB00" stroke-width="20.8121" stroke-linecap="round" />
+                    <path d="M184.335 418.512L184.335 30.7623" stroke="#FFDB00" stroke-width="20.8121"
+                        stroke-linecap="round" />
+                    <path d="M221.203 441L221.203 40.9842" stroke="#FFDB00" stroke-width="20.8121"
+                        stroke-linecap="round" />
+                    <path d="M247.683 414.423L247.683 54.6094" stroke="#FFDB00" stroke-width="20.8121"
+                        stroke-linecap="round" />
+                </svg>
             </div>
 
             <div class="area-content-announcer">
@@ -488,7 +495,7 @@
             <div class="control-btn">
                 <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
                 <span class="material-symbols-rounded" id="prev">skip_previous</span>
-                <div class="play-pause">
+                <div class="play-pause" id="play-pause">
                     <span class="btn-play material-symbols-rounded">play_arrow</span>
                 </div>
                 <span class="material-symbols-rounded" id="next">skip_next</span>
@@ -509,9 +516,9 @@
                         <span></span>
                     </div>
                     <!-- <div class="time">
-                                        <span class="current">0:00</span>
-                                        <span class="final">5:30</span>
-                                      </div> -->
+                                            <span class="current">0:00</span>
+                                            <span class="final">5:30</span>
+                                          </div> -->
                 </div>
             </div>
             <div class="music-titles">
