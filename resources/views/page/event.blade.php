@@ -1,5 +1,6 @@
 @extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/event.css">
+<link rel="stylesheet" href="css/StyleContent/responsiveEvent.css"
 @section('content')
     <section class="page-event-1">
         <div class="area-event">
