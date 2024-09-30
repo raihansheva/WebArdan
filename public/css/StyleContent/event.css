@@ -1,0 +1,266 @@
+
+/* page-event-1 */
+.page-event-1{
+    width: 100%;
+    height: auto;
+    /* border: 1px red  solid; */
+}
+
+.area-event{
+    width: auto;
+    margin: 0px 64px 70px 64px;
+    height: auto;
+    /* border: 1px green solid; */
+}
+
+.header-event{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px red solid; */
+}
+
+.title-event{
+    font-size: 40px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+    color: white;
+}
+
+.content-event{
+    width: 100%;
+    height: auto;
+    /* border: 1px blue solid; */
+}
+
+.content-event-CD {
+    width: 100%;
+    height: 540px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-countdown {
+    width: auto;
+    height: 100px;
+    /* background-color: #333333b9; */
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.area-content-countdown{
+    width: 70%;
+    height: auto;
+    /* border: 1px white solid; */
+    display: flex;
+}
+
+.countdown {
+    width: 60%;
+    height: 100%;
+    /* border: 1px white solid; */
+    display: flex;
+}
+
+.area-days-date {
+    width: 40%;
+    height: 100%;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.time-countdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Untuk memusatkan teks di tengah */
+    width: 20%;
+    height: auto;
+}
+
+.timer {
+    margin: 0px;
+    font-family: "Krub";
+    font-size: 38px;
+    color: white;
+    font-weight: 200;
+}
+
+.title-timer {
+    margin: 0px;
+    font-family: "Krub";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+}
+
+.box-days-date {
+    width: auto;
+    height: auto;
+}
+
+.date-month {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+/* ------------- */
+
+/* page-other-event */
+.page-event-2{
+    width: 100%;
+    height: auto;
+}
+
+.line-event{
+    width: 100%;
+    border: 1px white solid;
+    margin-bottom: 50px;
+}
+
+.area-other-event{
+    width: auto;
+    margin: 0px 64px 0px 64px;
+    height: auto;
+    /* border: 1px red solid; */
+}
+
+.header-other-event{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+    text-align: end;
+}
+
+.title-event-other{
+    font-size: 40px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 0px;
+    color: white;
+}
+
+
+/* area content event other */
+.area-content-OV{
+    width: 100%;
+    height: auto;
+    /* border: 1px pink solid; */
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    margin-bottom: 35px;
+}
+
+.content-event-OV{
+    flex: 1 1 calc(33.33% - 20px);
+    height: 300px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-days-date-right {
+    width: 100%;
+    height: 60px;
+    background-color: #333333b9;
+    display: flex;
+    padding: 15px;
+}
+
+.content-days-date-right {
+    width: 100%;
+    height: auto;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.box-days-date-right {
+    width: auto;
+    height: auto;
+}
+
+.date-month-right {
+    font-family: "Bebas Neue";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year-right {
+    font-family: "Bebas Neue";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+
+/* ---------------- */
+
+/* area program page event */
+.page-event-3{
+    width: 100%;
+    height: 100vh;
+}
+
+.area-programE{
+    width: auto;
+    height: auto;
+    /* border: 1px red solid; */
+    margin: 0px 64px 0px 64px;
+}
+
+.header-programE{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+}
+
+.title-programE{
+    font-size: 40px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 0px;
+    color: white;
+}
+
+/* content program page event */
+.content-programE{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.box-programE{
+    flex: 1 1 calc(33.33% - 20px);
+    height: 300px;
+    background-color: #f0f0f0;
+}
+
+
+/* ------------------------- */
+
+
+
+/* ----------------------- */

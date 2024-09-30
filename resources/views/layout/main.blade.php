@@ -27,7 +27,7 @@
                         <div class="line"></div>
                         <a href="#info-news">Info News</a>
                         <div class="line"></div>
-                        <a href="#event">Event</a>
+                        <a href="/event">Event</a>
                         <div class="line"></div>
                         <a href="#">Playlist Youtube</a>
                         <div class="line"></div>
@@ -64,7 +64,7 @@
                 <a class="link-mobile" href="#home">Home</a>
                 <a class="link-mobile" href="#program">Program</a>
                 <a class="link-mobile" href="#info-news">Info News</a>
-                <a class="link-mobile" href="#event">Event</a>
+                <a class="link-mobile" href="/event">Event</a>
                 <a class="link-mobile" href="#s">Playlist Youtube</a>
                 <a class="link-mobile" href="#s">Podcast</a>
                 <a class="link-mobile" href="#announcer">Announcer</a>
