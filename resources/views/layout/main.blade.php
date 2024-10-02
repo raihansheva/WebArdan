@@ -106,6 +106,13 @@
         @yield('content')
     </main>
     {{-- ------- --}}
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><svg width="29" height="34" viewBox="0 0 29 34"
+            fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5 2.5L14.5 32.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+            <path d="M2 12L13.8753 2.49976C14.2405 2.20758 14.7595 2.20758 15.1247 2.49976L27 12" stroke="white"
+                stroke-width="3" stroke-linecap="round" />
+        </svg>
+    </button>
 
     <footer class="footer" id="contact">
         <div class="top-footer">
@@ -265,92 +272,23 @@
             mobileMenu.classList.remove("active");
         }
     });
-    // const AudioMobile = document.querySelector(".main-song-mobile"),
-    //     playBtnMobile = document.querySelector(".play-pause-mobile"),
-    //     playBtnIconMobile = document.querySelector(".btn-play-mobile"),
-    //     prevBtnMobile = document.querySelector("#prev-mobile"),
-    //     nextBtnMobile = document.querySelector("#next-mobile"),
-    //     progressBarMobile = document.querySelector(".progress-bar-mobile span");
+    // Tampilkan tombol saat pengguna scroll ke bawah
+    window.onscroll = function() {
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    };
 
-    // let indexM = 0; // Menggunakan variabel indexM untuk melacak lagu saat ini
-
-    // const songsM = [{
-    //         title: "Song 1",
-    //         file: "music/music1.mp3"
-    //     },
-    //     {
-    //         title: "Song 2",
-    //         file: "music/music2.mp3"
-    //     },
-    //     {
-    //         title: "Song 3",
-    //         file: "music/music3.mp3"
-    //     }
-    // ];
-
-    // // Memuat lagu berdasarkan indexM
-    // function loadDataMobile(indexM) {
-    //     const song = songsM[indexM];
-    //     AudioMobile.src = song.file;
-    //     updateProgressBarMobile(); // Mengupdate progress bar saat memuat lagu baru
-    //     AudioMobile.currentTime = 0; // Reset waktu ke awal
-    // }
-
-    // // Memperbarui progress bar
-    // function updateProgressBarMobile() {
-    //     AudioMobile.addEventListener("timeupdate", () => {
-    //         const duration = AudioMobile.duration; // Durasi audio
-    //         const currentTime = AudioMobile.currentTime; // Waktu saat ini
-    //         if (duration > 0) {
-    //             const progressPercentage = (currentTime / duration) * 100; // Persentase kemajuan
-    //             progressBarMobile.style.width = progressPercentage + '%'; // Mengatur lebar progress bar
-    //         }
-    //     });
-    // }
-
-    // // Memainkan lagu
-    // function playSongMobile() {
-    //     AudioMobile.play();
-    //     playBtnIconMobile.innerHTML = "pause"; // Mengubah icon play ke pause
-    // }
-
-    // // Menjeda lagu
-    // function pauseSongMobile() {
-    //     AudioMobile.pause();
-    //     playBtnIconMobile.innerHTML = "play_arrow"; // Mengubah icon pause ke play
-    // }
-
-    // // Toggle play/pause ketika tombol diklik
-    // playBtnMobile.addEventListener("click", () => {
-    //     if (AudioMobile.paused) {
-    //         playSongMobile();
-    //     } else {
-    //         pauseSongMobile();
-    //     }
-    // });
-
-    // // Tombol next untuk lagu selanjutnya
-    // nextBtnMobile.addEventListener("click", () => {
-    //     indexM++;
-    //     if (indexM >= songsM.length) {
-    //         indexM = 0; // Jika melebihi panjang array, kembali ke lagu pertama
-    //     }
-    //     loadDataMobile(indexM);
-    //     playSongMobile();
-    // });
-
-    // // Tombol prev untuk lagu sebelumnya
-    // prevBtnMobile.addEventListener("click", () => {
-    //     indexM--;
-    //     if (indexM < 0) {
-    //         indexM = songsM.length - 1; // Jika kurang dari 0, kembali ke lagu terakhir
-    //     }
-    //     loadDataMobile(indexM);
-    //     playSongMobile();
-    // });
-
-    // // Memuat lagu pertama saat halaman di-load
-    // loadDataMobile(indexM);
+    // Fungsi untuk scroll ke atas
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Scroll secara halus
+        });
+    }
 </script>
 
 </html>

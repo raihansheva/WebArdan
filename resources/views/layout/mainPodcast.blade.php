@@ -78,6 +78,13 @@
         @yield('content-podcast')
     </main>
     {{-- ------- --}}
+    <button id="scrollToTopBtn" onclick="scrollToTop()"><svg width="29" height="34" viewBox="0 0 29 34"
+        fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.5 2.5L14.5 32.5" stroke="white" stroke-width="3" stroke-linecap="round" />
+        <path d="M2 12L13.8753 2.49976C14.2405 2.20758 14.7595 2.20758 15.1247 2.49976L27 12" stroke="white"
+            stroke-width="3" stroke-linecap="round" />
+    </svg>
+</button>
 
     <footer class="footer" id="contact">
         <div class="top-footer">
@@ -193,7 +200,23 @@
     //         mobileMenu.classList.remove("active");
     //     }
     // });
- 
+    // Tampilkan tombol saat pengguna scroll ke bawah
+    window.onscroll = function() {
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    };
+
+    // Fungsi untuk scroll ke atas
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Scroll secara halus
+        });
+    }
 </script>
 
 </html>

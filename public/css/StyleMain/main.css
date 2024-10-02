@@ -16,6 +16,28 @@ body {
     flex: 1;
 }
 
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    z-index: 100;
+    background-color: #ff004d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    height: 65px;
+    width: 65px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #cc003d; /* Ubah warna saat tombol di-hover */
+}
+
 /* navigasi bar */
 /* all */
 .navbar {
@@ -572,17 +594,17 @@ body {
         align-items: center;
     }
 
-    .footer .area-group-kiri{
+    .footer .area-group-kiri {
         text-align: center;
         /* border: 1px black solid; */
     }
 
-    .footer .area-text-contact{
+    .footer .area-text-contact {
         width: 100%;
         text-align: center;
     }
 
-    .footer .area-footer-address{
+    .footer .area-footer-address {
         width: 100%;
         text-align: center;
     }
