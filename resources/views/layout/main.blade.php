@@ -31,7 +31,7 @@
                         <div class="line"></div>
                         <a href="#">Playlist Youtube</a>
                         <div class="line"></div>
-                        <a href="#">Podcast</a>
+                        <a href="/podcast">Podcast</a>
                         <div class="line"></div>
                     </div>
                 </div>

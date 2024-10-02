@@ -17,7 +17,7 @@
         </div>
         <div class="area-kanan-navbar">
             <div class="menu-link-navbar">
-                <a class="link" href="#home">
+                <a class="link" href="/home">
                     <p>Home</p>
                 </a>
                 <a class="link" href="#podcast">
@@ -120,79 +120,79 @@
     </footer>
 </body>
 <script>
-    document.querySelectorAll('.link').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
+    // document.querySelectorAll('.link').forEach(anchor => {
+    //     anchor.addEventListener('click', function(e) {
+    //         e.preventDefault();
 
-            const target = document.querySelector(this.getAttribute('href'));
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+    //         const target = document.querySelector(this.getAttribute('href'));
+    //         const navbarHeight = document.querySelector('.navbar').offsetHeight;
+    //         const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
 
-            // Sesuaikan posisi scroll dengan menambahkan offset height dari navbar
-            window.scrollTo({
-                top: targetTop - navbarHeight,
-                behavior: 'smooth'
-            });
-        });
-    });
+    //         // Sesuaikan posisi scroll dengan menambahkan offset height dari navbar
+    //         window.scrollTo({
+    //             top: targetTop - navbarHeight,
+    //             behavior: 'smooth'
+    //         });
+    //     });
+    // });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const sections = document.querySelectorAll('section'); // Mengambil semua section
-        const navLinks = document.querySelectorAll('.link'); // Mengambil semua link navbar
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const sections = document.querySelectorAll('section'); // Mengambil semua section
+    //     const navLinks = document.querySelectorAll('.link'); // Mengambil semua link navbar
 
-        // Fungsi untuk menghapus kelas 'active' dari semua link
-        const removeActiveClasses = () => {
-            navLinks.forEach(link => link.classList.remove('active'));
-        };
+    //     // Fungsi untuk menghapus kelas 'active' dari semua link
+    //     const removeActiveClasses = () => {
+    //         navLinks.forEach(link => link.classList.remove('active'));
+    //     };
 
-        // Menggunakan IntersectionObserver untuk melacak setiap section
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    removeActiveClasses();
-                    const activeLink = document.querySelector(
-                        `.link[href="#${entry.target.id}"]`);
-                    activeLink.classList.add(
-                        'active'); // Tambahkan kelas 'active' ke link yang sesuai
-                }
-            });
-        }, {
-            threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
-        });
+    //     // Menggunakan IntersectionObserver untuk melacak setiap section
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach(entry => {
+    //             if (entry.isIntersecting) {
+    //                 removeActiveClasses();
+    //                 const activeLink = document.querySelector(
+    //                     `.link[href="#${entry.target.id}"]`);
+    //                 activeLink.classList.add(
+    //                     'active'); // Tambahkan kelas 'active' ke link yang sesuai
+    //             }
+    //         });
+    //     }, {
+    //         threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
+    //     });
 
-        // Memantau setiap section
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    });
-    // Toggle mobile menu on hamburger icon click
-    document.getElementById("hamburger-icon").addEventListener("click", function() {
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.toggle("active");
-    });
+    //     // Memantau setiap section
+    //     sections.forEach(section => {
+    //         observer.observe(section);
+    //     });
+    // });
+    // // Toggle mobile menu on hamburger icon click
+    // document.getElementById("hamburger-icon").addEventListener("click", function() {
+    //     const mobileMenu = document.getElementById("mobile-menu");
+    //     mobileMenu.classList.toggle("active");
+    // });
 
-    // Close the mobile menu on close icon click
-    document.getElementById("close-menu").addEventListener("click", function() {
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.remove("active");
-    });
+    // // Close the mobile menu on close icon click
+    // document.getElementById("close-menu").addEventListener("click", function() {
+    //     const mobileMenu = document.getElementById("mobile-menu");
+    //     mobileMenu.classList.remove("active");
+    // });
 
-    // Close menu when clicking outside of the mobile menu
-    document.addEventListener("click", function(event) {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const hamburgerIcon = document.getElementById("hamburger-icon");
+    // // Close menu when clicking outside of the mobile menu
+    // document.addEventListener("click", function(event) {
+    //     const mobileMenu = document.getElementById("mobile-menu");
+    //     const hamburgerIcon = document.getElementById("hamburger-icon");
 
-        const isClickInsideMenu = mobileMenu.contains(event.target);
-        const isClickInsideHamburger = hamburgerIcon.contains(event.target);
+    //     const isClickInsideMenu = mobileMenu.contains(event.target);
+    //     const isClickInsideHamburger = hamburgerIcon.contains(event.target);
 
-        console.log("Clicked inside menu: ", isClickInsideMenu);
-        console.log("Clicked inside hamburger: ", isClickInsideHamburger);
+    //     console.log("Clicked inside menu: ", isClickInsideMenu);
+    //     console.log("Clicked inside hamburger: ", isClickInsideHamburger);
 
-        if (!isClickInsideMenu && !isClickInsideHamburger && mobileMenu.classList.contains("active")) {
-            console.log("Closing mobile menu"); // Check if this gets logged
-            mobileMenu.classList.remove("active");
-        }
-    });
+    //     if (!isClickInsideMenu && !isClickInsideHamburger && mobileMenu.classList.contains("active")) {
+    //         console.log("Closing mobile menu"); // Check if this gets logged
+    //         mobileMenu.classList.remove("active");
+    //     }
+    // });
  
 </script>
 
