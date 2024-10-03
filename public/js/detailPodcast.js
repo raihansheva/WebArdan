@@ -9,7 +9,7 @@ const getScrollAmountA = () => {
     } else if (window.matchMedia("(max-width: 768px)").matches) {
         return 232; 
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        return 240; 
+        return 400; 
     } else {
         return 480;
     }

@@ -1,5 +1,6 @@
 @extends('layout.mainPodcast')
 <link rel="stylesheet" href="css/StyleContent/detailPodcast.css">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsiveDetailPodcast.css">
 @section('content-podcast')
     <section class="page-detail-1">
         <div class="area-detail-podcast">
@@ -164,7 +165,7 @@
                     </div>
                 </div>
                 <div class="area-content-VNS-kanan">
-                    <div class="area-content-news">
+                    {{-- <div class="area-content-news"> --}}
                         <div class="header-news">
                             <h1 class="title-news">Recent News</h1>
                         </div>
@@ -215,15 +216,15 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="area-content-streaming">
+                    {{-- </div> --}}
+                    {{-- <div class="area-content-streaming"> --}}
                         <div class="header-streaming">
                             <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="content-streaming">
                             <div class="box-streaming"></div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
