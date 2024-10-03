@@ -1,7 +1,7 @@
 @extends('layout.mainPodcast')
 
 <link rel="stylesheet" href="css/StyleContent/podcast.css">
-<link rel="stylesheet" href="css/StyleContent/responsivePodcast.css">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsivePodcast.css">
 @section('content-podcast')
     <section class="page-podcast-1">
         <div class="area-header-podcast">
@@ -32,9 +32,11 @@
                     <div class="card-header-podcast">
                         <div class="author-podcast">
                         </div>
-                        <div class="view-podcast">
-                            <p class="text-watch-podcast">View Podcast</p>
-                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="card-podcast">
@@ -54,9 +56,11 @@
                     <div class="card-header-podcast">
                         <div class="author-podcast">
                         </div>
-                        <div class="view-podcast">
-                            <p class="text-watch-podcast">View Podcast</p>
-                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="card-podcast">
@@ -76,9 +80,11 @@
                     <div class="card-header-podcast">
                         <div class="author-podcast">
                         </div>
-                        <div class="view-podcast">
-                            <p class="text-watch-podcast">View Podcast</p>
-                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

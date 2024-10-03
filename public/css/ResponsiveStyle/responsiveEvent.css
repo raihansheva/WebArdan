@@ -1,0 +1,249 @@
+/* Desktop dan Laptop */
+@media (max-width: 1920px) {
+    /* Gaya untuk monitor Full HD */
+}
+@media (max-width: 1440px) {
+    /* Gaya untuk desktop besar */
+}
+@media (max-width: 1366px) {
+    /* Gaya untuk laptop widescreen */
+}
+@media (max-width: 1280px) {
+    /* Gaya untuk laptop standar */
+}
+@media (max-width: 1024px) {
+    .area-event{
+        width: auto;
+        margin: 0px 32px 0px 32px;
+    }
+    .title-event{
+        font-size: 34px;
+    }
+    .content-event{
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD{
+        height: 415px;
+    }
+    .area-countdown{
+        height: 80px;
+    }
+    .timer{
+        font-size: 32px;
+    }
+    .title-timer{
+        font-size: 18px;
+    }
+    .date-month{
+        font-size: 26px;
+    }
+    .year{
+        font-size: 28px;
+    }
+    /* area other upcoming event */
+    .area-other-event{
+        margin: 0px 32px 0px 32px;
+    }
+    .header-other-event{
+        margin-top: 30px;
+    }
+    .title-event-other{
+        font-size: 34px;
+    }
+    .content-event-OV{
+        height: 260px;
+    }
+    .area-days-date-right{
+        height: 45px;
+    }
+    .date-month-right{
+        font-size: 18px;
+    }
+    .year-right{
+        font-size: 18px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .area-programE{
+        margin: 0px 32px 0px 32px;
+    }
+    .title-programE{
+        font-size: 38px;
+    }
+    .content-programE{
+        margin-top: 20px;
+    }
+    .box-programE{
+        height: 250px ;
+    }
+    /* --------------------- */
+}
+/* Tablet */
+@media (max-width: 768px) {
+    .area-event{
+        width: auto;
+        margin: 0px 20px 0px 20px;
+    }
+    .title-event{
+        font-size: 30px;
+    }
+    .content-event{
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD{
+        height: 325px;
+    }
+    .area-countdown{
+        height: 70px;
+    }
+    .timer{
+        font-size: 30px;
+    }
+    .title-timer{
+        font-size: 16px;
+    }
+    .date-month{
+        font-size: 22px;
+    }
+    .year{
+        font-size: 24px;
+    }
+    /* area other upcoming event */
+    .area-other-event{
+        margin: 0px 20px 0px 20px;
+    }
+    .header-other-event{
+        margin-top: 30px;
+    }
+    .title-event-other{
+        font-size: 30px;
+    }
+    .content-event-OV{
+        height: 220px;
+    }
+    .area-days-date-right{
+        height: 30px;
+    }
+    .date-month-right{
+        font-size: 16px;
+    }
+    .year-right{
+        font-size: 16px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .page-event-3{
+        height: auto;
+    }
+    .area-programE{
+        margin: 0px 20px 0px 20px;
+    }
+    .title-programE{
+        font-size: 30px;
+    }
+    .content-programE{
+        margin-top: 20px;
+        gap: 10px;
+        margin-bottom: 60px;
+    }
+    .box-programE{
+        height: 200px ;
+    }
+    /* --------------------- */
+}
+@media (max-width: 600px) {
+    /* Gaya untuk tablet kecil atau phablet */
+}
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .area-event{
+        width: auto;
+        margin: 0px 8px 0px 8px;
+    }
+    .title-event{
+        font-size: 26px;
+    }
+    .content-event{
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD{
+        margin-top: 10px;
+        height: 325px;
+    }
+    .area-content-countdown{
+        width: 100% ;
+    }
+    .area-countdown{
+        height: 70px;
+    }
+    .timer{
+        font-size: 28px;
+    }
+    .title-timer{
+        font-size: 12px;
+    }
+    .date-month{
+        font-size: 20px;
+    }
+    .year{
+        font-size: 20px;
+    }
+    /* area other upcoming event */
+    .area-other-event{
+        margin: 0px 8px 0px 8px;
+    }
+    .header-other-event{
+        margin-top: 30px;
+    }
+    .title-event-other{
+        font-size: 28px;
+    }
+    .area-content-OV{
+        flex-direction: column;
+        height: 500px;
+        gap: 10px;
+        /* border: 1px red solid; */
+    }
+    .content-event-OV{
+        height: 400px;
+    }
+    .area-days-date-right{
+        height: 20px;
+    }
+    .date-month-right{
+        font-size: 12px;
+    }
+    .year-right{
+        font-size: 12px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .page-event-3{
+        height: auto;
+    }
+    .area-programE{
+        margin: 0px 8px 0px 8px;
+    }
+    .title-programE{
+        font-size: 28px;
+    }
+    .content-programE{
+        margin-top: 20px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE{
+        flex: 1 1 calc(50% - 10px);
+        height: 150px ;
+    }
+}
+@media (max-width: 375px) {
+    /* Gaya untuk smartphone medium */
+}
+@media (max-width: 320px) {
+    /* Gaya untuk smartphone kecil */
+}

@@ -19,5 +19,9 @@ Route::get('/podcast', function () {
     return view('page.podcast');
 });
 
+Route::get('/detail-podcast', function () {
+    return view('page.detailPodcast');
+});
+
 
 

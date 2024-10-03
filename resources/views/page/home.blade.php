@@ -1,6 +1,6 @@
 @extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/home.css">
-<link rel="stylesheet" href="css/StyleContent/responsiveHome.css">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsiveHome.css">
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @section('content')

@@ -20,7 +20,7 @@
                 <a class="link" href="/home">
                     <p>Home</p>
                 </a>
-                <a class="link" href="#podcast">
+                <a class="link" href="/podcast">
                     <p>Podcast</p>
                 </a>
                 <a class="link" href="#contact">
@@ -41,7 +41,7 @@
             </div>
             <div class="area-menu-mobile">
                 <a class="link-mobile" href="/">Home</a>
-                <a class="link-mobile" href="#podcast">Podcast</a>
+                <a class="link-mobile" href="/podcast">Podcast</a>
                 <a class="link-mobile" href="#contact">Contact</a>
             </div>
             <div class="area-audio-mobile">
