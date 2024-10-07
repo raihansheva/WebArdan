@@ -487,7 +487,7 @@
 
 
     {{-- audio player --}}
-    <div class="audio-player-container">
+    {{-- <div class="audio-player-container">
         <svg id="visual" viewBox="0 0 900 600" width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
             <path id="layer1" fill="#FF004D" stroke="#FF004D" stroke-width="2" stroke-linecap="round"></path>
         </svg>
@@ -527,8 +527,8 @@
         </div>
 
         <audio src="music/music1.mp3" class="main-song" id="audio"></audio>
-    </div>
+    </div> --}}
     {{-- ------- --}}
-    <script src="js/playlist.js"></script>
+    {{-- <script src="js/playlist.js"></script> --}}
     <script src="js/home.js"></script>
 @endsection

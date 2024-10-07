@@ -78,14 +78,9 @@
         @yield('content-podcast')
     </main>
     {{-- ------- --}}
-    <button id="scrollToTopBtn" onclick="scrollToTop()"><svg width="29" height="34" viewBox="0 0 29 34"
-        fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14.5 2.5L14.5 32.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-        <path d="M2 12L13.8753 2.49976C14.2405 2.20758 14.7595 2.20758 15.1247 2.49976L27 12" stroke="white"
-            stroke-width="3" stroke-linecap="round" />
-    </svg>
-</button>
-
+    <div id="scrollToTopBtn"><img onclick="scrollToTop()" src="image/vinyl.png" alt="">
+    </div>
+    
     <footer class="footer" id="contact">
         <div class="top-footer">
             <div class="area-kiri-footer">
@@ -173,33 +168,33 @@
     //     });
     // });
     // // Toggle mobile menu on hamburger icon click
-    // document.getElementById("hamburger-icon").addEventListener("click", function() {
-    //     const mobileMenu = document.getElementById("mobile-menu");
-    //     mobileMenu.classList.toggle("active");
-    // });
+    document.getElementById("hamburger-icon").addEventListener("click", function() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("active");
+    });
 
-    // // Close the mobile menu on close icon click
-    // document.getElementById("close-menu").addEventListener("click", function() {
-    //     const mobileMenu = document.getElementById("mobile-menu");
-    //     mobileMenu.classList.remove("active");
-    // });
+    // Close the mobile menu on close icon click
+    document.getElementById("close-menu").addEventListener("click", function() {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.remove("active");
+    });
 
-    // // Close menu when clicking outside of the mobile menu
-    // document.addEventListener("click", function(event) {
-    //     const mobileMenu = document.getElementById("mobile-menu");
-    //     const hamburgerIcon = document.getElementById("hamburger-icon");
+    // Close menu when clicking outside of the mobile menu
+    document.addEventListener("click", function(event) {
+        const mobileMenu = document.getElementById("mobile-menu");
+        const hamburgerIcon = document.getElementById("hamburger-icon");
 
-    //     const isClickInsideMenu = mobileMenu.contains(event.target);
-    //     const isClickInsideHamburger = hamburgerIcon.contains(event.target);
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickInsideHamburger = hamburgerIcon.contains(event.target);
 
-    //     console.log("Clicked inside menu: ", isClickInsideMenu);
-    //     console.log("Clicked inside hamburger: ", isClickInsideHamburger);
+        console.log("Clicked inside menu: ", isClickInsideMenu);
+        console.log("Clicked inside hamburger: ", isClickInsideHamburger);
 
-    //     if (!isClickInsideMenu && !isClickInsideHamburger && mobileMenu.classList.contains("active")) {
-    //         console.log("Closing mobile menu"); // Check if this gets logged
-    //         mobileMenu.classList.remove("active");
-    //     }
-    // });
+        if (!isClickInsideMenu && !isClickInsideHamburger && mobileMenu.classList.contains("active")) {
+            console.log("Closing mobile menu"); // Check if this gets logged
+            mobileMenu.classList.remove("active");
+        }
+    });
     // Tampilkan tombol saat pengguna scroll ke bawah
     window.onscroll = function() {
         var scrollToTopBtn = document.getElementById("scrollToTopBtn");

@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ARDAN</title>
     <link rel="stylesheet" href="css/StyleMain/main.css">
+    <link rel="stylesheet" href="css/StyleMain/responsiveMain.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -106,14 +110,57 @@
         @yield('content')
     </main>
     {{-- ------- --}}
-    <button id="scrollToTopBtn" onclick="scrollToTop()"><svg width="29" height="34" viewBox="0 0 29 34"
-            fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.5 2.5L14.5 32.5" stroke="white" stroke-width="3" stroke-linecap="round" />
-            <path d="M2 12L13.8753 2.49976C14.2405 2.20758 14.7595 2.20758 15.1247 2.49976L27 12" stroke="white"
-                stroke-width="3" stroke-linecap="round" />
+    <div id="scrollToTopBtn"><img onclick="scrollToTop()" src="image/vinyl.png" alt="">
+    </div>
+    {{-- audio player --}}
+    <div class="audio-player-container">
+        <svg id="visual" viewBox="0 0 900 600" width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+            <path id="layer1" fill="#FF004D" stroke="#FF004D" stroke-width="2" stroke-linecap="round"></path>
         </svg>
-    </button>
+        <div class="content">
+            <div class="area-control-btn">
+                <div class="control-btn">
+                    <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
+                    <span class="material-symbols-rounded" id="prev">skip_previous</span>
+                    <div class="play-pause" id="play-pause">
+                        <span class="btn-play material-symbols-rounded">play_arrow</span>
+                    </div>
+                    <span class="material-symbols-rounded" id="next">skip_next</span>
+                    <span class="icon-menu" id="show-hide-player"><i class='bx bx-menu'></i></span>
+                    <!-- <span class="material-symbols-rounded" id="shuffle">shuffle</span> -->
+                </div>
+            </div>
+            <div class="area-control-progres">
+                <div class="image-wrapper">
+                    <div class="music-image">
+                        <img src="images/img1.jpg" />
+                    </div>
+                </div>
+                <div class="music-titles">
+                    <p class="name">Title music</p>
+                    <p class="artist">Titke music</p>
+                </div>
+                <div class="area-line">
+                    <div class="progress-details">
+                        <div class="progress-bar">
+                            <span></span>
+                        </div>
+                        <!-- <div class="time">
+                                                <span class="current">0:00</span>
+                                                <span class="final">5:30</span>
+                                              </div> -->
+                    </div>
+                </div>
+                <div class="music-titles">
+                    <p class="name">Hamburger area</p>
+                </div>
+            </div>
 
+        </div>
+
+        <audio src="music/music1.mp3" class="main-song" id="audio"></audio>
+    </div>
+    {{-- ------- --}}
     <footer class="footer" id="contact">
         <div class="top-footer">
             <div class="area-kiri-footer">
@@ -154,141 +201,7 @@
         </div>
     </footer>
 </body>
-<script>
-    // function checkScreenSize() {
-    //     // Cek apakah layar lebih kecil atau sama dengan 768px
-    //     if (window.innerWidth <= 768) {
-    //         // Ganti ID "play-pause" menjadi "play-pause-mobile"
-    //         document.getElementById("play-pause").id = "play-pause-nonactive";
-    //         document.getElementById("play-pause-m").id = "play-pause";
-    //     } else {
-    //         // Kembalikan ID "play-pause-mobile" menjadi "play-pause"
-    //         var mobilePlayer = document.getElementById("play-pause");
-    //         if (mobilePlayer) {
-    //             mobilePlayer.id = "play-pause-m";
-    //         }
-    //         var mobilePlayer = document.getElementById("play-pause-nonactive");
-    //         if (mobilePlayer) {
-    //             mobilePlayer.id = "play-pause";
-    //         }
-    //     }
-    // }
-
-    // // Jalankan fungsi saat halaman dimuat dan ketika ukuran layar berubah
-    // window.onload = checkScreenSize;
-    // window.onresize = checkScreenSize;
-    // JavaScript untuk toggle dropdown saat diklik
-    document.getElementById('dropdown-toggle').addEventListener('click', function(event) {
-        // Toggle class 'show' untuk menampilkan atau menyembunyikan dropdown
-        document.getElementById('dropdown-menu').classList.toggle('show');
-
-        // Mencegah link default jika ada di dropdown-text
-        event.preventDefault();
-    });
-
-    // Tutup dropdown jika klik di luar dropdown
-    window.onclick = function(event) {
-        if (!event.target.matches('.arrow-down')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    };
-
-    document.querySelectorAll('.link').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const target = document.querySelector(this.getAttribute('href'));
-            const navbarHeight = document.querySelector('.navbar').offsetHeight;
-            const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
-
-            // Sesuaikan posisi scroll dengan menambahkan offset height dari navbar
-            window.scrollTo({
-                top: targetTop - navbarHeight,
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const sections = document.querySelectorAll('section'); // Mengambil semua section
-        const navLinks = document.querySelectorAll('.link'); // Mengambil semua link navbar
-
-        // Fungsi untuk menghapus kelas 'active' dari semua link
-        const removeActiveClasses = () => {
-            navLinks.forEach(link => link.classList.remove('active'));
-        };
-
-        // Menggunakan IntersectionObserver untuk melacak setiap section
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    removeActiveClasses();
-                    const activeLink = document.querySelector(
-                        `.link[href="#${entry.target.id}"]`);
-                    activeLink.classList.add(
-                        'active'); // Tambahkan kelas 'active' ke link yang sesuai
-                }
-            });
-        }, {
-            threshold: 0.6 // 60% dari section harus terlihat sebelum dianggap aktif
-        });
-
-        // Memantau setiap section
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    });
-    // Toggle mobile menu on hamburger icon click
-    document.getElementById("hamburger-icon").addEventListener("click", function() {
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.toggle("active");
-    });
-
-    // Close the mobile menu on close icon click
-    document.getElementById("close-menu").addEventListener("click", function() {
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.remove("active");
-    });
-
-    // Close menu when clicking outside of the mobile menu
-    document.addEventListener("click", function(event) {
-        const mobileMenu = document.getElementById("mobile-menu");
-        const hamburgerIcon = document.getElementById("hamburger-icon");
-
-        const isClickInsideMenu = mobileMenu.contains(event.target);
-        const isClickInsideHamburger = hamburgerIcon.contains(event.target);
-
-        console.log("Clicked inside menu: ", isClickInsideMenu);
-        console.log("Clicked inside hamburger: ", isClickInsideHamburger);
-
-        if (!isClickInsideMenu && !isClickInsideHamburger && mobileMenu.classList.contains("active")) {
-            console.log("Closing mobile menu"); // Check if this gets logged
-            mobileMenu.classList.remove("active");
-        }
-    });
-    // Tampilkan tombol saat pengguna scroll ke bawah
-    window.onscroll = function() {
-        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            scrollToTopBtn.style.display = "block";
-        } else {
-            scrollToTopBtn.style.display = "none";
-        }
-    };
-
-    // Fungsi untuk scroll ke atas
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth" // Scroll secara halus
-        });
-    }
-</script>
-
+<script src="js/main/playlist.js"></script>
+<script src="js/main/main.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </html>
