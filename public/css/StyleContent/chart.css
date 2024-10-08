@@ -1,0 +1,260 @@
+
+
+/* page chart 1 */
+.page-chart-1{
+    width: 100%;
+    height: auto;
+}
+
+.area-chart{
+    width: auto;
+    height: auto;
+    margin: 20px 64px 0px 64px;
+    /* border: 1px red solid; */
+}
+
+.header-chart{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+}
+
+.title-chart{
+    font-size: 40px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 0px;
+    color: white;
+}
+
+/* content chart */
+.content-chart{
+    width: 100%;
+    height: auto;
+    /* border: 1px pink solid; */
+    margin-top: 20px;
+}
+
+/* area top */
+
+.area-top-chart{
+    width: 100%;
+    height: auto;
+    /* border: 1px green solid; */
+    display: flex;
+    gap: 20px;
+}
+
+.tab-chart{
+    flex: 1 1 calc(33.33% - 20px);
+    height: 50px;
+    border: 3px #FFDB00 solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    cursor: pointer;
+}
+
+.text-tab{
+    font-size: 24px;
+    color: white;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 20px 0px;
+}
+/* ------------ */
+
+
+
+
+/* area bottom */
+.area-bottom-chart{
+    width: 100%;
+    height: auto;
+    margin-top: 25px;
+    /* border: 1px red solid; */
+}
+
+
+.chart {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 18px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    text-align: left;
+    height: auto;
+    color: white;
+    /* border: 1px white solid; */
+}
+
+thead tr {
+    text-align: left;
+    font-weight: 200;
+    font-size: 30px;
+    border-bottom: 1px solid #fff;
+}
+
+thead th {
+    font-weight: 200;
+}
+
+tbody tr {
+    font-size: 28px;
+    height: 75px;
+    border-bottom: 1px solid #fff;
+}
+
+.btn-see-more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #FFDB00;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px #FFDB00 solid;
+}
+
+/* .btn-see-more:hover {
+    background-color: #ddd;
+} */
+
+
+/* ------------ */
+
+/* ------------- */
+
+
+
+/* ------------ */
+.area-streaming-news{
+    width: auto;
+    margin: 0px 64px 0px 64px;
+    height: auto;
+    /* border: 1px red solid; */
+}
+
+.area-content-SN{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 15px;
+    /* margin-top: ; */
+    padding-top: 30px;
+    margin-bottom: 100px;
+}
+
+/* area content kiri */
+
+.area-content-SN-kiri{
+    width: 65%;
+    height: auto;
+    /* border: 1px pink solid; */
+}
+
+.header-SN-kiri{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px #ffdb00 solid; */
+}
+
+.title-SN-kiri{
+    font-size: 38px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    color: white;
+    margin: 0px;
+}
+
+.content-SN-kiri{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.box-streaming{
+    width: 100%;
+    height: 280px;
+    background-color: #f0f0f0;
+}
+/* -------------------- */
+
+
+
+
+/* area content kanan */
+
+.area-content-SN-kanan{
+    width: 35%;
+    height: auto;
+    /* border: 1px salmon solid; */
+}
+
+.header-news {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-news {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    font-size: 38px;
+    font-weight: 200;
+    color: white;
+}
+
+.content-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 10px;
+}
+
+.box-news {
+    width: auto;
+    height: 66px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-image {
+    width: 30%;
+    /*border: 1px black solid;
+    */
+    background-color: #333;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.area-text {
+    width: 70%;
+    /* border: 1px black solid; */
+    height: fit-content;
+}
+
+.desk-news {
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+}
+
+/* -------------------- */
+
+/* ------------------- */

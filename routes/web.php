@@ -23,5 +23,9 @@ Route::get('/detail-podcast', function () {
     return view('page.detailPodcast');
 });
 
+Route::get('/chart', function () {
+    return view('page.chart');
+});
+
 
 

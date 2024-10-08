@@ -42,7 +42,7 @@
                 <a class="link" href="#announcer">
                     <p>Announcer</p>
                 </a>
-                <a class="link" href="#chart">
+                <a class="link" href="/chart">
                     <p>Chart</p>
                 </a>
                 <a class="link" href="#schedule">

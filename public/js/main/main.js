@@ -212,22 +212,22 @@ window.onclick = function (event) {
     }
 };
 
-document.querySelectorAll(".link").forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
+// document.querySelectorAll(".link").forEach((anchor) => {
+//     anchor.addEventListener("click", function (e) {
+//         e.preventDefault();
 
-        const target = document.querySelector(this.getAttribute("href"));
-        const navbarHeight = document.querySelector(".navbar").offsetHeight;
-        const targetTop =
-            target.getBoundingClientRect().top + window.pageYOffset;
+//         const target = document.querySelector(this.getAttribute("href"));
+//         const navbarHeight = document.querySelector(".navbar").offsetHeight;
+//         const targetTop =
+//             target.getBoundingClientRect().top + window.pageYOffset;
 
-        // Sesuaikan posisi scroll dengan menambahkan offset height dari navbar
-        window.scrollTo({
-            top: targetTop - navbarHeight,
-            behavior: "smooth",
-        });
-    });
-});
+//         // Sesuaikan posisi scroll dengan menambahkan offset height dari navbar
+//         window.scrollTo({
+//             top: targetTop - navbarHeight,
+//             behavior: "smooth",
+//         });
+//     });
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section"); // Mengambil semua section
