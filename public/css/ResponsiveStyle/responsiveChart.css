@@ -1,0 +1,309 @@
+
+/* Desktop dan Laptop */
+@media (max-width: 1920px) {
+    /* Gaya untuk monitor Full HD */
+}
+
+@media (max-width: 1440px) {
+    /* Gaya untuk desktop besar */
+}
+
+@media (max-width: 1366px) {
+    /* Gaya untuk laptop widescreen */
+}
+
+@media (max-width: 1280px) {
+    /* Gaya untuk laptop standar */
+}
+
+@media (max-width: 1024px) {
+
+    .area-chart{
+        margin: 15px 32px 0px 32px;
+    }
+
+    .title-chart{
+        font-size: 36px;
+    }
+
+    .content-chart{
+        margin-top: 15px;
+    }
+
+    .area-top-chart{
+        gap: 15px;
+    }
+
+    .tab-chart{
+        height: 40px;
+    }
+
+    .text-tab{
+        font-size: 20px;
+    }
+
+    thead tr{
+        font-size: 26px;
+    }
+
+    tbody tr{
+        font-size: 24px;
+        height: 60px;
+    }
+
+    .btn-see-more {
+        font-size: 16px;
+    }
+
+    .area-streaming-news{
+        margin: 0px 32px 0px 32px;
+    }
+
+    .area-content-SN{
+        margin-bottom: 30px;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri{
+        width: 60%;
+    }
+
+    .title-SN-kiri{
+        font-size: 34px;
+    }
+    
+    .box-streaming{
+        height: 180px;
+    }
+
+    /* -------------- */
+
+
+    /* content kanan */
+    .area-content-SN-kanan{
+        width: 40%;
+    }
+
+    .title-news{
+        font-size: 34px;
+    }
+
+    .content-news{
+        gap: 18px;
+    }
+
+    .bop-news{
+        height: 60px;
+    }
+
+    .desk-news{
+        font-size: 12px;
+    }
+    /*--------------- */
+
+
+
+    /* ------------------ */
+    /* ------------------ */
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .area-chart{
+        margin: 10px 20px 0px 20px;
+    }
+
+    .title-chart{
+        font-size: 34px;
+    }
+
+    .content-chart{
+        margin-top: 10px;
+    }
+
+    .area-top-chart{
+        gap: 10px;
+    }
+
+    .tab-chart{
+        height: 30px;
+    }
+
+    .text-tab{
+        font-size: 18px;
+    }
+
+    thead tr{
+        font-size: 24px;
+    }
+
+    tbody tr{
+        font-size: 22px;
+        height: 45px;
+    }
+
+    .btn-see-more {
+        font-size: 14px;
+    }
+
+    /* page chart 2 */
+    .area-streaming-news{
+        margin: 0px 20px 0px 20px;
+    }
+
+    .area-content-SN{
+        margin-bottom: 30px;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri{
+        width: 60%;
+    }
+
+    .title-SN-kiri{
+        font-size: 30px;
+    }
+    
+    .box-streaming{
+        height: 150px;
+    }
+
+    /* -------------- */
+
+
+    /* content kanan */
+    .area-content-SN-kanan{
+        width: 40%;
+    }
+
+    .title-news{
+        font-size: 30px;
+    }
+
+    .content-news{
+        gap: 18px;
+    }
+
+    .bop-news{
+        height: 60px;
+    }
+
+    .desk-news{
+        font-size: 10px;
+    }
+    /*--------------- */
+
+
+
+    /* ------------------ */
+    /* ------------------ */
+}
+
+@media (max-width: 600px) {
+    /* Gaya untuk tablet kecil atau phablet */
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    .area-chart{
+        margin: 5px 20px 0px 20px;
+    }
+
+    .title-chart{
+        font-size: 30px;
+    }
+
+    .content-chart{
+        margin-top: 10px;
+    }
+
+    .area-top-chart{
+        gap: 10px;
+        flex-wrap: wrap;
+        flex: 1 2 calc(50% - 10px);
+    }
+
+    .tab-chart{
+        height: 30px;
+        border: 2px #FFDB00 solid;
+    }
+
+    .text-tab{
+        font-size: 18px;
+    }
+
+    thead tr{
+        font-size: 22px;
+    }
+
+    tbody tr{
+        font-size: 18px;
+        height: 40px;
+    }
+
+    .btn-see-more {
+        font-size: 14px;
+    }
+
+    /* page chart 2 */
+    .area-streaming-news{
+        margin: 0px 20px 0px 20px;
+    }
+
+    .area-content-SN{
+        margin-bottom: 30px;
+        flex-direction: column;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri{
+        width: 100%;
+    }
+
+    .title-SN-kiri{
+        font-size: 28px;
+    }
+    
+    .box-streaming{
+        height: 100px;
+    }
+
+    /* -------------- */
+
+
+    /* content kanan */
+    .area-content-SN-kanan{
+        width: 100%;
+    }
+
+    .title-news{
+        font-size: 28px;
+    }
+
+    .content-news{
+        gap: 18px;
+    }
+
+    .bop-news{
+        height: 60px;
+    }
+
+    .desk-news{
+        font-size: 10px;
+    }
+    /*--------------- */
+
+
+
+    /* ------------------ */
+    /* ------------------ */
+}
+
+@media (max-width: 375px) {
+    /* Gaya untuk smartphone medium */
+}
+
+@media (max-width: 320px) {
+    /* Gaya untuk smartphone kecil */
+}
+

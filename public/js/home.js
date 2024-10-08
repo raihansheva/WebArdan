@@ -259,7 +259,7 @@ const hoursElement = document.getElementById('hours');
 const minutesElement = document.getElementById('minutes');
 const secondsElement = document.getElementById('seconds');
 
-const countdownDate = new Date('2024-10-5 23:59:59').getTime();
+const countdownDate = new Date('2024-11-12 23:59:59').getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();

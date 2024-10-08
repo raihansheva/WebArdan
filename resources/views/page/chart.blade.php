@@ -13,13 +13,13 @@
                         <h3 class="text-tab">TOP 20</h3>
                     </div>
                     <div class="tab-chart">
-                        <h3 class="text-tab">TOP 20</h3>
+                        <h3 class="text-tab">FLIGTH 40</h3>
                     </div>
                     <div class="tab-chart">
-                        <h3 class="text-tab">TOP 20</h3>
+                        <h3 class="text-tab">INDIE 7</h3>
                     </div>
                     <div class="tab-chart">
-                        <h3 class="text-tab">TOP 20</h3>
+                        <h3 class="text-tab">PERSADA 7</h3>
                     </div>
                 </div>
                 <div class="area-bottom-chart">

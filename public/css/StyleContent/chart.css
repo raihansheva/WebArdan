@@ -49,6 +49,7 @@
     flex: 1 1 calc(33.33% - 20px);
     height: 50px;
     border: 3px #FFDB00 solid;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,11 +59,20 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.tab-chart:hover{
+    background-color: #FFDB00;
+    color: black;
 }
 
 .text-tab{
     font-size: 24px;
-    color: white;
     font-weight: 200;
     font-family: "Bebas Neue";
     margin: 20px 0px;
@@ -122,11 +132,17 @@ tbody tr {
     cursor: pointer;
     border-radius: 5px;
     border: 1px #FFDB00 solid;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 
-/* .btn-see-more:hover {
-    background-color: #ddd;
-} */
+.btn-see-more:hover {
+    background-color: #FFDB00;
+    color: black;
+}
 
 
 /* ------------ */
