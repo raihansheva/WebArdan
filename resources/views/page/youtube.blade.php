@@ -1,6 +1,6 @@
 @extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/youtube.css">
-<link rel="stylesheet" href="css/ResposiveStyle/responsiveYoutube.css">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsiveYoutube.css">
 @section('content')
     <section class="page-youtube-1">
         <div class="area-thumbnail-youtube">
