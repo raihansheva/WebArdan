@@ -1,0 +1,44 @@
+
+/* Desktop dan Laptop */
+@media (max-width: 1920px) {
+    /* Gaya untuk monitor Full HD */
+}
+
+@media (max-width: 1440px) {
+    /* Gaya untuk desktop besar */
+}
+
+@media (max-width: 1366px) {
+    /* Gaya untuk laptop widescreen */
+}
+
+@media (max-width: 1280px) {
+    /* Gaya untuk laptop standar */
+}
+
+@media (max-width: 1024px) {
+
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 600px) {
+    /* Gaya untuk tablet kecil atau phablet */
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 375px) {
+    /* Gaya untuk smartphone medium */
+}
+
+@media (max-width: 320px) {
+    /* Gaya untuk smartphone kecil */
+}
+

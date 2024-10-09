@@ -33,7 +33,7 @@
                         <div class="line"></div>
                         <a href="/event">Event</a>
                         <div class="line"></div>
-                        <a href="#">Playlist Youtube</a>
+                        <a href="/ardan-youtube">Playlist Youtube</a>
                         <div class="line"></div>
                         <a href="/podcast">Podcast</a>
                         <div class="line"></div>

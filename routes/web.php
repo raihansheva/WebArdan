@@ -27,5 +27,9 @@ Route::get('/chart', function () {
     return view('page.chart');
 });
 
+Route::get('/ardan-youtube' , function () {
+    return view('page.youtube');
+});
+
 
 

@@ -1,0 +1,478 @@
+/* page youtube 1 */
+.page-youtube-1{
+    width: 100%;
+    height: auto;
+    /* border: 1px white solid; */
+}
+
+.area-thumbnail-youtube{
+    width: auto;
+    margin: 40px 64px 0px 64px;
+    height: auto;
+    /* border: 1px red solid; */
+}
+
+.area-image-thumbnail{
+    width: 100%;
+    height: 300px;
+    background-color: gainsboro;
+    border-radius: 15px;
+}
+
+.area-title-thumbnail{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px green solid; */
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.title-thumbnail{
+    font-size: 40px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    color: white;
+    margin: 0px;
+}
+
+/* -------------- */
+
+/* page youtube 2 */
+
+.page-youtube-2{
+    width: 100%;
+    height: 100vh;
+}
+
+.area-video-youtube{
+    width: auto;
+    height: auto;
+    /* border: 1px red solid; */
+    margin: 0px 64px 0px 64px;
+}
+
+.area-header-video{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+}
+
+.text-choose{
+    font-family: "Poppins";
+    font-size: 20px;
+    color: white;
+    margin: 0px;
+}
+
+/* area content video */
+.area-content-video {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Hilangkan gap untuk memastikan card menempel */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.video-card {
+    /* background-color: #181818; */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    flex: 1 1 calc(25% - 20px); /* Tepat 4 card per baris, tanpa jarak */
+    max-width: calc(25% - 20px);
+    box-sizing: border-box; /* Menghitung padding dan border agar card tetap rapi */
+}
+
+/* .video-card:hover {
+    transform: scale(1.05);
+} */
+
+.thumbnail{
+    width: 100%;
+    height: 160px;
+    display: block;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-info {
+    display: flex;
+    padding: 12px 0px;
+    color: #fff;
+    /* border: 1px red solid; */
+}
+
+.channel-logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.video-details {
+    flex-grow: 1;
+    /* border: 1px green solid; */
+}
+
+.video-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #fff;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-family: "Poppins";
+    margin: 0px 0px 5px 0px;
+}
+
+.channel-name {
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 4px;
+    font-family: "Poppins";
+    margin: 0px 0px 2px 0px;
+}
+
+.views {
+    font-size: 12px;
+    color: #e2e1e1;
+    font-family: "Poppins";
+    margin: 0px;
+}
+/* ----------------- */
+
+/* -------------- */
+
+
+/* page youtube 3 */
+
+.page-youtube-3{
+    width: 100%;
+    height: 1000px;
+}
+
+.area-event-news-streaming{
+    width: auto;
+    height: auto;
+    margin: 0px 64px 30px 64px;
+    /* border: 1px red solid; */
+}
+
+.area-content-VNS{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+/* area content kiri */
+.area-content-VNS-kiri{
+    width: 50%;
+    height: auto;
+    /* border: 1px green solid; */
+}
+
+.header-content-event{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px red solid; */
+}
+
+.title-event{
+    font-size: 40px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 0px;
+    color: white;
+}
+
+.content-kiri-event{
+    width: auto;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* box atas */
+.area-event-mid{
+    height: 70%;
+    width: 100%;
+    /* border: 1px blue solid; */
+
+}
+
+.box-event-mid{
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-countdown {
+    width: 100%;
+    height: 100px;
+    background-color: #333333b9;
+    display: flex;
+    padding: 15px;
+}
+
+.countdown {
+    width: 60%;
+    height: 100%;
+    /* border: 1px white solid; */
+    display: flex;
+}
+
+.area-days-date {
+    width: 40%;
+    height: 100%;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.time-countdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Untuk memusatkan teks di tengah */
+    width: 25%;
+    height: auto;
+}
+
+.timer {
+    margin: 0px;
+    font-family: "Krub";
+    font-size: 38px;
+    color: white;
+    font-weight: 200;
+}
+
+.title-timer {
+    margin: 0px;
+    font-family: "Krub";
+    font-size: 22px;
+    color: white;
+    font-weight: 200;
+}
+
+.box-days-date {
+    width: auto;
+    height: auto;
+}
+
+.date-month {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+/* --------------- */
+
+/* box bawah */
+.area-event-bottom{
+    height: 30%;
+    width: 100%;
+    /* border: 1px #ff004d solid; */
+    display: flex;
+    gap: 20px;
+}
+
+.box-event{
+    width: 50%;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-days-date-right {
+    width: 100%;
+    height: 60px;
+    background-color: #333333b9;
+    display: flex;
+    padding: 10px 15px;
+}
+
+.content-days-date-right {
+    width: 100%;
+    height: auto;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.box-days-date-right {
+    width: auto;
+    height: auto;
+}
+
+.date-month-right {
+    font-family: "Bebas Neue";
+    font-size: 20px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year-right {
+    font-family: "Bebas Neue";
+    font-size: 20px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+/* ------------- */
+/* ------------- */
+
+
+
+
+
+/* --------------------- */
+
+/* area content kanan */
+.area-content-VNS-kanan{
+    width: 50%;
+    /* height: 750px; */
+    /* border: 1px green solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.area-content-news{
+    height: 70%;
+    width: 100%;
+    /* border: 1px #ffdb00 solid; */
+}
+
+.header-news {
+    width: 100%;
+    height: 5%;
+}
+
+.title-news {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    font-size: 38px;
+    font-weight: 200;
+    color: white;
+}
+
+.content-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+    height: 70%;
+}
+
+.box-news {
+    width: auto;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+}
+
+.area-image {
+    width: 20%;
+    /*border: 1px black solid;
+    */
+    background-color: #333;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.area-text {
+    width: 70%;
+    /* border: 1px black solid; */
+    height: fit-content;
+}
+
+.desk-news {
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 16px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+}
+/* ------------------------ */
+
+/* area content streaming */
+
+.area-content-streaming{
+    width: 100%;
+    height: 30%;
+    /* border: 1px red solid; */
+}
+
+.header-streaming{
+    width: 100%;
+    height: 5%;
+}
+
+.title-streaming{
+    font-size: 40px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    color: white;
+    margin: 0px;
+}
+
+.content-streaming{
+    width: 100%;
+    height: 20%;
+}
+
+.box-streaming{
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+/* ------------------------ */
+
+
+/* ------------------ */
+
+
+/* ---------------------- */
+
+/* --------------- */
