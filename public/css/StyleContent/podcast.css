@@ -73,8 +73,14 @@
 }
 
 .card-podcast {
-    flex: 1 1 calc(33.33% - 20px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
+    flex: 1 1 calc(33.33% - 20px); 
+    max-width: 33.33%;
     height: 400px;
+    display: none; 
+}
+
+.card-podcast:nth-child(-n+6) {
+    display: block;
 }
 
 .card-podcast .card-header-podcast {
@@ -170,16 +176,23 @@
 
 .card-podcast .card-header-podcast .view-podcast {
     font-weight: 600;
-    color: #333;
+    color: rgb(238, 238, 238);
+    font-family: "Poppins";
     justify-content: center;
     align-items: center;
     display: flex;
     height: 30px;
     width: 85%;
-    background-color: #ff004d;
+    background-color: var(--secondary-color);
     border-radius: 12px;
     padding: 10px;
     margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-podcast .card-header-podcast .view-podcast:hover {
+    background-color: #e05003;
+    color: white;
 }
 
 .link-podcast{
@@ -189,10 +202,10 @@
     text-decoration: none;
 }
 
-.text-watch-podcast {
+/* .text-watch-podcast {
     color: white;
     font-family: "Poppins";
-}
+} */
 
 .area-bottom-card-podcast {
     width: 100%;
@@ -204,9 +217,10 @@
 .title-bottom {
     font-size: 20px;
     font-family: "Poppins";
-    color: #ffdb00;
+    color: var(--primary-color);
     margin: 0px;
     font-weight: 200;
+    cursor: pointer;
 }
 
 /* ------------------- */
@@ -217,7 +231,7 @@
 .page-podcast-3 {
     width: 100%;
     height: 600px;
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -234,6 +248,29 @@
     /* border: 1px black solid; */
     padding-top: 25px;
 }
+
+.btn-play-videoYT-kiri{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: rgb(22, 22, 22);
+    cursor: pointer;
+    /* margin-top: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-play-videoYT-kiri:hover{
+    background-color: rgb(49, 49, 49);
+}
+
+.btn-play-videoYT-kiri span {
+    color: var(--primary-color);
+    font-size: 40px;
+}
+
 
 .title-videoYT {
     font-size: 50px;
@@ -264,6 +301,9 @@
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* -------------------- */
 
@@ -281,6 +321,31 @@
     width: 100%;
     height: 50%;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-videoYT-kanan{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: rgb(22, 22, 22);
+    cursor: pointer;
+    /* margin-top: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-play-videoYT-kanan:hover{
+    background-color: rgb(49, 49, 49);
+}
+
+.btn-play-videoYT-kanan span {
+    color: var(--primary-color);
+    font-size: 35px;
 }
 /* -------------------- */
 
@@ -339,8 +404,32 @@
 
 .box-streaming{
     width: 100%;
-    height: 280px;
+    height: 240px;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-streaming{
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: rgb(22, 22, 22);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-play-streaming:hover{
+    background-color: rgb(49, 49, 49);
+}
+
+.btn-play-streaming span {
+    color: var(--primary-color);
+    font-size: 30px;
 }
 /* -------------------- */
 

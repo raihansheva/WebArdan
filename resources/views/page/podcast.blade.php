@@ -1,8 +1,8 @@
-@extends('layout.mainPodcast')
+@extends('layout.main')
 
 <link rel="stylesheet" href="css/StyleContent/podcast.css">
 <link rel="stylesheet" href="css/ResponsiveStyle/responsivePodcast.css">
-@section('content-podcast')
+@section('content')
     <section class="page-podcast-1">
         <div class="area-header-podcast">
             <h2 class="title-header-podcast">ARDAN PODCAST</h2>
@@ -87,9 +87,105 @@
                         </a>
                     </div>
                 </div>
+                <div class="card-podcast">
+                    <div class="card-body-podcast">
+                        <div class="head-body-podcast">
+                            <div class="genre">
+                                <h1 class="title-genre">Comedy</h1>
+                            </div>
+                            <div class="area-card-text">
+                                <h1 class="card-text-podcast">Podcast Aseek</h1>
+                            </div>
+                        </div>
+                        <div class="card-image-podcast">
+
+                        </div>
+                    </div>
+                    <div class="card-header-podcast">
+                        <div class="author-podcast">
+                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-podcast">
+                    <div class="card-body-podcast">
+                        <div class="head-body-podcast">
+                            <div class="genre">
+                                <h1 class="title-genre">Comedy</h1>
+                            </div>
+                            <div class="area-card-text">
+                                <h1 class="card-text-podcast">Podcast Aseek</h1>
+                            </div>
+                        </div>
+                        <div class="card-image-podcast">
+
+                        </div>
+                    </div>
+                    <div class="card-header-podcast">
+                        <div class="author-podcast">
+                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-podcast">
+                    <div class="card-body-podcast">
+                        <div class="head-body-podcast">
+                            <div class="genre">
+                                <h1 class="title-genre">Comedy</h1>
+                            </div>
+                            <div class="area-card-text">
+                                <h1 class="card-text-podcast">Podcast Aseek</h1>
+                            </div>
+                        </div>
+                        <div class="card-image-podcast">
+
+                        </div>
+                    </div>
+                    <div class="card-header-podcast">
+                        <div class="author-podcast">
+                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-podcast">
+                    <div class="card-body-podcast">
+                        <div class="head-body-podcast">
+                            <div class="genre">
+                                <h1 class="title-genre">Comedy</h1>
+                            </div>
+                            <div class="area-card-text">
+                                <h1 class="card-text-podcast">Podcast Aseek</h1>
+                            </div>
+                        </div>
+                        <div class="card-image-podcast">
+
+                        </div>
+                    </div>
+                    <div class="card-header-podcast">
+                        <div class="author-podcast">
+                        </div>
+                        <a class="link-podcast" href="/detail-podcast">
+                            <div class="view-podcast">
+                                <p class="text-watch-podcast">View Podcast</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="area-bottom-card-podcast">
-                <h2 class="title-bottom">See more</h2>
+                <h2 class="title-bottom" id="toggleBtn">See more</h2>
             </div>
         </div>
     </section>
@@ -100,11 +196,23 @@
             </div>
             <div class="area-content-videoYT">
                 <div class="area-contentYT-kiri">
-                    <div class="box-area-videoYT-kiri"></div>
+                    <div class="box-area-videoYT-kiri">
+                        <div class="btn-play-videoYT-kiri">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="area-contentYT-kanan">
-                    <div class="box-area-videoYT-kanan"></div>
-                    <div class="box-area-videoYT-kanan"></div>
+                    <div class="box-area-videoYT-kanan">
+                        <div class="btn-play-videoYT-kanan">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </div>
+                    </div>
+                    <div class="box-area-videoYT-kanan">
+                        <div class="btn-play-videoYT-kanan">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,7 +225,11 @@
                         <h2 class="title-SN-kiri">Streaming</h2>
                     </div>
                     <div class="content-SN-kiri">
-                        <div class="box-streaming"></div>
+                        <div class="box-streaming">
+                            <div class="btn-play-streaming">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="area-content-SN-kanan">
@@ -175,4 +287,5 @@
             </div>
         </div>
     </section>
+    <script src="js/podcast.js"></script>
 @endsection
