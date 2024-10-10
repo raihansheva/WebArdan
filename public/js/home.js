@@ -197,7 +197,7 @@ const getScrollAmount = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
         return 360; 
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 340;
+        return 350;
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
         return 310; 
     } else {
@@ -229,7 +229,7 @@ const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
         return 358;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 232; 
+        return 234; 
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
         return 240; 
     } else {

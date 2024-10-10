@@ -91,7 +91,9 @@
                         <div class="box-info"></div>
                     </div>
                     <div class="area-bottom-info">
-                        <h1 class="title-bottom-info">Show more</h1>
+                        <a href="/info-news">
+                            <h1 class="title-bottom-info">Show more</h1>
+                        </a>
                     </div>
                 </div>
                 <div class="area-content-news">
@@ -221,7 +223,9 @@
                             <h1 class="title-podcast">Podcast</h1>
                         </div>
                         <div class="area-text-podcast">
-                            <h1 class="text-podcast">Other podcast</h1>
+                            <a href="/podcast">
+                                <h1 class="text-podcast">Other podcast</h1>
+                            </a>
                         </div>
                     </div>
                     <div class="content-podcast">
@@ -242,9 +246,11 @@
                             <div class="card-header-podcast">
                                 <div class="author-podcast">
                                 </div>
-                                <div class="view-podcast">
-                                    <p class="text-watch-podcast">View Podcast</p>
-                                </div>
+                                <a class="link-podcast" href="/detail-podcast">
+                                    <div class="view-podcast">
+                                        <p class="text-watch-podcast">View Podcast</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="card-podcast">
@@ -264,9 +270,11 @@
                             <div class="card-header-podcast">
                                 <div class="author-podcast">
                                 </div>
-                                <div class="view-podcast">
-                                    <p class="text-watch-podcast">View Podcast</p>
-                                </div>
+                                <a class="link-podcast" href="/detail-podcast">
+                                    <div class="view-podcast">
+                                        <p class="text-watch-podcast">View Podcast</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

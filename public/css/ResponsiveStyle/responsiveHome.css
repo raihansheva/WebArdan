@@ -1,4 +1,3 @@
-
 /* Desktop dan Laptop */
 @media (max-width: 1920px) {
     /* Gaya untuk monitor Full HD */
@@ -32,7 +31,7 @@
         /* border: 1px green solid; */
     }
 
-    .contentS-kiri{
+    .contentS-kiri {
         width: 55%;
         margin-right: 8px;
         height: auto;
@@ -42,7 +41,7 @@
         width: 45%;
     }
 
-    .card-A .card-body , .card-B .card-body-B {
+    .card-A .card-body {
         height: 200px;
         padding: 25px;
     }
@@ -57,22 +56,52 @@
         height: 50px;
     }
 
-    .card-A .card-header .view{
+    .card-A .card-header .view {
         height: 20px;
         width: 28%;
     }
 
-     .card-B  .view-B{
+    .btn-play-streaming{
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-B .card-body-B {
+        height: auto;
+        /* padding: 25px; */
+        /* border: 1px red solid; */
+    }
+    .card-B .view-B {
         height: 20px;
         width: 28%;
         margin-top: 0px;
     }
 
-    .text-watchS{
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        /* height: 0; */
+        overflow: hidden;
+        width: 100%;
+        background-color: rgb(0, 0, 0); /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+    
+    .video-container iframe,
+    .video-container #player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border: none;
+    }
+
+    .text-watchS {
         font-size: 14px;
     }
 
-    .text-watchS-B{
+    .text-watchS-B {
         font-size: 14px;
     }
 
@@ -93,11 +122,11 @@
     }
 
     /* area-program */
-    .page-2{
+    .page-2 {
         height: 450px;
     }
 
-    .area-content-program{
+    .area-content-program {
         margin: 10px 32px 0px 32px;
     }
 
@@ -106,11 +135,12 @@
     }
 
     .area-content-box-program {
-        gap: 15px; 
+        gap: 15px;
+        /* border: 1px red solid; */
     }
 
     .box-program {
-        flex: 0 0 calc(33.33% - 15px); 
+        flex: 0 0 calc(33.33% - 10px);
         height: 250px;
     }
 
@@ -122,7 +152,7 @@
 
     /* area-info-news */
     .area-info-news {
-        margin: 0 30px; 
+        margin: 0 30px;
     }
 
     .line-info {
@@ -135,7 +165,7 @@
     }
 
     .area-content-info {
-        width: 65%; 
+        width: 65%;
     }
 
     .content-info {
@@ -143,17 +173,17 @@
     }
 
     .box-info {
-        flex: 0 0 calc(50% - 8px); 
-        height: 165px; 
+        flex: 0 0 calc(50% - 8px);
+        height: 165px;
     }
 
     .title-info,
     .title-news {
-        font-size: 40px; 
+        font-size: 40px;
     }
 
     .area-content-news {
-        width: 40%; 
+        width: 40%;
         height: auto;
     }
 
@@ -169,26 +199,26 @@
         width: 70%;
     }
 
-    .desk-news{
+    .desk-news {
         font-size: 12px;
     }
     /* ------------- */
 
     /* area-event */
     .area-event {
-        height: auto; 
-        margin: 0px 32px; 
+        height: auto;
+        margin: 0px 32px;
     }
 
-    .area-content-event{
+    .area-content-event {
         height: 350px;
     }
-    
-    .area-countdown{
+
+    .area-countdown {
         height: 50px;
     }
 
-    .area-days-date-right{
+    .area-days-date-right {
         /* padding: 10px; */
         height: 30px;
     }
@@ -202,21 +232,19 @@
     }
 
     .title-timer {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     .date-month,
-    .year{
-        font-size: 20px; 
+    .year {
+        font-size: 20px;
     }
-    
+
     .date-month-right,
     .year-right {
         font-size: 18px;
     }
     /* ---------- */
-
-
 
     /* area-info-news */
     /* area-podcast-video */
@@ -225,7 +253,7 @@
     }
 
     .line-PV {
-        height: 400px; 
+        height: 400px;
     }
 
     /* area-podcast */
@@ -234,11 +262,11 @@
     }
 
     .title-podcast {
-        font-size: 38px; 
+        font-size: 38px;
     }
 
     .text-podcast {
-        font-size: 16px; 
+        font-size: 16px;
     }
 
     .content-podcast {
@@ -246,13 +274,13 @@
     }
 
     .card-podcast {
-        width: calc(50% - 8px); 
-        height: 355px; 
+        width: calc(50% - 8px);
+        height: 355px;
     }
 
     .card-podcast .card-body-podcast {
         height: 60%;
-        padding: 20px; 
+        padding: 20px;
     }
 
     .card-podcast .card-header-podcast .author-podcast {
@@ -260,20 +288,25 @@
         height: 45px;
     }
     .card-podcast .card-header-podcast .author-podcast::before {
-
         height: 50px;
         width: 50%;
     }
 
     .card-podcast .card-header-podcast .view-podcast {
         height: 20px;
-        width: 37%;
-        background-color: #ff004d;
+        width: 80%;
         border-radius: 8px;
         padding: 10px;
         /*margin-top: 5px;
         */
-}
+    }
+
+    .link-podcast{
+        width: 46%;
+        /* border: 1px red solid; */
+        z-index: 10;
+        text-decoration: none;
+    }
 
     .text-watch-podcast {
         color: white;
@@ -282,14 +315,14 @@
     }
 
     .card-text-podcast {
-        font-size: 24px; 
+        font-size: 24px;
     }
 
     .card-image-podcast {
-        height: 130px; 
+        height: 130px;
     }
-    
-    .title-genre{
+
+    .title-genre {
         font-size: 14px;
         margin: 4px 20px;
     }
@@ -297,7 +330,7 @@
 
     /* area-video */
     .area-content-video {
-        width: 35%; 
+        width: 35%;
     }
 
     .title-video {
@@ -313,8 +346,6 @@
     }
     /* -------------- */
 
-
-    
     /* area-announcer */
     .page-6 {
         height: 100vh;
@@ -323,18 +354,18 @@
     .svg-large {
         display: none;
     }
-    
+
     .svg-small {
         display: block;
     }
 
-    .svg-small-mobile{
+    .svg-small-mobile {
         display: none;
     }
 
     .area-content-announcer {
         width: 100%;
-        height: auto; 
+        height: auto;
         top: 75px;
         padding: 0px 32px 30px 32px;
     }
@@ -353,18 +384,18 @@
 
     .tombol-kiri-announcer,
     .tombol-kanan-announcer {
-        width: 40px;
-        height: 40px;
-        top: 90%; 
+        width: 45px;
+        height: 45px;
+        top: 10px;
         transform: translateY(200%);
     }
 
     .tombol-kiri-announcer {
-        left: -10px; 
+        left: -15px;
     }
 
     .tombol-kanan-announcer {
-        right: -10px; 
+        right: -15px;
     }
 
     .area-content-box-announcer {
@@ -372,7 +403,7 @@
     }
 
     .box-announcer {
-        flex: 0 0 calc(25% - 12px); 
+        flex: 0 0 calc(25% - 12px);
         height: 250px;
     }
 
@@ -391,12 +422,12 @@
 
     .area-chart-artis {
         width: auto;
-        height: 400px; 
-        margin-top: 40px; 
+        height: 400px;
+        margin-top: 40px;
     }
 
     .area-content-chart {
-        width: 60%; 
+        width: 60%;
         height: auto;
         background-color: #ffdb00;
         display: flex;
@@ -408,7 +439,7 @@
     }
 
     .title-chart {
-        font-size: 36px; 
+        font-size: 36px;
     }
 
     .chart {
@@ -429,7 +460,7 @@
     }
 
     .title-artis {
-        font-size: 36px; 
+        font-size: 36px;
     }
 
     .box-artis {
@@ -437,6 +468,10 @@
     }
     /* ----------------- */
     /* area-schedule */
+
+    .page-8{
+        height: auto;
+    }
     .area-schedule {
         width: auto;
         height: auto;
@@ -466,10 +501,10 @@
     }
 
     .schedule {
-        width: 120px; 
+        width: 120px;
         height: auto;
         margin-top: 8px;
-        font-size: 16px; 
+        font-size: 16px;
     }
 
     .schedule-day {
@@ -477,17 +512,15 @@
     }
 
     .content-schedule {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         margin-top: 10px;
     }
 
     .box-schedule {
-        height: 150px; 
+        height: 150px;
     }
     /* ---------------- */
-
-
 
     /* area-audio-player */
     .content {
@@ -503,12 +536,12 @@
     .music-titles {
         width: 120px;
     }
-    
-    .music-titles .name{
+
+    .music-titles .name {
         font-size: 12px;
     }
 
-    .music-titles .artist{
+    .music-titles .artist {
         font-size: 12px;
     }
 
@@ -543,17 +576,17 @@
         height: auto;
     }
 
-    .contentS-kiri{
+    .contentS-kiri {
         width: 100%;
         margin: 0px 0px 20px 0px;
     }
-    
-    .contentS-kanan{
+
+    .contentS-kanan {
         width: 50%;
         margin: 0px 0px 20px 0px;
     }
 
-    .card-A .card-body, .card-B .card-body-B {
+    .card-A .card-body {
         height: 270px;
         padding: 20px;
     }
@@ -569,6 +602,43 @@
         /* border: 1px red solid; */
         width: 32%;
     }
+
+    .btn-play-streaming{
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-B .card-body-B {
+        height: auto;
+        /* padding: 25px; */
+        /* border: 1px red solid; */
+    }
+    .card-B .view-B {
+        height: 20px;
+        width: 28%;
+        margin-top: 0px;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 45.25%; /* 16:9 aspect ratio */
+        /* height: 0; */
+        overflow: hidden;
+        width: 100%;
+        background-color: rgb(0, 0, 0); /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+    
+    .video-container iframe,
+    .video-container #player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border: none;
+    }
+
 
     .title-streaming {
         font-size: 2.5rem;
@@ -588,7 +658,7 @@
 
     /* area-program */
 
-    .page-2{
+    .page-2 {
         height: 400px;
     }
 
@@ -601,7 +671,7 @@
     }
 
     .box-program {
-        flex: 0 0 calc(50% - 15px); /* Mengubah lebar box menjadi 50% untuk tablet */
+        flex: 0 0 calc(50% - 8px); /* Mengubah lebar box menjadi 50% untuk tablet */
         height: 250px; /* Mengurangi tinggi box */
     }
 
@@ -610,10 +680,10 @@
         transform: translateY(180%); /* Menyesuaikan posisi tombol */
     }
     /* ------------- */
-  
+
     /* area-info-news */
     .area-info-news {
-        margin: 0 20px; 
+        margin: 0 20px;
     }
 
     .line-info {
@@ -627,7 +697,7 @@
     }
 
     .area-content-info {
-        width: 65%; 
+        width: 65%;
     }
 
     .content-info {
@@ -635,21 +705,21 @@
     }
 
     .box-info {
-        flex: 0 0 calc(33.33% - 8px); 
-        height: 100px; 
+        flex: 0 0 calc(33.33% - 8px);
+        height: 100px;
     }
 
     .title-info,
     .title-news {
-        font-size: 34px; 
+        font-size: 34px;
     }
 
     .area-content-news {
-        width: 40%; 
+        width: 40%;
         height: auto;
     }
 
-    .content-news{
+    .content-news {
         gap: 10px;
     }
 
@@ -665,11 +735,11 @@
         width: 70%;
     }
 
-    .desk-news{
+    .desk-news {
         font-size: 8px;
     }
 
-    .title-bottom-info{
+    .title-bottom-info {
         font-size: 16px;
     }
 
@@ -677,19 +747,19 @@
 
     /* area-event */
     .area-event {
-        height: auto; 
-        margin: 0px 20px; 
+        height: auto;
+        margin: 0px 20px;
     }
 
-    .area-content-event{
+    .area-content-event {
         height: 320px;
     }
-    
-    .area-countdown{
+
+    .area-countdown {
         height: 50px;
     }
 
-    .area-days-date-right{
+    .area-days-date-right {
         /* padding: 10px; */
         height: 25px;
     }
@@ -703,21 +773,19 @@
     }
 
     .title-timer {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     .date-month,
-    .year{
-        font-size: 20px; 
+    .year {
+        font-size: 20px;
     }
-    
+
     .date-month-right,
     .year-right {
         font-size: 16px;
     }
     /* ---------- */
-
-
 
     /* area-info-news */
     /* area-podcast-video */
@@ -725,12 +793,12 @@
         margin: 0px 20px 10px 20px;
     }
 
-    .area-content-PV{
+    .area-content-PV {
         gap: 30px;
     }
 
     .line-PV {
-        height: 400px; 
+        height: 400px;
     }
 
     /* area-podcast */
@@ -739,11 +807,11 @@
     }
 
     .title-podcast {
-        font-size: 30px; 
+        font-size: 30px;
     }
 
     .text-podcast {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     .content-podcast {
@@ -751,13 +819,13 @@
     }
 
     .card-podcast {
-        width: calc(50% - 8px); 
-        height: 225px; 
+        width: calc(50% - 8px);
+        height: 225px;
     }
 
     .card-podcast .card-body-podcast {
         height: 68%;
-        padding: 10px; 
+        padding: 10px;
         gap: 2px;
     }
 
@@ -772,13 +840,17 @@
 
     .card-podcast .card-header-podcast .view-podcast {
         height: 12px;
-        width: 37%;
-        background-color: #ff004d;
+        width: 80%;
         border-radius: 8px;
         padding: 10px;
-        /* margin-top: 10px; */
-       
-}
+    }
+
+    .link-podcast{
+        width: 47%;
+        /* border: 1px red solid; */
+        z-index: 10;
+        text-decoration: none;
+    }
 
     .text-watch-podcast {
         color: white;
@@ -787,14 +859,14 @@
     }
 
     .card-text-podcast {
-        font-size: 20px; 
+        font-size: 20px;
     }
 
     .card-image-podcast {
-        height: 85px; 
+        height: 85px;
     }
-    
-    .title-genre{
+
+    .title-genre {
         font-size: 11px;
         margin: 2px 15px;
     }
@@ -802,7 +874,7 @@
 
     /* area-video */
     .area-content-video {
-        width: 35%; 
+        width: 35%;
     }
 
     .title-video {
@@ -813,7 +885,7 @@
         height: 110px;
     }
 
-    .link-text-video{
+    .link-text-video {
         margin-top: 5px;
     }
 
@@ -822,8 +894,6 @@
     }
     /* -------------- */
 
-
-    
     /* area-announcer */
     .page-6 {
         height: 100vh;
@@ -832,19 +902,18 @@
     .svg-large {
         display: none;
     }
-    
+
     .svg-small {
         display: block;
     }
 
-    .svg-small-mobile{
+    .svg-small-mobile {
         display: none;
     }
 
-
     .area-content-announcer {
         width: 100%;
-        height: 330px; 
+        height: 330px;
         top: 70px;
         padding: 0px 32px 30px 32px;
     }
@@ -864,18 +933,18 @@
 
     .tombol-kiri-announcer,
     .tombol-kanan-announcer {
-        width: 40px;
-        height: 40px;
-        top: 90%; 
+        width: 45px;
+        height: 45px;
+        top: 0px;
         transform: translateY(200%);
     }
 
     .tombol-kiri-announcer {
-        left: -10px; 
+        left: -15px;
     }
 
     .tombol-kanan-announcer {
-        right: -10px; 
+        right: -15px;
     }
 
     .area-content-box-announcer {
@@ -883,7 +952,7 @@
     }
 
     .box-announcer {
-        flex: 0 0 calc(33.33% - 12px); 
+        flex: 0 0 calc(33.33% - 10px);
         height: 230px;
     }
 
@@ -902,12 +971,12 @@
 
     .area-chart-artis {
         width: auto;
-        height: auto; 
-        margin-top: 40px; 
+        height: auto;
+        margin-top: 40px;
     }
 
     .area-content-chart {
-        width: 65%; 
+        width: 65%;
         height: 380px;
         background-color: #ffdb00;
         display: flex;
@@ -915,19 +984,19 @@
     }
 
     .content-chart {
-        width: 80%; 
+        width: 80%;
         /* height: 85%; */
     }
 
     .title-chart {
-        font-size: 30px; 
+        font-size: 30px;
     }
 
     .chart {
         font-size: 12px;
     }
 
-    .text-btn-chart{
+    .text-btn-chart {
         font-size: 12px;
     }
 
@@ -947,7 +1016,7 @@
     }
 
     .title-artis {
-        font-size: 30px; 
+        font-size: 30px;
     }
 
     .box-artis {
@@ -956,7 +1025,7 @@
     /* ----------------- */
     /* area-schedule */
 
-    .page-8{
+    .page-8 {
         height: auto;
         /* border: 1px red solid; */
     }
@@ -991,10 +1060,10 @@
     }
 
     .schedule {
-        width: 120px; 
+        width: 120px;
         height: auto;
         margin-top: 8px;
-        font-size: 16px; 
+        font-size: 16px;
     }
 
     .schedule-day {
@@ -1002,16 +1071,15 @@
     }
 
     .content-schedule {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         margin-top: 15px;
     }
 
     .box-schedule {
-        height: 150px; 
+        height: 150px;
     }
     /* ---------------- */
-
 
     /* area-audio-player */
     .content {
@@ -1028,12 +1096,12 @@
     .music-titles {
         width: 120px;
     }
-    
-    .music-titles .name{
+
+    .music-titles .name {
         font-size: 10px;
     }
 
-    .music-titles .artist{
+    .music-titles .artist {
         font-size: 12px;
     }
 
@@ -1060,7 +1128,7 @@
 /* Mobile Devices */
 @media (max-width: 480px) {
     .page-1 {
-        padding: 0px 8px 0px;
+        padding: 0px 20px 0px;
     }
 
     .area-streaming {
@@ -1072,25 +1140,63 @@
         height: auto;
     }
 
-    .contentS-kiri, .contentS-kanan {
+    .contentS-kiri,
+    .contentS-kanan {
         width: 100%;
         margin: 0px 0px 20px 0px;
     }
 
-    .card-A .card-body, .card-B .card-body-B {
+    .card-A .card-body {
         height: 200px;
         padding: 15px;
     }
 
     .card-A .card-header .author {
-        width: 65%;
+        width: 64%;
         height: 50px;
     }
 
     .card-A .card-header .author::before {
-        width: 35%;
+        width: 36%;
         height: 50px;
     }
+
+    .btn-play-streaming{
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-B .card-body-B {
+        height: auto;
+        /* padding: 25px; */
+        /* border: 1px red solid; */
+    }
+    .card-B .view-B {
+        height: 20px;
+        width: 28%;
+        margin-top: 0px;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        /* height: 0; */
+        overflow: hidden;
+        width: 100%;
+        background-color: rgb(0, 0, 0); /* Optional: background color if needed */
+        border: 1px red solid;
+    }
+    
+    .video-container iframe,
+    .video-container #player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        border: none;
+    }
+
 
     .title-streaming {
         font-size: 1.5rem;
@@ -1110,7 +1216,7 @@
     }
     /* area-program */
 
-    .page-2{
+    .page-2 {
         height: 380px;
     }
 
@@ -1132,10 +1238,10 @@
         transform: translateY(180%); /* Menyesuaikan posisi tombol */
     }
     /* ------------- */
-  
+
     /* area-info-news */
     .area-info-news {
-        margin: 0 8px; 
+        margin: 0 20px;
     }
 
     .line-info {
@@ -1150,7 +1256,7 @@
     }
 
     .area-content-info {
-        width: 100%; 
+        width: 100%;
     }
 
     .content-info {
@@ -1158,21 +1264,21 @@
     }
 
     .box-info {
-        flex: 0 0 calc(33.33% - 8px); 
-        height: 100px; 
+        flex: 0 0 calc(33.33% - 8px);
+        height: 100px;
     }
 
     .title-info,
     .title-news {
-        font-size: 28px; 
+        font-size: 28px;
     }
 
     .area-content-news {
-        width: 100%; 
+        width: 100%;
         height: auto;
     }
 
-    .content-news{
+    .content-news {
         gap: 10px;
     }
 
@@ -1188,15 +1294,15 @@
         width: 70%;
     }
 
-    .desk-news{
+    .desk-news {
         font-size: 10px;
     }
 
-    .area-bottom-info{
+    .area-bottom-info {
         text-align: end;
     }
 
-    .title-bottom-info{
+    .title-bottom-info {
         padding-top: 15px;
         font-size: 14px;
     }
@@ -1206,15 +1312,15 @@
     /* area-event */
     .area-event {
         /* height: fit-content;  */
-        margin: 0px 8px; 
+        margin: 0px 20px;
         /* border: 1px red solid ; */
     }
 
-    .line-event{
+    .line-event {
         border: 1px white solid;
     }
 
-    .area-content-event{
+    .area-content-event {
         height: auto;
         flex-direction: column;
         gap: 10px;
@@ -1222,33 +1328,33 @@
         margin-bottom: 25px;
     }
 
-    .header-event{
+    .header-event {
         margin-top: 25px;
     }
 
-    .area-content-event-kiri{
+    .area-content-event-kiri {
         width: 100%;
         height: 240px;
         /* border: 1px red solid; */
     }
-    
-    .area-content-event-kanan{
+
+    .area-content-event-kanan {
         width: 100%;
         /* height: 240px; */
         flex-direction: row;
         gap: 10px;
     }
 
-    .content-event{
+    .content-event {
         width: 50%;
         height: 140px;
     }
 
-    .area-countdown{
+    .area-countdown {
         height: 40px;
     }
 
-    .area-days-date-right{
+    .area-days-date-right {
         /* padding: 10px; */
         height: 20px;
     }
@@ -1262,35 +1368,33 @@
     }
 
     .title-timer {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     .date-month,
-    .year{
-        font-size: 16px; 
+    .year {
+        font-size: 16px;
     }
-    
+
     .date-month-right,
     .year-right {
         font-size: 14px;
     }
     /* ---------- */
 
-
-
     /* area-info-news */
     /* area-podcast-video */
     .area-podcast-video {
-        margin: 0px 8px 10px 8px;
+        margin: 0px 20px 10px 20px;
     }
 
-    .area-content-PV{
+    .area-content-PV {
         gap: 30px;
         flex-direction: column;
     }
 
     .line-PV {
-        height: 400px; 
+        height: 400px;
         display: none;
     }
 
@@ -1300,25 +1404,25 @@
     }
 
     .title-podcast {
-        font-size: 28px; 
+        font-size: 28px;
     }
 
     .text-podcast {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     .content-podcast {
-        gap: 15px;
+        gap: 10px;
     }
 
     .card-podcast {
-        width: calc(50% - 8px); 
-        height: 225px; 
+        width: calc(50% - 8px);
+        height: 225px;
     }
 
     .card-podcast .card-body-podcast {
         height: 68%;
-        padding: 10px; 
+        padding: 10px;
         gap: 2px;
     }
 
@@ -1333,29 +1437,33 @@
 
     .card-podcast .card-header-podcast .view-podcast {
         height: 12px;
-        width: 37%;
-        background-color: #ff004d;
+        width: 80%;
         border-radius: 8px;
         padding: 10px;
-        /* margin-top: 10px; */
-       
-}
+    }
+
+    .link-podcast{
+        width: 48%;
+        /* border: 1px red solid; */
+        z-index: 10;
+        text-decoration: none;
+    }
 
     .text-watch-podcast {
         color: white;
         font-family: "Poppins";
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .card-text-podcast {
-        font-size: 20px; 
+        font-size: 20px;
     }
 
     .card-image-podcast {
-        height: 85px; 
+        height: 85px;
     }
-    
-    .title-genre{
+
+    .title-genre {
         font-size: 11px;
         margin: 2px 15px;
     }
@@ -1363,7 +1471,7 @@
 
     /* area-video */
     .area-content-video {
-        width: 100%; 
+        width: 100%;
     }
 
     .title-video {
@@ -1374,7 +1482,7 @@
         height: 110px;
     }
 
-    .link-text-video{
+    .link-text-video {
         margin-top: 5px;
     }
 
@@ -1383,8 +1491,6 @@
     }
     /* -------------- */
 
-
-    
     /* area-announcer */
     .page-6 {
         height: 100vh;
@@ -1393,18 +1499,18 @@
     .svg-large {
         display: none;
     }
-    
+
     .svg-small {
         display: none;
     }
 
-    .svg-small-mobile{
+    .svg-small-mobile {
         display: block;
     }
 
     .area-content-announcer {
         width: 100%;
-        height: 300px; 
+        height: 300px;
         top: 70px;
         padding: 0px 32px 30px 32px;
     }
@@ -1426,16 +1532,16 @@
     .tombol-kanan-announcer {
         width: 40px;
         height: 40px;
-        top: 90%; 
+        top: 90%;
         transform: translateY(200%);
     }
 
     .tombol-kiri-announcer {
-        left: -15px; 
+        left: -15px;
     }
 
     .tombol-kanan-announcer {
-        right: -15px; 
+        right: -15px;
     }
 
     .area-content-box-announcer {
@@ -1444,7 +1550,7 @@
     }
 
     .box-announcer {
-        flex: 0 0 calc(50% - 7.5px); 
+        flex: 0 0 calc(50% - 7.5px);
         height: 200px;
     }
 
@@ -1454,23 +1560,29 @@
     /* ---------------------- */
 
     /* area-chart-artis */
+
+    .page-7{
+        height: auto;
+    }
+
     .area-content-chart-artis {
         width: 100%;
-        height: 100vh;
+        height: auto;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        /* border: 1px red solid; */
     }
 
     .area-chart-artis {
         width: auto;
-        height: auto; 
-        margin-top: 40px; 
+        height: auto;
+        margin-top: 40px;
         /* border: 1px red solid; */
     }
 
     .area-content-chart {
-        width: 100%; 
+        width: 100%;
         height: 300px;
         background-color: #ffdb00;
         display: flex;
@@ -1478,16 +1590,17 @@
     }
 
     .content-chart {
-        width: 90%; 
-        /* height: 85%; */
+        width: 90%;
+        height: 300px;
+        /* border: 1px green solid; */
     }
 
-    .header-chart{
+    .header-chart {
         margin-top: 10px;
     }
 
     .title-chart {
-        font-size: 28px; 
+        font-size: 28px;
     }
 
     .chart {
@@ -1495,7 +1608,7 @@
         font-size: 12px;
     }
 
-    .text-btn-chart{
+    .text-btn-chart {
         font-size: 12px;
     }
 
@@ -1510,11 +1623,11 @@
 
     .area-content-artis {
         width: auto;
-        padding: 15px;
+        padding: 20px;
         height: auto;
     }
 
-    .content-artis{
+    .content-artis {
         flex-direction: row;
         flex-wrap: wrap;
         flex-grow: 1;
@@ -1522,19 +1635,18 @@
     }
 
     .title-artis {
-        font-size: 30px; 
+        font-size: 30px;
     }
 
     .box-artis {
         height: 100px;
         flex-basis: calc(50% - 6px); /* Setiap box 50% dikurangi gap */
     }
-    
-    
+
     /* ----------------- */
     /* area-schedule */
 
-    .page-8{
+    .page-8 {
         height: auto;
         /* border: 1px red solid; */
         margin-top: 50px;
@@ -1543,7 +1655,7 @@
     .area-schedule {
         width: auto;
         height: auto;
-        margin: 0px 8px;
+        margin: 0px 20px;
     }
 
     .area-content-schedule {
@@ -1570,10 +1682,10 @@
     }
 
     .schedule {
-        width: 120px; 
+        width: 120px;
         height: auto;
         /* margin-top: 8px; */
-        font-size: 16px; 
+        font-size: 16px;
     }
 
     .schedule-day {
@@ -1581,17 +1693,16 @@
     }
 
     .content-schedule {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         margin-top: 10px;
         height: auto;
     }
 
     .box-schedule {
-        height: 120px; 
+        height: 120px;
     }
     /* ---------------- */
-
 
     /* area-audio-player */
     .content {
@@ -1608,12 +1719,12 @@
     .music-titles {
         width: 120px;
     }
-    
-    .music-titles .name{
+
+    .music-titles .name {
         font-size: 10px;
     }
 
-    .music-titles .artist{
+    .music-titles .artist {
         font-size: 12px;
     }
 
@@ -1640,4 +1751,3 @@
 @media (max-width: 320px) {
     /* Gaya untuk smartphone kecil */
 }
-

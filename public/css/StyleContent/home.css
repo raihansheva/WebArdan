@@ -109,7 +109,7 @@
     display: flex;
     height: 30px;
     width: calc(20% - 2px);
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
     border-radius: 12px;
     padding: 10px;
     margin-top: 10px;
@@ -124,7 +124,7 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
     cursor: pointer;
     margin-top: 15px;
     display: flex;
@@ -152,7 +152,7 @@
 .card-B .card-body-B {
     width: auto;
     height: 85%;
-    background-color: white;
+    /* background-color: white; */
     /* padding: 30px; */
     overflow: hidden;
     display: flex;
@@ -177,7 +177,7 @@
     display: flex;
     height: 30px;
     width: calc(20% - 2px);
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
     border-radius: 12px;
     padding: 10px;
     /* margin-top: 5px; */
@@ -267,13 +267,13 @@
 .page-2 {
     width: 100%;
     height: 500px;
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
 }
 
 .area-program {
     width: 100%;
     /* height: 100%; */
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
 }
 
 .area-header-program {
@@ -302,20 +302,32 @@
 .tombol-kiri,
 .tombol-kanan {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #ff004d;
+    width: 55px;
+    height: 55px;
+    background-color: #ff590093;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    top: 100%;
+    top: -12px;
     transform: translateY(240%);
     -webkit-transform: translateY(240%);
     -moz-transform: translateY(240%);
     -ms-transform: translateY(240%);
     -o-transform: translateY(240%);
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.tombol-kiri:hover{
+    background-color: var(--secondary-color);
+}
+.tombol-kanan:hover{
+    background-color: var(--secondary-color);
 }
 
 .tombol-kiri {
@@ -436,7 +448,7 @@
     font-family: "Poppins";
     font-size: 20px;
     font-weight: 200;
-    color: #ffdb00;
+    color: var(--primary-color);
     padding-top: 20px;
 }
 
@@ -776,7 +788,7 @@
     font-weight: 200;
     font-family: "Poppins";
     margin: 0px;
-    color: #ffdb00;
+    color: var(--primary-color);
 }
 
 .content-podcast {
@@ -888,22 +900,37 @@
 
 .card-podcast .card-header-podcast .view-podcast {
     font-weight: 600;
-    color: #333;
+    color: rgb(187, 187, 187);
+    font-family: "Poppins";
     justify-content: center;
     align-items: center;
     display: flex;
     height: 30px;
-    width: 37%;
-    background-color: #ff004d;
+    width: 85%;
+    background-color: var(--secondary-color);
     border-radius: 12px;
     padding: 10px;
     margin-top: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
-.text-watch-podcast {
+.card-podcast .card-header-podcast .view-podcast:hover {
+    background-color: #e05003;
     color: white;
-    font-family: "Poppins";
 }
+
+.link-podcast{
+    width: 42%;
+    /* border: 1px red solid; */
+    z-index: 10;
+    text-decoration: none;
+}
+
+/* .text-watch-podcast {
+    
+} */
+
+
 
 /* -------------- */
 
@@ -955,7 +982,7 @@
     font-weight: 200;
     font-family: "Poppins";
     margin: 0px;
-    color: #ffdb00;
+    color: var(--primary-color);
 }
 
 /* --------------- */
@@ -1038,20 +1065,29 @@
 .tombol-kiri-announcer,
 .tombol-kanan-announcer {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #ffdb00;
+    width: 55px;
+    height: 55px;
+    background-color: #ffdd0093;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    top: 100%;
+    top: -10px;
     transform: translateY(240%);
     -webkit-transform: translateY(240%);
     -moz-transform: translateY(240%);
     -ms-transform: translateY(240%);
     -o-transform: translateY(240%);
+    transition: all 0.3s ease-in-out;
+}
+
+.tombol-kiri-announcer:hover{
+    background-color: var(--primary-color);
+}
+
+.tombol-kanan-announcer:hover{
+    background-color: var(--primary-color);
 }
 
 .tombol-kiri-announcer {
@@ -1115,7 +1151,7 @@
 .area-content-chart {
     width: 60%;
     height: 100%;
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
 }
@@ -1174,7 +1210,7 @@ tbody tr {
 .area-btn-chart {
     width: auto;
     height: auto;
-    border: 1px #ff004d solid;
+    border: 1px var(--secondary-color) solid;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -1187,7 +1223,7 @@ tbody tr {
     font-family: "Poppins";
     margin: 5px 20px;
     font-weight: 500;
-    color: #ff004d;
+    color: var(--secondary-color);
 }
 
 /* ------------ */
@@ -1295,7 +1331,7 @@ tbody tr {
 }
 
 .schedule:hover {
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
 }
 
 .schedule-day {
