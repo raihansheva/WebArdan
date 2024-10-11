@@ -32,4 +32,9 @@ Route::get('/ardan-youtube' , function () {
 });
 
 
+Route::get('/info-news' , function () {
+    return view('page.infoNews');
+});
+
+
 

@@ -1,0 +1,500 @@
+/* page news 1 */
+.page-news-1{
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.header-info-news{
+    width: 100%;
+    height: 350px;
+    /* border: 1px red solid; */
+}
+
+.image-header-info-news{
+    width: 100%;
+    height: 100%;
+    background-color: gainsboro;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.title-header{
+    font-size: 49px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    color: white;
+    margin: 0px 64px;
+}
+/* ------------ */
+
+/* page news 2 */
+.page-news-2{
+    width: 100%;
+    height: auto;
+}
+
+.area-info-news{
+    width: auto;
+    height: auto;
+    /* border: 1px red solid; */
+    margin: 0px 64px 10px 64px;
+}
+
+.line-info-news{
+    width: 100%;
+    border: 1px white solid;
+    margin: 30px 0px;
+}
+
+.content-info-news{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 50px;
+}
+
+/* content kiri */
+.content-IN-kiri{
+    width: 60%;
+    height: auto;
+    /* border: 1px pink solid; */
+    display: flex;
+    flex-direction: column;
+}
+
+.box-info{
+    width: 100%;
+    height: 620px;
+    background-color: white;
+}
+
+.content-box-info{
+    width: auto;
+    height: auto;
+    margin: 20px;
+}
+
+.area-image-info{
+    width: auto;
+    height: 55%;
+    background-color: gainsboro;
+}
+
+.area-info{
+    width: auto;
+    height: fit-content;
+    /* border: 1px black solid; */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.area-tagar-info{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px red solid; */
+}
+
+.tagar-info{
+    font-size: 34px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 0px;
+}
+
+.area-title-info{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px blue solid; */
+}
+
+.title-info{
+    font-size: 38px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    margin: 0px;
+}
+
+.area-desk-info{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px green solid; */
+}
+
+.desk-info{
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+}
+
+.area-date-info{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px pink solid; */
+    margin-top: 10px;
+}
+
+.date-info{
+    font-size: 16px;
+    font-family: "Poppins";
+    font-weight: 500;
+    margin: 0px;
+}
+
+/* ------------ */
+
+
+
+/* content kanan */
+.content-IN-kanan{
+    width: 40%;
+    height: fit-content;
+    /* border: 1px blue solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* area news */
+.area-news{
+    width: 100%;
+    height: auto;
+    /* border: 1px yellow solid; */
+}
+
+.area-header-news{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+}
+
+.header-news{
+    font-size: 38px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+    color: white;
+}
+
+.area-link-news{
+    width: 100%;
+    height: fit-content;
+    /* border: 1px chartreuse; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 15px;
+}
+
+.box-link-news{
+    width: auto;
+    height: auto;
+}
+
+.link-news{
+    text-decoration: none;
+    font-family: "Poppins";
+    color: white;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.link-news:hover{
+    text-decoration: underline;
+}
+
+.line-news{
+    width: 100%;
+    border: 1px white solid;
+    margin-top: 30px;
+}
+/* ------------ */
+
+/* area streaming */
+.area-streaming{
+    width: 100%;
+    height: auto;
+}
+
+.area-header-streaming{
+    width: 100%;
+    height: fit-content;
+}
+
+.title-streaming{
+    font-size: 38px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    color: white;
+    margin: 0px;
+}
+
+.area-thumbnail{
+    width: 100%;
+    height: 150px;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-streaming{
+    height: auto;
+    width: auto;
+    border: 1px var(--primary-color) solid;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    border-radius: 8px;
+    color: var(--primary-color);
+    
+}
+
+.btn-play-streaming:hover{
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: black;
+}
+
+.link-streaming:hover{
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: black;
+}
+
+.link-streaming{
+    text-decoration: none;
+}
+
+.text-streaming{
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 300;
+    margin: 5px 15px;
+}
+
+
+.line-streaming{
+    width: 100%;
+    border: 1px white solid;
+    margin-top: 30px;
+}
+
+/* ------------- */
+
+/* area top news */
+.header-top-news {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-top-news {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    font-size: 38px;
+    font-weight: 200;
+    color: white;
+}
+
+.content-top-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.box-top-news {
+    width: auto;
+    height: 66px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-top-image {
+    width: 30%;
+    /*border: 1px black solid;
+    */
+    background-color: #333;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.area-top-text {
+    width: 70%;
+    /* border: 1px black solid; */
+    height: fit-content;
+}
+
+.desk-top-news {
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+}
+/* ------------- */
+
+/* area -event */
+
+.area-header-event{
+    width: 100%;
+    height: fit-content;
+}
+
+.title-event{
+    font-size: 38px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+    color: white;
+    margin: 0px;
+}
+
+.area-event-bottom{
+    height: 500px;
+    width: 100%;
+    /* border: 1px #ff004d solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.box-event{
+    width: 100%;
+    height: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.area-days-date-right {
+    width: 100%;
+    height: 60px;
+    background-color: #333333b9;
+    display: flex;
+    padding: 10px 15px;
+}
+
+.content-days-date-right {
+    width: 100%;
+    height: auto;
+    /* border: 1px red solid; */
+    text-align: right;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.box-days-date-right {
+    width: auto;
+    height: auto;
+}
+
+.date-month-right {
+    font-family: "Bebas Neue";
+    font-size: 20px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+.year-right {
+    font-family: "Bebas Neue";
+    font-size: 20px;
+    color: white;
+    font-weight: 200;
+    margin: 0px;
+}
+
+.area-see-more{
+    width: 100%;
+    height: fit-content;
+    margin-top: 10px;
+    text-align: end;
+}
+
+.see-more{
+    font-family: "Poppins";
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 200;
+    margin: 0px;
+    text-decoration: none;
+}
+/* ----------- */
+
+
+/* ------------ */
+
+/* ------------ */
+
+/* area info artis */
+
+.page-news-3{
+    width: 100%;
+    height: auto;
+}
+
+.area-info-artis{
+    width: auto;
+    height: auto;
+    margin: 0px 64px 20px 64px;
+    /* border: 1px red solid; */
+}
+
+.line-info-artis{
+    width: 100%;
+    border: 1px white solid;
+    margin: 50px 0px;
+}
+
+.header-info-artis{
+    width: 100%;
+    height: fit-content;
+}
+
+.title-info-artis{
+    font-size: 49px;
+    font-weight: 200;
+    color: white;
+    margin: 0px;
+    font-family: "Bebas Neue";
+}
+
+
+/* area box */
+.area-box-info-artis{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.box-artis{
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+    height: 350px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+
+/* ---------- */
+
+
+/* -------------- */

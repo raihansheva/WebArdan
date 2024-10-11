@@ -34,7 +34,7 @@
                         @endif
 
                         <div class="line"></div>
-                        <a href="#info-news">Info News</a>
+                        <a href="/info-news">Info News</a>
                         <div class="line"></div>
                         <a href="/event">Event</a>
                         <div class="line"></div>
