@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/StyleMain/responsiveMain.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -21,13 +21,18 @@
         </div>
         <div class="area-kanan-navbar">
             <div class="menu-link-navbar">
-                <a class="link" href="#home">
+                <a class="link" href="/home">
                     <p>Home</p>
                 </a>
                 <div class="dropdown">
                     <a class="link dropText" id="dropdown-toggle">Media & Program<i class="arrow-down"></i></a>
                     <div class="dropdown-content" id="dropdown-menu">
-                        <a href="#program">Program</a>
+                        @if (Request::is('/') || Request::is('/home') )
+                            <a href="#program">Program</a>
+                        @else
+                            <a href="{{ url('/home') }}#program">Program</a>
+                        @endif
+
                         <div class="line"></div>
                         <a href="#info-news">Info News</a>
                         <div class="line"></div>
@@ -151,9 +156,9 @@
                                               </div> -->
                     </div>
                 </div>
-                <div class="music-titles">
+                {{-- <div class="music-titles">
                     <p class="name">Hamburger area</p>
-                </div>
+                </div> --}}
             </div>
 
         </div>
@@ -204,4 +209,5 @@
 <script src="js/main/playlist.js"></script>
 <script src="js/main/main.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
 </html>

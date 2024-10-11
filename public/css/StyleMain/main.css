@@ -2,6 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
+:root {
+    --primary-color: #FFDB00;
+    --secondary-color: #ff5b00;
+    /* --neutral-color:; */
+  }
+
+a {
+    text-decoration: none;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -147,10 +157,15 @@ body {
 .link {
     text-decoration: none;
     font-size: 18px;
-    font-weight: 200;
+    font-weight: 300;
     font-family: "Poppins";
-    color: white;
+    color: #cccccc;
     transition: color 0.3s ease;
+}
+
+.link:hover{
+    color: var(--primary-color);
+    /* font-weight: 400; */
 }
 
 .link.active p {
@@ -187,12 +202,29 @@ body {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+}
+
+.arrow-down:hover{
+    border: solid var(--primary-color);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 5px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffdb00;
+    background-color: var(--primary-color);
     min-width: 170px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -239,9 +271,9 @@ body {
 .content {
     /* width: 100%; */
     /* border-radius: 15px; */
-    padding: 0px 30px 0px 0px;
+    /* padding: 0px 0px 0px 0px; */
     display: flex;
-    /* justify-content: center; */
+    justify-content: start;
     align-items: center;
     height: 80px;
     z-index: 6;
@@ -251,7 +283,7 @@ body {
 .area-control-btn{
     width: auto;
     height: 100%;
-    background-color: #17171769;
+    background-color: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,12 +292,12 @@ body {
 
 .area-control-progres{
     background-color: #17171769;
-    width: 85%;
-    display: flex;
-    justify-content: start;
+    width: 100%;
+    display: none;
+    justify-content: center;
     align-items: center;
     /* border: 1px red solid; */
-    padding: 0px 30px 0px 0px;
+    /* padding: 0px 30px 0px 0px; */
     height: 100%;
 }
 
@@ -296,7 +328,7 @@ body {
 }
 
 .icon-menu .bx-menu:hover {
-    color: #ffdb00;
+    color: black;
 }
 
 .music-image {
@@ -398,11 +430,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px black solid; */
+    border: 4px white solid;
     height: 100%;
     padding: 0px 10px;
     width: 210px;
-    background-color: #333333;
+    background-color: var(--secondary-color);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     gap: 5px;

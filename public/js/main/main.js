@@ -243,11 +243,17 @@ document.addEventListener("DOMContentLoaded", function () {
         (entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    removeActiveClasses();
-                    const activeLink = document.querySelector(
-                        `.link[href="#${entry.target.id}"]`
-                    );
-                    activeLink.classList.add("active"); // Tambahkan kelas 'active' ke link yang sesuai
+                    removeActiveClasses(); // Hilangkan 'active' dari semua link
+                    const activeLink = Array.from(navLinks).find((link) => {
+                        const href = link.getAttribute("href");
+                        // Menggunakan endsWith untuk mencocokkan href dengan id section
+                        return href.endsWith(`#${entry.target.id}`);
+                    });
+
+                    // Tambahkan kelas 'active' pada link yang cocok
+                    if (activeLink) {
+                        activeLink.classList.add("active");
+                    }
                 }
             });
         },
@@ -261,6 +267,8 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 });
+
+
 // Toggle mobile menu on hamburger icon click
 document
     .getElementById("hamburger-icon")
@@ -333,35 +341,71 @@ var Comaudioplayer = document.querySelector(".content"),
 let isVisible = true;
 
 btnhideshow.addEventListener("click", function () {
+    // audio first muncul
+    // if (isVisible) {
+    //     // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
+    //     ComCP.classList.add("slide-out");
+
+    //     Comcontrolbtn.style.backgroundColor = "transparent";
+    //     setTimeout(() => {
+    //         ComCP.style.display = "none";
+    //         // Comaudioplayer.classList.remove("fade-out");
+    //         ComCP.classList.remove("slide-out");
+    //     }, 500);
+    // } else {
+    //     ComCP.style.display = "flex";
+    //     // Comaudioplayer.classList.add("fade-in");
+    //     ComCP.classList.add("slide-in");
+        
+    //     setTimeout(() => {
+    //         // Comaudioplayer.classList.remove("fade-in");
+    //         ComCP.classList.remove("slide-in");
+    //         Comimage.classList.remove("slide-in");
+    //         Commusictitle.classList.remove("slide-in");
+    //     }, 500);
+        
+    //     setTimeout(() =>{
+    //         Comcontrolbtn.style.backgroundColor = "";
+
+    //     }, 280);
+    // }
+
+    // isVisible = !isVisible;
+    // ----------------------
+
+    // audio player first hide
     if (isVisible) {
         // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
-        ComCP.classList.add("slide-out");
+        ComCP.style.display = "flex";
+        ComCP.classList.add("slide-in");
 
+        setTimeout(() => {
+            // Comaudioplayer.classList.remove("fade-out");
+            ComCP.classList.remove("slide-in");
+        }, 500);
+
+        setTimeout(() =>{
+            Comcontrolbtn.style.backgroundColor = "#17171769";
+
+        }, 280);
+    } else {
+        // Comaudioplayer.classList.add("fade-in");
+        ComCP.classList.add("slide-out");
+        
         Comcontrolbtn.style.backgroundColor = "transparent";
         setTimeout(() => {
             ComCP.style.display = "none";
-            // Comaudioplayer.classList.remove("fade-out");
-            ComCP.classList.remove("slide-out");
-        }, 500);
-    } else {
-        ComCP.style.display = "flex";
-        // Comaudioplayer.classList.add("fade-in");
-        ComCP.classList.add("slide-in");
-        
-        setTimeout(() => {
             // Comaudioplayer.classList.remove("fade-in");
-            ComCP.classList.remove("slide-in");
-            Comimage.classList.remove("slide-in");
-            Commusictitle.classList.remove("slide-in");
+            ComCP.classList.remove("slide-out");
+            Comimage.classList.remove("slide-out");
+            Commusictitle.classList.remove("slide-out");
         }, 500);
         
-        setTimeout(() =>{
-            Comcontrolbtn.style.backgroundColor = "";
-
-        }, 280);
+        
     }
 
     isVisible = !isVisible;
+    // ----------------------
 });
 // countdown event
 const daysElement = document.getElementById('days');
