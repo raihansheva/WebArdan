@@ -85,7 +85,7 @@
                         </div>
                         <div class="content-top-news">
                             <div class="box-top-news">
-                                <div class="areatop--image">
+                                <div class="area-top-image">
     
                                 </div>
                                 <div class="area-top-text">
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="box-top-news">
-                                <div class="areatop--image">
+                                <div class="area-top-image">
     
                                 </div>
                                 <div class="area-top-text">
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
                             <div class="box-top-news">
-                                <div class="areatop--image">
+                                <div class="area-top-image">
     
                                 </div>
                                 <div class="area-top-text">
@@ -112,7 +112,7 @@
                                 </div>
                             </div>
                             <div class="box-top-news">
-                                <div class="areatop--image">
+                                <div class="area-top-image">
     
                                 </div>
                                 <div class="area-top-text">
@@ -121,7 +121,7 @@
                                 </div>
                             </div>
                             <div class="box-top-news">
-                                <div class="areatop--image">
+                                <div class="area-top-image">
     
                                 </div>
                                 <div class="area-top-text">

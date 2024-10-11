@@ -243,6 +243,17 @@
     align-items: center;
 }
 
+.link-streaming{
+    text-decoration: none;
+}
+
+.text-streaming{
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 300;
+    margin: 5px 15px;
+}
+
 .btn-play-streaming{
     height: auto;
     width: auto;
@@ -260,23 +271,11 @@
     color: black;
 }
 
-.link-streaming:hover{
+/* .link-streaming:hover{
     border-radius: 8px;
     background-color: var(--primary-color);
     color: black;
-}
-
-.link-streaming{
-    text-decoration: none;
-}
-
-.text-streaming{
-    font-size: 18px;
-    font-family: "Poppins";
-    font-weight: 300;
-    margin: 5px 15px;
-}
-
+} */
 
 .line-streaming{
     width: 100%;
