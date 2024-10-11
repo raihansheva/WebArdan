@@ -1,7 +1,7 @@
-@extends('layout.mainPodcast')
+@extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/detailPodcast.css">
 <link rel="stylesheet" href="css/ResponsiveStyle/responsiveDetailPodcast.css">
-@section('content-podcast')
+@section('content')
     <section class="page-detail-1">
         <div class="area-detail-podcast">
             <div class="area-image-DP">
@@ -18,11 +18,13 @@
                         </div>
                     </div>
                     <div class="area-desk-detail-podcast">
-                        <p class="desk-podcast">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam dolor illo ipsum odit quia delectus non dicta praesentium magni necessitatibus vel soluta, nobis voluptate eius!</p>
+                        <p class="desk-podcast">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam dolor
+                            illo ipsum odit quia delectus non dicta praesentium magni necessitatibus vel soluta, nobis
+                            voluptate eius!</p>
                     </div>
                 </div>
                 <div class="content-detail-kanan"></div>
-                
+
             </div>
             <div class="line-detail-podcast"></div>
         </div>
@@ -50,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="card-image-podcast">
-        
+
                                 </div>
                             </div>
                             <div class="card-header-podcast">
@@ -74,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="card-image-podcast">
-        
+
                                 </div>
                             </div>
                             <div class="card-header-podcast">
@@ -98,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="card-image-podcast">
-        
+
                                 </div>
                             </div>
                             <div class="card-header-podcast">
@@ -122,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="card-image-podcast">
-        
+
                                 </div>
                             </div>
                             <div class="card-header-podcast">
@@ -135,7 +137,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -150,80 +152,105 @@
                     </div>
                     <div class="content-kiri-video">
                         <div class="area-video-top">
-                            <div class="box-video"></div>
-                            <div class="box-video"></div>
+                            <div class="box-video">
+                                <div class="btn-play-video">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
+                            <div class="box-video">
+                                <div class="btn-play-video">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="area-video-mid">
                             <div class="box-video-mid">
-
+                                <div class="btn-play-video-mid">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
                             </div>
                         </div>
                         <div class="area-video-bottom">
-                            <div class="box-video"></div>
-                            <div class="box-video"></div>
+                            <div class="box-video">
+                                <div class="btn-play-video">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
+                            <div class="box-video">
+                                <div class="btn-play-video">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="area-content-VNS-kanan">
                     {{-- <div class="area-content-news"> --}}
-                        <div class="header-news">
-                            <h1 class="title-news">Recent News</h1>
-                        </div>
-                        <div class="content-news">
-                            <div class="box-news">
-                                <div class="area-image">
-    
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
+                    <div class="header-news">
+                        <h1 class="title-news">Recent News</h1>
+                    </div>
+                    <div class="content-news">
+                        <div class="box-news">
+                            <div class="area-image">
+
                             </div>
-                            <div class="box-news">
-                                <div class="area-image">
-    
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-news">
-                                <div class="area-image">
-    
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-news">
-                                <div class="area-image">
-    
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-news">
-                                <div class="area-image">
-    
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
                             </div>
                         </div>
+                        <div class="box-news">
+                            <div class="area-image">
+
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                        <div class="box-news">
+                            <div class="area-image">
+
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
+                                    voluptatem error molestias dicta minima? Voluptas!</p>
+                            </div>
+                        </div>
+                    </div>
                     {{-- </div> --}}
                     {{-- <div class="area-content-streaming"> --}}
-                        <div class="header-streaming">
-                            <h2 class="title-streaming">Streaming</h2>
+                    <div class="header-streaming">
+                        <h2 class="title-streaming">Streaming</h2>
+                    </div>
+                    <div class="content-streaming">
+                        <div class="box-streaming">
+                            <a class="link-streaming" href="">
+                                <div class="btn-play-streaming">
+                                    {{-- <span class="material-symbols-rounded">play_arrow</span> --}}
+                                    <h2 class="text-streaming">Click Here</h2>
+                                </div>
+                            </a>
                         </div>
-                        <div class="content-streaming">
-                            <div class="box-streaming"></div>
-                        </div>
+                    </div>
                     {{-- </div> --}}
                 </div>
             </div>

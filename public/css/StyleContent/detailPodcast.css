@@ -164,9 +164,9 @@
 .tombol-kiri-OP,
 .tombol-kanan-OP {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #ffdb00;
+    width: 60px;
+    height: 60px;
+    background-color: #ffdd0093;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -178,6 +178,11 @@
     -moz-transform: translateY(240%);
     -ms-transform: translateY(240%);
     -o-transform: translateY(240%);
+    transition: all 0.4s ease-in-out;
+}
+
+.tombol-kanan-OP:hover, .tombol-kiri-OP:hover{
+    background-color: var(--primary-color);
 }
 
 .tombol-kiri-OP {
@@ -295,16 +300,23 @@
 
 .card-podcast .card-header-podcast .view-podcast {
     font-weight: 600;
-    color: #333;
+    color: rgb(238, 238, 238);
+    font-family: "Poppins";
     justify-content: center;
     align-items: center;
     display: flex;
     height: 30px;
     width: 85%;
-    background-color: #ff004d;
+    background-color: var(--secondary-color);
     border-radius: 12px;
     padding: 10px;
     margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-podcast .card-header-podcast .view-podcast:hover {
+    background-color: #e05003;
+    color: white;
 }
 
 .link-podcast{
@@ -314,10 +326,10 @@
     text-decoration: none;
 }
 
-.text-watch-podcast {
+/* .text-watch-podcast {
     color: white;
     font-family: "Poppins";
-}
+} */
 
 /* ------------------ */
 
@@ -391,6 +403,31 @@
     width: 50%;
     height: 100%;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-video{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    /* margin-top: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-play-video:hover{
+    background-color: #dfc102;
+}
+
+.btn-play-video span {
+    color: black;
+    font-size: 35px;
 }
 
 .area-video-mid{
@@ -403,6 +440,31 @@
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-video-mid{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    /* margin-top: 15px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-play-video-mid:hover{
+    background-color: #dfc102;
+}
+
+.btn-play-video-mid span {
+    color: black;
+    font-size: 38px;
 }
 
 
@@ -513,7 +575,56 @@
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.btn-play-streaming{
+    height: auto;
+    width: auto;
+    border: 1px var(--primary-color) solid;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    border-radius: 8px;
+    color: var(--primary-color);
+    
+}
+
+.btn-play-streaming:hover{
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: black;
+}
+
+.link-streaming:hover{
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: black;
+}
+
+.link-streaming{
+    text-decoration: none;
+}
+
+.text-streaming{
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 300;
+    margin: 5px 15px;
+}
+
+/* .btn-play-streaming:hover{
+    background-color: #bd4200;
+}
+
+.btn-play-streaming span {
+    color: rgb(238, 238, 238);
+    font-size: 35px;
+} */
+
+
+
 
 /* ------------------------ */
 

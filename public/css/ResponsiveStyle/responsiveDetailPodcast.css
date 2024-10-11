@@ -83,6 +83,19 @@
         padding: 0 0px;
     }
 
+    .tombol-kiri-OP, .tombol-kanan-OP{
+        height: 50px;
+        width: 50px;
+    }
+
+    .tombol-kanan-OP{
+        right: -15;
+    }
+    
+    .tombol-kiri-OP{
+        left: -15;
+    }
+
     .card-podcast {
         flex: 1 0 calc(33.33% - 14px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
         height: 330px;
@@ -187,7 +200,7 @@
         display: flex;
         height: 25px;
         width: 85%;
-        background-color: #ff004d;
+        /* background-color: #ff004d; */
         border-radius: 12px;
         padding: 10px;
         margin-top: 10px;
@@ -241,6 +254,24 @@
         gap: 10px;
     }
 
+    .btn-play-video{
+        height: 45px;
+        width: 45px;
+    }
+
+    .btn-play-video span{
+        font-size: 30px;
+    }
+
+    .btn-play-video-mid{
+        width: 55px;
+        height: 55px;
+    }
+
+    .btn-play-video-mid span{
+        font-size: 33px;
+    }
+
     /* --------------- */
 
     /* content kanan */
@@ -248,6 +279,7 @@
         width: 44%;
         gap: 10px;
     }
+    
 
     /* area news */
 
@@ -288,7 +320,11 @@
     .box-streaming {
         height: 100%;
     }
-
+    
+    .text-streaming{
+        font-size: 14px;
+        margin: 5px 10px;
+    }
     /* ------------------- */
     /* --------------- */
 
@@ -366,6 +402,19 @@
         overflow: hidden;
         box-sizing: border-box;
         padding: 0 0px;
+    }
+
+    .tombol-kiri-OP, .tombol-kanan-OP{
+        height: 50px;
+        width: 50px;
+    }
+
+    .tombol-kanan-OP{
+        right: -15;
+    }
+    
+    .tombol-kiri-OP{
+        left: -15;
     }
 
     .card-podcast {
@@ -527,6 +576,24 @@
         gap: 10px;
     }
 
+    .btn-play-video{
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-video span{
+        font-size: 26px;
+    }
+
+    .btn-play-video-mid{
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn-play-video-mid span{
+        font-size: 30px;
+    }
+
     /* --------------- */
 
     /* content kanan */
@@ -574,6 +641,11 @@
 
     .box-streaming {
         height: 100%;
+    }
+
+    .text-streaming{
+        font-size: 12px;
+        margin: 5px 10px;
     }
 
     /* ------------------- */
@@ -664,6 +736,20 @@
         overflow: hidden;
         box-sizing: border-box;
         padding: 0 0px;
+    }
+
+    .tombol-kiri-OP, .tombol-kanan-OP{
+        height: 40px;
+        width: 40px;
+        top: 40;
+    }
+
+    .tombol-kanan-OP{
+        right: -15;
+    }
+    
+    .tombol-kiri-OP{
+        left: -15;
     }
 
     .card-podcast {
@@ -827,6 +913,24 @@
         gap: 10px;
     }
 
+    .btn-play-video{
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-video span{
+        font-size: 26px;
+    }
+
+    .btn-play-video-mid{
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn-play-video-mid span{
+        font-size: 30px;
+    }
+
     /* --------------- */
 
     /* content kanan */
@@ -877,6 +981,10 @@
         height: 100%;
     }
 
+    .text-streaming{
+        font-size: 10px;
+        margin: 5px 10px;
+    }
     /* ------------------- */
     /* --------------- */
 

@@ -5,9 +5,9 @@ const areaContentBoxOP = document.querySelector('.area-content-card-OP');
 
 const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-        return 358;
+        return 365;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 380; 
+        return 350; 
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
         return 400; 
     } else {
