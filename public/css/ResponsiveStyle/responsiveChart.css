@@ -76,6 +76,11 @@
         height: 180px;
     }
 
+    .text-streaming{
+        font-size: 14px;
+        margin: 5px 10px;
+    }
+
     /* -------------- */
 
 
@@ -166,6 +171,11 @@
     
     .box-streaming{
         height: 150px;
+    }
+
+    .text-streaming{
+        font-size: 12px;
+        margin: 5px 10px;
     }
 
     /* -------------- */
@@ -266,6 +276,11 @@
     
     .box-streaming{
         height: 100px;
+    }
+
+    .text-streaming{
+        font-size: 10px;
+        margin: 5px 10px;
     }
 
     /* -------------- */

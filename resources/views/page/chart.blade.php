@@ -95,7 +95,14 @@
                         <h2 class="title-SN-kiri">Streaming</h2>
                     </div>
                     <div class="content-SN-kiri">
-                        <div class="box-streaming"></div>
+                        <div class="box-streaming">
+                            <a class="link-streaming" href="">
+                                <div class="btn-play-streaming">
+                                    {{-- <span class="material-symbols-rounded">play_arrow</span> --}}
+                                    <h2 class="text-streaming">Click Here</h2>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="area-content-SN-kanan">
