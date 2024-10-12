@@ -286,17 +286,25 @@
                     </div>
                     <div class="content-video">
                         <div class="box-video">
-
+                            <div class="btn-play-video">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
                         <div class="box-video">
-
+                            <div class="btn-play-video">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
                         <div class="box-video">
-
+                            <div class="btn-play-video">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
                     </div>
                     <div class="link-text-video">
-                        <h1 class="text-video">See more</h1>
+                        <a href="/ardan-youtube">
+                            <h1 class="text-video">See more</h1>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -433,9 +441,11 @@
                             </tbody>
                         </table>
                         <div class="bottom-chart">
-                            <div class="area-btn-chart">
-                                <h1 class="text-btn-chart">All Chart</h1>
-                            </div>
+                            <a href="/chart">
+                                <div class="area-btn-chart">
+                                    <h1 class="text-btn-chart">All Chart</h1>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -459,36 +469,39 @@
                     <h1 class="title-schedule">Schedule</h1>
                 </div>
                 <div class="top-content-schedule">
-                    <div class="schedule">
+                    <div class="schedule" data-day="monday">
                         <p class="schedule-day">Monday</p>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule" data-day="tuesday">
                         <p class="schedule-day">Tuesday</p>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule" data-day="wednesday">
                         <p class="schedule-day">Wednesday</p>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule" data-day="thursday">
                         <p class="schedule-day">Thursday</p>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule" data-day="friday">
                         <p class="schedule-day">Friday</p>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule" data-day="saturday">
                         <p class="schedule-day">Saturday</p>
                     </div>
-                    <div class="schedule">
+                    <div class="schedule" data-day="sunday">
                         <p class="schedule-day">Sunday</p>
                     </div>
                 </div>
                 <div class="content-schedule">
-                    <div class="box-schedule"></div>
-                    <div class="box-schedule"></div>
-                    <div class="box-schedule"></div>
-                    <div class="box-schedule"></div>
-                    <div class="box-schedule"></div>
+                    <div class="box-schedule" data-day="monday"></div>
+                    <div class="box-schedule" data-day="tuesday"></div>
+                    <div class="box-schedule" data-day="wednesday"></div>
+                    <div class="box-schedule" data-day="thursday"></div>
+                    <div class="box-schedule" data-day="friday"></div>
+                    <div class="box-schedule" data-day="saturday"></div>
+                    <div class="box-schedule" data-day="sunday"></div>
                 </div>
             </div>
+
         </div>
     </section>
 

@@ -132,6 +132,10 @@
     align-items: center;
 }
 
+.btn-play-streaming span{
+    font-size: 32px;
+}
+
 /* card B */
 .card-B {
     width: 100%;
@@ -900,7 +904,7 @@
 
 .card-podcast .card-header-podcast .view-podcast {
     font-weight: 600;
-    color: rgb(187, 187, 187);
+    color: rgb(238, 238, 238);
     font-family: "Poppins";
     justify-content: center;
     align-items: center;
@@ -968,6 +972,24 @@
     width: 100%;
     height: 200px;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-video{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-video span{
+    font-size: 32px;
 }
 
 .link-text-video {
@@ -976,6 +998,8 @@
     text-align: center;
     margin-top: 10px;
 }
+
+
 
 .text-video {
     font-size: 18px;
@@ -1153,12 +1177,14 @@
     height: 100%;
     background-color: var(--primary-color);
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    padding: 0px 30px 0px 64px;
 }
 
 .content-chart {
-    width: 70%;
+    width: 100%;
     height: auto;
+    /* border: 1px black solid; */
 }
 
 .header-chart {
@@ -1207,23 +1233,36 @@ tbody tr {
     justify-content: end;
 }
 
-.area-btn-chart {
+/* .area-btn-chart {
     width: auto;
     height: auto;
-    border: 1px var(--secondary-color) solid;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-}
+} */
 
 .text-btn-chart {
+    border: 1px var(--secondary-color) solid;
     font-size: 18px;
     font-family: "Poppins";
-    margin: 5px 20px;
+    padding: 5px 20px;
     font-weight: 500;
+    border-radius: 5px;
     color: var(--secondary-color);
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.text-btn-chart:hover {
+    border: 1px var(--secondary-color) solid;
+    background-color: var(--secondary-color);
+    color: black;
 }
 
 /* ------------ */
@@ -1233,7 +1272,7 @@ tbody tr {
     width: 40%;
     height: auto;
     background-color: #ffffff;
-    padding: 25px 20px 0px 20px;
+    padding: 25px 64px 0px 30px;
 }
 
 .header-artis {
@@ -1357,6 +1396,15 @@ tbody tr {
     border-radius: 10px;
     box-sizing: border-box;
 }
+
+/* .content-schedule .box-schedule {
+    display: none;
+}
+
+.content-schedule .box-schedule.active {
+    display: block;
+} */
+
 
 /* --------------- */
 

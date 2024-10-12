@@ -341,6 +341,21 @@
         height: 180px;
     }
 
+    .btn-play-video{
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .btn-play-video span{
+        font-size: 32px;
+    }
+
     .text-video {
         font-size: 16px;
     }
@@ -884,6 +899,22 @@
     .box-video {
         height: 110px;
     }
+
+    .btn-play-video{
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .btn-play-video span{
+        font-size: 22px;
+    }
+
 
     .link-text-video {
         margin-top: 5px;
@@ -1480,6 +1511,21 @@
 
     .box-video {
         height: 110px;
+    }
+
+    .btn-play-video{
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .btn-play-video span{
+        font-size: 22px;
     }
 
     .link-text-video {

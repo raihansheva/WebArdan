@@ -206,18 +206,27 @@ const getScrollAmount = () => {
 };
 
 tombolKiri.addEventListener('click', () => {
-    areaContentBox.scrollBy({
-        left: -getScrollAmount(),
-        behavior: 'smooth' 
-    });
+    if (areaContentBox.scrollLeft === 0) {
+        areaContentBox.scrollLeft = areaContentBox.scrollWidth; // Kembali ke akhir
+    } else {
+        areaContentBox.scrollBy({
+            left: -getScrollAmount(),
+            behavior: 'smooth'
+        });
+    }
 });
 
 tombolKanan.addEventListener('click', () => {
-    areaContentBox.scrollBy({
-        left: getScrollAmount(), 
-        behavior: 'smooth'
-    });
+    if (areaContentBox.scrollLeft + areaContentBox.clientWidth >= areaContentBox.scrollWidth) {
+        areaContentBox.scrollLeft = 0; // Kembali ke awal
+    } else {
+        areaContentBox.scrollBy({
+            left: getScrollAmount(),
+            behavior: 'smooth'
+        });
+    }
 });
+
 // ---------------------------------------
 
 // carousel announcer
@@ -325,4 +334,24 @@ tontonSiaranBtnB.addEventListener('click', function() {
 //     }
 
 
+// Dapatkan semua elemen schedule dan box-schedule
+// const scheduleItems = document.querySelectorAll('.schedule');
+// const boxSchedules = document.querySelectorAll('.box-schedule');
+
+// // Tambahkan event listener ke setiap item schedule
+// scheduleItems.forEach(item => {
+//     item.addEventListener('click', function() {
+//         // Dapatkan hari dari elemen yang diklik
+//         const day = this.getAttribute('data-day');
+
+//         // Hapus kelas 'active' dari semua box-schedule
+//         boxSchedules.forEach(box => {
+//             box.classList.remove('active');
+//         });
+
+//         // Tampilkan box-schedule yang sesuai dengan hari yang diklik
+//         const activeBox = document.querySelector(`.box-schedule[data-day="${day}"]`);
+//         activeBox.classList.add('active');
+//     });
+// });
 
