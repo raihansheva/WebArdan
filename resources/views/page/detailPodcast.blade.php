@@ -5,7 +5,32 @@
     <section class="page-detail-1">
         <div class="area-detail-podcast">
             <div class="area-image-DP">
-                <div class="image-DP"></div>
+                <div class="card-DP">
+                    <div class="card-DP-body">
+                        <div class="btn-play-DP">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </div>
+                    </div>
+                    <div class="card-DP-header">
+                        <div class="DP-author">
+                        </div>
+                        <div class="DP-view" id="btn-tonton">
+                            <p class="text-watchP">Tonton Podcast</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-DP-B">
+                    <div class="card-body-DP-B">
+                        <div class="video-container">
+                            <div id="player-podcast" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
+                        </div>
+                    </div>
+                    <div class="card-DP-footer">
+                        <div class="view-DP-B">
+                            <p class="text-watchP-B">Dengar Podcast</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="content-detail-podcast">
                 <div class="content-detail-kiri">

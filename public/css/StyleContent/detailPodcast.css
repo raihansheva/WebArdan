@@ -16,12 +16,217 @@
 .area-image-DP{
     width: 100%;
     height: auto;
+    display: flex;
+    justify-content: center;
+    /* border: 1px red solid; */
 }
 
 .image-DP{
     width: 100%;
     height: 500px;
     background-color: gainsboro;
+
+}
+
+.card-DP {
+    width: 100%;
+    /* background-color: darkgrey; */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    height: 500px;
+}
+
+.card-DP .card-DP-header {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    /* border: 1px red solid; */
+}
+
+.card-DP .card-DP-body {
+    /* width: 100%; */
+    height: 70%;
+    background-color: white;
+    padding: 30px;
+    overflow: hidden;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card-DP .card-DP-header .DP-author {
+    color: #333;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    width: 77%;
+    height: 60px;
+    display: flex;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    /* border: 1px black solid; */
+}
+
+.card-DP .card-DP-header .DP-author::before {
+    background-color: transparent;
+    border-top-left-radius: 20px;
+    box-shadow: -30px -30px 0 white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    width: 23%;
+    content: "";
+    cursor: pointer;
+    /* border: 1px black solid; */
+}
+
+.card-DP .card-DP-header .DP-view {
+    font-weight: 600;
+    color: rgb(238, 238, 238);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    width: calc(20% - 2px);
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.text-watchP {
+    font-family: "Poppins";
+}
+
+.btn-play-DP{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-DP span{
+    color: rgb(238, 238, 238);
+    font-size: 32px;
+}
+
+/* card B */
+.card-DP-B {
+    width: 100%;
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* border: 1px green solid; */
+    height: auto;
+
+}
+
+.card-DP-B .card-header-DP-B {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    /* border: 1px red solid; */
+}
+
+.card-DP-B .card-body-DP-B {
+    width: auto;
+    /* height: 100%; */
+    /* background-color: white; */
+    /* padding: 30px; */
+    overflow: hidden;
+    display: flex;
+    /* flex-direction: column; */
+    gap: 12px;
+    /* border-radius: 20px; */
+    /* border: 1px red solid; */
+}
+
+.card-DP-footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.card-DP-B .view-DP-B {
+    font-weight: 600;
+    color: rgb(238, 238, 238);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 30px;
+    width: calc(20% - 2px);
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 10px;
+    /* margin-top: 5px; */
+    cursor: pointer;
+}
+
+.text-watchP-B {
+    font-family: "Poppins";
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 50.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: black; /* Optional: background color if needed */
+    /* border: 1px red solid; */
+}
+
+.video-container iframe,
+.video-container #player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+/* ---------------------- */
+/* animasi */
+/* Kelas untuk menampilkan card dengan animasi */
+.card-DP.show{
+    opacity: 1;
+    transform: translateY(0);
+    width: 70%;
+}
+.card-DP-B.show {
+    opacity: 1;
+    transform: translateY(0);
+    width: 65%;
+    height: auto;
+}
+
+/* Kelas untuk menyembunyikan card dengan animasi */
+.card-DP.hide,
+.card-DP-B.hide {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .content-detail-podcast{
