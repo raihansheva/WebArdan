@@ -61,7 +61,7 @@
         width: 28%;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         width: 60px;
         height: 60px;
     }
@@ -83,17 +83,21 @@
         /* height: 0; */
         overflow: hidden;
         width: 100%;
-        background-color: rgb(0, 0, 0); /* Optional: background color if needed */
+        background-color: rgb(
+            0,
+            0,
+            0
+        ); /* Optional: background color if needed */
         /* border: 1px red solid; */
     }
-    
+
     .video-container iframe,
     .video-container #player {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: auto;
+        /* height: auto; */
         border: none;
     }
 
@@ -252,6 +256,21 @@
         margin: 0px 32px 20px 32px;
     }
 
+    .ornamen-PV-1 {
+        right: 600;
+    }
+
+    .ornamen-PV-2 {
+        display: none;
+    }
+
+    .ornamen-PV-2xl {
+        display: block;
+        right: 10;
+        width: 420px;
+        height: 412px;
+    }
+
     .line-PV {
         height: 400px;
     }
@@ -263,6 +282,11 @@
 
     .title-podcast {
         font-size: 38px;
+    }
+
+    .logo-podcast {
+        width: 58px;
+        height: 68px;
     }
 
     .text-podcast {
@@ -301,7 +325,7 @@
         */
     }
 
-    .link-podcast{
+    .link-podcast {
         width: 46%;
         /* border: 1px red solid; */
         z-index: 10;
@@ -341,7 +365,7 @@
         height: 180px;
     }
 
-    .btn-play-video{
+    .btn-play-video {
         height: 60px;
         width: 60px;
         border-radius: 50%;
@@ -351,8 +375,8 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .btn-play-video span{
+
+    .btn-play-video span {
         font-size: 32px;
     }
 
@@ -376,6 +400,12 @@
 
     .svg-small-mobile {
         display: none;
+    }
+
+    .logo-announcer {
+        width: 160px;
+        height: 326px;
+        left: 10px;
     }
 
     .area-content-announcer {
@@ -446,11 +476,11 @@
         height: auto;
         background-color: #ffdb00;
         display: flex;
-        justify-content: center;
+        padding: 0px 32px 0px 32px;
     }
 
     .content-chart {
-        width: 80%;
+        width: 100%;
     }
 
     .title-chart {
@@ -471,7 +501,7 @@
 
     .area-content-artis {
         width: 40%;
-        padding: 20px;
+        padding: 20px 32px 20px 32px;
     }
 
     .title-artis {
@@ -484,7 +514,7 @@
     /* ----------------- */
     /* area-schedule */
 
-    .page-8{
+    .page-8 {
         height: auto;
     }
     .area-schedule {
@@ -618,16 +648,17 @@
         width: 32%;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         width: 60px;
         height: 60px;
     }
 
     .card-B .card-body-B {
-        height: auto;
+        height: 100%;
         /* padding: 25px; */
         /* border: 1px red solid; */
     }
+
     .card-B .view-B {
         height: 20px;
         width: 28%;
@@ -636,24 +667,32 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 45.25%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        padding-bottom: 48.25%; /* 16:9 aspect ratio */
+        height: 0;
         overflow: hidden;
         width: 100%;
-        background-color: rgb(0, 0, 0); /* Optional: background color if needed */
+        background-color: rgb(
+            0,
+            0,
+            0
+        ); /* Optional: background color if needed */
         /* border: 1px red solid; */
     }
-    
+
     .video-container iframe,
     .video-container #player {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: auto;
+        /* height: auto; */
         border: none;
     }
 
+    .card-B-show {
+        width: 100%;
+        height: auto;
+    }
 
     .title-streaming {
         font-size: 2.5rem;
@@ -812,6 +851,25 @@
         gap: 30px;
     }
 
+    .ornamen-PV-1 {
+        right: 400;
+    }
+
+    .ornamen-PV-2 {
+        display: none;
+    }
+
+    .ornamen-PV-2xl {
+        display: none;
+    }
+
+    .ornamen-PV-2l {
+        display: block;
+        right: 10;
+        width: 300px;
+        height: 342px;
+    }
+
     .line-PV {
         height: 400px;
     }
@@ -821,8 +879,17 @@
         width: 60%;
     }
 
+    .area-title-podcast{
+        gap: 10px ;
+    }
+
     .title-podcast {
         font-size: 30px;
+    }
+
+    .logo-podcast {
+        width: 48px;
+        height: 58px;
     }
 
     .text-podcast {
@@ -860,7 +927,7 @@
         padding: 10px;
     }
 
-    .link-podcast{
+    .link-podcast {
         width: 47%;
         /* border: 1px red solid; */
         z-index: 10;
@@ -900,7 +967,7 @@
         height: 110px;
     }
 
-    .btn-play-video{
+    .btn-play-video {
         height: 45px;
         width: 45px;
         border-radius: 50%;
@@ -910,11 +977,10 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .btn-play-video span{
+
+    .btn-play-video span {
         font-size: 22px;
     }
-
 
     .link-text-video {
         margin-top: 5px;
@@ -947,6 +1013,12 @@
         height: 330px;
         top: 70px;
         padding: 0px 32px 30px 32px;
+    }
+
+    .logo-announcer {
+        width: 140px;
+        height: 306px;
+        left: 5px;
     }
 
     .title-announcer {
@@ -997,7 +1069,7 @@
         width: 100%;
         height: auto;
         display: flex;
-        gap: 20px;
+        gap: 10px;
     }
 
     .area-chart-artis {
@@ -1012,10 +1084,11 @@
         background-color: #ffdb00;
         display: flex;
         justify-content: center;
+        padding: 0px 20px 0px 20px;
     }
 
     .content-chart {
-        width: 80%;
+        width: 100%;
         /* height: 85%; */
     }
 
@@ -1042,7 +1115,7 @@
 
     .area-content-artis {
         width: 35%;
-        padding: 15px;
+        padding: 20px;
         /* height: 380px; */
     }
 
@@ -1192,7 +1265,7 @@
         height: 50px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         width: 50px;
         height: 50px;
     }
@@ -1208,26 +1281,33 @@
         margin-top: 0px;
     }
 
+    .text-watchS-B {
+        font-size: 12px;
+    }
+
     .video-container {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 aspect ratio */
         /* height: 0; */
         overflow: hidden;
         width: 100%;
-        background-color: rgb(0, 0, 0); /* Optional: background color if needed */
-        border: 1px red solid;
+        background-color: rgb(
+            0,
+            0,
+            0
+        ); /* Optional: background color if needed */
+        /* border: 1px red solid; */
     }
-    
+
     .video-container iframe,
     .video-container #player {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: auto;
+        /* height: auto; */
         border: none;
     }
-
 
     .title-streaming {
         font-size: 1.5rem;
@@ -1422,6 +1502,11 @@
     .area-content-PV {
         gap: 30px;
         flex-direction: column;
+        margin-top: 55px;
+    }
+
+    .svg-ornamen-PV{
+        display: none;
     }
 
     .line-PV {
@@ -1438,6 +1523,11 @@
         font-size: 28px;
     }
 
+    .logo-podcast {
+        width: 38px;
+        height: 48px;
+    }
+
     .text-podcast {
         font-size: 12px;
     }
@@ -1447,7 +1537,7 @@
     }
 
     .card-podcast {
-        width: calc(50% - 8px);
+        width: calc(50% - 5px);
         height: 225px;
     }
 
@@ -1473,7 +1563,7 @@
         padding: 10px;
     }
 
-    .link-podcast{
+    .link-podcast {
         width: 48%;
         /* border: 1px red solid; */
         z-index: 10;
@@ -1513,7 +1603,7 @@
         height: 110px;
     }
 
-    .btn-play-video{
+    .btn-play-video {
         height: 35px;
         width: 35px;
         border-radius: 50%;
@@ -1523,8 +1613,8 @@
         justify-content: center;
         align-items: center;
     }
-    
-    .btn-play-video span{
+
+    .btn-play-video span {
         font-size: 22px;
     }
 
@@ -1552,6 +1642,10 @@
 
     .svg-small-mobile {
         display: block;
+    }
+
+    .logo-announcer{
+        display: none;
     }
 
     .area-content-announcer {
@@ -1607,7 +1701,7 @@
 
     /* area-chart-artis */
 
-    .page-7{
+    .page-7 {
         height: auto;
     }
 
@@ -1628,15 +1722,16 @@
     }
 
     .area-content-chart {
-        width: 100%;
+        width: auto;
         height: 300px;
         background-color: #ffdb00;
         display: flex;
         justify-content: center;
+        padding: 0px 20px 0px 20px;
     }
 
     .content-chart {
-        width: 90%;
+        width: 100%;
         height: 300px;
         /* border: 1px green solid; */
     }

@@ -4,6 +4,16 @@
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @section('content')
+    <section class="section-banner">
+        <div class="area-banner">
+            <swiper-container class="mySwiper"  centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                <swiper-slide>Slide 1</swiper-slide>
+                <swiper-slide>Slide 2</swiper-slide>
+                <swiper-slide>Slide 3</swiper-slide>
+            </swiper-container>
+        </div>
+    </section>
     <section class="page-1" id="home">
         <div class="area-streaming">
             <div class="header-streaming">
@@ -61,17 +71,35 @@
                     <div class="tombol-kiri"></div>
                     <div class="tombol-kanan"></div>
                 </div>
-                <div class="area-content-box-program">
-                    <div class="box-program"></div>
-                    <div class="box-program"></div>
-                    <div class="box-program"></div>
-                    <div class="box-program"></div>
-                    <div class="box-program"></div>
-                </div>
+                <swiper-container
+                    class="area-content-box-program"
+                    loop="true"
+                    autoplay-delay="2500"
+                    autoplay-disable-on-interaction="false"
+                    slides-per-view="4"
+                    space-between="20">
+                    <swiper-slide class="box-program"></swiper-slide>
+                    <swiper-slide class="box-program"></swiper-slide>
+                    <swiper-slide class="box-program"></swiper-slide>
+                    <swiper-slide class="box-program"></swiper-slide>
+                    <swiper-slide class="box-program"></swiper-slide>
+                </swiper-container>
             </div>
         </div>
+        
     </section>
     <section class="page-3" id="info-news">
+        {{-- <svg class="svg-ornamen" width="1480" height="566" viewBox="0 0 1440 566" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path opacity = "0.55" d="M-159 31C45.8 203.8 337 467 749 203C1217 31 1510.33 333.667 1557 535" stroke="#FFDB00"
+                stroke-width="61" stroke-linecap="round" />
+        </svg>
+        <svg class="svg-ornamen" width="1150" height="655" viewBox="0 0 1440 655" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path opacity = "0.55"
+                d="M-100.976 542.218C197.047 639.853 633.29 799.288 796.239 275.389C1072.62 -169.111 1538.86 35.701 1722.37 248.688"
+                stroke="#ff5b00" stroke-width="22" stroke-linecap="round" />
+        </svg> --}}
         <div class="area-info-news">
             <div class="line-info"></div>
             <div class="area-content-info-news">
@@ -221,6 +249,7 @@
                     <div class="header-podcast">
                         <div class="area-title-podcast">
                             <h1 class="title-podcast">Podcast</h1>
+                            <img class="logo-podcast" src="image/podcast.png" alt="">
                         </div>
                         <div class="area-text-podcast">
                             <a href="/podcast">
@@ -313,7 +342,7 @@
     <br>
     <section class="page-6" id="announcer">
         <div class="area-announcer">
-            <div class="area-svg">
+            {{-- <div class="area-svg">
                 <!-- SVG default untuk media lebih dari 1024px -->
                 <svg class="svg-large" width="434" height="667" viewBox="0 0 434 667" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -367,9 +396,9 @@
                     <path d="M247.683 414.423L247.683 54.6094" stroke="#FFDB00" stroke-width="20.8121"
                         stroke-linecap="round" />
                 </svg>
-            </div>
-
+            </div> --}}
             <div class="area-content-announcer">
+                {{-- <img class="logo-announcer" src="image/micAnnouncer.png" alt=""> --}}
                 <div class="header-announcer">
                     <h1 class="title-announcer">Announcer</h1>
                 </div>
@@ -378,14 +407,23 @@
                         <div class="tombol-kiri-announcer"></div>
                         <div class="tombol-kanan-announcer"></div>
                     </div>
-                    <div class="area-content-box-announcer">
-                        <div class="box-announcer"></div>
-                        <div class="box-announcer"></div>
-                        <div class="box-announcer"></div>
-                        <div class="box-announcer"></div>
-                        <div class="box-announcer"></div>
-                        <div class="box-announcer"></div>
-                    </div>
+                    <swiper-container
+                        class="area-content-box-announcer"
+                        loop="true"
+                        autoplay-delay="2500"
+                        autoplay-disable-on-interaction="false"
+                        slides-per-view="5"
+                        space-between="20"
+                        pagination-clickable="true">
+                        <swiper-slide class="box-announcer"></swiper-slide>
+                        <swiper-slide class="box-announcer"></swiper-slide>
+                        <swiper-slide class="box-announcer"></swiper-slide>
+                        <swiper-slide class="box-announcer"></swiper-slide>
+                        <swiper-slide class="box-announcer"></swiper-slide>
+                        <swiper-slide class="box-announcer"></swiper-slide>
+                    </swiper-container>
+                </div>
+                
                 </div>
             </div>
         </div>

@@ -355,3 +355,28 @@ tontonSiaranBtnB.addEventListener('click', function() {
 //     });
 // });
 
+
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+            delay: 2500, 
+            disableOnInteraction: false, // Autoplay tidak berhenti setelah interaksi pengguna
+        },
+        slidesPerView: 3, // Menampilkan 3 slide
+        spaceBetween: 20, // Jarak antar slide
+        breakpoints: {
+            640: {
+                slidesPerView: 1, 
+            },
+            768: {
+                slidesPerView: 2, // 2 slide pada layar menengah
+            },
+            1024: {
+                slidesPerView: 3, // 3 slide pada layar besar
+            },
+        },
+    });
+
+
+
+

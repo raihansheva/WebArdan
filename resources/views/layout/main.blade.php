@@ -11,6 +11,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
 
 <body>
@@ -27,7 +28,7 @@
                 <div class="dropdown">
                     <a class="link dropText" id="dropdown-toggle">Media & Program<i class="arrow-down"></i></a>
                     <div class="dropdown-content" id="dropdown-menu">
-                        @if (Request::is('/') || Request::is('/home') )
+                        @if (Request::is('/') || Request::is('/home'))
                             <a href="#program">Program</a>
                         @else
                             <a href="{{ url('/home') }}#program">Program</a>
@@ -44,15 +45,27 @@
                         <div class="line"></div>
                     </div>
                 </div>
-                <a class="link" href="#announcer">
-                    <p>Announcer</p>
-                </a>
+                @if (Request::is('/') || Request::is('/home'))
+                    <a class="link" href="#announcer">
+                        <p>Announcer</p>
+                    </a>
+                @else
+                    <a class="link" href="{{ url('/home') }}#announcer">
+                        <p>Announcer</p>
+                    </a>
+                @endif
                 <a class="link" href="/chart">
                     <p>Chart</p>
                 </a>
-                <a class="link" href="#schedule">
-                    <p>Schedule</p>
-                </a>
+                @if (Request::is('/') || Request::is('/home'))
+                    <a class="link" href="#schedule">
+                        <p>Schedule</p>
+                    </a>
+                @else
+                    <a class="link" href="{{ url('/home') }}#schedule">
+                        <p>Schedule</p>
+                    </a>
+                @endif
                 <a class="link" href="#contact">
                     <p>Contact</p>
                 </a>
@@ -71,14 +84,26 @@
             </div>
             <div class="area-menu-mobile">
                 <a class="link-mobile" href="#home">Home</a>
-                <a class="link-mobile" href="#program">Program</a>
-                <a class="link-mobile" href="#info-news">Info News</a>
+                @if (Request::is('/') || Request::is('/home'))
+                    <a class="link-mobile" href="#program">Program</a>
+                @else
+                    <a class="link-mobile" href="{{ url('home') }}#program">Program</a>
+                @endif
+                <a class="link-mobile" href="/info-news">Info News</a>
                 <a class="link-mobile" href="/event">Event</a>
-                <a class="link-mobile" href="#s">Playlist Youtube</a>
-                <a class="link-mobile" href="#s">Podcast</a>
-                <a class="link-mobile" href="#announcer">Announcer</a>
-                <a class="link-mobile" href="#chart">Chart</a>
-                <a class="link-mobile" href="#schedule">Schedule</a>
+                <a class="link-mobile" href="/ardan-youtube">Playlist Youtube</a>
+                <a class="link-mobile" href="/podcast">Podcast</a>
+                @if (Request::is('/') || Request::is('/home'))
+                    <a class="link-mobile" href="#announcer">Announcer</a>
+                @else
+                    <a class="link-mobile" href="{{ url('home') }}#announcer">Announcer</a>
+                @endif
+                <a class="link-mobile" href="/chart">Chart</a>
+                @if (Request::is('/') || Request::is('/home'))
+                    <a class="link-mobile" href="#schedule">Schedule</a>
+                @else
+                    <a class="link-mobile" href="{{ url('home') }}#schedule">Schedule</a>
+                @endif
                 <a class="link-mobile" href="#contact">Contact</a>
             </div>
             <div class="area-audio-mobile">
@@ -119,7 +144,7 @@
     </div>
     {{-- audio player --}}
     <div class="audio-player-container">
-        <svg id="visual" viewBox="0 0 900 600" width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+        <svg id="visual" viewBox="0 0 900 600" width="1800" height="600" xmlns="http://www.w3.org/2000/svg">
             <path id="layer1" fill="#FF004D" stroke="#FF004D" stroke-width="2" stroke-linecap="round"></path>
         </svg>
         <div class="content">
@@ -209,5 +234,5 @@
 <script src="js/main/playlist.js"></script>
 <script src="js/main/main.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 </html>

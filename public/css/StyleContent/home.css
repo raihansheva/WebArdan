@@ -1,7 +1,55 @@
+/* area banner */
+
+.section-banner {
+    width: 100%;
+    height: auto;
+    padding-top: 40px;
+}
+
+.area-banner {
+    width: auto;
+    margin: 0px 64px 0px 64px;
+    height: 250px;
+    /* border: 1px red solid; */
+}
+
+.image-banner {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ----------- */
+
 .page-1 {
     width: auto;
     /* height: 100vh; */
-    padding: 0px 64px 0px;
+    padding: 40px 64px 0px;
 }
 
 .area-streaming {
@@ -120,7 +168,7 @@
     font-family: "Poppins";
 }
 
-.btn-play-streaming{
+.btn-play-streaming {
     height: 80px;
     width: 80px;
     border-radius: 50%;
@@ -132,7 +180,7 @@
     align-items: center;
 }
 
-.btn-play-streaming span{
+.btn-play-streaming span {
     font-size: 32px;
 }
 
@@ -327,19 +375,21 @@
     -o-transition: all 0.3s ease-in-out;
 }
 
-.tombol-kiri:hover{
+.tombol-kiri:hover {
     background-color: var(--secondary-color);
 }
-.tombol-kanan:hover{
+.tombol-kanan:hover {
     background-color: var(--secondary-color);
 }
 
 .tombol-kiri {
     left: -20;
+    z-index: 99;
 }
 
 .tombol-kanan {
     right: -20;
+    z-index: 99;
 }
 
 .area-content-program {
@@ -373,15 +423,25 @@
     width: 100%;
     height: auto;
     background-color: #353535;
+    position: relative; /* Tambahkan posisi relatif untuk membuat SVG di belakang bekerja */
+}
+
+.svg-ornamen {
+    position: absolute;
+    top: 0; /* Sesuaikan agar SVG berada di posisi yang diinginkan */
+    left: 0;
+    width: 100%;
+    height: auto;
 }
 
 .area-info-news {
     width: auto;
     height: auto;
-    /* border: 1px black solid; */
-    margin: 0px 60px 0px 60px;
+    margin: 0px 60px;
     padding-top: 5px;
     padding-bottom: 5px;
+    position: relative; /* Pastikan elemen ini tidak absolute, agar tidak terpengaruh posisi lain */
+    z-index: 1; /* Lebih tinggi dari SVG */
 }
 
 .line-info {
@@ -733,6 +793,33 @@
     height: auto;
     margin: 0px 64px 20px 64px;
     /* border: 1px red solid; */
+    position: relative;
+}
+
+.svg-ornamen-PV {
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.ornamen-PV-1 {
+    right: 1000;
+    width: 1280px;
+    height: 540px;
+}
+
+.ornamen-PV-2 {
+    right: 10;
+    width: 498px;
+    height: 512px;
+}
+
+.ornamen-PV-2xl {
+    display: none;
+}
+
+.ornamen-PV-2l {
+    display: none;
 }
 
 .area-content-PV {
@@ -740,11 +827,12 @@
     height: auto;
     display: flex;
     gap: 48px;
+    margin-top: 150px;
 }
 
 .line-PV {
     width: 1px;
-    height: 500px;
+    height: auto;
     background-color: white;
     /* border: 1px white solid; */
     margin-top: 50px;
@@ -770,6 +858,10 @@
     width: 50%;
     height: 100%;
     /* border: 1px lightblue solid; */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
 }
 
 .title-podcast {
@@ -778,6 +870,11 @@
     font-family: "Bebas Neue";
     margin: 0px;
     color: white;
+}
+
+.logo-podcast {
+    width: 74px;
+    height: 84px;
 }
 
 .area-text-podcast {
@@ -923,7 +1020,7 @@
     color: white;
 }
 
-.link-podcast{
+.link-podcast {
     width: 42%;
     /* border: 1px red solid; */
     z-index: 10;
@@ -933,8 +1030,6 @@
 /* .text-watch-podcast {
     
 } */
-
-
 
 /* -------------- */
 
@@ -977,7 +1072,7 @@
     align-items: center;
 }
 
-.btn-play-video{
+.btn-play-video {
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -988,7 +1083,7 @@
     align-items: center;
 }
 
-.btn-play-video span{
+.btn-play-video span {
     font-size: 32px;
 }
 
@@ -998,8 +1093,6 @@
     text-align: center;
     margin-top: 10px;
 }
-
-
 
 .text-video {
     font-size: 18px;
@@ -1053,7 +1146,18 @@
     background-color: #353535;
     position: relative;
     top: 85px;
-    padding: 0px 64px 0px 64px;
+    /* padding: 0px 64px 0px 64px; */
+}
+
+.logo-announcer {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
 }
 
 .header-announcer {
@@ -1061,6 +1165,7 @@
     height: auto;
     /* border: 1px black solid; */
     text-align: center;
+    position: relative;
 }
 
 .title-announcer {
@@ -1076,6 +1181,7 @@
     height: auto;
     /* border: 1px red solid; */
     margin-top: 20px;
+    position: relative;
 }
 
 .area-tombol-announcer {
@@ -1106,29 +1212,32 @@
     transition: all 0.3s ease-in-out;
 }
 
-.tombol-kiri-announcer:hover{
+.tombol-kiri-announcer:hover {
     background-color: var(--primary-color);
 }
 
-.tombol-kanan-announcer:hover{
+.tombol-kanan-announcer:hover {
     background-color: var(--primary-color);
 }
 
 .tombol-kiri-announcer {
-    left: -20;
+    left: 30;
+    z-index: 99;
 }
 
 .tombol-kanan-announcer {
-    right: -20;
+    right: 30;
+    z-index: 99;
 }
 
 .area-content-box-announcer {
-    width: 100%;
+    width: auto;
     display: flex;
     gap: 20px;
     overflow: hidden;
     box-sizing: border-box;
     padding: 0 0px;
+    margin: 0px 64px;
 }
 
 .box-announcer {
@@ -1404,7 +1513,6 @@ tbody tr {
 .content-schedule .box-schedule.active {
     display: block;
 } */
-
 
 /* --------------- */
 

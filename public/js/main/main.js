@@ -229,45 +229,6 @@ window.onclick = function (event) {
 //     });
 // });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll("section"); // Mengambil semua section
-    const navLinks = document.querySelectorAll(".link"); // Mengambil semua link navbar
-
-    // Fungsi untuk menghapus kelas 'active' dari semua link
-    const removeActiveClasses = () => {
-        navLinks.forEach((link) => link.classList.remove("active"));
-    };
-
-    // Menggunakan IntersectionObserver untuk melacak setiap section
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    removeActiveClasses(); // Hilangkan 'active' dari semua link
-                    const activeLink = Array.from(navLinks).find((link) => {
-                        const href = link.getAttribute("href");
-                        // Menggunakan endsWith untuk mencocokkan href dengan id section
-                        return href.endsWith(`#${entry.target.id}`);
-                    });
-
-                    // Tambahkan kelas 'active' pada link yang cocok
-                    if (activeLink) {
-                        activeLink.classList.add("active");
-                    }
-                }
-            });
-        },
-        {
-            threshold: 0.6, // 60% dari section harus terlihat sebelum dianggap aktif
-        }
-    );
-
-    // Memantau setiap section
-    sections.forEach((section) => {
-        observer.observe(section);
-    });
-});
-
 
 // Toggle mobile menu on hamburger icon click
 document
@@ -299,16 +260,16 @@ document.addEventListener("click", function (event) {
         !isClickInsideHamburger &&
         mobileMenu.classList.contains("active")
     ) {
-        // console.log("Closing mobile menu"); // Check if this gets logged
+        // console.log("Closing mobile menu"); 
         mobileMenu.classList.remove("active");
     }
 });
 window.onload = function () {
-    checkScrollPosition(); // Cek posisi scroll saat halaman dimuat
+    checkScrollPosition();
 };
 
 window.onscroll = function () {
-    checkScrollPosition(); // Cek posisi scroll saat pengguna scroll
+    checkScrollPosition(); 
 };
 
 function checkScrollPosition() {
@@ -342,102 +303,112 @@ let isVisible = true;
 
 btnhideshow.addEventListener("click", function () {
     // audio first muncul
-    // if (isVisible) {
-    //     // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
-    //     ComCP.classList.add("slide-out");
-
-    //     Comcontrolbtn.style.backgroundColor = "transparent";
-    //     setTimeout(() => {
-    //         ComCP.style.display = "none";
-    //         // Comaudioplayer.classList.remove("fade-out");
-    //         ComCP.classList.remove("slide-out");
-    //     }, 500);
-    // } else {
-    //     ComCP.style.display = "flex";
-    //     // Comaudioplayer.classList.add("fade-in");
-    //     ComCP.classList.add("slide-in");
-        
-    //     setTimeout(() => {
-    //         // Comaudioplayer.classList.remove("fade-in");
-    //         ComCP.classList.remove("slide-in");
-    //         Comimage.classList.remove("slide-in");
-    //         Commusictitle.classList.remove("slide-in");
-    //     }, 500);
-        
-    //     setTimeout(() =>{
-    //         Comcontrolbtn.style.backgroundColor = "";
-
-    //     }, 280);
-    // }
-
-    // isVisible = !isVisible;
-    // ----------------------
-
-    // audio player first hide
     if (isVisible) {
         // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
-        ComCP.style.display = "flex";
-        ComCP.classList.add("slide-in");
-
-        setTimeout(() => {
-            // Comaudioplayer.classList.remove("fade-out");
-            ComCP.classList.remove("slide-in");
-        }, 500);
-
-        setTimeout(() =>{
-            Comcontrolbtn.style.backgroundColor = "#17171769";
-
-        }, 280);
-    } else {
-        // Comaudioplayer.classList.add("fade-in");
         ComCP.classList.add("slide-out");
-        
+
         Comcontrolbtn.style.backgroundColor = "transparent";
         setTimeout(() => {
             ComCP.style.display = "none";
-            // Comaudioplayer.classList.remove("fade-in");
+            // Comaudioplayer.classList.remove("fade-out");
             ComCP.classList.remove("slide-out");
-            Comimage.classList.remove("slide-out");
-            Commusictitle.classList.remove("slide-out");
+        }, 500);
+    } else {
+        ComCP.style.display = "flex";
+        // Comaudioplayer.classList.add("fade-in");
+        ComCP.classList.add("slide-in");
+        
+        setTimeout(() => {
+            // Comaudioplayer.classList.remove("fade-in");
+            ComCP.classList.remove("slide-in");
+            Comimage.classList.remove("slide-in");
+            Commusictitle.classList.remove("slide-in");
         }, 500);
         
-        
+        setTimeout(() =>{
+            Comcontrolbtn.style.backgroundColor = "";
+
+        }, 280);
     }
 
     isVisible = !isVisible;
     // ----------------------
+
+    // audio player first hide
+    // if (isVisible) {
+    //     // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
+    //     ComCP.style.display = "flex";
+    //     ComCP.classList.add("slide-in");
+
+    //     setTimeout(() => {
+    //         // Comaudioplayer.classList.remove("fade-out");
+    //         ComCP.classList.remove("slide-in");
+    //     }, 500);
+
+    //     setTimeout(() =>{
+    //         Comcontrolbtn.style.backgroundColor = "#17171769";
+
+    //     }, 280);
+    // } else {
+    //     // Comaudioplayer.classList.add("fade-in");
+    //     ComCP.classList.add("slide-out");
+        
+    //     Comcontrolbtn.style.backgroundColor = "transparent";
+    //     setTimeout(() => {
+    //         ComCP.style.display = "none";
+    //         // Comaudioplayer.classList.remove("fade-in");
+    //         ComCP.classList.remove("slide-out");
+    //         Comimage.classList.remove("slide-out");
+    //         Commusictitle.classList.remove("slide-out");
+    //     }, 500);
+        
+        
+    // }
+
+    // isVisible = !isVisible;
+    // ----------------------
 });
+
+
 // countdown event
-const daysElement = document.getElementById('days');
-const hoursElement = document.getElementById('hours');
-const minutesElement = document.getElementById('minutes');
-const secondsElement = document.getElementById('seconds');
+// Mendapatkan path URL saat ini
+const currentPath = window.location.pathname;
 
-const countdownDate = new Date('2024-11-12 23:59:59').getTime();
+// Mengecek apakah URL-nya /home, /event, atau /
+if (currentPath === "/home" || currentPath === "/event" || currentPath === "/") {
+    // Eksekusi JavaScript countdown hanya jika path sesuai
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const timeRemaining = countdownDate - now;
+    const countdownDate = new Date('2024-11-12 23:59:59').getTime();
 
-    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const timeRemaining = countdownDate - now;
 
-    daysElement.innerText = days < 10 ? '0' + days : days;
-    hoursElement.innerText = hours < 10 ? '0' + hours : hours;
-    minutesElement.innerText = minutes < 10 ? '0' + minutes : minutes;
-    secondsElement.innerText = seconds < 10 ? '0' + seconds : seconds;
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-    if (timeRemaining < 0) {
-        clearInterval(countdownInterval);
-        daysElement.innerText = "00";
-        hoursElement.innerText = "00";
-        minutesElement.innerText = "00";
-        secondsElement.innerText = "00";
-        alert('Countdown selesai!');
+        daysElement.innerText = days < 10 ? '0' + days : days;
+        hoursElement.innerText = hours < 10 ? '0' + hours : hours;
+        minutesElement.innerText = minutes < 10 ? '0' + minutes : minutes;
+        secondsElement.innerText = seconds < 10 ? '0' + seconds : seconds;
+
+        if (timeRemaining < 0) {
+            clearInterval(countdownInterval);
+            daysElement.innerText = "00";
+            hoursElement.innerText = "00";
+            minutesElement.innerText = "00";
+            secondsElement.innerText = "00";
+            alert('Countdown selesai!');
+        }
     }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
 }
 
-const countdownInterval = setInterval(updateCountdown, 1000);
 // ---------------------------------------
