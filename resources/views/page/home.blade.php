@@ -6,7 +6,7 @@
 @section('content')
     <section class="section-banner">
         <div class="area-banner">
-            <swiper-container class="mySwiper"  centered-slides="true" autoplay-delay="2000"
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 <swiper-slide>Slide 1</swiper-slide>
                 <swiper-slide>Slide 2</swiper-slide>
@@ -71,22 +71,30 @@
                     <div class="tombol-kiri"></div>
                     <div class="tombol-kanan"></div>
                 </div>
-                <swiper-container
-                    class="area-content-box-program"
-                    loop="true"
-                    autoplay-delay="2500"
-                    autoplay-disable-on-interaction="false"
-                    slides-per-view="4"
-                    space-between="20">
-                    <swiper-slide class="box-program"></swiper-slide>
-                    <swiper-slide class="box-program"></swiper-slide>
-                    <swiper-slide class="box-program"></swiper-slide>
-                    <swiper-slide class="box-program"></swiper-slide>
-                    <swiper-slide class="box-program"></swiper-slide>
+                <swiper-container class="area-content-box-program" loop="true" autoplay-delay="2500"
+                    autoplay-disable-on-interaction="false" slides-per-view="4" space-between="20"  breakpoints="{
+                        1024: { slidesPerView: 4, spaceBetween: 20 },
+                        768: { slidesPerView: 3, spaceBetween: 20 },
+                        480: { slidesPerView: 1, spaceBetween: 10 }
+                      }">
+                    <swiper-slide class="box-program" onclick="showPopup()">Program A</swiper-slide>
+                    <swiper-slide class="box-program" onclick="showPopup()">Program B</swiper-slide>
+                    <swiper-slide class="box-program" onclick="showPopup()">Program C</swiper-slide>
+                    <swiper-slide class="box-program" onclick="showPopup()">Program D</swiper-slide>
+                    <swiper-slide class="box-program" onclick="showPopup()">Program E</swiper-slide>
                 </swiper-container>
             </div>
         </div>
-        
+        <div id="popup" class="popup" onclick="closePopupOutside(event)">
+            <div class="popup-content">
+                <div class="area-info-program">
+                    {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
+                    <p class="desk-program">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                    <p class="jam-program">Minggu | 16.00 - 18.00</p>
+                    <h2 class="title-box-program">Judul Program</h2>
+                </div>
+            </div>
+        </div>
     </section>
     <section class="page-3" id="info-news">
         {{-- <svg class="svg-ornamen" width="1480" height="566" viewBox="0 0 1440 566" fill="none"
@@ -126,7 +134,7 @@
                 </div>
                 <div class="area-content-news">
                     <div class="header-news">
-                        <h1 class="title-news">Top News</h1>
+                        <h1 class="title-news">Top Info</h1>
                     </div>
                     <div class="content-news">
                         <div class="box-news">
@@ -187,7 +195,7 @@
             </div>
             <div class="area-content-event">
                 <div class="area-content-event-kiri">
-                    <div class="content-event-CD">
+                    <div class="content-event-CD" onclick="showPopupEvent()">
                         <div class="area-countdown">
                             <div class="countdown">
                                 <div class="time-countdown">
@@ -207,17 +215,32 @@
                                     <span class="title-timer">Second</span>
                                 </div>
                             </div>
+                            {{-- <div class="area-detail-event">
+                                <div class="detail-event">
+                                    <p class="text-detail-event">Detail Event</p>
+                                </div>
+                            </div> --}}
                             <div class="area-days-date">
                                 <div class="box-days-date">
                                     <h3 class="date-month">5 Oktober</h3>
                                     <h3 class="year">2024</h3>
                                 </div>
-                            </div>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+                <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+                    <div class="popup-content-event">
+                        <div class="area-info-event">
+                            {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
+                            <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                            <h2 class="title-box-event">5 Oktober 2024</h2>
+                            <a href="/event"><p class="link-event">See detail</p></a>
                         </div>
                     </div>
                 </div>
                 <div class="area-content-event-kanan">
-                    <div class="content-event">
+                    <div class="content-event"   onclick="showPopupEvent()">
                         <div class="area-days-date-right">
                             <div class="content-days-date-right">
                                 <div class="box-days-date-right">
@@ -227,7 +250,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-event">
+                    <div class="content-event" onclick="showPopupEvent()" >
                         <div class="area-days-date-right">
                             <div class="content-days-date-right">
                                 <div class="box-days-date-right">
@@ -407,14 +430,8 @@
                         <div class="tombol-kiri-announcer"></div>
                         <div class="tombol-kanan-announcer"></div>
                     </div>
-                    <swiper-container
-                        class="area-content-box-announcer"
-                        loop="true"
-                        autoplay-delay="2500"
-                        autoplay-disable-on-interaction="false"
-                        slides-per-view="5"
-                        space-between="20"
-                        pagination-clickable="true">
+                    <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
+                        autoplay-disable-on-interaction="false" slides-per-view="5" space-between="20">
                         <swiper-slide class="box-announcer"></swiper-slide>
                         <swiper-slide class="box-announcer"></swiper-slide>
                         <swiper-slide class="box-announcer"></swiper-slide>
@@ -423,9 +440,9 @@
                         <swiper-slide class="box-announcer"></swiper-slide>
                     </swiper-container>
                 </div>
-                
-                </div>
+
             </div>
+        </div>
         </div>
     </section>
     <section class="page-7" id="chart">
@@ -437,7 +454,21 @@
                         <div class="header-chart">
                             <h1 class="title-chart">ARDAN CHART</h1>
                         </div>
-                        <table class="chart">
+                        <div class="area-top-chart">
+                            <div class="tab-chart active" data-tab="top-20">
+                                <h3 class="text-tab">TOP 20</h3>
+                            </div>
+                            <div class="tab-chart" data-tab="flight-40">
+                                <h3 class="text-tab">FLIGTH 40</h3>
+                            </div>
+                            <div class="tab-chart" data-tab="indie-7">
+                                <h3 class="text-tab">INDIE 7</h3>
+                            </div>
+                            <div class="tab-chart" data-tab="persada-7">
+                                <h3 class="text-tab">PERSADA 7</h3>
+                            </div>
+                        </div>
+                        <table class="chart" id="top-20">
                             <thead>
                                 <tr>
                                     <th>NO</th>
@@ -450,31 +481,137 @@
                                     <td>1</td>
                                     <td>John Doe</td>
                                     <td></td>
-
                                 </tr>
                                 <tr>
                                     <td>2</td>
                                     <td>Jane Smith</td>
                                     <td></td>
-
                                 </tr>
                                 <tr>
                                     <td>3</td>
                                     <td>Michael Brown</td>
                                     <td></td>
-
                                 </tr>
                                 <tr>
                                     <td>4</td>
                                     <td>Emily Davis</td>
                                     <td></td>
-
                                 </tr>
                                 <tr>
                                     <td>5</td>
                                     <td>Emily Davis</td>
                                     <td></td>
-
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <table class="chart hidden" id="flight-40">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ARTIST</th>
+                                    <th>-</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Artist A</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Artist B</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Artist C</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Artist D</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Artist D</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <table class="chart hidden" id="indie-7">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ARTIST</th>
+                                    <th>-</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Indie Artist 1</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Indie Artist 2</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Indie Artist 3</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Indie Artist 4</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Indie Artist 5</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <table class="chart hidden" id="persada-7">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ARTIST</th>
+                                    <th>-</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Persada Artist 1</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Persada Artist 2</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Persada Artist 3</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Persada Artist 4</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Persada Artist 5</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -137,15 +137,17 @@ function updateVisualization() {
     const width = svg.clientWidth;
     const height = svg.clientHeight;
 
-    const numPoints = 7;
+    const numPoints = 7; // Jumlah titik yang ditampilkan
     const step = width / (numPoints - 1);
+
+    const waveHeight = height / 1.5; // Tinggi gelombang, dapat diatur sesuai kebutuhan
 
     let newPath = `M0 ${height / 2}`;
 
     for (let i = 1; i < numPoints; i++) {
         const index = Math.floor(i * (bufferLength / numPoints));
         const amplitude = dataArray[index] || 0;
-        const scaledAmplitude = (amplitude / 255) * (height / 2);
+        const scaledAmplitude = (amplitude / 255) * waveHeight; // Menggunakan waveHeight
 
         const x = i * step;
         const y = height / 2 - scaledAmplitude;
@@ -157,7 +159,7 @@ function updateVisualization() {
                 ((dataArray[Math.floor((i - 1) * (bufferLength / numPoints))] ||
                     0) /
                     255) *
-                    (height / 2);
+                    waveHeight; // Menggunakan waveHeight
 
             // Menghitung kontrol titik untuk kurva Bezier
             const controlX1 = prevX + (x - prevX) * 0.4;
@@ -176,6 +178,42 @@ function updateVisualization() {
     path.setAttribute("d", newPath);
     requestAnimationFrame(updateVisualization);
 }
+
+// function updateVisualization() {
+//     analyser.getByteFrequencyData(dataArray);
+
+//     const width = svg.clientWidth;
+//     const height = svg.clientHeight;
+
+//     const numBars = 64; // Jumlah bar yang ditampilkan
+//     const barWidth = 50; // Lebar bar yang dapat diatur (misalnya, 5 piksel)
+
+//     // Menghapus semua rectangle yang ada sebelumnya
+//     while (svg.firstChild) {
+//         svg.removeChild(svg.firstChild);
+//     }
+
+//     for (let i = 0; i < numBars; i++) {
+//         const index = Math.floor(i * (bufferLength / numBars));
+//         const amplitude = dataArray[index] || 0;
+//         const scaledAmplitude = (amplitude / 255) * height;
+
+//         const x = i * barWidth; // Posisi x dari bar
+//         const y = height - scaledAmplitude; // Posisi y dari bar
+
+//         // Membuat elemen rectangle
+//         const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+//         rect.setAttribute("x", x);
+//         rect.setAttribute("y", y);
+//         rect.setAttribute("width", barWidth - 1); // Lebar bar (kurangi sedikit agar tidak ada celah)
+//         rect.setAttribute("height", scaledAmplitude); // Tinggi bar
+//         rect.setAttribute("fill", "#FF004D"); // Warna bar
+
+//         svg.appendChild(rect); // Menambahkan bar ke dalam SVG
+//     }
+
+//     requestAnimationFrame(updateVisualization);
+// }
 
 audio.addEventListener("play", () => {
     audioContext.resume().then(() => {

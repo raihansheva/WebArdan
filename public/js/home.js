@@ -114,7 +114,6 @@
 //     nextSong();
 // });
 
-
 // // Spectrum Audio Visualization
 // const svg = document.getElementById("visual");
 // const audio = Audio;
@@ -187,42 +186,44 @@
 // });
 // // ----------------------------------------------
 
-
 // caraousel program
-const tombolKiri = document.querySelector('.tombol-kiri');
-const tombolKanan = document.querySelector('.tombol-kanan');
-const areaContentBox = document.querySelector('.area-content-box-program');
+const tombolKiri = document.querySelector(".tombol-kiri");
+const tombolKanan = document.querySelector(".tombol-kanan");
+const areaContentBox = document.querySelector(".area-content-box-program");
 
 const getScrollAmount = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
-        return 360; 
+        return 360;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
         return 350;
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        return 310; 
+        return 310;
     } else {
-        return 330; 
+        return 330;
     }
 };
 
-tombolKiri.addEventListener('click', () => {
+tombolKiri.addEventListener("click", () => {
     if (areaContentBox.scrollLeft === 0) {
         areaContentBox.scrollLeft = areaContentBox.scrollWidth; // Kembali ke akhir
     } else {
         areaContentBox.scrollBy({
             left: -getScrollAmount(),
-            behavior: 'smooth'
+            behavior: "smooth",
         });
     }
 });
 
-tombolKanan.addEventListener('click', () => {
-    if (areaContentBox.scrollLeft + areaContentBox.clientWidth >= areaContentBox.scrollWidth) {
+tombolKanan.addEventListener("click", () => {
+    if (
+        areaContentBox.scrollLeft + areaContentBox.clientWidth >=
+        areaContentBox.scrollWidth
+    ) {
         areaContentBox.scrollLeft = 0; // Kembali ke awal
     } else {
         areaContentBox.scrollBy({
             left: getScrollAmount(),
-            behavior: 'smooth'
+            behavior: "smooth",
         });
     }
 });
@@ -230,78 +231,74 @@ tombolKanan.addEventListener('click', () => {
 // ---------------------------------------
 
 // carousel announcer
-const tombolKiriA = document.querySelector('.tombol-kiri-announcer');
-const tombolKananA = document.querySelector('.tombol-kanan-announcer');
-const areaContentBoxA = document.querySelector('.area-content-box-announcer');
+const tombolKiriA = document.querySelector(".tombol-kiri-announcer");
+const tombolKananA = document.querySelector(".tombol-kanan-announcer");
+const areaContentBoxA = document.querySelector(".area-content-box-announcer");
 
 const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 480px)").matches) {
         return 358;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
-        return 234; 
+        return 234;
     } else if (window.matchMedia("(max-width: 1024px)").matches) {
-        return 240; 
+        return 240;
     } else {
         return 330;
     }
 };
 
-
-tombolKiriA.addEventListener('click', () => {
+tombolKiriA.addEventListener("click", () => {
     areaContentBoxA.scrollBy({
-        left: -getScrollAmountA(), 
-        behavior: 'smooth'
+        left: -getScrollAmountA(),
+        behavior: "smooth",
     });
 });
 
-tombolKananA.addEventListener('click', () => {
+tombolKananA.addEventListener("click", () => {
     areaContentBoxA.scrollBy({
         left: getScrollAmountA(),
-        behavior: 'smooth'
+        behavior: "smooth",
     });
 });
 // ----------------------------------------
 
-
-
-
 // card-streaming
-const cardA = document.querySelector('.card-A');
-const cardB = document.querySelector('.card-B');
-const tontonSiaranBtnA = document.querySelector('.card-A .author');
-const tontonSiaranBtnB = document.querySelector('.card-B .view-B');
+const cardA = document.querySelector(".card-A");
+const cardB = document.querySelector(".card-B");
+const tontonSiaranBtnA = document.querySelector(".card-A .author");
+const tontonSiaranBtnB = document.querySelector(".card-B .view-B");
 
-cardA.style.display = 'block';
-cardA.classList.add('show');
+cardA.style.display = "block";
+cardA.classList.add("show");
 
 function showCard(card) {
-    card.style.display = 'block';
+    card.style.display = "block";
     setTimeout(() => {
-        card.classList.add('show');
-        card.classList.remove('hide');
+        card.classList.add("show");
+        card.classList.remove("hide");
     }, 10);
 }
 
 function hideCard(card) {
-    card.classList.remove('show');
-    card.classList.add('hide');
+    card.classList.remove("show");
+    card.classList.add("hide");
     setTimeout(() => {
-        card.style.display = 'none';
+        card.style.display = "none";
     }, 500);
 }
 
-tontonSiaranBtnA.addEventListener('click', function() {
-    hideCard(cardA); 
+tontonSiaranBtnA.addEventListener("click", function () {
+    hideCard(cardA);
     setTimeout(() => {
         showCard(cardB);
     }, 500);
 });
 
-tontonSiaranBtnB.addEventListener('click', function() {
-    hideCard(cardB); 
+tontonSiaranBtnB.addEventListener("click", function () {
+    hideCard(cardB);
     setTimeout(() => {
         showCard(cardA);
-    }, 500); 
+    }, 500);
 });
 
 // youtube-player
@@ -333,7 +330,6 @@ tontonSiaranBtnB.addEventListener('click', function() {
 //         event.target.playVideo();
 //     }
 
-
 // Dapatkan semua elemen schedule dan box-schedule
 // const scheduleItems = document.querySelectorAll('.schedule');
 // const boxSchedules = document.querySelectorAll('.box-schedule');
@@ -356,27 +352,90 @@ tontonSiaranBtnB.addEventListener('click', function() {
 // });
 
 
-    const swiper = new Swiper('.swiper-container', {
-        loop: true,
-        autoplay: {
-            delay: 2500, 
-            disableOnInteraction: false, // Autoplay tidak berhenti setelah interaksi pengguna
-        },
-        slidesPerView: 3, // Menampilkan 3 slide
-        spaceBetween: 20, // Jarak antar slide
-        breakpoints: {
-            640: {
-                slidesPerView: 1, 
-            },
-            768: {
-                slidesPerView: 2, // 2 slide pada layar menengah
-            },
-            1024: {
-                slidesPerView: 3, // 3 slide pada layar besar
-            },
-        },
+
+function showPopup() {
+    document.getElementById("popup").style.display = "flex"; // Tampilkan pop-up
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none"; // Sembunyikan pop-up
+}
+
+function closePopupOutside(event) {
+    // Tutup pop-up hanya jika pengguna mengklik di luar konten
+    if (event.target.id === "popup") {
+        closePopup();
+    }
+}
+
+function showPopupEvent() {
+    const popupEvent = document.getElementById("popupEvent");
+    popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupEvent.style.display = "flex"; // Tampilkan pop-up
+}
+
+function closePopupEvent() {
+    const popupEvent = document.getElementById("popupEvent");
+    popupEvent.classList.remove("muncul"); // Hilangkan kelas show
+    popupEvent.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    // Sembunyikan pop-up setelah animasi selesai
+    setTimeout(() => {
+        popupEvent.style.display = "none";
+        popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+    }, 300); // 300ms sesuai dengan durasi animasi
+}
+
+function closePopupOutsideEvent(event) {
+    if (event.target.id === "popupEvent") {
+        closePopupEvent();
+    }
+}
+
+// tab chart ardan
+const tabs = document.querySelectorAll(".tab-chart");
+const tables = document.querySelectorAll(".chart");
+
+// Menambahkan event listener ke setiap tab
+tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        // Menghapus kelas aktif dari semua tab
+        tabs.forEach((t) => t.classList.remove("active"));
+        // Menambahkan kelas aktif ke tab yang dipilih
+        tab.classList.add("active");
+
+        // Menyembunyikan semua tabel
+        tables.forEach((table) => table.classList.add("hidden"));
+        // Menampilkan tabel yang sesuai dengan tab yang dipilih
+        const selectedTab = tab.getAttribute("data-tab");
+        document.getElementById(selectedTab).classList.remove("hidden");
     });
+});
 
 
-
-
+// swiperr
+document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.area-content-box-program', {
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      slidesPerView: 4,
+      spaceBetween: 20,
+      breakpoints: {
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        },
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 10
+        }
+      }
+    });
+  });

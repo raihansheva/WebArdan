@@ -445,6 +445,7 @@
 
     .area-content-box-announcer {
         gap: 15px;
+        margin: 0px 32px;
     }
 
     .box-announcer {
