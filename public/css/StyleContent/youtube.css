@@ -166,6 +166,13 @@
     height: 1000px;
 }
 
+
+.line-VNS{
+    width: 100%;
+    border: 1px white solid;
+    margin: 30px 0px;
+}
+
 .area-event-news-streaming{
     width: auto;
     height: auto;
@@ -225,6 +232,7 @@
     display: flex;
     justify-content: end;
     align-items: end;
+    cursor: pointer;
 }
 
 .area-countdown {
@@ -298,6 +306,113 @@
 }
 /* --------------- */
 
+/* pop up event */
+.popup-event {
+    display: none; /* Sembunyikan pop-up secara default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Pastikan pop-up di atas elemen lainnya */
+    opacity: 0; /* Awal: transparan untuk animasi fade */
+    transition: opacity 0.5s ease-in-out; /* Transisi untuk fade */
+}
+
+.popup-content-event {
+    background-color: var(--primary-color);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+    height: 250px; /* Lebar pop-up */
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transform: translateY(50px) scale(0.7); /* Awal: scale kecil dan turun */
+    transition: transform 0.5s ease-in-out; /* Transisi untuk animasi scale dan slide */
+}
+
+/* Animasi saat pop-up muncul */
+.popup-event.muncul {
+    display: flex; /* Tampilkan pop-up */
+    opacity: 1; /* Pop-up terlihat */
+}
+
+.popup-event.muncul .popup-content-event {
+    transform: translateY(0) scale(1); /* Kembalikan ke ukuran dan posisi normal */
+}
+
+/* Animasi saat pop-up keluar */
+.popup-event.tutup {
+    opacity: 0; /* Fade-out */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup-event.tutup .popup-content-event {
+    transform: translateY(50px) scale(0.7); /* Kecilkan dan geser turun */
+}
+
+.close {
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.area-info-event {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.desk-event {
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+}
+
+.jam-event {
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 500;
+}
+
+.title-box-event {
+    font-size: 34px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+}
+
+.link-event{
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 300;
+    margin: 0px;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.link-event:hover{
+    text-decoration: underline;
+}
+/* -------------- */
+
 /* box bawah */
 .area-event-bottom{
     height: 30%;
@@ -314,6 +429,7 @@
     display: flex;
     justify-content: end;
     align-items: end;
+    cursor: pointer;
 }
 
 .area-days-date-right {
@@ -466,6 +582,24 @@
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-streaming {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-streaming span {
+    font-size: 28px;
 }
 
 /* ------------------------ */

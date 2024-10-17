@@ -79,6 +79,7 @@
                     </div>
                 </div>
             </div>
+            <div class="line-VNS"></div>
         </div>
     </section>
     <section class="page-youtube-3">
@@ -90,7 +91,7 @@
                     </div>
                     <div class="content-kiri-event">
                         <div class="area-event-mid">
-                            <div class="box-event-mid">
+                            <div class="box-event-mid" onclick="showPopupEvent()">
                                 <div class="area-countdown">
                                     <div class="countdown">
                                         <div class="time-countdown">
@@ -120,7 +121,7 @@
                             </div>
                         </div>
                         <div class="area-event-bottom">
-                            <div class="box-event">
+                            <div class="box-event" onclick="showPopupEvent()">
                                 <div class="area-days-date-right">
                                     <div class="content-days-date-right">
                                         <div class="box-days-date-right">
@@ -130,7 +131,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="box-event">
+                            <div class="box-event" onclick="showPopupEvent()">
                                 <div class="area-days-date-right">
                                     <div class="content-days-date-right">
                                         <div class="box-days-date-right">
@@ -140,6 +141,19 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+                    <div class="popup-content-event">
+                        <div class="area-info-event">
+                            {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
+                            <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas
+                                iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                            <h2 class="title-box-event">5 Oktober 2024</h2>
+                            <a href="/event">
+                                <p class="link-event">See detail</p>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -201,7 +215,11 @@
                             <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="content-streaming">
-                            <div class="box-streaming"></div>
+                            <div class="box-streaming">
+                                <div class="btn-play-streaming">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
                         </div>
                     {{-- </div> --}}
                 </div>

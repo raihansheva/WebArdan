@@ -413,7 +413,7 @@ btnhideshow.addEventListener("click", function () {
 const currentPath = window.location.pathname;
 
 // Mengecek apakah URL-nya /home, /event, atau /
-if (currentPath === "/home" || currentPath === "/event" || currentPath === "/") {
+if (currentPath === "/home" || currentPath === "/event" || currentPath === "/" || currentPath == "/ardan-youtube") {
     // Eksekusi JavaScript countdown hanya jika path sesuai
     const daysElement = document.getElementById('days');
     const hoursElement = document.getElementById('hours');
@@ -450,3 +450,29 @@ if (currentPath === "/home" || currentPath === "/event" || currentPath === "/") 
 }
 
 // ---------------------------------------
+
+// pop up event
+function showPopupEvent() {
+    const popupEvent = document.getElementById("popupEvent");
+    popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupEvent.style.display = "flex"; // Tampilkan pop-up
+}
+
+function closePopupEvent() {
+    const popupEvent = document.getElementById("popupEvent");
+    popupEvent.classList.remove("muncul"); // Hilangkan kelas show
+    popupEvent.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    // Sembunyikan pop-up setelah animasi selesai
+    setTimeout(() => {
+        popupEvent.style.display = "none";
+        popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+    }, 300); // 300ms sesuai dengan durasi animasi
+}
+
+function closePopupOutsideEvent(event) {
+    if (event.target.id === "popupEvent") {
+        closePopupEvent();
+    }
+}
+// -----------

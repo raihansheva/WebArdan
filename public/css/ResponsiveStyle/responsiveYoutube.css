@@ -49,6 +49,13 @@
 
     /* page youtube 3 */
 
+    .line-VNS{
+        width: 100%;
+        border: 1px white solid;
+        margin: 100px 0px;
+    }
+    
+
     .area-event-news-streaming {
         margin: 0px 32px 30px 32px;
     }
@@ -109,7 +116,28 @@
     }
 
     /* --------------- */
+    /* pop up event */
+    .popup-content-event {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
+    }
 
+    .desk-event {
+        font-size: 16px;
+    }
+
+    .jam-event {
+        font-size: 14px;
+    }
+
+    .title-box-event {
+        font-size: 28px;
+    }
+
+    .link-event {
+        font-size: 16px;
+    }
     /* content kanan */
     .area-content-VNS-kanan {
         width: 44%;
@@ -156,6 +184,14 @@
         height: 100%;
     }
 
+    .btn-play-streaming {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 26px;
+    }
     /* ------------------- */
     /* --------------- */
 
@@ -206,8 +242,14 @@
         height: 700px;
     }
 
+    .line-VNS{
+        width: 100%;
+        border: 1px white solid;
+        margin: 10px 0px 80px 0px;
+    }
+
     .area-event-news-streaming {
-        margin: 30px 20px 30px 20px;
+        margin: 15px 20px 30px 20px;
     }
 
     .area-content-VNS {
@@ -262,7 +304,29 @@
         font-size: 20px;
     }
     /* ---------------- */
+     /* pop up event */
+     .popup-content-event {
+        width: 400px;
+        height: 180px;
+        padding: 25px;
+    }
 
+    .desk-event {
+        font-size: 14px;
+    }
+
+    .jam-event {
+        font-size: 12px;
+    }
+
+    .title-box-event {
+        font-size: 24px;
+    }
+
+    .link-event {
+        font-size: 14px;
+    }
+    /* -------------- */
     /* box- bawah */
     .area-event-bottom {
         gap: 10px;
@@ -337,6 +401,14 @@
         height: 100%;
     }
 
+    .btn-play-streaming {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 26px;
+    }
     /* ------------------- */
     /* --------------- */
 
@@ -414,6 +486,11 @@
         height: auto;
     }
 
+    .line-VNS{
+        width: 100%;
+        border: 1px white solid;
+    }
+
     .area-event-news-streaming {
         margin: 30px 20px 30px 20px;
     }
@@ -471,7 +548,29 @@
         font-size: 20px;
     }
     /* ---------------- */
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
 
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
     /* box- bawah */
     .area-event-bottom {
         gap: 10px;
@@ -547,6 +646,14 @@
         height: 100%;
     }
 
+    .btn-play-streaming {
+        width: 35px;
+        height: 35px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 22px;
+    }
     /* ------------------- */
     /* --------------- */
 
