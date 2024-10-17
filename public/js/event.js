@@ -32,3 +32,48 @@
 
 // const countdownInterval = setInterval(updateCountdown, 1000);
 // // ---------------------------------------
+
+
+// pop up event
+function showPopupEvent() {
+    const popupEvent = document.getElementById("popupEvent");
+    popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupEvent.style.display = "flex"; // Tampilkan pop-up
+}
+
+function closePopupEvent() {
+    const popupEvent = document.getElementById("popupEvent");
+    popupEvent.classList.remove("muncul"); // Hilangkan kelas show
+    popupEvent.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    // Sembunyikan pop-up setelah animasi selesai
+    setTimeout(() => {
+        popupEvent.style.display = "none";
+        popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+    }, 300); // 300ms sesuai dengan durasi animasi
+}
+
+function closePopupOutsideEvent(event) {
+    if (event.target.id === "popupEvent") {
+        closePopupEvent();
+    }
+}
+// -----------
+
+
+// pop up program
+function showPopup() {
+    document.getElementById("popup").style.display = "flex"; // Tampilkan pop-up
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none"; // Sembunyikan pop-up
+}
+
+function closePopupOutside(event) {
+    // Tutup pop-up hanya jika pengguna mengklik di luar konten
+    if (event.target.id === "popup") {
+        closePopup();
+    }
+}
+// -----------

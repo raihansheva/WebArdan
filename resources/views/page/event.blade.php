@@ -8,7 +8,7 @@
                 <h2 class="title-event">Upcoming Event</h2>
             </div>
             <div class="content-event">
-                <div class="content-event-CD">
+                <div class="content-event-CD" onclick="showPopupEvent()">
                 </div>
                 <div class="area-countdown">
                     <div class="area-content-countdown">
@@ -41,13 +41,26 @@
             </div>
         </div>
     </section>
+    <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+        <div class="popup-content-event">
+            <div class="area-info-event">
+                {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
+                <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas
+                    iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                <h2 class="title-box-event">5 Oktober 2024</h2>
+                <a href="/event">
+                    <p class="link-event">See detail</p>
+                </a>
+            </div>
+        </div>
+    </div>
     <section class="page-event-2">
         <div class="area-other-event">
             <div class="header-other-event">
                 <h2 class="title-event-other">Other Upcoming Event</h2>
             </div>
             <div class="area-content-OV">
-                <div class="content-event-OV">
+                <div class="content-event-OV" onclick="showPopupEvent()">
                     <div class="area-days-date-right">
                         <div class="content-days-date-right">
                             <div class="box-days-date-right">
@@ -57,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-event-OV">
+                <div class="content-event-OV" onclick="showPopupEvent()">
                     <div class="area-days-date-right">
                         <div class="content-days-date-right">
                             <div class="box-days-date-right">
@@ -67,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="content-event-OV">
+                <div class="content-event-OV" onclick="showPopupEvent()">
                     <div class="area-days-date-right">
                         <div class="content-days-date-right">
                             <div class="box-days-date-right">
@@ -87,10 +100,21 @@
                 <h2 class="title-programE">Program Ardan</h2>
             </div>
             <div class="content-programE">
-                <div class="box-programE"></div>
-                <div class="box-programE"></div>
-                <div class="box-programE"></div>
-                <div class="box-programE"></div>
+                <div class="box-programE" onclick="showPopup()"></div>
+                <div class="box-programE" onclick="showPopup()"></div>
+                <div class="box-programE" onclick="showPopup()"></div>
+                <div class="box-programE" onclick="showPopup()"></div>
+            </div>
+        </div>
+        <div id="popup" class="popup" onclick="closePopupOutside(event)">
+            <div class="popup-content">
+                <div class="area-info-program">
+                    {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
+                    <p class="desk-program">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste
+                        tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                    <p class="jam-program">Minggu | 16.00 - 18.00</p>
+                    <h2 class="title-box-program">Judul Program</h2>
+                </div>
             </div>
         </div>
     </section>

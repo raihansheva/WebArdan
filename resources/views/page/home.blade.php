@@ -226,19 +226,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
-                    <div class="popup-content-event">
-                        <div class="area-info-event">
-                            {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
-                            <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas
-                                iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
-                            <h2 class="title-box-event">5 Oktober 2024</h2>
-                            <a href="/event">
-                                <p class="link-event">See detail</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="area-content-event-kanan">
                     <div class="content-event" onclick="showPopupEvent()">
                         <div class="area-days-date-right">

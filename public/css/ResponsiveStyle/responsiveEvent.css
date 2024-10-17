@@ -12,145 +12,232 @@
     /* Gaya untuk laptop standar */
 }
 @media (max-width: 1024px) {
-    .area-event{
+    .area-event {
         width: auto;
         margin: 0px 32px 0px 32px;
     }
-    .title-event{
+    .title-event {
         font-size: 34px;
     }
-    .content-event{
+    .content-event {
         width: auto;
         /* border: 1px red solid; */
     }
-    .content-event-CD{
+    .content-event-CD {
         height: 415px;
     }
-    .area-countdown{
+    .area-countdown {
         height: 80px;
     }
-    .timer{
+    .timer {
         font-size: 32px;
     }
-    .title-timer{
+    .title-timer {
         font-size: 18px;
     }
-    .date-month{
+    .date-month {
         font-size: 26px;
     }
-    .year{
+    .year {
         font-size: 28px;
     }
+    /* pop up event */
+    .popup-content-event {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
+    }
+
+    .desk-event {
+        font-size: 16px;
+    }
+
+    .jam-event {
+        font-size: 14px;
+    }
+
+    .title-box-event {
+        font-size: 28px;
+    }
+
+    .link-event {
+        font-size: 16px;
+    }
+    /* -------------- */
     /* area other upcoming event */
-    .area-other-event{
+    .area-other-event {
         margin: 0px 32px 0px 32px;
     }
-    .header-other-event{
+    .header-other-event {
         margin-top: 30px;
     }
-    .title-event-other{
+    .title-event-other {
         font-size: 34px;
     }
-    .content-event-OV{
+    .content-event-OV {
         height: 260px;
     }
-    .area-days-date-right{
+    .area-days-date-right {
         height: 45px;
     }
-    .date-month-right{
+    .date-month-right {
         font-size: 18px;
     }
-    .year-right{
+    .year-right {
         font-size: 18px;
     }
     /* -------------- */
     /* area program page event */
-    .area-programE{
+    .area-programE {
         margin: 0px 32px 0px 32px;
     }
-    .title-programE{
+    .title-programE {
         font-size: 38px;
     }
-    .content-programE{
+    .content-programE {
         margin-top: 20px;
     }
-    .box-programE{
-        height: 250px ;
+    .box-programE {
+        height: 250px;
     }
+    /* pop up program */
+
+    .popup-content {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
+    }
+
+    .desk-program {
+        font-size: 16px;
+    }
+
+    .jam-program {
+        font-size: 14px;
+    }
+
+    .title-box-program {
+        font-size: 28px;
+    }
+
+    /* -------------- */
     /* --------------------- */
 }
 /* Tablet */
 @media (max-width: 768px) {
-    .area-event{
+    .area-event {
         width: auto;
         margin: 0px 20px 0px 20px;
     }
-    .title-event{
+    .title-event {
         font-size: 30px;
     }
-    .content-event{
+    .content-event {
         width: auto;
         /* border: 1px red solid; */
     }
-    .content-event-CD{
+    .content-event-CD {
         height: 325px;
     }
-    .area-countdown{
+    .area-countdown {
         height: 70px;
     }
-    .timer{
+    .timer {
         font-size: 30px;
     }
-    .title-timer{
+    .title-timer {
         font-size: 16px;
     }
-    .date-month{
+    .date-month {
         font-size: 22px;
     }
-    .year{
+    .year {
         font-size: 24px;
     }
+    /* pop up event */
+    .popup-content-event {
+        width: 400px;
+        height: 180px;
+        padding: 25px;
+    }
+
+    .desk-event {
+        font-size: 14px;
+    }
+
+    .jam-event {
+        font-size: 12px;
+    }
+
+    .title-box-event {
+        font-size: 24px;
+    }
+
+    .link-event {
+        font-size: 14px;
+    }
+    /* -------------- */
     /* area other upcoming event */
-    .area-other-event{
+    .area-other-event {
         margin: 0px 20px 0px 20px;
     }
-    .header-other-event{
+    .header-other-event {
         margin-top: 30px;
     }
-    .title-event-other{
+    .title-event-other {
         font-size: 30px;
     }
-    .content-event-OV{
+    .content-event-OV {
         height: 220px;
     }
-    .area-days-date-right{
+    .area-days-date-right {
         height: 30px;
     }
-    .date-month-right{
+    .date-month-right {
         font-size: 16px;
     }
-    .year-right{
+    .year-right {
         font-size: 16px;
     }
     /* -------------- */
     /* area program page event */
-    .page-event-3{
+    .page-event-3 {
         height: auto;
     }
-    .area-programE{
+    .area-programE {
         margin: 0px 20px 0px 20px;
     }
-    .title-programE{
+    .title-programE {
         font-size: 30px;
     }
-    .content-programE{
+    .content-programE {
         margin-top: 20px;
         gap: 10px;
         margin-bottom: 60px;
     }
-    .box-programE{
-        height: 200px ;
+    .box-programE {
+        height: 200px;
     }
+    /* pop up program */
+    .popup-content {
+        width: 400px;
+        height: 180px;
+        padding: 25px;
+    }
+
+    .desk-program {
+        font-size: 14px;
+    }
+
+    .jam-program {
+        font-size: 12px;
+    }
+
+    .title-box-program {
+        font-size: 26px;
+    }
+
+    /* -------------- */
     /* --------------------- */
 }
 @media (max-width: 600px) {
@@ -158,88 +245,132 @@
 }
 /* Mobile Devices */
 @media (max-width: 480px) {
-    .area-event{
+    .area-event {
         width: auto;
         margin: 0px 8px 0px 8px;
     }
-    .title-event{
+    .title-event {
         font-size: 26px;
     }
-    .content-event{
+    .content-event {
         width: auto;
         /* border: 1px red solid; */
     }
-    .content-event-CD{
+    .content-event-CD {
         margin-top: 10px;
         height: 325px;
     }
-    .area-content-countdown{
-        width: 100% ;
+    .area-content-countdown {
+        width: 100%;
     }
-    .area-countdown{
+    .area-countdown {
         height: 70px;
     }
-    .timer{
+    .timer {
         font-size: 28px;
     }
-    .title-timer{
+    .title-timer {
         font-size: 12px;
     }
-    .date-month{
+    .date-month {
         font-size: 20px;
     }
-    .year{
+    .year {
         font-size: 20px;
     }
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
     /* area other upcoming event */
-    .area-other-event{
+    .area-other-event {
         margin: 0px 8px 0px 8px;
     }
-    .header-other-event{
+    .header-other-event {
         margin-top: 30px;
     }
-    .title-event-other{
+    .title-event-other {
         font-size: 28px;
     }
-    .area-content-OV{
+    .area-content-OV {
         flex-direction: column;
         height: 500px;
         gap: 10px;
         /* border: 1px red solid; */
     }
-    .content-event-OV{
+    .content-event-OV {
         height: 400px;
     }
-    .area-days-date-right{
+    .area-days-date-right {
         height: 20px;
     }
-    .date-month-right{
+    .date-month-right {
         font-size: 12px;
     }
-    .year-right{
+    .year-right {
         font-size: 12px;
     }
     /* -------------- */
     /* area program page event */
-    .page-event-3{
+    .page-event-3 {
         height: auto;
     }
-    .area-programE{
+    .area-programE {
         margin: 0px 8px 0px 8px;
     }
-    .title-programE{
+    .title-programE {
         font-size: 28px;
     }
-    .content-programE{
+    .content-programE {
         margin-top: 20px;
         gap: 10px;
         margin-bottom: 60px;
         flex-wrap: wrap;
     }
-    .box-programE{
+    .box-programE {
         flex: 1 1 calc(50% - 10px);
-        height: 150px ;
+        height: 150px;
     }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .desk-program {
+        font-size: 8px;
+    }
+
+    .jam-program {
+        font-size: 10px;
+    }
+
+    .title-box-program {
+        font-size: 18px;
+    }
+
+    /* -------------- */
+    /* ------------------ */
 }
 @media (max-width: 375px) {
     /* Gaya untuk smartphone medium */

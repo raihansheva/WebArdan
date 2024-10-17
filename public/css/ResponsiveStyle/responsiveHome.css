@@ -1556,29 +1556,7 @@
     }
 
     /* -------------- */
-        /* pop up event */
-    .popup-content-event {
-        width: 200px;
-        height: 110px;
-        padding: 15px;
-    }
 
-    .desk-event {
-        font-size: 8px;
-    }
-
-    .jam-event {
-        font-size: 10px;
-    }
-
-    .title-box-event {
-        font-size: 18px;
-    }
-
-    .link-event {
-        font-size: 10px;
-    }
-    /* -------------- */
     /* ------------- */
 
     /* area-info-news */
@@ -1722,6 +1700,29 @@
     .year-right {
         font-size: 14px;
     }
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
     /* ---------- */
 
     /* area-info-news */
@@ -2012,7 +2013,7 @@
         font-size: 20px;
     }
 
-    thead th{
+    thead th {
         font-weight: 500;
     }
 
