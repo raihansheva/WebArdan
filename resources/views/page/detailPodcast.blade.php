@@ -4,55 +4,152 @@
 @section('content')
     <section class="page-detail-1">
         <div class="area-detail-podcast">
-            <div class="area-image-DP">
-                <div class="card-DP">
-                    <div class="card-DP-body">
-                        <div class="btn-play-DP">
-                            <span class="material-symbols-rounded">play_arrow</span>
+            <div class="area-detail-kiri">
+                <div class="area-image-DP">
+                    <div class="card-DP">
+                        <div class="card-DP-body">
+                            <div class="btn-play-DP">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
+                        </div>
+                        <div class="card-DP-header">
+                            <div class="DP-author">
+                            </div>
+                            <div class="DP-view" id="btn-tonton">
+                                <p class="text-watchP">Tonton Podcast</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-DP-header">
-                        <div class="DP-author">
+                    <div class="card-DP-B">
+                        <div class="card-body-DP-B">
+                            <div class="video-container">
+                                <div id="player-podcast" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
+                            </div>
                         </div>
-                        <div class="DP-view" id="btn-tonton">
-                            <p class="text-watchP">Tonton Podcast</p>
+                        <div class="card-DP-footer">
+                            <div class="view-DP-B">
+                                <p class="text-watchP-B">Dengar Podcast</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card-DP-B">
-                    <div class="card-body-DP-B">
-                        <div class="video-container">
-                            <div id="player-podcast" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
+                <div class="content-detail-podcast">
+                    <div class="content-detail-kiri">
+                        <div class="area-header-DP">
+                            <div class="area-detail-genre">
+                                <h2 class="detail-genre">Comedy</h2>
+                            </div>
+                            <div class="area-detail-title-podcast">
+                                <h2 class="detail-title">Podcast Aseek</h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-DP-footer">
-                        <div class="view-DP-B">
-                            <p class="text-watchP-B">Dengar Podcast</p>
+                        <div class="area-desk-detail-podcast">
+                            <p class="desk-podcast">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam
+                                dolor
+                                illo ipsum odit quia delectus non dicta praesentium magni necessitatibus vel soluta, nobis
+                                voluptate eius!</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="content-detail-podcast">
-                <div class="content-detail-kiri">
-                    <div class="area-header-DP">
-                        <div class="area-detail-genre">
-                            <h2 class="detail-genre">Comedy</h2>
-                        </div>
-                        <div class="area-detail-title-podcast">
-                            <h2 class="detail-title">Podcast Aseek</h2>
-                        </div>
-                    </div>
-                    <div class="area-desk-detail-podcast">
-                        <p class="desk-podcast">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam dolor
-                            illo ipsum odit quia delectus non dicta praesentium magni necessitatibus vel soluta, nobis
-                            voluptate eius!</p>
-                    </div>
+            <div class="area-detail-kanan">
+                <div class="header-detail-kanan">
+                    <h2 class="title-detail-kanan">Other Episode</h2>
                 </div>
-                <div class="content-detail-kanan"></div>
+                <div class="area-episodeP" id="style-3">
+                    <div class="card-episode">
+                        <a href="/detail-podcast">
+                            <div class="card-body-episode">
+                                <div class="card-header-episode">
+                                    <div class="genre-episode">
+                                        <h1 class="title-genre-episode">Comedy</h1>
+                                    </div>
+                                    <div class="area-card-text-episode">
+                                        <h1 class="card-text-podcast-episode">Podcast Aseek</h1>
+                                    </div>
+                                </div>
+                                <div class="card-image-podcast-episode">
 
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-episode">
+                        <a href="/detail-podcast">
+                            <div class="card-body-episode">
+                                <div class="card-header-episode">
+                                    <div class="genre-episode">
+                                        <h1 class="title-genre-episode">Comedy</h1>
+                                    </div>
+                                    <div class="area-card-text-episode">
+                                        <h1 class="card-text-podcast-episode">Podcast Aseek</h1>
+                                    </div>
+                                </div>
+                                <div class="card-image-podcast-episode">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-episode">
+                        <a href="/detail-podcast">
+                            <div class="card-body-episode">
+                                <div class="card-header-episode">
+                                    <div class="genre-episode">
+                                        <h1 class="title-genre-episode">Comedy</h1>
+                                    </div>
+                                    <div class="area-card-text-episode">
+                                        <h1 class="card-text-podcast-episode">Podcast Aseek</h1>
+                                    </div>
+                                </div>
+                                <div class="card-image-podcast-episode">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-episode">
+                        <a href="/detail-podcast">
+                            <div class="card-body-episode">
+                                <div class="card-header-episode">
+                                    <div class="genre-episode">
+                                        <h1 class="title-genre-episode">Comedy</h1>
+                                    </div>
+                                    <div class="area-card-text-episode">
+                                        <h1 class="card-text-podcast-episode">Podcast Aseek</h1>
+                                    </div>
+                                </div>
+                                <div class="card-image-podcast-episode">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-episode">
+                        <a href="/detail-podcast">
+                            <div class="card-body-episode">
+                                <div class="card-header-episode">
+                                    <div class="genre-episode">
+                                        <h1 class="title-genre-episode">Comedy</h1>
+                                    </div>
+                                    <div class="area-card-text-episode">
+                                        <h1 class="card-text-podcast-episode">Podcast Aseek</h1>
+                                    </div>
+                                </div>
+                                <div class="card-image-podcast-episode">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="area-see-more">
+                    <h2 class="text-see-more" id="toggleSeeMore">See more</h2>
+                </div>
             </div>
-            <div class="line-detail-podcast"></div>
         </div>
+        <div class="line-detail-podcast"></div>
     </section>
     <section class="page-detail-2">
         <div class="area-other-podcast">

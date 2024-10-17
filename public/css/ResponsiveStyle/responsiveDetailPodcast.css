@@ -61,7 +61,7 @@
         align-items: center;
         gap: 10px;
         font-weight: 600;
-        width: 76%;
+        width: 73%;
         height: 60px;
         display: flex;
         background-color: white;
@@ -79,7 +79,7 @@
         bottom: 0;
         right: 0;
         height: 60px;
-        width: 24%;
+        width: 27%;
         content: "";
         cursor: pointer;
         /* border: 1px black solid; */
@@ -87,12 +87,11 @@
 
     .card-DP .card-DP-header .DP-view {
         font-weight: 600;
-        color: rgb(238, 238, 238);
         justify-content: center;
         align-items: center;
         display: flex;
         height: 30px;
-        width: calc(20% - 2px);
+        width: calc(22% - 2px);
         background-color: var(--secondary-color);
         border-radius: 12px;
         padding: 10px;
@@ -207,13 +206,13 @@
     .card-DP.show {
         opacity: 1;
         transform: translateY(0);
-        width: 70%;
+        width: 100%;
         height: fit-content;
     }
     .card-DP-B.show {
         opacity: 1;
         transform: translateY(0);
-        width: 65%;
+        width: 100%;
         height: auto;
     }
 
@@ -230,7 +229,7 @@
     }
 
     .line-detail-podcast {
-        margin-bottom: 20px;
+        margin: 20px 32px 30px 32px;
     }
 
     .area-header-DP {
@@ -255,6 +254,37 @@
         font-weight: 200;
     }
     /* ------------ */
+    /* area detail kanan */
+
+    .title-detail-kanan {
+        font-size: 36px;
+    }
+
+    .area-episodeP {
+        height: 800px;
+    }
+
+    .card-episode {
+        padding: 20px 15px;
+    }
+
+    .title-genre-episode {
+        font-size: 16px;
+        margin: 3px 20px;
+    }
+
+    .card-text-podcast-episode {
+        font-size: 30px;
+    }
+
+    .card-image-podcast-episode {
+        height: 175px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 10px;
+    }
+    /* ---------------- */
 
     /* area other podcast */
 
@@ -524,7 +554,7 @@
         margin: 5px 10px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         height: 40px;
         width: 40px;
         font-size: 14px;
@@ -566,7 +596,7 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 240px;
+        height: 200px;
         background-color: white;
         padding: 30px;
         overflow: hidden;
@@ -586,8 +616,8 @@
         align-items: center;
         gap: 10px;
         font-weight: 600;
-        width: 76%;
-        height: 60px;
+        width: 68%;
+        height: 50px;
         display: flex;
         background-color: white;
         border-bottom-left-radius: 20px;
@@ -603,8 +633,8 @@
         position: absolute;
         bottom: 0;
         right: 0;
-        height: 60px;
-        width: 24%;
+        height: 55px;
+        width: 32%;
         content: "";
         cursor: pointer;
         /* border: 1px black solid; */
@@ -616,8 +646,8 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        height: 30px;
-        width: calc(20% - 2px);
+        height: 25px;
+        width: calc(26% - 2px);
         background-color: var(--secondary-color);
         border-radius: 12px;
         padding: 10px;
@@ -628,6 +658,7 @@
     .text-watchP {
         color: rgb(48, 48, 48);
         font-family: "Poppins";
+        font-size: 14px;
     }
 
     .btn-play-DP {
@@ -694,7 +725,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(22% - 2px);
+        width: calc(23% - 2px);
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 10px;
@@ -786,13 +817,42 @@
         font-weight: 200;
     }
     /* ------------ */
+    /* area detail kanan */
 
-    /* area other podcast */
-
-    .page-detail-2{
-        height: auto;
+    .title-detail-kanan {
+        font-size: 32px;
     }
 
+    .area-episodeP {
+        height: 800px;
+    }
+
+    .card-episode {
+        padding: 20px 15px;
+    }
+
+    .title-genre-episode {
+        font-size: 14px;
+        margin: 3px 20px;
+    }
+
+    .card-text-podcast-episode {
+        font-size: 24px;
+    }
+
+    .card-image-podcast-episode {
+        height: 145px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* ---------------- */
+    /* area other podcast */
+
+    .page-detail-2 {
+        height: auto;
+    }
 
     .area-content-OP {
         padding: 0px 32px 0px 32px;
@@ -1062,7 +1122,7 @@
         margin: 5px 10px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         font-size: 12px;
     }
     /* ------------------- */
@@ -1076,12 +1136,17 @@
 /* Mobile Devices */
 @media (max-width: 480px) {
     .page-detail-1 {
-        height: 600px;
+        height: auto;
     }
 
     .area-detail-podcast {
         margin: 0px 8px 0px 8px;
         /* border: 1px red solid; */
+        flex-direction: column;
+    }
+
+    .area-detail-kiri {
+        width: 100%;
     }
 
     .card-DP {
@@ -1318,7 +1383,7 @@
     .area-desk-detail-podcast {
         margin-top: 5px;
         /* border: 1px red solid; */
-        height: 320px;
+        height: 200px;
     }
 
     .desk-podcast {
@@ -1326,7 +1391,69 @@
         font-weight: 200;
     }
     /* ------------ */
+    /* area detail kanan */
 
+    .area-detail-kanan{
+        width: 100%;
+    }
+
+    .title-detail-kanan {
+        font-size: 28px;
+    }
+
+    .area-episodeP {
+        height: auto;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dua kolom */
+        gap: 10px;
+        width: 100%;
+    }
+
+    .card-episode {
+        margin-right: 0px;
+        padding: 20px 15px;
+        flex:1 1 calc(50% - 10px);
+        margin-bottom: 0px;
+        display: none;
+    }
+
+    .card-episode.visible{
+        display: block;
+    }
+
+    .title-genre-episode {
+        font-size: 12px;
+        margin: 3px 15px;
+    }
+
+    .card-text-podcast-episode {
+        font-size: 20px;
+    }
+
+    .card-image-podcast-episode {
+        height: 100px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 8px;
+    }
+
+
+    .area-see-more{
+        width: 100%;
+        height: fit-content;
+        display: block;
+        text-align: center;
+    }
+
+    .text-see-more{
+        font-size: 14px;
+        font-weight: 300;
+        font-family: "Poppins";
+        color: var(--secondary-color);
+    }
+    /* ---------------- */
     /* area other podcast */
 
     .area-content-OP {

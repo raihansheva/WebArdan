@@ -1,31 +1,36 @@
-
 /* area detail podcast */
 
-.page-detail-1{
+.page-detail-1 {
     width: 100%;
     height: 1000px;
 }
 
-.area-detail-podcast{
+.area-detail-podcast {
     width: auto;
     margin: 30px 64px 0px 64px;
     height: auto;
     /* border: 1px red solid; */
+    display: flex;
+    gap: 20px;
 }
 
-.area-image-DP{
+/* area detail kiri */
+.area-detail-kiri {
+    width: 65%;
+    height: auto;
+    /* border: 1px white solid; */
+}
+
+.area-image-DP {
     width: 100%;
     height: auto;
-    display: flex;
-    justify-content: center;
     /* border: 1px red solid; */
 }
 
-.image-DP{
+.image-DP {
     width: 100%;
     height: 500px;
     background-color: gainsboro;
-
 }
 
 .card-DP {
@@ -111,7 +116,7 @@
     font-family: "Poppins";
 }
 
-.btn-play-DP{
+.btn-play-DP {
     height: 80px;
     width: 80px;
     border-radius: 50%;
@@ -123,7 +128,7 @@
     align-items: center;
 }
 
-.btn-play-DP span{
+.btn-play-DP span {
     color: rgb(238, 238, 238);
     font-size: 32px;
 }
@@ -137,7 +142,6 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
     /* border: 1px green solid; */
     height: auto;
-
 }
 
 .card-DP-B .card-header-DP-B {
@@ -171,7 +175,7 @@
 
 .card-DP-B .view-DP-B {
     font-weight: 600;
-    color: rgb(238, 238, 238);
+    color: rgb(48, 48, 48);
     justify-content: center;
     align-items: center;
     display: flex;
@@ -210,15 +214,15 @@
 /* ---------------------- */
 /* animasi */
 /* Kelas untuk menampilkan card dengan animasi */
-.card-DP.show{
+.card-DP.show {
     opacity: 1;
     transform: translateY(0);
-    width: 70%;
+    width: 100%;
 }
 .card-DP-B.show {
     opacity: 1;
     transform: translateY(0);
-    width: 65%;
+    width: 100%;
     height: auto;
 }
 
@@ -229,28 +233,27 @@
     transform: translateY(20px);
 }
 
-.content-detail-podcast{
+.content-detail-podcast {
     width: 100%;
     height: auto;
     margin-top: 25px;
     display: flex;
 }
 
-.line-detail-podcast{
-    width: 100%;
+.line-detail-podcast {
+    width: auto;
     height: 1px;
     background-color: white;
-    margin-bottom: 30px;
+    margin: 0px 64px 30px 64px;
 }
 
-
 /* content kiri */
-.content-detail-kiri{
-    width: 50%;
+.content-detail-kiri {
+    width: 100%;
     height: auto;
 }
 
-.area-header-DP{
+.area-header-DP {
     width: 100%;
     height: auto;
     /* border: 1px red solid; */
@@ -258,13 +261,13 @@
     gap: 20px;
 }
 
-.area-detail-genre{
+.area-detail-genre {
     width: 200px;
     height: 100%;
     /* border: 1px white solid; */
 }
 
-.detail-genre{
+.detail-genre {
     font-family: "Bebas Neue";
     font-size: 24px;
     color: white;
@@ -276,13 +279,13 @@
     border-radius: 10px;
 }
 
-.area-detail-title-podcast{
+.area-detail-title-podcast {
     width: 200px;
     height: 100%;
     /* border: 1px white solid; */
 }
 
-.detail-title{
+.detail-title {
     font-family: "Bebas Neue";
     font-weight: 200;
     color: white;
@@ -290,7 +293,7 @@
     font-size: 40px;
 }
 
-.area-desk-detail-podcast{
+.area-desk-detail-podcast {
     width: 100%;
     max-height: 380px;
     height: 380px;
@@ -298,7 +301,7 @@
     margin-top: 20px;
 }
 
-.desk-podcast{
+.desk-podcast {
     font-family: "poppins";
     font-size: 18px;
     font-weight: 200;
@@ -307,18 +310,125 @@
 }
 /* ------------------ */
 
-
-/* content kanan */
-.content-detail-kanan{
-    width: 50%;
+/* area detail kanan */
+.area-detail-kanan {
+    width: 35%;
     height: auto;
+    /* border: 1px green solid; */
 }
+
+.header-detail-kanan {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-detail-kanan {
+    font-family: "Bebas Neue";
+    font-size: 46px;
+    font-weight: 300;
+    margin: 0px;
+    color: white;
+}
+
+.area-episodeP {
+    width: 100%;
+    height: 900px;
+    overflow-y: auto;
+    gap: 15px;
+}
+
+.card-episode a {
+    text-decoration: none;
+    color: black;
+    margin: 0px;
+    height: fit-content;
+}
+
+/* card episode */
+
+.card-episode {
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px 15px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.genre-episode {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+.title-genre-episode {
+    font-size: 18px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 5px 25px;
+}
+
+.area-card-text-episode {
+    width: fit-content;
+    height: fit-content;
+}
+
+.card-text-podcast-episode {
+    font-size: 34px;
+    margin: 0px;
+    font-weight: 200;
+    font-family: "Bebas Neue";
+}
+
+.card-image-podcast-episode {
+    width: 100%;
+    height: 195px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+#style-3::-webkit-scrollbar-track {
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+#style-3::-webkit-scrollbar {
+    width: 12px;
+    background-color: #292929;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    margin: 3px 0px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    /* cursor: pointer; */
+}
+
+.area-see-more {
+    display: none;
+}
+
+/* ------------ */
+
 /* ------------------- */
 
 /* ---------------- */
 
 /* area other podcast */
-.page-detail-2{
+.page-detail-2 {
     width: 100%;
     height: 100vh;
     /* background-color: #f0f0f0; */
@@ -386,7 +496,8 @@
     transition: all 0.4s ease-in-out;
 }
 
-.tombol-kanan-OP:hover, .tombol-kiri-OP:hover{
+.tombol-kanan-OP:hover,
+.tombol-kiri-OP:hover {
     background-color: var(--primary-color);
 }
 
@@ -523,7 +634,7 @@
     background-color: #dbac00;
 }
 
-.link-podcast{
+.link-podcast {
     width: 37%;
     /* border: 1px red solid; */
     z-index: 10;
@@ -538,19 +649,19 @@
 /* ------------------ */
 
 /* area video news stream */
-.page-detail-3{
+.page-detail-3 {
     width: 100%;
     height: 1000px;
 }
 
-.area-video-news-stream{
+.area-video-news-stream {
     width: auto;
     height: auto;
     margin: 0px 64px 0px 64px;
     /* border: 1px red solid; */
 }
 
-.area-content-VNS{
+.area-content-VNS {
     width: 100%;
     height: auto;
     display: flex;
@@ -559,19 +670,19 @@
 }
 
 /* area content kiri */
-.area-content-VNS-kiri{
+.area-content-VNS-kiri {
     width: 50%;
     height: auto;
     /* border: 1px green solid; */
 }
 
-.header-content-kiri{
+.header-content-kiri {
     width: 100%;
     height: fit-content;
     /* border: 1px red solid; */
 }
 
-.title-video{
+.title-video {
     font-size: 40px;
     font-weight: 200;
     font-family: "Bebas Neue";
@@ -579,7 +690,7 @@
     color: white;
 }
 
-.content-kiri-video{
+.content-kiri-video {
     width: auto;
     height: 750px;
     display: flex;
@@ -587,7 +698,7 @@
     gap: 20px;
 }
 
-.area-video-top{
+.area-video-top {
     height: 25%;
     width: 100%;
     /* border: 1px #ff004d solid; */
@@ -595,7 +706,7 @@
     gap: 20px;
 }
 
-.area-video-bottom{
+.area-video-bottom {
     height: 25%;
     width: 100%;
     /* border: 1px #ff004d solid; */
@@ -603,7 +714,7 @@
     gap: 20px;
 }
 
-.box-video{
+.box-video {
     width: 50%;
     height: 100%;
     background-color: #f0f0f0;
@@ -612,7 +723,7 @@
     align-items: center;
 }
 
-.btn-play-video{
+.btn-play-video {
     height: 60px;
     width: 60px;
     border-radius: 50%;
@@ -625,7 +736,7 @@
     transition: all 0.4s ease-in-out;
 }
 
-.btn-play-video:hover{
+.btn-play-video:hover {
     background-color: #dfc102;
 }
 
@@ -634,13 +745,13 @@
     font-size: 35px;
 }
 
-.area-video-mid{
+.area-video-mid {
     height: 50%;
     width: 100%;
     /* border: 1px blue solid; */
 }
 
-.box-video-mid{
+.box-video-mid {
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
@@ -649,7 +760,7 @@
     align-items: center;
 }
 
-.btn-play-video-mid{
+.btn-play-video-mid {
     height: 75px;
     width: 75px;
     border-radius: 50%;
@@ -662,7 +773,7 @@
     transition: all 0.4s ease-in-out;
 }
 
-.btn-play-video-mid:hover{
+.btn-play-video-mid:hover {
     background-color: #dfc102;
 }
 
@@ -671,12 +782,10 @@
     font-size: 38px;
 }
 
-
-
 /* --------------------- */
 
 /* area content kanan */
-.area-content-VNS-kanan{
+.area-content-VNS-kanan {
     width: 50%;
     /* height: 750px; */
     /* border: 1px green solid; */
@@ -685,7 +794,7 @@
     gap: 5px;
 }
 
-.area-content-news{
+.area-content-news {
     height: 70%;
     width: 100%;
     /* border: 1px #ffdb00 solid; */
@@ -751,18 +860,18 @@
 
 /* area content streaming */
 
-.area-content-streaming{
+.area-content-streaming {
     width: 100%;
     height: 30%;
     /* border: 1px red solid; */
 }
 
-.header-streaming{
+.header-streaming {
     width: 100%;
     height: 5%;
 }
 
-.title-streaming{
+.title-streaming {
     font-size: 40px;
     font-family: "Bebas Neue";
     font-weight: 200;
@@ -770,12 +879,12 @@
     margin: 0px;
 }
 
-.content-streaming{
+.content-streaming {
     width: 100%;
     height: 20%;
 }
 
-.box-streaming{
+.box-streaming {
     width: 100%;
     height: 100%;
     background-color: #f0f0f0;
@@ -811,7 +920,7 @@
     text-decoration: none;
 } */
 
-.text-streaming{
+.text-streaming {
     font-size: 18px;
     font-family: "Poppins";
     font-weight: 300;
@@ -843,13 +952,8 @@
     font-size: 35px;
 } */
 
-
-
-
 /* ------------------------ */
 
-
 /* ------------------ */
-
 
 /* ---------------------- */
