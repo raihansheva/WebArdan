@@ -236,6 +236,5 @@
 <script src="js/main/playlist.js"></script>
 <script src="js/main/main.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
 </html>

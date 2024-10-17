@@ -1582,7 +1582,7 @@ tbody tr {
     font-size: 22px;
     border-bottom: 1px solid #fff;
     color: white;
-    height: 64px !important; 
+    height: 64px t; 
 }
 
 tbody td {
@@ -1625,6 +1625,7 @@ tbody td {
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     cursor: pointer;
+    margin: 0px;
 }
 
 .text-btn-chart:hover {

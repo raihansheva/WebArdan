@@ -72,11 +72,7 @@
                     <div class="tombol-kanan"></div>
                 </div>
                 <swiper-container class="area-content-box-program" loop="true" autoplay-delay="2500"
-                    autoplay-disable-on-interaction="false" slides-per-view="4" space-between="20"  breakpoints="{
-                        1024: { slidesPerView: 4, spaceBetween: 20 },
-                        768: { slidesPerView: 3, spaceBetween: 20 },
-                        480: { slidesPerView: 1, spaceBetween: 10 }
-                      }">
+                    autoplay-disable-on-interaction="false" slides-per-view="4" space-between="20">
                     <swiper-slide class="box-program" onclick="showPopup()">Program A</swiper-slide>
                     <swiper-slide class="box-program" onclick="showPopup()">Program B</swiper-slide>
                     <swiper-slide class="box-program" onclick="showPopup()">Program C</swiper-slide>
@@ -89,7 +85,8 @@
             <div class="popup-content">
                 <div class="area-info-program">
                     {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
-                    <p class="desk-program">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                    <p class="desk-program">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste
+                        tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
                     <p class="jam-program">Minggu | 16.00 - 18.00</p>
                     <h2 class="title-box-program">Judul Program</h2>
                 </div>
@@ -225,7 +222,7 @@
                                     <h3 class="date-month">5 Oktober</h3>
                                     <h3 class="year">2024</h3>
                                 </div>
-                            </div>                           
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -233,14 +230,17 @@
                     <div class="popup-content-event">
                         <div class="area-info-event">
                             {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
-                            <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
+                            <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas
+                                iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
                             <h2 class="title-box-event">5 Oktober 2024</h2>
-                            <a href="/event"><p class="link-event">See detail</p></a>
+                            <a href="/event">
+                                <p class="link-event">See detail</p>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="area-content-event-kanan">
-                    <div class="content-event"   onclick="showPopupEvent()">
+                    <div class="content-event" onclick="showPopupEvent()">
                         <div class="area-days-date-right">
                             <div class="content-days-date-right">
                                 <div class="box-days-date-right">
@@ -250,7 +250,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-event" onclick="showPopupEvent()" >
+                    <div class="content-event" onclick="showPopupEvent()">
                         <div class="area-days-date-right">
                             <div class="content-days-date-right">
                                 <div class="box-days-date-right">
@@ -504,7 +504,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                         <table class="chart hidden" id="flight-40">
                             <thead>
                                 <tr>
@@ -541,7 +541,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                         <table class="chart hidden" id="indie-7">
                             <thead>
                                 <tr>
@@ -578,7 +578,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                         <table class="chart hidden" id="persada-7">
                             <thead>
                                 <tr>
@@ -727,4 +727,5 @@
     {{-- ------- --}}
     {{-- <script src="js/playlist.js"></script> --}}
     <script src="js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 @endsection
