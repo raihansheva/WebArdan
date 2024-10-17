@@ -94,7 +94,7 @@
 
 .card-DP .card-DP-header .DP-view {
     font-weight: 600;
-    color: rgb(238, 238, 238);
+    color: rgb(48, 48, 48);
     justify-content: center;
     align-items: center;
     display: flex;
@@ -505,7 +505,7 @@
 
 .card-podcast .card-header-podcast .view-podcast {
     font-weight: 600;
-    color: rgb(238, 238, 238);
+    color: rgb(48, 48, 48);
     font-family: "Poppins";
     justify-content: center;
     align-items: center;
@@ -520,8 +520,7 @@
 }
 
 .card-podcast .card-header-podcast .view-podcast:hover {
-    background-color: #e05003;
-    color: white;
+    background-color: #dbac00;
 }
 
 .link-podcast{
@@ -785,7 +784,7 @@
     align-items: center;
 }
 
-.btn-play-streaming{
+/* .btn-play-streaming{
     height: auto;
     width: auto;
     border: 1px var(--primary-color) solid;
@@ -810,13 +809,29 @@
 
 .link-streaming{
     text-decoration: none;
-}
+} */
 
 .text-streaming{
     font-size: 18px;
     font-family: "Poppins";
     font-weight: 300;
     margin: 5px 15px;
+}
+
+.btn-play-streaming {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    color: var(--primary-color);
+    background-color: rgb(48, 48, 48);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-streaming span {
+    font-size: 28px;
 }
 
 /* .btn-play-streaming:hover{

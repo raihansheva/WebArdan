@@ -176,7 +176,7 @@
 
 .card-podcast .card-header-podcast .view-podcast {
     font-weight: 600;
-    color: rgb(238, 238, 238);
+    color: rgb(48, 48, 48);
     font-family: "Poppins";
     justify-content: center;
     align-items: center;
@@ -191,8 +191,7 @@
 }
 
 .card-podcast .card-header-podcast .view-podcast:hover {
-    background-color: #e05003;
-    color: white;
+    background-color: #dbac00;
 }
 
 .link-podcast{

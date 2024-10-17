@@ -270,8 +270,8 @@
                         <div class="box-streaming">
                             <a class="link-streaming" href="">
                                 <div class="btn-play-streaming">
-                                    {{-- <span class="material-symbols-rounded">play_arrow</span> --}}
-                                    <h2 class="text-streaming">Click Here</h2>
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                    {{-- <h2 class="text-streaming">Click Here</h2> --}}
                                 </div>
                             </a>
                         </div>

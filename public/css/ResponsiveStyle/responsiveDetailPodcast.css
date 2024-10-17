@@ -163,7 +163,7 @@
 
     .card-DP-B .view-DP-B {
         font-weight: 600;
-        color: rgb(238, 238, 238);
+        /* color: rgb(238, 238, 238); */
         justify-content: center;
         align-items: center;
         display: flex;
@@ -177,6 +177,7 @@
     }
 
     .text-watchP-B {
+        color: rgb(48, 48, 48);
         font-family: "Poppins";
         font-size: 14px;
     }
@@ -413,7 +414,6 @@
     }
 
     .text-watch-podcast {
-        color: white;
         font-family: "Poppins";
         font-size: 14px;
     }
@@ -520,9 +520,16 @@
     }
 
     .text-streaming {
-        font-size: 14px;
+        font-size: 12px;
         margin: 5px 10px;
     }
+
+    .btn-play-streaming{
+        height: 40px;
+        width: 40px;
+        font-size: 14px;
+    }
+
     /* ------------------- */
     /* --------------- */
 
@@ -619,6 +626,7 @@
     }
 
     .text-watchP {
+        color: rgb(48, 48, 48);
         font-family: "Poppins";
     }
 
@@ -781,6 +789,11 @@
 
     /* area other podcast */
 
+    .page-detail-2{
+        height: auto;
+    }
+
+
     .area-content-OP {
         padding: 0px 32px 0px 32px;
         margin-top: 40px;
@@ -793,7 +806,7 @@
     }
 
     .content-OP {
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
     .area-content-card-OP {
@@ -936,7 +949,6 @@
     }
 
     .text-watch-podcast {
-        color: white;
         font-family: "Poppins";
         font-size: 14px;
     }
@@ -954,6 +966,7 @@
 
     .area-content-VNS {
         gap: 10px;
+        margin-top: 25px;
     }
 
     /* content kiri */
@@ -1049,6 +1062,9 @@
         margin: 5px 10px;
     }
 
+    .btn-play-streaming{
+        font-size: 12px;
+    }
     /* ------------------- */
     /* --------------- */
 
@@ -1148,6 +1164,7 @@
     }
 
     .text-watchP {
+        color: rgb(48, 48, 48);
         font-family: "Poppins";
         font-size: 12px;
     }
@@ -1206,7 +1223,6 @@
 
     .card-DP-B .view-DP-B {
         font-weight: 600;
-        color: rgb(238, 238, 238);
         justify-content: center;
         align-items: center;
         display: flex;
@@ -1469,7 +1485,6 @@
     }
 
     .text-watch-podcast {
-        color: white;
         font-family: "Poppins";
         font-size: 14px;
     }
