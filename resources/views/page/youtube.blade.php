@@ -16,6 +16,15 @@
         <div class="area-video-youtube">
             <div class="area-header-video">
                 <p class="text-choose">Choose Playlist</p>
+                <div class="area-input">
+                    <input type="text" id="search-input" placeholder="Search playlists..." oninput="filterPlaylists()">
+                    <div class="dropdownP">
+                        <button id="dropdown-btn-playlist" class="dropdown-btn-search">Select Playlist</button>
+                        <div id="playlist-dropdown" class="dropdown-playlist">
+                            <!-- Daftar playlist akan diisi menggunakan JavaScript -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="area-content-video">
                 <div class="video-card">
