@@ -33,15 +33,16 @@ class BannerResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('title_banner'),
+                        TextInput::make('title_banner')->label('Title Banner :'),
                         FileUpload::make('image_banner')
-                            ->label('Stream Image')
+                            ->label('Banner Image :')
                             ->image()
                             ->directory('uploads/images_banner')
                             ->disk('public')
-                            ->preserveFilenames(),
-                            // ->rules('required', 'image', 'dimensions:width=1350,height=250')
-                            // ->validationAttribute('Stream Image'),
+                            ->preserveFilenames()
+                            ->rules(['required', 'image', 'dimensions:width=1350,height=250']) // Ubah format ke array
+                            ->validationAttribute('Stream Image')
+                            ->helperText('The image must be 1350x250 pixels.')
                     ])
                     ->columns(2),
             ]);

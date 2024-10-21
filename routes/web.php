@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('page.home');
-});
+// Route::get('/', function () {
+//     return view('page.home');
+// });
 
-Route::get('/home', function () {
-    return view('page.home');
-});
-
+// Route::get('/home', function () {
+//     return view('page.home');
+// });
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/event', function () {
     return view('page.event');

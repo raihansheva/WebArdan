@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Illuminate\Support\Facades\Date;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -40,9 +41,9 @@ class InfoResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('judul_info')->label('Judul Info :')
-                            ->live(onBlur:true)
-                            ->afterStateUpdated(function( string $operation , string $state , Forms\Set $set){
-                                $set('slug' , Str::slug($state));
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
+                                $set('slug', Str::slug($state));
                             })
                             ->required(),
                         TextInput::make('tag_info')->label('tag Info :')->required(),
@@ -65,6 +66,13 @@ class InfoResource extends Resource
                             ->label('Slug :')
                             ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
                             ->required(),
+                        Select::make('top_news')
+                            ->label('Top News :')
+                            ->options([
+                                'Ya' => 'Ya',
+                                'Tidak' => 'Tidak',
+                            ])
+                            ->default('Tidak'),
                     ])
                     ->columns(2),
             ]);
@@ -80,6 +88,7 @@ class InfoResource extends Resource
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),
                 TextColumn::make('slug'),
+                TextColumn::make('top_news'),
             ])
             ->filters([
                 //
@@ -110,6 +119,4 @@ class InfoResource extends Resource
             'edit' => Pages\EditInfo::route('/{record}/edit'),
         ];
     }
-
-    
 }

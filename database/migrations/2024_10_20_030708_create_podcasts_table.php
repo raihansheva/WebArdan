@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image_podcast');
             $table->date('date_podcast');
             $table->string('link_podcast');
+            $table->string('file');
             $table->string('slug')->unique();
             $table->timestamps();
         });

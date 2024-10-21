@@ -8,9 +8,9 @@
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                <swiper-slide>Slide 1</swiper-slide>
-                <swiper-slide>Slide 2</swiper-slide>
-                <swiper-slide>Slide 3</swiper-slide>
+                @foreach ($banner as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}" alt=""></swiper-slide>
+                @endforeach
             </swiper-container>
         </div>
     </section>
@@ -226,7 +226,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="area-content-event-kanan">
                     <div class="content-event" onclick="showPopupEvent()">
                         <div class="area-days-date-right">

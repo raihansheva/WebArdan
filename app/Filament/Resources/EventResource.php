@@ -39,15 +39,18 @@ class EventResource extends Resource
                 Card::make()
                     ->schema([
                         FileUpload::make('image_event')
-                        ->label('Image Event :')
-                        ->image()
-                        ->directory('uploads/images_event')
-                        ->disk('public')
-                        ->preserveFilenames(),
+                            ->label('Image Event :')
+                            ->image()
+                            ->directory('uploads/images_event')
+                            ->disk('public')
+                            ->preserveFilenames()
+                            ->rules(['required', 'image', 'dimensions:width=864,height=500']) // Ubah format ke array
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must be 864x500 pixels.'),
                         Textarea::make('deskripsi_event')
-                        ->label('Deksripsi Event :')
-                        ->rows(5)
-                        ->required(),
+                            ->label('Deksripsi Event :')
+                            ->rows(5)
+                            ->required(),
                         DatePicker::make('date_event')->label('Date Event :')->required(),
                         DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
                     ])
