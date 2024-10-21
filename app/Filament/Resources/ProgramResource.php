@@ -24,6 +24,9 @@ class ProgramResource extends Resource
     protected static ?string $model = Program::class;
     
     protected static ?string $navigationGroup = 'Menu';
+
+    protected static ?string $navigationLabel = 'Program';
+    
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -32,14 +35,17 @@ class ProgramResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('text_header'),
-                        TextInput::make('judul_program'),
-                        Textarea::make('deskripsi_program'),
-                        TextInput::make('jam_program'),
+                        TextInput::make('text_header')->label('Text Header :')->required(),
+                        TextInput::make('judul_program')->label('Nama Program :')->required(),
+                        Textarea::make('deskripsi_program')
+                        ->label('Deskripsi Program :')
+                        ->rows(5)
+                        ->required(),
+                        TextInput::make('jam_program')->label('Jam Program :')->required(),
                         FileUpload::make('image_program')
-                        ->label('Stream Image')
+                        ->label('Program Image :')
                         ->image()
-                        ->directory('uploads/images')
+                        ->directory('uploads/images_program')
                         ->disk('public')
                         ->preserveFilenames(),
                         

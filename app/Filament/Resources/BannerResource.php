@@ -24,6 +24,7 @@ class BannerResource extends Resource
 
     protected static ?string $navigationGroup = 'Menu';
 
+    protected static ?string $navigationLabel = 'Banner';
     protected static ?string $navigationIcon = 'heroicon-o-flag';
 
     public static function form(Form $form): Form
@@ -36,9 +37,11 @@ class BannerResource extends Resource
                         FileUpload::make('image_banner')
                             ->label('Stream Image')
                             ->image()
-                            ->directory('uploads/images')
+                            ->directory('uploads/images_banner')
                             ->disk('public')
                             ->preserveFilenames(),
+                            // ->rules('required', 'image', 'dimensions:width=1350,height=250')
+                            // ->validationAttribute('Stream Image'),
                     ])
                     ->columns(2),
             ]);

@@ -22,6 +22,8 @@ class YoutubeResource extends Resource
 
     protected static ?string $navigationGroup = 'Menu';
 
+    protected static ?string $navigationLabel = 'Youtube';
+
     protected static ?string $navigationIcon = 'heroicon-o-play-circle';
 
     public static function form(Form $form): Form

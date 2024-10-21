@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('deskripsi_info');
             $table->string('image_info');
             $table->date('date_info');
+            $table->string('slug')->unique()->nullable();
             $table->timestamps();
         });
     }

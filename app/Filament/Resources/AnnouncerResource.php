@@ -24,6 +24,8 @@ class AnnouncerResource extends Resource
 
     protected static ?string $navigationGroup = "Menu";
 
+    protected static ?string $navigationLabel = 'Announcer';
+
     protected static ?string $navigationIcon = 'heroicon-o-megaphone';
 
     public static function form(Form $form): Form
@@ -32,16 +34,16 @@ class AnnouncerResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('name_announcer')->label('Name Announcer :'),
+                        TextInput::make('name_announcer')->label('Name Announcer :')->required(),
                         FileUpload::make('image_announcer')
-                            ->label('Stream Image')
+                            ->label('Announcer Image')
                             ->image()
-                            ->directory('uploads/images')
+                            ->directory('uploads/images_announcer')
                             ->disk('public')
                             ->preserveFilenames(),
-                        TextInput::make('link_instagram')->label('Link Instagram :'),
-                        TextInput::make('link_facebook')->label('Link Facebook :'),
-                        TextInput::make('link_twitter')->label('Link Twitter :'),
+                        TextInput::make('link_instagram')->label('Link Instagram :')->required(),
+                        TextInput::make('link_facebook')->label('Link Facebook :')->required(),
+                        TextInput::make('link_twitter')->label('Link Twitter :')->required(),
                     ])
                     ->columns(2),
             ]);

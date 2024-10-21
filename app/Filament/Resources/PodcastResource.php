@@ -7,6 +7,7 @@ use Filament\Tables;
 use App\Models\Podcast;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Textarea;
@@ -26,6 +27,8 @@ class PodcastResource extends Resource
 
     protected static ?string $navigationGroup = "Menu";
 
+    protected static ?string $navigationLabel = 'Podcast';
+
     protected static ?string $navigationIcon = 'heroicon-o-microphone';
 
     public static function form(Form $form): Form
@@ -34,19 +37,28 @@ class PodcastResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('judul_podcast')->label('Judul Podcast :'),
-                        TextInput::make('genre_podcast')->label('Genre Podcast :'),
+                        TextInput::make('judul_podcast')->label('Judul Podcast :')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
+                                $set('slug', Str::slug($state));
+                            })
+                            ->required(),
+                        TextInput::make('genre_podcast')->label('Genre Podcast :')->required(),
                         Textarea::make('deskripsi_podcast')->label('Deskripsi Podcast :')
-                        ->rows(5),
-                        TextInput::make('eps_podcast')->label('Eps Podcast :'),
+                            ->rows(5)->required(),
+                        TextInput::make('eps_podcast')->label('Eps Podcast :')->required(),
                         FileUpload::make('image_podcast')
-                        ->label('Podcast Image :')
-                        ->image()
-                        ->directory('uploads/images')
-                        ->disk('public')
-                        ->preserveFilenames(),
-                        DatePicker::make('date_podcast'),
-                        Textarea::make('link_podcast')->label('Link Podcast :'),
+                            ->label('Podcast Image :')
+                            ->image()
+                            ->directory('uploads/images_podcast')
+                            ->disk('public')
+                            ->preserveFilenames(),
+                        DatePicker::make('date_podcast')->required(),
+                        Textarea::make('link_podcast')->label('Link Podcast :')->required(),
+                        TextInput::make('slug')
+                            ->label('Slug :')
+                            ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
@@ -63,6 +75,7 @@ class PodcastResource extends Resource
                 ImageColumn::make('image_podcast'),
                 TextColumn::make('date_podcast'),
                 TextColumn::make('link_podcast'),
+                TextColumn::make('slug'),
             ])
             ->filters([
                 //

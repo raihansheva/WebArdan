@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources;
 
+use Closure;
 use Filament\Forms;
 use App\Models\Info;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Illuminate\Support\Facades\Date;
@@ -27,7 +29,7 @@ class InfoResource extends Resource
 
     protected static ?string $navigationGroup = 'Menu';
 
-    protected static ?string $label = 'Info';
+    protected static ?string $navigationLabel = 'Info';
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
@@ -37,15 +39,21 @@ class InfoResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('judul_info')->label('Judul Info :'),
-                        TextInput::make('tag_info')->label('tag Info :'),
+                        TextInput::make('judul_info')->label('Judul Info :')
+                            ->live(onBlur:true)
+                            ->afterStateUpdated(function( string $operation , string $state , Forms\Set $set){
+                                $set('slug' , Str::slug($state));
+                            })
+                            ->required(),
+                        TextInput::make('tag_info')->label('tag Info :')->required(),
                         Textarea::make('deskripsi_info')
-                        ->label('Deskripsi Info :')
-                        ->rows(5),
+                            ->label('Deskripsi Info :')
+                            ->rows(5)
+                            ->required(),
                         FileUpload::make('image_info')
                             ->label('Info Image :')
                             ->image()
-                            ->directory('uploads/images')
+                            ->directory('uploads/images_info')
                             ->disk('public')
                             ->preserveFilenames(),
                         DatePicker::make('date_info')
@@ -53,6 +61,10 @@ class InfoResource extends Resource
                             ->required()
                             ->displayFormat('Y-m-d') // Format tampilan tanggal
                             ->firstDayOfWeek(1), // Menentukan hari pertama minggu (1 = Senin)
+                        TextInput::make('slug')
+                            ->label('Slug :')
+                            ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
@@ -67,6 +79,7 @@ class InfoResource extends Resource
                 TextColumn::make('deskripsi_info'),
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),
+                TextColumn::make('slug'),
             ])
             ->filters([
                 //
@@ -97,4 +110,6 @@ class InfoResource extends Resource
             'edit' => Pages\EditInfo::route('/{record}/edit'),
         ];
     }
+
+    
 }

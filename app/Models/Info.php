@@ -13,7 +13,7 @@ class Info extends Model implements HasMedia
     use HasFactory , InteractsWithMedia;
 
 
-    protected $fillable = ['id' , 'judul_info' , 'tag_info' , 'deskripsi_info' , 'image_info' , 'date_info'];
+    protected $fillable = ['id' , 'judul_info' , 'tag_info' , 'deskripsi_info' , 'image_info' , 'date_info' , 'slug'];
 
     public function registerMediaCollections(): void
     {

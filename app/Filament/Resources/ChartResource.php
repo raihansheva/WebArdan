@@ -23,6 +23,8 @@ class ChartResource extends Resource
 
     protected static ?string $navigationGroup = 'Menu';
 
+    protected static ?string $navigationLabel = 'Chart';
+
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
 
     public static function form(Form $form): Form

@@ -26,21 +26,8 @@ class StreamResource extends Resource
 
     protected static ?string $navigationGroup = 'Menu';
 
+    protected static ?string $navigationLabel = 'Streaming';
     protected static ?string $navigationIcon = 'heroicon-o-video-camera';
-
-    protected function mutateFormDataBeforeSave(array $data): array
-    {
-        $stream = Streaming::find($data['id']); // Ambil model yang akan diedit
-
-        if (isset($data['image_stream'])) {
-            // Jika ada gambar baru yang di-upload
-            $stream->clearMediaCollection('images'); // Hapus gambar lama
-            $stream->addMedia($data['image_stream'])
-                ->toMediaCollection('images'); // Simpan gambar baru
-        }
-
-        return $data;
-    }
 
     public static function form(Form $form): Form
     {
@@ -48,17 +35,17 @@ class StreamResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('title_stream')->required(),
-                        TextInput::make('stream_video_url')->required(),
-                        TextInput::make('stream_audio_url')->required(),
+                        TextInput::make('title_stream')->label('Title Stream :')->required(),
+                        TextInput::make('stream_video_url')->label('Url Stream Video :')->required(),
+                        TextInput::make('stream_audio_url')->label('Url Stream Audio :')->required(),
                         FileUpload::make('image_stream')
-                            ->label('Stream Image')
+                            ->label('Stream Image :')
                             ->image()
-                            ->directory('uploads/images')
+                            ->directory('uploads/images_stream')
                             ->disk('public')
                             ->preserveFilenames(),
                         Select::make('status')
-                            ->label('Streaming-Status')
+                            ->label('Streaming Status :')
                             ->options([
                                 'streaming' => 'Streaming',
                                 'upcoming' => 'Upcoming',

@@ -28,6 +28,8 @@ class EventResource extends Resource
 
     protected static ?string $navigationGroup = 'Menu';
 
+    protected static ?string $navigationLabel = 'Event';
+
     protected static ?string $navigationIcon = 'heroicon-o-sparkles';
 
     public static function form(Form $form): Form
@@ -39,14 +41,15 @@ class EventResource extends Resource
                         FileUpload::make('image_event')
                         ->label('Image Event :')
                         ->image()
-                        ->directory('uploads/images')
+                        ->directory('uploads/images_event')
                         ->disk('public')
                         ->preserveFilenames(),
                         Textarea::make('deskripsi_event')
                         ->label('Deksripsi Event :')
-                        ->rows(5),
-                        DatePicker::make('date_event')->label('Date Event :'),
-                        DateTimePicker::make('time_countdown')->label('Time Countdown :'),
+                        ->rows(5)
+                        ->required(),
+                        DatePicker::make('date_event')->label('Date Event :')->required(),
+                        DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
                     ])
 
                     ->columns(2),
