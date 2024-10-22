@@ -53,8 +53,14 @@ class PodcastResource extends Resource
                             ->directory('uploads/images_podcast')
                             ->disk('public')
                             ->preserveFilenames(),
-                        DatePicker::make('date_podcast')->required(),
-                        Textarea::make('link_podcast')->label('Link Podcast :')->required(),
+                        FileUpload::make('file')
+                            ->label('File Podcast :')
+                            ->image()
+                            ->directory('uploads/file_podcast')
+                            ->disk('public')
+                            ->preserveFilenames(),
+                        DatePicker::make('date_podcast')->label('Date Podcast :')->required(),
+                        TextInput::make('link_podcast')->label('Link Podcast :')->required(),
                         TextInput::make('slug')
                             ->label('Slug :')
                             ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
@@ -75,6 +81,7 @@ class PodcastResource extends Resource
                 ImageColumn::make('image_podcast'),
                 TextColumn::make('date_podcast'),
                 TextColumn::make('link_podcast'),
+                TextColumn::make('file'),
                 TextColumn::make('slug'),
             ])
             ->filters([

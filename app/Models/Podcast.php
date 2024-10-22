@@ -12,7 +12,7 @@ class Podcast extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'judul_podcast' , 'genre_podcast' , 'deskripsi_podcast', 'eps_podcast' , 'image_podcast' ,'date_podcast' , 'link_podcast' , 'slug'];
+    protected $fillable = ['id' , 'judul_podcast' , 'genre_podcast' , 'deskripsi_podcast', 'eps_podcast' , 'image_podcast' ,'date_podcast' , 'link_podcast' , 'file' , 'slug' ];
 
     public function registerMediaCollections(): void
     {
