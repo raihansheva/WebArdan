@@ -9,10 +9,11 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use function Laravel\Prompts\textarea;
 use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\TextColumn;
 
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -53,6 +54,13 @@ class EventResource extends Resource
                             ->required(),
                         DatePicker::make('date_event')->label('Date Event :')->required(),
                         DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
+                        Select::make('status')
+                            ->label('Status Event :')
+                            ->options([
+                                'soon' => 'Soon',
+                                'upcoming' => 'Upcoming',
+                                'completed' => 'Completed',
+                            ]),
                     ])
 
                     ->columns(2),
@@ -67,6 +75,13 @@ class EventResource extends Resource
                 TextColumn::make('deskripsi_event'),
                 TextColumn::make('date_event'),
                 TextColumn::make('time_countdown'),
+                TextColumn::make('status')
+                    ->color(fn($record) => match ($record->status) {
+                        'soon' => 'warning',    // Merah untuk streaming
+                        'upcoming' => 'danger',     // Oren untuk upcoming
+                        'completed' => 'success',    // Hijau untuk completed
+                        default => 'secondary',       // Warna default
+                    }),
             ])
             ->filters([
                 //

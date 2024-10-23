@@ -267,7 +267,6 @@ window.onclick = function (event) {
 //     });
 // });
 
-
 // Toggle mobile menu on hamburger icon click
 document
     .getElementById("hamburger-icon")
@@ -298,7 +297,7 @@ document.addEventListener("click", function (event) {
         !isClickInsideHamburger &&
         mobileMenu.classList.contains("active")
     ) {
-        // console.log("Closing mobile menu"); 
+        // console.log("Closing mobile menu");
         mobileMenu.classList.remove("active");
     }
 });
@@ -307,7 +306,7 @@ window.onload = function () {
 };
 
 window.onscroll = function () {
-    checkScrollPosition(); 
+    checkScrollPosition();
 };
 
 function checkScrollPosition() {
@@ -355,17 +354,16 @@ btnhideshow.addEventListener("click", function () {
         ComCP.style.display = "flex";
         // Comaudioplayer.classList.add("fade-in");
         ComCP.classList.add("slide-in");
-        
+
         setTimeout(() => {
             // Comaudioplayer.classList.remove("fade-in");
             ComCP.classList.remove("slide-in");
             Comimage.classList.remove("slide-in");
             Commusictitle.classList.remove("slide-in");
         }, 500);
-        
-        setTimeout(() =>{
-            Comcontrolbtn.style.backgroundColor = "";
 
+        setTimeout(() => {
+            Comcontrolbtn.style.backgroundColor = "";
         }, 280);
     }
 
@@ -390,7 +388,7 @@ btnhideshow.addEventListener("click", function () {
     // } else {
     //     // Comaudioplayer.classList.add("fade-in");
     //     ComCP.classList.add("slide-out");
-        
+
     //     Comcontrolbtn.style.backgroundColor = "transparent";
     //     setTimeout(() => {
     //         ComCP.style.display = "none";
@@ -399,42 +397,52 @@ btnhideshow.addEventListener("click", function () {
     //         Comimage.classList.remove("slide-out");
     //         Commusictitle.classList.remove("slide-out");
     //     }, 500);
-        
-        
+
     // }
 
     // isVisible = !isVisible;
     // ----------------------
 });
 
-
 // countdown event
 // Mendapatkan path URL saat ini
 const currentPath = window.location.pathname;
 
 // Mengecek apakah URL-nya /home, /event, atau /
-if (currentPath === "/home" || currentPath === "/event" || currentPath === "/" || currentPath == "/ardan-youtube") {
+if (
+    currentPath === "/home" ||
+    currentPath === "/event" ||
+    currentPath === "/" ||
+    currentPath == "/ardan-youtube"
+) {
     // Eksekusi JavaScript countdown hanya jika path sesuai
-    const daysElement = document.getElementById('days');
-    const hoursElement = document.getElementById('hours');
-    const minutesElement = document.getElementById('minutes');
-    const secondsElement = document.getElementById('seconds');
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
+    const secondsElement = document.getElementById("seconds");
 
-    const countdownDate = new Date('2024-11-12 23:59:59').getTime();
+    const countdownDateStr = document
+        .getElementById("dataTime")
+        .innerText.trim();
+    const countdownDate = new Date(countdownDateStr).getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
         const timeRemaining = countdownDate - now;
 
         const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+        const hours = Math.floor(
+            (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+            (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
 
-        daysElement.innerText = days < 10 ? '0' + days : days;
-        hoursElement.innerText = hours < 10 ? '0' + hours : hours;
-        minutesElement.innerText = minutes < 10 ? '0' + minutes : minutes;
-        secondsElement.innerText = seconds < 10 ? '0' + seconds : seconds;
+        daysElement.innerText = days < 10 ? "0" + days : days;
+        hoursElement.innerText = hours < 10 ? "0" + hours : hours;
+        minutesElement.innerText = minutes < 10 ? "0" + minutes : minutes;
+        secondsElement.innerText = seconds < 10 ? "0" + seconds : seconds;
 
         if (timeRemaining < 0) {
             clearInterval(countdownInterval);
@@ -442,7 +450,7 @@ if (currentPath === "/home" || currentPath === "/event" || currentPath === "/" |
             hoursElement.innerText = "00";
             minutesElement.innerText = "00";
             secondsElement.innerText = "00";
-            alert('Countdown selesai!');
+            alert("Countdown selesai!");
         }
     }
 
@@ -452,10 +460,24 @@ if (currentPath === "/home" || currentPath === "/event" || currentPath === "/" |
 // ---------------------------------------
 
 // pop up event
-function showPopupEvent() {
+function showPopupEvent(element) {
     const popupEvent = document.getElementById("popupEvent");
     popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
     popupEvent.style.display = "flex"; // Tampilkan pop-up
+
+    const description = element.getAttribute('data-description');
+    const date = element.getAttribute('data-date');
+
+    // Log untuk melihat nilai yang diambil
+    console.log('Deskripsi:', description);
+    console.log('Tanggal:', date);
+    
+    // Menampilkan data di dalam pop-up
+    document.querySelector('.desk-event').textContent = description || 'Deskripsi tidak tersedia';
+    document.querySelector('.title-box-event').textContent = date || 'Tanggal tidak tersedia';
+
+    // Menampilkan pop-up
+    document.getElementById("popupEvent").style.display = "flex";
 }
 
 function closePopupEvent() {

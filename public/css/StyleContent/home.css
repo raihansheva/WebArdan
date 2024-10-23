@@ -772,8 +772,9 @@ swiper-slide img {
 }
 
 .box-days-date {
-    width: auto;
+    width: 40%;
     height: auto;
+    /* border: 1px red solid; */
 }
 
 .date-month {
@@ -965,8 +966,9 @@ swiper-slide img {
 }
 
 .box-days-date-right {
-    width: auto;
+    width: 20%;
     height: auto;
+    /* border: 1px red solid; */
 }
 
 .date-month-right {

@@ -351,39 +351,65 @@ tontonSiaranBtnB.addEventListener("click", function () {
 //     });
 // });
 
+function showPopup(element) {
+    const title = element.getAttribute("data-title");
+    const description = element.getAttribute("data-description");
+    const time = element.getAttribute("data-time");
 
+    // Log data untuk debug
+    console.log("Title:", title); // Pastikan ini mencetak judul
+    console.log("Description:", description); // Pastikan ini mencetak deskripsi
+    console.log("Time:", time); // Pastikan ini mencetak waktu
 
-function showPopup() {
-    document.getElementById("popup").style.display = "flex"; // Tampilkan pop-up
+    if (title && description && time) {
+        document.querySelector(".title-box-program").textContent = title;
+        document.querySelector(".desk-program").textContent = description;
+        document.querySelector(".jam-program").textContent = time;
+        document.getElementById("popup").style.display = "flex"; // Tampilkan popup
+    } else {
+        console.error("Data tidak ditemukan untuk elemen yang diklik!");
+    }
 }
 
 function closePopup() {
-    document.getElementById("popup").style.display = "none"; // Sembunyikan pop-up
+    const popup = document.getElementById("popup");
+    popup.classList.remove("muncul"); // Hilangkan kelas show
+    popup.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    // Sembunyikan pop-up setelah animasi selesai
+    popup.style.display = "none";
+    popup.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
 }
 
 function closePopupOutside(event) {
-    // Tutup pop-up hanya jika pengguna mengklik di luar konten
     if (event.target.id === "popup") {
         closePopup();
     }
 }
 
-function showPopupEvent() {
-    const popupEvent = document.getElementById("popupEvent");
-    popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
-    popupEvent.style.display = "flex"; // Tampilkan pop-up
+function showPopupEvent(element) {
+    console.log('Fungsi showPopupEvent dipanggil'); // Log ini akan menunjukkan apakah fungsi dipanggil
+    const description = element.getAttribute('data-description');
+    const date = element.getAttribute('data-date');
+
+    // Log untuk melihat nilai yang diambil
+    console.log('Deskripsi:', description);
+    console.log('Tanggal:', date);
+    
+    // Menampilkan data di dalam pop-up
+    document.querySelector('.desk-event').textContent = description || 'Deskripsi tidak tersedia';
+    document.querySelector('.title-box-event').textContent = date || 'Tanggal tidak tersedia';
+
+    // Menampilkan pop-up
+    document.getElementById("popupEvent").style.display = "flex";
 }
 
 function closePopupEvent() {
     const popupEvent = document.getElementById("popupEvent");
     popupEvent.classList.remove("muncul"); // Hilangkan kelas show
     popupEvent.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
-
-    // Sembunyikan pop-up setelah animasi selesai
-    setTimeout(() => {
-        popupEvent.style.display = "none";
-        popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
-    }, 300); // 300ms sesuai dengan durasi animasi
+    popupEvent.style.display = "none";
+    popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
 }
 
 function closePopupOutsideEvent(event) {
@@ -412,31 +438,29 @@ tabs.forEach((tab) => {
     });
 });
 
-
 // swiperr
-document.addEventListener('DOMContentLoaded', function () {
-    const swiper = new Swiper('.area-content-box-program', {
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      slidesPerView: 4,
-      spaceBetween: 20,
-      breakpoints: {
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 20
+document.addEventListener("DOMContentLoaded", function () {
+    const swiper = new Swiper(".area-content-box-program", {
+        loop: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
         },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 20
+        slidesPerView: 4,
+        spaceBetween: 20,
+        breakpoints: {
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
         },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 10
-        }
-      }
     });
-  });
-  
+});

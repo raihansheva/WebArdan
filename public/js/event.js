@@ -47,10 +47,8 @@ function closePopupEvent() {
     popupEvent.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
 
     // Sembunyikan pop-up setelah animasi selesai
-    setTimeout(() => {
         popupEvent.style.display = "none";
         popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
-    }, 300); // 300ms sesuai dengan durasi animasi
 }
 
 function closePopupOutsideEvent(event) {

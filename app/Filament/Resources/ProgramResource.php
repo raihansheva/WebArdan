@@ -22,11 +22,11 @@ use App\Filament\Resources\ProgramResource\RelationManagers;
 class ProgramResource extends Resource
 {
     protected static ?string $model = Program::class;
-    
+
     protected static ?string $navigationGroup = 'Menu';
 
     protected static ?string $navigationLabel = 'Program';
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -38,17 +38,20 @@ class ProgramResource extends Resource
                         TextInput::make('text_header')->label('Text Header :')->required(),
                         TextInput::make('judul_program')->label('Nama Program :')->required(),
                         Textarea::make('deskripsi_program')
-                        ->label('Deskripsi Program :')
-                        ->rows(5)
-                        ->required(),
-                        TextInput::make('jam_program')->label('Jam Program :')->required(),
+                            ->label('Deskripsi Program :')
+                            ->rows(5)
+                            ->required(),
                         FileUpload::make('image_program')
-                        ->label('Program Image :')
-                        ->image()
-                        ->directory('uploads/images_program')
-                        ->disk('public')
-                        ->preserveFilenames(),
-                        
+                            ->label('Program Image :')
+                            ->image()
+                            ->directory('uploads/images_program')
+                            ->disk('public')
+                            ->preserveFilenames()
+                            ->rules(['required', 'image', 'dimensions:width=322,height=313']) // Ubah format ke array
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must be 322x313 pixels.'),
+                        TextInput::make('jam_program')->label('Jam Program :')->required(),
+
                     ])
                     ->columns(2),
             ]);

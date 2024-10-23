@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('deskripsi_event');
             $table->date('date_event');
             $table->datetime('time_countdown');
+            $table->enum('status'  ,['soon' , 'upcoming' , 'completed']);
             $table->timestamps();
         });
     }
