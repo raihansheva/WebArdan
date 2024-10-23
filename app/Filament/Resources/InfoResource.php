@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Illuminate\Support\Facades\Date;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -53,10 +54,12 @@ class InfoResource extends Resource
                             ->required(),
                         FileUpload::make('image_info')
                             ->label('Info Image :')
-                            ->image()
                             ->directory('uploads/images_info')
                             ->disk('public')
-                            ->preserveFilenames(),
+                            ->preserveFilenames()
+                            ->rules(['required', 'image', 'dimensions:width=256,height=165']) // Ubah format ke array
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must be 256x165 pixels.'),
                         DatePicker::make('date_info')
                             ->label('Info Date :')
                             ->required()
@@ -66,13 +69,11 @@ class InfoResource extends Resource
                             ->label('Slug :')
                             ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
                             ->required(),
-                        Select::make('top_news')
-                            ->label('Top News :')
-                            ->options([
-                                'Ya' => 'Ya',
-                                'Tidak' => 'Tidak',
-                            ])
-                            ->default('Tidak'),
+                        Toggle::make('top_news')
+                            ->label('Top News')
+                            ->onColor('success')  // Optional: Mengatur warna saat toggle aktif
+                            ->offColor('danger')  // Optional: Mengatur warna saat toggle tidak aktif
+                            ->default(false),     // Defa
                     ])
                     ->columns(2),
             ]);
@@ -88,7 +89,11 @@ class InfoResource extends Resource
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),
                 TextColumn::make('slug'),
-                TextColumn::make('top_news'),
+                TextColumn::make('top_news')
+                    ->label('Top News')
+                    ->getStateUsing(function ($record) {
+                        return $record->top_news ? 'Top-News' : '-';
+                    }),
             ])
             ->filters([
                 //

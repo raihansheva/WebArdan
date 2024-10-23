@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Info;
 use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Program;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -16,21 +17,25 @@ class HomeController extends Controller
     public function index()
     {
         $banner = Banner::all();
-$program = Program::all();
+        $program = Program::all();
 
-// Ambil event dengan status 'soon'
-$event_soon = Event::where('status', 'soon')->get();
+        // Ambil event dengan status 'soon'
+        $event_soon = Event::where('status', 'soon')->get();
 
-// Ambil event dengan status 'upcoming' dan batasi hanya 2 data
-$event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        // Ambil event dengan status 'upcoming' dan batasi hanya 2 data
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $info = Info::all();
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
 
-// Kirim semua data ke view
-return view('page.home', [
-    'banner' => $banner,
-    'program' => $program,
-    'event_soon' => $event_soon,
-    'event_upcoming' => $event_upcoming
-]);
+        // Kirim semua data ke view
+        return view('page.home', [
+            'banner' => $banner,
+            'program' => $program,
+            'event_soon' => $event_soon,
+            'event_upcoming' => $event_upcoming,
+            'info' => $info,
+            'top_info' => $topInfo
+        ]);
     }
 
     /**

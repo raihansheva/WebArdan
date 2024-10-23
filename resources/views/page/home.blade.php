@@ -116,15 +116,13 @@
                         <h1 class="title-info">Info</h1>
                     </div>
                     <div class="content-info">
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
-                        <div class="box-info"></div>
+                        @foreach ($info as $infoList)
+                            <div class="box-info" style="background-image: url('./storage/{{ $infoList->image_info }}')">
+                                <div class="area-tag-info">
+                                    <h3 class="tag-info">#{{ $infoList->tag_info }}</h3>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                     <div class="area-bottom-info">
                         <a href="/info-news">
@@ -137,51 +135,16 @@
                         <h1 class="title-news">Top Info</h1>
                     </div>
                     <div class="content-news">
-                        <div class="box-news">
-                            <div class="area-image">
-
+                        @foreach ($top_info as $topInfoList)
+                            <div class="box-news">
+                                <div class="area-image">
+                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}" alt="">
+                                </div>
+                                <div class="area-text">
+                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                </div>
                             </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -223,7 +186,8 @@
                                 </div>
                                 <div class="area-days-date">
                                     <div class="box-days-date">
-                                        <h3 class="date-month">{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}</h3>
+                                        <h3 class="date-month">
+                                            {{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -233,12 +197,16 @@
 
                 <div class="area-content-event-kanan">
                     @foreach ($event_upcoming as $eventUpcomingList)
-                        <div class="content-event" style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')" onclick="showPopupEvent(this)"  data-description="{{ $eventUpcomingList->deskripsi_event }}"
+                        <div class="content-event"
+                            style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
+                            onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_event }}"
                             data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
                             <div class="area-days-date-right">
                                 <div class="content-days-date-right">
                                     <div class="box-days-date-right">
-                                        <h3 class="date-month-right">{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}</h3>
+                                        <h3 class="date-month-right">
+                                            {{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
