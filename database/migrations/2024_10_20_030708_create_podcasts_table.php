@@ -16,13 +16,17 @@ return new class extends Migration
             $table->string('judul_podcast' , 255);
             $table->string('genre_podcast' , 255);
             $table->text('deskripsi_podcast');
-            $table->string('eps_podcast');
             $table->string('image_podcast');
             $table->date('date_podcast');
             $table->string('link_podcast');
             $table->string('file');
             $table->string('slug')->unique();
+            $table->integer('episode_number')->nullable(); 
+            $table->boolean('is_episode')->default(false); 
+            $table->unsignedBigInteger('podcast_id')->nullable(); 
             $table->timestamps();
+
+            $table->foreign('podcast_id')->references('id')->on('podcasts')->onDelete('cascade');
         });
     }
 

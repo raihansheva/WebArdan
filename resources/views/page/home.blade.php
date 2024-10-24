@@ -243,54 +243,32 @@
                         </div>
                     </div>
                     <div class="content-podcast">
+                        @foreach ($podcast as $podcastList)                          
                         <div class="card-podcast">
                             <div class="card-body-podcast">
                                 <div class="head-body-podcast">
                                     <div class="genre">
-                                        <h1 class="title-genre">Comedy</h1>
+                                        <h1 class="title-genre">{{ $podcastList->genre_podcast }}</h1>
                                     </div>
                                     <div class="area-card-text">
-                                        <h1 class="card-text-podcast">Podcast Aseek</h1>
+                                        <h1 class="card-text-podcast">{{ $podcastList->judul_podcast }}</h1>
                                     </div>
                                 </div>
                                 <div class="card-image-podcast">
-
+                                    <img src="./storage/{{ $podcastList->image_podcast }}" alt="" class="image-podcast">
                                 </div>
                             </div>
                             <div class="card-header-podcast">
                                 <div class="author-podcast">
                                 </div>
-                                <a class="link-podcast" href="/detail-podcast">
+                                <a class="link-podcast" href="/detail-podcast/{{ $podcastList->id }}">
                                     <div class="view-podcast">
                                         <p class="text-watch-podcast">View Podcast</p>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="card-podcast">
-                            <div class="card-body-podcast">
-                                <div class="head-body-podcast">
-                                    <div class="genre">
-                                        <h1 class="title-genre">Comedy</h1>
-                                    </div>
-                                    <div class="area-card-text">
-                                        <h1 class="card-text-podcast">Podcast Aseek</h1>
-                                    </div>
-                                </div>
-                                <div class="card-image-podcast">
-
-                                </div>
-                            </div>
-                            <div class="card-header-podcast">
-                                <div class="author-podcast">
-                                </div>
-                                <a class="link-podcast" href="/detail-podcast">
-                                    <div class="view-podcast">
-                                        <p class="text-watch-podcast">View Podcast</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="line-PV"></div>
@@ -298,21 +276,19 @@
                     <div class="area-header-video">
                         <h1 class="title-video">Youtube Video</h1>
                     </div>
-                    <div class="content-video">
-                        <div class="box-video">
-                            <div class="btn-play-video">
+                    <div class="content-video" id="content-video">
+                        @foreach($videos as $video)
+                        <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                            <div class="btn-play-video" onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>
-                        <div class="box-video">
-                            <div class="btn-play-video">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                            </div>
-                        </div>
-                        <div class="box-video">
-                            <div class="btn-play-video">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                            </div>
+                        @endforeach
+                    </div>
+                    <div class="popup-player-yt" id="popup-player" style="display:none;">
+                        <div class="popup-content-yt">
+                            {{-- <span id="close-popup" onclick="hidePopup()">X</span> --}}
+                            <div id="player-yt"></div>
                         </div>
                     </div>
                     <div class="link-text-video">

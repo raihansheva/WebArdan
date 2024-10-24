@@ -302,33 +302,31 @@ tontonSiaranBtnB.addEventListener("click", function () {
 });
 
 // youtube-player
-// var tag = document.createElement("script");
-//     tag.src = "https://www.youtube.com/iframe_api";
-//     var firstScriptTag = document.getElementsByTagName("script")[0];
-//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-//     var player;
-//     var playlistID = document
-//       .getElementById("player")
-//       .getAttribute("data-pl");
+var player;
+var playlistID = document.getElementById("player").getAttribute("data-pl");
 
-//     function onYouTubeIframeAPIReady() {
-//         player = new YT.Player('player', {
-//             height: '360',
-//             width: '640',
-//             playerVars: {
-//                 'listType': 'playlist',
-//                 'list': playlistID
-//             },
-//             events: {
-//                 'onReady': onPlayerReady
-//             }
-//         });
-//     }
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player("player", {
+        height: "360",
+        width: "640",
+        playerVars: {
+            listType: "playlist",
+            list: playlistID,
+        },
+        events: {
+            onReady: onPlayerReady,
+        },
+    });
+}
 
-//     function onPlayerReady(event) {
-//         event.target.playVideo();
-//     }
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
 
 // Dapatkan semua elemen schedule dan box-schedule
 // const scheduleItems = document.querySelectorAll('.schedule');
@@ -388,17 +386,19 @@ function closePopupOutside(event) {
 }
 
 function showPopupEvent(element) {
-    console.log('Fungsi showPopupEvent dipanggil'); // Log ini akan menunjukkan apakah fungsi dipanggil
-    const description = element.getAttribute('data-description');
-    const date = element.getAttribute('data-date');
+    console.log("Fungsi showPopupEvent dipanggil"); // Log ini akan menunjukkan apakah fungsi dipanggil
+    const description = element.getAttribute("data-description");
+    const date = element.getAttribute("data-date");
 
     // Log untuk melihat nilai yang diambil
-    console.log('Deskripsi:', description);
-    console.log('Tanggal:', date);
-    
+    console.log("Deskripsi:", description);
+    console.log("Tanggal:", date);
+
     // Menampilkan data di dalam pop-up
-    document.querySelector('.desk-event').textContent = description || 'Deskripsi tidak tersedia';
-    document.querySelector('.title-box-event').textContent = date || 'Tanggal tidak tersedia';
+    document.querySelector(".desk-event").textContent =
+        description || "Deskripsi tidak tersedia";
+    document.querySelector(".title-box-event").textContent =
+        date || "Tanggal tidak tersedia";
 
     // Menampilkan pop-up
     document.getElementById("popupEvent").style.display = "flex";
@@ -464,3 +464,62 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 });
+
+var player;
+
+function showPopupYT(videoId) {
+    document.getElementById("popup-player").style.display = "flex";
+
+    if (!player) {
+        player = new YT.Player("player-yt", {
+            height: "360",
+            width: "640",
+            videoId: videoId,
+            events: {
+                onReady: function (event) {
+                    event.target.playVideo();
+                },
+            },
+        });
+    } else {
+        player.loadVideoById(videoId);
+        player.playVideo();
+    }
+}
+
+function hidePopup() {
+    document.getElementById("popup-player").style.display = "none";
+    player.stopVideo(); // Hentikan video saat popup ditutup
+}
+
+// Load YouTube IFrame API
+var tag = document.createElement("script");
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName("script")[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+function onYouTubeIframeAPIReady() {
+    // IFrame API siap
+}
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function hidePopup() {
+    document.getElementById("popup-player").style.display = "none";
+    if (player) {
+        player.stopVideo();
+    }
+}
+
+// Menambahkan event listener untuk klik di luar player
+document
+    .getElementById("popup-player")
+    .addEventListener("click", function (event) {
+        var popupContent = document.querySelector(".popup-content");
+
+        // Jika user klik di luar area .popup-content, tutup popup
+        if (!popupContent.contains(event.target)) {
+            hidePopup();
+        }
+    });

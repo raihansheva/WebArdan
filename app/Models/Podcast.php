@@ -10,9 +10,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Podcast extends Model implements HasMedia
 {
-    use HasFactory , InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['id' , 'judul_podcast' , 'genre_podcast' , 'deskripsi_podcast', 'eps_podcast' , 'image_podcast' ,'date_podcast' , 'link_podcast' , 'file' , 'slug' ];
+    protected $fillable = [
+        'id',
+        'judul_podcast',
+        'genre_podcast',
+        'deskripsi_podcast',
+        'image_podcast',
+        'date_podcast',
+        'link_podcast',
+        'file',
+        'slug',
+        'episode_number',
+        'is_episode',
+        'podcast_id',
+    ];
 
     public function registerMediaCollections(): void
     {
@@ -44,5 +57,14 @@ class Podcast extends Model implements HasMedia
             }
         });
     }
-}
 
+    public function episodes()
+    {
+        return $this->hasMany(Podcast::class, 'podcast_id')->where('is_episode', true)->orderBy('episode_number');
+    }
+
+    public function podcasts()
+    {
+        return $this->hasMany(Podcast::class, 'podcast_id');
+    }
+}
