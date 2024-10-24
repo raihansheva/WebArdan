@@ -40,10 +40,13 @@ class AnnouncerResource extends Resource
                             ->image()
                             ->directory('uploads/images_announcer')
                             ->disk('public')
-                            ->preserveFilenames(),
-                        TextInput::make('link_instagram')->label('Link Instagram :')->required(),
-                        TextInput::make('link_facebook')->label('Link Facebook :')->required(),
-                        TextInput::make('link_twitter')->label('Link Twitter :')->required(),
+                            ->preserveFilenames()
+                            ->rules(['required', 'image', 'dimensions:width=254,height=300']) // Ubah format ke array
+                            ->validationAttribute('Image Announcer')
+                            ->helperText('The image must be 254x300 pixels.'),
+                        TextInput::make('link_instagram')->label('Link Instagram :'),
+                        TextInput::make('link_facebook')->label('Link Facebook :'),
+                        TextInput::make('link_twitter')->label('Link Twitter :'),
                     ])
                     ->columns(2),
             ]);

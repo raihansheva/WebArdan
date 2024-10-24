@@ -1531,6 +1531,38 @@ swiper-slide img {
     box-sizing: border-box;
 }
 
+.image-announcer{
+    object-fit: cover;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.image-announcer:hover{
+    filter: brightness(0.5); /* membuat gambar menjadi lebih gelap */
+}
+
+
+.area-profile-announcer {
+    position: absolute;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    color: white;
+    opacity: 0; /* Awalnya tidak terlihat */
+    transition: transform 0.4s ease, opacity 0.4s ease; /* Transisi halus */
+}
+
+/* Efek hover untuk menampilkan area-profile-announcer */
+.box-announcer:hover .area-profile-announcer {
+    opacity: 1; /* Menjadi terlihat */
+}
+
+
+.area-profile-announcer i{
+    font-size: 28px;
+    color: white;
+}
+
 .line-announcer {
     width: auto;
     height: 1px;

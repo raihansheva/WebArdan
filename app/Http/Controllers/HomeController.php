@@ -9,6 +9,7 @@ use App\Models\Banner;
 use App\Models\Podcast;
 use App\Models\Program;
 use App\Models\Youtube;
+use App\Models\Announcer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -27,6 +28,8 @@ class HomeController extends Controller
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $info = Info::all();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
+
+        $announcer = Announcer::all();
 
         $podcast = Podcast::all();
 
@@ -65,6 +68,7 @@ class HomeController extends Controller
             'top_info' => $topInfo,
             'podcast' => $podcast,
             'videos' => $videos,
+            'announcer' => $announcer
         ]);
     }
 

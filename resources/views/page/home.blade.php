@@ -138,7 +138,8 @@
                         @foreach ($top_info as $topInfoList)
                             <div class="box-news">
                                 <div class="area-image">
-                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}" alt="">
+                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                        alt="">
                                 </div>
                                 <div class="area-text">
                                     <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
@@ -243,31 +244,32 @@
                         </div>
                     </div>
                     <div class="content-podcast">
-                        @foreach ($podcast as $podcastList)                          
-                        <div class="card-podcast">
-                            <div class="card-body-podcast">
-                                <div class="head-body-podcast">
-                                    <div class="genre">
-                                        <h1 class="title-genre">{{ $podcastList->genre_podcast }}</h1>
+                        @foreach ($podcast as $podcastList)
+                            <div class="card-podcast">
+                                <div class="card-body-podcast">
+                                    <div class="head-body-podcast">
+                                        <div class="genre">
+                                            <h1 class="title-genre">{{ $podcastList->genre_podcast }}</h1>
+                                        </div>
+                                        <div class="area-card-text">
+                                            <h1 class="card-text-podcast">{{ $podcastList->judul_podcast }}</h1>
+                                        </div>
                                     </div>
-                                    <div class="area-card-text">
-                                        <h1 class="card-text-podcast">{{ $podcastList->judul_podcast }}</h1>
+                                    <div class="card-image-podcast">
+                                        <img src="./storage/{{ $podcastList->image_podcast }}" alt=""
+                                            class="image-podcast">
                                     </div>
                                 </div>
-                                <div class="card-image-podcast">
-                                    <img src="./storage/{{ $podcastList->image_podcast }}" alt="" class="image-podcast">
+                                <div class="card-header-podcast">
+                                    <div class="author-podcast">
+                                    </div>
+                                    <a class="link-podcast" href="/detail-podcast/{{ $podcastList->id }}">
+                                        <div class="view-podcast">
+                                            <p class="text-watch-podcast">View Podcast</p>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="card-header-podcast">
-                                <div class="author-podcast">
-                                </div>
-                                <a class="link-podcast" href="/detail-podcast/{{ $podcastList->id }}">
-                                    <div class="view-podcast">
-                                        <p class="text-watch-podcast">View Podcast</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -277,12 +279,13 @@
                         <h1 class="title-video">Youtube Video</h1>
                     </div>
                     <div class="content-video" id="content-video">
-                        @foreach($videos as $video)
-                        <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
-                            <div class="btn-play-video" onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
-                                <span class="material-symbols-rounded">play_arrow</span>
+                        @foreach ($videos as $video)
+                            <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                <div class="btn-play-video"
+                                    onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                     <div class="popup-player-yt" id="popup-player" style="display:none;">
@@ -370,12 +373,31 @@
                     </div>
                     <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
                         autoplay-disable-on-interaction="false" slides-per-view="5" space-between="20">
-                        <swiper-slide class="box-announcer"></swiper-slide>
-                        <swiper-slide class="box-announcer"></swiper-slide>
-                        <swiper-slide class="box-announcer"></swiper-slide>
-                        <swiper-slide class="box-announcer"></swiper-slide>
-                        <swiper-slide class="box-announcer"></swiper-slide>
-                        <swiper-slide class="box-announcer"></swiper-slide>
+                        @foreach ($announcer as $announcerList)
+                            <swiper-slide class="box-announcer" style="background-image: url('')">
+                                <img class="image-announcer" src="./storage/{{ $announcerList->image_announcer }}"
+                                    alt="">
+                                <div class="area-profile-announcer">
+                                    @if ($announcerList->link_instagram)
+                                        <a href="{{ $announcerList->link_instagram }}" target="_blank">
+                                            <i class='bx bxl-instagram'></i>
+                                        </a>
+                                    @endif
+
+                                    @if ($announcerList->link_facebook)
+                                        <a href="{{ $announcerList->link_facebook }}" target="_blank">
+                                            <i class='bx bxl-facebook'></i>
+                                        </a>
+                                    @endif
+
+                                    @if ($announcerList->link_twitter)
+                                        <a href="{{ $announcerList->link_twitter }}" target="_blank">
+                                            <i class='bx bxl-twitter'></i>
+                                        </a>
+                                    @endif
+                                </div>
+                            </swiper-slide>
+                        @endforeach
                     </swiper-container>
                 </div>
 
