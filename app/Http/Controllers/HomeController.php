@@ -9,6 +9,8 @@ use App\Models\Banner;
 use App\Models\Podcast;
 use App\Models\Program;
 use App\Models\Youtube;
+use App\Models\Kategori;
+use App\Models\Schedule;
 use App\Models\Announcer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -32,6 +34,9 @@ class HomeController extends Controller
         $announcer = Announcer::all();
 
         $podcast = Podcast::all();
+        $Kategori = Kategori::with('charts')->get();
+
+        $schedule = Schedule::all();
 
         $playlist = Youtube::first();
         $apiKey = env('YOUTUBE_API_KEY');
@@ -68,7 +73,9 @@ class HomeController extends Controller
             'top_info' => $topInfo,
             'podcast' => $podcast,
             'videos' => $videos,
-            'announcer' => $announcer
+            'announcer' => $announcer,
+            'kategori' => $Kategori,
+            'schedule' => $schedule
         ]);
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('program_id')->constrained('programs')->onDelete('cascade');
             $table->string('jam_program', 255); // Menambahkan kolom jam_program
-            $table->date('hari');
+            $table->enum('hari', ['senin' , 'selasa' , 'rabu' ,'kamis' , 'jumat' , 'sabtu' , 'minggu']);
             $table->text('deskripsi');
             $table->timestamps();
         });

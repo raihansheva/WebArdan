@@ -415,7 +415,7 @@
                             <h1 class="title-chart">ARDAN CHART</h1>
                         </div>
                         <div class="area-top-chart">
-                            <div class="tab-chart active" data-tab="top-20">
+                            {{-- <div class="tab-chart active" data-tab="top-20">
                                 <h3 class="text-tab">TOP 20</h3>
                             </div>
                             <div class="tab-chart" data-tab="flight-40">
@@ -426,155 +426,34 @@
                             </div>
                             <div class="tab-chart" data-tab="persada-7">
                                 <h3 class="text-tab">PERSADA 7</h3>
-                            </div>
+                            </div> --}}
+                            @foreach ($kategori as $kategoriList)
+                                <div class="tab-chart {{ $loop->first ? 'active' : '' }}"
+                                    data-tab="{{ $kategoriList->id }}">
+                                    <h3 class="text-tab">{{ strtoupper($kategoriList->nama_kategori) }}</h3>
+                                </div>
+                            @endforeach
                         </div>
-                        <table class="chart" id="top-20">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>ARTIST</th>
-                                    <th>-</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jane Smith</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Michael Brown</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Emily Davis</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Emily Davis</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="chart hidden" id="flight-40">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>ARTIST</th>
-                                    <th>-</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Artist A</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Artist B</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Artist C</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Artist D</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Artist D</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="chart hidden" id="indie-7">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>ARTIST</th>
-                                    <th>-</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Indie Artist 1</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Indie Artist 2</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Indie Artist 3</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Indie Artist 4</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Indie Artist 5</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="chart hidden" id="persada-7">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>ARTIST</th>
-                                    <th>-</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Persada Artist 1</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Persada Artist 2</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Persada Artist 3</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Persada Artist 4</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Persada Artist 5</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        @foreach ($kategori as $kategoriList)
+                            <table class="chart {{ $loop->first ? '' : 'hidden' }}" id="{{ $kategoriList->id }}">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>ARTIST</th>
+                                        <th>-</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($kategoriList->charts as $index => $chart)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $chart->name }}</td>
+                                            <td><a href="{{ $chart->link_audio }}">Play</a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endforeach
                         <div class="bottom-chart">
                             <a href="/chart">
                                 <div class="area-btn-chart">
@@ -604,36 +483,36 @@
                     <h1 class="title-schedule">Schedule</h1>
                 </div>
                 <div class="top-content-schedule">
-                    <div class="schedule" data-day="monday">
+                    <div class="schedule" data-day="senin">
                         <p class="schedule-day">Monday</p>
                     </div>
-                    <div class="schedule" data-day="tuesday">
+                    <div class="schedule" data-day="selasa">
                         <p class="schedule-day">Tuesday</p>
                     </div>
-                    <div class="schedule" data-day="wednesday">
+                    <div class="schedule" data-day="rabu">
                         <p class="schedule-day">Wednesday</p>
                     </div>
-                    <div class="schedule" data-day="thursday">
+                    <div class="schedule" data-day="kamis">
                         <p class="schedule-day">Thursday</p>
                     </div>
-                    <div class="schedule" data-day="friday">
+                    <div class="schedule" data-day="jumat">
                         <p class="schedule-day">Friday</p>
                     </div>
-                    <div class="schedule" data-day="saturday">
+                    <div class="schedule" data-day="sabtu">
                         <p class="schedule-day">Saturday</p>
                     </div>
-                    <div class="schedule" data-day="sunday">
+                    <div class="schedule" data-day="minggu">
                         <p class="schedule-day">Sunday</p>
                     </div>
                 </div>
                 <div class="content-schedule">
-                    <div class="box-schedule" data-day="monday"></div>
-                    <div class="box-schedule" data-day="tuesday"></div>
-                    <div class="box-schedule" data-day="wednesday"></div>
-                    <div class="box-schedule" data-day="thursday"></div>
-                    <div class="box-schedule" data-day="friday"></div>
-                    <div class="box-schedule" data-day="saturday"></div>
-                    <div class="box-schedule" data-day="sunday"></div>
+                    @foreach ($schedule as $scheduleList)
+                    <div class="box-schedule hidden" data-day="{{ strtolower($scheduleList->hari) }}">
+                        <h4>{{ $scheduleList->program->name }}</h4>
+                        <p>Jam: {{ $scheduleList->jam_program }}</p>
+                        <p>{{ $scheduleList->deskripsi }}</p>
+                    </div>
+                @endforeach
                 </div>
             </div>
 

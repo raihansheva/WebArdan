@@ -419,24 +419,44 @@ function closePopupOutsideEvent(event) {
 }
 
 // tab chart ardan
-const tabs = document.querySelectorAll(".tab-chart");
-const tables = document.querySelectorAll(".chart");
+document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".tab-chart");
+    const tables = document.querySelectorAll(".chart");
 
-// Menambahkan event listener ke setiap tab
-tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-        // Menghapus kelas aktif dari semua tab
-        tabs.forEach((t) => t.classList.remove("active"));
-        // Menambahkan kelas aktif ke tab yang dipilih
-        tab.classList.add("active");
+    // Menambahkan event listener ke setiap tab
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            // Menghapus kelas aktif dari semua tab
+            tabs.forEach((t) => t.classList.remove("active"));
+            // Menambahkan kelas aktif ke tab yang dipilih
+            tab.classList.add("active");
 
-        // Menyembunyikan semua tabel
-        tables.forEach((table) => table.classList.add("hidden"));
-        // Menampilkan tabel yang sesuai dengan tab yang dipilih
-        const selectedTab = tab.getAttribute("data-tab");
-        document.getElementById(selectedTab).classList.remove("hidden");
+            // Menyembunyikan semua tabel
+            tables.forEach((table) => table.classList.add("hidden"));
+
+            // Menampilkan tabel yang sesuai dengan tab yang dipilih
+            const selectedTab = tab.getAttribute("data-tab");
+            // console.log('Selected Tab ID:', selectedTab); // Log ID yang dipilih
+            const selectedTable = document.getElementById(selectedTab);
+            
+            // Debugging log untuk memeriksa
+            // console.log('Selected Table:', selectedTable);
+
+            if (selectedTable) {
+                selectedTable.classList.remove("hidden");
+            } else {
+                console.warn(`Table with ID '${selectedTab}' not found.`);
+            }
+        });
     });
+
+    // Secara default, tampilkan tabel pertama
+    const defaultTable = document.querySelector(".chart:not(.hidden)"); // Ambil tabel yang tidak tersembunyi
+    if (defaultTable) {
+        defaultTable.classList.remove('hidden');
+    }
 });
+
 
 // swiperr
 document.addEventListener("DOMContentLoaded", function () {
@@ -523,3 +543,51 @@ document
             hidePopup();
         }
     });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const tabS = document.querySelectorAll(".schedule");
+        const scheduleContent = document.querySelectorAll(".box-schedule");
+    
+        // Array untuk mapping index hari ke nama hari dalam bahasa Indonesia
+        const dayMapping = ['minggu', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'];
+    
+        // Fungsi untuk menampilkan program sesuai dengan hari yang dipilih
+        function showScheduleForDay(day) {
+            // Menyembunyikan semua konten schedule
+            scheduleContent.forEach((content) => content.classList.add("hidden"));
+    
+            // Menampilkan konten yang sesuai dengan hari yang dipilih
+            const selectedSchedule = document.querySelector(`.box-schedule[data-day="${day}"]`);
+    
+            if (selectedSchedule) {
+                selectedSchedule.classList.remove("hidden");
+            } else {
+                console.warn(`Schedule for day '${day}' not found.`);
+            }
+    
+            // Menandai tab hari sebagai aktif dan menghapus kelas aktif dari tab lainnya
+            tabS.forEach((t) => t.classList.remove("active"));
+            const selectedTab = document.querySelector(`.schedule[data-day="${day}"]`);
+            if (selectedTab) {
+                selectedTab.classList.add("active");
+            }
+        }
+    
+        // Event listener untuk setiap tab hari
+        tabS.forEach((tabSC) => {
+            tabSC.addEventListener("click", () => {
+                const selectedDay = tabSC.getAttribute("data-day");
+                showScheduleForDay(selectedDay);
+            });
+        });
+    
+        // Dapatkan hari saat ini (0 = Minggu, 1 = Senin, dst.)
+        const currentDate = new Date();
+        const currentDayIndex = currentDate.getDay();
+        const currentDayName = dayMapping[currentDayIndex]; // Nama hari dalam bahasa Indonesia
+    
+        // Secara otomatis tampilkan program untuk hari ini
+        showScheduleForDay(currentDayName);
+    });
+    

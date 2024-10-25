@@ -53,7 +53,18 @@ class ScheduleResource extends Resource
                             ->required()
                             ->readOnly()
                             ->default(''),
-                        DatePicker::make('hari')->label('Hari :'),
+                        Select::make('hari')
+                            ->label('Hari :')
+                            ->options([
+                                'senin' => 'Senin',
+                                'selasa' => 'Selasa',
+                                'rabu' => 'Rabu',
+                                'kamis' => 'Kamis',
+                                'jumat' => 'Jumat',
+                                'sabtu' => 'Sabtu',
+                                'minggu' => 'Minggu',
+                            ])
+                            ->default('Upcoming'),
                         Textarea::make('deskripsi') // Pastikan field deskripsi ada
                             ->label('Deskripsi :')
                             ->required()

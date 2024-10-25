@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('charts', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
+            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade'); // Relasi ke tabel categories
             $table->string('link_audio');
-            $table->enum('kategori', ['Top20' , 'Flight40' , 'Indie7' , 'Persada7']);
             $table->timestamps();
         });
     }

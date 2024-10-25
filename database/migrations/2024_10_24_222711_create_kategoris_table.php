@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('episodes', function (Blueprint $table) {
+        Schema::create('kategoris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('podcast_id')->constrained('podcasts')->onDelete('cascade');
-            $table->string('judul_episode', 255);
-            $table->integer('episode_number');
+            $table->string('nama_kategori' , 255);
             $table->timestamps();
-
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('episodes');
+        Schema::dropIfExists('kategoris');
     }
 };

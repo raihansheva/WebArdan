@@ -2,31 +2,30 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Kategori;
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Chart;
+use App\Models\Kategori;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\KategoriChart;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\ChartResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ChartResource\RelationManagers;
+use App\Filament\Resources\KategoriChartResource\Pages;
+use App\Filament\Resources\KategoriChartResource\RelationManagers;
 
-class ChartResource extends Resource
+class KategoriChartResource extends Resource
 {
-    protected static ?string $model = Chart::class;
+    protected static ?string $model = Kategori::class;
 
     protected static ?string $navigationGroup = 'Chart';
 
-    protected static ?string $navigationLabel = 'Chart';
+    protected static ?string $navigationLabel = 'Kategori Chart';
 
-    protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -34,12 +33,10 @@ class ChartResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('name')->label('Name :'),
-                        TextInput::make('link_audio')->label('Link Audio :'),
-                        Select::make('kategori_id')
-                            ->label('Kategori')
-                            ->options(Kategori::all()->pluck('nama_kategori', 'id')) // Mengambil data kategori
-                            ->required(), 
+                        TextInput::make('nama_kategori')
+                            ->label('Nama Kategori :')
+                            ->required()
+                            ->maxLength(255),
                     ])
                     ->columns(2),
             ]);
@@ -49,9 +46,7 @@ class ChartResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('link_audio'),
-                TextColumn::make('kategori.nama_kategori'),
+                TextColumn::make('nama_kategori'),
             ])
             ->filters([
                 //
@@ -77,9 +72,9 @@ class ChartResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCharts::route('/'),
-            'create' => Pages\CreateChart::route('/create'),
-            'edit' => Pages\EditChart::route('/{record}/edit'),
+            'index' => Pages\ListKategoriCharts::route('/'),
+            'create' => Pages\CreateKategoriChart::route('/create'),
+            'edit' => Pages\EditKategoriChart::route('/{record}/edit'),
         ];
     }
 }

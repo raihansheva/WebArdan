@@ -1691,7 +1691,7 @@ tbody tr {
     font-size: 22px;
     border-bottom: 1px solid #fff;
     color: white;
-    height: 64px t; 
+    height: 64px !important; 
 }
 
 tbody td {
@@ -1848,6 +1848,10 @@ tbody td {
 }
 
 .schedule:hover {
+    background-color: var(--primary-color);
+}
+
+.schedule.active {
     background-color: var(--primary-color);
 }
 

@@ -9,5 +9,10 @@ class Chart extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id' , 'name' , 'link_audio' , 'kategori'];
+    protected $fillable = ['id' , 'name' , 'link_audio' , 'kategori_id'];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class , 'kategori_id');
+    }
 }
