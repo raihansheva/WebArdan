@@ -24,7 +24,7 @@
                 <div class="contentS-kiri">
                     <div class="card-A">
                         <div class="card-body">
-                            <div class="btn-play-streaming">
+                            <div class="btn-play-streaming" data-audio-src="music/music4.mp3" data-index="1">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>
@@ -448,7 +448,12 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $chart->name }}</td>
-                                            <td><a href="{{ $chart->link_audio }}">Play</a></td>
+                                            <td>
+                                                <div class="btn-play-chart" data-audio-src="music/music3.mp3"
+                                                    data-index="2">
+                                                    <span class="material-symbols-rounded">play_arrow</span>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -468,9 +473,19 @@
                         <h1 class="title-artis">INFO ARTIS</h1>
                     </div>
                     <div class="content-artis">
-                        <div class="box-artis"></div>
-                        <div class="box-artis"></div>
-                        <div class="box-artis"></div>
+                        @foreach ($artis as $artisList)
+                            <div class="box-artis">
+                                <img class="image-artis" src="./storage/{{ $artisList->image_artis }}" alt="">
+                                <div class="area-bio-artis">
+                                    <div class="artis-name">
+                                        <p class="nama">{{ $artisList->nama }}</p>
+                                    </div>
+                                    <div class="artis-bio">
+                                        <p class="bio">{{ $artisList->bio }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -507,12 +522,17 @@
                 </div>
                 <div class="content-schedule">
                     @foreach ($schedule as $scheduleList)
-                    <div class="box-schedule hidden" data-day="{{ strtolower($scheduleList->hari) }}">
-                        <h4>{{ $scheduleList->program->name }}</h4>
-                        <p>Jam: {{ $scheduleList->jam_program }}</p>
-                        <p>{{ $scheduleList->deskripsi }}</p>
-                    </div>
-                @endforeach
+                        <div class="box-schedule hidden" data-day="{{ strtolower($scheduleList->hari) }}">
+                            <img class="image-schedule-program"
+                                src="./storage/{{ $scheduleList->program->image_program }}" alt="">
+                            <div class="area-bio-schedule">
+                                <div class="bio-schedule">
+                                    <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
+                                    <p class="jam-programS">Jam: {{ $scheduleList->jam_program }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 

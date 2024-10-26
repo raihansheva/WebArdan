@@ -1,77 +1,104 @@
-// audio spectrum
 const content = document.querySelector(".content"),
     Playimage = content.querySelector(".music-image img"),
     musicName = content.querySelector(".music-titles .name"),
     musicArtist = content.querySelector(".music-titles .artist"),
     Audio = document.querySelector(".main-song"),
     playBtn = document.querySelectorAll(
-        ".play-pause, .play-pause-mobile, .btn-play-streaming"
-    ), // Mengambil semua tombol play
-    playBtnIcon = content.querySelector(".play-pause span"),
+        ".play-pause, .play-pause-mobile, .btn-play-streaming, .btn-play-chart"
+    ),
     prevBtn = content.querySelector("#prev"),
     nextBtn = content.querySelector("#next"),
     progressBar = content.querySelector(".progress-bar"),
-    progressDetails = content.querySelector(".progress-details"),
-    repeatBtn = content.querySelector("#repeat"),
-    Shuffle = content.querySelector("#shuffle");
+    progressDetails = content.querySelector(".progress-details");
 
-let index = 1;
+let currentIndex = null; // Menyimpan index lagu yang sedang diputar
 
 // Memuat data saat halaman di-load
 window.addEventListener("load", () => {
-    loadData(index);
+    loadData(1); // Muat lagu pertama secara default
 });
 
-// Fungsi untuk memuat data lagu berdasarkan indeks
+// Fungsi untuk memuat data lagu
 function loadData(indexValue) {
+    if (indexValue < 1 || indexValue > songs.length) {
+        console.error("Index out of bounds");
+        return;
+    }
+
+    console.log("Loading data for song:", songs[indexValue - 1]); // Log data lagu yang dimuat
     musicName.innerHTML = songs[indexValue - 1].name;
     musicArtist.innerHTML = songs[indexValue - 1].artist;
     Playimage.src = "images/" + songs[indexValue - 1].img + ".jpg";
     Audio.src = "music/" + songs[indexValue - 1].audio + ".mp3";
+    Audio.load(); // Memuat ulang audio
 }
 
-// Menambahkan event listener pada semua tombol play (baik versi web maupun mobile)
-playBtn.forEach((button) => {
-    button.addEventListener("click", () => {
-        const isMusicPaused = content.classList.contains("paused");
-        if (isMusicPaused) {
-            pauseSong();
-        } else {
-            playSong();
-        }
-    });
-});
-
-// Fungsi untuk memainkan lagu
+// Fungsi untuk memulai lagu
 function playSong() {
-    content.classList.add("paused");
-    updatePlayBtnIcon("pause"); // Memperbarui ikon play untuk semua tombol
     Audio.play();
 }
 
-// Fungsi untuk menjeda lagu
+// Fungsi untuk menghentikan lagu
 function pauseSong() {
-    content.classList.remove("paused");
-    updatePlayBtnIcon("play_arrow"); // Memperbarui ikon play untuk semua tombol
     Audio.pause();
 }
 
-// Fungsi untuk memperbarui ikon tombol play
-function updatePlayBtnIcon(icon) {
+// Fungsi untuk memperbarui status ikon
+function updatePlayButtonState(isPlaying, activeButton) {
     playBtn.forEach((button) => {
-        let iconElement = button.querySelector("span");
-        if (iconElement) {
-            iconElement.innerHTML = icon;
+        const icon = button.querySelector("span"); // Ambil elemen ikon di dalam tombol
+        if (isPlaying && button === activeButton) {
+            icon.textContent = "pause"; // Ganti ikon menjadi pause
+        } else {
+            icon.textContent = "play_arrow"; // Ganti ikon kembali ke play
         }
     });
 }
 
+// Event listener untuk tombol play
+playBtn.forEach((button) => {
+    button.addEventListener("click", () => {
+        const btnIndex = parseInt(button.dataset.index); // Ambil index dari data
+        if (currentIndex === btnIndex) {
+            // Jika tombol yang sama ditekan, toggle antara play dan pause
+            if (Audio.paused) {
+                playSong();
+                updatePlayButtonState(true, button); // Perbarui status tombol play
+            } else {
+                pauseSong();
+                updatePlayButtonState(false, button); // Perbarui status tombol pause
+            }
+        } else {
+            // Jika tombol berbeda ditekan
+            currentIndex = btnIndex; // Set index lagu yang sedang diputar
+            loadData(currentIndex + 1); // Muat data lagu baru
+            playSong(); // Mainkan lagu baru
+            updatePlayButtonState(true, button); // Perbarui tombol yang aktif
+        }
+    });
+});
+
+// Fungsi untuk menonaktifkan tombol lain
+function disableOtherPlayButtons(activeIndex) {
+    playBtn.forEach((button, btnIndex) => {
+        if (btnIndex !== activeIndex) {
+            button.innerHTML = "play_arrow"; // Kembali ke ikon play untuk tombol lain
+            button.classList.remove("playing"); // Hapus status 'playing' dari tombol lain
+        }
+    });
+}
+
+// Event listener untuk tombol next dan prev (jika ada)
 nextBtn.addEventListener("click", () => {
-    nextSong();
+    currentIndex = (currentIndex + 1) % songs.length; // Next song
+    loadData(currentIndex + 1);
+    playSong();
 });
 
 prevBtn.addEventListener("click", () => {
-    prevSong();
+    currentIndex = (currentIndex - 1 + songs.length) % songs.length; // Prev song
+    loadData(currentIndex + 1);
+    playSong();
 });
 
 // Fungsi untuk memainkan lagu selanjutnya
@@ -465,16 +492,18 @@ function showPopupEvent(element) {
     popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
     popupEvent.style.display = "flex"; // Tampilkan pop-up
 
-    const description = element.getAttribute('data-description');
-    const date = element.getAttribute('data-date');
+    const description = element.getAttribute("data-description");
+    const date = element.getAttribute("data-date");
 
     // Log untuk melihat nilai yang diambil
-    console.log('Deskripsi:', description);
-    console.log('Tanggal:', date);
-    
+    console.log("Deskripsi:", description);
+    console.log("Tanggal:", date);
+
     // Menampilkan data di dalam pop-up
-    document.querySelector('.desk-event').textContent = description || 'Deskripsi tidak tersedia';
-    document.querySelector('.title-box-event').textContent = date || 'Tanggal tidak tersedia';
+    document.querySelector(".desk-event").textContent =
+        description || "Deskripsi tidak tersedia";
+    document.querySelector(".title-box-event").textContent =
+        date || "Tanggal tidak tersedia";
 
     // Menampilkan pop-up
     document.getElementById("popupEvent").style.display = "flex";
@@ -498,6 +527,5 @@ function closePopupOutsideEvent(event) {
     }
 }
 // -----------
-
 
 // tabel connect  db

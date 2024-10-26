@@ -302,7 +302,7 @@ body {
     background-color: #17171769;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     /* border: 1px red solid; */
     /* padding: 0px 30px 0px 0px; */
@@ -365,7 +365,7 @@ body {
     color: #ffffff;
     font-family: "Poppins";
     /* border: 1px red solid; */
-    width: 150px;
+    width: auto;
 }
 
 .music-titles .name {

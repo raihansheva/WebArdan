@@ -1698,6 +1698,19 @@ tbody td {
     height: 50px;
 }
 
+.btn-play-chart {
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-play-chart span {
+    font-size: 32px;
+}
 
 .hidden {
     display: none; /* Sembunyikan tabel yang tidak aktif */
@@ -1779,11 +1792,59 @@ tbody td {
 }
 
 .box-artis {
+    position: relative; /* Tambahkan ini agar .area-bio-artis bisa diposisikan relatif terhadap box ini */
     width: 100%;
     height: 150px;
     background-color: #f0f0f0;
     border-radius: 10px;
+    overflow: hidden; /* Tambahkan ini agar konten di dalam box tidak keluar */
 }
+
+.image-artis {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.image-artis:hover {
+    filter: brightness(0.5); /* Membuat gambar menjadi lebih gelap */
+}
+
+.area-bio-artis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Pastikan menutupi seluruh area .box-artis */
+    background-color: rgba(0, 0, 0, 0.7); /* Background semi transparan agar bio terlihat */
+    color: white;
+    opacity: 0; /* Awalnya tidak terlihat */
+    display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.4s ease; /* Transisi halus */
+}
+
+.box-artis:hover .area-bio-artis {
+    opacity: 1; /* Menjadi terlihat saat hover */
+}
+
+.nama{
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+}
+
+.bio{
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 200;
+}
+
 /* ---------------- */
 /* ---------------- */
 
@@ -1877,6 +1938,45 @@ tbody td {
     background-color: #f0f0f0;
     border-radius: 10px;
     box-sizing: border-box;
+    position: relative;
+}
+
+.image-schedule-program{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.area-bio-schedule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: white;
+    display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
+    justify-content: start;
+    align-items: end;
+}
+
+.bio-schedule{
+    display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    padding: 10px 20px;
+}
+
+.nama-programS{
+    font-size: 18px;
+    font-family: "poppins";
+    margin: 0px;
+}
+
+.jam-programS{
+    font-size: 16px;
+    font-family: "poppins";
+    margin: 0px;
 }
 
 /* .content-schedule .box-schedule {

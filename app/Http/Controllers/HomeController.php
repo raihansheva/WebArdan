@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Artis;
 use Carbon\Carbon;
 use App\Models\Info;
 use App\Models\Event;
@@ -36,7 +37,9 @@ class HomeController extends Controller
         $podcast = Podcast::all();
         $Kategori = Kategori::with('charts')->get();
 
-        $schedule = Schedule::all();
+        $schedule = Schedule::with('program')->get();
+
+        $artis = Artis::all()->take(3);
 
         $playlist = Youtube::first();
         $apiKey = env('YOUTUBE_API_KEY');
@@ -75,7 +78,8 @@ class HomeController extends Controller
             'videos' => $videos,
             'announcer' => $announcer,
             'kategori' => $Kategori,
-            'schedule' => $schedule
+            'schedule' => $schedule,
+            'artis' => $artis
         ]);
     }
 

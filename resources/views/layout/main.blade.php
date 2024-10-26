@@ -190,7 +190,7 @@
 
         </div>
 
-        <audio src="music/music1.mp3" class="main-song" id="audio"></audio>
+        <audio src="" class="main-song" id="audio" ></audio>
     </div>
     {{-- ------- --}}
     <footer class="footer" id="contact">
