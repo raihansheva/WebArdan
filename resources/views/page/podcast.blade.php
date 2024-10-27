@@ -14,175 +14,33 @@
                 <h2 class="title-header-card-podcast">Latest Podcast</h2>
             </div>
             <div class="line-podcast"></div>
-            <div class="content-card-podcast" >
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
+            <div class="content-card-podcast">
+                @foreach ($podcast as $podcastList)
+                    <div class="card-podcast">
+                        <div class="card-body-podcast">
+                            <div class="head-body-podcast">
+                                <div class="genre">
+                                    <h1 class="title-genre">{{ $podcastList->genre_podcast }}</h1>
+                                </div>
+                                <div class="area-card-text">
+                                    <h1 class="card-text-podcast">{{ $podcastList->judul_podcast }}</h1>
+                                </div>
                             </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
-                            </div>
-                        </div>
-                        <div class="card-image-podcast">
-
-                        </div>
-                    </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
-                            </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
+                            <div class="card-image-podcast">
+                                <img src="./storage/{{ $podcastList->image_podcast }}" alt="" class="image-podcast">
                             </div>
                         </div>
-                        <div class="card-image-podcast">
-
+                        <div class="card-header-podcast">
+                            <div class="author-podcast">
+                            </div>
+                            <a class="link-podcast" href="/detail-podcast/{{ $podcastList->id }}">
+                                <div class="view-podcast">
+                                    <p class="text-watch-podcast">View Podcast</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
-                            </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
-                            </div>
-                        </div>
-                        <div class="card-image-podcast">
-
-                        </div>
-                    </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
-                            </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
-                            </div>
-                        </div>
-                        <div class="card-image-podcast">
-
-                        </div>
-                    </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
-                            </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
-                            </div>
-                        </div>
-                        <div class="card-image-podcast">
-
-                        </div>
-                    </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
-                            </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
-                            </div>
-                        </div>
-                        <div class="card-image-podcast">
-
-                        </div>
-                    </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-podcast">
-                    <div class="card-body-podcast">
-                        <div class="head-body-podcast">
-                            <div class="genre">
-                                <h1 class="title-genre">Comedy</h1>
-                            </div>
-                            <div class="area-card-text">
-                                <h1 class="card-text-podcast">Podcast Aseek</h1>
-                            </div>
-                        </div>
-                        <div class="card-image-podcast">
-
-                        </div>
-                    </div>
-                    <div class="card-header-podcast">
-                        <div class="author-podcast">
-                        </div>
-                        <a class="link-podcast" href="/detail-podcast">
-                            <div class="view-podcast">
-                                <p class="text-watch-podcast">View Podcast</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="area-bottom-card-podcast">
                 <h2 class="title-bottom" id="toggleBtn">See more</h2>
@@ -196,22 +54,30 @@
             </div>
             <div class="area-content-videoYT">
                 <div class="area-contentYT-kiri">
-                    <div class="box-area-videoYT-kiri">
-                        <div class="btn-play-videoYT-kiri">
-                            <span class="material-symbols-rounded">play_arrow</span>
+                    @foreach ($videos as $video)
+                        <div class="box-area-videoYT-kiri" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                            <div class="btn-play-videoYT-kiri"
+                                onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
-                    </div>
+                        @break
+                    @endforeach
                 </div>
                 <div class="area-contentYT-kanan">
-                    <div class="box-area-videoYT-kanan">
-                        <div class="btn-play-videoYT-kanan">
-                            <span class="material-symbols-rounded">play_arrow</span>
+                    @foreach (collect($videos)->slice(1, 2) as $video)
+                        <div class="box-area-videoYT-kanan" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                            <div class="btn-play-videoYT-kanan"
+                                onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="box-area-videoYT-kanan">
-                        <div class="btn-play-videoYT-kanan">
-                            <span class="material-symbols-rounded">play_arrow</span>
-                        </div>
+                    @endforeach
+                </div>
+                <div class="popup-player-yt" id="popup-player" style="display:none;">
+                    <div class="popup-content-yt">
+                        {{-- <span id="close-popup" onclick="hidePopup()">X</span> --}}
+                        <div id="player-yt"></div>
                     </div>
                 </div>
             </div>
@@ -237,51 +103,17 @@
                         <h1 class="title-news">Recent News</h1>
                     </div>
                     <div class="content-news">
-                        <div class="box-news">
-                            <div class="area-image">
-
+                        @foreach ($topInfo as $topInfoList)
+                            <div class="box-news">
+                                <div class="area-image">
+                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                        alt="">
+                                </div>
+                                <div class="area-text">
+                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                </div>
                             </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

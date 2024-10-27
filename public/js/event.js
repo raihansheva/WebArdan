@@ -60,16 +60,37 @@ function closePopupOutsideEvent(event) {
 
 
 // pop up program
-function showPopup() {
-    document.getElementById("popup").style.display = "flex"; // Tampilkan pop-up
+function showPopup(element) {
+    const title = element.getAttribute("data-title");
+    const description = element.getAttribute("data-description");
+    const time = element.getAttribute("data-time");
+
+    // Log data untuk debug
+    console.log("Title:", title); // Pastikan ini mencetak judul
+    console.log("Description:", description); // Pastikan ini mencetak deskripsi
+    console.log("Time:", time); // Pastikan ini mencetak waktu
+
+    if (title && description && time) {
+        document.querySelector(".title-box-program").textContent = title;
+        document.querySelector(".desk-program").textContent = description;
+        document.querySelector(".jam-program").textContent = time;
+        document.getElementById("popup").style.display = "flex"; // Tampilkan popup
+    } else {
+        console.error("Data tidak ditemukan untuk elemen yang diklik!");
+    }
 }
 
 function closePopup() {
-    document.getElementById("popup").style.display = "none"; // Sembunyikan pop-up
+    const popup = document.getElementById("popup");
+    popup.classList.remove("muncul"); // Hilangkan kelas show
+    popup.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    // Sembunyikan pop-up setelah animasi selesai
+    popup.style.display = "none";
+    popup.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
 }
 
 function closePopupOutside(event) {
-    // Tutup pop-up hanya jika pengguna mengklik di luar konten
     if (event.target.id === "popup") {
         closePopup();
     }

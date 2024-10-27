@@ -1,15 +1,18 @@
 @extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/event.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveEvent.css"
-@section('content')
-    <section class="page-event-1">
-        <div class="area-event">
-            <div class="header-event">
-                <h2 class="title-event">Upcoming Event</h2>
-            </div>
-            <div class="content-event">
-                <div class="content-event-CD" onclick="showPopupEvent()">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsiveEvent.css" @section('content') <section class="page-event-1">
+    <div class="area-event">
+        <div class="header-event">
+            <h2 class="title-event">Upcoming Event</h2>
+        </div>
+        <div class="content-event">
+            @foreach ($event_soon as $eventSoonList)
+                <div class="content-event-CD" onclick="showPopupEvent(this)"
+                    data-description="{{ $eventSoonList->deskripsi_event }}"
+                    data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
+                    style="background-image: url('./storage/{{ $eventSoonList->image_event }}')">
                 </div>
+                <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
                 <div class="area-countdown">
                     <div class="area-content-countdown">
                         <div class="countdown">
@@ -32,22 +35,21 @@
                         </div>
                         <div class="area-days-date">
                             <div class="box-days-date">
-                                <h3 class="date-month">5 Oktober</h3>
-                                <h3 class="year">2024</h3>
+                                <h3 class="date-month">
+                                    {{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
+    </div>
     </section>
     <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
         <div class="popup-content-event">
             <div class="area-info-event">
-                {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
-                <p class="desk-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas
-                    iste tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
-                <h2 class="title-box-event">5 Oktober 2024</h2>
+                <p class="desk-event"></p>
+                <h2 class="title-box-event"></h2>
                 <a href="/event">
                     <p class="link-event">See detail</p>
                 </a>
@@ -60,36 +62,22 @@
                 <h2 class="title-event-other">Other Upcoming Event</h2>
             </div>
             <div class="area-content-OV">
-                <div class="content-event-OV" onclick="showPopupEvent()">
-                    <div class="area-days-date-right">
-                        <div class="content-days-date-right">
-                            <div class="box-days-date-right">
-                                <h3 class="date-month-right">12 Oktober</h3>
-                                <h3 class="year-right">2024</h3>
+                @foreach ($event_upcoming as $eventUpcomingList)
+                    <div class="content-event-OV"
+                        style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
+                        onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_event }}"
+                        data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
+                        <div class="area-days-date-right">
+                            <div class="content-days-date-right">
+                                <div class="box-days-date-right">
+                                    <h3 class="date-month-right">
+                                        {{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}
+                                    </h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="content-event-OV" onclick="showPopupEvent()">
-                    <div class="area-days-date-right">
-                        <div class="content-days-date-right">
-                            <div class="box-days-date-right">
-                                <h3 class="date-month-right">12 Oktober</h3>
-                                <h3 class="year-right">2024</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-event-OV" onclick="showPopupEvent()">
-                    <div class="area-days-date-right">
-                        <div class="content-days-date-right">
-                            <div class="box-days-date-right">
-                                <h3 class="date-month-right">12 Oktober</h3>
-                                <h3 class="year-right">2024</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="line-event"></div>
         </div>
@@ -100,20 +88,21 @@
                 <h2 class="title-programE">Program Ardan</h2>
             </div>
             <div class="content-programE">
-                <div class="box-programE" onclick="showPopup()"></div>
-                <div class="box-programE" onclick="showPopup()"></div>
-                <div class="box-programE" onclick="showPopup()"></div>
-                <div class="box-programE" onclick="showPopup()"></div>
+                @foreach ($program as $programList)
+                    <div class="box-programE" style="background-image: url('./storage/{{ $programList->image_program }}') "
+                        class="box-program" data-title="{{ $programList->judul_program }}"
+                        data-description="{{ $programList->deskripsi_program }}"
+                        data-time="{{ $programList->jam_program }}" onclick="showPopup(this)"></div>
+                @endforeach
             </div>
         </div>
-        <div id="popup" class="popup" onclick="closePopupOutside(event)">
+        <div id="popup" class="popup" style="display: none;" onclick="closePopupOutside(event)">
             <div class="popup-content">
+                <span class="close" onclick="closePopup()">&times;</span>
                 <div class="area-info-program">
-                    {{-- <span class="close" onclick="closePopup()">&times;</span> --}}
-                    <p class="desk-program">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quas iste
-                        tenetur nihil accusantium ea quibusdam harum excepturi expedita debitis!</p>
-                    <p class="jam-program">Minggu | 16.00 - 18.00</p>
-                    <h2 class="title-box-program">Judul Program</h2>
+                    <p class="desk-program">Program Description</p> <!-- Pastikan elemen ini ada -->
+                    <h2 class="title-box-program">Program Title</h2> <!-- Pastikan elemen ini ada -->
+                    <p class="jam-program">Program Time</p> <!-- Pastikan elemen ini ada -->
                 </div>
             </div>
         </div>

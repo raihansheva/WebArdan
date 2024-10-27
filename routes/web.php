@@ -12,14 +12,16 @@ use App\Http\Controllers\HomeController;
 // });
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/event', [HomeController::class, 'event']);
+Route::get('/podcast', [HomeController::class, 'podcast']);
 
-Route::get('/event', function () {
-    return view('page.event');
-});
+// Route::get('/event', function () {
+//     return view('page.event');
+// });
 
-Route::get('/podcast', function () {
-    return view('page.podcast');
-});
+// Route::get('/podcast', function () {
+//     return view('page.podcast');
+// });
 
 Route::get('/detail-podcast', function () {
     return view('page.detailPodcast');

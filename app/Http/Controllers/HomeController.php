@@ -27,8 +27,8 @@ class HomeController extends Controller
         $program = Program::all();
 
         $event_soon = Event::where('status', 'soon')->get();
-
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+
         $info = Info::all();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
 
@@ -86,6 +86,56 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function event(){
+
+        $program = Program::all()->take(4);
+
+        $event_soon = Event::where('status', 'soon')->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+
+        return view('page.event', [
+            'program' => $program,
+            'event_soon' => $event_soon,
+            'event_upcoming' => $event_upcoming,
+        ]);
+    }
+
+    public function podcast(){
+        $podcast = Podcast::all();
+        $playlist = Youtube::first();
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $apiKey = env('YOUTUBE_API_KEY');
+        $playlistId = $playlist->link_youtube;
+
+        // Panggil YouTube API untuk mendapatkan video dari playlist
+        $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
+            'part' => 'snippet',
+            'maxResults' => 3,
+            'playlistId' => $playlistId,
+            'key' => $apiKey,
+        ]);
+
+
+        //  Buat ngcek kalo ada error
+        // if ($response->successful()) {
+        //     $videos = $response->json();
+        //     dd($videos); // Tampilkan semua data yang diterima
+        // } else {
+        //     dd($response->json()); // Tampilkan error jika ada
+        // }
+        // --------------------------
+
+        
+        $videos = $response->json()['items'];
+
+        return view('page.podcast' , [
+            'podcast' => $podcast,
+            'videos' => $videos,
+            'topInfo' => $topInfo
+        ]);
+    }
+
     public function create()
     {
         //
