@@ -33,7 +33,7 @@
                         <div class="card-header-podcast">
                             <div class="author-podcast">
                             </div>
-                            <a class="link-podcast" href="/detail-podcast/{{ $podcastList->id }}">
+                            <a class="link-podcast" href="/detail-podcast/{{ $podcastList->slug }}">
                                 <div class="view-podcast">
                                     <p class="text-watch-podcast">View Podcast</p>
                                 </div>

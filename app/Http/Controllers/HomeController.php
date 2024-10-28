@@ -63,9 +63,9 @@ class HomeController extends Controller
         // }
         // --------------------------
 
-        
+
         $videos = $response->json()['items'];
-        
+
         // Kirim semua data ke view
         return view('page.home', [
             'banner' => $banner,
@@ -87,7 +87,8 @@ class HomeController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function event(){
+    public function event()
+    {
 
         $program = Program::all()->take(4);
 
@@ -101,7 +102,8 @@ class HomeController extends Controller
         ]);
     }
 
-    public function podcast(){
+    public function podcast()
+    {
         $podcast = Podcast::all();
         $playlist = Youtube::first();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
@@ -126,13 +128,61 @@ class HomeController extends Controller
         // }
         // --------------------------
 
-        
+
         $videos = $response->json()['items'];
 
-        return view('page.podcast' , [
+        return view('page.podcast', [
             'podcast' => $podcast,
             'videos' => $videos,
             'topInfo' => $topInfo
+        ]);
+    }
+
+    public function detailpodcast($slug)
+    {
+        // Cari podcast berdasarkan slug
+        $detailpodcast = Podcast::where('slug', $slug)->firstOrFail();
+
+        $idPodcast = $detailpodcast->id;
+
+        $epsgroup = Podcast::where('podcast_id', $idPodcast)->skip(1)->take(10)->get();
+
+        $allpodcast = Podcast::all();
+
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        // dd($epsgroup);
+        $playlist = Youtube::first();
+
+        $apiKey = env('YOUTUBE_API_KEY');
+        $playlistId = $playlist->link_youtube;
+
+        // Panggil YouTube API untuk mendapatkan video dari playlist
+        $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
+            'part' => 'snippet',
+            'maxResults' => 5,
+            'playlistId' => $playlistId,
+            'key' => $apiKey,
+        ]);
+
+
+        //  Buat ngcek kalo ada error
+        // if ($response->successful()) {
+        //     $videos = $response->json();
+        //     dd($videos); // Tampilkan semua data yang diterima
+        // } else {
+        //     dd($response->json()); // Tampilkan error jika ada
+        // }
+        // --------------------------
+        
+        $videos = $response->json()['items'];
+
+        // Tampilkan halaman detail dengan data podcast
+        return view('page.detailPodcast', [
+            'detail_podcast' => $detailpodcast,
+            'eps_group' => $epsgroup,
+            'all_podcast' => $allpodcast,
+            'top_info' => $topInfo,
+            'videos' => $videos,
         ]);
     }
 

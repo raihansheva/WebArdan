@@ -4,7 +4,7 @@ const content = document.querySelector(".content"),
     musicArtist = content.querySelector(".music-titles .artist"),
     Audio = document.querySelector(".main-song"),
     playBtn = document.querySelectorAll(
-        ".play-pause, .play-pause-mobile, .btn-play-streaming, .btn-play-chart"
+        ".play-pause, .play-pause-mobile, .btn-play-streaming, .btn-play-chart, .btn-play-DP"
     ),
     prevBtn = content.querySelector("#prev"),
     nextBtn = content.querySelector("#next"),
