@@ -9,80 +9,42 @@
             </div>
             <div class="content-chart">
                 <div class="area-top-chart">
-                    <div class="tab-chart">
-                        <h3 class="text-tab">TOP 20</h3>
-                    </div>
-                    <div class="tab-chart">
-                        <h3 class="text-tab">FLIGTH 40</h3>
-                    </div>
-                    <div class="tab-chart">
-                        <h3 class="text-tab">INDIE 7</h3>
-                    </div>
-                    <div class="tab-chart">
-                        <h3 class="text-tab">PERSADA 7</h3>
-                    </div>
+                    @foreach ($kategori as $kategoriList)
+                        <div class="tab-chart {{ $loop->first ? 'active' : '' }}" data-tab="{{ $kategoriList->id }}">
+                            <h3 class="text-tab">{{ strtoupper($kategoriList->nama_kategori) }}</h3>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="area-bottom-chart">
                     <div class="table-container">
-                        <table class="chart">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>ARTIST</th>
-                                    <th>-</th>
-                                </tr>
-                            </thead>
-                            <tbody id="chart-body">
-                                <tr>
-                                    <td>1</td>
-                                    <td>John Doe</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jane Smith</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Michael Brown</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Emily Davis</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Chris Lee</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Sarah Johnson</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>7</td>
-                                    <td>David Martinez</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td>Rachel Adams</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td>Tom Ford</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        @foreach ($kategori as $kategoriList)
+                            <table class="chart {{ $loop->first ? '' : 'hidden' }}" id="{{ $kategoriList->id }}">
+                                <thead>
+                                    <tr>
+                                        <th>NO</th>
+                                        <th>ARTIST</th>
+                                        <th>-</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($kategoriList->charts as $index => $chart)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $chart->name }}</td>
+                                            <td>
+                                                <div class="btn-play-chart" data-audio-src="music/music3.mp3"
+                                                    data-index="2">
+                                                    <span class="material-symbols-rounded">play_arrow</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endforeach
                         <button id="toggle-button" class="btn-see-more" onclick="toggleTable()">See More</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -96,65 +58,28 @@
                     </div>
                     <div class="content-SN-kiri">
                         <div class="box-streaming">
-                            <a class="link-streaming" href="">
-                                <div class="btn-play-streaming">
-                                    {{-- <span class="material-symbols-rounded">play_arrow</span> --}}
-                                    <h2 class="text-streaming">Click Here</h2>
-                                </div>
-                            </a>
+                            <div class="btn-play-streaming">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="area-content-SN-kanan">
                     <div class="header-news">
-                        <h1 class="title-news">Recent News</h1>
+                        <h1 class="title-news">Top Info</h1>
                     </div>
                     <div class="content-news">
-                        <div class="box-news">
-                            <div class="area-image">
-
+                        @foreach ($top_info as $topInfoList)
+                            <div class="box-news">
+                                <div class="area-image">
+                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                        alt="">
+                                </div>
+                                <div class="area-text">
+                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                </div>
                             </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
-                        <div class="box-news">
-                            <div class="area-image">
-
-                            </div>
-                            <div class="area-text">
-                                <p class="desk-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                    voluptatem error molestias dicta minima? Voluptas!</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -162,5 +87,5 @@
     </section>
 
 
-<script src="../js/chart.js"></script>
+    <script src="../js/chart.js"></script>
 @endsection

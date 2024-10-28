@@ -34,7 +34,7 @@ class HomeController extends Controller
 
         $announcer = Announcer::all();
 
-        $podcast = Podcast::all();
+        $podcast = Podcast::take(4)->get();
         $Kategori = Kategori::with('charts')->get();
 
         $schedule = Schedule::with('program')->get();
@@ -183,6 +183,18 @@ class HomeController extends Controller
             'all_podcast' => $allpodcast,
             'top_info' => $topInfo,
             'videos' => $videos,
+        ]);
+    }
+
+
+    public function chart(){
+        $Kategori = Kategori::with('charts')->get();
+
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+
+        return view('page.chart' , [
+            'kategori' => $Kategori,
+            'top_info' => $topInfo
         ]);
     }
 
