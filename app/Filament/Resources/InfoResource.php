@@ -83,8 +83,8 @@ class InfoResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('judul_info'),
-                TextColumn::make('tag_info'),
+                TextColumn::make('judul_info')->searchable(),
+                TextColumn::make('tag_info')->sortable(),
                 TextColumn::make('deskripsi_info'),
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),

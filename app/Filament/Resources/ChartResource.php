@@ -49,7 +49,7 @@ class ChartResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
+                TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('link_audio'),
                 TextColumn::make('kategori.nama_kategori'),
             ])

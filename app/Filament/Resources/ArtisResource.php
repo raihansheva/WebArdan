@@ -50,7 +50,7 @@ class ArtisResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama'),
+                TextColumn::make('nama')->searchable()->sortable(),
                 TextColumn::make('bio'),
                 ImageColumn::make('image_artis'),
             ])

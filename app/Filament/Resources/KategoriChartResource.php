@@ -46,7 +46,7 @@ class KategoriChartResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_kategori'),
+                TextColumn::make('nama_kategori')->searchable()->sortable(),
             ])
             ->filters([
                 //

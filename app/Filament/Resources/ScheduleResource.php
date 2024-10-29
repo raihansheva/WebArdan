@@ -79,9 +79,9 @@ class ScheduleResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('program.judul_program'),
-                TextColumn::make('jam_program'),
-                TextColumn::make('hari'),
+                TextColumn::make('program.judul_program')->searchable()->sortable(),
+                TextColumn::make('jam_program')->searchable()->sortable(),
+                TextColumn::make('hari')->searchable(),
                 TextColumn::make('deskripsi'),
             ])
             ->filters([

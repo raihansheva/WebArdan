@@ -61,7 +61,7 @@ class StreamResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title_stream'),
+                TextColumn::make('title_stream')->searchable()->sortable(),
                 TextColumn::make('stream_video_url'),
                 TextColumn::make('stream_audio_url'),
                 ImageColumn::make('image_stream'),
@@ -71,7 +71,7 @@ class StreamResource extends Resource
                         'upcoming' => 'warning',     // Oren untuk upcoming
                         'completed' => 'success',    // Hijau untuk completed
                         default => 'secondary',       // Warna default
-                    }),
+                    })->searchable()->sortable(),
 
             ])
             ->filters([

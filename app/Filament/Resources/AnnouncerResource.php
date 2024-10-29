@@ -56,7 +56,7 @@ class AnnouncerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name_announcer'),
+                TextColumn::make('name_announcer')->searchable()->sortable(),
                 ImageColumn::make('image_announcer'),
                 TextColumn::make('link_instagram'),
                 TextColumn::make('link_facebook'),

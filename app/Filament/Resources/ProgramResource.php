@@ -62,9 +62,9 @@ class ProgramResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('text_header'),
-                TextColumn::make('judul_program'),
+                TextColumn::make('judul_program')->searchable()->sortable(),
                 TextColumn::make('deskripsi_program'),
-                TextColumn::make('jam_program'),
+                TextColumn::make('jam_program')->searchable()->sortable(),
                 ImageColumn::make('image_program'),
             ])
             ->filters([

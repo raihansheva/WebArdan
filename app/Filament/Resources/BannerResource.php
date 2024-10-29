@@ -52,7 +52,7 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title_banner'),
+                TextColumn::make('title_banner')->searchable()->sortable(),
                 ImageColumn::make('image_banner'),
             ])
             ->filters([

@@ -111,11 +111,11 @@ class PodcastResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('judul_podcast'),
-                TextColumn::make('genre_podcast'),
+                TextColumn::make('judul_podcast')->searchable()->sortable(),
+                TextColumn::make('genre_podcast')->searchable()->sortable(),
                 TextColumn::make('deskripsi_podcast'),
                 ImageColumn::make('image_podcast'),
-                TextColumn::make('date_podcast'),
+                TextColumn::make('date_podcast')->searchable()->sortable(),
                 TextColumn::make('link_podcast'),
                 TextColumn::make('file'),
                 TextColumn::make('slug'),

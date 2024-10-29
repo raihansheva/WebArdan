@@ -73,7 +73,7 @@ class EventResource extends Resource
             ->columns([
                 ImageColumn::make('image_event'),
                 TextColumn::make('deskripsi_event'),
-                TextColumn::make('date_event'),
+                TextColumn::make('date_event')->searchable()->sortable(),
                 TextColumn::make('time_countdown'),
                 TextColumn::make('status')
                     ->color(fn($record) => match ($record->status) {
