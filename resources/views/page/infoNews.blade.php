@@ -12,28 +12,28 @@
     <section class="page-news-2">
         <div class="area-info-news">
             <div class="content-info-news">
-                <div class="content-IN-kiri">
-                    <div class="box-info">
-                        <div class="content-box-info">
-                            <div class="area-image-info"></div>
-                            <div class="area-info">
-                                <div class="area-tagar-info">
-                                    <h2 class="tagar-info">#INFO</h2>
-                                </div>
-                                <div class="area-title-info">
-                                    <h2 class="title-info">Title info</h2>
-                                </div>
-                                <div class="area-desk-info">
-                                    <p class="desk-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-                                        aliquid nobis adipisci sit! In unde voluptas quam porro! Quia laboriosam nihil
-                                        distinctio temporibus. Aliquam, itaque.</p>
-                                </div>
-                                <div class="area-date-info">
-                                    <p class="date-info">Date</p>
+                <div class="content-IN-kiri" id="style-3">
+                    @foreach ($info as $infoList)
+                        <div class="box-info">
+                            <div class="content-box-info">
+                                <div class="area-image-info"></div>
+                                <div class="area-info">
+                                    <div class="area-tagar-info">
+                                        <h2 class="tagar-info">#{{ $infoList->tag_info }}</h2>
+                                    </div>
+                                    <div class="area-title-info">
+                                        <h2 class="title-info">{{ $infoList->judul_info }}</h2>
+                                    </div>
+                                    <div class="area-desk-info">
+                                        <p class="desk-info">{{ $infoList->deskripsi_info }}</p>
+                                    </div>
+                                    <div class="area-date-info">
+                                        <p class="date-info">{{ $infoList->date_info }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="content-IN-kanan">
                     <div class="area-news">
@@ -67,13 +67,12 @@
                     </div>
                     <div class="area-streaming">
                         <div class="area-header-streaming">
-                             <h2 class="title-streaming">Streaming</h2>
+                            <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="area-thumbnail">
                             <a class="link-streaming" href="">
                                 <div class="btn-play-streaming">
-                                    {{-- <span class="material-symbols-rounded">play_arrow</span> --}}
-                                    <h2 class="text-streaming">Click Here</h2>
+                                    <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </a>
                         </div>
@@ -84,51 +83,17 @@
                             <h1 class="title-top-news">Top News</h1>
                         </div>
                         <div class="content-top-news">
-                            <div class="box-top-news">
-                                <div class="area-top-image">
-    
+                            @foreach ($top_info as $topInfoList)
+                                <div class="box-top-news">
+                                    <div class="area-top-image">
+                                        <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                            alt="">
+                                    </div>
+                                    <div class="area-top-text">
+                                        <p class="desk-top-news">{{ $topInfoList->deskripsi_info }}</p>
+                                    </div>
                                 </div>
-                                <div class="area-top-text">
-                                    <p class="desk-top-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-top-news">
-                                <div class="area-top-image">
-    
-                                </div>
-                                <div class="area-top-text">
-                                    <p class="desk-top-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-top-news">
-                                <div class="area-top-image">
-    
-                                </div>
-                                <div class="area-top-text">
-                                    <p class="desk-top-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-top-news">
-                                <div class="area-top-image">
-    
-                                </div>
-                                <div class="area-top-text">
-                                    <p class="desk-top-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
-                            <div class="box-top-news">
-                                <div class="area-top-image">
-    
-                                </div>
-                                <div class="area-top-text">
-                                    <p class="desk-top-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-                                        voluptatem error molestias dicta minima? Voluptas!</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="area-event">
@@ -136,24 +101,32 @@
                             <h2 class="title-event">Event</h2>
                         </div>
                         <div class="area-event-bottom">
-                            <div class="box-event">
-                                <div class="area-days-date-right">
-                                    <div class="content-days-date-right">
-                                        <div class="box-days-date-right">
-                                            <h3 class="date-month-right">12 Oktober</h3>
-                                            <h3 class="year-right">2024</h3>
+                            @foreach ($event_upcoming as $eventUpcomingList)
+                                <div class="box-event"
+                                    style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
+                                    onclick="showPopupEvent(this)"
+                                    data-description="{{ $eventUpcomingList->deskripsi_event }}"
+                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
+                                    <div class="area-days-date-right">
+                                        <div class="content-days-date-right">
+                                            <div class="box-days-date-right">
+                                                <h3 class="date-month-right">
+                                                    {{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="box-event">
-                                <div class="area-days-date-right">
-                                    <div class="content-days-date-right">
-                                        <div class="box-days-date-right">
-                                            <h3 class="date-month-right">12 Oktober</h3>
-                                            <h3 class="year-right">2024</h3>
-                                        </div>
-                                    </div>
+                            @endforeach
+                        </div>
+                        <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+                            <div class="popup-content-event">
+                                <div class="area-info-event">
+                                    <p class="desk-event"></p>
+                                    <h2 class="title-box-event"></h2>
+                                    <a href="/event">
+                                        <p class="link-event">See detail</p>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +147,19 @@
                 <h2 class="title-info-artis">Info Artis</h2>
             </div>
             <div class="area-box-info-artis">
-                <div class="box-artis"></div>
-                <div class="box-artis"></div>
-                <div class="box-artis"></div>
-                <div class="box-artis"></div>
-                <div class="box-artis"></div>
+                @foreach ($artis as $artisList)
+                    <div class="box-artis">
+                        <img class="image-artis" src="./storage/{{ $artisList->image_artis }}" alt="">
+                        <div class="area-bio-artis">
+                            <div class="artis-name">
+                                <p class="nama">{{ $artisList->nama }}</p>
+                            </div>
+                            <div class="artis-bio">
+                                <p class="bio">{{ $artisList->bio }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
             <div class="line-info-artis"></div>
         </div>

@@ -1,17 +1,17 @@
 /* page news 1 */
-.page-news-1{
+.page-news-1 {
     width: 100%;
     height: auto;
     margin-bottom: 50px;
 }
 
-.header-info-news{
+.header-info-news {
     width: 100%;
     height: 350px;
     /* border: 1px red solid; */
 }
 
-.image-header-info-news{
+.image-header-info-news {
     width: 100%;
     height: 100%;
     background-color: gainsboro;
@@ -20,7 +20,7 @@
     align-items: center;
 }
 
-.title-header{
+.title-header {
     font-size: 49px;
     font-weight: 200;
     font-family: "Bebas Neue";
@@ -30,25 +30,25 @@
 /* ------------ */
 
 /* page news 2 */
-.page-news-2{
+.page-news-2 {
     width: 100%;
     height: auto;
 }
 
-.area-info-news{
+.area-info-news {
     width: auto;
     height: auto;
     /* border: 1px red solid; */
     margin: 0px 64px 10px 64px;
 }
 
-.line-info-news{
+.line-info-news {
     width: 100%;
     border: 1px white solid;
     margin: 30px 0px;
 }
 
-.content-info-news{
+.content-info-news {
     width: 100%;
     height: auto;
     display: flex;
@@ -56,33 +56,36 @@
 }
 
 /* content kiri */
-.content-IN-kiri{
+.content-IN-kiri {
     width: 60%;
-    height: auto;
+    height: 1800px;
     /* border: 1px pink solid; */
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    gap: 10px;
+    padding-right: 10px;
 }
 
-.box-info{
+.box-info {
     width: 100%;
-    height: 620px;
+    height: auto;
     background-color: white;
 }
 
-.content-box-info{
+.content-box-info {
     width: auto;
-    height: auto;
+    height: 600px;
     margin: 20px;
 }
 
-.area-image-info{
+.area-image-info {
     width: auto;
     height: 55%;
     background-color: gainsboro;
 }
 
-.area-info{
+.area-info {
     width: auto;
     height: fit-content;
     /* border: 1px black solid; */
@@ -91,65 +94,89 @@
     flex-direction: column;
 }
 
-.area-tagar-info{
+.area-tagar-info {
     width: 100%;
     height: fit-content;
     /* border: 1px red solid; */
 }
 
-.tagar-info{
+.tagar-info {
     font-size: 34px;
     font-weight: 200;
     font-family: "Bebas Neue";
     margin: 0px;
 }
 
-.area-title-info{
+.area-title-info {
     width: 100%;
     height: fit-content;
     /* border: 1px blue solid; */
 }
 
-.title-info{
+.title-info {
     font-size: 38px;
     font-weight: 200;
     font-family: "Bebas Neue";
     margin: 0px;
 }
 
-.area-desk-info{
+.area-desk-info {
     width: 100%;
     height: fit-content;
     /* border: 1px green solid; */
 }
 
-.desk-info{
+.desk-info {
     font-size: 18px;
     font-family: "Poppins";
     margin: 0px;
     font-weight: 300;
 }
 
-.area-date-info{
+.area-date-info {
     width: 100%;
     height: fit-content;
     /* border: 1px pink solid; */
     margin-top: 10px;
 }
 
-.date-info{
+.date-info {
     font-size: 16px;
     font-family: "Poppins";
     font-weight: 500;
     margin: 0px;
 }
 
+#style-3::-webkit-scrollbar-track {
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+#style-3::-webkit-scrollbar {
+    width: 12px;
+    background-color: #292929;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    margin: 3px 0px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    /* cursor: pointer; */
+}
 /* ------------ */
 
-
-
 /* content kanan */
-.content-IN-kanan{
+.content-IN-kanan {
     width: 40%;
     height: fit-content;
     /* border: 1px blue solid; */
@@ -158,21 +185,20 @@
     gap: 20px;
 }
 
-
 /* area news */
-.area-news{
+.area-news {
     width: 100%;
     height: auto;
     /* border: 1px yellow solid; */
 }
 
-.area-header-news{
+.area-header-news {
     width: 100%;
     height: fit-content;
     /* border: 1px white solid; */
 }
 
-.header-news{
+.header-news {
     font-size: 38px;
     font-family: "Bebas Neue";
     font-weight: 200;
@@ -180,7 +206,7 @@
     color: white;
 }
 
-.area-link-news{
+.area-link-news {
     width: 100%;
     height: fit-content;
     /* border: 1px chartreuse; */
@@ -190,12 +216,12 @@
     gap: 15px;
 }
 
-.box-link-news{
+.box-link-news {
     width: auto;
     height: auto;
 }
 
-.link-news{
+.link-news {
     text-decoration: none;
     font-family: "Poppins";
     color: white;
@@ -204,11 +230,11 @@
     font-weight: 200;
 }
 
-.link-news:hover{
+.link-news:hover {
     text-decoration: underline;
 }
 
-.line-news{
+.line-news {
     width: 100%;
     border: 1px white solid;
     margin-top: 30px;
@@ -216,17 +242,17 @@
 /* ------------ */
 
 /* area streaming */
-.area-streaming{
+.area-streaming {
     width: 100%;
     height: auto;
 }
 
-.area-header-streaming{
+.area-header-streaming {
     width: 100%;
     height: fit-content;
 }
 
-.title-streaming{
+.title-streaming {
     font-size: 38px;
     font-family: "Bebas Neue";
     font-weight: 200;
@@ -234,7 +260,7 @@
     margin: 0px;
 }
 
-.area-thumbnail{
+.area-thumbnail {
     width: 100%;
     height: 150px;
     background-color: whitesmoke;
@@ -243,32 +269,29 @@
     align-items: center;
 }
 
-.link-streaming{
+.link-streaming {
     text-decoration: none;
 }
 
-.text-streaming{
-    font-size: 18px;
-    font-family: "Poppins";
-    font-weight: 300;
-    margin: 5px 15px;
-}
-
-.btn-play-streaming{
-    height: auto;
-    width: auto;
-    border: 1px var(--primary-color) solid;
+.btn-play-streaming {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: rgb(22, 22, 22);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all 0.4s ease-in-out;
-    border-radius: 8px;
-    color: var(--primary-color);
-    
 }
 
-.btn-play-streaming:hover{
-    border-radius: 8px;
-    background-color: var(--primary-color);
-    color: black;
+.btn-play-streaming:hover {
+    background-color: rgb(49, 49, 49);
+}
+
+.btn-play-streaming span {
+    color: var(--primary-color);
+    font-size: 30px;
 }
 
 /* .link-streaming:hover{
@@ -277,7 +300,7 @@
     color: black;
 } */
 
-.line-streaming{
+.line-streaming {
     width: 100%;
     border: 1px white solid;
     margin-top: 30px;
@@ -328,6 +351,17 @@
     height: 100%;
 }
 
+.image-top-info {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
 .area-top-text {
     width: 70%;
     /* border: 1px black solid; */
@@ -341,16 +375,17 @@
     overflow-wrap: break-word;
     padding: 2px 0;
 }
+
 /* ------------- */
 
 /* area -event */
 
-.area-header-event{
+.area-header-event {
     width: 100%;
     height: fit-content;
 }
 
-.title-event{
+.title-event {
     font-size: 38px;
     font-weight: 200;
     font-family: "Bebas Neue";
@@ -358,7 +393,7 @@
     margin: 0px;
 }
 
-.area-event-bottom{
+.area-event-bottom {
     height: 500px;
     width: 100%;
     /* border: 1px #ff004d solid; */
@@ -367,13 +402,14 @@
     gap: 20px;
 }
 
-.box-event{
+.box-event {
     width: 100%;
     height: 50%;
     background-color: #f0f0f0;
     display: flex;
     justify-content: end;
     align-items: end;
+    cursor: pointer;
 }
 
 .area-days-date-right {
@@ -414,14 +450,14 @@
     margin: 0px;
 }
 
-.area-see-more{
+.area-see-more {
     width: 100%;
     height: fit-content;
     margin-top: 10px;
     text-align: end;
 }
 
-.see-more{
+.see-more {
     font-family: "Poppins";
     font-size: 20px;
     color: var(--primary-color);
@@ -430,38 +466,140 @@
     text-decoration: none;
 }
 /* ----------- */
+.popup-event {
+    display: none; /* Sembunyikan pop-up secara default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Pastikan pop-up di atas elemen lainnya */
+    opacity: 0; /* Awal: transparan untuk animasi fade */
+    transition: opacity 0.5s ease-in-out; /* Transisi untuk fade */
+}
 
+.popup-content-event {
+    background-color: var(--primary-color);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+    height: 250px; /* Lebar pop-up */
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transform: translateY(50px) scale(0.7); /* Awal: scale kecil dan turun */
+    transition: transform 0.5s ease-in-out; /* Transisi untuk animasi scale dan slide */
+}
 
+/* Animasi saat pop-up muncul */
+.popup-event.muncul {
+    display: flex; /* Tampilkan pop-up */
+    opacity: 1; /* Pop-up terlihat */
+}
+
+.popup-event.muncul .popup-content-event {
+    transform: translateY(0) scale(1); /* Kembalikan ke ukuran dan posisi normal */
+}
+
+/* Animasi saat pop-up keluar */
+.popup-event.tutup {
+    opacity: 0; /* Fade-out */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup-event.tutup .popup-content-event {
+    transform: translateY(50px) scale(0.7); /* Kecilkan dan geser turun */
+}
+
+.close {
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.area-info-event {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.desk-event {
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+}
+
+.jam-event {
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 500;
+}
+
+.title-box-event {
+    font-size: 34px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+}
+
+.link-event {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-weight: 300;
+    margin: 0px;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+}
+
+.link-event:hover {
+    text-decoration: underline;
+}
 /* ------------ */
 
 /* ------------ */
 
 /* area info artis */
 
-.page-news-3{
+.page-news-3 {
     width: 100%;
     height: auto;
 }
 
-.area-info-artis{
+.area-info-artis {
     width: auto;
     height: auto;
     margin: 0px 64px 20px 64px;
     /* border: 1px red solid; */
 }
 
-.line-info-artis{
+.line-info-artis {
     width: 100%;
     border: 1px white solid;
     margin: 50px 0px;
 }
 
-.header-info-artis{
+.header-info-artis {
     width: 100%;
     height: fit-content;
 }
 
-.title-info-artis{
+.title-info-artis {
     font-size: 49px;
     font-weight: 200;
     color: white;
@@ -469,9 +607,8 @@
     font-family: "Bebas Neue";
 }
 
-
 /* area box */
-.area-box-info-artis{
+.area-box-info-artis {
     width: 100%;
     height: auto;
     display: flex;
@@ -480,20 +617,63 @@
     margin-top: 20px;
 }
 
-.box-artis{
+.box-artis {
+    position: relative;
     flex: 1 1 calc(25% - 20px);
     max-width: calc(25% - 20px);
     height: 350px;
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
+}
+.image-artis {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease;
+    cursor: pointer;
     border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
 }
 
+.image-artis:hover {
+    filter: brightness(0.5); /* Membuat gambar menjadi lebih gelap */
+}
 
+.area-bio-artis {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Pastikan menutupi seluruh area .box-artis */
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.7
+    ); /* Background semi transparan agar bio terlihat */
+    color: white;
+    opacity: 0; /* Awalnya tidak terlihat */
+    display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.4s ease; /* Transisi halus */
+}
+
+.box-artis:hover .area-bio-artis {
+    opacity: 1; /* Menjadi terlihat saat hover */
+}
+
+.nama {
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+}
+
+.bio {
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 200;
+}
 /* ---------- */
-
 
 /* -------------- */

@@ -22,14 +22,10 @@ Route::get('/detail-podcast/{slug}', [HomeController::class, 'detailpodcast']);
 
 Route::get('/chart', [HomeController::class, 'chart']);
 
+Route::get('/info-news', [HomeController::class, 'info']);
 
 Route::get('/ardan-youtube' , function () {
     return view('page.youtube');
-});
-
-
-Route::get('/info-news' , function () {
-    return view('page.infoNews');
 });
 
 

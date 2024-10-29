@@ -192,9 +192,26 @@ class HomeController extends Controller
 
         $topInfo = Info::where('top_news', true)->limit(5)->get();
 
+        
+
         return view('page.chart' , [
             'kategori' => $Kategori,
-            'top_info' => $topInfo
+            'top_info' => $topInfo,
+
+        ]);
+    }
+
+
+    public function info(){
+        $info = Info::all();
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::all();
+        return view('page.infoNews', [
+            'info' => $info,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
         ]);
     }
 
