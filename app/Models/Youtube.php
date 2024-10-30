@@ -9,5 +9,5 @@ class Youtube extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id' , 'link_youtube'];
+    protected $fillable = ['id', 'nama_playlist' , 'link_youtube'];
 }

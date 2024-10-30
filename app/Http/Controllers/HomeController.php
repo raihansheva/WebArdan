@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artis;
+use App\Models\Streaming;
 use Carbon\Carbon;
 use App\Models\Info;
 use App\Models\Event;
@@ -24,6 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $banner = Banner::all();
+
+        $stream = Streaming::where('status' , 'streaming')->get();
+
         $program = Program::all();
 
         $event_soon = Event::where('status', 'soon')->get();
@@ -69,6 +73,7 @@ class HomeController extends Controller
         // Kirim semua data ke view
         return view('page.home', [
             'banner' => $banner,
+            'stream' => $stream,
             'program' => $program,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
@@ -214,6 +219,15 @@ class HomeController extends Controller
             'artis' => $artis,
         ]);
     }
+
+    public function youtube(){
+        $youtube = Youtube::all();
+
+        return view('page.youtube' , [
+            'youtube' => $youtube,
+        ]);
+    }
+
 
     public function create()
     {

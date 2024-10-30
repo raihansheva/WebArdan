@@ -591,3 +591,23 @@ document
         showScheduleForDay(currentDayName);
     });
     
+
+    // Load YouTube API
+    document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById("hlsPlayer");
+        const hlsUrl = document.getElementById("player").getAttribute("data-pl");
+
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(hlsUrl);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
+            });
+        } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+            video.src = hlsUrl;
+            video.addEventListener("loadedmetadata", function () {
+                video.play();
+            });
+        }
+    });

@@ -22,32 +22,37 @@
             </div>
             <div class="content-streaming">
                 <div class="contentS-kiri">
-                    <div class="card-A">
-                        <div class="card-body">
-                            <div class="btn-play-streaming" data-audio-src="music/music4.mp3" data-index="1">
-                                <span class="material-symbols-rounded">play_arrow</span>
+                    @foreach ($stream as $streamList)
+                        <div class="card-A">
+                            <div class="card-body">
+                                <div class="btn-play-streaming" data-audio-src="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8" data-index="0">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                            </div>
+                            <div class="card-header">
+                                <div class="author">
+                                </div>
+                                <div class="view" id="btn-tonton">
+                                    <p class="text-watchS">Tonton Siaran</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-header">
-                            <div class="author">
+                        <div class="card-B">
+                            <div class="card-body-B">
+                                <div class="video-container">
+                                    <!-- Elemen video untuk memutar HLS -->
+                                    <video id="hlsPlayer" controls width="640" height="360"></video>
+                                </div>
+                                <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
+                                <div id="player" data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8" style="display: none;"></div>
                             </div>
-                            <div class="view" id="btn-tonton">
-                                <p class="text-watchS">Tonton Siaran</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-B">
-                        <div class="card-body-B">
-                            <div class="video-container">
-                                <div id="player" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="view-B">
-                                <p class="text-watchS-B">Dengar Siaran</p>
+                            <div class="card-footer">
+                                <div class="view-B">
+                                    <p class="text-watchS-B">Dengar Siaran</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="contentS-kanan">
                     <div class="area-nextP">
@@ -586,5 +591,6 @@
     {{-- ------- --}}
     {{-- <script src="js/playlist.js"></script> --}}
     <script src="js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 @endsection

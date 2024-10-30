@@ -17,74 +17,55 @@
             <div class="area-header-video">
                 <p class="text-choose">Choose Playlist</p>
                 <div class="area-input">
-                    <input type="text" id="search-input" placeholder="Search playlists..." oninput="filterPlaylists()">
                     <div class="dropdownP">
                         <button id="dropdown-btn-playlist" class="dropdown-btn-search">Select Playlist</button>
                         <div id="playlist-dropdown" class="dropdown-playlist">
-                            <!-- Daftar playlist akan diisi menggunakan JavaScript -->
+                            @foreach ($youtube as $youtubeList)
+                            <p class="dropdown-item" data-playlist-id="{{ $youtubeList->link_youtube }}" data-playlist-name="{{ $youtubeList->nama_playlist }}">{{ $youtubeList->nama_playlist }}</p>
+                        @endforeach
                         </div>
                     </div>
                 </div>
             </div>
             <div class="area-content-video">
-                <div class="video-card">
-                    <div class="thumbnail">
-                        {{-- <img src="https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg" alt="Video Thumbnail"> --}}
-                    </div>
-                    <div class="video-info">
-                        <div class="channel-logo">
-                            <img src="https://via.placeholder.com/40" alt="Channel Logo">
-                        </div>
-                        <div class="video-details">
-                            <h4 class="video-title">Sample YouTube Video Title Sample YouTube Video Title</h4>
-                            <p class="channel-name">Channel Name</p>
-                            <p class="views">1M views • 2 days ago</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="thumbnail">
-                        {{-- <img src="https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg" alt="Video Thumbnail"> --}}
-                    </div>
-                    <div class="video-info">
-                        <div class="channel-logo">
-                            <img src="https://via.placeholder.com/40" alt="Channel Logo">
-                        </div>
-                        <div class="video-details">
-                            <h4 class="video-title">Sample YouTube Video Title Sample YouTube Video Title</h4>
-                            <p class="channel-name">Channel Name</p>
-                            <p class="views">1M views • 2 days ago</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <div class="thumbnail">
-                        {{-- <img src="https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg" alt="Video Thumbnail"> --}}
-                    </div>
-                    <div class="video-info">
-                        <div class="channel-logo">
-                            <img src="https://via.placeholder.com/40" alt="Channel Logo">
-                        </div>
-                        <div class="video-details">
-                            <h4 class="video-title">Sample YouTube Video Title Sample YouTube Video Title</h4>
-                            <p class="channel-name">Channel Name</p>
-                            <p class="views">1M views • 2 days ago</p>
-                        </div>
+                <div class="row video--container">
+                    <div id="template__0" class="video--placeholder video--wrapper">
+                        <!-- This is our repeated component that we'll clone  -->
+                        <a class="video" href="#" data-video-id="VIDEO_ID_HERE">
+                            <div class="video--thumbnail">
+                                <img 
+                                     src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                                     srcset=""
+                                     sizes="(max-width: 992px) 480px, 320px"
+                                 >
+                                <div class="video--thumbnail__overlays">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="video--details">
+                                <div class="video--details__avatar">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+                                </div>
+                                <div class="video--details__meta">
+                                    <h3 class="video--details__title"></h3>
+                                    <h4 class="video--details__channelTitle"></h4>
+                                    <div class="video--details__meta-data">
+                                        <div class="video--details__meta-data-views"></div>
+                                        <time class="video--details__meta-data-published"></time>
+                                    </div>
+                                    <div class="video--details__meta-data-duration"></div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- end clone -->
                     </div>
                 </div>
-                <div class="video-card">
-                    <div class="thumbnail">
-                        {{-- <img src="https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg" alt="Video Thumbnail"> --}}
-                    </div>
-                    <div class="video-info">
-                        <div class="channel-logo">
-                            <img src="https://via.placeholder.com/40" alt="Channel Logo">
-                        </div>
-                        <div class="video-details">
-                            <h4 class="video-title">Sample YouTube Video Title Sample YouTube Video Title</h4>
-                            <p class="channel-name">Channel Name</p>
-                            <p class="views">1M views • 2 days ago</p>
-                        </div>
+                
+                <!-- Modal for YouTube Video -->
+                <div id="videoModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <iframe id="youtubePlayer" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

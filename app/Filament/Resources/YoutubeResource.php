@@ -32,6 +32,7 @@ class YoutubeResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+                        TextInput::make('nama_playlist')->label('Nama Playlist :'),    
                         TextInput::make('link_youtube')->label('Link Youtube :'),    
                     ])
                     ->columns(2),
@@ -42,6 +43,7 @@ class YoutubeResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('nama_playlist'),
                 TextColumn::make('link_youtube'),
             ])
             ->filters([
