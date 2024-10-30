@@ -3,9 +3,6 @@ const dropdownBtn = document.getElementById("dropdown-btn-playlist");
 const playlistDropdown = document.getElementById("playlist-dropdown");
 const container = document.querySelector(".video--container");
 
-// ID Playlist Default
-const defaultPlaylistId = "PLWB1T6z4qsVdtre5f9vbpkSobkTnPjOe3"; // Ganti dengan ID playlist default kamu
-
 // Fungsi untuk mengambil video berdasarkan ID playlist yang dipilih
 function fetchVideosByPlaylist(playlistId) {
     // Clear existing videos in the container
@@ -59,10 +56,20 @@ function fetchVideosByPlaylist(playlistId) {
         .catch(error => console.log("Error fetching playlist data:", error));
 }
 
-
 // Inisialisasi
 document.addEventListener("DOMContentLoaded", () => {
     const dropdownItems = document.querySelectorAll(".dropdown-item");
+
+    if (dropdownItems.length > 0) {
+        // Ambil playlist ID dan nama dari elemen dropdown pertama
+        const firstItem = dropdownItems[0];
+        const initialPlaylistId = firstItem.dataset.playlistId;
+        const initialPlaylistName = firstItem.dataset.playlistName;
+
+        // Set teks tombol dropdown dan ambil video dari playlist pertama
+        dropdownBtn.textContent = initialPlaylistName;
+        fetchVideosByPlaylist(initialPlaylistId);
+    }
 
     dropdownItems.forEach(item => {
         item.addEventListener("click", (event) => {
@@ -73,9 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
             playlistDropdown.style.display = "none"; // Sembunyikan dropdown
         });
     });
-    
-    // Fetch video dari playlist default saat halaman dimuat
-    fetchVideosByPlaylist(defaultPlaylistId);
 
     dropdownBtn.addEventListener("click", (event) => {
         const dropdown = playlistDropdown;
@@ -102,6 +106,32 @@ function formatNumber(input) {
     }
     return input.toString();
 }
+
+// Function untuk format durasi
+function formatDuration(duration) {
+    const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+
+    if (!match) {
+        return "00:00"; // Jika format durasi tidak valid, kembalikan "00:00"
+    }
+
+    const hours = (parseInt(match[1]) || 0);
+    const minutes = (parseInt(match[2]) || 0);
+    const seconds = (parseInt(match[3]) || 0);
+
+    const formattedMinutes = (minutes < 10 ? "0" + minutes : minutes);
+    const formattedSeconds = (seconds < 10 ? "0" + seconds : seconds);
+
+    return hours > 0 ? `${hours}:${formattedMinutes}:${formattedSeconds}` : `${formattedMinutes}:${formattedSeconds}`;
+}
+
+// Function untuk format tanggal
+function formatDate(dateString) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+}
+
 
 // Function untuk format durasi
 function formatDuration(duration) {
@@ -219,38 +249,78 @@ function checkVideoAvailability(videoId, title, views, publishedAt) {
         });
 }
 
-// Show video details in a popup
-function showPopup(videoId, title, views, publishedAt) {
-    const popupContainer = document.getElementById("video-popup");
-    popupContainer.innerHTML = `
-        <h2>${title}</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-        <p>${views} views | Published on: ${publishedAt}</p>
-        <button id="close-popup">Close</button>
-    `;
-    popupContainer.style.display = "block";
 
-    document.getElementById("close-popup").onclick = function() {
-        popupContainer.style.display = "none";
+// Menyimpan referensi elemen modal dan elemen iframe
+const modal = document.getElementById("videoModal");
+const youtubePlayer = document.getElementById("youtubePlayer");
+const closeBtn = document.querySelector(".close");
+
+// Fungsi untuk menampilkan modal dan memainkan video
+// Membuka pop-up dengan video YouTube yang diminta
+function showPopup(videoId, title, views, publishedAt) {
+    const modal = document.getElementById("videoModal");
+    const player = document.getElementById("youtubePlayer");
+
+    // Update URL video di iframe
+    player.src = `https://www.youtube.com/embed/${videoId}`;
+    modal.style.display = "block"; // Menampilkan modal
+
+    // Menutup pop-up saat tombol 'close' diklik
+    const closeBtn = document.querySelector(".close");
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+        player.src = ""; // Reset video untuk menghentikan pemutaran
+    };
+
+    // Menutup pop-up jika pengguna mengklik di luar area konten modal
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            player.src = ""; // Reset video
+        }
     };
 }
 
-// Helper function to format the published date
-function formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const date = new Date(dateString);
-    return date.toLocaleDateString(undefined, options);
-}
+// Event listener untuk elemen video agar membuka pop-up saat diklik
+document.querySelectorAll(".video").forEach(video => {
+    video.addEventListener("click", (event) => {
+        event.preventDefault(); // Mencegah redirect
+        const videoId = video.getAttribute("href").split("youtu.be/")[1];
+        const title = video.querySelector(".video--details__title").textContent;
+        const views = video.querySelector(".video--details__meta-data-views").textContent;
+        const publishedAt = video.querySelector(".video--details__meta-data-published").textContent;
 
-// Call the fetch function for the default playlist videos
-fetchVideosByPlaylist(defaultPlaylistId);
+        checkVideoAvailability(videoId, title, views, publishedAt);
+    });
+});
 
-// Close the popup
-// document.getElementById("close-popup").addEventListener("click", () => {
-//     document.getElementById("video-popup").style.display = "none";
-// });
+// Event listener untuk menutup modal saat tombol close ditekan
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    youtubePlayer.src = ""; // Menghentikan video saat modal ditutup
+});
 
-// // Mengambil video berdasarkan ID playlist default saat halaman dimuat
-// document.addEventListener("DOMContentLoaded", () => {
-//     fetchVideosByPlaylist(defaultPlaylistId);
-// });
+// Event listener untuk menutup modal saat pengguna mengklik di luar konten modal
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+        youtubePlayer.src = ""; // Menghentikan video saat modal ditutup
+    }
+});
+
+// Memodifikasi elemen video agar membuka modal saat diklik
+container.addEventListener("click", (event) => {
+    const videoElement = event.target.closest(".video");
+    if (videoElement) {
+        const videoId = videoElement.getAttribute("href").split("https://youtu.be/")[1];
+        const title = videoElement.querySelector(".video--details__title").textContent;
+        const views = videoElement.querySelector(".video--details__meta-data-views").textContent;
+        const publishedAt = videoElement.querySelector(".video--details__meta-data-published").textContent;
+
+        // Cek ketersediaan video sebelum menampilkan modal
+        checkVideoAvailability(videoId, title, views, publishedAt);
+
+        // Mencegah navigasi ke halaman YouTube
+        event.preventDefault();
+    }
+});

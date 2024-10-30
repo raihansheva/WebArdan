@@ -222,9 +222,15 @@ class HomeController extends Controller
 
     public function youtube(){
         $youtube = Youtube::all();
+        $event_soon = Event::where('status', 'soon')->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
 
         return view('page.youtube' , [
             'youtube' => $youtube,
+            'event_soon' => $event_soon,
+            'event_upcoming' => $event_upcoming,
+            'top_info' => $topInfo
         ]);
     }
 
