@@ -5,10 +5,10 @@
     <section class="page-youtube-1">
         <div class="area-thumbnail-youtube">
             <div class="area-image-thumbnail">
-
+                <img class="banner-youtube" src="./storage/{{ $bannerYT['banner_youtube'] }}" alt="" srcset="">
             </div>
             <div class="area-title-thumbnail">
-                <h2 class="title-thumbnail">ARDAN ON YOUTUBE</h2>
+                <h2 class="title-thumbnail">{{ $bannerYT['title_banner_youtube'] }}</h2>
             </div>
         </div>
     </section>

@@ -32,7 +32,7 @@ class PodcastResource extends Resource
 {
     protected static ?string $model = Podcast::class;
 
-    protected static ?string $navigationGroup = "Menu";
+    protected static ?string $navigationGroup = 'Podcast';
 
     protected static ?string $navigationLabel = 'Podcast';
 

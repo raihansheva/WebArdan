@@ -4,9 +4,12 @@
 <link rel="stylesheet" href="css/ResponsiveStyle/responsivePodcast.css">
 @section('content')
     <section class="page-podcast-1">
-        <div class="area-header-podcast">
-            <h2 class="title-header-podcast">ARDAN PODCAST</h2>
-        </div>
+        @foreach ($bannerP as $bannerPList)
+            <div class="area-header-podcast">
+                <h2 class="title-header-podcast">{{ $bannerPList->title_banner_podcast }}</h2>
+                <img class="banner-podcast" src="./storage/{{ $bannerPList->banner_podcast }}" alt="" srcset="">
+            </div>
+        @endforeach
     </section>
     <section class="page-podcast-2" id="podcast">
         <div class="area-card-podcast">
@@ -61,63 +64,64 @@
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>
-                        @break
-                    @endforeach
+                    @break
+                @endforeach
+            </div>
+            <div class="area-contentYT-kanan">
+                @foreach (collect($videos)->slice(1, 2) as $video)
+                    <div class="box-area-videoYT-kanan"
+                        data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                        <div class="btn-play-videoYT-kanan"
+                            onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="popup-player-yt" id="popup-player" style="display:none;">
+                <div class="popup-content-yt">
+                    {{-- <span id="close-popup" onclick="hidePopup()">X</span> --}}
+                    <div id="player-yt"></div>
                 </div>
-                <div class="area-contentYT-kanan">
-                    @foreach (collect($videos)->slice(1, 2) as $video)
-                        <div class="box-area-videoYT-kanan" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
-                            <div class="btn-play-videoYT-kanan"
-                                onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
-                                <span class="material-symbols-rounded">play_arrow</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-podcast-4">
+    <div class="area-streaming-news">
+        <div class="area-content-SN">
+            <div class="area-content-SN-kiri">
+                <div class="header-SN-kiri">
+                    <h2 class="title-SN-kiri">Streaming</h2>
+                </div>
+                <div class="content-SN-kiri">
+                    <div class="box-streaming">
+                        <div class="btn-play-streaming">
+                            <span class="material-symbols-rounded">play_arrow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="area-content-SN-kanan">
+                <div class="header-news">
+                    <h1 class="title-news">Recent News</h1>
+                </div>
+                <div class="content-news">
+                    @foreach ($topInfo as $topInfoList)
+                        <div class="box-news">
+                            <div class="area-image">
+                                <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                    alt="">
+                            </div>
+                            <div class="area-text">
+                                <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <div class="popup-player-yt" id="popup-player" style="display:none;">
-                    <div class="popup-content-yt">
-                        {{-- <span id="close-popup" onclick="hidePopup()">X</span> --}}
-                        <div id="player-yt"></div>
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
-    <section class="page-podcast-4">
-        <div class="area-streaming-news">
-            <div class="area-content-SN">
-                <div class="area-content-SN-kiri">
-                    <div class="header-SN-kiri">
-                        <h2 class="title-SN-kiri">Streaming</h2>
-                    </div>
-                    <div class="content-SN-kiri">
-                        <div class="box-streaming">
-                            <div class="btn-play-streaming">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="area-content-SN-kanan">
-                    <div class="header-news">
-                        <h1 class="title-news">Recent News</h1>
-                    </div>
-                    <div class="content-news">
-                        @foreach ($topInfo as $topInfoList)
-                            <div class="box-news">
-                                <div class="area-image">
-                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
-                                        alt="">
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script src="js/podcast.js"></script>
+    </div>
+</section>
+<script src="js/podcast.js"></script>
 @endsection

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Artis;
-use App\Models\Streaming;
 use Carbon\Carbon;
 use App\Models\Info;
+use App\Models\Artis;
 use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Podcast;
@@ -14,7 +13,11 @@ use App\Models\Youtube;
 use App\Models\Kategori;
 use App\Models\Schedule;
 use App\Models\Announcer;
+use App\Models\Streaming;
+use App\Models\BannerInfo;
 use Illuminate\Http\Request;
+use App\Models\BannerPodcast;
+use App\Models\BannerYoutube;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
@@ -109,6 +112,7 @@ class HomeController extends Controller
 
     public function podcast()
     {
+        $bannerP = BannerPodcast::all();
         $podcast = Podcast::all();
         $playlist = Youtube::first();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
@@ -137,9 +141,10 @@ class HomeController extends Controller
         $videos = $response->json()['items'];
 
         return view('page.podcast', [
+            'bannerP' => $bannerP,
             'podcast' => $podcast,
             'videos' => $videos,
-            'topInfo' => $topInfo
+            'topInfo' => $topInfo,
         ]);
     }
 
@@ -212,7 +217,10 @@ class HomeController extends Controller
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
+        $bannerI = BannerInfo::all();
+
         return view('page.infoNews', [
+            'bannerInfo' => $bannerI,
             'info' => $info,
             'top_info' => $topInfo,
             'event_upcoming' => $event_upcoming,
@@ -225,8 +233,10 @@ class HomeController extends Controller
         $event_soon = Event::where('status', 'soon')->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $bannerYT = BannerYoutube::first();
 
         return view('page.youtube' , [
+            'bannerYT' => $bannerYT,
             'youtube' => $youtube,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,

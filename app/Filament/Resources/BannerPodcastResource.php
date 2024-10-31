@@ -4,28 +4,28 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
-use App\Models\Banner;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\BannerPodcast;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\BannerResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\BannerResource\RelationManagers;
-use Filament\Tables\Columns\ImageColumn;
+use App\Filament\Resources\BannerPodcastResource\Pages;
+use App\Filament\Resources\BannerPodcastResource\RelationManagers;
 
-class BannerResource extends Resource
+class BannerPodcastResource extends Resource
 {
-    protected static ?string $model = Banner::class;
+    protected static ?string $model = BannerPodcast::class;
 
-    protected static ?string $navigationGroup = 'Menu';
+    protected static ?string $navigationGroup = 'Podcast';
 
-    protected static ?string $navigationLabel = 'Banner';
-    
+    protected static ?string $navigationLabel = 'Banner Podcast';
+
     protected static ?string $navigationIcon = 'heroicon-o-flag';
 
     public static function form(Form $form): Form
@@ -34,16 +34,16 @@ class BannerResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('title_banner')->label('Title Banner :'),
-                        FileUpload::make('image_banner')
-                            ->label('Banner Image :')
+                        TextInput::make('title_banner_podcast')->label('Title Banner Podcast :'),
+                        FileUpload::make('banner_podcast')
+                            ->label('Banner Podcast :')
                             ->image()
-                            ->directory('uploads/images_banner')
+                            ->directory('uploads/banner_podcast')
                             ->disk('public')
                             ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=1350,height=250']) // Ubah format ke array
+                            ->rules(['required', 'image', 'dimensions:width=1476,height=500']) // Ubah format ke array
                             ->validationAttribute('Stream Image')
-                            ->helperText('The image must be 1350x250 pixels.')
+                            ->helperText('The image must be 1476x500 pixels.')
                     ])
                     ->columns(2),
             ]);
@@ -53,8 +53,8 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title_banner')->searchable()->sortable(),
-                ImageColumn::make('image_banner'),
+                TextColumn::make('title_banner_podcast')->searchable()->sortable(),
+                ImageColumn::make('banner_podcast'),
             ])
             ->filters([
                 //
@@ -80,9 +80,9 @@ class BannerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBanners::route('/'),
-            'create' => Pages\CreateBanner::route('/create'),
-            'edit' => Pages\EditBanner::route('/{record}/edit'),
+            'index' => Pages\ListBannerPodcasts::route('/'),
+            'create' => Pages\CreateBannerPodcast::route('/create'),
+            'edit' => Pages\EditBannerPodcast::route('/{record}/edit'),
         ];
     }
 }

@@ -4,9 +4,12 @@
 @section('content')
     <section class="page-news-1">
         <div class="header-info-news">
-            <div class="image-header-info-news">
-                <h2 class="title-header">#INFO</h2>
-            </div>
+            @foreach ($bannerInfo as $bannerInfoList)
+                <div class="image-header-info-news">
+                    <h2 class="title-header">#{{ $bannerInfoList->title_banner_info }}</h2>
+                    <img class="banner-info" src="../storage/{{$bannerInfoList->banner_info }}" alt="" srcset="">
+                </div>
+            @endforeach
         </div>
     </section>
     <section class="page-news-2">

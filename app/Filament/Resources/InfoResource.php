@@ -29,7 +29,7 @@ class InfoResource extends Resource
 {
     protected static ?string $model = Info::class;
 
-    protected static ?string $navigationGroup = 'Menu';
+    protected static ?string $navigationGroup = 'Info';
 
     protected static ?string $navigationLabel = 'Info';
 
