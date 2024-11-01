@@ -73,6 +73,41 @@
                     <p>Contact</p>
                 </a>
             </div>
+            @if ($sosmed)
+                <div class="area-socmed">
+                    @foreach ($sosmed as $sosmedList)
+                        @if ($sosmedList->platform_name == 'Facebook')
+                            <div class="kotak-socmed">
+                                <a href="{{ $sosmedList->link_platform }}">
+                                    <i class='bx bxl-facebook-square'></i>
+                                </a>
+                            </div>
+                        @elseif ($sosmedList->platform_name == 'Instagram')
+                            <div class="kotak-socmed">
+                                <a href="{{ $sosmedList->link_platform }}">
+                                    <i class='bx bxl-instagram'></i>
+                                </a>
+                            </div>
+                        @elseif ($sosmedList->platform_name == 'Twitter')
+                            <div class="kotak-socmed">
+                                <a href="{{ $sosmedList->link_platform }}">
+                                    <i class='bx bxl-twitter'></i>
+                                </a>
+                            </div>
+                        @elseif ($sosmedList->platform_name == 'Youtube')
+                            <div class="kotak-socmed">
+                                <a href="{{ $sosmedList->link_platform }}">
+                                    <i class='bx bxl-youtube'></i>
+                                </a>
+                            </div>
+                        @else
+                            <div class="kotak-socmed">
+                                {{-- <i class='bx bxl-youtube'></i> --}}
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            @endif
         </div>
         <!-- Hamburger Icon -->
         <div class="hamburger" id="hamburger-icon">
@@ -191,40 +226,71 @@
 
         </div>
 
-        <audio src="" class="main-song" id="audio" ></audio>
+        <audio src="" class="main-song" id="audio"></audio>
     </div>
     {{-- ------- --}}
     <footer class="footer" id="contact">
         <div class="top-footer">
-            <div class="area-kiri-footer">
-                <div class="area-group-kiri">
-                    <div class="area-text-contact">
-                        <h1 class="text-contact">CONTACT US</h1>
+            <div class="area-top-footer">
+                <div class="group-top-footer">
+                    <div class="area-group-kiri">
+                        <div class="area-text-contact">
+                            <h1 class="text-contact">CONTACT US : </h1>
+                        </div>
+                        <div class="area-text-name">
+                            @if ($contact->text_1)
+                                <p class="text-name">{{ $contact->text_1 }}</p>
+                            @endif
+                            @if ($contact->text_2)
+                                <p class="text-name">{{ $contact->text_2 }}</p>
+                            @endif
+                        </div>
+                        <div class="area-footer-address">
+                            <p class="footer-address">WA : {{ $contact->no_telepon }}</p>
+                            <p class="footer-address">🤝 : {{ $contact->email_collab }}</p>
+                            <p class="footer-address">🎼 : {{ $contact->email_music }}</p>
+                        </div>
+                        <div class="area-footer-socmed">
+                            <div class="kotak-socmed">
+                                <i class='bx bxl-facebook-square'></i>
+                            </div>
+                            <div class="kotak-socmed">
+                                <i class='bx bxl-instagram'></i>
+                            </div>
+                            <div class="kotak-socmed">
+                                <i class='bx bxl-twitter'></i>
+                            </div>
+                            <div class="kotak-socmed">
+                                <i class='bx bxl-youtube'></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="area-footer-address">
-                        <p class="footer-address">Email : example@gmail.com</p>
-                        <p class="footer-address">Telepon : +62 085862839923 </p>
-                        <p class="footer-address">Alamat :lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="area-kanan-footer">
-                <div class="area-group-kanan">
-                    <div class="area-text-socmed">
-                        <h1 class="text-socmed">Social Media</h1>
-                    </div>
-                    <div class="area-footer-socmed">
-                        <div class="kotak-socmed"></div>
-                        <div class="kotak-socmed"></div>
-                        <div class="kotak-socmed"></div>
-                        <div class="kotak-socmed"></div>
-                    </div>
-                    <div class="area-text-socmed2">
-                        <h1 class="text-socmed2">Get it on</h1>
-                    </div>
-                    <div class="area-footer-download">
-                        <div class="kotak-download"></div>
-                        <div class="kotak-download"></div>
+                    @if ($applink)
+                        <div class="area-group-tengah">
+                            <div class="area-app-download">
+                                <h1 class="text-app-download">Get it on :</h1>
+                                <div class="area-footer-download">
+                                    @foreach ($applink as $applinkList)
+                                    <a href="{{ $applinkList->link_app }}">
+                                        <div class="kotak-download">
+                                            <img class="image-platform" src="./storage/{{ $applinkList->app_image }}" alt="">
+                                        </div>
+                                    </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="area-group-kanan">
+                        <div class="area-partner">
+                            <h1 class="text-socmed">Our digital partner :</h1>
+                            <div class="area-box-partner">
+                                <div class="partner">
+                                    <img class="image-partner" src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

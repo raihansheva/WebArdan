@@ -149,8 +149,9 @@ body {
 /* area-kanan-navbar */
 .area-kanan-navbar {
     width: 80%;
-    border: 1px black solid;
+    /* border: 1px rgb(255, 0, 0) solid; */
     display: flex;
+    gap: 40px;
     justify-content: end;
 }
 
@@ -161,8 +162,8 @@ body {
 
 .link {
     text-decoration: none;
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 16px;
+    font-weight: 500;
     font-family: "Poppins";
     color: #cccccc;
     transition: color 0.3s ease;
@@ -260,6 +261,35 @@ body {
 .show {
     width: 170px;
     display: block;
+}
+
+.area-socmed {
+    width: max-content;
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+    justify-content: right;
+    align-items: center;
+}
+
+.kotak-socmed i{
+    font-size: 22px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    color: #cccccc;
+}
+
+.kotak-socmed i:hover{
+    color: var(--primary-color);
+}
+
+.kotak-socmed {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
 }
 
 /* <--------------------> */
@@ -532,8 +562,8 @@ body {
 /* footer */
 .footer {
     width: auto;
-    height: 400px;
-    background-color: #a6a6a6;
+    height: 450px;
+    background-color: #333333;
     color: white;
     text-align: center;
 }
@@ -547,18 +577,28 @@ body {
     padding: 0px 64px 0px 64px;
 }
 
+.group-top-footer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+
 /* area kiri footer */
-.area-kiri-footer {
-    width: 50%;
+.area-top-footer {
+    width: 100%;
     height: auto;
     /* border: 1px black solid; */
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
+    /* padding-top: 30px; */
 }
 
 .area-group-kiri {
-    width: auto;
+    width: 50%;
     height: auto;
     /* border: 1px black solid; */
 }
@@ -584,32 +624,31 @@ body {
 .footer-address {
     font-family: "Poppins";
     margin: 0px;
-    font-size: 1.3rem;
+    font-size: 18px;
     margin-top: 5px;
 }
 
-/* --------------------- */
-
-.area-kanan-footer {
-    width: 50%;
-    height: auto;
-    /* border: 1px black solid; */
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-.area-group-kanan {
-    width: auto;
-    height: auto;
-    /* border: 1px black solid; */
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.area-text-socmed {
+.area-text-name{
     width: max-content;
-    /* border: 1px black solid; */
+    text-align: start;
+    margin: 10px 0px;
+}
+
+.text-name{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: "Poppins";
+    margin: 0px;
+}
+
+.area-footer-socmed {
+    width: max-content;
+    display: none;
+    gap: 15px;
+    margin-top: 10px;
+    cursor: pointer;
+    justify-content: right;
+    align-items: center;
 }
 
 .text-socmed {
@@ -619,13 +658,24 @@ body {
     font-weight: 400;
     font-size: 2rem;
 }
-.area-text-socmed2 {
-    width: max-content;
-    /* border: 1px black solid; */
-    margin-top: 5px;
+
+
+/* --------------------- */
+
+/* area footer tengah */
+.area-group-tengah{
+    width: auto;
+    height: 100%;
 }
 
-.text-socmed2 {
+.area-app-download{
+    width: 100%;
+    /* border: 1px black solid; */
+    margin-top: 5px;
+    text-align: center;
+}
+
+.text-app-download {
     margin: 0px;
     font-family: "Bebas Neue";
     /* letter-spacing: 3px; */
@@ -633,38 +683,67 @@ body {
     font-size: 2rem;
 }
 
-.area-footer-socmed {
-    width: max-content;
-    display: flex;
-    gap: 15px;
-}
-
-.kotak-socmed {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.footer-socmed {
-    font-family: "Poppins";
-    margin: 0px;
-    font-size: 1.3rem;
-    margin-top: 5px;
-}
-
 .area-footer-download {
     width: max-content;
     display: flex;
     gap: 15px;
+    margin-top: 10px;
 }
 
 .kotak-download {
-    width: 200px;
-    height: 70px;
-    background-color: white;
-    border-radius: 10px;
+    width: 184px;
+    height: 55px;
+    /* background-color: white; */
+    /* border-radius: 10px; */
 }
+
+.image-platform{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    /* border-radius: 10px; */
+
+}
+
+/* -------------------- */
+
+
+
+/* area footer kanan */
+.area-group-kanan {
+    width: 50%;
+    height: auto;
+    /* border: 1px black solid; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center; */
+}
+
+.area-partner{
+    width: max-content;
+    /* border: 1px black solid; */
+    height: auto;
+    width: 100%;
+    text-align: end;
+}
+
+.area-box-partner{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.partner{
+    width: 150px;
+    height: 70px;
+    background-color: #ffffff;
+}
+/* --------------------- */
+
 
 /* bottom footer */
 .bottom-footer {
