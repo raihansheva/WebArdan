@@ -37,24 +37,37 @@ body {
     bottom: 85px;
     right: 20px;
     z-index: 100;
-    /* background-color: #ff004d; */
+    background-color: #646464;
     color: white;
-    border: none;
+    /* border: 2px black solid; */
     border-radius: 50%;
     padding: 15px;
-    font-size: 18px;
-    height: 65px;
-    width: 65px;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
     display: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 }
 
-#scrollToTopBtn img {
-    cursor: pointer;
-    width: 82.26px;
-    height: 76.25px;
+#scrollToTopBtn:hover {
+    background-color: var(--primary-color);
+    color: black;
+}
+
+#scrollToTopBtn i {
+    font-size: 32px;
+}
+
+#scrollToTopBtn i:hover {
+    color: black;
 }
 
 /* navigasi bar */
@@ -693,7 +706,7 @@ body {
 .kotak-download {
     width: 184px;
     height: 55px;
-    /* background-color: white; */
+    /* background-color: white;https://ardanradio.com/ */
     /* border-radius: 10px; */
 }
 
@@ -740,7 +753,7 @@ body {
 .partner{
     width: 150px;
     height: 70px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
 }
 /* --------------------- */
 
@@ -763,6 +776,28 @@ body {
     margin: 0px;
 }
 
+.name-owners{
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-family: "Poppins";
+
+}
+
+.name-owners:hover{
+    text-decoration: underline;
+}
+
+.bottom-footer-dummy {
+    width: 100%;
+    background-color: var(--primary-color);
+    height: 15%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* --------- */
 
 /* <--------------------> */

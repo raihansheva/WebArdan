@@ -178,7 +178,7 @@
         @yield('content')
     </main>
     {{-- ------- --}}
-    <div id="scrollToTopBtn"><img onclick="scrollToTop()" src="image/vinyl.png" alt="">
+    <div id="scrollToTopBtn" ><i onclick="scrollToTop()" class='bx bx-up-arrow-alt'></i>
     </div>
     {{-- audio player --}}
     <div class="audio-player-container">
@@ -271,11 +271,12 @@
                                 <h1 class="text-app-download">Get it on :</h1>
                                 <div class="area-footer-download">
                                     @foreach ($applink as $applinkList)
-                                    <a href="{{ $applinkList->link_app }}">
-                                        <div class="kotak-download">
-                                            <img class="image-platform" src="./storage/{{ $applinkList->app_image }}" alt="">
-                                        </div>
-                                    </a>
+                                        <a href="{{ $applinkList->link_app }}">
+                                            <div class="kotak-download">
+                                                <img class="image-platform"
+                                                    src="./storage/{{ $applinkList->app_image }}" alt="">
+                                            </div>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -285,9 +286,11 @@
                         <div class="area-partner">
                             <h1 class="text-socmed">Our digital partner :</h1>
                             <div class="area-box-partner">
-                                <div class="partner">
-                                    <img class="image-partner" src="" alt="">
-                                </div>
+                                @foreach ($partner as $partnerList)
+                                    <div class="partner">
+                                        <img class="image-partner" src="./storage/{{ $partnerList->logo_partner }}" alt="">
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
 
@@ -296,7 +299,11 @@
             </div>
         </div>
         <div class="bottom-footer">
-            <h1 class="text-copyRight">CopyRight 2024</h1>
+            <h1 class="text-copyRight">{{ $copyright->text }} <a class="name-owners"
+                    href="{{ $copyright->link_company }}">{{ $copyright->copyright_owners }}</a></h1>
+        </div>
+        <div class="bottom-footer-dummy">
+            {{-- <h1 class="text-copyRight">{{$copyright->text}} <a class="name-owners" href="{{ $copyright->link_company }}">{{ $copyright->copyright_owners }}</a></h1> --}}
         </div>
     </footer>
 </body>

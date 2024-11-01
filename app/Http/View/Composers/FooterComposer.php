@@ -3,8 +3,10 @@
 namespace App\Http\View\Composers;
 
 use App\Models\Contact;
-use App\Models\SocialMedia;
+use App\Models\Partner;
+use App\Models\CopyRight;
 use Illuminate\View\View;
+use App\Models\SocialMedia;
 use App\Models\AppLink; // Ganti dengan model yang sesuai
 
 class FooterComposer
@@ -15,12 +17,17 @@ class FooterComposer
         $appLinks = AppLink::all();
         $contact = Contact::first();
         $sosmed = SocialMedia::all();
+        $copyright = CopyRight::first();
+        $partner = Partner::all();
+
         
         // Kirim data ke view
         $view->with([
             'applink' => $appLinks, // Ganti dengan nama variable di view
             'contact' => $contact,
-            'sosmed' => $sosmed
+            'sosmed' => $sosmed,
+            'copyright' => $copyright,
+            'partner' => $partner
         ]);
     }
 }
