@@ -82,56 +82,60 @@
         padding: 0px 32px;
     }
 
-    .footer .area-kiri-footer {
-        /* Tambahkan spesifisitas */
-        width: 50%; /* Biarkan layout tetap 50% */
-        align-items: center;
+    .footer .text-contact {
+        font-size: 2.2rem;
     }
 
-    .footer .text-contact {
-        /* Tambahkan spesifisitas */
-        font-size: 2rem; /* Kurangi ukuran font */
+    .footer .text-name {
+        font-size: 16px;
     }
 
     .footer .footer-address {
-        /* Tambahkan spesifisitas */
-        font-size: 1.1rem; /* Kurangi ukuran font */
+        font-size: 16px;
     }
 
-    .footer .text-socmed,
-    .footer .text-socmed2 {
-        /* Tambahkan spesifisitas */
-        font-size: 1.8rem; /* Kurangi ukuran font */
+    .text-app-download {
+        font-size: 1.9rem;
     }
 
-    .footer .footer-socmed {
-        /* Tambahkan spesifisitas */
-        font-size: 1.2rem; /* Kurangi ukuran font */
+    .area-footer-download {
+        gap: 8px;
     }
 
-    .footer .kotak-socmed {
-        /* Tambahkan spesifisitas */
-        width: 45px; /* Sesuaikan ukuran kotak social media */
-        height: 45px;
+    .kotak-download {
+        width: auto;
+        height: 40px;
     }
 
-    .footer .kotak-download {
-        /* Tambahkan spesifisitas */
-        width: 160px; /* Kurangi ukuran kotak download */
-        height: 50px;
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
     }
 
-    /* bottom footer */
-    .footer .bottom-footer {
-        /* Tambahkan spesifisitas */
-        height: auto; /* Fleksibel untuk konten */
-        padding: 10px 0; /* Tambahkan padding vertikal */
+    .text-partner {
+        font-size: 1.9rem;
     }
 
-    .footer .text-copyRight {
-        /* Tambahkan spesifisitas */
-        font-size: 16px; /* Kurangi ukuran font */
+    .partner {
+        /* width: 130px; */
+        height: 60px;
     }
+
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .text-copyRight {
+        font-size: 14px;
+    }
+
+    .name-owners {
+        font-size: 15px;
+    }
+
     /* ----------- */
 
     /* area-audio-player */
@@ -140,13 +144,13 @@
         height: 60px;
     }
 
-    .control-btn span{
+    .control-btn span {
         width: 35px;
         height: 35px;
         font-size: 22px;
     }
 
-    .icon-menu .bx-menu{
+    .icon-menu .bx-menu {
         font-size: 28px;
     }
 
@@ -158,12 +162,12 @@
     .music-titles {
         width: 120px;
     }
-    
-    .music-titles .name{
+
+    .music-titles .name {
         font-size: 12px;
     }
 
-    .music-titles .artist{
+    .music-titles .artist {
         font-size: 12px;
     }
 
@@ -194,18 +198,18 @@
         color: white;
         border: none;
         /* border-radius: 50%; */
+        justify-content: center;
+        align-items: center;
         padding: 15px;
         font-size: 18px;
-        height: auto;
-        width: auto;
+        height: 20px;
+        width: 20px;
         display: none;
         transition: all 0.3s ease-in-out;
     }
 
-    #scrollToTopBtn img {
-        cursor: pointer;
-        width: 64.26px;
-        height: 58.25px;
+    #scrollToTopBtn i {
+        font-size: 20px;
     }
 
     .navbar {
@@ -231,7 +235,11 @@
 
     .area-kanan-navbar {
         width: 60%;
-        justify-content: center;
+        /* justify-content: center; */
+    }
+
+    .area-socmed {
+        margin-right: 15px;
     }
 
     .menu-link-navbar {
@@ -248,75 +256,71 @@
 
     /* area-footer */
     body .footer {
-        height: 240px; /* Tetap fleksibel */
+        height: 280px; /* Tetap fleksibel */
     }
 
     .footer .top-footer {
         height: auto; /* Biarkan fleksibel untuk konten */
         height: 90%;
-        padding: 0px 20px;
-    }
-
-    .footer .area-kiri-footer {
-        /* Tambahkan spesifisitas */
-        width: 50%; /* Biarkan layout tetap 50% */
-        align-items: center;
+        padding: 0px 32px;
     }
 
     .footer .text-contact {
-        /* Tambahkan spesifisitas */
-        font-size: 1.5rem; /* Kurangi ukuran font */
+        font-size: 2rem;
+    }
+
+    .footer .text-name {
+        font-size: 12px;
     }
 
     .footer .footer-address {
-        /* Tambahkan spesifisitas */
-        font-weight: 300;
-        font-size: 1rem; /* Kurangi ukuran font */
+        font-size: 12px;
     }
 
-    .footer .text-socmed,
-    .footer .text-socmed2 {
-        /* Tambahkan spesifisitas */
-        font-size: 1.5rem; /* Kurangi ukuran font */
+    .text-app-download {
+        font-size: 1.7rem;
     }
 
-    .footer .footer-socmed {
-        /* Tambahkan spesifisitas */
-        font-size: 1.2rem; /* Kurangi ukuran font */
+    .area-footer-download {
+        gap: 8px;
     }
 
-    .footer .area-footer-socmed {
-        gap: 10px;
+    .kotak-download {
+        width: auto;
+        height: 30px;
     }
 
-    .footer .kotak-socmed {
-        width: 35px;
-        height: 35px;
-        border-radius: 8px;
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
     }
 
-    .footer .area-footer-download {
-        gap: 10px;
+    .text-partner {
+        font-size: 1.6rem;
     }
 
-    .footer .kotak-download {
-        width: 130px;
-        height: 35px;
-        border-radius: 8px;
+    .partner {
+        /* width: 130px; */
+        height: 50px;
     }
 
-    /* bottom footer */
-    .footer .bottom-footer {
-        /* Tambahkan spesifisitas */
-        height: auto; /* Fleksibel untuk konten */
-        padding: 10px 0; /* Tambahkan padding vertikal */
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
     }
 
-    .footer .text-copyRight {
-        /* Tambahkan spesifisitas */
-        font-size: 16px; /* Kurangi ukuran font */
+    .text-copyRight {
+        font-size: 12px;
     }
+
+    .name-owners {
+        font-size: 14px;
+    }
+
     /* ----------- */
+
     /* area-audio-mobile */
     .area-audio-mobile {
         width: 100%;
@@ -441,12 +445,12 @@
     .music-titles {
         width: 120px;
     }
-    
-    .music-titles .name{
+
+    .music-titles .name {
         font-size: 10px;
     }
 
-    .music-titles .artist{
+    .music-titles .artist {
         font-size: 12px;
     }
 
@@ -516,96 +520,110 @@
 
     .footer .top-footer {
         height: auto; /* Biarkan fleksibel untuk konten */
-        height: 90%;
-        padding: 20px 8px 0px 8px;
-        flex-direction: column;
-        /* gap: 10px; */
+        height: 100%;
+        padding: 0px 20px;
     }
 
-    .footer .area-kiri-footer {
-        /* Tambahkan spesifisitas */
-        width: 100%; /* Biarkan layout tetap 50% */
+    .group-top-footer{
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .area-group-kiri{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .footer .area-group-kiri {
-        text-align: center;
-        /* border: 1px black solid; */
-    }
-
-    .footer .area-text-contact {
-        width: 100%;
-        text-align: center;
-    }
-
-    .footer .area-footer-address {
-        width: 100%;
-        text-align: center;
-    }
-
-    .footer .area-kanan-footer {
-        justify-content: center;
-        width: 100%;
-    }
-
     .footer .text-contact {
-        /* Tambahkan spesifisitas */
-        font-size: 1.2rem; /* Kurangi ukuran font */
+        font-size: 2rem;
+    }
+
+    .footer .text-name {
+        font-size: 12px;
+        text-align: center;
     }
 
     .footer .footer-address {
-        /* Tambahkan spesifisitas */
-        font-weight: 300;
-        font-size: 0.8rem; /* Kurangi ukuran font */
+        font-size: 12px;
+        text-align: center;
     }
 
-    .footer .text-socmed,
-    .footer .text-socmed2 {
-        /* Tambahkan spesifisitas */
-        font-size: 1.2rem; /* Kurangi ukuran font */
-        padding-top: 10px;
+    .area-group-tengah{
+        width: 100%;
+
     }
 
-    .footer .footer-socmed {
-        /* Tambahkan spesifisitas */
-        font-size: 1.2rem; /* Kurangi ukuran font */
+    .area-app-download{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
     }
 
-    .footer .area-footer-socmed {
-        margin-top: 8px;
-        gap: 10px;
+    .text-app-download {
+        font-size: 1.7rem;
     }
 
-    .footer .kotak-socmed {
-        width: 35px;
-        height: 35px;
-        border-radius: 8px;
+    .area-footer-download {
+        gap: 8px;
+        margin-top: 5px;
     }
 
-    .footer .area-footer-download {
-        margin-top: 8px;
-        gap: 10px;
+    .kotak-download {
+        width: auto;
+        height: 30px;
     }
 
-    .footer .kotak-download {
-        width: 130px;
-        height: 35px;
-        border-radius: 8px;
+    .area-group-kanan{
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
-    /* bottom footer */
-    .footer .bottom-footer {
-        /* Tambahkan spesifisitas */
-        height: auto; /* Fleksibel untuk konten */
-        padding: 10px 0; /* Tambahkan padding vertikal */
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
     }
 
-    .footer .text-copyRight {
-        /* Tambahkan spesifisitas */
-        font-size: 10px; /* Kurangi ukuran font */
+    .area-partner{
+        width: auto;
     }
+
+    .text-partner {
+        font-size: 1.6rem;
+    }
+
+    .partner {
+        /* width: 130px; */
+        height: 50px;
+    }
+
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .text-copyRight {
+        font-size: 10px;
+    }
+
+    .name-owners {
+        font-size: 12px;
+    }
+
+    .bottom-footer-dummy{
+        display:none;
+    }
+
     /* ----------- */
+
     /* area-audio-mobile */
     .area-audio-mobile {
         width: 100%;
@@ -730,12 +748,12 @@
     .music-titles {
         width: 120px;
     }
-    
-    .music-titles .name{
+
+    .music-titles .name {
         font-size: 10px;
     }
 
-    .music-titles .artist{
+    .music-titles .artist {
         font-size: 12px;
     }
 

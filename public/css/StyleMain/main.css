@@ -684,7 +684,7 @@ body {
 .area-app-download{
     width: 100%;
     /* border: 1px black solid; */
-    margin-top: 5px;
+    /* margin-top: 5px; */
     text-align: center;
 }
 
@@ -739,6 +739,14 @@ body {
     height: auto;
     width: 100%;
     text-align: end;
+}
+
+.text-partner {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    /* letter-spacing: 3px; */
+    font-weight: 400;
+    font-size: 2rem;
 }
 
 .area-box-partner{
