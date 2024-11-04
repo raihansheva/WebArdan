@@ -149,7 +149,7 @@
     }
 
     .box-program {
-        flex: 0 0 calc(33.33% - 10px);
+        flex: 0 0 calc(33.33% - 15px);
         height: 250px;
     }
 
@@ -204,13 +204,21 @@
     }
 
     .box-info {
-        flex: 0 0 calc(50% - 8px);
-        height: 165px;
+        flex: 0 0 calc(33.33% - 8px);
+        height: 145px;
+    }
+
+    .tag-info {
+        font-size: 24px;
     }
 
     .title-info,
     .title-news {
-        font-size: 40px;
+        font-size: 38px;
+    }
+
+    .title-bottom-info {
+        font-size: 18px;
     }
 
     .area-content-news {
@@ -384,7 +392,7 @@
     }
 
     .text-watch-podcast {
-        color: white;
+        /* color: white; */
         font-family: "Poppins";
         font-size: 12px;
     }
@@ -417,8 +425,8 @@
     }
 
     .btn-play-video {
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
         border-radius: 50%;
         background-color: var(--primary-color);
         cursor: pointer;
@@ -428,11 +436,16 @@
     }
 
     .btn-play-video span {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .text-video {
         font-size: 16px;
+    }
+
+    .popup-content-yt {
+        width: 560px;
+        height: 315px;
     }
     /* -------------- */
 
@@ -649,7 +662,7 @@
     }
 
     .content-schedule {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 15px;
         margin-top: 10px;
     }
@@ -822,7 +835,7 @@
     }
 
     .box-program {
-        flex: 0 0 calc(50% - 8px); /* Mengubah lebar box menjadi 50% untuk tablet */
+        flex: 0 0 calc(50% - 10px); /* Mengubah lebar box menjadi 50% untuk tablet */
         height: 250px; /* Mengurangi tinggi box */
     }
 
@@ -835,6 +848,11 @@
         width: 400px;
         height: 180px;
         padding: 25px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
     }
 
     .desk-program {
@@ -932,7 +950,7 @@
 
     .area-days-date-right {
         /* padding: 10px; */
-        height: 25px;
+        height: 20px;
     }
 
     .title-event {
@@ -952,15 +970,26 @@
         font-size: 20px;
     }
 
+    .box-days-date-right {
+        width: 100%;
+        height: auto;
+        /* border: 1px red solid; */
+    }
+
     .date-month-right,
     .year-right {
-        font-size: 16px;
+        font-size: 18px;
     }
     /* pop up event */
     .popup-content-event {
         width: 400px;
         height: 180px;
         padding: 25px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
     }
 
     .desk-event {
@@ -1075,7 +1104,7 @@
     }
 
     .text-watch-podcast {
-        color: white;
+        /* color: white; */
         font-family: "Poppins";
         font-size: 10px;
     }
@@ -1128,6 +1157,11 @@
 
     .text-video {
         font-size: 14px;
+    }
+
+    .popup-content-yt {
+        width: 480px;
+        height: 270px;
     }
     /* -------------- */
 
@@ -1197,6 +1231,11 @@
     .box-announcer {
         flex: 0 0 calc(33.33% - 10px);
         height: 230px;
+    }
+
+    .area-profile-announcer i{
+        font-size: 26px;
+        color: white;
     }
 
     .line-announcer {
@@ -1272,6 +1311,7 @@
 
     .title-chart {
         font-size: 30px;
+        margin-bottom: 10px;
     }
 
     .chart {
@@ -1308,6 +1348,15 @@
     .box-artis {
         height: 85px;
     }
+
+    .nama{
+        font-size: 12px;
+    }
+
+    .bio{
+        font-size: 14px;
+    }
+
     /* ----------------- */
     /* area-schedule */
 
@@ -1357,7 +1406,7 @@
     }
 
     .content-schedule {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 15px;
         margin-top: 15px;
     }
@@ -1365,6 +1414,15 @@
     .box-schedule {
         height: 150px;
     }
+
+    .nama-programs{
+        font-size: 16px;
+    }
+
+    .jam-programs{
+        font-size: 14px;
+    }
+
     /* ---------------- */
 
     /* area-audio-player */
@@ -1541,7 +1599,12 @@
         width: 200px;
         height: 110px;
         padding: 15px;
-    }
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+}
 
     .desk-program {
         font-size: 8px;
@@ -1577,6 +1640,18 @@
 
     .area-content-info {
         width: 100%;
+    }
+
+    .tag-info {
+        font-size: 18px;
+    }
+
+    .image-info {
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -ms-border-radius: 3px;
+        -o-border-radius: 3px;
     }
 
     .content-info {
@@ -1676,7 +1751,7 @@
 
     .area-days-date-right {
         /* padding: 10px; */
-        height: 20px;
+        height: 18px;
     }
 
     .title-event {
@@ -1696,6 +1771,12 @@
         font-size: 16px;
     }
 
+    .box-days-date-right {
+        width: 100%;
+        height: auto;
+        /* border: 1px red solid; */
+    }
+
     .date-month-right,
     .year-right {
         font-size: 14px;
@@ -1705,6 +1786,15 @@
         width: 200px;
         height: 110px;
         padding: 15px;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+    }
+
+    .area-info-event{
+        gap: 3px;
     }
 
     .desk-event {
@@ -1803,7 +1893,7 @@
     }
 
     .text-watch-podcast {
-        color: white;
+        /* color: white; */
         font-family: "Poppins";
         font-size: 9px;
     }
@@ -1857,6 +1947,11 @@
     .text-video {
         font-size: 14px;
     }
+    .popup-content-yt {
+        width: 320px;
+        height: 180px;
+    }
+
     /* -------------- */
 
     /* area-announcer */
@@ -1930,6 +2025,12 @@
     .line-announcer {
         margin: 0px 20px;
     }
+
+    .area-profile-announcer i{
+        font-size: 22px;
+        color: white;
+    }
+
     /* ---------------------- */
 
     /* area-chart-artis */
@@ -1943,7 +2044,7 @@
         height: auto;
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 50px;
         /* border: 1px red solid;    */
     }
 
@@ -2085,7 +2186,7 @@
 
     .top-content-schedule {
         width: auto;
-        height: 50px;
+        height: 40px;
     }
 
     .schedule {
@@ -2096,7 +2197,7 @@
     }
 
     .schedule-day {
-        font-size: 10px;
+        font-size: 8px;
     }
 
     .content-schedule {
@@ -2109,6 +2210,15 @@
     .box-schedule {
         height: 120px;
     }
+
+    .nama-programs{
+        font-size: 14px;
+    }
+
+    .jam-programs{
+        font-size: 12px;
+    }
+
     /* ---------------- */
 
     /* area-audio-player */

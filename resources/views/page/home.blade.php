@@ -25,7 +25,9 @@
                     @foreach ($stream as $streamList)
                         <div class="card-A">
                             <div class="card-body">
-                                <div class="btn-play-streaming" data-audio-src="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8" data-index="0">
+                                <div class="btn-play-streaming"
+                                    data-audio-src="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8"
+                                    data-index="0">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </div>
@@ -44,7 +46,9 @@
                                     <video id="hlsPlayer" controls width="640" height="360"></video>
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player" data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8" style="display: none;"></div>
+                                <div id="player"
+                                    data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8"
+                                    style="display: none;"></div>
                             </div>
                             <div class="card-footer">
                                 <div class="view-B">
@@ -78,7 +82,14 @@
                     <div class="tombol-kanan"></div>
                 </div>
                 <swiper-container class="area-content-box-program" loop="true" autoplay-delay="2500"
-                    autoplay-disable-on-interaction="false" slides-per-view="4" space-between="20">
+                    autoplay-disable-on-interaction="false"
+                    breakpoints='{
+                        "480": { "slidesPerView": 1 },
+                        "768": { "slidesPerView": 2 },
+                        "1024": { "slidesPerView": 3 },
+                        "1280": { "slidesPerView": 4 }
+                    }'
+                    space-between="20">
                     @foreach ($program as $programList)
                         <swiper-slide style="background-image: url('./storage/{{ $programList->image_program }}') "
                             class="box-program" data-title="{{ $programList->judul_program }}"
@@ -122,10 +133,11 @@
                     </div>
                     <div class="content-info">
                         @foreach ($info as $infoList)
-                            <div class="box-info" style="background-image: url('./storage/{{ $infoList->image_info }}')">
+                            <div class="box-info">
                                 <div class="area-tag-info">
                                     <h3 class="tag-info">#{{ $infoList->tag_info }}</h3>
                                 </div>
+                                <img class="image-info" src="./storage/{{ $infoList->image_info }}" alt="">
                             </div>
                         @endforeach
                     </div>
@@ -377,6 +389,13 @@
                         <div class="tombol-kanan-announcer"></div>
                     </div>
                     <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
+                    breakpoints='{
+                        "480": { "slidesPerView": 2, "autoplay": { "delay": 500 } },
+                        "768": { "slidesPerView": 3, "autoplay": { "delay": 2000 } },
+                        "1024": { "slidesPerView": 4, "autoplay": { "delay": 2500 } },
+                        "1280": { "slidesPerView": 5, "autoplay": { "delay": 3000 } }
+                    }'
+                    mousewheel="true"
                         autoplay-disable-on-interaction="false" slides-per-view="5" space-between="20">
                         @foreach ($announcer as $announcerList)
                             <swiper-slide class="box-announcer" style="background-image: url('')">

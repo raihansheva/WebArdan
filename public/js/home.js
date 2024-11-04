@@ -13,6 +13,8 @@
 //     repeatBtn = content.querySelector("#repeat"),
 //     Shuffle = content.querySelector("#shuffle");
 
+// const { default: Swiper } = require('swiper');
+
 // let index = 1;
 
 // // Memuat data saat halaman di-load
@@ -438,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedTab = tab.getAttribute("data-tab");
             // console.log('Selected Tab ID:', selectedTab); // Log ID yang dipilih
             const selectedTable = document.getElementById(selectedTab);
-            
+
             // Debugging log untuk memeriksa
             // console.log('Selected Table:', selectedTable);
 
@@ -453,36 +455,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Secara default, tampilkan tabel pertama
     const defaultTable = document.querySelector(".chart:not(.hidden)"); // Ambil tabel yang tidak tersembunyi
     if (defaultTable) {
-        defaultTable.classList.remove('hidden');
+        defaultTable.classList.remove("hidden");
     }
-});
-
-
-// swiperr
-document.addEventListener("DOMContentLoaded", function () {
-    const swiper = new Swiper(".area-content-box-program", {
-        loop: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        slidesPerView: 4,
-        spaceBetween: 20,
-        breakpoints: {
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-            480: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-        },
-    });
 });
 
 var player;
@@ -544,70 +518,78 @@ document
         }
     });
 
+// document.addEventListener("DOMContentLoaded", () => {
+const tabS = document.querySelectorAll(".schedule");
+const scheduleContent = document.querySelectorAll(".box-schedule");
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const tabS = document.querySelectorAll(".schedule");
-        const scheduleContent = document.querySelectorAll(".box-schedule");
-    
-        // Array untuk mapping index hari ke nama hari dalam bahasa Indonesia
-        const dayMapping = ['minggu', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'];
-    
-        // Fungsi untuk menampilkan program sesuai dengan hari yang dipilih
-        function showScheduleForDay(day) {
-            // Menyembunyikan semua konten schedule
-            scheduleContent.forEach((content) => content.classList.add("hidden"));
-    
-            // Menampilkan konten yang sesuai dengan hari yang dipilih
-            const selectedSchedule = document.querySelector(`.box-schedule[data-day="${day}"]`);
-    
-            if (selectedSchedule) {
-                selectedSchedule.classList.remove("hidden");
-            } else {
-                console.warn(`Schedule for day '${day}' not found.`);
-            }
-    
-            // Menandai tab hari sebagai aktif dan menghapus kelas aktif dari tab lainnya
-            tabS.forEach((t) => t.classList.remove("active"));
-            const selectedTab = document.querySelector(`.schedule[data-day="${day}"]`);
-            if (selectedTab) {
-                selectedTab.classList.add("active");
-            }
-        }
-    
-        // Event listener untuk setiap tab hari
-        tabS.forEach((tabSC) => {
-            tabSC.addEventListener("click", () => {
-                const selectedDay = tabSC.getAttribute("data-day");
-                showScheduleForDay(selectedDay);
-            });
+// Array untuk mapping index hari ke nama hari dalam bahasa Indonesia
+const dayMapping = [
+    "minggu",
+    "senin",
+    "selasa",
+    "rabu",
+    "kamis",
+    "jumat",
+    "sabtu",
+];
+
+// Fungsi untuk menampilkan program sesuai dengan hari yang dipilih
+function showScheduleForDay(day) {
+    // Menyembunyikan semua konten schedule
+    scheduleContent.forEach((content) => content.classList.add("hidden"));
+
+    // Menampilkan konten yang sesuai dengan hari yang dipilih
+    const selectedSchedule = document.querySelector(
+        `.box-schedule[data-day="${day}"]`
+    );
+
+    if (selectedSchedule) {
+        selectedSchedule.classList.remove("hidden");
+    } else {
+        console.warn(`Schedule for day '${day}' not found.`);
+    }
+
+    // Menandai tab hari sebagai aktif dan menghapus kelas aktif dari tab lainnya
+    tabS.forEach((t) => t.classList.remove("active"));
+    const selectedTab = document.querySelector(`.schedule[data-day="${day}"]`);
+    if (selectedTab) {
+        selectedTab.classList.add("active");
+    }
+}
+
+// Event listener untuk setiap tab hari
+tabS.forEach((tabSC) => {
+    tabSC.addEventListener("click", () => {
+        const selectedDay = tabSC.getAttribute("data-day");
+        showScheduleForDay(selectedDay);
+    });
+});
+
+// Dapatkan hari saat ini (0 = Minggu, 1 = Senin, dst.)
+const currentDate = new Date();
+const currentDayIndex = currentDate.getDay();
+const currentDayName = dayMapping[currentDayIndex]; // Nama hari dalam bahasa Indonesia
+
+// Secara otomatis tampilkan program untuk hari ini
+showScheduleForDay(currentDayName);
+// });
+
+// Load YouTube API
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("hlsPlayer");
+    const hlsUrl = document.getElementById("player").getAttribute("data-pl");
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(hlsUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
         });
-    
-        // Dapatkan hari saat ini (0 = Minggu, 1 = Senin, dst.)
-        const currentDate = new Date();
-        const currentDayIndex = currentDate.getDay();
-        const currentDayName = dayMapping[currentDayIndex]; // Nama hari dalam bahasa Indonesia
-    
-        // Secara otomatis tampilkan program untuk hari ini
-        showScheduleForDay(currentDayName);
-    });
-    
-
-    // Load YouTube API
-    document.addEventListener("DOMContentLoaded", function () {
-        const video = document.getElementById("hlsPlayer");
-        const hlsUrl = document.getElementById("player").getAttribute("data-pl");
-
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(hlsUrl);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                video.play();
-            });
-        } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-            video.src = hlsUrl;
-            video.addEventListener("loadedmetadata", function () {
-                video.play();
-            });
-        }
-    });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = hlsUrl;
+        video.addEventListener("loadedmetadata", function () {
+            video.play();
+        });
+    }
+});
