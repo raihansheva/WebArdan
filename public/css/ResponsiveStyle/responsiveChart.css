@@ -73,12 +73,17 @@
     }
     
     .box-streaming{
-        height: 180px;
+        height: 150px;
     }
 
     .text-streaming{
         font-size: 14px;
         margin: 5px 10px;
+    }
+
+    .btn-play-streaming{
+        height: 45px;
+        width: 45px;
     }
 
     /* -------------- */
@@ -170,7 +175,7 @@
     }
     
     .box-streaming{
-        height: 150px;
+        height: 130px;
     }
 
     .text-streaming{
@@ -281,6 +286,15 @@
     .text-streaming{
         font-size: 10px;
         margin: 5px 10px;
+    }
+
+    .btn-play-streaming{
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 20px;
     }
 
     /* -------------- */
