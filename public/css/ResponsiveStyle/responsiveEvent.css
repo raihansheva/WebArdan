@@ -142,6 +142,11 @@
     .area-countdown {
         height: 70px;
     }
+
+    .countdown {
+        gap: 10px;
+    }
+
     .timer {
         font-size: 30px;
     }
@@ -149,7 +154,7 @@
         font-size: 16px;
     }
     .date-month {
-        font-size: 22px;
+        font-size: 24px;
     }
     .year {
         font-size: 24px;
@@ -159,6 +164,10 @@
         width: 400px;
         height: 180px;
         padding: 25px;
+    }
+
+    .area-info-event {
+        gap: 6px;
     }
 
     .desk-event {
@@ -187,14 +196,20 @@
     .title-event-other {
         font-size: 30px;
     }
+
+    .area-content-OV {
+        gap: 15px;
+        margin-top: 10px;
+    }
+
     .content-event-OV {
-        height: 220px;
+        height: 200px;
     }
     .area-days-date-right {
-        height: 30px;
+        height: 25px;
     }
     .date-month-right {
-        font-size: 16px;
+        font-size: 18px;
     }
     .year-right {
         font-size: 16px;
@@ -211,12 +226,12 @@
         font-size: 30px;
     }
     .content-programE {
-        margin-top: 20px;
+        margin-top: 10px;
         gap: 10px;
         margin-bottom: 60px;
     }
     .box-programE {
-        height: 200px;
+        height: 170px;
     }
     /* pop up program */
     .popup-content {
@@ -266,6 +281,11 @@
     .area-countdown {
         height: 70px;
     }
+
+    .countdown {
+        gap: 10px;
+    }
+
     .timer {
         font-size: 28px;
     }
@@ -283,6 +303,10 @@
         width: 200px;
         height: 110px;
         padding: 15px;
+    }
+
+    .area-info-event {
+        gap: 3px;
     }
 
     .desk-event {
@@ -324,7 +348,7 @@
         height: 20px;
     }
     .date-month-right {
-        font-size: 12px;
+        font-size: 18px;
     }
     .year-right {
         font-size: 12px;
@@ -355,6 +379,10 @@
         width: 200px;
         height: 110px;
         padding: 15px;
+    }
+
+    .area-info-program {
+        gap: 5px;
     }
 
     .desk-program {
