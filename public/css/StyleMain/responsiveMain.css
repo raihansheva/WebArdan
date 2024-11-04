@@ -4,26 +4,23 @@
 /* Untuk Tablet (width antara 768px hingga 1024px) */
 @media (max-width: 1024px) {
     #scrollToTopBtn {
-        position: fixed;
-        bottom: 60px;
-        right: 20px;
-        z-index: 100;
-        /* background-color: #ff004d; */
-        color: white;
-        border: none;
-        border-radius: 50%;
-        padding: 15px;
-        font-size: 18px;
-        height: 60px;
-        width: 60px;
-        display: none;
-        transition: all 0.3s ease-in-out;
+        bottom: 65px;
+        right: 15px;
+        /* font-size: 20px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15px;
+        width: 15px;
     }
 
-    #scrollToTopBtn img {
-        cursor: pointer;
-        width: 70.26px;
-        height: 64.25px;
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 16px;
     }
 
     .navbar {
@@ -69,6 +66,10 @@
         padding: 3px;
         margin-bottom: 3px;
         margin-left: 10px;
+    }
+
+    .kotak-socmed i {
+        font-size: 22px;
     }
 
     /* area-footer */
@@ -190,26 +191,23 @@
 /* Untuk Mobile (width lebih kecil dari 768px) */
 @media (max-width: 768px) {
     #scrollToTopBtn {
-        position: fixed;
-        bottom: 5px;
-        right: 5px;
-        z-index: 100;
-        /* background-color: #ff004d; */
-        color: white;
-        border: none;
-        /* border-radius: 50%; */
+        bottom: 20px;
+        right: 20px;
+        /* font-size: 20px; */
+        display: flex;
         justify-content: center;
         align-items: center;
-        padding: 15px;
-        font-size: 18px;
-        height: 20px;
-        width: 20px;
-        display: none;
-        transition: all 0.3s ease-in-out;
+        height: 15px;
+        width: 15px;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
     }
 
     #scrollToTopBtn i {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .navbar {
@@ -240,6 +238,10 @@
 
     .area-socmed {
         margin-right: 15px;
+    }
+
+    .kotak-socmed i {
+        font-size: 20px;
     }
 
     .menu-link-navbar {
@@ -473,26 +475,23 @@
 /* Untuk ukuran mobile lebih kecil (contohnya iPhone 5) */
 @media (max-width: 480px) {
     #scrollToTopBtn {
-        position: fixed;
-        bottom: -5px;
-        right: -2px;
-        z-index: 100;
-        /* background-color: #ff004d; */
-        color: white;
-        border: none;
-        /* border-radius: 50%; */
-        padding: 15px;
-        font-size: 18px;
-        height: auto;
-        width: auto;
-        display: none;
-        transition: all 0.3s ease-in-out;
+        bottom: 15px;
+        right: 15px;
+        /* font-size: 20px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15px;
+        width: 15px;
     }
 
-    #scrollToTopBtn img {
-        cursor: pointer;
-        width: 58.26px;
-        height: 52.25px;
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 16px;
     }
 
     .navbar {
@@ -513,6 +512,10 @@
         font-size: 12px;
     }
 
+    .kotak-socmed i {
+        font-size: 18px;
+    }
+
     /* area-footer */
     body .footer {
         height: auto; /* Tetap fleksibel */
@@ -524,13 +527,13 @@
         padding: 0px 20px;
     }
 
-    .group-top-footer{
+    .group-top-footer {
         flex-direction: column;
         justify-content: center;
         gap: 20px;
     }
 
-    .area-group-kiri{
+    .area-group-kiri {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -552,17 +555,15 @@
         text-align: center;
     }
 
-    .area-group-tengah{
+    .area-group-tengah {
         width: 100%;
-
     }
 
-    .area-app-download{
+    .area-app-download {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
     }
 
     .text-app-download {
@@ -579,7 +580,7 @@
         height: 30px;
     }
 
-    .area-group-kanan{
+    .area-group-kanan {
         width: 100%;
         display: flex;
         justify-content: center;
@@ -591,7 +592,7 @@
         max-width: 100%;
     }
 
-    .area-partner{
+    .area-partner {
         width: auto;
     }
 
@@ -618,8 +619,8 @@
         font-size: 12px;
     }
 
-    .bottom-footer-dummy{
-        display:none;
+    .bottom-footer-dummy {
+        display: none;
     }
 
     /* ----------- */
