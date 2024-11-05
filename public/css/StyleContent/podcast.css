@@ -4,7 +4,7 @@
     width: 100%;
     height: 500px;
     /* border: 1px red solid; */
-    background-color: darkgrey;
+    /* background-color: darkgrey; */
 }
 
 .area-header-podcast {
@@ -16,8 +16,8 @@
 }
 
 .banner-podcast{
-    /* width: 100%; */
-    /* height: 100%; */
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     position: relative;
 }
@@ -82,8 +82,8 @@
 }
 
 .card-podcast {
-    flex: 1 1 calc(33.33% - 20px); 
-    max-width: calc(33.33% - 20px);
+    flex: 1 1 calc(33.33% - 10px); 
+    max-width: calc(33.33% - 10px);
     height: 400px;
     display: none; 
 }
