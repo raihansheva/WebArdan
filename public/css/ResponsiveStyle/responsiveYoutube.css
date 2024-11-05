@@ -29,32 +29,66 @@
         height: 140px;
     }
 
-    .channel-logo img {
-        width: 40px;
-        height: 40px;
+    .text-choose{
+        font-size: 18px;
     }
 
-    .video-title {
+    .dropdown-btn-search{
+        width: 180px;
+        padding: 5px;
+    }
+
+    .dropdown-item{
+        font-size: 16px;
+    }
+
+    .video--details__avatar img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .video--details__title {
         font-size: 14px;
     }
 
-    .channel-name {
-        font-size: 12px;
+    .video--details__channelTitle {
+        font-size: 14px;
     }
 
-    .views {
-        font-size: 10px;
+    .video--details__meta h3{
+        margin: 4px 0;
+        font-family: "Poppins";
+        font-size: 15px;
+        color: white;
     }
+    
+    .video--details__meta-data {
+        display: flex;
+        gap: 10px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        font-family: "Poppins";
+        font-weight: 200;
+    }
+
+    .modal-content {
+        width: 50%; /* Ukuran modal lebih kecil untuk laptop */
+    }
+    iframe {
+        height: 300px; /* Tinggi iframe disesuaikan */
+    }
+
+
+
     /* -------------------- */
 
     /* page youtube 3 */
 
-    .line-VNS{
+    .line-VNS {
         width: 100%;
         border: 1px white solid;
         margin: 100px 0px;
     }
-    
 
     .area-event-news-streaming {
         margin: 0px 32px 30px 32px;
@@ -84,11 +118,11 @@
     }
 
     .timer {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     .title-timer {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .date-month {
@@ -104,7 +138,7 @@
     }
 
     .area-days-date-right {
-        height: 45px;
+        height: 35px;
     }
 
     .date-month-right {
@@ -115,6 +149,7 @@
         font-size: 18px;
     }
 
+    
     /* --------------- */
     /* pop up event */
     .popup-content-event {
@@ -156,7 +191,7 @@
     }
 
     .box-news {
-        height: 100%;
+        /* height: 100%; */
         padding: 8px;
     }
 
@@ -189,7 +224,7 @@
         height: 40px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 26px;
     }
     /* ------------------- */
@@ -204,36 +239,80 @@
         margin: 20px 20px 0px 20px;
     }
 
+    .area-image-thumbnail{
+        height: 250px;
+    }
+
+    .area-title-thumbnail{
+        margin: 15px 0px ;
+    }
+
+    .title-thumbnail{
+        font-size: 36px;
+    }
+
     /* page youtube 2 */
     .area-video-youtube {
         margin: 0px 20px 0px 20px;
     }
 
-    .video-card {
-        flex: 1 1 calc(33.33% - 20px);
-        max-width: 33.33%;
+    .text-choose{
+        font-size: 18px;
     }
 
-    .thumbnail {
-        height: 140px;
+    .dropdown-btn-search{
+        width: 150px;
+        padding: 5px;
     }
 
-    .channel-logo img {
-        width: 40px;
-        height: 40px;
+    .dropdown-item{
+        font-size: 16px;
     }
 
-    .video-title {
+    .video--wrapper{
+        width: calc(33.33% - 15px);
+    }
+
+    .video--details__avatar img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .video--details__title {
         font-size: 14px;
     }
 
-    .channel-name {
-        font-size: 12px;
+    .video--details__channelTitle {
+        font-size: 14px;
     }
 
-    .views {
+    .video--details__meta h3{
+        margin: 4px 0;
+        font-family: "Poppins";
+        font-size: 15px;
+        color: white;
+    }
+    
+    .video--details__meta-data {
+        display: flex;
+        gap: 10px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        font-family: "Poppins";
+        font-weight: 200;
+    }
+
+    .video--thumbnail__overlays {
         font-size: 10px;
     }
+
+    .modal-content {
+        width: 60%; /* Diperkecil lagi untuk layar tablet */
+    }
+    iframe {
+        height: 260px; /* Tinggi iframe lebih rendah */
+    }
+
     /* -------------------- */
 
     /* page youtube 3 */
@@ -242,7 +321,7 @@
         height: 700px;
     }
 
-    .line-VNS{
+    .line-VNS {
         width: 100%;
         border: 1px white solid;
         margin: 10px 0px 80px 0px;
@@ -281,15 +360,16 @@
     }
 
     .countdown {
-        width: 75%;
+        width: 60%;
+        gap: 8px;
     }
 
     .area-days-date {
-        width: 25%;
+        width: 40%;
     }
 
     .timer {
-        font-size: 28px;
+        font-size: 26px;
     }
 
     .title-timer {
@@ -304,11 +384,15 @@
         font-size: 20px;
     }
     /* ---------------- */
-     /* pop up event */
-     .popup-content-event {
+    /* pop up event */
+    .popup-content-event {
         width: 400px;
         height: 180px;
         padding: 25px;
+    }
+
+    .area-info-event {
+        gap: 6px;
     }
 
     .desk-event {
@@ -340,11 +424,11 @@
     }
 
     .area-days-date-right {
-        height: 40px;
+        height: 30px;
     }
 
     .date-month-right {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .year-right {
@@ -406,7 +490,7 @@
         height: 40px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 26px;
     }
     /* ------------------- */
@@ -435,12 +519,20 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
     }
+    
+    .banner-youtube{
+        border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -o-border-radius: 0px;
+}
 
-    .area-title-thumbnail{
+    .area-title-thumbnail {
         margin: 10px 0px;
     }
 
-    .title-thumbnail{
+    .title-thumbnail {
         font-size: 34px;
     }
 
@@ -450,33 +542,61 @@
     }
 
     .text-choose{
-        font-size: 16px;
-    }
-
-    .video-card {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    .thumbnail {
-        height: 160px;
-    }
-
-    .channel-logo img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .video-title {
-        font-size: 15px;
-    }
-
-    .channel-name {
         font-size: 14px;
     }
 
-    .views {
+    .dropdown-btn-search{
+        width: 100px;
+        /* padding: 5px; */
         font-size: 12px;
+    }
+
+    .dropdown-item{
+        font-size: 12px;
+    }
+
+    .video--wrapper{
+        width: calc(50% - 10px);
+    }
+
+    .video--details__avatar img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .video--details__title {
+        font-size: 12px;
+    }
+
+    .video--details__channelTitle {
+        font-size: 12px;
+    }
+
+    .video--details__meta h3{
+        margin: 0px 0px;
+        font-family: "Poppins";
+        font-size: 13px;
+        color: white;
+    }
+    
+    .video--details__meta-data {
+        display: flex;
+        gap: 10px;
+        font-size: 0.5rem;
+        color: #ffffff;
+        font-family: "Poppins";
+        font-weight: 200;
+    }
+
+    .video--thumbnail__overlays {
+        font-size: 8px;
+    }
+
+    .modal-content {
+        width: 55%; /* Diperkecil lagi untuk layar mobile */
+    }
+    iframe {
+        height: 120px; /* Tinggi iframe lebih rendah */
     }
     /* -------------------- */
 
@@ -486,7 +606,7 @@
         height: auto;
     }
 
-    .line-VNS{
+    .line-VNS {
         width: 100%;
         border: 1px white solid;
     }
@@ -520,24 +640,25 @@
     }
 
     .area-countdown {
-        height: 65px;
+        height: 55px;
         padding: 10px 15px;
     }
 
     .countdown {
-        width: 75%;
+        width: 60%;
+        gap: 8px;
     }
 
     .area-days-date {
-        width: 25%;
+        width: 40%;
     }
 
     .timer {
-        font-size: 28px;
+        font-size: 24px;
     }
 
     .title-timer {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .date-month {
@@ -553,6 +674,10 @@
         width: 200px;
         height: 110px;
         padding: 15px;
+    }
+
+    .area-info-event {
+        gap: 3px;
     }
 
     .desk-event {
@@ -584,11 +709,11 @@
     }
 
     .area-days-date-right {
-        height: 40px;
+        height: 30px;
     }
 
     .date-month-right {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .year-right {
@@ -651,7 +776,7 @@
         height: 35px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 22px;
     }
     /* ------------------- */

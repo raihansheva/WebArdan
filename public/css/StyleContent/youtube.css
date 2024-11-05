@@ -20,6 +20,9 @@
 }
 
 .banner-youtube{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 15px;
 }
 
@@ -688,11 +691,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .video--wrapper {
-    width: 322px;
+    width: calc(25% - 15px);
     border-radius: 8px;
     overflow: hidden;
     /* background-color: #fff; */
