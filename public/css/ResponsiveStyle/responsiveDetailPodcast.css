@@ -501,6 +501,11 @@
         font-size: 33px;
     }
 
+    .popup-content-yt {
+        width: 560px;
+        height: 315px;
+    }
+
     /* --------------- */
 
     /* content kanan */
@@ -521,7 +526,7 @@
     }
 
     .box-news {
-        height: 100%;
+        height: auto;
         padding: 8px;
     }
 
@@ -1068,6 +1073,11 @@
         font-size: 30px;
     }
 
+    .popup-content-yt {
+        width: 480px;
+        height: 270px;
+    }
+
     /* --------------- */
 
     /* content kanan */
@@ -1363,7 +1373,7 @@
     }
 
     .line-detail-podcast {
-        margin-bottom: 20px;
+        margin: 20px 8px;
     }
 
     .area-header-DP {
@@ -1672,6 +1682,11 @@
         font-size: 30px;
     }
 
+    .popup-content-yt {
+        width: 320px;
+        height: 180px;
+    }
+
     /* --------------- */
 
     /* content kanan */
@@ -1699,10 +1714,11 @@
 
     .area-image {
         height: 100%;
+        width: 25%;
     }
 
     .desk-news {
-        font-size: 10px;
+        font-size: 12px;
     }
     /* ------------ */
 
