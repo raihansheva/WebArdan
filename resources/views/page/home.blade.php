@@ -113,17 +113,6 @@
         </div>
     </section>
     <section class="page-3" id="info-news">
-        {{-- <svg class="svg-ornamen" width="1480" height="566" viewBox="0 0 1440 566" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path opacity = "0.55" d="M-159 31C45.8 203.8 337 467 749 203C1217 31 1510.33 333.667 1557 535" stroke="#FFDB00"
-                stroke-width="61" stroke-linecap="round" />
-        </svg>
-        <svg class="svg-ornamen" width="1150" height="655" viewBox="0 0 1440 655" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path opacity = "0.55"
-                d="M-100.976 542.218C197.047 639.853 633.29 799.288 796.239 275.389C1072.62 -169.111 1538.86 35.701 1722.37 248.688"
-                stroke="#ff5b00" stroke-width="22" stroke-linecap="round" />
-        </svg> --}}
         <div class="area-info-news">
             <div class="line-info"></div>
             <div class="area-content-info-news">

@@ -7,7 +7,8 @@
             @foreach ($bannerInfo as $bannerInfoList)
                 <div class="image-header-info-news">
                     <h2 class="title-header">#{{ $bannerInfoList->title_banner_info }}</h2>
-                    <img class="banner-info" src="../storage/{{$bannerInfoList->banner_info }}" alt="" srcset="">
+                    <img class="banner-info" src="../storage/{{ $bannerInfoList->banner_info }}" alt=""
+                        srcset="">
                 </div>
             @endforeach
         </div>
@@ -19,10 +20,12 @@
                     @foreach ($info as $infoList)
                         <div class="box-info">
                             <div class="content-box-info">
-                                <div class="area-image-info"></div>
+                                <div class="area-image-info">
+                                    <img class="image-info" src="../storage/{{ $infoList->image_info }}" alt="">
+                                </div>
                                 <div class="area-info">
                                     <div class="area-tagar-info">
-                                        <h2 class="tagar-info">#{{ $infoList->tag_info }}</h2>
+                                        <h2 class="tagar-info">#{{ $infoList->tagInfo->nama_tag }}</h2>
                                     </div>
                                     <div class="area-title-info">
                                         <h2 class="title-info">{{ $infoList->judul_info }}</h2>
@@ -38,33 +41,32 @@
                         </div>
                     @endforeach
                 </div>
+                <div class="area-bottom-box-info">
+                    <h2 class="title-bottom" onclick="toggleBoxes()">See more</h2>
+                </div>
+
                 <div class="content-IN-kanan">
                     <div class="area-news">
                         <div class="area-header-news">
-                            <h2 class="header-news">NEWS</h2>
+                            <h2 class="header-news">Tag Info</h2>
                         </div>
-                        <div class="area-link-news">
-                            <div class="box-link-news">
-                                <a href="">
-                                    <p class="link-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-                                        eum corporis fugit fugiat
-                                        debitis aperiam error quasi delectus minima laboriosam?</p>
-                                </a>
-                            </div>
-                            <div class="box-link-news">
-                                <a href="">
-                                    <p class="link-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-                                        eum corporis fugit fugiat
-                                    </p>
-                                </a>
-                            </div>
-                            <div class="box-link-news">
-                                <a href="">
-                                    <p class="link-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-                                        eum corporis fugit fugiat
-                                        debitis aperiam</p>
-                                </a>
-                            </div>
+                        <div class="area-box-news">
+                            @foreach ($taginfo as $tagInfoList)
+                                <div class="box-news">
+                                    <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                        <div class="area-tag-news">
+                                            <h3 class="tag-news">#{{ $tagInfoList->nama_tag }}</h3>
+                                        </div>
+                                        @if ($tagInfoList->info->isNotEmpty())
+                                            <img class="image-news"
+                                                src="{{ asset('storage/' . $tagInfoList->info->first()->image_info) }}"
+                                                alt="">
+                                        @else
+                                            <p>Tidak ada info untuk tag ini.</p>
+                                        @endif
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="line-news"></div>
                     </div>

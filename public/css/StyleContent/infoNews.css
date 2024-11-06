@@ -84,14 +84,20 @@
 
 .content-box-info {
     width: auto;
-    height: 600px;
+    height: fit-content;
     margin: 20px;
 }
 
 .area-image-info {
     width: auto;
-    height: 55%;
+    height: 350px;
     background-color: gainsboro;
+}
+
+.image-info{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .area-info {
@@ -182,6 +188,24 @@
     background-color: var(--primary-color);
     /* cursor: pointer; */
 }
+
+.area-bottom-box-info {
+    display: none;
+    width: 100%;
+    height: 50px;
+    /* border: 1px red solid; */
+    text-align: center;
+}
+
+.title-bottom {
+    font-size: 20px;
+    font-family: "Poppins";
+    color: var(--primary-color);
+    margin: 0px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
 /* ------------ */
 
 /* content kanan */
@@ -215,38 +239,60 @@
     color: white;
 }
 
-.area-link-news {
+.area-box-news {
     width: 100%;
     height: fit-content;
     /* border: 1px chartreuse; */
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     margin-top: 10px;
-    gap: 15px;
+    gap: 8px;
 }
 
-.box-link-news {
+.box-news {
+    flex: 0 0 calc(50% - 5px);
+    height: 100px;
+    /* background-color: #f0f0f0; */
+    /* border-radius: 10px; */
+    
+}
+
+.area-tag-news{
     width: auto;
-    height: auto;
+    height: fit-content;
+    /* border: 1px red solid; */
+    padding: 10px;
+    position: absolute;
+    z-index: 2;
 }
 
-.link-news {
-    text-decoration: none;
-    font-family: "Poppins";
-    color: white;
+.tag-news{
     margin: 0px;
-    font-size: 20px;
+    font-family: "Bebas Neue";
+    color: white;
     font-weight: 200;
+    font-size: 28px;
 }
 
-.link-news:hover {
-    text-decoration: underline;
-}
-
-.line-news {
+.image-news{
+    position: relative;
     width: 100%;
-    border: 1px white solid;
-    margin-top: 30px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transition: all 0.3s ease;
+    filter: brightness(0.4);
+    -webkit-filter: brightness(0.4);
+}
+
+.box-news:hover .image-news {
+    filter: brightness(0.8);
+    /*Gelapkangambarsaatdi-hover*/cursor: pointer;
+    -webkit-filter: brightness(0.8);
 }
 /* ------------ */
 
@@ -446,7 +492,7 @@
 
 .date-month-right {
     font-family: "Bebas Neue";
-    font-size: 20px;
+    font-size: 26px;
     color: white;
     font-weight: 200;
     margin: 0px;

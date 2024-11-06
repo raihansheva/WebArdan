@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TagInfo;
 use Carbon\Carbon;
 use App\Models\Info;
 use App\Models\Artis;
@@ -213,7 +214,8 @@ class HomeController extends Controller
 
 
     public function info(){
-        $info = Info::all();
+        $info = Info::with('tagInfo')->get();
+        $taginfo = TagInfo::with('info')->get();;
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
@@ -222,11 +224,31 @@ class HomeController extends Controller
         return view('page.infoNews', [
             'bannerInfo' => $bannerI,
             'info' => $info,
+            'taginfo' => $taginfo,
             'top_info' => $topInfo,
             'event_upcoming' => $event_upcoming,
             'artis' => $artis,
         ]);
     }
+
+    public function tagInfo($slug){
+        $info = Info::with('tagInfo')->where('tag_info' , $slug)->get();
+        $taginfo = TagInfo::with('info')->get();;
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::all();
+        $bannerI = BannerInfo::all();
+
+        return view('page.tagInfo', [
+            'bannerInfo' => $bannerI,
+            'info' => $info,
+            'taginfo' => $taginfo,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
+        ]);
+    }
+
 
     public function youtube(){
         $youtube = Youtube::all();
@@ -243,6 +265,7 @@ class HomeController extends Controller
             'top_info' => $topInfo
         ]);
     }
+
 
 
     public function create()

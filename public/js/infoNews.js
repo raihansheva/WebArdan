@@ -30,3 +30,35 @@ function closePopupOutsideEvent(event) {
         closePopupEvent();
     }
 }
+
+
+// Inisialisasi jumlah box yang terlihat
+let currentVisibleBoxes = 3;
+const boxes = document.querySelectorAll(".box-info");
+const toggleButton = document.querySelector(".title-bottom");
+
+function toggleBoxes() {
+    if (currentVisibleBoxes < boxes.length) {
+        // "See More": Tampilkan 2 box lagi
+        currentVisibleBoxes += 2;
+    } else {
+        // "See Less": Kembali ke 4 box pertama
+        currentVisibleBoxes = 4;
+    }
+
+    // Tampilkan atau sembunyikan box sesuai jumlah yang terlihat
+    boxes.forEach((box, index) => {
+        box.classList.toggle("visible", index < currentVisibleBoxes);
+    });
+
+    // Ubah teks tombol berdasarkan status tampilan
+    toggleButton.textContent = currentVisibleBoxes >= boxes.length ? "See Less" : "See More";
+}
+
+// Atur tampilan awal: hanya 4 box pertama yang terlihat
+window.addEventListener("DOMContentLoaded", () => {
+    boxes.forEach((box, index) => {
+        box.classList.toggle("visible", index < 4); // Hanya tampilkan 4 box pertama
+    });
+    toggleButton.textContent = "See More"; // Atur teks tombol awal
+});

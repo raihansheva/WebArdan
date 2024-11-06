@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Models\TagInfo;
 use Closure;
 use Filament\Forms;
 use App\Models\Info;
@@ -47,7 +48,10 @@ class InfoResource extends Resource
                                 $set('slug', Str::slug($state));
                             })
                             ->required(),
-                        TextInput::make('tag_info')->label('tag Info :')->required(),
+                            Select::make('tag_info_id')
+                            ->label('Tag Info')
+                            ->relationship('tagInfo', 'nama_tag') // Menggunakan nama tag
+                            ->required(),
                         Textarea::make('deskripsi_info')
                             ->label('Deskripsi Info :')
                             ->rows(5)
@@ -84,7 +88,7 @@ class InfoResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('judul_info')->searchable(),
-                TextColumn::make('tag_info')->sortable(),
+                TextColumn::make('tagInfo.nama_tag')->label('Tag Info')->sortable()->searchable(),
                 TextColumn::make('deskripsi_info'),
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),

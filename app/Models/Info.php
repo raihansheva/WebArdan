@@ -6,6 +6,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Info extends Model implements HasMedia
@@ -44,5 +45,10 @@ class Info extends Model implements HasMedia
                 }
             }
         });
+    }
+
+    public function tagInfo(): BelongsTo
+    {
+        return $this->belongsTo(TagInfo::class, 'tag_info_id');
     }
 }
