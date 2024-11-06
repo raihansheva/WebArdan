@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $banner = Banner::all();
 
-        $stream = Streaming::where('status' , 'streaming')->get();
+        $stream = Streaming::where('status', 'streaming')->get();
 
         $program = Program::all();
 
@@ -184,7 +184,7 @@ class HomeController extends Controller
         //     dd($response->json()); // Tampilkan error jika ada
         // }
         // --------------------------
-        
+
         $videos = $response->json()['items'];
 
         // Tampilkan halaman detail dengan data podcast
@@ -198,14 +198,15 @@ class HomeController extends Controller
     }
 
 
-    public function chart(){
+    public function chart()
+    {
         $Kategori = Kategori::with('charts')->get();
 
         $topInfo = Info::where('top_news', true)->limit(5)->get();
 
-        
 
-        return view('page.chart' , [
+
+        return view('page.chart', [
             'kategori' => $Kategori,
             'top_info' => $topInfo,
 
@@ -213,7 +214,8 @@ class HomeController extends Controller
     }
 
 
-    public function info(){
+    public function info()
+    {
         $info = Info::with('tagInfo')->get();
         $taginfo = TagInfo::with('info')->get();;
         $topInfo = Info::where('top_news', true)->limit(5)->get();
@@ -231,15 +233,21 @@ class HomeController extends Controller
         ]);
     }
 
-    public function tagInfo($slug){
-        $info = Info::with('tagInfo')->where('tag_info' , $slug)->get();
+    public function tagInfo($tag)
+    {
+        $info = Info::whereHas('tagInfo', function ($query) use ($tag) {
+            $query->where('nama_tag', $tag); // Filter berdasarkan nama_tag di tabel tag_infos
+        })->with('tagInfo')->get();
         $taginfo = TagInfo::with('info')->get();;
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
 
-        return view('page.tagInfo', [
+
+        // dd($info);
+
+        return view('page.detailTaginfo', [
             'bannerInfo' => $bannerI,
             'info' => $info,
             'taginfo' => $taginfo,
@@ -250,14 +258,15 @@ class HomeController extends Controller
     }
 
 
-    public function youtube(){
+    public function youtube()
+    {
         $youtube = Youtube::all();
         $event_soon = Event::where('status', 'soon')->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $bannerYT = BannerYoutube::first();
 
-        return view('page.youtube' , [
+        return view('page.youtube', [
             'bannerYT' => $bannerYT,
             'youtube' => $youtube,
             'event_soon' => $event_soon,

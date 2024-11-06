@@ -24,7 +24,7 @@ Route::get('/detail-podcast/{slug}', [HomeController::class, 'detailpodcast']);
 Route::get('/chart', [HomeController::class, 'chart']);
 
 Route::get('/info-news', [HomeController::class, 'info']);
-Route::get('/tag-info/{slug}', [HomeController::class, 'tagInfo']);
+Route::get('/info-tag/{tag}', [HomeController::class, 'tagInfo']);
 
 Route::get('/ardan-youtube', [HomeController::class, 'youtube']);
 
