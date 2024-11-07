@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Kategori;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Chart;
+use App\Models\Kategori;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
@@ -13,6 +13,7 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ChartResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -35,7 +36,12 @@ class ChartResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('name')->label('Name :'),
-                        TextInput::make('link_audio')->label('Link Audio :'),
+                        FileUpload::make('link_audio')
+                            ->label('Upload MP3')
+                            ->acceptedFileTypes(['audio/mpeg']) // Khusus untuk file MP3
+                            ->directory('audioChart') // Direktori penyimpanan di dalam storage
+                            ->preserveFilenames() // Agar nama file asli tetap dipertahankan
+                            ->maxSize(10240), // Ukuran maksimum dalam KB (10 MB pada contoh ini),
                         Select::make('kategori_id')
                             ->label('Kategori')
                             ->options(Kategori::all()->pluck('nama_kategori', 'id')) // Mengambil data kategori

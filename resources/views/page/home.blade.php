@@ -462,7 +462,7 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $chart->name }}</td>
                                             <td>
-                                                <div class="btn-play-chart" data-audio-src="music/music3.mp3"
+                                                <div class="btn-play-chart" data-audio-src="./storage/{{ $chart->link_audio }}"
                                                     data-index="2">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>

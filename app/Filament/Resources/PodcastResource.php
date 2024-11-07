@@ -2,31 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Episode;
+use App\Filament\Resources\PodcastResource\Pages;
 use App\Models\Podcast;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
+use Filament\Forms;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TagsColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\PodcastResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\PodcastResource\RelationManagers;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class PodcastResource extends Resource
 {
@@ -61,11 +54,11 @@ class PodcastResource extends Resource
                             ->disk('public')
                             ->preserveFilenames(),
                         FileUpload::make('file')
-                            ->label('File Podcast :')
-                            ->image()
-                            ->directory('uploads/file_podcast')
-                            ->disk('public')
-                            ->preserveFilenames(),
+                            ->label('Upload MP3')
+                            ->acceptedFileTypes(['audio/mpeg']) // Khusus untuk file MP3
+                            ->directory('audioPodcast') // Direktori penyimpanan di dalam storage
+                            ->preserveFilenames() // Agar nama file asli tetap dipertahankan
+                            ->maxSize(10240), // Ukuran maksimum dalam KB (10 MB pada contoh ini),
                         DatePicker::make('date_podcast')->label('Date Podcast :')->required(),
                         TextInput::make('link_podcast')->label('Link Podcast :')->required(),
                         TextInput::make('slug')
@@ -126,7 +119,7 @@ class PodcastResource extends Resource
                     ->falseIcon('heroicon-o-x-circle'),
 
                 // Menampilkan episode yang terkait
-                TextColumn::make('episode_number')
+                TextColumn::make('episode_number'),
             ])
             ->filters([
                 //

@@ -9,8 +9,10 @@
                 <div class="area-image-DP">
                     <div class="card-DP">
                         <div class="card-DP-body">
-                            <div class="btn-play-DP" data-audio-src="music/music4.mp3" data-index="1">
+                            <div class="btn-play-DP" data-audio-src="./storage/{{ $detail_podcast->file }}" data-index="1">
                                 <span class="material-symbols-rounded">play_arrow</span>
+                                <p style="display: none;" id="id_podcast">{{ $detail_podcast->podcast_id }}</p>
+                                <p style="display: none;" id="idP">{{ $detail_podcast->id }}</p>
                             </div>
                         </div>
                         <div class="card-DP-header">

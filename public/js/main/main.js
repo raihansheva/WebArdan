@@ -9,138 +9,137 @@ const content = document.querySelector(".content"),
     prevBtn = content.querySelector("#prev"),
     nextBtn = content.querySelector("#next"),
     progressBar = content.querySelector(".progress-bar"),
-    progressDetails = content.querySelector(".progress-details");
+    progressDetails = content.querySelector(".progress-details"),
+    currentTimeDisplay = content.querySelector(".current-time"),
+    durationTimeDisplay = content.querySelector(".duration-time");
+// let audioFolder = "";
+// const url = window.location.pathname;
 
-let currentIndex = null; // Menyimpan index lagu yang sedang diputar
+// if (url.includes("podcast")) {
+//     audioFolder = "audioPodcast";
+// } else if (url.includes("chart")) {
+//     audioFolder = "audioChart";
+// } else {
+//     console.error("Halaman tidak dikenal");
+//     return;
+// }
+let currentIndex = null;
+let eps = 1;
+let isPlaying = false;
+let podcastId = document.getElementById("id_podcast").textContent;
+let IdP = document.getElementById("idP").textContent;
 
-// Memuat data saat halaman di-load
 window.addEventListener("load", () => {
-    loadData(1); // Muat lagu pertama secara default
+    loadPodcastDetails(IdP);
 });
 
-// Fungsi untuk memuat data lagu
-function loadData(indexValue) {
-    if (indexValue < 1 || indexValue > songs.length) {
-        console.error("Index out of bounds");
-        return;
-    }
+// Fungsi untuk memuat detail podcast
+function loadPodcastDetails(idP) {
+    fetch(`/podcast/details/${idP}`)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data) {
+                musicName.innerHTML = data.judul_podcast;
+                musicArtist.innerHTML = data.genre_podcast;
+                Playimage.src = "./storage/" + data.image_podcast;
+                Audio.src = "./storage/" + data.file;
+                Audio.load();
+            } else {
+                console.error("Podcast not found.");
+            }
+        })
+        .catch((error) => console.error("Failed to load podcast data:", error));
+}
 
-    console.log("Loading data for song:", songs[indexValue - 1]); // Log data lagu yang dimuat
-    musicName.innerHTML = songs[indexValue - 1].name;
-    musicArtist.innerHTML = songs[indexValue - 1].artist;
-    Playimage.src = "images/" + songs[indexValue - 1].img + ".jpg";
-    Audio.src = "music/" + songs[indexValue - 1].audio + ".mp3";
-    Audio.load(); // Memuat ulang audio
+// Fungsi untuk memuat episode
+function loadEpisode(idP, episode, direction) {
+    fetch(`/podcast/${idP}/episode/${episode}/${direction}`)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data) {
+                musicName.innerHTML = data.judul_podcast;
+                musicArtist.innerHTML = data.genre_podcast;
+                Playimage.src = "./storage/" + data.image_podcast;
+                Audio.src = "./storage/" + data.file;
+                Audio.load();
+                playSong(); // Mulai pemutaran setelah episode dimuat
+            } else {
+                console.error("Episode not found.");
+            }
+        })
+        .catch((error) => console.error("Failed to load episode data:", error));
 }
 
 // Fungsi untuk memulai lagu
 function playSong() {
-    Audio.play();
+    if (!isPlaying) {
+        Audio.play()
+            .then(() => {
+                isPlaying = true;
+                updatePlayButtonState(); // Update icon play/pause
+            })
+            .catch((error) => console.error("Audio play error:", error));
+    }
 }
 
-// Fungsi untuk menghentikan lagu
 function pauseSong() {
-    Audio.pause();
+    if (isPlaying) {
+        Audio.pause();
+        isPlaying = false;
+        updatePlayButtonState();
+    }
 }
 
-// Fungsi untuk memperbarui status ikon
-function updatePlayButtonState(isPlaying, activeButton) {
+// Fungsi untuk memperbarui status tombol play/pause
+function updatePlayButtonState() {
     playBtn.forEach((button) => {
-        const icon = button.querySelector("span"); // Ambil elemen ikon di dalam tombol
-        if (isPlaying && button === activeButton) {
-            icon.textContent = "pause"; // Ganti ikon menjadi pause
-        } else {
-            icon.textContent = "play_arrow"; // Ganti ikon kembali ke play
-        }
+        const icon = button.querySelector("span");
+        icon.textContent = isPlaying ? "pause" : "play_arrow";
     });
 }
 
 // Event listener untuk tombol play
 playBtn.forEach((button) => {
     button.addEventListener("click", () => {
-        const btnIndex = parseInt(button.dataset.index); // Ambil index dari data
-        if (currentIndex === btnIndex) {
-            // Jika tombol yang sama ditekan, toggle antara play dan pause
-            if (Audio.paused) {
-                playSong();
-                updatePlayButtonState(true, button); // Perbarui status tombol play
-            } else {
-                pauseSong();
-                updatePlayButtonState(false, button); // Perbarui status tombol pause
-            }
+        if (isPlaying) {
+            pauseSong();
         } else {
-            // Jika tombol berbeda ditekan
-            currentIndex = btnIndex; // Set index lagu yang sedang diputar
-            loadData(currentIndex + 1); // Muat data lagu baru
-            playSong(); // Mainkan lagu baru
-            updatePlayButtonState(true, button); // Perbarui tombol yang aktif
+            playSong();
         }
     });
 });
 
-// Fungsi untuk menonaktifkan tombol lain
-function disableOtherPlayButtons(activeIndex) {
-    playBtn.forEach((button, btnIndex) => {
-        if (btnIndex !== activeIndex) {
-            button.innerHTML = "play_arrow"; // Kembali ke ikon play untuk tombol lain
-            button.classList.remove("playing"); // Hapus status 'playing' dari tombol lain
-        }
-    });
-}
+// Event listener untuk tombol next dan prev
+let isFirstClick = true;
 
-// Event listener untuk tombol next dan prev (jika ada)
 nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % songs.length; // Next song
-    loadData(currentIndex + 1);
-    playSong();
+    if (isFirstClick) {
+        isFirstClick = false;
+    } else {
+        eps++; // Increment episode number
+    }
+    loadEpisode(podcastId, eps, "next");
 });
 
 prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + songs.length) % songs.length; // Prev song
-    loadData(currentIndex + 1);
-    playSong();
+    if (isFirstClick) {
+        isFirstClick = false;
+    } else {
+        eps = Math.max(1, eps - 1); // Ensure eps doesn't go below 1
+    }
+    loadEpisode(podcastId, eps, "previous");
 });
 
-// Fungsi untuk memainkan lagu selanjutnya
-function nextSong() {
-    index++;
-    if (index > songs.length) {
-        index = 1;
-    }
-    loadData(index);
-    playSong();
-}
-
-// Fungsi untuk memainkan lagu sebelumnya
-function prevSong() {
-    index--;
-    if (index <= 0) {
-        index = songs.length;
-    }
-    loadData(index);
-    playSong();
-}
-
-// Memperbarui progress bar sesuai dengan waktu audio
+// Memperbarui progress bar
 Audio.addEventListener("timeupdate", (e) => {
-    const initialTime = e.target.currentTime; // Waktu lagu saat ini
-    const finalTime = e.target.duration; // Total durasi lagu
+    const initialTime = e.target.currentTime;
+    const finalTime = e.target.duration;
     let BarWidth = (initialTime / finalTime) * 100;
     progressBar.style.width = BarWidth + "%";
-
-    // Memungkinkan pengguna untuk mengklik progress bar dan mengubah waktu lagu
-    progressDetails.addEventListener("click", (e) => {
-        let progressValue = progressDetails.clientWidth; // Lebar progress bar
-        let clickedOffsetX = e.offsetX; // Posisi klik
-        let MusicDuration = Audio.duration; // Total durasi musik
-
-        Audio.currentTime = (clickedOffsetX / progressValue) * MusicDuration;
-    });
 });
 
-// Ketika lagu berakhir, otomatis ke lagu berikutnya
 Audio.addEventListener("ended", () => {
-    nextSong();
+    nextBtn.click(); // Mainkan episode berikutnya saat audio berakhir
 });
 
 // Spectrum Audio Visualization
@@ -195,13 +194,13 @@ function updateVisualization() {
             const controlY2 = y;
 
             // Menambahkan kurva Bezier
-            newPath += ` C${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x} ${y}`;
+            newPath += `C${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x} ${y}`;
         } else {
-            newPath += ` L${x} ${y}`;
+            newPath += `L${x} ${y}`;
         }
     }
 
-    newPath += ` L${width} ${height / 2}`;
+    newPath += `L${width} ${height / 2}`;
     path.setAttribute("d", newPath);
     requestAnimationFrame(updateVisualization);
 }
@@ -251,6 +250,7 @@ audio.addEventListener("play", () => {
 window.addEventListener("resize", () => {
     path.setAttribute("d", "");
 });
+
 // ----------------------------------------------
 
 // JavaScript untuk toggle dropdown saat diklik
