@@ -37,7 +37,7 @@ class HomeController extends Controller
         $event_soon = Event::where('status', 'soon')->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
 
-        $info = Info::all();
+        $taginfo = TagInfo::with('info')->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
 
         $announcer = Announcer::all();
@@ -81,7 +81,7 @@ class HomeController extends Controller
             'program' => $program,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
-            'info' => $info,
+            'taginfo' => $taginfo,
             'top_info' => $topInfo,
             'podcast' => $podcast,
             'videos' => $videos,
@@ -217,7 +217,7 @@ class HomeController extends Controller
     public function info()
     {
         $info = Info::with('tagInfo')->get();
-        $taginfo = TagInfo::with('info')->get();;
+        $taginfo = TagInfo::with('info')->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();

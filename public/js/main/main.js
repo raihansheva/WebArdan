@@ -4,7 +4,7 @@ const content = document.querySelector(".content"),
     musicArtist = content.querySelector(".music-titles .artist"),
     Audio = document.querySelector(".main-song"),
     playBtn = document.querySelectorAll(
-        ".play-pause, .play-pause-mobile, .btn-play-streaming, .btn-play-chart, .btn-play-DP"
+        ".play-pause, .play-pause-mobile, .btn-play-chart, .btn-play-streaming, .btn-play-DP"
     ),
     prevBtn = content.querySelector("#prev"),
     nextBtn = content.querySelector("#next"),
@@ -12,29 +12,76 @@ const content = document.querySelector(".content"),
     progressDetails = content.querySelector(".progress-details"),
     currentTimeDisplay = content.querySelector(".current-time"),
     durationTimeDisplay = content.querySelector(".duration-time");
-// let audioFolder = "";
-// const url = window.location.pathname;
 
-// if (url.includes("podcast")) {
-//     audioFolder = "audioPodcast";
-// } else if (url.includes("chart")) {
-//     audioFolder = "audioChart";
-// } else {
-//     console.error("Halaman tidak dikenal");
-//     return;
-// }
 let currentIndex = null;
 let eps = 1;
 let isPlaying = false;
-let podcastId = document.getElementById("id_podcast").textContent;
-let IdP = document.getElementById("idP").textContent;
+let podcastId = document.getElementById("id_podcast")
+    ? document.getElementById("id_podcast").textContent
+    : null;
+let IdP = document.getElementById("idP")
+    ? document.getElementById("idP").textContent
+    : null;
+let isChartPlaying = false;
+let isStreamingPlaying = false;
+let isPodcastPlaying = false;
 
-window.addEventListener("load", () => {
-    loadPodcastDetails(IdP);
-});
+// Fungsi untuk menghentikan audio lainnya
+function pauseAllExcept(type) {
+    if (type !== "chart") {
+        isChartPlaying = false;
+    }
+    if (type !== "streaming") {
+        isStreamingPlaying = false;
+    }
+    if (type !== "podcast") {
+        isPodcastPlaying = false;
+    }
+    Audio.pause();
+    updatePlayButtonState(); // Perbarui ikon play/pause
+}
 
-// Fungsi untuk memuat detail podcast
+// Fungsi untuk memutar audio chart
+function loadChartAudio(audioSrc, chartName, chartArtist) {
+    pauseAllExcept("chart"); // Hentikan audio lainnya
+    isChartPlaying = true;
+
+    if (audioSrc !== Audio.src) {
+        Audio.src = audioSrc;
+        Audio.load();
+        Audio.oncanplay = () => {
+            musicName.innerHTML = chartName;
+            musicArtist.innerHTML = chartArtist;
+            playSong();
+        };
+    } else {
+        playSong();
+    }
+}
+
+// Fungsi untuk memutar streaming audio
+function loadStreamingAudio(streamUrl, streamName, streamArtist) {
+    pauseAllExcept("streaming"); // Hentikan audio lainnya
+    isStreamingPlaying = true;
+
+    if (streamUrl !== Audio.src) {
+        Audio.src = streamUrl;
+        Audio.load();
+        Audio.oncanplay = () => {
+            musicName.innerHTML = streamName;
+            musicArtist.innerHTML = streamArtist;
+            playSong();
+        };
+    } else {
+        playSong();
+    }
+}
+
+// Fungsi untuk memutar podcast
 function loadPodcastDetails(idP) {
+    pauseAllExcept("podcast"); // Hentikan audio lainnya
+    isPodcastPlaying = true;
+
     fetch(`/podcast/details/${idP}`)
         .then((response) => response.json())
         .then((data) => {
@@ -44,53 +91,29 @@ function loadPodcastDetails(idP) {
                 Playimage.src = "./storage/" + data.image_podcast;
                 Audio.src = "./storage/" + data.file;
                 Audio.load();
-            } else {
-                console.error("Podcast not found.");
+                playSong();
             }
         })
         .catch((error) => console.error("Failed to load podcast data:", error));
 }
 
-// Fungsi untuk memuat episode
-function loadEpisode(idP, episode, direction) {
-    fetch(`/podcast/${idP}/episode/${episode}/${direction}`)
-        .then((response) => response.json())
-        .then((data) => {
-            if (data) {
-                musicName.innerHTML = data.judul_podcast;
-                musicArtist.innerHTML = data.genre_podcast;
-                Playimage.src = "./storage/" + data.image_podcast;
-                Audio.src = "./storage/" + data.file;
-                Audio.load();
-                playSong(); // Mulai pemutaran setelah episode dimuat
-            } else {
-                console.error("Episode not found.");
-            }
-        })
-        .catch((error) => console.error("Failed to load episode data:", error));
-}
-
-// Fungsi untuk memulai lagu
+// Fungsi play dan pause
 function playSong() {
-    if (!isPlaying) {
-        Audio.play()
-            .then(() => {
-                isPlaying = true;
-                updatePlayButtonState(); // Update icon play/pause
-            })
-            .catch((error) => console.error("Audio play error:", error));
-    }
+    Audio.play()
+        .then(() => {
+            isPlaying = true;
+            updatePlayButtonState();
+        })
+        .catch((error) => console.error("Audio play error:", error));
 }
 
 function pauseSong() {
-    if (isPlaying) {
-        Audio.pause();
-        isPlaying = false;
-        updatePlayButtonState();
-    }
+    Audio.pause();
+    isPlaying = false;
+    updatePlayButtonState();
 }
 
-// Fungsi untuk memperbarui status tombol play/pause
+// Update tombol play/pause untuk semua tombol
 function updatePlayButtonState() {
     playBtn.forEach((button) => {
         const icon = button.querySelector("span");
@@ -98,13 +121,58 @@ function updatePlayButtonState() {
     });
 }
 
-// Event listener untuk tombol play
+// Event listener untuk tombol play pada chart
+document.querySelectorAll(".btn-play-chart").forEach((button) => {
+    button.addEventListener("click", () => {
+        const audioSrc = button.getAttribute("data-audio-src");
+        const chartName = button.getAttribute("data-name");
+        const chartArtist = button.getAttribute("data-kategori");
+        loadChartAudio(audioSrc, chartName, chartArtist);
+    });
+});
+
+// Event listener untuk tombol play pada streaming
+document.querySelectorAll(".btn-play-streaming").forEach((button) => {
+    button.addEventListener("click", () => {
+        const streamUrl = button.getAttribute("data-stream-url");
+        const streamName = button.getAttribute("data-name");
+        const streamArtist = button.getAttribute("data-artist");
+        loadStreamingAudio(streamUrl, streamName, streamArtist);
+    });
+});
+
+// Event listener untuk tombol play/pause pada podcast
+if (IdP) {
+    window.addEventListener("load", () => {
+        loadPodcastDetails(IdP);
+    });
+}
+
+// Event listener untuk tombol play/pause utama
 playBtn.forEach((button) => {
     button.addEventListener("click", () => {
         if (isPlaying) {
             pauseSong();
         } else {
             playSong();
+        }
+    });
+});
+
+// Event listener untuk tombol play pada chart
+document.querySelectorAll(".btn-play-chart").forEach((button) => {
+    button.addEventListener("click", () => {
+        const audioSrc = button.getAttribute("data-audio-src");
+        const chartName = button.getAttribute("data-name"); // Sesuaikan nama chart
+        const chartArtist = button.getAttribute("data-kategori"); // Sesuaikan artis chart
+
+        // Kondisi untuk memastikan audio tidak di-reset ke awal jika sudah dipause
+        if (isChartPlaying && Audio.src === audioSrc && !Audio.paused) {
+            // Jika audio chart yang sama sudah diputar dan tidak pause, lanjutkan dari posisi terakhir
+            playSong(); // Lanjutkan audio
+        } else {
+            // Jika audio berbeda atau sedang dipause, load dan putar audio chart baru
+            loadChartAudio(audioSrc, chartName, chartArtist);
         }
     });
 });
@@ -249,6 +317,30 @@ audio.addEventListener("play", () => {
 
 window.addEventListener("resize", () => {
     path.setAttribute("d", "");
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Ambil elemen tombol prev dan next
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    const controlBtn = document.getElementById('control-btn');
+    const img = document.getElementById('image');
+
+    // Cek URL untuk memastikan apakah kita berada di halaman detail-podcast
+    const currentPage = window.location.pathname;
+
+    // Jika halaman adalah 'detail-podcast', tampilkan tombol prev dan next
+    if (currentPage.includes("detail-podcast")) {
+        prevButton.style.display = 'flex'; // Menampilkan tombol prev
+        nextButton.style.display = 'flex'; // Menampilkan tombol next
+    } else {
+        prevButton.style.display = 'none'; // Menyembunyikan tombol prev
+        nextButton.style.display = 'none'; // Menyembunyikan tombol next
+        controlBtn.style.width ='170px';
+        controlBtn.style.gap ='20px';
+        img.style.display = 'none';
+    }
 });
 
 // ----------------------------------------------

@@ -118,15 +118,31 @@
             <div class="area-content-info-news">
                 <div class="area-content-info">
                     <div class="header-info">
-                        <h1 class="title-info">Info</h1>
+                        <h1 class="title-info">Tag Info</h1>
                     </div>
                     <div class="content-info">
-                        @foreach ($info as $infoList)
+                        {{-- @foreach ($info as $infoList)
                             <div class="box-info">
                                 <div class="area-tag-info">
                                     <h3 class="tag-info">#{{ $infoList->tag_info }}</h3>
                                 </div>
                                 <img class="image-info" src="./storage/{{ $infoList->image_info }}" alt="">
+                            </div>
+                        @endforeach --}}
+                        @foreach ($taginfo as $tagInfoList)
+                            <div class="box-info">
+                                <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                    <div class="area-tag-info">
+                                        <h3 class="tag-info">#{{ $tagInfoList->nama_tag }}</h3>
+                                    </div>
+                                    @if ($tagInfoList->info->isNotEmpty())
+                                        <img class="image-info"
+                                            src="{{ asset('storage/' . $tagInfoList->info->first()->image_info) }}"
+                                            alt="">
+                                    @else
+                                        <p>Tidak ada info untuk tag ini.</p>
+                                    @endif
+                                </a>
                             </div>
                         @endforeach
                     </div>
@@ -269,7 +285,7 @@
                                 <div class="card-header-podcast">
                                     <div class="author-podcast">
                                     </div>
-                                    <a class="link-podcast" href="/detail-podcast/{{ $podcastList->id }}">
+                                    <a class="link-podcast" href="/detail-podcast/{{ $podcastList->slug }}">
                                         <div class="view-podcast">
                                             <p class="text-watch-podcast">View Podcast</p>
                                         </div>
@@ -378,14 +394,14 @@
                         <div class="tombol-kanan-announcer"></div>
                     </div>
                     <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
-                    breakpoints='{
+                        breakpoints='{
                         "480": { "slidesPerView": 2, "autoplay": { "delay": 500 } },
                         "768": { "slidesPerView": 3, "autoplay": { "delay": 2000 } },
                         "1024": { "slidesPerView": 4, "autoplay": { "delay": 2500 } },
                         "1280": { "slidesPerView": 5, "autoplay": { "delay": 3000 } }
                     }'
-                    mousewheel="true"
-                        autoplay-disable-on-interaction="false" slides-per-view="5" space-between="20">
+                        mousewheel="true" autoplay-disable-on-interaction="false" slides-per-view="5"
+                        space-between="20">
                         @foreach ($announcer as $announcerList)
                             <swiper-slide class="box-announcer" style="background-image: url('')">
                                 <img class="image-announcer" src="./storage/{{ $announcerList->image_announcer }}"
@@ -462,8 +478,8 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $chart->name }}</td>
                                             <td>
-                                                <div class="btn-play-chart" data-audio-src="./storage/{{ $chart->link_audio }}"
-                                                    data-index="2">
+                                                <div class="btn-play-chart"
+                                                    data-audio-src="./storage/{{ $chart->link_audio }}" data-name="{{ $chart->name }}" data-kategori="{{$kategoriList->nama_kategori}}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
                                             </td>

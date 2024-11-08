@@ -187,8 +187,9 @@
         </svg>
         <div class="content">
             <div class="area-control-btn">
-                <div class="control-btn">
+                <div class="control-btn" id="control-btn">
                     <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
+                    
                     <span class="material-symbols-rounded" id="prev">skip_previous</span>
                     <div class="play-pause" id="play-pause">
                         <span class="btn-play material-symbols-rounded">play_arrow</span>
@@ -200,13 +201,13 @@
             </div>
             <div class="area-control-progres">
                 <div class="image-wrapper">
-                    <div class="music-image">
-                        <img src="images/img1.jpg" />
+                    <div class="music-image"  id="image">
+                        <img src="" alt="-" />
                     </div>
                 </div>
                 <div class="music-titles">
-                    <p class="name">Title music</p>
-                    <p class="artist">Titke music</p>
+                    <p class="name"></p>
+                    <p class="artist"></p>
                 </div>
                 <div class="area-line">
                     <div class="progress-details">
