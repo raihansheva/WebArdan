@@ -26,7 +26,7 @@
                         <div class="card-A">
                             <div class="card-body">
                                 <div class="btn-play-streaming"
-                                    data-audio-src="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8"
+                                    data-audio-src="music/music1.mp3"
                                     data-index="0">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>

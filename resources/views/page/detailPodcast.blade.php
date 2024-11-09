@@ -60,7 +60,7 @@
                     @if ($eps_group && $eps_group->isNotEmpty())
                         @foreach ($eps_group as $epsgroupList)
                             <div class="card-episode">
-                                <a href="/detail-podcast">
+                                <a href="/detail-podcast/{{ $epsgroupList->slug }}">
                                     <div class="card-body-episode">
                                         <div class="card-header-episode">
                                             <div class="genre-episode">
