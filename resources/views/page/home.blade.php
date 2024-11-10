@@ -479,7 +479,7 @@
                                             <td>{{ $chart->name }}</td>
                                             <td>
                                                 <div class="btn-play-chart"
-                                                    data-audio-src="./storage/{{ $chart->link_audio }}" data-name="{{ $chart->name }}" data-kategori="{{$kategoriList->nama_kategori}}">
+                                                    data-audio-src="./storage/{{ $chart->link_audio }}" data-name="{{ $chart->name }}" data-kategori="{{$kategoriList->nama_kategori}}" data-id="{{ $kategoriList->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
                                             </td>
