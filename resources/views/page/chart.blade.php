@@ -32,8 +32,11 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $chart->name }}</td>
                                             <td>
-                                                <div class="btn-play-chart" data-audio-src="music/music3.mp3"
-                                                    data-index="2">
+                                                <div class="btn-play-chart"
+                                                    data-audio-src="./storage/{{ $chart->link_audio }}"
+                                                    data-name="{{ $chart->name }}"
+                                                    data-kategori="{{ $kategoriList->nama_kategori }}"
+                                                    data-id="{{ $kategoriList->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
                                             </td>

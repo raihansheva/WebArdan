@@ -30,8 +30,6 @@
                                 </div>
                             </div>
                             <div class="card-header">
-                                <div class="author">
-                                </div>
                                 <div class="view" id="btn-tonton">
                                     <p class="text-watchS">Tonton Siaran</p>
                                 </div>
@@ -62,7 +60,7 @@
                             <p class="title-nextP"> Next Program</p>
                         </div>
                         <div class="area-thumbnail-nextP">
-
+                            
                         </div>
                     </div>
                 </div>

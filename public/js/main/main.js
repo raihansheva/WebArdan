@@ -243,6 +243,7 @@ function pauseStreaming() {
 // ----------------------------
 let currentChartId = null;  // Menyimpan ID chart yang sedang diputar
 let playStatus = {};  // Menyimpan status play/pause per chart
+let lastClickedBtnId = null;  // Variabel untuk menyimpan ID tombol yang terakhir diklik
 
 // Fungsi untuk memutar chart audio
 function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
@@ -261,7 +262,10 @@ function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
                 .then(() => {
                     musicName.innerHTML = chartName;
                     musicArtist.innerHTML = chartArtist;
-                    playStatus[chartId] = { isPlaying: true };
+                    if (!playStatus[chartId]) {
+                        playStatus[chartId] = {};  // Inisialisasi jika belum ada
+                    }
+                    playStatus[chartId].isPlaying = true;
                     currentChartId = chartId;  // Update ID chart yang sedang diputar
                     updatePlayButtonState();  // Update status tombol play/pause
                 })
@@ -270,34 +274,66 @@ function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
             // Jika audio yang sama, toggle antara play dan pause
             if (Audio.paused) {
                 Audio.play();
-                playStatus[chartId] = { isPlaying: true };
+                if (!playStatus[chartId]) {
+                    playStatus[chartId] = {};  // Inisialisasi jika belum ada
+                }
+                playStatus[chartId].isPlaying = true;
             } else {
                 Audio.pause();
-                playStatus[chartId] = { isPlaying: false };
+                if (!playStatus[chartId]) {
+                    playStatus[chartId] = {};  // Inisialisasi jika belum ada
+                }
+                playStatus[chartId].isPlaying = false;
             }
             updatePlayButtonState();  // Update status tombol play/pause
         }
     }
 }
 
-let lastClickedBtnId = null;  // Variabel untuk menyimpan ID tombol yang terakhir diklik
-
 // Fungsi untuk memperbarui status tombol play/pause berdasarkan playStatus[chartId]
 function updatePlayButtonState() {
     // Update tombol play/pause untuk semua chart
-    document.querySelectorAll(".btn-play-chart").forEach((button) => {
-        const chartId = button.getAttribute("data-id");
+    document.querySelectorAll(".btn-play-chart, .play-pause").forEach((button) => {
+        const chartId = button.getAttribute("data-id");  // ID chart atau null untuk tombol utama
         const icon = button.querySelector("span");
 
-        // Jika chart ini sedang diputar, ubah ikon menjadi pause
-        if (chartId === currentChartId && playStatus[chartId]?.isPlaying) {
-            icon.textContent = "pause";  // Set ikon ke pause jika audio sedang diputar
-            button.classList.add("active");
+        // Periksa apakah tombol adalah tombol chart spesifik atau tombol utama
+        const isMainPlayPauseButton = button.classList.contains("play-pause");
+
+        if ((chartId === currentChartId && playStatus[chartId]?.isPlaying) || (isMainPlayPauseButton && !Audio.paused)) {
+            // Jika audio sedang diputar, ikon diubah ke "pause"
+            icon.textContent = "pause";
         } else {
-            icon.textContent = "play_arrow";  // Set ikon ke play jika audio tidak diputar
-            button.classList.remove("active");
+            // Jika audio dijeda atau tidak diputar, ikon diubah ke "play_arrow"
+            icon.textContent = "play_arrow";
         }
     });
+}
+
+// Fungsi untuk memutar lagu di chart tertentu
+function playSong(chartId, audioSrc, chartName, chartArtist) {
+    if (Audio.paused) {
+        currentChartId = chartId;
+        Audio.src = audioSrc;
+        Audio.load();
+        Audio.play()
+            .then(() => {
+                musicName.innerHTML = chartName;
+                musicArtist.innerHTML = chartArtist;
+                playStatus[chartId] = { isPlaying: true };
+                updatePlayButtonState();  // Update tombol play/pause
+            })
+            .catch((error) => console.error("Audio play error:", error));
+    }
+}
+
+// Fungsi untuk menjeda lagu di chart tertentu
+function pauseSong(chartId) {
+    if (!Audio.paused) {
+        Audio.pause();
+        playStatus[chartId] = { isPlaying: false };  // Update status play/pause untuk chart ini
+        updatePlayButtonState();  // Update tombol play/pause
+    }
 }
 
 // Event listener untuk tombol .btn-play-chart
@@ -312,15 +348,12 @@ document.querySelectorAll(".btn-play-chart").forEach((button) => {
         if (lastClickedBtnId === chartId) {
             if (playStatus[chartId]?.isPlaying) {
                 // Jika audio sedang diputar, pause audio
-                Audio.pause();
-                playStatus[chartId] = { isPlaying: false };  // Update status play/pause
+                pauseSong(chartId);
                 currentChartId = null;  // Reset chart yang sedang diputar
             } else {
                 // Jika audio sedang dipause, lanjutkan memutar (tetapi jangan reset ke awal)
-                Audio.play();  // Lanjutkan audio tanpa reset
-                playStatus[chartId] = { isPlaying: true };  // Update status play/pause
+                playSong(chartId, audioSrc, chartName, chartArtist);
             }
-            updatePlayButtonState();  // Update status tombol play/pause
             return;  // Tidak perlu lanjutkan ke logika lain jika tombol yang sama diklik lagi
         }
 
@@ -329,75 +362,62 @@ document.querySelectorAll(".btn-play-chart").forEach((button) => {
 
         // Jika chart lain sedang diputar, pause audio yang sedang diputar sebelumnya
         if (currentChartId && currentChartId !== chartId) {
-            // Hentikan audio yang sedang diputar
-            Audio.pause();
-            playStatus[currentChartId] = { isPlaying: false };  // Update status play/pause untuk chart yang lama
+            pauseSong(currentChartId);  // Pause audio yang sedang diputar sebelumnya
             currentChartId = null;  // Reset chart yang sedang diputar
         }
 
         // Putar chart baru
-        playChartAudio(audioSrc, chartName, chartArtist, chartId);
-
-        // Update status tombol play/pause untuk semua chart
-        updatePlayButtonState();  // Update tombol play/pause setelah perubahan
+        playSong(chartId, audioSrc, chartName, chartArtist);
     });
 });
 
 
-// Event listener for the main play/pause button
+// Event listener untuk tombol play/pause utama
 document.querySelector(".play-pause").addEventListener("click", () => {
     if (Audio.paused) {
-        if (currentChartId) {
-            playChartAudio(Audio.src, musicName.innerHTML, musicArtist.innerHTML, currentChartId);
-        }
+        // Jika audio dijeda, mainkan audio
+        Audio.play()
+            .then(() => {
+                // Setelah audio mulai diputar, perbarui status
+                if (currentChartId) {
+                    playStatus[currentChartId].isPlaying = true;
+                }
+                updatePlayButtonState();  // Update ikon play/pause
+            })
+            .catch((error) => console.error("Audio play error:", error)); // Tangani error jika play gagal
     } else {
+        // Jika audio sedang diputar, jeda audio
         Audio.pause();
         if (currentChartId) {
             playStatus[currentChartId].isPlaying = false;
-            currentChartId = null;
         }
+        updatePlayButtonState();  // Update ikon play/pause
     }
-    updatePlayButtonState();  // Update play/pause button state after change
 });
 
-// Update the icon when audio is paused or played
-Audio.onpause = () => {
-    if (currentChartId) {
-        playStatus[currentChartId].isPlaying = false;
-        updatePlayButtonState();
-    }
-};
 
+// Ketika audio dijeda, perbarui status dan ikon tombol
 Audio.onplay = () => {
     if (currentChartId) {
+        if (!playStatus[currentChartId]) {
+            playStatus[currentChartId] = {};  // Inisialisasi jika belum ada
+        }
         playStatus[currentChartId].isPlaying = true;
-        updatePlayButtonState();
     }
+    updatePlayButtonState();  // Panggil update untuk memperbarui ikon
 };
 
-// Play/Pause Logic
+Audio.onpause = () => {
+    if (currentChartId) {
+        if (!playStatus[currentChartId]) {
+            playStatus[currentChartId] = {};  // Inisialisasi jika belum ada
+        }
+        playStatus[currentChartId].isPlaying = false;
+    }
+    updatePlayButtonState();  // Panggil update untuk memperbarui ikon
+};
 // ----------------------------
 
-function playSong() {
-    if (Audio.paused) {
-        Audio.play()
-            .then(() => {
-                isPlaying = true;
-                isAudioPaused = false;
-                updatePlayButtonState();
-            })
-            .catch((error) => console.error("Audio play error:", error));
-    }
-}
-
-function pauseSong() {
-    if (!Audio.paused) {
-        Audio.pause();
-        isPlaying = false;
-        isAudioPaused = true;
-        updatePlayButtonState();
-    }
-}
 // function updatePlayButtonState() {
 //     playBtn.forEach((button) => {
 //         const icon = button.querySelector("span");
@@ -414,23 +434,6 @@ function pauseSong() {
 //         }
 //     });
 // }
-
-function updatePlayButtonState() {
-    playBtn.forEach((button) => {
-        const icon = button.querySelector("span");
-        const buttonId = button.getAttribute("data-id"); // Ambil data-id dari button
-
-        // Update hanya tombol yang sesuai dengan data-id yang sedang diputar
-        if (buttonId) {
-            // Jika audio sedang diputar untuk data-id ini
-            if (playStatus[buttonId] && playStatus[buttonId].isPlaying) {
-                icon.textContent = "pause"; // Update menjadi pause jika audio sedang diputar
-            } else {
-                icon.textContent = "play_arrow"; // Update menjadi play jika audio berhenti
-            }
-        }
-    });
-}
 
 // ----------------------------
 // Streaming Button Placeholder (Commented for now)

@@ -267,7 +267,7 @@ tombolKananA.addEventListener("click", () => {
 // card-streaming
 const cardA = document.querySelector(".card-A");
 const cardB = document.querySelector(".card-B");
-const tontonSiaranBtnA = document.querySelector(".card-A .author");
+const tontonSiaranBtnA = document.querySelector(".card-A .view");
 const tontonSiaranBtnB = document.querySelector(".card-B .view-B");
 
 cardA.style.display = "block";
