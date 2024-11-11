@@ -25,9 +25,7 @@
                     @foreach ($stream as $streamList)
                         <div class="card-A">
                             <div class="card-body">
-                                <div class="btn-play-streaming"
-                                    data-audio-src="music/music1.mp3"
-                                    data-index="0">
+                                <div class="btn-play-streaming" data-audio-src="music/music1.mp3" data-index="0">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </div>
@@ -303,6 +301,9 @@
                     <div class="content-video" id="content-video">
                         @foreach ($videos as $video)
                             <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                <img class="video-thumbnail"
+                                    src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                    alt="Thumbnail">
                                 <div class="btn-play-video"
                                     onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                                     <span class="material-symbols-rounded">play_arrow</span>
@@ -479,7 +480,10 @@
                                             <td>{{ $chart->name }}</td>
                                             <td>
                                                 <div class="btn-play-chart"
-                                                    data-audio-src="./storage/{{ $chart->link_audio }}" data-name="{{ $chart->name }}" data-kategori="{{$kategoriList->nama_kategori}}" data-id="{{ $kategoriList->id }}">
+                                                    data-audio-src="./storage/{{ $chart->link_audio }}"
+                                                    data-name="{{ $chart->name }}"
+                                                    data-kategori="{{ $kategoriList->nama_kategori }}"
+                                                    data-id="{{ $kategoriList->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
                                             </td>

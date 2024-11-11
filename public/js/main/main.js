@@ -42,18 +42,18 @@ window.addEventListener("load", () => {
 });
 
 // Play/Pause Button Click Event
-playBtn.forEach((button) => {
-    button.addEventListener("click", () => {
-        if (isPlaying) {
-            pauseSong();
-            if (isStreamingPlaying) {
-                pauseStreaming();
-            }
-        } else {
-            playSong();
-        }
-    });
-});
+// playBtn.forEach((button) => {
+//     button.addEventListener("click", () => {
+//         if (isPlaying) {
+//             pauseSong();
+//             if (isStreamingPlaying) {
+//                 pauseStreaming();
+//             }
+//         } else {
+//             playSong();
+//         }
+//     });
+// });
 
 // ----------------------------
 // Podcast Functions
@@ -61,6 +61,7 @@ playBtn.forEach((button) => {
 
 // Status play/pause untuk setiap podcast berdasarkan ID podcast
 let playPodcastStatus = {};
+let currentPodcastId = null; // Simpan ID podcast yang sedang dimainkan
 
 // Load Podcast Details Function
 function loadPodcastDetails(idP) {
@@ -74,6 +75,7 @@ function loadPodcastDetails(idP) {
                 Audio.src = "./storage/" + data.file;
                 Audio.load(); // Load hanya saat pertama kali
                 playPodcastStatus[idP] = { isPlaying: false }; // Reset status
+                currentPodcastId = idP; // Set current podcast
             } else {
                 console.error("Podcast not found.");
             }
@@ -81,7 +83,6 @@ function loadPodcastDetails(idP) {
         .catch((error) => console.error("Failed to load podcast data:", error));
 }
 
-// Load Episode Function
 function loadEpisode(idP, episode, direction) {
     fetch(`/podcast/${idP}/episode/${episode}/${direction}`)
         .then((response) => response.json())
@@ -102,45 +103,45 @@ function loadEpisode(idP, episode, direction) {
 
 // Fungsi play podcast
 function playPodcast(idP) {
-    // Jika audio belum dimainkan, mainkan sekarang
     if (!playPodcastStatus[idP]?.isPlaying) {
         Audio.play()
             .then(() => {
-                playPodcastStatus[idP].isPlaying = true;  // Tandai sebagai diputar
-                updatePodcastPlayButtonState(idP);  // Update ikon tombol ke pause
+                playPodcastStatus[idP].isPlaying = true;
+                currentPodcastId = idP; // Update current podcast ID
+                updatePodcastPlayButtonState(idP);
             })
             .catch((error) => {
                 console.error("Audio play error:", error);
             });
-    } else {
-        pausePodcast(idP);  // Jika sudah diputar, jeda audio
     }
 }
 
 // Fungsi pause podcast
 function pausePodcast(idP) {
     if (!Audio.paused) {
-        Audio.pause();  // Pause audio
-        playPodcastStatus[idP].isPlaying = false;  // Tandai sebagai dijeda
-        updatePodcastPlayButtonState(idP);  // Update ikon tombol ke play
+        Audio.pause();
+        playPodcastStatus[idP].isPlaying = false;
+        updatePodcastPlayButtonState(idP);
     }
 }
 
 // Update status tombol play/pause
 function updatePodcastPlayButtonState(idP) {
-    document.querySelectorAll(".btn-play-DP").forEach((button) => {
+    document.querySelectorAll(".btn-play-DP, .play-pause").forEach((button) => {
         const icon = button.querySelector("span");
         const buttonId = button.getAttribute("data-id");
 
-        if (buttonId === idP) {
+        if (buttonId === idP || button.classList.contains("play-pause")) {
             icon.textContent = playPodcastStatus[idP]?.isPlaying ? "pause" : "play_arrow";
-        } else {
+            button.classList.toggle("active", playPodcastStatus[idP]?.isPlaying);
+        } else if (button.classList.contains("btn-play-DP")) {
             icon.textContent = "play_arrow"; // Reset ikon tombol lainnya
+            button.classList.remove("active");
         }
     });
 }
 
-// Event listener untuk tombol play/pause
+// Event listener untuk tombol .btn-play-DP
 document.querySelectorAll(".btn-play-DP").forEach((button) => {
     button.addEventListener("click", () => {
         const podcastId = button.getAttribute("data-id");
@@ -152,18 +153,31 @@ document.querySelectorAll(".btn-play-DP").forEach((button) => {
     });
 });
 
+// Event listener untuk tombol .play-pause di audio player
+document.querySelectorAll(".play-pause").forEach((button) => {
+    button.addEventListener("click", () => {
+        if (currentPodcastId) {
+            if (Audio.paused) {
+                playPodcast(currentPodcastId);
+            } else {
+                pausePodcast(currentPodcastId);
+            }
+        }
+    });
+});
+
 // Update status ketika Audio dijeda atau dimainkan
 Audio.onpause = () => {
-    for (let id in playPodcastStatus) {
-        playPodcastStatus[id].isPlaying = false;
-        updatePodcastPlayButtonState(id);
+    if (currentPodcastId) {
+        playPodcastStatus[currentPodcastId].isPlaying = false;
+        updatePodcastPlayButtonState(currentPodcastId);
     }
 };
 
 Audio.onplay = () => {
-    for (let id in playPodcastStatus) {
-        playPodcastStatus[id].isPlaying = true;
-        updatePodcastPlayButtonState(id);
+    if (currentPodcastId) {
+        playPodcastStatus[currentPodcastId].isPlaying = true;
+        updatePodcastPlayButtonState(currentPodcastId);
     }
 };
 
@@ -174,7 +188,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 prevBtn.addEventListener("click", () => {
-    eps = Math.max(1, eps - 1); // Ensure eps doesn't go below 1    
+    eps = Math.max(1, eps - 1); // Ensure eps doesn't go below 1
     loadEpisode(podcastId, eps, "previous");
 });
 
@@ -227,86 +241,140 @@ function pauseStreaming() {
 }
 
 // ----------------------------
-// Chart Functions
-// ----------------------------
-let playStatus = {};  // Menyimpan status play untuk setiap chart berdasarkan chartId
+let currentChartId = null;  // Menyimpan ID chart yang sedang diputar
+let playStatus = {};  // Menyimpan status play/pause per chart
 
 // Fungsi untuk memutar chart audio
 function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
     if (audioSrc) {
-        // Cek apakah audio yang diputar sekarang berbeda dengan audioSrc yang baru
+        // Jika audio yang diputar berbeda, stop audio yang sedang diputar dan mulai yang baru
         if (Audio.src !== audioSrc) {
-            // Jika audio berbeda, stop audio yang sedang diputar dan mulai yang baru
+            Audio.pause();
+            if (currentChartId) {
+                playStatus[currentChartId] = { isPlaying: false };  // Set tombol sebelumnya jadi pause
+            }
+
+            // Set audio baru dan mulai memutar
             Audio.src = audioSrc;
             Audio.load();
             Audio.play()
                 .then(() => {
                     musicName.innerHTML = chartName;
                     musicArtist.innerHTML = chartArtist;
-                    // Set status play untuk audio yang baru
-                    playStatus[chartId] = { isPlaying: true }; // Update status play untuk chart ini
-                    updatePlayButtonState(); // Update ikon tombol play/pause
+                    playStatus[chartId] = { isPlaying: true };
+                    currentChartId = chartId;  // Update ID chart yang sedang diputar
+                    updatePlayButtonState();  // Update status tombol play/pause
                 })
                 .catch((error) => console.error("Audio play error:", error));
         } else {
             // Jika audio yang sama, toggle antara play dan pause
             if (Audio.paused) {
                 Audio.play();
-                playStatus[chartId] = { isPlaying: true }; // Menandakan audio ini sedang diputar
+                playStatus[chartId] = { isPlaying: true };
             } else {
                 Audio.pause();
-                playStatus[chartId] = { isPlaying: false }; // Menandakan audio ini dipause
+                playStatus[chartId] = { isPlaying: false };
             }
-            updatePlayButtonState(); // Update ikon tombol play/pause
+            updatePlayButtonState();  // Update status tombol play/pause
         }
     }
 }
 
-// Fungsi untuk memulai play chart
-function playChart() {
-    if (Audio.paused) {
-        Audio.play()
-            .then(() => {
-                isPlaying = true;
-                isChartPlaying = true;
-                updatePlayButtonState();
-            })
-            .catch((error) => console.error("Chart audio play error:", error));
-    }
+let lastClickedBtnId = null;  // Variabel untuk menyimpan ID tombol yang terakhir diklik
+
+// Fungsi untuk memperbarui status tombol play/pause berdasarkan playStatus[chartId]
+function updatePlayButtonState() {
+    // Update tombol play/pause untuk semua chart
+    document.querySelectorAll(".btn-play-chart").forEach((button) => {
+        const chartId = button.getAttribute("data-id");
+        const icon = button.querySelector("span");
+
+        // Jika chart ini sedang diputar, ubah ikon menjadi pause
+        if (chartId === currentChartId && playStatus[chartId]?.isPlaying) {
+            icon.textContent = "pause";  // Set ikon ke pause jika audio sedang diputar
+            button.classList.add("active");
+        } else {
+            icon.textContent = "play_arrow";  // Set ikon ke play jika audio tidak diputar
+            button.classList.remove("active");
+        }
+    });
 }
 
-// Fungsi untuk mempause chart
-function pauseChart() {
-    Audio.pause();
-    isPlaying = false;
-    isChartPlaying = false;
-    updatePlayButtonState();
-}
-
-// Update status tombol play/pause berdasarkan playStatus[chartId]
+// Event listener untuk tombol .btn-play-chart
 document.querySelectorAll(".btn-play-chart").forEach((button) => {
     button.addEventListener("click", () => {
         const audioSrc = button.getAttribute("data-audio-src");
         const chartName = button.getAttribute("data-name");
         const chartArtist = button.getAttribute("data-kategori");
-        const chartId = button.getAttribute("data-id"); // Ambil data-id
+        const chartId = button.getAttribute("data-id");
 
-        // Cek apakah chart sedang diputar dan apakah audio yang sedang diputar memiliki src yang sama
-        if (playStatus[chartId] && playStatus[chartId].isPlaying) {
-            // Jika audio sedang diputar, pause audio
-            Audio.pause();
-            playStatus[chartId] = { isPlaying: false }; // Menandakan audio ini dipause
-        } else {
-            // Jika audio tidak diputar atau audio berbeda, putar audio chart ini
-            playChartAudio(audioSrc, chartName, chartArtist, chartId);
+        // Jika tombol yang sama diklik lagi
+        if (lastClickedBtnId === chartId) {
+            if (playStatus[chartId]?.isPlaying) {
+                // Jika audio sedang diputar, pause audio
+                Audio.pause();
+                playStatus[chartId] = { isPlaying: false };  // Update status play/pause
+                currentChartId = null;  // Reset chart yang sedang diputar
+            } else {
+                // Jika audio sedang dipause, lanjutkan memutar (tetapi jangan reset ke awal)
+                Audio.play();  // Lanjutkan audio tanpa reset
+                playStatus[chartId] = { isPlaying: true };  // Update status play/pause
+            }
+            updatePlayButtonState();  // Update status tombol play/pause
+            return;  // Tidak perlu lanjutkan ke logika lain jika tombol yang sama diklik lagi
         }
 
-        // Memperbarui status tombol play/pause berdasarkan data-id
-        updatePlayButtonState(); // Memanggil update icon state
+        // Simpan ID tombol yang sedang diklik
+        lastClickedBtnId = chartId;
+
+        // Jika chart lain sedang diputar, pause audio yang sedang diputar sebelumnya
+        if (currentChartId && currentChartId !== chartId) {
+            // Hentikan audio yang sedang diputar
+            Audio.pause();
+            playStatus[currentChartId] = { isPlaying: false };  // Update status play/pause untuk chart yang lama
+            currentChartId = null;  // Reset chart yang sedang diputar
+        }
+
+        // Putar chart baru
+        playChartAudio(audioSrc, chartName, chartArtist, chartId);
+
+        // Update status tombol play/pause untuk semua chart
+        updatePlayButtonState();  // Update tombol play/pause setelah perubahan
     });
 });
 
-// ----------------------------
+
+// Event listener for the main play/pause button
+document.querySelector(".play-pause").addEventListener("click", () => {
+    if (Audio.paused) {
+        if (currentChartId) {
+            playChartAudio(Audio.src, musicName.innerHTML, musicArtist.innerHTML, currentChartId);
+        }
+    } else {
+        Audio.pause();
+        if (currentChartId) {
+            playStatus[currentChartId].isPlaying = false;
+            currentChartId = null;
+        }
+    }
+    updatePlayButtonState();  // Update play/pause button state after change
+});
+
+// Update the icon when audio is paused or played
+Audio.onpause = () => {
+    if (currentChartId) {
+        playStatus[currentChartId].isPlaying = false;
+        updatePlayButtonState();
+    }
+};
+
+Audio.onplay = () => {
+    if (currentChartId) {
+        playStatus[currentChartId].isPlaying = true;
+        updatePlayButtonState();
+    }
+};
+
 // Play/Pause Logic
 // ----------------------------
 

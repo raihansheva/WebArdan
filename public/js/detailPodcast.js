@@ -32,7 +32,7 @@ tombolKananOP.addEventListener("click", () => {
 
 const cardA = document.querySelector(".card-DP");
 const cardB = document.querySelector(".card-DP-B");
-const tontonSiaranBtnA = document.querySelector(".card-DP .DP-author");
+const tontonSiaranBtnA = document.querySelector(".card-DP .DP-view");
 const tontonSiaranBtnB = document.querySelector(".card-DP-B .view-DP-B");
 
 cardA.style.display = "block";
@@ -83,7 +83,7 @@ function onYouTubeIframeAPIReady() {
         width: "640",
         playerVars: {
             listType: "playlist",
-            list: playlistID, // Playlist ID yang diambil dari data attribute
+            list: playlistID, // Playlist ID yang diambil dari atribut data
         },
         events: {
             onReady: onPlayerReady,
@@ -91,9 +91,25 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+// Menambahkan thumbnail YouTube secara dinamis di belakang tombol play
+document.querySelectorAll('.box-video, .box-video-mid').forEach(videoBox => {
+    const videoId = videoBox.getAttribute('data-video-id');
+    
+    if (videoId) {
+        // Membuat elemen img untuk thumbnail
+        const thumbnailImg = document.createElement('img');
+        thumbnailImg.classList.add('video-thumbnail');
+        thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        thumbnailImg.alt = "Thumbnail";
+        
+        // Menyisipkan thumbnail ke dalam box-video atau box-video-mid
+        videoBox.prepend(thumbnailImg);
+    }
+});
+
+// Callback ketika player siap
 function onPlayerReady(event) {
-    // Autoplay dinonaktifkan untuk sementara
-    // event.target.playVideo(); 
+    // Anda dapat menambahkan logika tambahan saat player siap, jika diperlukan
 }
 
 const cards = document.querySelectorAll('.card-episode');

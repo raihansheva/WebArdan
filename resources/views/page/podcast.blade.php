@@ -59,6 +59,9 @@
                 <div class="area-contentYT-kiri">
                     @foreach ($videos as $video)
                         <div class="box-area-videoYT-kiri" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                            <img class="video-thumbnail"
+                                src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                alt="Thumbnail">
                             <div class="btn-play-videoYT-kiri"
                                 onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                                 <span class="material-symbols-rounded">play_arrow</span>
@@ -71,6 +74,9 @@
                 @foreach (collect($videos)->slice(1, 2) as $video)
                     <div class="box-area-videoYT-kanan"
                         data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                        <img class="video-thumbnail"
+                            src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                            alt="Thumbnail">
                         <div class="btn-play-videoYT-kanan"
                             onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                             <span class="material-symbols-rounded">play_arrow</span>

@@ -9,15 +9,18 @@
                 <div class="area-image-DP">
                     <div class="card-DP">
                         <div class="card-DP-body">
-                            <div class="btn-play-DP" data-audio-src="./storage/{{ $detail_podcast->file }}" data-id="{{ $detail_podcast->id }}">
+                            <img class="image-podcast-detail" src="./storage/{{ $detail_podcast->image_podcast }}"
+                                alt="" srcset="">
+                            <div class="btn-play-DP" data-audio-src="./storage/{{ $detail_podcast->file }}"
+                                data-id="{{ $detail_podcast->id }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                                 <p style="display: none;" id="id_podcast">{{ $detail_podcast->podcast_id }}</p>
                                 <p style="display: none;" id="idP">{{ $detail_podcast->id }}</p>
                             </div>
                         </div>
                         <div class="card-DP-header">
-                            <div class="DP-author">
-                            </div>
+                            {{-- <div class="DP-author">
+                            </div> --}}
                             <div class="DP-view" id="btn-tonton">
                                 <p class="text-watchP">Tonton Podcast</p>
                             </div>
@@ -72,7 +75,8 @@
                                             </div>
                                         </div>
                                         <div class="card-image-podcast-episode">
-                                            <!-- Gambar atau konten lainnya -->
+                                            <img src="./storage/{{ $epsgroupList->image_podcast }}" alt=""
+                                                class="image-podcast">
                                         </div>
                                     </div>
                                 </a>
@@ -144,6 +148,9 @@
                         <div class="area-video-top">
                             @foreach (collect($videos)->slice(0, 2) as $video)
                                 <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                    <img class="video-thumbnail"
+                                        src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                        alt="Thumbnail">
                                     <div class="btn-play-video"
                                         onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
@@ -155,6 +162,9 @@
                             @foreach (collect($videos)->slice(2, 1) as $video)
                                 <div class="box-video-mid"
                                     data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                    <img class="video-thumbnail"
+                                        src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                        alt="Thumbnail">
                                     <div class="btn-play-video-mid"
                                         onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
@@ -165,6 +175,9 @@
                         <div class="area-video-bottom">
                             @foreach (collect($videos)->slice(3, 2) as $video)
                                 <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                    <img class="video-thumbnail"
+                                        src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                        alt="Thumbnail">
                                     <div class="btn-play-video"
                                         onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
