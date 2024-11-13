@@ -121,6 +121,7 @@ class HomeController extends Controller
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $apiKey = env('YOUTUBE_API_KEY');
         $playlistId = $playlist->link_youtube;
+        $stream = Streaming::where('status', 'streaming')->first();
 
         // Panggil YouTube API untuk mendapatkan video dari playlist
         $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
@@ -148,6 +149,7 @@ class HomeController extends Controller
             'podcast' => $podcast,
             'videos' => $videos,
             'topInfo' => $topInfo,
+            'stream' => $stream
         ]);
     }
 
@@ -163,6 +165,8 @@ class HomeController extends Controller
         $allpodcast = Podcast::all();
 
         $topInfo = Info::where('top_news', true)->limit(5)->get();
+
+        $stream = Streaming::where('status', 'streaming')->first();
         // dd($epsgroup);
         $playlist = Youtube::first();
 
@@ -196,6 +200,7 @@ class HomeController extends Controller
             'all_podcast' => $allpodcast,
             'top_info' => $topInfo,
             'videos' => $videos,
+            'stream' => $stream,
         ]);
     }
 

@@ -75,11 +75,11 @@
                             <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="area-thumbnail">
-                            <a class="link-streaming" href="">
-                                <div class="btn-play-streaming">
-                                    <span class="material-symbols-rounded">play_arrow</span>
-                                </div>
-                            </a>
+                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
+                                srcset="">
+                            <div class="btn-play-streaming">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
                         <div class="line-streaming"></div>
                     </div>

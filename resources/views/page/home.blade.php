@@ -430,6 +430,9 @@
                                             <i class='bx bxl-twitter'></i>
                                         </a>
                                     @endif
+                                    {{-- <div class="area-name-announcer"> --}}
+                                        <h3 class="name-announcer">{{ $announcerList->name_announcer }}</h3>
+                                    {{-- </div> --}}
                                 </div>
                             </swiper-slide>
                         @endforeach
