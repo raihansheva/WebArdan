@@ -121,7 +121,7 @@ thead tr {
 }
 
 thead th {
-    font-weight: 200;
+    font-weight: 300;
 }
 
 tbody tr {
@@ -215,16 +215,6 @@ tbody tr {
     align-items: center;
 }
 
-.btn-play-streaming{
-    height: auto;
-    width: auto;
-    border: 1px var(--primary-color) solid;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-    border-radius: 8px;
-    color: var(--primary-color);
-    
-}
 
 .btn-play-streaming{
     height: 65px;
@@ -236,6 +226,15 @@ tbody tr {
     justify-content: center;
     align-items: center;
     transition: all 0.4s ease-in-out;
+    position: absolute;
+}
+
+.image-streaming{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    filter: brightness(0.5);
 }
 
 .btn-play-streaming:hover{

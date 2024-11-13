@@ -31,6 +31,7 @@ class HomeController extends Controller
         $banner = Banner::all();
 
         $stream = Streaming::where('status', 'streaming')->get();
+        $streamUpcoming = Streaming::where('status' , 'upcoming')->limit(1)->get();
 
         $program = Program::all();
 
@@ -78,6 +79,7 @@ class HomeController extends Controller
         return view('page.home', [
             'banner' => $banner,
             'stream' => $stream,
+            'streamUpcoming' => $streamUpcoming,
             'program' => $program,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
@@ -204,12 +206,12 @@ class HomeController extends Controller
 
         $topInfo = Info::where('top_news', true)->limit(5)->get();
 
-
+        $stream = Streaming::where('status', 'streaming')->first();
 
         return view('page.chart', [
             'kategori' => $Kategori,
             'top_info' => $topInfo,
-
+            'stream' => $stream,
         ]);
     }
 
@@ -222,6 +224,7 @@ class HomeController extends Controller
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
+        $stream = Streaming::where('status', 'streaming')->first();
 
         return view('page.infoNews', [
             'bannerInfo' => $bannerI,
@@ -230,6 +233,7 @@ class HomeController extends Controller
             'top_info' => $topInfo,
             'event_upcoming' => $event_upcoming,
             'artis' => $artis,
+            'stream' => $stream
         ]);
     }
 
@@ -243,7 +247,7 @@ class HomeController extends Controller
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
-
+        $stream = Streaming::where('status', 'streaming')->first();
 
         // dd($info);
 
@@ -254,6 +258,7 @@ class HomeController extends Controller
             'top_info' => $topInfo,
             'event_upcoming' => $event_upcoming,
             'artis' => $artis,
+            'stream' => $stream
         ]);
     }
 
@@ -265,13 +270,15 @@ class HomeController extends Controller
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $bannerYT = BannerYoutube::first();
+        $stream = Streaming::where('status', 'streaming')->first();
 
         return view('page.youtube', [
             'bannerYT' => $bannerYT,
             'youtube' => $youtube,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
-            'top_info' => $topInfo
+            'top_info' => $topInfo,
+            'stream' => $stream
         ]);
     }
 

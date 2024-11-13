@@ -48,7 +48,7 @@
 
     .card-A .card-body {
         height: 200px;
-        padding: 25px;
+        /* padding: 25px; */
     }
 
     .card-A .card-header .author {
@@ -743,7 +743,7 @@
 
     .card-A .card-body {
         height: 270px;
-        padding: 20px;
+        /* padding: 20px; */
     }
 
     .card-A .card-header .author {
@@ -900,7 +900,7 @@
 
     .title-info,
     .title-news {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .area-content-news {
@@ -913,7 +913,8 @@
     }
 
     .box-news {
-        height: 60px;
+        height: 40px;
+        padding: 6px;
     }
 
     .area-image {
@@ -929,7 +930,7 @@
     }
 
     .title-bottom-info {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     /* ------------- */
@@ -942,6 +943,7 @@
 
     .area-content-event {
         height: 320px;
+        gap: 10px;
     }
 
     .area-countdown {
@@ -963,6 +965,10 @@
 
     .title-timer {
         font-size: 14px;
+    }
+
+    .area-content-event-kanan {
+        gap: 10px;
     }
 
     .date-month,
@@ -1018,6 +1024,7 @@
 
     .area-content-PV {
         gap: 30px;
+        margin-top: 100px;
     }
 
     .ornamen-PV-1 {
@@ -1067,26 +1074,29 @@
 
     .content-podcast {
         gap: 15px;
+        margin-top: 0px;
     }
 
     .card-podcast {
         width: calc(50% - 8px);
-        height: 225px;
+        height: auto;
+        margin-top: 10px;
     }
 
     .card-podcast .card-body-podcast {
-        height: 68%;
+        height: 72%;
         padding: 10px;
         gap: 2px;
     }
 
     .card-podcast .card-header-podcast .author-podcast {
         width: 48%;
-        height: 40px;
+        height: 35px;
     }
     .card-podcast .card-header-podcast .author-podcast::before {
         height: 42px;
         width: 52%;
+        box-shadow: -15px -15px 0 white;
     }
 
     .card-podcast .card-header-podcast .view-podcast {
@@ -1128,6 +1138,10 @@
         width: 35%;
     }
 
+    .content-video{
+        gap: 10px;
+    }
+
     .title-video {
         font-size: 30px;
     }
@@ -1137,14 +1151,20 @@
     }
 
     .btn-play-video {
-        height: 45px;
-        width: 45px;
+        height: 35px;
+        width: 35px;
         border-radius: 50%;
         background-color: var(--primary-color);
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
+        opacity: 0.5;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-play-video:hover{
+        opacity: 100;
     }
 
     .btn-play-video span {
@@ -1167,7 +1187,7 @@
 
     /* area-announcer */
     .page-6 {
-        height: 100vh;
+        height: 100dvh;
     }
 
     .svg-large {
@@ -1233,7 +1253,7 @@
         height: 230px;
     }
 
-    .area-profile-announcer i{
+    .area-profile-announcer i {
         font-size: 26px;
         color: white;
     }
@@ -1261,7 +1281,7 @@
         height: auto;
         /* border: 1px green solid; */
         display: flex;
-        gap: 20px;
+        gap: 10px;
     }
 
     .tab-chart {
@@ -1294,7 +1314,7 @@
 
     .area-chart-artis {
         width: auto;
-        height: 300px;
+        height: auto;
         margin-top: 40px;
     }
 
@@ -1307,6 +1327,7 @@
 
     .content-chart {
         width: 100%;
+        height: fit-content;
     }
 
     .title-chart {
@@ -1331,6 +1352,16 @@
         height: 30px;
     }
 
+    .btn-play-chart{
+        height: 40px;
+        width: 40px;
+        margin-top: 0px;
+    }
+
+    .btn-play-chart span{
+        font-size: 24px;
+    }
+
     .text-btn-chart {
         font-size: 14px;
     }
@@ -1349,11 +1380,11 @@
         height: 85px;
     }
 
-    .nama{
+    .nama {
         font-size: 12px;
     }
 
-    .bio{
+    .bio {
         font-size: 14px;
     }
 
@@ -1415,11 +1446,11 @@
         height: 150px;
     }
 
-    .nama-programs{
+    .nama-programs {
         font-size: 16px;
     }
 
-    .jam-programs{
+    .jam-programs {
         font-size: 14px;
     }
 
@@ -1604,7 +1635,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
+    }
 
     .desk-program {
         font-size: 8px;
@@ -1793,7 +1824,7 @@
         -o-border-radius: 8px;
     }
 
-    .area-info-event{
+    .area-info-event {
         gap: 3px;
     }
 
@@ -2026,7 +2057,7 @@
         margin: 0px 20px;
     }
 
-    .area-profile-announcer i{
+    .area-profile-announcer i {
         font-size: 22px;
         color: white;
     }
@@ -2211,11 +2242,11 @@
         height: 120px;
     }
 
-    .nama-programs{
+    .nama-programs {
         font-size: 14px;
     }
 
-    .jam-programs{
+    .jam-programs {
         font-size: 12px;
     }
 

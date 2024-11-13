@@ -626,7 +626,7 @@ body {
     font-family: "Bebas Neue";
     /* letter-spacing: 3px; */
     font-weight: 400;
-    font-size: 2.7rem;
+    font-size: 38px;
 }
 
 .area-footer-address {
@@ -637,7 +637,7 @@ body {
 .footer-address {
     font-family: "Poppins";
     margin: 0px;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 5px;
 }
 
@@ -648,7 +648,7 @@ body {
 }
 
 .text-name{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     font-family: "Poppins";
     margin: 0px;

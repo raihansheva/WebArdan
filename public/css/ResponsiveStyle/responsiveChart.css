@@ -144,11 +144,11 @@
     }
 
     thead tr{
-        font-size: 24px;
+        font-size: 22px;
     }
 
     tbody tr{
-        font-size: 22px;
+        font-size: 18px;
         height: 45px;
     }
 
@@ -196,11 +196,12 @@
     }
 
     .content-news{
-        gap: 18px;
+        gap: 15px;
     }
 
-    .bop-news{
+    .box-news{
         height: 60px;
+        padding: 8px;
     }
 
     .desk-news{

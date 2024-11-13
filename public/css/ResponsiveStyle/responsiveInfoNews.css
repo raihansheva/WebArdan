@@ -358,7 +358,7 @@
     /* area-news */
 
     .header-news {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     .box-news {
@@ -382,7 +382,7 @@
     /* area streaming */
 
     .title-streaming {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     .area-thumbnail {
@@ -406,11 +406,11 @@
 
     /* area news */
     .title-top-news {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     .content-top-news {
-        gap: 18px;
+        gap: 12px;
     }
 
     .box-top-news {
@@ -425,7 +425,7 @@
     /* area event */
 
     .title-event {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     .area-event-bottom {
@@ -494,7 +494,7 @@
     }
 
     .title-info-artis {
-        font-size: 36px;
+        font-size: 30px;
     }
 
     /* area box */

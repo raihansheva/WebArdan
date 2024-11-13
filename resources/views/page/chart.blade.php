@@ -61,7 +61,8 @@
                     </div>
                     <div class="content-SN-kiri">
                         <div class="box-streaming">
-                            <div class="btn-play-streaming">
+                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt="" srcset="">
+                            <div class="btn-play-streaming" data-audio-src="music/music1.mp3">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>

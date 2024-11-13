@@ -25,7 +25,8 @@
                     @foreach ($stream as $streamList)
                         <div class="card-A">
                             <div class="card-body">
-                                <div class="btn-play-streaming" data-audio-src="music/music1.mp3" data-index="0">
+                                <img class="image-streaming" src="./storage/{{ $streamList->image_stream }}">
+                                <div class="btn-play-streaming" data-audio-src="https://stream.rcs.revma.com/ugpyzu9n5k3vv">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </div>
@@ -43,7 +44,7 @@
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
                                 <div id="player"
-                                    data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8"
+                                    data-pl=""
                                     style="display: none;"></div>
                             </div>
                             <div class="card-footer">
@@ -55,14 +56,20 @@
                     @endforeach
                 </div>
                 <div class="contentS-kanan">
-                    <div class="area-nextP">
-                        <div class="area-title-nextP">
-                            <p class="title-nextP"> Next Program</p>
-                        </div>
-                        <div class="area-thumbnail-nextP">
-                            
-                        </div>
-                    </div>
+                    @if ($streamUpcoming)
+                        @foreach ($streamUpcoming as $streamUpcomingList)
+                            <div class="area-nextP">
+                                <div class="area-title-nextP">
+                                    <p class="title-nextP"> Next Program</p>
+                                </div>
+                                <div class="area-thumbnail-nextP">
+                                    <img class="image-stream-upcoming"
+                                        src="./storage/{{ $streamUpcomingList->image_stream }}" alt="">
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                    @endif
                 </div>
             </div>
         </div>

@@ -63,7 +63,6 @@ window.addEventListener("load", () => {
 let playPodcastStatus = {};
 let currentPodcastId = null; // Simpan ID podcast yang sedang dimainkan
 
-// Load Podcast Details Function
 function loadPodcastDetails(idP) {
     fetch(`/podcast/details/${idP}`)
         .then((response) => response.json())
@@ -81,24 +80,6 @@ function loadPodcastDetails(idP) {
             }
         })
         .catch((error) => console.error("Failed to load podcast data:", error));
-}
-
-function loadEpisode(idP, episode, direction) {
-    fetch(`/podcast/${idP}/episode/${episode}/${direction}`)
-        .then((response) => response.json())
-        .then((data) => {
-            if (data) {
-                musicName.innerHTML = data.judul_podcast;
-                musicArtist.innerHTML = data.genre_podcast;
-                Playimage.src = "./storage/" + data.image_podcast;
-                Audio.src = "./storage/" + data.file;
-                Audio.load();
-                playPodcastStatus[idP] = { isPlaying: false }; // Reset status
-            } else {
-                console.error("Episode not found.");
-            }
-        })
-        .catch((error) => console.error("Failed to load episode data:", error));
 }
 
 // Fungsi play podcast
@@ -194,52 +175,119 @@ prevBtn.addEventListener("click", () => {
 
 // Streaming Functions
 // ----------------------------
-
+// Update the streaming audio when it's loaded
 function loadStreamingAudio(streamingSrc, streamName, streamArtist) {
     if (streamingSrc) {
+        console.log("Attempting to load streaming audio from:", streamingSrc);
+
+        // If new source or paused, load and play the audio
         if (streamingSrc !== lastStreamingSrc || !isStreamingPlaying) {
             Audio.src = streamingSrc;
+            Audio.crossOrigin = "anonymous";
+
+            // Load audio and update UI on successful load
             Audio.load();
             lastStreamingSrc = streamingSrc;
 
-            Audio.onerror = () => {
-                console.error(
-                    "Streaming audio failed to load. Check the streaming source."
-                );
+            // Handle errors if audio fails to load
+            Audio.onerror = (error) => {
+                console.error("Streaming audio failed to load:", error);
             };
 
+            // Start playback once audio is ready
             Audio.oncanplay = () => {
                 musicName.innerHTML = streamName;
                 musicArtist.innerHTML = streamArtist;
-                playStreaming();
-                isStreamingPlaying = true;
+                playStreaming();  // Play the audio
             };
         } else {
-            pauseStreaming();
-            isStreamingPlaying = false;
+            pauseStreaming();  // Pause the streaming if the same audio is already playing
         }
     } else {
         console.error("Streaming source not found.");
     }
 }
 
+
+function updateStreamingPlayButtonState() {
+    // Update tombol play/pause untuk semua tombol streaming
+    document.querySelectorAll(".btn-play-streaming").forEach((button) => {
+        const streamingSrc = button.getAttribute("data-audio-src");  // Dapatkan sumber audio untuk tombol ini
+        const icon = button.querySelector("span");  // Ambil elemen span yang ada di dalam tombol untuk ikon
+
+        // Pastikan elemen icon ada
+        if (!icon) {
+            console.error("Icon not found in button: ", button);  // Debugging jika span tidak ditemukan
+            return;
+        }
+
+        // Jika sumber audio yang sedang dimainkan sama dengan tombol ini
+        if (streamingSrc === lastStreamingSrc) {
+            // Jika audio sedang diputar, ubah ikon menjadi 'pause'
+            if (isStreamingPlaying) {
+                icon.textContent = "pause";  // Ganti ikon menjadi 'pause'
+            } else {
+                // Jika audio dijeda, ubah ikon menjadi 'play_arrow'
+                icon.textContent = "play_arrow";  // Ganti ikon menjadi 'play_arrow'
+            }
+        } else {
+            // Jika tombol ini tidak terkait dengan audio yang sedang diputar, reset ikon ke 'play_arrow'
+            icon.textContent = "play_arrow";  // Ganti ikon menjadi 'play_arrow'
+        }
+    });
+}
+
+
+// Function to play streaming audio
 function playStreaming() {
     Audio.play()
         .then(() => {
-            isPlaying = true;
             isStreamingPlaying = true;
-            updatePlayButtonState();
+            console.log("Audio is streaming and playing, updating button state.");
+            updateStreamingPlayButtonState();  // Update the play button state for streaming
         })
-        .catch((error) => console.error("Streaming audio play error:", error));
+        .catch((error) => {
+            console.error("Streaming audio play error:", error);
+        });
 }
 
+// Function to pause streaming audio
 function pauseStreaming() {
     Audio.pause();
-    isPlaying = false;
     isStreamingPlaying = false;
-    updatePlayButtonState();
+    console.log("Audio is paused, updating button state.");
+    updateStreamingPlayButtonState();  // Update the play button state for streaming
 }
 
+// Event listener for streaming play/pause button
+document.querySelectorAll(".btn-play-streaming").forEach((button) => {
+    button.addEventListener("click", () => {
+        const streamingSrc = button.getAttribute("data-audio-src");
+        const streamName = "Streaming Audio";
+        const streamArtist = "Live Stream";
+
+        // Toggle play/pause based on the current state of the streaming audio
+        if (isStreamingPlaying && lastStreamingSrc === streamingSrc) {
+            pauseStreaming();  // Pause streaming if the same audio is playing
+        } else {
+            loadStreamingAudio(streamingSrc, streamName, streamArtist);  // Load and play new streaming audio
+        }
+    });
+});
+
+// Ensure autoplay doesn't happen on pause
+Audio.onpause = () => {
+    isStreamingPlaying = false;
+    updateStreamingPlayButtonState(); // Update button state when paused
+};
+
+// Ensure play button updates on play
+Audio.onplay = () => {
+    isStreamingPlaying = true;
+    updateStreamingPlayButtonState(); // Update button state when playing
+};
+// ----------------------------
+// chart
 // ----------------------------
 let currentChartId = null;  // Menyimpan ID chart yang sedang diputar
 let playStatus = {};  // Menyimpan status play/pause per chart
@@ -416,6 +464,35 @@ Audio.onpause = () => {
     }
     updatePlayButtonState();  // Panggil update untuk memperbarui ikon
 };
+// ----------------------------
+// progress bar
+// ----------------------------
+
+// Update progress bar based on audio time update
+Audio.addEventListener("timeupdate", () => {
+    if (Audio.duration) {
+        const progressPercent = (Audio.currentTime / Audio.duration) * 100;
+        progressBar.style.width = `${progressPercent}%`; // Update progress bar width
+        // updateAudioTimeDisplay();
+    }
+});
+
+// Format and display current and duration time
+// function updateAudioTimeDisplay() {
+//     const currentMinutes = Math.floor(Audio.currentTime / 60);
+//     const currentSeconds = Math.floor(Audio.currentTime % 60);
+//     const durationMinutes = Math.floor(Audio.duration / 60);
+//     const durationSeconds = Math.floor(Audio.duration % 60);
+
+//     // currentTimeDisplay.textContent = `${currentMinutes}:${currentSeconds < 10 ? "0" : ""}${currentSeconds}`;
+//     durationTimeDisplay.textContent = `${durationMinutes}:${durationSeconds < 10 ? "0" : ""}${durationSeconds}`;
+// }
+
+// Seek functionality: Jump to clicked position on progress bar
+progressDetails.addEventListener("click", (event) => {
+    const clickPosition = event.offsetX / progressDetails.clientWidth;
+    Audio.currentTime = clickPosition * Audio.duration;
+});
 // ----------------------------
 
 // function updatePlayButtonState() {
