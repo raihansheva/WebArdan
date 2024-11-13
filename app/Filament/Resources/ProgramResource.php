@@ -47,9 +47,9 @@ class ProgramResource extends Resource
                             ->directory('uploads/images_program')
                             ->disk('public')
                             ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=322,height=313']) // Ubah format ke array
+                            ->rules(['required', 'image', 'dimensions:width=322,height=280']) // Ubah format ke array
                             ->validationAttribute('Image Event')
-                            ->helperText('The image must be 322x313 pixels.'),
+                            ->helperText('The image must be 322x280 pixels.'),
                         TextInput::make('jam_program')->label('Jam Program :')->required(),
 
                     ])

@@ -146,7 +146,9 @@
             </div>
             <div class="area-audio-mobile">
                 <div class="area-image-audio-mobile">
-                    <div class="image-audio-mobile"></div>
+                    <div class="image-audio-mobile">
+                        {{-- <img src="" alt="-" /> --}}
+                    </div>
                 </div>
                 <div class="area-line-progress-mobile">
                     <div class="progress-details-mobile">
@@ -158,7 +160,7 @@
                 <div class="control-btn-mobile">
                     <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
                     <span class="material-symbols-rounded" id="prev-mobile">skip_previous</span>
-                    <div class="play-pause-mobile">
+                    <div class="play-pause play-pause-mobile" id="play-pause">
                         <span class="btn-play-mobile material-symbols-rounded">play_arrow</span>
                     </div>
                     <span class="material-symbols-rounded" id="next-mobile">skip_next</span>

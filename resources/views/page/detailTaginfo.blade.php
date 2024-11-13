@@ -1,7 +1,7 @@
 @extends('layout.main')
 <base href="{{ url('/') }}/">
-<link rel="stylesheet" href="css/StyleContent/detailTaginfo.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailTaginfo.css">
+<link rel="stylesheet" href="css/StyleContent/infoNews.css">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsiveInfoNews.css">
 @section('content')
     <section class="page-news-1">
         <div class="header-info-news">
@@ -76,11 +76,11 @@
                             <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="area-thumbnail">
-                            <a class="link-streaming" href="">
-                                <div class="btn-play-streaming">
-                                    <span class="material-symbols-rounded">play_arrow</span>
-                                </div>
-                            </a>
+                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
+                                srcset="">
+                            <div class="btn-play-streaming">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
                         </div>
                         <div class="line-streaming"></div>
                     </div>

@@ -448,7 +448,7 @@
     /* area news */
 
     .content-news {
-        height: 80%;
+        height: 100%;
         /* border: 1px blue solid; */
     }
 
@@ -473,7 +473,7 @@
     /* area content stream */
 
     .content-streaming {
-        height: 30%;
+        height: 20%;
         /* border: 1px  red solid; */
     }
 
