@@ -412,14 +412,14 @@ body {
 }
 
 .music-titles .name {
-    font-size: 16px;
+    font-size: 15px;
     font-family: "Poppins";
     margin: 0px;
 }
 
 .music-titles .artist {
     margin: 0px;
-    font-size: 17px;
+    font-size: 16px;
     margin-top: 3px;
     opacity: 0.9;
     font-family: "Poppins";
@@ -431,8 +431,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 60px;
-    margin-right: 40px;
+    margin-left: 20px;
+    margin-right: 10px;
 }
 
 .progress-details {

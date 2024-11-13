@@ -63,7 +63,7 @@
 
 .card-DP .card-DP-body {
     /*width: 100%;
-    */height: 70%;
+    */height: 60%;
     background-color: white;
     padding: 30px;
     overflow: hidden;
@@ -338,7 +338,7 @@
 
 .title-detail-kanan {
     font-family: "Bebas Neue";
-    font-size: 46px;
+    font-size: 40px;
     font-weight: 300;
     margin: 0px;
     color: white;
@@ -467,7 +467,7 @@
 }
 
 .title-OP {
-    font-size: 44px;
+    font-size: 40px;
     font-family: "Bebas Neue";
     font-weight: 200;
     margin: 0px;
@@ -708,7 +708,7 @@
 }
 
 .title-video {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 200;
     font-family: "Bebas Neue";
     margin: 0px;
@@ -764,8 +764,8 @@
 .btn-play-video {
     position: relative;
     z-index: 2; 
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-color: var(--primary-color);
     cursor: pointer;
@@ -782,7 +782,7 @@
 
 .btn-play-video span {
     color: black;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .area-video-mid {
@@ -804,8 +804,8 @@
 .btn-play-video-mid {
     position: relative;
     z-index: 2; 
-    height: 75px;
-    width: 75px;
+    height: 55px;
+    width: 55px;
     border-radius: 50%;
     background-color: var(--primary-color);
     cursor: pointer;
@@ -822,7 +822,7 @@
 
 .btn-play-video-mid span {
     color: black;
-    font-size: 38px;
+    font-size: 33px;
 }
 
 .popup-player-yt {
@@ -886,7 +886,7 @@
 .title-news {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 200;
     color: white;
 }

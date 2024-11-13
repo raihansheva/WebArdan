@@ -82,6 +82,24 @@ function loadPodcastDetails(idP) {
         .catch((error) => console.error("Failed to load podcast data:", error));
 }
 
+function loadEpisode(idP, episode, direction) {
+    fetch(`/podcast/${idP}/episode/${episode}/${direction}`)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data) {
+                musicName.innerHTML = data.judul_podcast;
+                musicArtist.innerHTML = data.genre_podcast;
+                Playimage.src = "./storage/" + data.image_podcast;
+                Audio.src = "./storage/" + data.file;
+                Audio.load();
+                playPodcastStatus[idP] = { isPlaying: false }; // Reset status
+            } else {
+                console.error("Episode not found.");
+            }
+        })
+        .catch((error) => console.error("Failed to load episode data:", error));
+}
+
 // Fungsi play podcast
 function playPodcast(idP) {
     if (!playPodcastStatus[idP]?.isPlaying) {

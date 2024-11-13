@@ -260,7 +260,7 @@
 
 /* area content kiri */
 .area-content-VNS-kiri {
-    width: 50%;
+    width: 60%;
     height: auto;
     /* border: 1px green solid; */
 }
@@ -341,7 +341,7 @@
 .timer {
     margin: 0px;
     font-family: "Krub";
-    font-size: 38px;
+    font-size: 36px;
     color: white;
     font-weight: 200;
 }
@@ -349,7 +349,7 @@
 .title-timer {
     margin: 0px;
     font-family: "Krub";
-    font-size: 22px;
+    font-size: 20px;
     color: white;
     font-weight: 200;
 }
@@ -672,15 +672,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
 }
 
-/* .image-streaming{
+.image-streaming{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: abs;
+    position: relative;
     filter: brightness(0.5);
-} */
+}
 
 .btn-play-streaming span {
     font-size: 28px;
