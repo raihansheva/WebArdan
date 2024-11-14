@@ -341,6 +341,11 @@ body {
     align-items: center;
 }
 
+
+.mobile{
+    display: none;
+}
+
 .area-control-progres {
     background-color: #17171769;
     width: 100%;

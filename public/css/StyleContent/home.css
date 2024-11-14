@@ -727,6 +727,248 @@ swiper-slide img {
 
 /* ------------------ */
 
+/* area info & news */
+.page-ig-twitter {
+    width: 100%;
+    height: auto;
+    /* background-color: #353535; */
+    position: relative; /* Tambahkan posisi relatif untuk membuat SVG di belakang bekerja */
+}
+
+
+.area-ig-twitter {
+    width: auto;
+    height: auto;
+    margin: 0px 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative; /* Pastikan elemen ini tidak absolute, agar tidak terpengaruh posisi lain */
+    z-index: 1; /* Lebih tinggi dari SVG */
+}
+
+.line-ig-twitter {
+    width: 100%;
+    border: 2px white solid;
+    margin-top: 65px;
+    border-radius: 5px;
+}
+
+/* area-content-info-news */
+.area-content-ig-twitter {
+    width: 100%;
+    height: auto;
+    /* border: 1px black solid; */
+    margin-top: 30px;
+    display: flex;
+    gap: 50px;
+}
+/* ------- */
+
+/* area-content-info */
+.area-content-feed-instagram{
+    width: 65%;
+    height: 100%;
+    /* border: 1px red solid; */
+}
+
+.header-feed-instagram {
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+    text-align: start;
+}
+
+.title-feed-instagram {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    font-weight: 200;
+    color: white;
+}
+
+.content-feed-instagram {
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+}
+
+
+.area-content-box-feed-instagram {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    /* padding: 0 10px; */
+}
+
+.box-feed-instagram {
+    flex: 0 0 calc(33.33% - 13.5px);
+    height: 280px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+/* pop up feed instagram */
+.popup-feed {
+    display: none; /* Sembunyikan pop-up secara default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Pastikan pop-up di atas elemen lainnya */
+}
+
+.popup-content-feed {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+    /*Lebarpop-up*/
+    height: 250px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.area-info-feed {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* .desk-program {
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+}
+
+.jam-program {
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 500;
+}
+
+.title-box-program {
+    font-size: 34px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+} */
+
+/* --------------------- */
+
+/* ------------------ */
+
+/* area-content-news */
+.area-content-twitter {
+    width: 35%;
+    height: 519px;
+    /* border: 1px green solid; */
+}
+
+.header-news {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-news {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    font-weight: 200;
+    color: white;
+}
+
+.content-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.box-news {
+    width: auto;
+    height: 66px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-image {
+    width: 30%;
+    /*border: 1px black solid;
+    */
+    background-color: #333;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    height: 100%;
+}
+
+.area-text {
+    width: 70%;
+    /* border: 1px black solid; */
+    height: fit-content;
+}
+
+.desk-news {
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+}
+
+
+.image-top-info{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+/* ------------------ */
+
 /* area-event */
 .page-4 {
     width: 100%;
@@ -1659,6 +1901,78 @@ swiper-slide img {
     background-color: white;
     margin: 0px 64px 0px 64px;
 }
+
+/* pop up announcer */
+.popup-announcer {
+    display: none; /* Sembunyikan pop-up secara default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Pastikan pop-up di atas elemen lainnya */
+}
+
+.popup-content-announcer {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+    /*Lebarpop-up*/
+    height: 250px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.area-info-announcer {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* .desk-program {
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+}
+
+.jam-program {
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 500;
+}
+
+.title-box-program {
+    font-size: 34px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+} */
+
+/* --------------------- */
+
 /* ---------------- */
 
 /* area-chart -artis */
@@ -1891,7 +2205,8 @@ tbody td {
     height: 150px;
     background-color: #f0f0f0;
     border-radius: 10px;
-    overflow: hidden; /* Tambahkan ini agar konten di dalam box tidak keluar */
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .image-artis {
@@ -1938,6 +2253,77 @@ tbody td {
     margin: 0px;
     font-weight: 200;
 }
+
+/* pop up feed instagram */
+.popup-artis {
+    display: none; /* Sembunyikan pop-up secara default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Pastikan pop-up di atas elemen lainnya */
+}
+
+.popup-content-artis {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 500px;
+    /*Lebarpop-up*/
+    height: 250px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.close {
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.area-info-artis {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* .desk-program {
+    font-size: 18px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+}
+
+.jam-program {
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 500;
+}
+
+.title-box-program {
+    font-size: 34px;
+    font-family: "Bebas Neue";
+    font-weight: 200;
+    margin: 0px;
+} */
+
+/* --------------------- */
 
 /* ---------------- */
 /* ---------------- */

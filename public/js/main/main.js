@@ -131,8 +131,13 @@ function updatePodcastPlayButtonState(idP) {
         const buttonId = button.getAttribute("data-id");
 
         if (buttonId === idP || button.classList.contains("play-pause")) {
-            icon.textContent = playPodcastStatus[idP]?.isPlaying ? "pause" : "play_arrow";
-            button.classList.toggle("active", playPodcastStatus[idP]?.isPlaying);
+            icon.textContent = playPodcastStatus[idP]?.isPlaying
+                ? "pause"
+                : "play_arrow";
+            button.classList.toggle(
+                "active",
+                playPodcastStatus[idP]?.isPlaying
+            );
         } else if (button.classList.contains("btn-play-DP")) {
             icon.textContent = "play_arrow"; // Reset ikon tombol lainnya
             button.classList.remove("active");
@@ -216,26 +221,25 @@ function loadStreamingAudio(streamingSrc, streamName, streamArtist) {
             Audio.oncanplay = () => {
                 musicName.innerHTML = streamName;
                 musicArtist.innerHTML = streamArtist;
-                playStreaming();  // Play the audio
+                playStreaming(); // Play the audio
             };
         } else {
-            pauseStreaming();  // Pause the streaming if the same audio is already playing
+            pauseStreaming(); // Pause the streaming if the same audio is already playing
         }
     } else {
         console.error("Streaming source not found.");
     }
 }
 
-
 function updateStreamingPlayButtonState() {
     // Update tombol play/pause untuk semua tombol streaming
     document.querySelectorAll(".btn-play-streaming").forEach((button) => {
-        const streamingSrc = button.getAttribute("data-audio-src");  // Dapatkan sumber audio untuk tombol ini
-        const icon = button.querySelector("span");  // Ambil elemen span yang ada di dalam tombol untuk ikon
+        const streamingSrc = button.getAttribute("data-audio-src"); // Dapatkan sumber audio untuk tombol ini
+        const icon = button.querySelector("span"); // Ambil elemen span yang ada di dalam tombol untuk ikon
 
         // Pastikan elemen icon ada
         if (!icon) {
-            console.error("Icon not found in button: ", button);  // Debugging jika span tidak ditemukan
+            console.error("Icon not found in button: ", button); // Debugging jika span tidak ditemukan
             return;
         }
 
@@ -243,26 +247,27 @@ function updateStreamingPlayButtonState() {
         if (streamingSrc === lastStreamingSrc) {
             // Jika audio sedang diputar, ubah ikon menjadi 'pause'
             if (isStreamingPlaying) {
-                icon.textContent = "pause";  // Ganti ikon menjadi 'pause'
+                icon.textContent = "pause"; // Ganti ikon menjadi 'pause'
             } else {
                 // Jika audio dijeda, ubah ikon menjadi 'play_arrow'
-                icon.textContent = "play_arrow";  // Ganti ikon menjadi 'play_arrow'
+                icon.textContent = "play_arrow"; // Ganti ikon menjadi 'play_arrow'
             }
         } else {
             // Jika tombol ini tidak terkait dengan audio yang sedang diputar, reset ikon ke 'play_arrow'
-            icon.textContent = "play_arrow";  // Ganti ikon menjadi 'play_arrow'
+            icon.textContent = "play_arrow"; // Ganti ikon menjadi 'play_arrow'
         }
     });
 }
-
 
 // Function to play streaming audio
 function playStreaming() {
     Audio.play()
         .then(() => {
             isStreamingPlaying = true;
-            console.log("Audio is streaming and playing, updating button state.");
-            updateStreamingPlayButtonState();  // Update the play button state for streaming
+            console.log(
+                "Audio is streaming and playing, updating button state."
+            );
+            updateStreamingPlayButtonState(); // Update the play button state for streaming
         })
         .catch((error) => {
             console.error("Streaming audio play error:", error);
@@ -274,7 +279,7 @@ function pauseStreaming() {
     Audio.pause();
     isStreamingPlaying = false;
     console.log("Audio is paused, updating button state.");
-    updateStreamingPlayButtonState();  // Update the play button state for streaming
+    updateStreamingPlayButtonState(); // Update the play button state for streaming
 }
 
 // Event listener for streaming play/pause button
@@ -286,9 +291,9 @@ document.querySelectorAll(".btn-play-streaming").forEach((button) => {
 
         // Toggle play/pause based on the current state of the streaming audio
         if (isStreamingPlaying && lastStreamingSrc === streamingSrc) {
-            pauseStreaming();  // Pause streaming if the same audio is playing
+            pauseStreaming(); // Pause streaming if the same audio is playing
         } else {
-            loadStreamingAudio(streamingSrc, streamName, streamArtist);  // Load and play new streaming audio
+            loadStreamingAudio(streamingSrc, streamName, streamArtist); // Load and play new streaming audio
         }
     });
 });
@@ -307,9 +312,9 @@ Audio.onplay = () => {
 // ----------------------------
 // chart
 // ----------------------------
-let currentChartId = null;  // Menyimpan ID chart yang sedang diputar
-let playStatus = {};  // Menyimpan status play/pause per chart
-let lastClickedBtnId = null;  // Variabel untuk menyimpan ID tombol yang terakhir diklik
+let currentChartId = null; // Menyimpan ID chart yang sedang diputar
+let playStatus = {}; // Menyimpan status play/pause per chart
+let lastClickedBtnId = null; // Variabel untuk menyimpan ID tombol yang terakhir diklik
 
 // Fungsi untuk memutar chart audio
 function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
@@ -318,7 +323,7 @@ function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
         if (Audio.src !== audioSrc) {
             Audio.pause();
             if (currentChartId) {
-                playStatus[currentChartId] = { isPlaying: false };  // Set tombol sebelumnya jadi pause
+                playStatus[currentChartId] = { isPlaying: false }; // Set tombol sebelumnya jadi pause
             }
 
             // Set audio baru dan mulai memutar
@@ -329,11 +334,11 @@ function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
                     musicName.innerHTML = chartName;
                     musicArtist.innerHTML = chartArtist;
                     if (!playStatus[chartId]) {
-                        playStatus[chartId] = {};  // Inisialisasi jika belum ada
+                        playStatus[chartId] = {}; // Inisialisasi jika belum ada
                     }
                     playStatus[chartId].isPlaying = true;
-                    currentChartId = chartId;  // Update ID chart yang sedang diputar
-                    updatePlayButtonState();  // Update status tombol play/pause
+                    currentChartId = chartId; // Update ID chart yang sedang diputar
+                    updatePlayButtonState(); // Update status tombol play/pause
                 })
                 .catch((error) => console.error("Audio play error:", error));
         } else {
@@ -341,17 +346,17 @@ function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
             if (Audio.paused) {
                 Audio.play();
                 if (!playStatus[chartId]) {
-                    playStatus[chartId] = {};  // Inisialisasi jika belum ada
+                    playStatus[chartId] = {}; // Inisialisasi jika belum ada
                 }
                 playStatus[chartId].isPlaying = true;
             } else {
                 Audio.pause();
                 if (!playStatus[chartId]) {
-                    playStatus[chartId] = {};  // Inisialisasi jika belum ada
+                    playStatus[chartId] = {}; // Inisialisasi jika belum ada
                 }
                 playStatus[chartId].isPlaying = false;
             }
-            updatePlayButtonState();  // Update status tombol play/pause
+            updatePlayButtonState(); // Update status tombol play/pause
         }
     }
 }
@@ -359,21 +364,28 @@ function playChartAudio(audioSrc, chartName, chartArtist, chartId) {
 // Fungsi untuk memperbarui status tombol play/pause berdasarkan playStatus[chartId]
 function updatePlayButtonState() {
     // Update tombol play/pause untuk semua chart
-    document.querySelectorAll(".btn-play-chart, .play-pause").forEach((button) => {
-        const chartId = button.getAttribute("data-id");  // ID chart atau null untuk tombol utama
-        const icon = button.querySelector("span");
+    document
+        .querySelectorAll(".btn-play-chart, .play-pause")
+        .forEach((button) => {
+            const chartId = button.getAttribute("data-id"); // ID chart atau null untuk tombol utama
+            const icon = button.querySelector("span");
 
-        // Periksa apakah tombol adalah tombol chart spesifik atau tombol utama
-        const isMainPlayPauseButton = button.classList.contains("play-pause");
+            // Periksa apakah tombol adalah tombol chart spesifik atau tombol utama
+            const isMainPlayPauseButton =
+                button.classList.contains("play-pause");
 
-        if ((chartId === currentChartId && playStatus[chartId]?.isPlaying) || (isMainPlayPauseButton && !Audio.paused)) {
-            // Jika audio sedang diputar, ikon diubah ke "pause"
-            icon.textContent = "pause";
-        } else {
-            // Jika audio dijeda atau tidak diputar, ikon diubah ke "play_arrow"
-            icon.textContent = "play_arrow";
-        }
-    });
+            if (
+                (chartId === currentChartId &&
+                    playStatus[chartId]?.isPlaying) ||
+                (isMainPlayPauseButton && !Audio.paused)
+            ) {
+                // Jika audio sedang diputar, ikon diubah ke "pause"
+                icon.textContent = "pause";
+            } else {
+                // Jika audio dijeda atau tidak diputar, ikon diubah ke "play_arrow"
+                icon.textContent = "play_arrow";
+            }
+        });
 }
 
 // Fungsi untuk memutar lagu di chart tertentu
@@ -387,7 +399,7 @@ function playSong(chartId, audioSrc, chartName, chartArtist) {
                 musicName.innerHTML = chartName;
                 musicArtist.innerHTML = chartArtist;
                 playStatus[chartId] = { isPlaying: true };
-                updatePlayButtonState();  // Update tombol play/pause
+                updatePlayButtonState(); // Update tombol play/pause
             })
             .catch((error) => console.error("Audio play error:", error));
     }
@@ -397,8 +409,8 @@ function playSong(chartId, audioSrc, chartName, chartArtist) {
 function pauseSong(chartId) {
     if (!Audio.paused) {
         Audio.pause();
-        playStatus[chartId] = { isPlaying: false };  // Update status play/pause untuk chart ini
-        updatePlayButtonState();  // Update tombol play/pause
+        playStatus[chartId] = { isPlaying: false }; // Update status play/pause untuk chart ini
+        updatePlayButtonState(); // Update tombol play/pause
     }
 }
 
@@ -415,12 +427,12 @@ document.querySelectorAll(".btn-play-chart").forEach((button) => {
             if (playStatus[chartId]?.isPlaying) {
                 // Jika audio sedang diputar, pause audio
                 pauseSong(chartId);
-                currentChartId = null;  // Reset chart yang sedang diputar
+                currentChartId = null; // Reset chart yang sedang diputar
             } else {
                 // Jika audio sedang dipause, lanjutkan memutar (tetapi jangan reset ke awal)
                 playSong(chartId, audioSrc, chartName, chartArtist);
             }
-            return;  // Tidak perlu lanjutkan ke logika lain jika tombol yang sama diklik lagi
+            return; // Tidak perlu lanjutkan ke logika lain jika tombol yang sama diklik lagi
         }
 
         // Simpan ID tombol yang sedang diklik
@@ -428,15 +440,14 @@ document.querySelectorAll(".btn-play-chart").forEach((button) => {
 
         // Jika chart lain sedang diputar, pause audio yang sedang diputar sebelumnya
         if (currentChartId && currentChartId !== chartId) {
-            pauseSong(currentChartId);  // Pause audio yang sedang diputar sebelumnya
-            currentChartId = null;  // Reset chart yang sedang diputar
+            pauseSong(currentChartId); // Pause audio yang sedang diputar sebelumnya
+            currentChartId = null; // Reset chart yang sedang diputar
         }
 
         // Putar chart baru
         playSong(chartId, audioSrc, chartName, chartArtist);
     });
 });
-
 
 // Event listener untuk tombol play/pause utama
 document.querySelector(".play-pause").addEventListener("click", () => {
@@ -448,7 +459,7 @@ document.querySelector(".play-pause").addEventListener("click", () => {
                 if (currentChartId) {
                     playStatus[currentChartId].isPlaying = true;
                 }
-                updatePlayButtonState();  // Update ikon play/pause
+                updatePlayButtonState(); // Update ikon play/pause
             })
             .catch((error) => console.error("Audio play error:", error)); // Tangani error jika play gagal
     } else {
@@ -457,30 +468,29 @@ document.querySelector(".play-pause").addEventListener("click", () => {
         if (currentChartId) {
             playStatus[currentChartId].isPlaying = false;
         }
-        updatePlayButtonState();  // Update ikon play/pause
+        updatePlayButtonState(); // Update ikon play/pause
     }
 });
-
 
 // Ketika audio dijeda, perbarui status dan ikon tombol
 Audio.onplay = () => {
     if (currentChartId) {
         if (!playStatus[currentChartId]) {
-            playStatus[currentChartId] = {};  // Inisialisasi jika belum ada
+            playStatus[currentChartId] = {}; // Inisialisasi jika belum ada
         }
         playStatus[currentChartId].isPlaying = true;
     }
-    updatePlayButtonState();  // Panggil update untuk memperbarui ikon
+    updatePlayButtonState(); // Panggil update untuk memperbarui ikon
 };
 
 Audio.onpause = () => {
     if (currentChartId) {
         if (!playStatus[currentChartId]) {
-            playStatus[currentChartId] = {};  // Inisialisasi jika belum ada
+            playStatus[currentChartId] = {}; // Inisialisasi jika belum ada
         }
         playStatus[currentChartId].isPlaying = false;
     }
-    updatePlayButtonState();  // Panggil update untuk memperbarui ikon
+    updatePlayButtonState(); // Panggil update untuk memperbarui ikon
 };
 // ----------------------------
 // progress bar
@@ -729,18 +739,17 @@ document
         mobileMenu.classList.toggle("active");
     });
 
-    const closeMenu = document.getElementById("close-menu") || null;
+const closeMenu = document.getElementById("close-menu") || null;
 
-    // Close the mobile menu on close icon click
-    if (closeMenu) {
-        closeMenu.addEventListener("click", function () {
-            const mobileMenu = document.getElementById("mobile-menu");
-            if (mobileMenu) {
-                mobileMenu.classList.remove("active");
-            }
-        });
-    }
-    
+// Close the mobile menu on close icon click
+if (closeMenu) {
+    closeMenu.addEventListener("click", function () {
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (mobileMenu) {
+            mobileMenu.classList.remove("active");
+        }
+    });
+}
 
 // Close menu when clicking outside of the mobile menu
 document.addEventListener("click", function (event) {
@@ -962,4 +971,120 @@ function closePopupOutsideEvent(event) {
 }
 // -----------
 
-// tabel connect  db
+// pop up feed
+function showPopupFeed(element) {
+    const popupFeed = document.getElementById("popupFeed");
+    popupFeed.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupFeed.style.display = "flex"; // Tampilkan pop-up
+
+    // const description = element.getAttribute("data-description");
+    // const date = element.getAttribute("data-date");
+
+    // // Log untuk melihat nilai yang diambil
+    // console.log("Deskripsi:", description);
+    // console.log("Tanggal:", date);
+
+    // // Menampilkan data di dalam pop-up
+    // document.querySelector(".desk-event").textContent =
+    //     description || "Deskripsi tidak tersedia";
+    // document.querySelector(".title-box-event").textContent =
+    //     date || "Tanggal tidak tersedia";
+
+    // Menampilkan pop-up
+    document.getElementById("popupFeed").style.display = "flex";
+}
+
+function closePopupFeed() {
+    const popupFeed = document.getElementById("popupFeed");
+    popupFeed.classList.remove("muncul"); // Hilangkan kelas show
+    popupFeed.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    popupFeed.style.display = "none";
+    popupFeed.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+}
+
+function closePopupOutsideFeed(event) {
+    if (event.target.id === "popupFeed") {
+        closePopupFeed();
+    }
+}
+// -----------
+
+// pop up announcer
+function showPopupAnnouncer(element) {
+    const popupAnnouncer = document.getElementById("popupAnnouncer");
+    popupAnnouncer.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupAnnouncer.style.display = "flex"; // Tampilkan pop-up
+
+    // const description = element.getAttribute("data-description");
+    // const date = element.getAttribute("data-date");
+
+    // // Log untuk melihat nilai yang diambil
+    // console.log("Deskripsi:", description);
+    // console.log("Tanggal:", date);
+
+    // // Menampilkan data di dalam pop-up
+    // document.querySelector(".desk-event").textContent =
+    //     description || "Deskripsi tidak tersedia";
+    // document.querySelector(".title-box-event").textContent =
+    //     date || "Tanggal tidak tersedia";
+
+    // Menampilkan pop-up
+    document.getElementById("popupAnnouncer").style.display = "flex";
+}
+
+function closePopupAnnouncer() {
+    const popupAnnouncer = document.getElementById("popupAnnouncer");
+    popupAnnouncer.classList.remove("muncul"); // Hilangkan kelas show
+    popupAnnouncer.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    popupAnnouncer.style.display = "none";
+    popupAnnouncer.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+}
+
+function closePopupOutsideAnnouncer(event) {
+    if (event.target.id === "popupAnnouncer") {
+        closePopupAnnouncer();
+    }
+}
+// ----------------
+
+
+// pop up announcer
+function showPopupArtis(element) {
+    const popupArtis = document.getElementById("popupArtis");
+    popupArtis.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupArtis.style.display = "flex"; // Tampilkan pop-up
+
+    // const description = element.getAttribute("data-description");
+    // const date = element.getAttribute("data-date");
+
+    // // Log untuk melihat nilai yang diambil
+    // console.log("Deskripsi:", description);
+    // console.log("Tanggal:", date);
+
+    // // Menampilkan data di dalam pop-up
+    // document.querySelector(".desk-event").textContent =
+    //     description || "Deskripsi tidak tersedia";
+    // document.querySelector(".title-box-event").textContent =
+    //     date || "Tanggal tidak tersedia";
+
+    // Menampilkan pop-up
+    document.getElementById("popupArtis").style.display = "flex";
+}
+
+function closePopupArtis() {
+    const popupArtis = document.getElementById("popupArtis");
+    popupArtis.classList.remove("muncul"); // Hilangkan kelas show
+    popupArtis.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    popupArtis.style.display = "none";
+    popupArtis.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+}
+
+function closePopupOutsideArtis(event) {
+    if (event.target.id === "popupArtis") {
+        closePopupArtis();
+    }
+}
+// ----------------

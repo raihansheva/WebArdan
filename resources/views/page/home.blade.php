@@ -43,9 +43,7 @@
                                     <video id="hlsPlayer" controls width="640" height="360"></video>
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player"
-                                    data-pl=""
-                                    style="display: none;"></div>
+                                <div id="player" data-pl="" style="display: none;"></div>
                             </div>
                             <div class="card-footer">
                                 <div class="view-B">
@@ -175,6 +173,96 @@
                             </a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-ig-twitter" id="ig-twitter">
+        <div class="area-ig-twitter">
+            <div class="line-ig-twitter"></div>
+            <div class="area-content-ig-twitter">
+                <div class="area-content-feed-instagram">
+                    <div class="header-feed-instagram">
+                        <h1 class="title-feed-instagram">Feed Instagram</h1>
+                    </div>
+                    <div class="content-feed-instagram">
+                        {{-- <div class="area-tombol">
+                            <div class="tombol-kiri"></div>
+                            <div class="tombol-kanan"></div>
+                        </div> --}}
+                        <swiper-container class="area-content-box-feed-instagram" loop="true" autoplay-delay="2500"
+                            autoplay-disable-on-interaction="false"
+                            breakpoints='{
+                                    "480": { "slidesPerView": 1 },
+                                    "768": { "slidesPerView": 2 },
+                                    "1024": { "slidesPerView": 3 },
+                                    "1280": { "slidesPerView": 3 },
+                                    "2560": { "slidesPerView" : 4}
+                                }'
+                            space-between="20">
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                            <swiper-slide
+                                class="box-feed-instagram" data-title=""
+                                data-description=""
+                                data-time="" onclick="showPopupFeed(this)">
+                            </swiper-slide>
+                        </swiper-container>
+                    </div>
+                </div>
+                <div id="popupFeed" class="popup-feed" style="display: none;" onclick="closePopupOutsideFeed(event)">
+                    <div class="popup-content-feed">
+                        <span class="close" onclick="closePopupFeed()">&times;</span>
+                        <div class="area-info-feed">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="area-content-twitter">
+                    {{-- <div class="header-news">
+                        <h1 class="title-news">Top Info</h1>
+                    </div>
+                    <div class="content-news">
+                        @foreach ($top_info as $topInfoList)
+                            <div class="box-news">
+                                <div class="area-image">
+                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                        alt="">
+                                </div>
+                                <div class="area-text">
+                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -412,7 +500,8 @@
                         mousewheel="true" autoplay-disable-on-interaction="false" slides-per-view="5"
                         space-between="20">
                         @foreach ($announcer as $announcerList)
-                            <swiper-slide class="box-announcer" style="background-image: url('')">
+                            <swiper-slide class="box-announcer" style="background-image: url('')" onclick="showPopupAnnouncer(this)
+                            ">
                                 <img class="image-announcer" src="./storage/{{ $announcerList->image_announcer }}"
                                     alt="">
                                 <div class="area-profile-announcer">
@@ -434,14 +523,21 @@
                                         </a>
                                     @endif
                                     {{-- <div class="area-name-announcer"> --}}
-                                        <h3 class="name-announcer">{{ $announcerList->name_announcer }}</h3>
+                                    <h3 class="name-announcer">{{ $announcerList->name_announcer }}</h3>
                                     {{-- </div> --}}
                                 </div>
                             </swiper-slide>
                         @endforeach
                     </swiper-container>
                 </div>
-
+                <div id="popupAnnouncer" class="popup-announcer" style="display: none;" onclick="closePopupOutsideAnnouncer(event)">
+                    <div class="popup-content-announcer">
+                        <span class="close" onclick="closePopupAnnouncer()">&times;</span>
+                        <div class="area-info-announcer">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         </div>
@@ -518,7 +614,7 @@
                     </div>
                     <div class="content-artis">
                         @foreach ($artis as $artisList)
-                            <div class="box-artis">
+                            <div class="box-artis" onclick="showPopupArtis(this)">
                                 <img class="image-artis" src="./storage/{{ $artisList->image_artis }}" alt="">
                                 <div class="area-bio-artis">
                                     <div class="artis-name">
@@ -530,6 +626,14 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div id="popupArtis" class="popup-artis" style="display: none;" onclick="closePopupOutsideArtis(event)">
+                            <div class="popup-content-artis">
+                                <span class="close" onclick="closePopupArtis()">&times;</span>
+                                <div class="area-info-artis">
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

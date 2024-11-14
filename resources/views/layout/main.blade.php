@@ -183,19 +183,7 @@
     </div>
     {{-- audio player --}}
     <div class="audio-player-container">
-        <div class="area-control-btn">
-            <div class="control-btn" id="control-btn">
-                <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
-                
-                <span class="material-symbols-rounded" id="prev">skip_previous</span>
-                <div class="play-pause" id="play-pause">
-                    <span class="btn-play material-symbols-rounded">play_arrow</span>
-                </div>
-                <span class="material-symbols-rounded" id="next">skip_next</span>
-                <span class="icon-menu" id="show-hide-player"><i class='bx bx-menu'></i></span>
-                <!-- <span class="material-symbols-rounded" id="shuffle">shuffle</span> -->
-            </div>
-        </div>
+        
         <svg id="visual" viewBox="0 0 900 600" width="1800" height="800" xmlns="http://www.w3.org/2000/svg">
             <path id="layer1" fill="#f8c301" stroke="#f8c301" stroke-width="2" stroke-linecap="round"></path>
         </svg>
