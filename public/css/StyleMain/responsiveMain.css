@@ -1,5 +1,194 @@
 /* resposive */
-/* Media Queries */
+@media (width: 2560px) {
+    #scrollToTopBtn {
+        bottom: 105px;
+        right: 15px;
+        /* font-size: 20px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 55px;
+        width: 55px;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 56px;
+    }
+
+    .navbar {
+        padding: 0px 128px;
+        height: 150px;
+    }
+
+    .image-brand {
+        width: 174px;
+        height: 80px;
+    }
+
+    .area-kiri-navbar {
+        width: 30%;
+    }
+
+    .area-kanan-navbar {
+        width: 70%;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .menu-link-navbar {
+        gap: 20px;
+    }
+
+    .link {
+        font-size: 26px;
+    }
+
+    .dropdown-text {
+        font-size: 26px;
+    }
+    .dropdown-content,
+    .dropdown-content.show {
+        min-width: 140px !important;
+        padding: 0px 20px 10px 20px !important;
+    }
+    .dropdown-content a {
+        font-size: 26px; /* Ukuran font sedikit lebih kecil */
+    }
+    .arrow-down {
+        padding: 3px;
+        margin-bottom: 3px;
+        margin-left: 10px;
+    }
+
+    .kotak-socmed i {
+        font-size: 32px;
+    }
+
+    /* area-footer */
+    body .footer {
+        height: 340px; /* Tetap fleksibel */
+    }
+
+    .footer .top-footer {
+        height: auto; /* Biarkan fleksibel untuk konten */
+        height: 90%;
+        padding: 0px 128px;
+    }
+
+    .footer .text-contact {
+        font-size: 3rem;
+    }
+
+    .footer .text-name {
+        font-size: 26px;
+    }
+
+    .footer .footer-address {
+        font-size: 22px;
+    }
+
+    .text-app-download {
+        font-size: 2.8rem;
+    }
+
+    .area-footer-download {
+        gap: 8px;
+    }
+
+    .kotak-download {
+        width: auto;
+        height: 40px;
+    }
+
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .text-partner {
+        font-size: 2.8rem;
+    }
+
+    .partner {
+        /* width: 130px; */
+        height: 60px;
+    }
+
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .text-copyRight {
+        font-size: 24px;
+    }
+
+    .name-owners {
+        font-size: 25px;
+    }
+
+    .bottom-footer-dummy {
+        height: 30%;
+    }
+
+    /* ----------- */
+
+    /* area-audio-player */
+
+    .content {
+        /* padding: 0 15px; */
+        height: 100px;
+    }
+
+    .control-btn span {
+        width: 65px;
+        height: 65px;
+        font-size: 33px;
+    }
+
+    .icon-menu .bx-menu {
+        font-size: 38px;
+    }
+
+    .music-image {
+        width: 80px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: auto;
+    }
+
+    .music-titles .name {
+        font-size: 22px;
+    }
+
+    .music-titles .artist {
+        font-size: 22px;
+    }
+
+    .area-line {
+        width: 1000px;
+        margin-left: 40px;
+        margin-right: 20px;
+    }
+
+    .area-control-btn .control-btn {
+        width: 200px;
+    }
+
+    #visual {
+        height: 160px;
+    }
+    /* ----------------- */
+}
 
 /* Untuk Tablet (width antara 768px hingga 1024px) */
 @media (max-width: 1024px) {
@@ -328,20 +517,16 @@
     /* ----------- */
 
     /* area-audio-mobile */
-    .area-audio-mobile {
+    /* .area-audio-mobile {
         width: 100%;
         height: auto;
-        /* border: 1px red solid; */
         display: flex;
         flex-direction: column;
-        /* gap: 10px; */
-        /* border-top: 1px black solid; */
     }
 
     .area-image-audio-mobile {
         width: auto;
         height: auto;
-        /* border: 1px green solid; */
         padding: 10px 15px 0px 15px;
     }
 
@@ -359,7 +544,6 @@
     .area-line-progress-mobile {
         width: auto;
         height: auto;
-        /* border: 1px blue solid; */
         margin-top: 10px;
         margin-bottom: 5px;
         padding: 0px 15px;
@@ -398,12 +582,9 @@
     }
 
     .control-btn-mobile {
-        /* margin-top: 50px; */
-        /* margin-bottom: 20px; */
         display: flex;
         align-items: center;
         justify-content: center;
-        /* border: 1px black solid; */
         height: auto;
         padding: 10px;
         width: auto;
@@ -434,13 +615,17 @@
         align-items: center;
         justify-content: center;
         color: #ffffff;
-    }
+    } */
 
     /* area-audio-player */
     .content {
         /* padding: 0 15px; */
         height: 60px;
         display: none;
+    }
+
+    .audio-player-container{
+        width: fit-content  ;
     }
 
     .music-image {
@@ -460,6 +645,11 @@
         font-size: 12px;
     }
 
+    .area-control-progres{
+        display: none;
+        background: transparent;
+    }
+
     .area-line {
         width: 500px;
         margin-left: 20px;
@@ -468,6 +658,7 @@
 
     .control-btn {
         width: 120px;
+        height: 50px;
     }
 
     #visual {
@@ -629,152 +820,53 @@
 
     /* ----------- */
 
-    /* area-audio-mobile */
-    .area-audio-mobile {
-        width: 100%;
-        height: auto;
-        /* border: 1px red solid; */
-        display: flex;
-        flex-direction: column;
-        /* gap: 10px; */
-        /* border-top: 1px black solid; */
-    }
-
-    .area-image-audio-mobile {
-        width: auto;
-        height: auto;
-        /* border: 1px green solid; */
-        padding: 10px 15px 0px 15px;
-    }
-
-    .image-audio-mobile {
-        width: auto;
-        height: 65px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        -ms-border-radius: 8px;
-        -o-border-radius: 8px;
-    }
-
-    .area-line-progress-mobile {
-        width: auto;
-        height: auto;
-        /* border: 1px blue solid; */
-        margin-top: 10px;
-        margin-bottom: 5px;
-        padding: 0px 15px;
-    }
-
-    .progress-details-mobile {
-        width: 100%;
-        height: 5px;
-        background-color: #ffffff;
-        border-radius: 15px;
-    }
-
-    .progress-bar-mobile {
-        width: 0%;
-        height: inherit;
-        border-radius: inherit;
-        background-color: #ccff00;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .progress-bar-mobile span {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        background-color: #ccff00;
-        border-radius: inherit;
-        transform: translateY(-25%);
-        right: -5px;
-        opacity: 0;
-        transition: opacity 0.3s ease-out;
-    }
-
-    .progress-details-mobile:hover .progress-bar-mobile span {
-        opacity: 1;
-    }
-
-    .control-btn-mobile {
-        /* margin-top: 50px; */
-        /* margin-bottom: 20px; */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* border: 1px black solid; */
-        height: auto;
-        padding: 10px;
-        width: auto;
-        background-color: #333333;
-        gap: 5px;
-    }
-
-    .play-pause-mobile {
-        background-color: white;
-        border-radius: 50%;
-    }
-
-    .btn-play-mobile {
-        color: black !important;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .control-btn-mobile span {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #ffffff;
-    }
-
-    /* area-audio-player */
-    .content {
-        /* padding: 0 15px; */
-        height: 60px;
-        display: none;
-    }
-
-    .music-image {
-        width: 80px;
-        height: 50px;
-    }
-
-    .music-titles {
-        width: 120px;
-    }
-
-    .music-titles .name {
-        font-size: 10px;
-    }
-
-    .music-titles .artist {
-        font-size: 12px;
-    }
-
-    .area-line {
-        width: 500px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .control-btn {
-        width: 120px;
-    }
-
-    #visual {
-        height: 160px;
-    }
-    /* ----------------- */
+        /* area-audio-player */
+        .content {
+            /* padding: 0 15px; */
+            height: 60px;
+            display: none;
+        }
+    
+        .audio-player-container{
+            width: fit-content  ;
+        }
+    
+        .music-image {
+            width: 80px;
+            height: 50px;
+        }
+    
+        .music-titles {
+            width: 120px;
+        }
+    
+        .music-titles .name {
+            font-size: 10px;
+        }
+    
+        .music-titles .artist {
+            font-size: 12px;
+        }
+    
+        .area-control-progres{
+            display: none;
+            background: transparent;
+        }
+    
+        .area-line {
+            width: 500px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    
+        .control-btn {
+            width: 120px;
+            height: 50px;
+        }
+    
+        #visual {
+            height: 160px;
+        }
+        /* ----------------- */
 }
 /* <--------------------> */

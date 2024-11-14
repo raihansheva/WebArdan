@@ -729,11 +729,18 @@ document
         mobileMenu.classList.toggle("active");
     });
 
-// Close the mobile menu on close icon click
-document.getElementById("close-menu").addEventListener("click", function () {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.remove("active");
-});
+    const closeMenu = document.getElementById("close-menu") || null;
+
+    // Close the mobile menu on close icon click
+    if (closeMenu) {
+        closeMenu.addEventListener("click", function () {
+            const mobileMenu = document.getElementById("mobile-menu");
+            if (mobileMenu) {
+                mobileMenu.classList.remove("active");
+            }
+        });
+    }
+    
 
 // Close menu when clicking outside of the mobile menu
 document.addEventListener("click", function (event) {

@@ -90,7 +90,8 @@
                         "480": { "slidesPerView": 1 },
                         "768": { "slidesPerView": 2 },
                         "1024": { "slidesPerView": 3 },
-                        "1280": { "slidesPerView": 4 }
+                        "1280": { "slidesPerView": 4 },
+                        "2560": { "slidesPerView" : 4}
                     }'
                     space-between="20">
                     @foreach ($program as $programList)
@@ -119,6 +120,24 @@
         <div class="area-info-news">
             <div class="line-info"></div>
             <div class="area-content-info-news">
+                <div class="area-content-news">
+                    <div class="header-news">
+                        <h1 class="title-news">Top Info</h1>
+                    </div>
+                    <div class="content-news">
+                        @foreach ($top_info as $topInfoList)
+                            <div class="box-news">
+                                <div class="area-image">
+                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                        alt="">
+                                </div>
+                                <div class="area-text">
+                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
                 <div class="area-content-info">
                     <div class="header-info">
                         <h1 class="title-info">Tag Info</h1>
@@ -150,27 +169,11 @@
                         @endforeach
                     </div>
                     <div class="area-bottom-info">
-                        <a href="/info-news">
-                            <h1 class="title-bottom-info">Show more</h1>
-                        </a>
-                    </div>
-                </div>
-                <div class="area-content-news">
-                    <div class="header-news">
-                        <h1 class="title-news">Top Info</h1>
-                    </div>
-                    <div class="content-news">
-                        @foreach ($top_info as $topInfoList)
-                            <div class="box-news">
-                                <div class="area-image">
-                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
-                                        alt="">
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
-                                </div>
-                            </div>
-                        @endforeach
+                        <div class="box-title-bottom">
+                            <a href="/info-news">
+                                <h1 class="title-bottom-info">Show more</h1>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
