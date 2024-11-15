@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('announcers', function (Blueprint $table) {
-            $table->text('bio')->nullable();
-            $table->text('shows_hosted')->nullable();
-            $table->text('availability_schedule')->nullable();
+            $table->text('bio')->nullable()->after('link_twitter');
         });
     }
 

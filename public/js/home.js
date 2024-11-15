@@ -142,7 +142,6 @@ function onPlayerReady(event) {
     event.target.playVideo();
 }
 
-
 function showPopup(element) {
     const title = element.getAttribute("data-title");
     const description = element.getAttribute("data-description");
@@ -216,7 +215,7 @@ function closePopupOutsideEvent(event) {
 function showPopupFeed(element) {
     const popupFeed = document.getElementById("popupFeed");
     popupFeed.classList.add("muncul");
-    popupFeed.style.display = "flex"; 
+    popupFeed.style.display = "flex";
 
     // const description = element.getAttribute("data-description");
     // const date = element.getAttribute("data-date");
@@ -254,25 +253,57 @@ function closePopupOutsideFeed(event) {
 // pop up announcer
 function showPopupAnnouncer(element) {
     const popupAnnouncer = document.getElementById("popupAnnouncer");
-    popupAnnouncer.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
-    popupAnnouncer.style.display = "flex"; // Tampilkan pop-up
+    popupAnnouncer.classList.add("muncul");
+    popupAnnouncer.style.display = "flex";
 
-    // const description = element.getAttribute("data-description");
-    // const date = element.getAttribute("data-date");
+    // Ambil atribut data dari elemen yang diklik
+    const imageA = element.getAttribute("data-image");
+    const name = element.getAttribute("data-name");
+    const bio = element.getAttribute("data-bio");
+    const ig = element.getAttribute("data-ig");
+    const tiktok = element.getAttribute("data-tiktok");
+    const twitter = element.getAttribute("data-twitter");
 
-    // // Log untuk melihat nilai yang diambil
-    // console.log("Deskripsi:", description);
-    // console.log("Tanggal:", date);
+    // Setel gambar
+    document.querySelector(".popUp-image-announcer").src = imageA || "./default-image.jpg";
 
-    // // Menampilkan data di dalam pop-up
-    // document.querySelector(".desk-event").textContent =
-    //     description || "Deskripsi tidak tersedia";
-    // document.querySelector(".title-box-event").textContent =
-    //     date || "Tanggal tidak tersedia";
+    // Setel nama dan bio
+    document.querySelector(".name-announcer").textContent = name || "Nama tidak tersedia";
+    document.querySelector(".bio-announcer").textContent = bio || "Bio tidak tersedia";
 
-    // Menampilkan pop-up
-    document.getElementById("popupAnnouncer").style.display = "flex";
+    // Tangani link sosial media
+    const igLink = document.querySelector(".area-profile-announcer a[data-social='instagram']");
+    const tiktokLink = document.querySelector(".area-profile-announcer a[data-social='tiktok']");
+    const twitterLink = document.querySelector(".area-profile-announcer a[data-social='twitter']");
+
+    // Instagram
+    if (ig) {
+        igLink.style.display = "inline-block";
+        igLink.href = ig;
+    } else {
+        igLink.style.display = "none";
+    }
+
+    // TikTok
+    if (tiktok) {
+        tiktokLink.style.display = "inline-block";
+        tiktokLink.href = tiktok;
+    } else {
+        tiktokLink.style.display = "none";
+    }
+
+    // Twitter
+    if (twitter) {
+        twitterLink.style.display = "inline-block";
+        twitterLink.href = twitter;
+    } else {
+        twitterLink.style.display = "none";
+    }
+
+    // Tampilkan pop-up
+    popupAnnouncer.style.display = "flex";
 }
+
 
 function closePopupAnnouncer() {
     const popupAnnouncer = document.getElementById("popupAnnouncer");
@@ -289,7 +320,6 @@ function closePopupOutsideAnnouncer(event) {
     }
 }
 // ----------------
-
 
 // pop up announcer
 function showPopupArtis(element) {
@@ -329,7 +359,6 @@ function closePopupOutsideArtis(event) {
     }
 }
 // ----------------
-
 
 // tab chart ardan
 document.addEventListener("DOMContentLoaded", () => {

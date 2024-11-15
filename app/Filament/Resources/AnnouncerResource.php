@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Announcer;
@@ -13,10 +12,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\RichEditor;
 use App\Filament\Resources\AnnouncerResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\AnnouncerResource\RelationManagers;
 
 class AnnouncerResource extends Resource
 {
@@ -31,25 +28,31 @@ class AnnouncerResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+    ->schema([
+        Card::make()
             ->schema([
-                Card::make()
-                    ->schema([
-                        TextInput::make('name_announcer')->label('Name Announcer :')->required(),
-                        FileUpload::make('image_announcer')
-                            ->label('Announcer Image')
-                            ->image()
-                            ->directory('uploads/images_announcer')
-                            ->disk('public')
-                            ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=254,height=300']) // Ubah format ke array
-                            ->validationAttribute('Image Announcer')
-                            ->helperText('The image must be 254x300 pixels.'),
-                        TextInput::make('link_instagram')->label('Link Instagram :'),
-                        TextInput::make('link_tiktok')->label('Link TikTok :'),
-                        TextInput::make('link_twitter')->label('Link Twitter :'),
-                    ])
-                    ->columns(2),
-            ]);
+                TextInput::make('name_announcer')->label('Name Announcer :')->required(),
+                FileUpload::make('image_announcer')
+                    ->label('Announcer Image')
+                    ->image()
+                    ->directory('uploads/images_announcer')
+                    ->disk('public')
+                    ->preserveFilenames()
+                    ->rules(['required', 'image', 'dimensions:width=254,height=300'])
+                    ->validationAttribute('Image Announcer')
+                    ->helperText('The image must be 254x300 pixels.'),
+                TextInput::make('link_instagram')->label('Link Instagram :'),
+                TextInput::make('link_tiktok')->label('Link TikTok :'),
+                TextInput::make('link_twitter')->label('Link Twitter :'),
+
+                // RichEditor di bagian paling bawah dan lebar penuh
+                RichEditor::make('bio')
+                    ->label('Bio :')
+                    ->required()
+                    ->columnSpan(2), // Membuat RichEditor lebar penuh (full width)
+            ])
+            ->columns(2), // Menentukan bahwa form menggunakan 2 kolom
+    ]);
     }
 
     public static function table(Table $table): Table
@@ -59,8 +62,12 @@ class AnnouncerResource extends Resource
                 TextColumn::make('name_announcer')->searchable()->sortable(),
                 ImageColumn::make('image_announcer'),
                 TextColumn::make('link_instagram'),
-                TextColumn::make('link_facebook'),
+                TextColumn::make('link_tiktok'),
                 TextColumn::make('link_twitter'),
+                TextColumn::make('bio')->label('Bio')
+                ->formatStateUsing(function ($state) {
+                    return strip_tags($state); // Menghapus tag HTML
+                }),
             ])
             ->filters([
                 //

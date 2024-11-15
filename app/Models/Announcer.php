@@ -12,7 +12,7 @@ class Announcer extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'name_announcer' , 'image_announcer' , 'link_instagram' , 'link_tiktok' , 'link_twitter' , 'bio' , 'shows_hosted' , 'availability_schedule'];
+    protected $fillable = ['id' , 'name_announcer' , 'image_announcer' , 'link_instagram' , 'link_tiktok' , 'link_twitter' , 'bio' ];
 
     public function registerMediaCollections(): void
     {

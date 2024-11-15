@@ -43,7 +43,9 @@
                                     <video id="hlsPlayer" controls width="640" height="360"></video>
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player" data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8" style="display: none;"></div>
+                                <div id="player"
+                                    data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8"
+                                    style="display: none;"></div>
                             </div>
                             <div class="card-footer">
                                 <div class="view-B">
@@ -200,40 +202,26 @@
                                     "2560": { "slidesPerView" : 4}
                                 }'
                             space-between="20">
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
-                            <swiper-slide
-                                class="box-feed-instagram" data-title=""
-                                data-description=""
-                                data-time="" onclick="showPopupFeed(this)">
+                            <swiper-slide class="box-feed-instagram" data-title="" data-description="" data-time=""
+                                onclick="showPopupFeed(this)">
                             </swiper-slide>
                         </swiper-container>
                     </div>
@@ -242,7 +230,7 @@
                     <div class="popup-content-feed">
                         <span class="close" onclick="closePopupFeed()">&times;</span>
                         <div class="area-info-feed">
-                            
+
                         </div>
                     </div>
                 </div>
@@ -500,12 +488,18 @@
                         mousewheel="true" autoplay-disable-on-interaction="false" slides-per-view="5"
                         space-between="20">
                         @foreach ($announcer as $announcerList)
-                            <swiper-slide class="box-announcer" style="background-image: url('')" onclick="showPopupAnnouncer(this)
+                            <swiper-slide class="box-announcer" data-bio="{{ strip_tags($announcerList->bio) }}"
+                                data-image="./storage/{{ $announcerList->image_announcer }}"
+                                data-name="{{ $announcerList->name_announcer }}"
+                                data-ig="{{ $announcerList->link_instagram }}"
+                                data-tiktok="{{ $announcerList->link_tiktok }}"
+                                data-twitter="{{ $announcerList->link_twitter }}" style="background-image: url('')"
+                                onclick="showPopupAnnouncer(this)
                             ">
                                 <img class="image-announcer" src="./storage/{{ $announcerList->image_announcer }}"
                                     alt="">
                                 <div class="area-profile-announcer">
-                                    @if ($announcerList->link_instagram)
+                                    {{-- @if ($announcerList->link_instagram)
                                         <a href="{{ $announcerList->link_instagram }}" target="_blank">
                                             <i class='bx bxl-instagram'></i>
                                         </a>
@@ -521,20 +515,50 @@
                                         <a href="{{ $announcerList->link_twitter }}" target="_blank">
                                             <i class='bx bxl-twitter'></i>
                                         </a>
-                                    @endif
+                                    @endif --}}
                                     {{-- <div class="area-name-announcer"> --}}
-                                    <h3 class="name-announcer">{{ $announcerList->name_announcer }}</h3>
+                                    {{-- <h3 class="name-announcer">{{ $announcerList->name_announcer }}</h3> --}}
                                     {{-- </div> --}}
                                 </div>
                             </swiper-slide>
                         @endforeach
                     </swiper-container>
-                </div>
-                <div id="popupAnnouncer" class="popup-announcer" style="display: none;" onclick="closePopupOutsideAnnouncer(event)">
-                    <div class="popup-content-announcer">
-                        <span class="close" onclick="closePopupAnnouncer()">&times;</span>
-                        <div class="area-info-announcer">
-                            
+                    <div id="popupAnnouncer" class="popup-announcer" style="display: none;"
+                        onclick="closePopupOutsideAnnouncer(event)">
+                        <div class="popup-content-announcer">
+                            <span class="close" onclick="closePopupAnnouncer()">&times;</span>
+                            <div class="area-info-announcer">
+                                <div class="area-IA-kiri">
+                                    <img class="popUp-image-announcer" src=""
+                                    alt="">
+                                </div>
+                                <div class="area-IA-kanan">
+                                    <div class="area-name-announcer">
+                                        <h3 class="title-name-announcer">Nama :</h3>
+                                        <h3 class="name-announcer"></h3>
+                                    </div>
+                                    <div class="area-sosmed">
+                                        <h3 class="title-sosmed">Social Media :</h3>
+                                        <div class="area-profile-announcer">
+                                            <a href="" target="_blank" data-social="instagram">
+                                                <i class='bx bxl-instagram'></i>
+                                            </a>
+                                            <a href="" target="_blank" data-social="tiktok">
+                                                <i class='bx bxl-tiktok'></i>
+                                            </a>
+                                            <a href="" target="_blank" data-social="twitter">
+                                                <i class='bx bxl-twitter'></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="area-bio">
+                                        <h3 class="title-bio">Bio :</h3>
+                                        <div class="content-bio">
+                                            <p class="bio-announcer"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -626,11 +650,12 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div id="popupArtis" class="popup-artis" style="display: none;" onclick="closePopupOutsideArtis(event)">
+                        <div id="popupArtis" class="popup-artis" style="display: none;"
+                            onclick="closePopupOutsideArtis(event)">
                             <div class="popup-content-artis">
                                 <span class="close" onclick="closePopupArtis()">&times;</span>
                                 <div class="area-info-artis">
-                                    
+
                                 </div>
                             </div>
                         </div>
