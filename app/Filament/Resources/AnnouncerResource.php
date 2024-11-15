@@ -45,7 +45,7 @@ class AnnouncerResource extends Resource
                             ->validationAttribute('Image Announcer')
                             ->helperText('The image must be 254x300 pixels.'),
                         TextInput::make('link_instagram')->label('Link Instagram :'),
-                        TextInput::make('link_facebook')->label('Link Facebook :'),
+                        TextInput::make('link_tiktok')->label('Link TikTok :'),
                         TextInput::make('link_twitter')->label('Link Twitter :'),
                     ])
                     ->columns(2),

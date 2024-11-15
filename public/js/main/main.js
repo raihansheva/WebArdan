@@ -19,7 +19,7 @@ let currentIndex = null;
 let eps = 1;
 let isPlaying = false;
 let isStreamingPlaying = false;
-let lastStreamingSrc = "";
+let lastStreamingSrc = null;
 let podcastId = document.getElementById("id_podcast")
     ? document.getElementById("id_podcast").textContent
     : null;
@@ -196,119 +196,90 @@ prevBtn.addEventListener("click", () => {
     loadEpisode(podcastId, eps, "previous");
 });
 
+
 // Streaming Functions
 // ----------------------------
-// Update the streaming audio when it's loaded
-function loadStreamingAudio(streamingSrc, streamName, streamArtist) {
-    if (streamingSrc) {
-        console.log("Attempting to load streaming audio from:", streamingSrc);
-
-        // If new source or paused, load and play the audio
-        if (streamingSrc !== lastStreamingSrc || !isStreamingPlaying) {
-            Audio.src = streamingSrc;
-            Audio.crossOrigin = "anonymous";
-
-            // Load audio and update UI on successful load
-            Audio.load();
-            lastStreamingSrc = streamingSrc;
-
-            // Handle errors if audio fails to load
-            Audio.onerror = (error) => {
-                console.error("Streaming audio failed to load:", error);
-            };
-
-            // Start playback once audio is ready
-            Audio.oncanplay = () => {
-                musicName.innerHTML = streamName;
-                musicArtist.innerHTML = streamArtist;
-                playStreaming(); // Play the audio
-            };
+document.addEventListener("DOMContentLoaded", function () {
+    function toggleStreaming() {
+        if (isStreamingPlaying) {
+            pauseStreaming();
         } else {
-            pauseStreaming(); // Pause the streaming if the same audio is already playing
+            playStreaming();
         }
-    } else {
-        console.error("Streaming source not found.");
     }
-}
-
-function updateStreamingPlayButtonState() {
-    // Update tombol play/pause untuk semua tombol streaming
-    document.querySelectorAll(".btn-play-streaming").forEach((button) => {
-        const streamingSrc = button.getAttribute("data-audio-src"); // Dapatkan sumber audio untuk tombol ini
-        const icon = button.querySelector("span"); // Ambil elemen span yang ada di dalam tombol untuk ikon
-
-        // Pastikan elemen icon ada
-        if (!icon) {
-            console.error("Icon not found in button: ", button); // Debugging jika span tidak ditemukan
-            return;
+    
+     window.playStreaming = function() {
+        if (!isStreamingPlaying) {
+            Audio.play()
+                .then(() => {
+                    isStreamingPlaying = true;
+                    updatePlayPauseButtonState();
+                })
+                .catch((error) => {
+                    console.error("Error playing streaming audio:", error);
+                });
         }
-
-        // Jika sumber audio yang sedang dimainkan sama dengan tombol ini
-        if (streamingSrc === lastStreamingSrc) {
-            // Jika audio sedang diputar, ubah ikon menjadi 'pause'
+    }
+    
+     window.pauseStreaming = function() {
+        if (isStreamingPlaying) {
+            Audio.pause();
+            isStreamingPlaying = false;
+            updatePlayPauseButtonState();
+        }
+    }
+    
+    function updatePlayPauseButtonState() {
+        // Memperbarui status tombol play/pause baik untuk tombol play streaming maupun play-pause umum
+        document.querySelectorAll(".btn-play-streaming, .play-pause").forEach((button) => {
+            const icon = button.querySelector("span");
+    
             if (isStreamingPlaying) {
-                icon.textContent = "pause"; // Ganti ikon menjadi 'pause'
+                icon.textContent = "pause"; // Menampilkan ikon pause
             } else {
-                // Jika audio dijeda, ubah ikon menjadi 'play_arrow'
-                icon.textContent = "play_arrow"; // Ganti ikon menjadi 'play_arrow'
+                icon.textContent = "play_arrow"; // Menampilkan ikon play
+            }
+        });
+    }
+    
+    document.querySelectorAll(".btn-play-streaming").forEach((button) => {
+        button.addEventListener("click", () => {
+            const streamingSrc = button.getAttribute("data-audio-src");
+            const streamName = "Streaming Audio";
+            const streamArtist = "Live Stream";
+            loadStreamingAudio(streamingSrc, streamName, streamArtist);
+        });
+    });
+    
+    function loadStreamingAudio(streamingSrc, streamName, streamArtist) {
+        if (streamingSrc) {
+            if (streamingSrc !== lastStreamingSrc || !isStreamingPlaying) {
+                Audio.src = streamingSrc;
+                Audio.crossOrigin = "anonymous";
+                lastStreamingSrc = streamingSrc;
+                Audio.load();
+    
+                Audio.oncanplay = () => {
+                    musicName.innerHTML = streamName;
+                    musicArtist.innerHTML = streamArtist;
+                    playStreaming();
+                };
+            } else {
+                pauseStreaming();
             }
         } else {
-            // Jika tombol ini tidak terkait dengan audio yang sedang diputar, reset ikon ke 'play_arrow'
-            icon.textContent = "play_arrow"; // Ganti ikon menjadi 'play_arrow'
+            console.error("Streaming source not found.");
         }
-    });
-}
-
-// Function to play streaming audio
-function playStreaming() {
-    Audio.play()
-        .then(() => {
-            isStreamingPlaying = true;
-            console.log(
-                "Audio is streaming and playing, updating button state."
-            );
-            updateStreamingPlayButtonState(); // Update the play button state for streaming
-        })
-        .catch((error) => {
-            console.error("Streaming audio play error:", error);
-        });
-}
-
-// Function to pause streaming audio
-function pauseStreaming() {
-    Audio.pause();
-    isStreamingPlaying = false;
-    console.log("Audio is paused, updating button state.");
-    updateStreamingPlayButtonState(); // Update the play button state for streaming
-}
-
-// Event listener for streaming play/pause button
-document.querySelectorAll(".btn-play-streaming").forEach((button) => {
-    button.addEventListener("click", () => {
-        const streamingSrc = button.getAttribute("data-audio-src");
-        const streamName = "Streaming Audio";
-        const streamArtist = "Live Stream";
-
-        // Toggle play/pause based on the current state of the streaming audio
-        if (isStreamingPlaying && lastStreamingSrc === streamingSrc) {
-            pauseStreaming(); // Pause streaming if the same audio is playing
-        } else {
-            loadStreamingAudio(streamingSrc, streamName, streamArtist); // Load and play new streaming audio
-        }
+    }
+    
+    // Event listener untuk tombol play/pause umum (play-pause)
+    document.querySelectorAll(".play-pause").forEach((button) => {
+        button.addEventListener("click", toggleStreaming); // Saat tombol ini diklik, toggle streaming
     });
 });
 
-// Ensure autoplay doesn't happen on pause
-Audio.onpause = () => {
-    isStreamingPlaying = false;
-    updateStreamingPlayButtonState(); // Update button state when paused
-};
 
-// Ensure play button updates on play
-Audio.onplay = () => {
-    isStreamingPlaying = true;
-    updateStreamingPlayButtonState(); // Update button state when playing
-};
+
 // ----------------------------
 // chart
 // ----------------------------
@@ -425,26 +396,21 @@ document.querySelectorAll(".btn-play-chart").forEach((button) => {
         // Jika tombol yang sama diklik lagi
         if (lastClickedBtnId === chartId) {
             if (playStatus[chartId]?.isPlaying) {
-                // Jika audio sedang diputar, pause audio
                 pauseSong(chartId);
-                currentChartId = null; // Reset chart yang sedang diputar
+                currentChartId = null; 
             } else {
-                // Jika audio sedang dipause, lanjutkan memutar (tetapi jangan reset ke awal)
+                
                 playSong(chartId, audioSrc, chartName, chartArtist);
             }
-            return; // Tidak perlu lanjutkan ke logika lain jika tombol yang sama diklik lagi
+            return; 
         }
-
-        // Simpan ID tombol yang sedang diklik
         lastClickedBtnId = chartId;
 
-        // Jika chart lain sedang diputar, pause audio yang sedang diputar sebelumnya
         if (currentChartId && currentChartId !== chartId) {
-            pauseSong(currentChartId); // Pause audio yang sedang diputar sebelumnya
-            currentChartId = null; // Reset chart yang sedang diputar
+            pauseSong(currentChartId);
+            currentChartId = null;
         }
 
-        // Putar chart baru
         playSong(chartId, audioSrc, chartName, chartArtist);
     });
 });
@@ -452,23 +418,20 @@ document.querySelectorAll(".btn-play-chart").forEach((button) => {
 // Event listener untuk tombol play/pause utama
 document.querySelector(".play-pause").addEventListener("click", () => {
     if (Audio.paused) {
-        // Jika audio dijeda, mainkan audio
         Audio.play()
             .then(() => {
-                // Setelah audio mulai diputar, perbarui status
                 if (currentChartId) {
                     playStatus[currentChartId].isPlaying = true;
                 }
-                updatePlayButtonState(); // Update ikon play/pause
+                updatePlayButtonState(); 
             })
-            .catch((error) => console.error("Audio play error:", error)); // Tangani error jika play gagal
+            .catch((error) => console.error("Audio play error:", error)); 
     } else {
-        // Jika audio sedang diputar, jeda audio
         Audio.pause();
         if (currentChartId) {
             playStatus[currentChartId].isPlaying = false;
         }
-        updatePlayButtonState(); // Update ikon play/pause
+        updatePlayButtonState();
     }
 });
 
@@ -476,21 +439,21 @@ document.querySelector(".play-pause").addEventListener("click", () => {
 Audio.onplay = () => {
     if (currentChartId) {
         if (!playStatus[currentChartId]) {
-            playStatus[currentChartId] = {}; // Inisialisasi jika belum ada
+            playStatus[currentChartId] = {}; 
         }
         playStatus[currentChartId].isPlaying = true;
     }
-    updatePlayButtonState(); // Panggil update untuk memperbarui ikon
+    updatePlayButtonState();
 };
 
 Audio.onpause = () => {
     if (currentChartId) {
         if (!playStatus[currentChartId]) {
-            playStatus[currentChartId] = {}; // Inisialisasi jika belum ada
+            playStatus[currentChartId] = {};
         }
         playStatus[currentChartId].isPlaying = false;
     }
-    updatePlayButtonState(); // Panggil update untuk memperbarui ikon
+    updatePlayButtonState();
 };
 // ----------------------------
 // progress bar
@@ -505,57 +468,12 @@ Audio.addEventListener("timeupdate", () => {
     }
 });
 
-// Format and display current and duration time
-// function updateAudioTimeDisplay() {
-//     const currentMinutes = Math.floor(Audio.currentTime / 60);
-//     const currentSeconds = Math.floor(Audio.currentTime % 60);
-//     const durationMinutes = Math.floor(Audio.duration / 60);
-//     const durationSeconds = Math.floor(Audio.duration % 60);
-
-//     // currentTimeDisplay.textContent = `${currentMinutes}:${currentSeconds < 10 ? "0" : ""}${currentSeconds}`;
-//     durationTimeDisplay.textContent = `${durationMinutes}:${durationSeconds < 10 ? "0" : ""}${durationSeconds}`;
-// }
-
 // Seek functionality: Jump to clicked position on progress bar
 progressDetails.addEventListener("click", (event) => {
     const clickPosition = event.offsetX / progressDetails.clientWidth;
     Audio.currentTime = clickPosition * Audio.duration;
 });
 // ----------------------------
-
-// function updatePlayButtonState() {
-//     playBtn.forEach((button) => {
-//         const icon = button.querySelector("span");
-//         const buttonId = button.getAttribute("data-id"); // Ambil data-id dari button
-
-//         // Update hanya tombol yang sesuai dengan data-id yang sedang diputar
-//         if (buttonId) {
-//             // Jika audio sedang diputar untuk data-id ini
-//             if (playStatus[buttonId] && playStatus[buttonId].isPlaying) {
-//                 icon.textContent = "pause"; // Update menjadi pause jika audio sedang diputar
-//             } else {
-//                 icon.textContent = "play_arrow"; // Update menjadi play jika audio berhenti
-//             }
-//         }
-//     });
-// }
-
-// ----------------------------
-// Streaming Button Placeholder (Commented for now)
-// document.querySelectorAll(".btn-play-streaming").forEach((button) => {
-//     button.addEventListener("click", () => {
-//         const streamingSrc = button.getAttribute("data-audio-src");
-//         const streamName = button.getAttribute("data-name");
-//         const streamArtist = button.getAttribute("data-artist");
-
-//         if (isStreamingPlaying && Audio.src === streamingSrc) {
-//             pauseStreaming();
-//         } else {
-//             loadStreamingAudio(streamingSrc, streamName, streamArtist);
-//         }
-//     });
-// });
-
 // Spectrum Audio Visualization
 const svg = document.getElementById("visual");
 const audio = Audio;
@@ -666,22 +584,19 @@ window.addEventListener("resize", () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Ambil elemen tombol prev dan next
     const prevButton = document.getElementById("prev");
     const nextButton = document.getElementById("next");
     const controlBtn = document.getElementById("control-btn");
     const img = document.getElementById("image");
 
-    // Cek URL untuk memastikan apakah kita berada di halaman detail-podcast
     const currentPage = window.location.pathname;
 
-    // Jika halaman adalah 'detail-podcast', tampilkan tombol prev dan next
     if (currentPage.includes("detail-podcast")) {
-        prevButton.style.display = "flex"; // Menampilkan tombol prev
-        nextButton.style.display = "flex"; // Menampilkan tombol next
+        prevButton.style.display = "flex";  
+        nextButton.style.display = "flex"; 
     } else {
-        prevButton.style.display = "none"; // Menyembunyikan tombol prev
-        nextButton.style.display = "none"; // Menyembunyikan tombol next
+        prevButton.style.display = "none"; 
+        nextButton.style.display = "none"; 
         controlBtn.style.width = "170px";
         controlBtn.style.gap = "20px";
         img.style.display = "none";
@@ -690,18 +605,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // ----------------------------------------------
 
-// JavaScript untuk toggle dropdown saat diklik
 document
     .getElementById("dropdown-toggle")
     .addEventListener("click", function (event) {
-        // Toggle class 'show' untuk menampilkan atau menyembunyikan dropdown
         document.getElementById("dropdown-menu").classList.toggle("show");
-
-        // Mencegah link default jika ada di dropdown-text
         event.preventDefault();
     });
 
-// Tutup dropdown jika klik di luar dropdown
 window.onclick = function (event) {
     if (!event.target.matches(".arrow-down")) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -731,7 +641,6 @@ window.onclick = function (event) {
 //     });
 // });
 
-// Toggle mobile menu on hamburger icon click
 document
     .getElementById("hamburger-icon")
     .addEventListener("click", function () {
@@ -758,9 +667,6 @@ document.addEventListener("click", function (event) {
 
     const isClickInsideMenu = mobileMenu.contains(event.target);
     const isClickInsideHamburger = hamburgerIcon.contains(event.target);
-
-    // console.log("Clicked inside menu: ", isClickInsideMenu);
-    // console.log("Clicked inside hamburger: ", isClickInsideHamburger);
 
     if (
         !isClickInsideMenu &&
@@ -811,13 +717,11 @@ let isVisible = true;
 btnhideshow.addEventListener("click", function () {
     // audio first muncul
     if (isVisible) {
-        // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
         ComCP.classList.add("slide-out");
 
         Comcontrolbtn.style.backgroundColor = "transparent";
         setTimeout(() => {
             ComCP.style.display = "none";
-            // Comaudioplayer.classList.remove("fade-out");
             ComCP.classList.remove("slide-out");
         }, 500);
     } else {
@@ -838,47 +742,10 @@ btnhideshow.addEventListener("click", function () {
     }
 
     isVisible = !isVisible;
-    // ----------------------
-
-    // audio player first hide
-    // if (isVisible) {
-    //     // Comaudioplayer.classList.add("fade-out"); // Tambahkan kelas fade-out
-    //     ComCP.style.display = "flex";
-    //     ComCP.classList.add("slide-in");
-
-    //     setTimeout(() => {
-    //         // Comaudioplayer.classList.remove("fade-out");
-    //         ComCP.classList.remove("slide-in");
-    //     }, 500);
-
-    //     setTimeout(() =>{
-    //         Comcontrolbtn.style.backgroundColor = "#17171769";
-
-    //     }, 280);
-    // } else {
-    //     // Comaudioplayer.classList.add("fade-in");
-    //     ComCP.classList.add("slide-out");
-
-    //     Comcontrolbtn.style.backgroundColor = "transparent";
-    //     setTimeout(() => {
-    //         ComCP.style.display = "none";
-    //         // Comaudioplayer.classList.remove("fade-in");
-    //         ComCP.classList.remove("slide-out");
-    //         Comimage.classList.remove("slide-out");
-    //         Commusictitle.classList.remove("slide-out");
-    //     }, 500);
-
-    // }
-
-    // isVisible = !isVisible;
-    // ----------------------
 });
 
-// countdown event
 // Mendapatkan path URL saat ini
 const currentPath = window.location.pathname;
-
-// Mengecek apakah URL-nya /home, /event, atau /
 if (
     currentPath === "/home" ||
     currentPath === "/event" ||
@@ -932,36 +799,32 @@ if (
 // pop up event
 function showPopupEvent(element) {
     const popupEvent = document.getElementById("popupEvent");
-    popupEvent.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
-    popupEvent.style.display = "flex"; // Tampilkan pop-up
+    popupEvent.classList.add("muncul"); 
+    popupEvent.style.display = "flex"; 
 
     const description = element.getAttribute("data-description");
     const date = element.getAttribute("data-date");
 
-    // Log untuk melihat nilai yang diambil
     console.log("Deskripsi:", description);
     console.log("Tanggal:", date);
 
-    // Menampilkan data di dalam pop-up
     document.querySelector(".desk-event").textContent =
         description || "Deskripsi tidak tersedia";
     document.querySelector(".title-box-event").textContent =
         date || "Tanggal tidak tersedia";
-
-    // Menampilkan pop-up
     document.getElementById("popupEvent").style.display = "flex";
 }
 
 function closePopupEvent() {
     const popupEvent = document.getElementById("popupEvent");
-    popupEvent.classList.remove("muncul"); // Hilangkan kelas show
-    popupEvent.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+    popupEvent.classList.remove("muncul"); 
+    popupEvent.classList.add("tutup"); 
 
-    // Sembunyikan pop-up setelah animasi selesai
+
     setTimeout(() => {
         popupEvent.style.display = "none";
-        popupEvent.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
-    }, 300); // 300ms sesuai dengan durasi animasi
+        popupEvent.classList.remove("tutup");
+    }, 300);
 }
 
 function closePopupOutsideEvent(event) {
@@ -971,120 +834,3 @@ function closePopupOutsideEvent(event) {
 }
 // -----------
 
-// pop up feed
-function showPopupFeed(element) {
-    const popupFeed = document.getElementById("popupFeed");
-    popupFeed.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
-    popupFeed.style.display = "flex"; // Tampilkan pop-up
-
-    // const description = element.getAttribute("data-description");
-    // const date = element.getAttribute("data-date");
-
-    // // Log untuk melihat nilai yang diambil
-    // console.log("Deskripsi:", description);
-    // console.log("Tanggal:", date);
-
-    // // Menampilkan data di dalam pop-up
-    // document.querySelector(".desk-event").textContent =
-    //     description || "Deskripsi tidak tersedia";
-    // document.querySelector(".title-box-event").textContent =
-    //     date || "Tanggal tidak tersedia";
-
-    // Menampilkan pop-up
-    document.getElementById("popupFeed").style.display = "flex";
-}
-
-function closePopupFeed() {
-    const popupFeed = document.getElementById("popupFeed");
-    popupFeed.classList.remove("muncul"); // Hilangkan kelas show
-    popupFeed.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
-
-    popupFeed.style.display = "none";
-    popupFeed.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
-}
-
-function closePopupOutsideFeed(event) {
-    if (event.target.id === "popupFeed") {
-        closePopupFeed();
-    }
-}
-// -----------
-
-// pop up announcer
-function showPopupAnnouncer(element) {
-    const popupAnnouncer = document.getElementById("popupAnnouncer");
-    popupAnnouncer.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
-    popupAnnouncer.style.display = "flex"; // Tampilkan pop-up
-
-    // const description = element.getAttribute("data-description");
-    // const date = element.getAttribute("data-date");
-
-    // // Log untuk melihat nilai yang diambil
-    // console.log("Deskripsi:", description);
-    // console.log("Tanggal:", date);
-
-    // // Menampilkan data di dalam pop-up
-    // document.querySelector(".desk-event").textContent =
-    //     description || "Deskripsi tidak tersedia";
-    // document.querySelector(".title-box-event").textContent =
-    //     date || "Tanggal tidak tersedia";
-
-    // Menampilkan pop-up
-    document.getElementById("popupAnnouncer").style.display = "flex";
-}
-
-function closePopupAnnouncer() {
-    const popupAnnouncer = document.getElementById("popupAnnouncer");
-    popupAnnouncer.classList.remove("muncul"); // Hilangkan kelas show
-    popupAnnouncer.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
-
-    popupAnnouncer.style.display = "none";
-    popupAnnouncer.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
-}
-
-function closePopupOutsideAnnouncer(event) {
-    if (event.target.id === "popupAnnouncer") {
-        closePopupAnnouncer();
-    }
-}
-// ----------------
-
-
-// pop up announcer
-function showPopupArtis(element) {
-    const popupArtis = document.getElementById("popupArtis");
-    popupArtis.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
-    popupArtis.style.display = "flex"; // Tampilkan pop-up
-
-    // const description = element.getAttribute("data-description");
-    // const date = element.getAttribute("data-date");
-
-    // // Log untuk melihat nilai yang diambil
-    // console.log("Deskripsi:", description);
-    // console.log("Tanggal:", date);
-
-    // // Menampilkan data di dalam pop-up
-    // document.querySelector(".desk-event").textContent =
-    //     description || "Deskripsi tidak tersedia";
-    // document.querySelector(".title-box-event").textContent =
-    //     date || "Tanggal tidak tersedia";
-
-    // Menampilkan pop-up
-    document.getElementById("popupArtis").style.display = "flex";
-}
-
-function closePopupArtis() {
-    const popupArtis = document.getElementById("popupArtis");
-    popupArtis.classList.remove("muncul"); // Hilangkan kelas show
-    popupArtis.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
-
-    popupArtis.style.display = "none";
-    popupArtis.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
-}
-
-function closePopupOutsideArtis(event) {
-    if (event.target.id === "popupArtis") {
-        closePopupArtis();
-    }
-}
-// ----------------

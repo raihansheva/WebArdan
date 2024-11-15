@@ -43,7 +43,7 @@
                                     <video id="hlsPlayer" controls width="640" height="360"></video>
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player" data-pl="" style="display: none;"></div>
+                                <div id="player" data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8" style="display: none;"></div>
                             </div>
                             <div class="card-footer">
                                 <div class="view-B">
