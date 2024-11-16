@@ -43,13 +43,27 @@ class ArtisResource extends Resource
                         TextInput::make('judul_berita')
                             ->label('Judul Berita')
                             ->required(),
+                        Textarea::make('ringkasan_berita')
+                            ->label('Ringkasan Berita :')
+                            ->maxLength(200)
+                            ->rows(4),
                         Checkbox::make('publish_sekarang')
                             ->label('Publish Sekarang')
-                            ->default(true)
-                            ->reactive(), // Agar form responsif terhadap perubahan nilai
-
+                            ->reactive()
+                            ->afterStateUpdated(function ($state, $get, $set) {
+                                // Jika publish_sekarang true, set tanggal_dibuat ke tanggal saat ini
+                                if ($state) {
+                                    $set('tanggal_dibuat', now('UTC')->toDateString()); // Set tanggal_dibuat ke tanggal sekarang
+                                } else {
+                                    // Jika publish_sekarang false, kosongkan tanggal_dibuat
+                                    $set('tanggal_dibuat', null);
+                                }
+                            }),
+                        DatePicker::make('tanggal_dibuat')
+                            ->label('Tanggal Dibuat :')
+                            ->format('Y-m-d'),
                         DatePicker::make('tanggal_publikasi')
-                            ->label('Tanggal Publikasi')
+                            ->label('Publish By Tanggal :')
                             ->format('Y-m-d')
                             ->visible(fn($get) => !$get('publish_sekarang')) // Hanya muncul jika "Publish Sekarang" tidak dicentang
                             ->required(fn($get) => !$get('publish_sekarang')),
@@ -70,8 +84,10 @@ class ArtisResource extends Resource
                 TextColumn::make('bio'),
                 ImageColumn::make('image_artis'),
                 TextColumn::make('judul_berita'),
+                TextColumn::make('ringkasan_berita'),
                 TextColumn::make('konten_berita'),
                 TextColumn::make('publish_sekarang'),
+                TextColumn::make('tanggal_dibuat'),
                 TextColumn::make('tanggal_publikasi'),
             ])
             ->filters([

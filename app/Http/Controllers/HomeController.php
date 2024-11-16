@@ -241,6 +241,8 @@ class HomeController extends Controller
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
         $stream = Streaming::where('status', 'streaming')->first();
+        // $time = Carbon::now('UTC')->toDateString();
+        // dd($time);
         return view('page.infoNews', [
             'bannerInfo' => $bannerI,
             'info' => $info,

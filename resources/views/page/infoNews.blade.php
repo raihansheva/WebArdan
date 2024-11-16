@@ -165,13 +165,40 @@
                                 <p class="judul-berita">{{ $berita->judul_berita }}</p>
                             </div>
                             <div class="area-konten-berita">
-                                <p class="desk-berita">{{ strip_tags($berita->konten_berita )}}</p>
-                                <span class="see-more">See More</span>
+                                <p class="desk-berita">{{ strip_tags($berita->ringkasan_berita) }}</p>
+                                {{-- <p class="desk-berita">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
+                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                </p> --}}
+                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}" data-desk-berita="{{ strip_tags($berita->konten_berita) }}" onclick="showPopupArtis(this)">See More Details</span>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 @endforeach
-                php
+                <div id="popupArtis" class="popup-artis"  onclick="closePopupOutsideArtis(event)">
+                    <div class="popup-content-artis">
+                        <span class="close" onclick="closePopupArtis()">&times;</span>
+                        <div class="popUp-area-info-artis">
+                            <div class="area-popup-header">
+                                <h2 class="header-popup-artis">#Info Artis</h2>
+                            </div>
+                            <div class="area-judul-berita">
+                                <p class="popUp-judul-berita"></p>
+                            </div>
+                            <div class="popUP-area-konten-berita" id="style-popUp-scroll">
+                                <p class="popUp-desk-berita"></p>
+                                {{-- <p class="desk-berita">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
+                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                </p> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="line-info-artis"></div>
         </div>

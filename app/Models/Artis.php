@@ -12,7 +12,7 @@ class Artis extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'nama' , 'bio' ,'image_artis', 'judul_berita', 'konten_berita' , 'publish_sekarang' , 'tanggal_publikasi'];
+    protected $fillable = ['id' , 'nama' , 'bio' ,'image_artis', 'judul_berita', 'ringkasan_berita' , 'konten_berita' , 'publish_sekarang' , 'tanggal_dibuat' ,'tanggal_publikasi'];
 
 
     public function registerMediaCollections(): void

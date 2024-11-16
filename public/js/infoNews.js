@@ -55,10 +55,71 @@ function toggleBoxes() {
     toggleButton.textContent = currentVisibleBoxes >= boxes.length ? "See Less" : "See More";
 }
 
-// Atur tampilan awal: hanya 4 box pertama yang terlihat
-window.addEventListener("DOMContentLoaded", () => {
-    boxes.forEach((box, index) => {
-        box.classList.toggle("visible", index < 4); // Hanya tampilkan 4 box pertama
-    });
-    toggleButton.textContent = "See More"; // Atur teks tombol awal
-});
+// // Atur tampilan awal: hanya 4 box pertama yang terlihat
+// document.addEventListener("DOMContentLoaded", function () {
+//     const articles = document.querySelectorAll(".area-konten-berita");
+
+//     articles.forEach((article) => {
+//         const content = article.querySelector(".desk-berita");
+//         const seeMore = article.querySelector(".see-more-news");
+
+//         // Debugging: Log tinggi elemen
+//         console.log('Scroll Height:', content.scrollHeight);
+//         console.log('Offset Height:', content.offsetHeight);
+
+//         // Periksa apakah teks terpotong
+//         if (content.scrollHeight > content.offsetHeight) {
+//             seeMore.style.display = "inline-block"; // Tampilkan tombol See More
+//         }
+
+//         // seeMore.addEventListener("click", function () {
+//         //     if (content.style.display === "block") {
+//         //         content.style.display = "-webkit-box";
+//         //         content.style.overflow = "hidden";
+//         //         content.style.maxHeight = "calc(1.5em * 4)";
+//         //         this.textContent = "See More";
+//         //     } else {
+//         //         content.style.display = "block";
+//         //         content.style.overflow = "visible";
+//         //         content.style.maxHeight = "none";
+//         //         this.textContent = "See Less";
+//         //     }
+//         // });
+//     });
+// });
+
+// pop up announcer
+function showPopupArtis(element) {
+    const popupArtis = document.getElementById("popupArtis");
+    popupArtis.classList.add("muncul"); // Tambahkan kelas show untuk animasi muncul
+    popupArtis.style.display = "flex"; // Tampilkan pop-up
+
+    const judulB = element.getAttribute("data-judul-berita");
+    const deskB = element.getAttribute("data-desk-berita");
+
+ // Menampilkan data di dalam pop-up
+    document.querySelector(".popUp-judul-berita").textContent =
+        judulB || "Deskripsi tidak tersedia";
+    document.querySelector(".popUp-desk-berita").textContent =
+        deskB || "Tanggal tidak tersedia";
+
+    // Menampilkan pop-up
+    document.getElementById("popupArtis").style.display = "flex";
+}
+
+function closePopupArtis() {
+    const popupArtis = document.getElementById("popupArtis");
+    popupArtis.classList.remove("muncul"); // Hilangkan kelas show
+    popupArtis.classList.add("tutup"); // Tambahkan kelas hide untuk animasi keluar
+
+    popupArtis.style.display = "none";
+    popupArtis.classList.remove("tutup"); // Reset kelas hide setelah pop-up hilang
+}
+
+function closePopupOutsideArtis(event) {
+    if (event.target.id === "popupArtis") {
+        closePopupArtis();
+    }
+}
+// ----------------
+
