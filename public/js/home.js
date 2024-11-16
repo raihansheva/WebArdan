@@ -533,3 +533,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const seeMoreTexts = document.querySelectorAll(".see-more");
+
+    seeMoreTexts.forEach((text) => {
+        text.addEventListener("click", function () {
+            const content = this.previousElementSibling; // Elemen teks sebelumnya
+            if (content.style.display === "block") {
+                content.style.display = "-webkit-box";
+                content.style.overflow = "hidden";
+                content.style.maxHeight = "calc(1.5em * 4)";
+                this.textContent = "See More";
+            } else {
+                content.style.display = "block";
+                content.style.overflow = "visible";
+                content.style.maxHeight = "none";
+                this.textContent = "See Less";
+            }
+        });
+    });
+});

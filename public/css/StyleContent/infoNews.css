@@ -683,60 +683,100 @@
 
 .box-artis {
     position: relative;
-    flex: 1 1 calc(25% - 20px);
-    max-width: calc(25% - 20px);
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
     height: 350px;
     /* background-color: #f0f0f0; */
 }
+
+.area-image-artis{
+    width: 100%;
+    height: 50%;
+}
+
 .image-artis {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: 0.3s ease;
     cursor: pointer;
-    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    transition: 0.3s ease;
 }
 
 .image-artis:hover {
     filter: brightness(0.5); /* Membuat gambar menjadi lebih gelap */
 }
 
-.area-bio-artis {
+.area-header-artis{
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%; /* Pastikan menutupi seluruh area .box-artis */
-    background-color: rgba(
-        0,
-        0,
-        0,
-        0.7
-    ); /* Background semi transparan agar bio terlihat */
-    color: white;
-    opacity: 0; /* Awalnya tidak terlihat */
-    display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
+    height: 50%;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    /* border: 1px red solid; */
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    transition: opacity 0.4s ease;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    transition: opacity 0.4s ease; /* Transisi halus */
 }
 
-.box-artis:hover .area-bio-artis {
-    opacity: 1; /* Menjadi terlihat saat hover */
+.area-image-artis:hover .area-header-artis:hover{
+    opacity: 1;
 }
 
-.nama {
-    font-size: 18px;
-    font-family: "Poppins";
+.name-artis{
+    font-size: 24px;
+    color: white;
+    font-family: "Bebas Neue";
+    font-weight: 300;
+}
+
+
+.area-bio-artis {
+    height: 50%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+
+
+.judul-berita{
+    font-size: 26px;
+    font-family: "Bebas Neue";
     margin: 0px;
 }
 
-.bio {
-    font-size: 16px;
-    font-family: "Poppins";
+.desk-berita {
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
     margin: 0px;
-    font-weight: 200;
+    font-weight: 300;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Batasi jumlah baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-height: calc(1.5em * 4); /* Sesuaikan dengan tinggi baris */
+    line-height: 1.5; /* Sesuaikan dengan kebutuhan */
+    position: relative;
+}
+
+.see-more {
+    color: blue;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+    display: inline-block;
+    margin-top: 5px;
 }
 /* ---------- */
 

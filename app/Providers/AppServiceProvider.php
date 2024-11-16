@@ -22,5 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', FooterComposer::class);
+        date_default_timezone_set('Asia/Jakarta');
     }
 }

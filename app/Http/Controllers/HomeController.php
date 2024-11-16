@@ -50,6 +50,17 @@ class HomeController extends Controller
 
         $artis = Artis::all()->take(3);
 
+        // foreach ($artis as $berita) {
+        //     // Tentukan status publish langsung berdasarkan kondisi
+        //     if ($berita->publish_sekarang) {
+        //         $berita->publish_status = 'Publish Sekarang';
+        //     } elseif ($berita->tanggal_publikasi && $berita->tanggal_publikasi >= now()) {
+        //         $berita->publish_status = 'Jadwal Publish: ' . $berita->tanggal_publikasi->format('d M Y, H:i');
+        //     } else {
+        //         $berita->publish_status = 'Diterbitkan';
+        //     }
+        // }
+
         $playlist = Youtube::first();
         $apiKey = env('YOUTUBE_API_KEY');
         $playlistId = $playlist->link_youtube;
@@ -226,11 +237,10 @@ class HomeController extends Controller
         $info = Info::with('tagInfo')->get();
         $taginfo = TagInfo::with('info')->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
-        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();      
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
         $stream = Streaming::where('status', 'streaming')->first();
-
         return view('page.infoNews', [
             'bannerInfo' => $bannerI,
             'info' => $info,

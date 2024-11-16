@@ -2,22 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Artis;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ArtisResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ArtisResource\RelationManagers;
+use App\Models\Artis;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class ArtisResource extends Resource
 {
@@ -41,8 +40,23 @@ class ArtisResource extends Resource
                             ->directory('uploads/images_artis')
                             ->disk('public')
                             ->preserveFilenames(),
-                            // ->rules(['required', 'image', 'dimensions:width=1350,height=250'])
-                            // ->helperText('The image must be 1350x250 pixels.')
+                        TextInput::make('judul_berita')
+                            ->label('Judul Berita')
+                            ->required(),
+                        Checkbox::make('publish_sekarang')
+                            ->label('Publish Sekarang')
+                            ->default(true)
+                            ->reactive(), // Agar form responsif terhadap perubahan nilai
+
+                        DatePicker::make('tanggal_publikasi')
+                            ->label('Tanggal Publikasi')
+                            ->format('Y-m-d')
+                            ->visible(fn($get) => !$get('publish_sekarang')) // Hanya muncul jika "Publish Sekarang" tidak dicentang
+                            ->required(fn($get) => !$get('publish_sekarang')),
+                        RichEditor::make('konten_berita')
+                            ->label('Konten Berita')
+                            ->required()
+                            ->columnSpan(2),
                     ])
                     ->columns(2),
             ]);
@@ -55,6 +69,10 @@ class ArtisResource extends Resource
                 TextColumn::make('nama')->searchable()->sortable(),
                 TextColumn::make('bio'),
                 ImageColumn::make('image_artis'),
+                TextColumn::make('judul_berita'),
+                TextColumn::make('konten_berita'),
+                TextColumn::make('publish_sekarang'),
+                TextColumn::make('tanggal_publikasi'),
             ])
             ->filters([
                 //
@@ -62,7 +80,7 @@ class ArtisResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
-                ])
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

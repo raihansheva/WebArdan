@@ -152,19 +152,26 @@
                 <h2 class="title-info-artis">Info Artis</h2>
             </div>
             <div class="area-box-info-artis">
-                @foreach ($artis as $artisList)
+                @foreach ($artis as $berita)
                     <div class="box-artis">
-                        <img class="image-artis" src="./storage/{{ $artisList->image_artis }}" alt="">
-                        <div class="area-bio-artis">
-                            <div class="artis-name">
-                                <p class="nama">{{ $artisList->nama }}</p>
-                            </div>
-                            <div class="artis-bio">
-                                <p class="bio">{{ $artisList->bio }}</p>
+                        <div class="area-image-artis">
+                            <img class="image-artis" src="./storage/{{ $berita->image_artis }}" alt="">
+                            <div class="area-header-artis">
+                                <h2 class="name-artis">{{ $berita->nama }}</h2>
                             </div>
                         </div>
+                        <div class="area-bio-artis">
+                            <div class="area-judul-berita">
+                                <p class="judul-berita">{{ $berita->judul_berita }}</p>
+                            </div>
+                            <div class="area-konten-berita">
+                                <p class="desk-berita">{{ strip_tags($berita->konten_berita )}}</p>
+                                <span class="see-more">See More</span>
+                            </div>
+                        </div> 
                     </div>
                 @endforeach
+                php
             </div>
             <div class="line-info-artis"></div>
         </div>
