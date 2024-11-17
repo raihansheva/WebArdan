@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Tables;
 use App\Models\Event;
 use Filament\Forms\Form;
@@ -48,19 +49,19 @@ class EventResource extends Resource
                             ->rules(['required', 'image', 'dimensions:width=864,height=500']) // Ubah format ke array
                             ->validationAttribute('Image Event')
                             ->helperText('The image must be 864x500 pixels.'),
-                        Textarea::make('deskripsi_event')
-                            ->label('Deksripsi Event :')
-                            ->rows(5)
-                            ->required(),
-                        DatePicker::make('date_event')->label('Date Event :')->required(),
-                        DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
-                        Select::make('status')
+                            DatePicker::make('date_event')->label('Date Event :')->required(),
+                            DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
+                            Select::make('status')
                             ->label('Status Event :')
                             ->options([
                                 'soon' => 'Soon',
                                 'upcoming' => 'Upcoming',
                                 'completed' => 'Completed',
                             ]),
+                            RichEditor::make('deskripsi_event')
+                                ->label('Deksripsi Event :')
+                                ->required()
+                                ->columnSpan(2),
                     ])
 
                     ->columns(2),
@@ -72,7 +73,10 @@ class EventResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('image_event'),
-                TextColumn::make('deskripsi_event'),
+                TextColumn::make('deskripsi_event')
+                ->formatStateUsing(function ($state) {
+                    return strip_tags($state); // Menghapus tag HTML
+                }),
                 TextColumn::make('date_event')->searchable()->sortable(),
                 TextColumn::make('time_countdown'),
                 TextColumn::make('status')

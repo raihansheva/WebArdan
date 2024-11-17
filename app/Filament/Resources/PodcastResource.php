@@ -8,8 +8,8 @@ use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -44,8 +44,7 @@ class PodcastResource extends Resource
                             })
                             ->required(),
                         TextInput::make('genre_podcast')->label('Genre Podcast :')->required(),
-                        Textarea::make('deskripsi_podcast')->label('Deskripsi Podcast :')
-                            ->rows(5)->required(),
+
                         // TextInput::make('eps_podcast')->label('Eps Podcast :')->required(),
                         FileUpload::make('image_podcast')
                             ->label('Podcast Image :')
@@ -95,6 +94,10 @@ class PodcastResource extends Resource
                             ->relationship('podcasts', 'judul_podcast')
                             ->visible(fn(callable $get) => $get('is_episode'))
                             ->required(),
+                        RichEditor::make('deskripsi_podcast')
+                            ->label('Deskripsi Podcast :')
+                            ->required()
+                            ->columnSpan(2),
                     ])
                     ->columns(2),
             ]);
@@ -106,7 +109,10 @@ class PodcastResource extends Resource
             ->columns([
                 TextColumn::make('judul_podcast')->searchable()->sortable(),
                 TextColumn::make('genre_podcast')->searchable()->sortable(),
-                TextColumn::make('deskripsi_podcast'),
+                TextColumn::make('deskripsi_podcast')
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
                 ImageColumn::make('image_podcast'),
                 TextColumn::make('date_podcast')->searchable()->sortable(),
                 TextColumn::make('link_podcast'),

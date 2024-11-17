@@ -2,29 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\TagInfo;
-use Closure;
-use Filament\Forms;
+use App\Filament\Resources\InfoResource\Pages;
 use App\Models\Info;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Filament\Resources\Resource;
+use Filament\Forms;
 use Filament\Forms\Components\Card;
-use Illuminate\Support\Facades\Date;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\Textarea;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\InfoResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\InfoResource\RelationManagers;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class InfoResource extends Resource
 {
@@ -48,14 +42,11 @@ class InfoResource extends Resource
                                 $set('slug', Str::slug($state));
                             })
                             ->required(),
-                            Select::make('tag_info_id')
+                        Select::make('tag_info_id')
                             ->label('Tag Info')
                             ->relationship('tagInfo', 'nama_tag') // Menggunakan nama tag
                             ->required(),
-                        Textarea::make('deskripsi_info')
-                            ->label('Deskripsi Info :')
-                            ->rows(5)
-                            ->required(),
+
                         FileUpload::make('image_info')
                             ->label('Info Image :')
                             ->directory('uploads/images_info')
@@ -75,9 +66,13 @@ class InfoResource extends Resource
                             ->required(),
                         Toggle::make('top_news')
                             ->label('Top News')
-                            ->onColor('success')  // Optional: Mengatur warna saat toggle aktif
-                            ->offColor('danger')  // Optional: Mengatur warna saat toggle tidak aktif
-                            ->default(false),     // Defa
+                            ->onColor('success') // Optional: Mengatur warna saat toggle aktif
+                            ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
+                            ->default(false), // Defa
+                        RichEditor::make('deskripsi_info')
+                            ->label('Deskripsi Info :')
+                            ->required()
+                            ->columnSpan(2),
                     ])
                     ->columns(2),
             ]);
@@ -89,7 +84,10 @@ class InfoResource extends Resource
             ->columns([
                 TextColumn::make('judul_info')->searchable(),
                 TextColumn::make('tagInfo.nama_tag')->label('Tag Info')->sortable()->searchable(),
-                TextColumn::make('deskripsi_info'),
+                TextColumn::make('deskripsi_info')
+                ->formatStateUsing(function ($state) {
+                    return strip_tags($state); // Menghapus tag HTML
+                }),
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),
                 TextColumn::make('slug'),

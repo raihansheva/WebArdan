@@ -85,7 +85,10 @@ class ArtisResource extends Resource
                 ImageColumn::make('image_artis'),
                 TextColumn::make('judul_berita'),
                 TextColumn::make('ringkasan_berita'),
-                TextColumn::make('konten_berita'),
+                TextColumn::make('konten_berita')
+                ->formatStateUsing(function ($state) {
+                    return strip_tags($state); // Menghapus tag HTML
+                }),
                 TextColumn::make('publish_sekarang'),
                 TextColumn::make('tanggal_dibuat'),
                 TextColumn::make('tanggal_publikasi'),
