@@ -193,7 +193,7 @@
                     <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
                     
                     <span class="material-symbols-rounded" id="prev">skip_previous</span>
-                    <div class="play-pause" id="play-pause">
+                    <div class="play-pause" id="">
                         <span class="btn-play material-symbols-rounded">play_arrow</span>
                     </div>
                     <span class="material-symbols-rounded" id="next">skip_next</span>
@@ -230,6 +230,7 @@
         </div>
 
         <audio src="" class="main-song" id="audio"></audio>
+        {{-- <audio src="" class="main-song-streaming" id="audio-streaming"></audio> --}}
     </div>
     {{-- ------- --}}
     <footer class="footer" id="contact">
@@ -311,7 +312,8 @@
     </footer>
 </body>
 <script src="js/main/playlist.js"></script>
-<script src="js/main/main.js"></script>
+<script src="js/main/mainLayout.js"></script>
+{{-- <script src="js/main/streamingPlayer.js"></script> --}}
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 </html>

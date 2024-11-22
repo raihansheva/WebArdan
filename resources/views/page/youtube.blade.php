@@ -179,7 +179,7 @@
                     <div class="content-streaming">
                         <div class="box-streaming">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
-                            <div class="btn-play-streaming">
+                            <div class="btn-play-streaming" data-audio-src="{{ $stream->stream_audio_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>

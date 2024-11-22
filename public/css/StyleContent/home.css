@@ -1850,7 +1850,7 @@ swiper-slide img {
     flex: 0 0 calc(20% - 16px);
     /* max-width: calc(25% - 15px); */
     height: 300px;
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     margin: 0;
@@ -1986,7 +1986,6 @@ swiper-slide img {
     color: white;
 
 }
-
 
 .name-announcer{
     font-family: "Poppins";
@@ -2329,10 +2328,14 @@ tbody td {
     opacity: 1; /* Menjadi terlihat saat hover */
 }
 
+
+
 .nama{
-    font-size: 18px;
+    font-size: 16px;
     font-family: "Poppins";
     margin: 0px;
+    text-align: center;
+    color: white;
 }
 
 .bio{

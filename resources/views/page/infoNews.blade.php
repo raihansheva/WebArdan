@@ -77,7 +77,7 @@
                         <div class="area-thumbnail">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
                                 srcset="">
-                            <div class="btn-play-streaming">
+                            <div class="btn-play-streaming" data-audio-src="{{ $stream->stream_audio_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                         </div>
@@ -172,12 +172,14 @@
                                     Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
                                 </p> --}}
-                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}" data-desk-berita="{{ strip_tags($berita->konten_berita) }}" onclick="showPopupArtis(this)">See More Details</span>
+                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
+                                    data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
+                                    onclick="showPopupArtis(this)">See More Details</span>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                <div id="popupArtis" class="popup-artis"  onclick="closePopupOutsideArtis(event)">
+                <div id="popupArtis" class="popup-artis" onclick="closePopupOutsideArtis(event)">
                     <div class="popup-content-artis">
                         <span class="close" onclick="closePopupArtis()">&times;</span>
                         <div class="popUp-area-info-artis">

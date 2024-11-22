@@ -26,9 +26,11 @@
                         <div class="card-A">
                             <div class="card-body">
                                 <img class="image-streaming" src="./storage/{{ $streamList->image_stream }}">
-                                <div class="btn-play-streaming" data-audio-src="https://stream.rcs.revma.com/ugpyzu9n5k3vv">
+                                <div class="btn-play-streaming" id="BtnStream"
+                                    data-audio-src="{{ $streamList->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
+                                <audio src="{{ $streamList->stream_audio_url }}" class="audio-streaming" id="audio-streaming"></audio>
                             </div>
                             <div class="card-header">
                                 <div class="view" id="btn-tonton">
@@ -529,8 +531,7 @@
                             <span class="close" onclick="closePopupAnnouncer()">&times;</span>
                             <div class="area-info-announcer">
                                 <div class="area-IA-kiri">
-                                    <img class="popUp-image-announcer" src=""
-                                    alt="">
+                                    <img class="popUp-image-announcer" src="" alt="">
                                 </div>
                                 <div class="area-IA-kanan">
                                     <div class="area-name-announcer">
@@ -617,6 +618,9 @@
                                                     data-id="{{ $kategoriList->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
+                                                <audio src=""
+                                                    id="audio-chart" class="audio-chart"></audio>
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -638,17 +642,20 @@
                     </div>
                     <div class="content-artis">
                         @foreach ($artis as $artisList)
-                            <div class="box-artis" onclick="showPopupArtis(this)">
-                                <img class="image-artis" src="./storage/{{ $artisList->image_artis }}" alt="">
-                                <div class="area-bio-artis">
-                                    <div class="artis-name">
-                                        <p class="nama">{{ $artisList->nama }}</p>
-                                    </div>
-                                    <div class="artis-bio">
-                                        <p class="bio">{{ $artisList->bio }}</p>
+                            <a href="{{ url('info-news') }}#info-artis">
+                                <div class="box-artis" onclick="showPopupArtis(this)">
+                                    <img class="image-artis" src="./storage/{{ $artisList->image_artis }}"
+                                        alt="">
+                                    <div class="area-bio-artis">
+                                        <div class="artis-name">
+                                            <p class="nama">{{ $artisList->judul_berita }}</p>
+                                        </div>
+                                        {{-- <div class="artis-bio">
+                                            <p class="bio">{{ $artisList->bio }}</p>
+                                        </div> --}}
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                         <div id="popupArtis" class="popup-artis" style="display: none;"
                             onclick="closePopupOutsideArtis(event)">

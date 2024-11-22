@@ -1264,6 +1264,36 @@
     .line-announcer {
         margin: 0px 32px;
     }
+
+    .popup-content-announcer{
+        width: 460px;
+        height: 220px;
+    }
+
+    .title-name-announcer{
+        font-size: 16px;
+    }
+
+    .name-announcer{
+        font-size: 18px;
+    }
+
+    .title-sosmed{
+        font-size: 16px;
+    }
+
+    .area-profile-announcer i {
+        font-size: 24px;
+    }
+
+    .title-bio{
+        font-size: 16px;
+    }
+
+    .bio-announcer{
+        font-size: 14px;
+    }
+
     /* ---------------------- */
 
     /* area-chart-artis */
@@ -2005,6 +2035,38 @@
     .line-announcer {
         margin: 0px 32px;
     }
+
+    .popup-content-announcer{
+        width: 360px;
+        height: auto;
+        max-height: 280px;
+        padding: 20px;
+    }
+
+    .title-name-announcer{
+        font-size: 14px;
+    }
+
+    .name-announcer{
+        font-size: 16px;
+    }
+
+    .title-sosmed{
+        font-size: 14px;
+    }
+
+    .area-profile-announcer i {
+        font-size: 22px;
+    }
+
+    .title-bio{
+        font-size: 14px;
+    }
+
+    .bio-announcer{
+        font-size: 12px;
+    }
+
     /* ---------------------- */
 
     /* area-chart-artis */
@@ -2367,6 +2429,7 @@
     .tombol-kiri,
     .tombol-kanan {
         transform: translateY(180%); /* Menyesuaikan posisi tombol */
+        display: none;
     }
 
     /* pop up program */
@@ -2804,6 +2867,54 @@
     .area-profile-announcer i {
         font-size: 22px;
         color: white;
+    }
+
+    .popup-content-announcer{
+        width: 220px;
+        height: auto;
+        max-height: 260px;
+        padding: 10px;
+    }
+
+    /* .area-info-announcer{
+        flex-direction: column;
+    /* } */
+
+    .area-IA-kiri{
+        width: 50%;
+    }
+
+    .area-IA-kanan{
+        width: 50%;
+        gap: 6px;
+    }
+
+    .title-name-announcer{
+        font-size: 10px;
+    }
+
+    .name-announcer{
+        font-size: 12px;
+    }
+
+    .title-sosmed{
+        font-size: 10px;
+    }
+
+    .area-profile-announcer{
+        margin-top: 4px;
+    }
+
+    .area-profile-announcer i {
+        font-size: 16px;
+    }
+
+    .title-bio{
+        font-size: 10px;
+    }
+
+    .bio-announcer{
+        font-size: 8px;
     }
 
     /* ---------------------- */

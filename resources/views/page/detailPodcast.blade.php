@@ -17,6 +17,7 @@
                                 <p style="display: none;" id="id_podcast">{{ $detail_podcast->podcast_id }}</p>
                                 <p style="display: none;" id="idP">{{ $detail_podcast->id }}</p>
                             </div>
+                            <audio src="" id="audio-podcast"></audio>
                         </div>
                         <div class="card-DP-header">
                             {{-- <div class="DP-author">
@@ -220,10 +221,10 @@
                         <div class="box-streaming">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
                                 srcset="">
-                            <div class="btn-play-streaming">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                                {{-- <h2 class="text-streaming">Click Here</h2> --}}
-                            </div>
+                                <div class="btn-play-streaming" data-audio-src="{{ $stream->stream_audio_url }}">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                                <audio src="{{ $stream->stream_audio_url }}" class="audio-streaming" id="audio-streaming"></audio>
                         </div>
                     </div>
                     {{-- </div> --}}
