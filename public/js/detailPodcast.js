@@ -4,7 +4,9 @@ const tombolKananOP = document.querySelector(".tombol-kanan-OP");
 const areaContentBoxOP = document.querySelector(".area-content-card-OP");
 
 const getScrollAmountA = () => {
-    if (window.matchMedia("(max-width: 480px)").matches) {
+    if (window.matchMedia("(max-width: 375px)").matches) {
+        return 316;
+    } else if (window.matchMedia("(max-width: 480px)").matches) {
         return 365;
     } else if (window.matchMedia("(max-width: 768px)").matches) {
         return 350;

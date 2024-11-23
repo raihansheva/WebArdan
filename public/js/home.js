@@ -265,16 +265,25 @@ function showPopupAnnouncer(element) {
     const twitter = element.getAttribute("data-twitter");
 
     // Setel gambar
-    document.querySelector(".popUp-image-announcer").src = imageA || "./default-image.jpg";
+    document.querySelector(".popUp-image-announcer").src =
+        imageA || "./default-image.jpg";
 
     // Setel nama dan bio
-    document.querySelector(".name-announcer").textContent = name || "Nama tidak tersedia";
-    document.querySelector(".bio-announcer").textContent = bio || "Bio tidak tersedia";
+    document.querySelector(".name-announcer").textContent =
+        name || "Nama tidak tersedia";
+    document.querySelector(".bio-announcer").textContent =
+        bio || "Bio tidak tersedia";
 
     // Tangani link sosial media
-    const igLink = document.querySelector(".area-profile-announcer a[data-social='instagram']");
-    const tiktokLink = document.querySelector(".area-profile-announcer a[data-social='tiktok']");
-    const twitterLink = document.querySelector(".area-profile-announcer a[data-social='twitter']");
+    const igLink = document.querySelector(
+        ".area-profile-announcer a[data-social='instagram']"
+    );
+    const tiktokLink = document.querySelector(
+        ".area-profile-announcer a[data-social='tiktok']"
+    );
+    const twitterLink = document.querySelector(
+        ".area-profile-announcer a[data-social='twitter']"
+    );
 
     // Instagram
     if (ig) {
@@ -303,7 +312,6 @@ function showPopupAnnouncer(element) {
     // Tampilkan pop-up
     popupAnnouncer.style.display = "flex";
 }
-
 
 function closePopupAnnouncer() {
     const popupAnnouncer = document.getElementById("popupAnnouncer");
@@ -524,17 +532,57 @@ document.addEventListener("DOMContentLoaded", function () {
         hls.loadSource(hlsUrl);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            video.play();
+            // Menghapus video.play() di sini
+            // Video tidak akan diputar otomatis saat manifest diparsing
         });
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
         video.src = hlsUrl;
-        video.addEventListener("loadedmetadata", function () {
-            video.play();
-        });
+        // Menghapus video.play() di sini
+        // Video tidak akan diputar otomatis saat metadata dimuat
     }
+
+    // Menambahkan event listener agar video hanya diputar ketika user melakukan interaksi
+    video.addEventListener("click", function () {
+        video.play();
+    });
+
+    // Tombol "Dengar Siaran"
+    tontonSiaranBtnB.addEventListener("click", function () {
+        hideCard(cardB);
+        // Hentikan video
+        if (!video.paused) {
+            video.pause();
+            video.currentTime = 0; // Reset video ke awal
+        }
+        setTimeout(() => {
+            showCard(cardA);
+        }, 500);
+    });
 });
 
 
+// api untuk feed instagram
+// Mengambil data feed dari API
+fetch("/api/instagram/feed/{id}") // Ganti {id} dengan ID yang sesuai
+    .then((response) => response.json())
+    .then((data) => {
+        const swiperContainer = document.querySelector(
+            ".area-content-box-feed-instagram"
+        );
+        const template = document.getElementById("feed-template");
 
+        data.forEach((feed) => {
+            const clone = template.content.cloneNode(true);
+            const slide = clone.querySelector(".box-feed-instagram");
 
+            // Mengisi data ke slide
+            slide.querySelector("img").src = feed.media_url;
+            slide.querySelector("img").alt = feed.caption;
+            slide.dataset.title = feed.caption;
+            slide.dataset.description = feed.media_type;
+            slide.dataset.time = feed.timestamp;
 
+            swiperContainer.appendChild(clone);
+        });
+    })
+    .catch((error) => console.error("Error:", error));

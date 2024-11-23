@@ -134,12 +134,12 @@
         font-size: 14px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         width: 45px;
         height: 45px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 28px;
     }
 
@@ -247,7 +247,7 @@
         max-width: calc(33.33% - 15px);
         height: auto;
     }
-    
+
     .nama {
         font-size: 15px;
     }
@@ -256,44 +256,42 @@
         font-size: 13px;
     }
 
-    .area-image-artis{
+    .area-image-artis {
         height: 35%;
     }
 
-    .name-artis{
+    .name-artis {
         font-size: 22px;
     }
 
-    .judul-berita{
+    .judul-berita {
         font-size: 22px;
     }
 
-    .desk-berita{
+    .desk-berita {
         font-size: 13px;
     }
 
-    .see-more-news{
+    .see-more-news {
         font-size: 12px;
     }
 
-    .popup-content-artis{
+    .popup-content-artis {
         width: 440px;
         max-height: 400px;
     }
 
-    .header-popup-artis{
+    .header-popup-artis {
         font-size: 24px;
     }
 
-    .popUp-judul-berita{
+    .popUp-judul-berita {
         font-size: 26px;
     }
 
-    .popUp-desk-berita{
+    .popUp-desk-berita {
         font-size: 13px;
     }
-
-
 
     /* ----------- */
 
@@ -558,48 +556,48 @@
         font-size: 14px;
     }
 
-    .area-image-artis{
+    .area-image-artis {
         height: 35%;
     }
 
-    .area-header-artis{
+    .area-header-artis {
         height: 35%;
-    }   
+    }
 
-    .name-artis{
+    .name-artis {
         font-size: 22px;
     }
 
-    .judul-berita{
+    .judul-berita {
         font-size: 16px;
     }
 
-    .desk-berita{
+    .desk-berita {
         font-size: 11px;
     }
 
-    .see-more-news{
+    .see-more-news {
         font-size: 10px;
     }
 
-    .popup-content-artis{
+    .popup-content-artis {
         width: 420px;
         max-height: 400px;
     }
 
-    .popUp-area-info-artis{
+    .popUp-area-info-artis {
         gap: 3px;
     }
 
-    .header-popup-artis{
+    .header-popup-artis {
         font-size: 22px;
     }
 
-    .popUp-judul-berita{
+    .popUp-judul-berita {
         font-size: 24px;
     }
 
-    .popUp-desk-berita{
+    .popUp-desk-berita {
         font-size: 11px;
     }
 
@@ -623,14 +621,14 @@
 
     .title-header {
         font-size: 34px;
-        margin: 0px 20px;
+        margin: 0px 8px;
     }
 
     /* -------------- */
 
     /* page news 2 */
     .area-info-news {
-        margin: 0px 20px 0px 20px;
+        margin: 0px 8px 0px 8px;
     }
 
     .content-info-news {
@@ -866,7 +864,7 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 20px 20px 20px;
+        margin: 0px 8px 20px 8px;
     }
 
     .title-info-artis {
@@ -895,48 +893,48 @@
         font-size: 10px;
     }
 
-    .area-image-artis{
+    .area-image-artis {
         height: 35%;
     }
 
-    .area-header-artis{
+    .area-header-artis {
         height: 35%;
-    }   
+    }
 
-    .name-artis{
+    .name-artis {
         font-size: 22px;
     }
 
-    .judul-berita{
+    .judul-berita {
         font-size: 14px;
     }
 
-    .desk-berita{
+    .desk-berita {
         font-size: 9px;
     }
 
-    .see-more-news{
+    .see-more-news {
         font-size: 8px;
     }
 
-    .popup-content-artis{
+    .popup-content-artis {
         width: 260px;
         max-height: 180px;
     }
 
-    .popUp-area-info-artis{
+    .popUp-area-info-artis {
         gap: 0px;
     }
 
-    .header-popup-artis{
+    .header-popup-artis {
         font-size: 18px;
     }
 
-    .popUp-judul-berita{
+    .popUp-judul-berita {
         font-size: 20px;
     }
 
-    .popUp-desk-berita{
+    .popUp-desk-berita {
         font-size: 7px;
     }
 
@@ -945,7 +943,337 @@
     /* ------------- */
 }
 @media (max-width: 375px) {
-    /* Gaya untuk smartphone medium */
+    /* page news 1 */
+    .page-news-1 {
+        margin-bottom: 25px;
+    }
+
+    .header-info-news {
+        height: 200px;
+    }
+
+    .title-header {
+        font-size: 34px;
+        margin: 0px 8px;
+    }
+
+    /* -------------- */
+
+    /* page news 2 */
+    .area-info-news {
+        margin: 0px 8px 0px 8px;
+    }
+
+    .content-info-news {
+        flex-direction: column;
+        gap: 35px;
+        margin-top: 0px;
+    }
+
+    /* content kiri */
+    .content-IN-kiri {
+        width: 100%;
+        height: auto;
+        overflow-y: hidden;
+    }
+
+    .box-info {
+        height: auto;
+        display: none;
+    }
+
+    .box-info.visible {
+        display: block; /* Tampilkan box yang memiliki kelas "visible" */
+    }
+    .toggle-btn {
+        display: block; /* Tampilkan tombol "See More / See Less" */
+    }
+
+    .content-box-info {
+        margin: 15px;
+        height: fit-content;
+    }
+
+    .area-image-info {
+        height: 30%;
+    }
+
+    .area-info {
+        margin-top: 15px;
+    }
+
+    .tagar-info {
+        font-size: 22px;
+    }
+
+    .title-info {
+        font-size: 28px;
+    }
+
+    .desk-info {
+        font-size: 14px;
+    }
+
+    .date-info {
+        font-size: 13px;
+    }
+
+    .area-bottom-box-info {
+        display: block;
+    }
+
+    .title-bottom {
+        /* padding-top: 20px; */
+        font-size: 16px;
+    }
+
+    /* ------------ */
+
+    #style-3::-webkit-scrollbar-track {
+        border-radius: 15px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: transparent;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 8px;
+        background-color: #292929;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    #style-3::-webkit-scrollbar-thumb {
+        margin: 3px 0px;
+        border-radius: 10px;
+        background-color: var(--primary-color);
+        /* cursor: pointer; */
+    }
+
+    /* content kanan */
+    .content-IN-kanan {
+        width: 100%;
+    }
+
+    /* area-news */
+
+    .header-news {
+        font-size: 30px;
+    }
+
+    .box-news {
+        flex: 0 0 calc(50% - 5px);
+        height: 80px;
+    }
+
+    .tag-news {
+        font-size: 18px;
+    }
+
+    .image-news {
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+    }
+
+    /* ----------- */
+
+    /* area streaming */
+
+    .title-streaming {
+        font-size: 30px;
+    }
+
+    .area-thumbnail {
+        height: 100px;
+    }
+
+    .text-streaming {
+        font-size: 10px;
+    }
+
+    .btn-play-streaming {
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 22px;
+    }
+
+    /* ------------- */
+
+    /* area news */
+    .title-top-news {
+        font-size: 32px;
+    }
+
+    .content-top-news {
+        gap: 18px;
+    }
+
+    .box-top-news {
+        height: 60px;
+    }
+
+    .desk-top-news {
+        font-size: 10px;
+    }
+    /* ------------- */
+
+    /* area event */
+
+    .title-event {
+        font-size: 30px;
+    }
+
+    .area-event-bottom {
+        height: 440px;
+        gap: 15px;
+    }
+
+    .area-days-date-right {
+        height: 30px;
+    }
+
+    .date-month-right {
+        font-size: 18px;
+    }
+
+    .year-right {
+        font-size: 18px;
+    }
+
+    .area-see-more {
+        margin-top: 15px;
+    }
+
+    .see-more {
+        font-size: 16px;
+    }
+
+    /* ------------- */
+
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .area-info-event {
+        gap: 3px;
+    }
+
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
+
+    /* ------------ */
+
+    /* -------------- */
+
+    /* page news 3 */
+
+    .area-info-artis {
+        margin: 0px 8px 15px 8px;
+    }
+
+    .title-info-artis {
+        font-size: 32px;
+    }
+
+    /* area box */
+
+    .area-box-info-artis {
+        margin-top: 15px;
+        /* border: 1px red solid; */
+        gap: 10px;
+    }
+
+    .box-artis {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 10px);
+        height: auto;
+    }
+
+    .nama {
+        font-size: 12px;
+    }
+
+    .bio {
+        font-size: 10px;
+    }
+
+    .area-image-artis {
+        height: 35%;
+    }
+
+    .area-header-artis {
+        height: 35%;
+    }
+
+    .name-artis {
+        font-size: 22px;
+    }
+
+    .judul-berita {
+        font-size: 14px;
+    }
+
+    .desk-berita {
+        font-size: 9px;
+    }
+
+    .see-more-news {
+        font-size: 8px;
+    }
+
+    .popup-content-artis {
+        width: 260px;
+        max-height: 180px;
+    }
+
+    .popUp-area-info-artis {
+        gap: 0px;
+    }
+
+    .header-popup-artis {
+        font-size: 18px;
+    }
+
+    .popUp-judul-berita {
+        font-size: 20px;
+    }
+
+    .popUp-desk-berita {
+        font-size: 7px;
+    }
+
+    /* ----------- */
+
+    /* ------------- */
 }
 @media (max-width: 320px) {
     /* Gaya untuk smartphone kecil */

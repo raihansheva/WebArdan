@@ -763,7 +763,6 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const prevButton = document.getElementById("prev");
     const nextButton = document.getElementById("next");
-    const controlBtn = document.getElementById("control-btn");
     const img = document.getElementById("image");
 
     const currentPage = window.location.pathname;
@@ -774,8 +773,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         prevButton.style.display = "none";
         nextButton.style.display = "none";
-        controlBtn.style.width = "170px";
-        controlBtn.style.gap = "20px";
         img.style.display = "none";
     }
 });

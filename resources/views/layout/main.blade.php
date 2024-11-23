@@ -12,6 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
@@ -190,8 +191,6 @@
         <div class="content">
             <div class="area-control-btn">
                 <div class="control-btn" id="control-btn">
-                    <!-- <span class="material-symbols-rounded" id="repeat">repeat</span> -->
-                    
                     <span class="material-symbols-rounded" id="prev">skip_previous</span>
                     <div class="play-pause" id="">
                         <span class="btn-play material-symbols-rounded">play_arrow</span>
@@ -314,6 +313,7 @@
 <script src="js/main/playlist.js"></script>
 <script src="js/main/mainLayout.js"></script>
 {{-- <script src="js/main/streamingPlayer.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 </html>

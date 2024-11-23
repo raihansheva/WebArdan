@@ -621,11 +621,13 @@
     .content {
         /* padding: 0 15px; */
         height: 60px;
-        display: none;
+        /* display: none; */
     }
 
-    .audio-player-container{
-        width: fit-content  ;
+    .audio-player-container {
+        width: fit-content;
+        /* display: none; */
+        /* background-color: red; */
     }
 
     .music-image {
@@ -645,7 +647,7 @@
         font-size: 12px;
     }
 
-    .area-control-progres{
+    .area-control-progres {
         display: none;
         background: transparent;
     }
@@ -656,13 +658,31 @@
         margin-right: 20px;
     }
 
+    .area-control-btn {
+        width: auto;
+    }
+
     .control-btn {
-        width: 120px;
-        height: 50px;
+        width: 80px;
+        height: 45px;
+        /* /*position: fixed; */
+        border: 3px white solid;
+}
+
+    .control-btn span {
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+        /* position: fixed; */
+    }
+
+    .icon-menu .bx-menu {
+        display: none;
     }
 
     #visual {
         height: 160px;
+        display: none;
     }
     /* ----------------- */
 }
@@ -820,53 +840,73 @@
 
     /* ----------- */
 
-        /* area-audio-player */
-        .content {
-            /* padding: 0 15px; */
-            height: 60px;
-            display: none;
-        }
-    
-        .audio-player-container{
-            width: fit-content  ;
-        }
-    
-        .music-image {
-            width: 80px;
-            height: 50px;
-        }
-    
-        .music-titles {
-            width: 120px;
-        }
-    
-        .music-titles .name {
-            font-size: 10px;
-        }
-    
-        .music-titles .artist {
-            font-size: 12px;
-        }
-    
-        .area-control-progres{
-            display: none;
-            background: transparent;
-        }
-    
-        .area-line {
-            width: 500px;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-    
-        .control-btn {
-            width: 120px;
-            height: 50px;
-        }
-    
-        #visual {
-            height: 160px;
-        }
-        /* ----------------- */
+    /* area-audio-player */
+    .content {
+        /* padding: 0 15px; */
+        height: 60px;
+        /* display: none; */
+    }
+
+    .audio-player-container {
+        width: fit-content;
+        /* display: none; */
+        /* background-color: red; */
+    }
+
+    .music-image {
+        width: 80px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: 120px;
+    }
+
+    .music-titles .name {
+        font-size: 10px;
+    }
+
+    .music-titles .artist {
+        font-size: 12px;
+    }
+
+    .area-control-progres {
+        display: none;
+        background: transparent;
+    }
+
+    .area-line {
+        width: 500px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .area-control-btn {
+        width: auto;
+    }
+
+    .control-btn {
+        width: 70px;
+        height: 45px;
+        /* /*position: fixed; */
+        border: 2px white solid;
+}
+
+    .control-btn span {
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+        /* position: fixed; */
+    }
+
+    .icon-menu .bx-menu {
+        display: none;
+    }
+
+    #visual {
+        height: 160px;
+        display: none;
+    }
+    /* ----------------- */
 }
 /* <--------------------> */

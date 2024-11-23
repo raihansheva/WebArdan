@@ -30,7 +30,11 @@
                                     data-audio-src="{{ $streamList->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
-                                <audio src="{{ $streamList->stream_audio_url }}" class="audio-streaming" id="audio-streaming"></audio>
+                                <audio  class="audio-streaming"
+                                    id="audio-streaming" preload="auto">
+                                    <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
+                                </audio>
+
                             </div>
                             <div class="card-header">
                                 <div class="view" id="btn-tonton">
@@ -198,7 +202,7 @@
                             autoplay-disable-on-interaction="false"
                             breakpoints='{
                                     "480": { "slidesPerView": 1 },
-                                    "768": { "slidesPerView": 2 },
+                                    "768": { "slidesPerView": 3 },
                                     "1024": { "slidesPerView": 3 },
                                     "1280": { "slidesPerView": 3 },
                                     "2560": { "slidesPerView" : 4}
@@ -618,8 +622,7 @@
                                                     data-id="{{ $kategoriList->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
-                                                <audio src=""
-                                                    id="audio-chart" class="audio-chart"></audio>
+                                                <audio src="" id="audio-chart" class="audio-chart"></audio>
 
                                             </td>
                                         </tr>
@@ -643,7 +646,7 @@
                     <div class="content-artis">
                         @foreach ($artis as $artisList)
                             <a href="{{ url('info-news') }}#info-artis">
-                                <div class="box-artis" onclick="showPopupArtis(this)">
+                                <div class="box-artis">
                                     <img class="image-artis" src="./storage/{{ $artisList->image_artis }}"
                                         alt="">
                                     <div class="area-bio-artis">
@@ -657,7 +660,7 @@
                                 </div>
                             </a>
                         @endforeach
-                        <div id="popupArtis" class="popup-artis" style="display: none;"
+                        {{-- <div id="popupArtis" class="popup-artis" style="display: none;"
                             onclick="closePopupOutsideArtis(event)">
                             <div class="popup-content-artis">
                                 <span class="close" onclick="closePopupArtis()">&times;</span>
@@ -665,7 +668,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

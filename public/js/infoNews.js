@@ -33,20 +33,27 @@ function closePopupOutsideEvent(event) {
 
 
 // Inisialisasi jumlah box yang terlihat
-let currentVisibleBoxes = 3;
+let currentVisibleBoxes = 4; // Tampilkan 4 box pertama
 const boxes = document.querySelectorAll(".box-info");
 const toggleButton = document.querySelector(".title-bottom");
 
+// Tampilkan 4 box pertama secara default
+boxes.forEach((box, index) => {
+    if (index < currentVisibleBoxes) {
+        box.classList.add("visible");
+    }
+});
+
 function toggleBoxes() {
     if (currentVisibleBoxes < boxes.length) {
-        // "See More": Tampilkan 2 box lagi
+        // "See More": Tambahkan 2 box lagi
         currentVisibleBoxes += 2;
     } else {
         // "See Less": Kembali ke 4 box pertama
         currentVisibleBoxes = 4;
     }
 
-    // Tampilkan atau sembunyikan box sesuai jumlah yang terlihat
+    // Update tampilan box berdasarkan jumlah yang terlihat
     boxes.forEach((box, index) => {
         box.classList.toggle("visible", index < currentVisibleBoxes);
     });
@@ -54,6 +61,10 @@ function toggleBoxes() {
     // Ubah teks tombol berdasarkan status tampilan
     toggleButton.textContent = currentVisibleBoxes >= boxes.length ? "See Less" : "See More";
 }
+
+// Tambahkan event listener pada tombol
+// toggleButton.addEventListener("click", alert('haloo'));
+
 
 // // Atur tampilan awal: hanya 4 box pertama yang terlihat
 // document.addEventListener("DOMContentLoaded", function () {

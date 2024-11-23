@@ -489,7 +489,7 @@ body {
     border: 4px white solid;
     height: 100%;
     padding: 0px 10px;
-    width: 210px;
+    /* width: 210px; */
     background-color: var(--secondary-color);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;

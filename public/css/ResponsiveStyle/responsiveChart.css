@@ -222,7 +222,7 @@
 /* Mobile Devices */
 @media (max-width: 480px) {
     .area-chart{
-        margin: 5px 20px 0px 20px;
+        margin: 5px 8px 0px 8px;
     }
 
     .title-chart{
@@ -263,7 +263,7 @@
 
     /* page chart 2 */
     .area-streaming-news{
-        margin: 0px 20px 0px 20px;
+        margin: 0px 8px 0px 8px;
     }
 
     .area-content-SN{
@@ -314,7 +314,7 @@
         gap: 18px;
     }
 
-    .bop-news{
+    .box-news{
         height: 60px;
     }
 
@@ -330,7 +330,109 @@
 }
 
 @media (max-width: 375px) {
-    /* Gaya untuk smartphone medium */
+    .area-chart{
+        margin: 5px 8px 0px 8px;
+    }
+
+    .title-chart{
+        font-size: 30px;
+    }
+
+    .content-chart{
+        margin-top: 10px;
+    }
+
+    .area-top-chart{
+        gap: 10px;
+        flex-wrap: wrap;
+        flex: 1 2 calc(50% - 10px);
+    }
+
+    .tab-chart{
+        height: 30px;
+        border: 2px #FFDB00 solid;
+    }
+
+    .text-tab{
+        font-size: 18px;
+    }
+
+    thead tr{
+        font-size: 22px;
+    }
+
+    tbody tr{
+        font-size: 18px;
+        height: 40px;
+    }
+
+    .btn-see-more {
+        font-size: 14px;
+    }
+
+    /* page chart 2 */
+    .area-streaming-news{
+        margin: 0px 8px 0px 8px;
+    }
+
+    .area-content-SN{
+        margin-bottom: 30px;
+        flex-direction: column;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri{
+        width: 100%;
+    }
+
+    .title-SN-kiri{
+        font-size: 28px;
+    }
+    
+    .box-streaming{
+        height: 100px;
+    }
+
+    .text-streaming{
+        font-size: 10px;
+        margin: 5px 10px;
+    }
+
+    .btn-play-streaming{
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 20px;
+    }
+
+    /* -------------- */
+
+
+    /* content kanan */
+    .area-content-SN-kanan{
+        width: 100%;
+    }
+
+    .title-news{
+        font-size: 28px;
+    }
+
+    .content-news{
+        gap: 18px;
+    }
+
+    .box-news{
+        height: 60px;
+    }
+
+    .desk-news{
+        font-size: 10px;
+    }
+    /*--------------- */
+    /* ------------------ */
+    /* ------------------ */
 }
 
 @media (max-width: 320px) {
