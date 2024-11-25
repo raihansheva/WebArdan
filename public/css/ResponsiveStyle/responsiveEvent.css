@@ -1,4 +1,129 @@
 /* Desktop dan Laptop */
+@media (width: 2560px) {
+    .area-event {
+        width: auto;
+        margin: 0px 128px 0px 128px;
+    }
+    .title-event {
+        font-size: 44px;
+    }
+    .content-event {
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD {
+        height: 515px;
+    }
+    .area-countdown {
+        height: 80px;
+    }
+
+    .countdown {
+        gap: 15px;
+    }
+
+    .timer {
+        font-size: 38px;
+    }
+    .title-timer {
+        font-size: 22px;
+    }
+    .date-month {
+        font-size: 34px;
+    }
+    .year {
+        font-size: 28px;
+    }
+    /* pop up event */
+    .popup-content-event {
+        width: 850px;
+        height: 400px;
+        padding: 50px;
+    }
+
+    .desk-event {
+        font-size: 22px;
+    }
+
+    .jam-event {
+        font-size: 24px;
+    }
+
+    .title-box-event {
+        font-size: 38px;
+    }
+
+    .link-event {
+        font-size: 18px;
+    }
+    /* -------------- */
+    /* area other upcoming event */
+    .area-other-event {
+        margin: 0px 128px 0px 128px;
+    }
+    .header-other-event {
+        margin-top: 30px;
+    }
+    .title-event-other {
+        font-size: 44px;
+    }
+
+    .area-content-OV {
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .content-event-OV {
+        height: 360px;
+    }
+    .area-days-date-right {
+        height: 55px;
+    }
+    .date-month-right {
+        font-size: 34px;
+    }
+    .year-right {
+        font-size: 18px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .area-programE {
+        margin: 0px 128px 0px 128px;
+    }
+    .title-programE {
+        font-size: 44px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 15px;
+    }
+    .box-programE {
+        height: 320px;
+    }
+    /* pop up program */
+
+    .popup-content {
+        width: 850px;
+        height: 400px;
+        padding: 50px;
+    }
+
+    .desk-program {
+        font-size: 22px;
+    }
+
+    .jam-program {
+        font-size: 24px;
+    }
+
+    .title-box-program {
+        font-size: 38px;
+    }
+
+    /* -------------- */
+    /* --------------------- */
+}
+
 @media (max-width: 1920px) {
     /* Gaya untuk monitor Full HD */
 }
@@ -30,7 +155,7 @@
         height: 80px;
     }
 
-    .countdown{
+    .countdown {
         gap: 15px;
     }
 
@@ -80,7 +205,7 @@
         font-size: 34px;
     }
 
-    .area-content-OV{
+    .area-content-OV {
         gap: 15px;
         margin-top: 10px;
     }

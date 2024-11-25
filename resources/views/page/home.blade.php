@@ -493,7 +493,7 @@
                         "768": { "slidesPerView": 2 },
                         "1024": { "slidesPerView": 3 },
                         "1280": { "slidesPerView": 4 },
-                        "2560": { "slidesPerView" : 4}
+                        "2560": { "slidesPerView" : 5}
                     }'
                     space-between="20">
                         @foreach ($announcer as $announcerList)

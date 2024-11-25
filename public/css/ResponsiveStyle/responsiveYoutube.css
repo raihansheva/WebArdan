@@ -1,5 +1,224 @@
 /* Desktop dan Laptop */
-@media (max-width: 1920px) {
+@media (width: 2560px) {
+    .area-thumbnail-youtube {
+        margin: 30px 32px 0px 32px;
+    }
+
+    /* page youtube 2 */
+    .area-video-youtube {
+        margin: 0px 128px 0px 128px;
+    }
+
+    .thumbnail {
+        height: 140px;
+    }
+
+    .title-thumbnail{
+        font-size: 44px;
+    }
+
+    .text-choose{
+        font-size: 18px;
+    }
+
+    .dropdown-btn-search{
+        width: 180px;
+        padding: 5px;
+    }
+
+    .dropdown-item{
+        font-size: 16px;
+    }
+
+    .video--details__avatar img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .video--details__title {
+        font-size: 14px;
+    }
+
+    .video--details__channelTitle {
+        font-size: 14px;
+    }
+
+    .video--details__meta h3{
+        margin: 4px 0;
+        font-family: "Poppins";
+        font-size: 15px;
+        color: white;
+    }
+    
+    .video--details__meta-data {
+        display: flex;
+        gap: 10px;
+        font-size: 0.7rem;
+        color: #ffffff;
+        font-family: "Poppins";
+        font-weight: 200;
+    }
+
+    .modal-content {
+        width: 50%; /* Ukuran modal lebih kecil untuk laptop */
+    }
+    iframe {
+        height: 300px; /* Tinggi iframe disesuaikan */
+    }
+
+
+
+    /* -------------------- */
+
+    /* page youtube 3 */
+
+    .line-VNS {
+        width: 100%;
+        border: 1px white solid;
+        margin: 100px 0px;
+    }
+
+    .area-event-news-streaming {
+        margin: 0px 128px 30px 128px;
+    }
+
+    .area-content-VNS {
+        gap: 10px;
+    }
+
+    /* content kiri */
+
+    .area-content-VNS-kiri {
+        width: 55%;
+    }
+
+    .title-event {
+        font-size: 44px;
+    }
+
+    .content-kiri-event {
+        gap: 10px;
+        height: 555px;
+    }
+
+    .area-countdown {
+        height: 65px;
+    }
+
+    .timer {
+        font-size: 28px;
+    }
+
+    .title-timer {
+        font-size: 16px;
+    }
+
+    .date-month {
+        font-size: 22px;
+    }
+
+    .year {
+        font-size: 22px;
+    }
+
+    .area-event-bottom {
+        gap: 10px;
+    }
+
+    .area-days-date-right {
+        height: 35px;
+    }
+
+    .date-month-right {
+        font-size: 18px;
+    }
+
+    .year-right {
+        font-size: 18px;
+    }
+
+    
+    /* --------------- */
+    /* pop up event */
+    .popup-content-event {
+        width: 850px;
+        height: 400px;
+        padding: 50px;
+    }
+
+    .desk-event {
+        font-size: 22px;
+    }
+
+    .jam-event {
+        font-size: 24px;
+    }
+
+    .title-box-event {
+        font-size: 38px;
+    }
+
+    .link-event {
+        font-size: 18px;
+    }
+
+    /* area news */
+
+    .content-news {
+        height: auto;
+        /* border: 1px blue solid; */
+    }
+
+    .title-news {
+        font-size: 44px;
+    }
+
+    .box-news {
+        /* height: 100%; */
+        padding: 8px;
+        height: 100px;
+    }
+
+    .area-image {
+        height: 100%;
+    }
+
+    .desk-news {
+        font-size: 18px;
+    }
+    /* ------------ */
+
+    /* area content stream */
+
+    .content-streaming {
+        height: 20%;
+        /* border: 1px  red solid; */
+    }
+
+    .title-streaming {
+        font-size: 44px;
+        margin-top: 4px;
+    }
+ 
+    .box-streaming {
+        height: 100%;
+    }
+
+    .btn-play-streaming {
+        width: 65px;
+        height: 65px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 32px;
+    }
+    /* ------------------- */
+    /* --------------- */
+
+    /* -------------------- */
+}
+
+@media (width:1920px ) {
     /* Gaya untuk monitor Full HD */
 }
 

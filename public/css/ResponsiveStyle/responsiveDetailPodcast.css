@@ -1,4 +1,575 @@
 /* Desktop dan Laptop */
+@media (max-width: 2560px) {
+    .page-detail-1 {
+        height: 1060px;
+    }
+
+    .area-detail-podcast {
+        margin: 0px 128px 0px 128px;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP {
+        width: 100%;
+        /* background-color: darkgrey; */
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* height: 350px; */
+    }
+
+    .card-DP .card-DP-header {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP .card-DP-body {
+        /* width: 100%; */
+        height: 540px;
+        background-color: white;
+        padding: 30px;
+        overflow: hidden;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .card-DP .card-DP-header .DP-author {
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        width: 73%;
+        height: 60px;
+        display: flex;
+        background-color: white;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        cursor: pointer;
+        /* border: 1px black solid; */
+    }
+
+    .card-DP .card-DP-header .DP-author::before {
+        background-color: transparent;
+        border-top-left-radius: 20px;
+        box-shadow: -30px -30px 0 white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 60px;
+        width: 27%;
+        content: "";
+        cursor: pointer;
+        /* border: 1px black solid; */
+    }
+
+    .card-DP .card-DP-header .DP-view {
+        font-weight: 600;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 30px;
+        width: calc(22% - 2px);
+        background-color: var(--secondary-color);
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .text-watchP {
+        font-family: "Poppins";
+    }
+
+    .btn-play-DP {
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        cursor: pointer;
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-play-DP span {
+        color: rgb(238, 238, 238);
+        font-size: 32px;
+    }
+
+    /* card B */
+    .card-DP-B {
+        width: 100%;
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* border: 1px green solid; */
+        height: auto;
+    }
+
+    .card-DP-B .card-header-DP-B {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP-B .card-body-DP-B {
+        width: auto;
+        /* height: 100%; */
+        /* background-color: white; */
+        /* padding: 30px; */
+        overflow: hidden;
+        display: flex;
+        /* flex-direction: column; */
+        gap: 12px;
+        /* border-radius: 20px; */
+        /* border: 1px red solid; */
+    }
+
+    .card-DP-footer {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        margin-top: 8px;
+    }
+
+    .card-DP-B .view-DP-B {
+        font-weight: 600;
+        /* color: rgb(238, 238, 238); */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 25px;
+        width: calc(20% - 2px);
+        background-color: var(--secondary-color);
+        border-radius: 12px;
+        padding: 10px;
+        /* margin-top: 5px; */
+        cursor: pointer;
+    }
+
+    .text-watchP-B {
+        color: rgb(48, 48, 48);
+        font-family: "Poppins";
+        font-size: 14px;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 50.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        width: 100%;
+        background-color: black; /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+
+    .video-container iframe,
+    .video-container #player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    /* ---------------------- */
+    /* animasi */
+    /* Kelas untuk menampilkan card dengan animasi */
+    .card-DP.show {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+        height: fit-content;
+    }
+    .card-DP-B.show {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+        height: auto;
+    }
+
+    /* Kelas untuk menyembunyikan card dengan animasi */
+    .card-DP.hide,
+    .card-DP-B.hide {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* content */
+    .content-detail-podcast {
+        margin-top: 25px;
+    }
+
+    .line-detail-podcast {
+        margin: 20px 128px 30px 128px;
+    }
+
+    .area-header-DP {
+        gap: 15px;
+    }
+
+    .detail-genre {
+        font-size: 20px;
+        padding: 4px 15px;
+    }
+
+    .detail-title {
+        font-size: 36px;
+    }
+
+    .area-desk-detail-podcast {
+        margin-top: 10px;
+    }
+
+    .desk-podcast {
+        font-size: 22px;
+        font-weight: 200;
+    }
+    /* ------------ */
+    /* area detail kanan */
+
+    .title-detail-kanan {
+        font-size: 36px;
+    }
+
+    .area-episodeP {
+        height: 800px;
+    }
+
+    .card-episode {
+        padding: 20px 15px;
+    }
+
+    .title-genre-episode {
+        font-size: 16px;
+        margin: 3px 20px;
+    }
+
+    .card-text-podcast-episode {
+        font-size: 30px;
+    }
+
+    .card-image-podcast-episode {
+        height: 175px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 10px;
+    }
+    /* ---------------- */
+
+    /* area other podcast */
+    .page-detail-2 {
+        height: 760px;
+    }
+
+    .area-content-OP {
+        padding: 0px 128px 0px 128px;
+        margin-top: 40px;
+        height: 480px;
+    }
+
+    .title-OP {
+        font-size: 44px;
+        padding: 25px 0px 5px 0px;
+    }
+
+    .content-OP {
+        margin-top: 10px;
+    }
+
+    .area-content-card-OP {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 0px;
+    }
+
+    .tombol-kiri-OP,
+    .tombol-kanan-OP {
+        height: 50px;
+        width: 50px;
+    }
+
+    .tombol-kanan-OP {
+        right: -15;
+    }
+
+    .tombol-kiri-OP {
+        left: -15;
+    }
+
+    .card-podcast {
+        flex: 1 0 calc(33.33% - 14px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
+        height: 330px;
+    }
+
+    .card-podcast .card-header-podcast {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-podcast .card-body-podcast {
+        /* width: 100%; */
+        height: 70%;
+        background-color: white;
+        padding: 30px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 15px;
+    }
+
+    .head-body-podcast {
+        width: 100%;
+        height: auto;
+        /* border: 1px black solid; */
+    }
+
+    .genre {
+        width: fit-content;
+        height: fit-content;
+        text-align: center;
+        border: 1px black solid;
+        border-radius: 5px;
+    }
+
+    .title-genre {
+        font-size: 16px;
+        font-family: "Bebas Neue";
+        font-weight: 200;
+        margin: 3px 20px;
+    }
+
+    .area-card-text {
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .card-text-podcast {
+        font-size: 30px;
+        margin: 0px;
+        font-weight: 200;
+        font-family: "Bebas Neue";
+    }
+
+    .card-image-podcast {
+        width: 100%;
+        height: 125px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+    }
+
+    .card-podcast .card-header-podcast .author-podcast {
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        width: 57%;
+        height: 50px;
+        display: flex;
+        background-color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        /* border: 1px black solid; */
+    }
+
+    .card-podcast .card-header-podcast .author-podcast::before {
+        background-color: transparent;
+        border-top-left-radius: 10px;
+        box-shadow: -30px -30px 0 white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 55px;
+        width: 43%;
+        content: "";
+        /* border: 1px black solid; */
+    }
+
+    .card-podcast .card-header-podcast .view-podcast {
+        font-weight: 600;
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 25px;
+        width: 85%;
+        /* background-color: #ff004d; */
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .link-podcast {
+        width: 40%;
+        /* border: 1px red solid; */
+        z-index: 10;
+        text-decoration: none;
+    }
+
+    .text-watch-podcast {
+        font-family: "Poppins";
+        font-size: 14px;
+    }
+    /* ------------------- */
+
+    /* area VNS */
+
+    .page-detail-3 {
+        height: auto;
+    }
+
+    .area-video-news-stream {
+        margin: 0px 128px 0px 128px;
+    }
+
+    .area-content-VNS {
+        gap: 10px;
+    }
+
+    /* content kiri */
+
+    .area-content-VNS-kiri {
+        width: 55%;
+    }
+
+    .title-video {
+        font-size: 44px;
+    }
+    
+    .area-video-top , .area-video-bottom{
+        height: 335px;
+    }
+    
+    .area-video-mid{
+        height: 335px;
+    }
+
+    .content-kiri-video {
+        gap: 10px;
+        height: auto;
+    }
+
+    .area-video-top,
+    .area-video-bottom {
+        gap: 10px;
+    }
+
+    .btn-play-video {
+        height: 65px;
+        width: 65px;
+    }
+
+    .btn-play-video span {
+        font-size: 30px;
+    }
+
+    .btn-play-video-mid {
+        width: 65px;
+        height: 65px;
+    }
+
+    .btn-play-video-mid span {
+        font-size: 33px;
+    }
+
+    .popup-content-yt {
+        width: 560px;
+        height: 315px;
+    }
+
+    /* --------------- */
+
+    /* content kanan */
+    .area-content-VNS-kanan {
+        width: 44%;
+        gap: 10px;
+    }
+
+    /* area news */
+
+    .content-news {
+        height: auto;
+        /* border: 1px blue solid; */
+        margin-top: 0px;
+    }
+
+    .title-news {
+        font-size: 44px;
+    }
+
+    .box-news {
+        height: 0%;
+        padding: 8px;
+    }
+
+    .area-image {
+        height: 100%;
+    }
+
+    .desk-news {
+        font-size: 18px;
+    }
+    /* ------------ */
+
+    /* area content stream */
+
+    .content-streaming {
+        height: 20%;
+        /* border: 1px  red solid; */
+    }
+
+    .title-streaming {
+        font-size: 44px;
+    }
+
+    .box-streaming {
+        height: 100%;
+    }
+
+    .text-streaming {
+        font-size: 12px;
+        margin: 5px 10px;
+    }
+
+    .btn-play-streaming {
+        height: 65px;
+        width: 65px;
+        font-size: 18px;
+    }
+
+    /* ------------------- */
+    /* --------------- */
+
+    /* -------------------- */
+}
 @media (max-width: 1920px) {
     /* Gaya untuk monitor Full HD */
 }

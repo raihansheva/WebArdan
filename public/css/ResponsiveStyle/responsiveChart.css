@@ -1,5 +1,112 @@
 
 /* Desktop dan Laptop */
+@media (width: 2560px) {
+    .area-chart{
+        margin: 15px 128px 0px 128px;
+    }
+
+    .title-chart{
+        font-size: 44px;
+    }
+
+    .content-chart{
+        margin-top: 15px;
+    }
+
+    .area-top-chart{
+        gap: 15px;
+    }
+
+    .tab-chart{
+        height: 60px;
+    }
+
+    .text-tab{
+        font-size: 30px;
+    }
+
+    thead tr{
+        font-size: 32px;
+    }
+
+    tbody tr{
+        font-size: 30px;
+        height: 60px;
+    }
+
+    .btn-play-chart span{
+        font-size: 28px;
+    }
+
+    .btn-see-more {
+        font-size: 20px;
+    }
+
+    .area-streaming-news{
+        margin: 0px 128px 0px 128px;
+    }
+
+    .area-content-SN{
+        margin-bottom: 30px;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri{
+        width: 60%;
+    }
+
+    .title-SN-kiri{
+        font-size: 44px;
+    }
+    
+    .box-streaming{
+        height: 250px;
+    }
+
+    .text-streaming{
+        font-size: 14px;
+        margin: 5px 10px;
+    }
+
+    .btn-play-streaming{
+        height: 65px;
+        width: 65px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 34px;
+    }
+
+    /* -------------- */
+
+
+    /* content kanan */
+    .area-content-SN-kanan{
+        width: 40%;
+    }
+
+    .title-news{
+        font-size: 44px;
+    }
+
+    .content-news{
+        gap: 18px;
+    }
+
+    .box-news{
+        height: 100px;
+    }
+
+    .desk-news{
+        font-size: 18px;
+    }
+    /*--------------- */
+
+
+
+    /* ------------------ */
+    /* ------------------ */
+}
 @media (max-width: 1920px) {
     /* Gaya untuk monitor Full HD */
 }
