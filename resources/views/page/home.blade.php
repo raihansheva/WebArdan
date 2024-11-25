@@ -485,14 +485,17 @@
                         <div class="tombol-kanan-announcer"></div>
                     </div>
                     <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
-                        breakpoints='{
-                        "480": { "slidesPerView": 2, "autoplay": { "delay": 500 } },
-                        "768": { "slidesPerView": 3, "autoplay": { "delay": 2000 } },
-                        "1024": { "slidesPerView": 4, "autoplay": { "delay": 2500 } },
-                        "1280": { "slidesPerView": 5, "autoplay": { "delay": 3000 } }
+                    autoplay-disable-on-interaction="false"
+                    breakpoints='{
+                        "320": { "slidesPerView": 1 },
+                        "375": { "slidesPerView": 1 },
+                        "480": { "slidesPerView": 1 },
+                        "768": { "slidesPerView": 2 },
+                        "1024": { "slidesPerView": 3 },
+                        "1280": { "slidesPerView": 4 },
+                        "2560": { "slidesPerView" : 4}
                     }'
-                        mousewheel="true" autoplay-disable-on-interaction="false" slides-per-view="5"
-                        space-between="20">
+                    space-between="20">
                         @foreach ($announcer as $announcerList)
                             <swiper-slide class="box-announcer" data-bio="{{ strip_tags($announcerList->bio) }}"
                                 data-image="./storage/{{ $announcerList->image_announcer }}"

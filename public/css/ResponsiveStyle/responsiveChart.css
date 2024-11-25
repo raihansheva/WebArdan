@@ -436,6 +436,120 @@
 }
 
 @media (max-width: 320px) {
-    /* Gaya untuk smartphone kecil */
+    .area-chart{
+        margin: 5px 8px 0px 8px;
+    }
+
+    .title-chart{
+        font-size: 30px;
+    }
+
+    .content-chart{
+        margin-top: 6px;
+    }
+
+    .area-top-chart{
+        gap: 10px;
+        flex-wrap: wrap;
+        flex: 1 2 calc(50% - 10px);
+    }
+
+    .tab-chart{
+        height: 30px;
+        border: 2px #FFDB00 solid;
+    }
+
+    .text-tab{
+        font-size: 18px;
+    }
+
+    thead tr{
+        font-size: 20px;
+    }
+
+    tbody tr{
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .btn-see-more {
+        font-size: 10px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+}
+
+    /* page chart 2 */
+    .area-streaming-news{
+        margin: 0px 8px 0px 8px;
+    }
+
+    .area-content-SN{
+        margin-bottom: 30px;
+        flex-direction: column;
+    }
+
+    .content-SN-kiri{
+        margin-top: 5px;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri{
+        width: 100%;
+    }
+
+    .title-SN-kiri{
+        font-size: 28px;
+    }
+    
+    .box-streaming{
+        height: 100px;
+    }
+
+    .text-streaming{
+        font-size: 10px;
+        margin: 5px 10px;
+    }
+
+    .btn-play-streaming{
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-streaming span{
+        font-size: 20px;
+    }
+
+    /* -------------- */
+
+
+    /* content kanan */
+    .area-content-SN-kanan{
+        width: 100%;
+    }
+
+    .title-news{
+        font-size: 26px;
+    }
+
+    .content-news{
+        gap: 10px;
+        margin-top: 6px;
+    }
+
+    .box-news{
+        height: 60px;
+        padding: 6px;
+    }
+
+    .desk-news{
+        font-size: 10px;
+    }
+    /*--------------- */
+    /* ------------------ */
+    /* ------------------ */
 }
 
