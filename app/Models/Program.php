@@ -2,24 +2,32 @@
 
 namespace App\Models;
 
-use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Program extends Model implements HasMedia
 {
-    use HasFactory , InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['id' ,'text_header' , 'judul_program' ,'deskripsi_program' , 'jam_program' , 'image_program'];
-    
+    protected $fillable = ['id', 'text_header', 'judul_program', 'deskripsi_program', 'jam_mulai', 'jam_selesai', 'image_program'];
+
+    public function getJamMulaiAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
+
+    public function getJamSelesaiAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
 
     public function schedules()
     {
         return $this->hasMany(Schedule::class);
     }
-
 
     public function registerMediaCollections(): void
     {

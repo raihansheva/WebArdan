@@ -56,11 +56,9 @@ function stopAllAudio() {
 document.addEventListener("DOMContentLoaded", function () {
     let previousIsStreamingPlaying = null; // Menyimpan status sebelumnya untuk mencegah pembaruan ganda
     // Mengubah ID tombol play/pause untuk streaming
-    function changeIdPlayPauseStream() {
+    function showPlayPauseStream() {
         const playPauseBtnS = document.querySelector(".play-pause");
-        if (playPauseBtnS) {
-            playPauseBtnS.id = "streaming"; // Set ID tombol
-        }
+        playPauseBtnS.classList.add = "streaming";
     }
 
     // Fungsi untuk toggle play/pause pada audio streaming
@@ -83,6 +81,15 @@ document.addEventListener("DOMContentLoaded", function () {
             stopActiveAudio(); // Hentikan audio lain
             activeAudioSource = "streaming";
         }
+
+        const playPauseBtnC = document.querySelector(".play-pause-chart");
+        playPauseBtnC.style.display = "none";
+
+        const playPauseBtnP = document.querySelector(".play-pause-podcast");
+        playPauseBtnP.style.display = "none";
+
+        const playPauseBtnS = document.querySelector(".play-pause-stream");
+        playPauseBtnS.style.display = "block";
 
         if (!isStreamingPlaying) {
             AudioStream.play()
@@ -137,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Cek apakah status streaming berubah
         if (isStreamingPlaying !== previousIsStreamingPlaying) {
             const playPauseButtons = document.querySelectorAll(
-                ".btn-play-streaming , .play-pause#streaming"
+                ".btn-play-streaming , .play-pause-stream"
             );
 
             playPauseButtons.forEach((button) => {
@@ -169,14 +176,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const streamName = "Streaming Audio";
             const streamArtist = "Live Stream";
             loadStreamingAudio(streamingSrc, streamName, streamArtist);
-            changeIdPlayPauseStream();
+            showPlayPauseStream();
         });
     });
 
     // Event listener untuk tombol umum play/pause
     // Tunggu elemen tersedia sebelum menambahkan event listener
     const intervalId = setInterval(() => {
-        const playPauseBtn = document.querySelector(".play-pause#streaming");
+        const playPauseBtn = document.querySelector(".play-pause-stream");
         if (playPauseBtn) {
             clearInterval(intervalId); // Hentikan pengecekan jika elemen ditemukan
             playPauseBtn.addEventListener("click", toggleStreaming);
@@ -252,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Perbarui tombol utama BtnChart
-        const playPauseChart = document.querySelector(".play-pause#BtnChart");
+        const playPauseChart = document.querySelector(".play-pause-chart");
         if (playPauseChart) {
             const iconChart = playPauseChart.querySelector("span");
             iconChart.textContent =
@@ -270,6 +277,10 @@ document.addEventListener("DOMContentLoaded", function () {
             stopActiveAudio(); // Hentikan audio lain
             activeAudioSource = "chart";
         }
+
+        const playPauseBtnS = document.querySelector(".play-pause-chart");
+        playPauseBtnS.style.display = "block";
+
         // Set dan mainkan audio chart
         currentChartId = chartId; // Set ID chart yang sedang dimainkan
         AudioChart.src = audioSrc; // Set sumber audio
@@ -296,6 +307,8 @@ document.addEventListener("DOMContentLoaded", function () {
         AudioChart.pause();
         playStatus[chartId] = { isPlaying: false }; // Update status play/pause untuk chart ini
         updatePlayButtonState(); // Update tombol play/pause
+        // const playPauseBtnS = document.querySelector(".play-pause-chart");
+        // playPauseBtnS.style.display = "none";
     }
 
     // Event listener untuk tombol .btn-play-chart
@@ -310,7 +323,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Hentikan streaming jika sedang berjalan
             if (isStreamingPlaying) {
                 pauseStreaming();
+                const playPauseBtnS =
+                    document.querySelector(".play-pause-stream");
+                playPauseBtnS.style.display = "none";
             }
+            const playPauseBtnS = document.querySelector(".play-pause-stream");
+            playPauseBtnS.style.display = "none";
 
             // Perbarui logika tombol chart
             if (lastClickedBtnId === chartId) {
@@ -343,9 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener untuk tombol play/pause utama
     const intervalIdChart = setInterval(() => {
-        const playPauseBtnChart = document.querySelector(
-            ".play-pause#BtnChart"
-        );
+        const playPauseBtnChart = document.querySelector(".play-pause-chart");
 
         if (playPauseBtnChart) {
             clearInterval(intervalIdChart); // Hentikan pengecekan setelah elemen ditemukan
@@ -360,6 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (isStreamingPlaying) {
                     pauseStreaming();
+                    console.log("ini harus pausee streaming");
                 }
 
                 if (currentChartId) {
@@ -468,11 +485,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fungsi play podcast
-    function playPodcast(idP) {
+    window.playPodcast = function (idP) {
         if (activeAudioSource !== "podcast") {
             stopActiveAudio(); // Hentikan audio lain
             activeAudioSource = "podcast";
         }
+
+        const playPauseBtnP = document.querySelector(".play-pause-podcast");
+        playPauseBtnP.style.display = "block";
+
         if (!playPodcastStatus[idP]?.isPlaying) {
             AudioPodcast.play()
                 .then(() => {
@@ -487,28 +508,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         startSpectrumAudio(AudioPodcast);
         proggresBarAudio(AudioPodcast);
-    }
+    };
 
     // Fungsi pause podcast
-    function pausePodcast(idP) {
+    window.pausePodcast = function (idP) {
         if (!AudioPodcast.paused) {
             AudioPodcast.pause();
             playPodcastStatus[idP].isPlaying = false;
             updatePodcastPlayButtonState(idP);
         }
-    }
+    };
 
     // Update status tombol play/pause
     function updatePodcastPlayButtonState(idP) {
         document
-            .querySelectorAll(".btn-play-DP, .play-pause#BtnPodcast")
+            .querySelectorAll(".btn-play-DP, .play-pause-podcast")
             .forEach((button) => {
                 const icon = button.querySelector("span");
                 const buttonId = button.getAttribute("data-id");
 
                 if (
                     buttonId === idP ||
-                    button.classList.contains("play-pause")
+                    button.classList.contains("play-pause-podcast")
                 ) {
                     icon.textContent = playPodcastStatus[idP]?.isPlaying
                         ? "pause"
@@ -526,7 +547,15 @@ document.addEventListener("DOMContentLoaded", function () {
             changeIdPlayPausePodcast();
             if (isStreamingPlaying) {
                 pauseStreaming();
+                const playPauseBtnP = document.querySelector(
+                    ".play-pause-streaming"
+                );
+                playPauseBtnP.style.display = "none";
             }
+
+            const playPauseBtnS = document.querySelector(".play-pause-stream");
+            playPauseBtnS.style.display = "none";
+
             const podcastId = button.getAttribute("data-id");
             if (!playPodcastStatus[podcastId]?.isPlaying) {
                 playPodcast(podcastId);
@@ -538,7 +567,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const intervalIdPodcast = setInterval(() => {
         const playPauseBtnChart = document.querySelector(
-            ".play-pause#BtnPodcast"
+            ".play-pause-podcast"
         );
 
         if (playPauseBtnChart) {

@@ -1,5 +1,5 @@
 /* Desktop dan Laptop */
-@media (max-width: 2560px) {
+@media (width: 2560px) {
     .page-detail-1 {
         height: 1060px;
     }
@@ -171,16 +171,14 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
         width: 100%;
-        background-color: black; /* Optional: background color if needed */
-        /* border: 1px red solid; */
+        height: fit-content;
+        padding-bottom: 41%; /* 16:9 aspect ratio */
+        overflow: hidden;
     }
-
-    .video-container iframe,
-    .video-container #player {
+    
+    
+    .video-container video {
         position: absolute;
         top: 0;
         left: 0;
@@ -188,7 +186,7 @@
         height: 100%;
         border: none;
     }
-    /* ---------------------- */
+
     /* animasi */
     /* Kelas untuk menampilkan card dengan animasi */
     .card-DP.show {
@@ -726,8 +724,6 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        display: flex;
-        justify-content: center;
         margin-top: 8px;
     }
 
@@ -1289,8 +1285,6 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        display: flex;
-        justify-content: center;
         margin-top: 8px;
     }
 
@@ -1321,16 +1315,14 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
         width: 100%;
-        background-color: black; /* Optional: background color if needed */
-        /* border: 1px red solid; */
+        height: fit-content;
+        padding-bottom: 58.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
     }
-
-    .video-container iframe,
-    .video-container #player {
+    
+    
+    .video-container video {
         position: absolute;
         top: 0;
         left: 0;
@@ -1862,8 +1854,6 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        display: flex;
-        justify-content: center;
         margin-top: 8px;
     }
 
@@ -1890,19 +1880,16 @@
         font-family: "Poppins";
         font-size: 10px;
     }
-
     .video-container {
         position: relative;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
         width: 100%;
-        background-color: black; /* Optional: background color if needed */
-        /* border: 1px red solid; */
+        height: fit-content;
+        padding-bottom: 50.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
     }
-
-    .video-container iframe,
-    .video-container #player {
+    
+    
+    .video-container video {
         position: absolute;
         top: 0;
         left: 0;
@@ -2500,16 +2487,14 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
         width: 100%;
-        background-color: black; /* Optional: background color if needed */
-        /* border: 1px red solid; */
+        height: fit-content;
+        padding-bottom: 52.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
     }
-
-    .video-container iframe,
-    .video-container #player {
+    
+    
+    .video-container video {
         position: absolute;
         top: 0;
         left: 0;
@@ -3111,16 +3096,14 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
         width: 100%;
-        background-color: black; /* Optional: background color if needed */
-        /* border: 1px red solid; */
+        height: fit-content;
+        padding-bottom: 58.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
     }
-
-    .video-container iframe,
-    .video-container #player {
+    
+    
+    .video-container video {
         position: absolute;
         top: 0;
         left: 0;

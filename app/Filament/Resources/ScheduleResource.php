@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
 use Filament\Tables;
 use App\Models\Program;
 use App\Models\Schedule;
@@ -14,11 +13,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\DatePicker;
-use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\TimePicker;
 use App\Filament\Resources\ScheduleResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ScheduleResource\RelationManagers;
 
 class ScheduleResource extends Resource
 {
@@ -42,17 +38,28 @@ class ScheduleResource extends Resource
                             ->required()
                             ->reactive()
                             ->afterStateUpdated(function ($state, callable $set) {
-                                $program = Program::find($state);
+                                $program = Program::find($state); // Ambil data program berdasarkan ID
                                 if ($program) {
-                                    $set('jam_program', $program->jam_program);
-                                    $set('deskripsi', $program->deskripsi_program);
+                                    // Gabungkan jam_mulai dan jam_selesai
+                                    $set('jam_mulai',$program->jam_mulai);
+                                    $set('jam_selesai',$program->jam_selesai);
+                                    $set('deskripsi', $program->deskripsi_program); // Isi deskripsi jika diperlukan
                                 }
                             }),
-                        TextInput::make('jam_program')
-                            ->label('Jam Program')
+                        // TextInput::make('jam_program')
+                        //     ->label('Jam Program')
+                        //     ->required()
+                        //     ->readOnly()
+                        //     ->default(''),
+                        TimePicker::make('jam_mulai')
+                            ->label('Jam Mulai :')
                             ->required()
-                            ->readOnly()
-                            ->default(''),
+                            ->readOnly(),
+                        TimePicker::make('jam_selesai')
+                            ->label('Jam Selesai :')
+                            ->required()
+                            ->rule('after:jam_mulai')
+                            ->readOnly(),
                         Select::make('hari')
                             ->label('Hari :')
                             ->options([

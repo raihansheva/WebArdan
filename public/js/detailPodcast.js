@@ -58,6 +58,7 @@ function hideCard(card) {
 
 tontonSiaranBtnA.addEventListener("click", function () {
     hideCard(cardA);
+    pausePodcast()
     setTimeout(() => {
         showCard(cardB);
     }, 500);
@@ -216,3 +217,40 @@ document
     });
 
 
+// Load YouTube API
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("hlsPlayer");
+    const hlsUrl = document.getElementById("player").getAttribute("data-pl");
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(hlsUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            // Menghapus video.play() di sini
+            // Video tidak akan diputar otomatis saat manifest diparsing
+        });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = hlsUrl;
+        // Menghapus video.play() di sini
+        // Video tidak akan diputar otomatis saat metadata dimuat
+    }
+
+    // Menambahkan event listener agar video hanya diputar ketika user melakukan interaksi
+    video.addEventListener("click", function () {
+        video.play();
+    });
+
+    // Tombol "Dengar Siaran"
+    tontonSiaranBtnB.addEventListener("click", function () {
+        hideCard(cardB);
+        // Hentikan video
+        if (!video.paused) {
+            video.pause();
+            video.currentTime = 0; // Reset video ke awal
+        }
+        setTimeout(() => {
+            showCard(cardA);
+        }, 500);
+    });
+});

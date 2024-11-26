@@ -62,9 +62,14 @@
                     <div class="content-SN-kiri">
                         <div class="box-streaming">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt="" srcset="">
-                            <div class="btn-play-streaming" data-audio-src="{{ $stream->stream_audio_url }}">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                            </div>
+                            <div class="btn-play-streaming" id="BtnStream"
+                                    data-audio-src="{{ $stream->stream_audio_url }}">
+                                    <span class="material-symbols-rounded">play_arrow</span>
+                                </div>
+                                <audio  class="audio-streaming"
+                                    id="audio-streaming" preload="auto">
+                                    <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
+                                </audio>
                         </div>
                     </div>
                 </div>

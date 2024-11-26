@@ -192,7 +192,13 @@
             <div class="area-control-btn">
                 <div class="control-btn" id="control-btn">
                     <span class="material-symbols-rounded" id="prev">skip_previous</span>
-                    <div class="play-pause" id="">
+                    <div class="play-pause-stream" id="BtnStream">
+                        <span class="btn-play material-symbols-rounded">play_arrow</span>
+                    </div>
+                    <div class="play-pause-chart" id="BtnChart">
+                        <span class="btn-play material-symbols-rounded">play_arrow</span>
+                    </div>
+                    <div class="play-pause-podcast" id="BtnPodcast">
                         <span class="btn-play material-symbols-rounded">play_arrow</span>
                     </div>
                     <span class="material-symbols-rounded" id="next">skip_next</span>

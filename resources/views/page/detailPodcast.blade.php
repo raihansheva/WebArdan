@@ -30,7 +30,8 @@
                     <div class="card-DP-B">
                         <div class="card-body-DP-B">
                             <div class="video-container">
-                                <div id="player-podcast" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
+                                <video id="hlsPlayer" controls width="640" height="360"></video>
+                                <div id="player" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
                             </div>
                         </div>
                         <div class="card-DP-footer">
@@ -221,10 +222,14 @@
                         <div class="box-streaming">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
                                 srcset="">
-                                <div class="btn-play-streaming" data-audio-src="{{ $stream->stream_audio_url }}">
+                                <div class="btn-play-streaming" id="BtnStream"
+                                    data-audio-src="{{ $stream->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
-                                <audio src="{{ $stream->stream_audio_url }}" class="audio-streaming" id="audio-streaming"></audio>
+                                <audio  class="audio-streaming"
+                                    id="audio-streaming" preload="auto">
+                                    <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
+                                </audio>
                         </div>
                     </div>
                     {{-- </div> --}}

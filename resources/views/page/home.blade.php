@@ -34,7 +34,6 @@
                                     id="audio-streaming" preload="auto">
                                     <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
                                 </audio>
-
                             </div>
                             <div class="card-header">
                                 <div class="view" id="btn-tonton">
@@ -492,7 +491,7 @@
                         "480": { "slidesPerView": 1 },
                         "768": { "slidesPerView": 2 },
                         "1024": { "slidesPerView": 3 },
-                        "1280": { "slidesPerView": 4 },
+                        "1280": { "slidesPerView": 5 },
                         "2560": { "slidesPerView" : 5}
                     }'
                     space-between="20">

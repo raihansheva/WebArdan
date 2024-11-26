@@ -8,6 +8,7 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -42,7 +43,15 @@ class ProgramResource extends Resource
                             ->rules(['required', 'image', 'dimensions:width=322,height=280']) // Ubah format ke array
                             ->validationAttribute('Image Event')
                             ->helperText('The image must be 322x280 pixels.'),
-                        TextInput::make('jam_program')->label('Jam Program :')->required(),
+                        TimePicker::make('jam_mulai')
+                            ->label('Jam Mulai')
+                            ->required()
+                            ->format('H:i'),
+                        TimePicker::make('jam_selesai')
+                            ->label('Jam Selesai')
+                            ->required()
+                            ->format('H:i')
+                            ->rule('after:jam_mulai'),
                         RichEditor::make('deskripsi_program')
                             ->label('Deskripsi Program :')
                             ->required()
@@ -60,10 +69,13 @@ class ProgramResource extends Resource
                 TextColumn::make('text_header'),
                 TextColumn::make('judul_program')->searchable()->sortable(),
                 TextColumn::make('deskripsi_program')
-                ->formatStateUsing(function ($state) {
-                    return strip_tags($state); // Menghapus tag HTML
-                }),
-                TextColumn::make('jam_program')->searchable()->sortable(),
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
+                TextColumn::make('jam_mulai')
+                    ->label('Jam Mulai'),
+                TextColumn::make('jam_selesai')
+                    ->label('Jam Selesai'),
                 ImageColumn::make('image_program'),
             ])
             ->filters([
