@@ -20,6 +20,10 @@ class TagInfoResource extends Resource
 {
     protected static ?string $model = TagInfo::class;
 
+    protected static ?string $navigationGroup = 'Info';
+
+    protected static ?string $navigationLabel = 'TagInfo';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form

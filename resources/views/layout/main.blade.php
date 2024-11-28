@@ -4,7 +4,7 @@
 <head>
     <base href="{{ url('/') }}/">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ARDAN</title>
     <link rel="stylesheet" href="css/StyleMain/main.css">
@@ -37,7 +37,6 @@
                         @else
                             <a href="{{ url('/home') }}#program">Program</a>
                         @endif
-
                         <div class="line"></div>
                         <a href="/info-news">Info News</a>
                         <div class="line"></div>
@@ -58,9 +57,15 @@
                         <p>Announcer</p>
                     </a>
                 @endif
-                <a class="link" href="/chart">
-                    <p>Chart</p>
-                </a>
+                @if (Request::is('/') || Request::is('/home'))
+                    <a class="link" href="#chart">
+                        <p>Chart</p>
+                    </a>
+                @else
+                    <a class="link" href="{{ url('/home') }}#chart">
+                        <p>Chart</p>
+                    </a>
+                @endif
                 @if (Request::is('/') || Request::is('/home'))
                     <a class="link" href="#schedule">
                         <p>Schedule</p>
@@ -319,6 +324,7 @@
 <script src="js/main/playlist.js"></script>
 <script src="js/main/mainLayout.js"></script>
 {{-- <script src="js/main/streamingPlayer.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 

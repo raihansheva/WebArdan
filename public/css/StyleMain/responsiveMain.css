@@ -53,12 +53,14 @@
     }
     .dropdown-content,
     .dropdown-content.show {
-        min-width: 140px !important;
-        padding: 0px 20px 10px 20px !important;
+        min-width: 240px !important;
+        padding: 0px 25px 15px 25px !important;
     }
     .dropdown-content a {
-        font-size: 26px; /* Ukuran font sedikit lebih kecil */
+        font-size: 24px; /* Ukuran font sedikit lebih kecil */
     }
+    
+
     .arrow-down {
         padding: 3px;
         margin-bottom: 3px;
@@ -158,8 +160,8 @@
     }
 
     .music-image {
-        width: 80px;
-        height: 50px;
+        width: 120px;
+        height: 80px;
     }
 
     .music-titles {
@@ -187,6 +189,16 @@
     #visual {
         height: 160px;
     }
+
+    #layer1 {
+        position: absolute;
+        transform: scale(3, 5);
+        z-index: 100;
+        -webkit-transform: scale(3, 5);
+        -moz-transform: scale(3, 5);
+        -ms-transform: scale(3, 5);
+        -o-transform: scale(3, 5);
+}
     /* ----------------- */
 }
 
@@ -246,8 +258,13 @@
     .dropdown-content,
     .dropdown-content.show {
         min-width: 140px !important;
-        padding: 0px 20px 10px 20px !important;
+        padding: 0px 10px 10px 10px !important;
     }
+
+    .show{
+        width: 120px;
+    }
+
     .dropdown-content a {
         font-size: 14px; /* Ukuran font sedikit lebih kecil */
     }

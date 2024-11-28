@@ -20,7 +20,10 @@ class FeedInstagramResource extends Resource
 {
     protected static ?string $model = FeedInstagram::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Instagram';
+
+    protected static ?string $navigationLabel = 'Feed Instagram';
+    protected static ?string $navigationIcon = 'heroicon-o-camera';
 
     public static function form(Form $form): Form
     {

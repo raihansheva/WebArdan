@@ -2,6 +2,8 @@
 const tombolKiriOP = document.querySelector(".tombol-kiri-OP");
 const tombolKananOP = document.querySelector(".tombol-kanan-OP");
 const areaContentBoxOP = document.querySelector(".area-content-card-OP");
+const textidP = document.getElementById("idP");
+const idP = textidP.textContent;
 
 const getScrollAmountA = () => {
     if (window.matchMedia("(max-width: 375px)").matches) {
@@ -58,7 +60,7 @@ function hideCard(card) {
 
 tontonSiaranBtnA.addEventListener("click", function () {
     hideCard(cardA);
-    pausePodcast()
+    pausePodcast(idP)
     setTimeout(() => {
         showCard(cardB);
     }, 500);
@@ -72,27 +74,27 @@ tontonSiaranBtnB.addEventListener("click", function () {
 });
 
 // Load YouTube API
-var tag = document.createElement("script");
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName("script")[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+// var tag = document.createElement("script");
+// tag.src = "https://www.youtube.com/iframe_api";
+// var firstScriptTag = document.getElementsByTagName("script")[0];
+// firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
-var playlistID = document.getElementById("player-podcast").getAttribute("data-pl");
+// var player;
+// var playlistID = document.getElementById("player-podcast").getAttribute("data-pl");
 
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player("player-podcast", {
-        height: "800",
-        width: "640",
-        playerVars: {
-            listType: "playlist",
-            list: playlistID, // Playlist ID yang diambil dari atribut data
-        },
-        events: {
-            onReady: onPlayerReady,
-        },
-    });
-}
+// function onYouTubeIframeAPIReady() {
+//     player = new YT.Player("player-podcast", {
+//         height: "800",
+//         width: "640",
+//         playerVars: {
+//             listType: "playlist",
+//             list: playlistID, // Playlist ID yang diambil dari atribut data
+//         },
+//         events: {
+//             onReady: onPlayerReady,
+//         },
+//     });
+// }
 
 // Menambahkan thumbnail YouTube secara dinamis di belakang tombol play
 document.querySelectorAll('.box-video, .box-video-mid').forEach(videoBox => {

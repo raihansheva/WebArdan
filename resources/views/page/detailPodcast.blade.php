@@ -31,7 +31,7 @@
                         <div class="card-body-DP-B">
                             <div class="video-container">
                                 <video id="hlsPlayer" controls width="640" height="360"></video>
-                                <div id="player" data-pl="PLFIM0718LjIVrOglQcS_ZHkT5T_27Cmea"></div>
+                                <div id="player" data-pl="{{ $detail_podcast->link_podcast }}"></div>
                             </div>
                         </div>
                         <div class="card-DP-footer">

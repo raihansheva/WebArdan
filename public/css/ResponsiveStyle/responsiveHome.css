@@ -6,6 +6,7 @@
     }
 
     .page-1 {
+        height: 100vh;
         padding: 0px 128px 0px;
     }
 
@@ -259,7 +260,120 @@
         font-size: 18px;
     }
     /* ------------- */
+    /* area-content-info-news */
 
+    .area-ig-twitter{
+        margin: 0px 128px 0px 128px;
+    }
+
+    .area-content-ig-twitter {
+        width: 100%;
+        height: auto;
+        /* border: 1px black solid; */
+        margin-top: 30px;
+        display: flex;
+        gap: 50px;
+    }
+    /* ------- */
+
+    /* area-content-info */
+    .area-content-feed-instagram {
+        width: 100%;
+        height: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .header-feed-instagram {
+        width: 100%;
+        height: fit-content;
+        /* border: 1px white solid; */
+        text-align: start;
+    }
+
+    .title-feed-instagram {
+        margin: 0px;
+        font-family: "Bebas Neue";
+        font-size: 3.6rem;
+        font-weight: 200;
+        color: white;
+    }
+
+    .content-feed-instagram {
+        width: auto;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .area-content-box-feed-instagram {
+        width: 100%;
+        display: flex;
+        gap: 15px;
+        overflow: hidden;
+        box-sizing: border-box;
+        /* padding: 0 10px; */
+    }
+
+    .box-feed-instagram {
+        flex: 0 0 calc(25% - 15px);
+        height: 340px;
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        margin: 0;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    /* pop up feed instagram */
+    .popup-feed {
+        display: none; /* Sembunyikan pop-up secara default */
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(
+            0,
+            0,
+            0,
+            0.5
+        ); /* Latar belakang semi-transparan */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Pastikan pop-up di atas elemen lainnya */
+    }
+
+    .popup-content-feed {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        width: 850px;
+        height: 400px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+    }
+
+    .close {
+        cursor: pointer;
+        font-size: 20px;
+        color: #000;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .area-info-feed {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
     /* area-event */
     .area-event {
         height: auto;
@@ -458,8 +572,8 @@
     }
 
     .popup-content-yt {
-        width: 560px;
-        height: 315px;
+        width: 1280px; /* Disesuaikan agar proporsional */
+        height: 720px; /* Rasio 16:9 */
     }
     /* -------------- */
 
@@ -545,6 +659,35 @@
 
     .name-announcer {
         font-size: 32px;
+    }
+
+    .popup-content-announcer {
+        width: 850px;
+        height: 400px;
+    }
+
+    .title-name-announcer {
+        font-size: 26px;
+    }
+
+    .name-announcer {
+        font-size: 28px;
+    }
+
+    .title-sosmed {
+        font-size: 26px;
+    }
+
+    .area-profile-announcer i {
+        font-size: 36px;
+    }
+
+    .title-bio {
+        font-size: 26px;
+    }
+
+    .bio-announcer {
+        font-size: 24px;
     }
 
     /* ---------------------- */
@@ -674,7 +817,7 @@
 
     .top-content-schedule {
         width: 100%;
-        height: 50px;
+        height: auto;
     }
 
     .schedule {
@@ -695,7 +838,7 @@
     }
 
     .box-schedule {
-        height: 250px;
+        height: 280px;
     }
 
     .nama-programS {
@@ -2621,12 +2764,12 @@
 /* Mobile Devices */
 @media (max-width: 480px) {
     .area-banner {
-        margin: 0px 20px 0px 20px;
+        margin: 0px 8px 0px 8px;
         height: 100px;
     }
 
     .page-1 {
-        padding: 0px 20px 0px;
+        padding: 0px 8px 0px;
     }
 
     .area-streaming {
@@ -2641,7 +2784,7 @@
     .contentS-kiri,
     .contentS-kanan {
         width: 100%;
-        margin: 0px 0px 20px 0px;
+        margin: 0px 0px 8px 0px;
     }
 
     .card-A .card-body {
@@ -2679,6 +2822,9 @@
         margin-top: 0px;
     }
 
+    .text-watchS {
+        font-size: 12px;
+    }
     .text-watchS-B {
         font-size: 12px;
     }
@@ -2778,7 +2924,7 @@
 
     /* area-info-news */
     .area-info-news {
-        margin: 0 20px;
+        margin: 0 8px;
     }
 
     .line-info {
@@ -2868,7 +3014,7 @@
     .area-ig-twitter {
         width: auto;
         height: auto;
-        margin: 0px 20px;
+        margin: 0px 8px;
         padding-top: 5px;
         padding-bottom: 5px;
         position: relative; /* Pastikan elemen ini tidak absolute, agar tidak terpengaruh posisi lain */
@@ -3017,7 +3163,7 @@
     /* area-event */
     .area-event {
         /* height: fit-content;  */
-        margin: 0px 20px;
+        margin: 0px 8px;
         /* border: 1px red solid ; */
     }
 
@@ -3128,7 +3274,7 @@
     /* area-info-news */
     /* area-podcast-video */
     .area-podcast-video {
-        margin: 0px 20px 10px 20px;
+        margin: 0px 8px 10px 8px;
     }
 
     .area-content-PV {
@@ -3452,7 +3598,7 @@
         width: auto;
         height: auto;
         display: flex;
-        padding: 0px 20px 0px 20px;
+        padding: 0px 8px 0px 8px;
     }
 
     .content-chart {
@@ -3490,7 +3636,7 @@
 
     .area-content-artis {
         width: auto;
-        padding: 20px;
+        padding: 8px;
         height: auto;
     }
 
@@ -3521,7 +3667,7 @@
     .area-schedule {
         width: auto;
         height: auto;
-        margin: 0px 20px;
+        margin: 0px 8px;
     }
 
     .area-content-schedule {
@@ -3677,8 +3823,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
-
+    }
 
     .text-watchS {
         font-size: 12px;
@@ -3812,7 +3957,7 @@
         width: 100%;
     }
 
-    .header-info{
+    .header-info {
         text-align: start;
     }
 
@@ -4591,7 +4736,7 @@
         /* padding: 5px; */
     }
 
-    .bio-schedule{
+    .bio-schedule {
         padding: 5px 10px;
     }
 
@@ -4703,7 +4848,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
+    }
     .text-watchS {
         font-size: 10px;
     }
@@ -4714,7 +4859,7 @@
         /* border: 1px red solid; */
     }
     .card-B .view-B {
-        height: 15  px;
+        height: 15 px;
         width: 28%;
         margin-top: 0px;
     }
@@ -4836,7 +4981,7 @@
         width: 100%;
     }
 
-    .header-info{
+    .header-info {
         text-align: start;
     }
 
@@ -5258,8 +5403,8 @@
 
     .card-text-podcast {
         font-size: 18px;
-        white-space: nowrap;      /* Pastikan teks hanya dalam satu baris */
-        overflow: hidden;         /* Sembunyikan teks yang melampaui lebar elemen */
+        white-space: nowrap; /* Pastikan teks hanya dalam satu baris */
+        overflow: hidden; /* Sembunyikan teks yang melampaui lebar elemen */
         text-overflow: ellipsis;
     }
 
@@ -5624,7 +5769,7 @@
         /* padding: 5px; */
     }
 
-    .bio-schedule{
+    .bio-schedule {
         padding: 5px 10px;
     }
 

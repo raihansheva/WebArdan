@@ -39,7 +39,7 @@
                                 <div class="view" id="btn-tonton">
                                     <p class="text-watchS">Tonton Siaran</p>
                                 </div>
-                            </div>
+                            </div>  
                         </div>
                         <div class="card-B">
                             <div class="card-body-B">
@@ -49,7 +49,7 @@
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
                                 <div id="player"
-                                    data-pl="https://live.ardangroup.fm/memfs/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.m3u8"
+                                    data-pl="{{ $streamList->stream_video_url }}"
                                     style="display: none;"></div>
                             </div>
                             <div class="card-footer">
@@ -103,7 +103,7 @@
                         <swiper-slide style="background-image: url('./storage/{{ $programList->image_program }}') "
                             class="box-program" data-title="{{ $programList->judul_program }}"
                             data-description="{{ $programList->deskripsi_program }}"
-                            data-time="{{ $programList->jam_program }}" onclick="showPopup(this)">
+                            data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}" onclick="showPopup(this)">
                             {{-- <img src="./storage/{{ $programList->image_program }}" alt=""> --}}
                         </swiper-slide>
                     @endforeach
@@ -148,14 +148,6 @@
                         <h1 class="title-info">Tag Info</h1>
                     </div>
                     <div class="content-info">
-                        {{-- @foreach ($info as $infoList)
-                            <div class="box-info">
-                                <div class="area-tag-info">
-                                    <h3 class="tag-info">#{{ $infoList->tag_info }}</h3>
-                                </div>
-                                <img class="image-info" src="./storage/{{ $infoList->image_info }}" alt="">
-                            </div>
-                        @endforeach --}}
                         @foreach ($taginfo as $tagInfoList)
                             <div class="box-info">
                                 <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
@@ -203,7 +195,7 @@
                                     "480": { "slidesPerView": 1 },
                                     "768": { "slidesPerView": 3 },
                                     "1024": { "slidesPerView": 3 },
-                                    "1280": { "slidesPerView": 3 },
+                                    "1280": { "slidesPerView": 4 },
                                     "2560": { "slidesPerView" : 4}
                                 }'
                             space-between="20">
@@ -713,7 +705,7 @@
                             <div class="area-bio-schedule">
                                 <div class="bio-schedule">
                                     <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
-                                    <p class="jam-programS">Jam: {{ $scheduleList->jam_program }}</p>
+                                    <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} - {{ $scheduleList->jam_selesai }}</p>
                                 </div>
                             </div>
                         </div>

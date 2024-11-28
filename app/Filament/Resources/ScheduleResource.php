@@ -54,10 +54,12 @@ class ScheduleResource extends Resource
                         TimePicker::make('jam_mulai')
                             ->label('Jam Mulai :')
                             ->required()
+                            ->format('H:i')
                             ->readOnly(),
                         TimePicker::make('jam_selesai')
                             ->label('Jam Selesai :')
                             ->required()
+                            ->format('H:i')
                             ->rule('after:jam_mulai')
                             ->readOnly(),
                         Select::make('hari')
@@ -87,7 +89,8 @@ class ScheduleResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('program.judul_program')->searchable()->sortable(),
-                TextColumn::make('jam_program')->searchable()->sortable(),
+                TextColumn::make('jam_mulai')->searchable()->sortable(),
+                TextColumn::make('jam_selesai')->searchable()->sortable(),
                 TextColumn::make('hari')->searchable(),
                 TextColumn::make('deskripsi'),
             ])
@@ -96,6 +99,7 @@ class ScheduleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

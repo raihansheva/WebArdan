@@ -10,6 +10,16 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = ['program_id', 'nama_program', 'jam_mulai' , 'jam_selesai', 'hari', 'deskripsi'];
+    
+    public function getJamMulaiAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
+
+    public function getJamSelesaiAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
 
     public function program()
     {

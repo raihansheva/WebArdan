@@ -13,20 +13,20 @@
         height: 140px;
     }
 
-    .title-thumbnail{
+    .title-thumbnail {
         font-size: 44px;
     }
 
-    .text-choose{
+    .text-choose {
         font-size: 18px;
     }
 
-    .dropdown-btn-search{
+    .dropdown-btn-search {
         width: 180px;
         padding: 5px;
     }
 
-    .dropdown-item{
+    .dropdown-item {
         font-size: 16px;
     }
 
@@ -43,13 +43,13 @@
         font-size: 14px;
     }
 
-    .video--details__meta h3{
+    .video--details__meta h3 {
         margin: 4px 0;
         font-family: "Poppins";
         font-size: 15px;
         color: white;
     }
-    
+
     .video--details__meta-data {
         display: flex;
         gap: 10px;
@@ -65,8 +65,6 @@
     iframe {
         height: 300px; /* Tinggi iframe disesuaikan */
     }
-
-
 
     /* -------------------- */
 
@@ -90,6 +88,7 @@
 
     .area-content-VNS-kiri {
         width: 55%;
+        height: fit-content;
     }
 
     .title-event {
@@ -98,7 +97,7 @@
 
     .content-kiri-event {
         gap: 10px;
-        height: 555px;
+        /* height: auto; */
     }
 
     .area-countdown {
@@ -122,6 +121,7 @@
     }
 
     .area-event-bottom {
+        height: 30%;
         gap: 10px;
     }
 
@@ -136,8 +136,6 @@
     .year-right {
         font-size: 18px;
     }
-
-    
     /* --------------- */
     /* pop up event */
     .popup-content-event {
@@ -162,11 +160,21 @@
         font-size: 18px;
     }
 
+    .area-content-VNS-kanan {
+        width: 50%;
+        height: 750px;
+        /* border: 1px green solid; */
+        /* display: grid; */
+        /* flex-direction: column; */
+        gap: 5px;
+    }
+
     /* area news */
 
     .content-news {
-        height: auto;
+        height: 100%;
         /* border: 1px blue solid; */
+        margin-top: 12px;
     }
 
     .title-news {
@@ -176,7 +184,7 @@
     .box-news {
         /* height: 100%; */
         padding: 8px;
-        height: 100px;
+        height: calc(20% - 10px);
     }
 
     .area-image {
@@ -191,15 +199,22 @@
     /* area content stream */
 
     .content-streaming {
-        height: 20%;
-        /* border: 1px  red solid; */
+        height: 26.5%;
+        /* border: 1px  green solid; */
+        margin-top: 12px;
+    }
+
+    .header-streaming {
+        width: 100%;
+        height: 5%;
+        margin-top: 12px;
     }
 
     .title-streaming {
         font-size: 44px;
-        margin-top: 4px;
+        /* margin-top: 4px; */
     }
- 
+
     .box-streaming {
         height: 100%;
     }
@@ -218,7 +233,7 @@
     /* -------------------- */
 }
 
-@media (width:1920px ) {
+@media (width: 1920px) {
     /* Gaya untuk monitor Full HD */
 }
 
@@ -248,16 +263,16 @@
         height: 140px;
     }
 
-    .text-choose{
+    .text-choose {
         font-size: 18px;
     }
 
-    .dropdown-btn-search{
+    .dropdown-btn-search {
         width: 180px;
         padding: 5px;
     }
 
-    .dropdown-item{
+    .dropdown-item {
         font-size: 16px;
     }
 
@@ -274,13 +289,13 @@
         font-size: 14px;
     }
 
-    .video--details__meta h3{
+    .video--details__meta h3 {
         margin: 4px 0;
         font-family: "Poppins";
         font-size: 15px;
         color: white;
     }
-    
+
     .video--details__meta-data {
         display: flex;
         gap: 10px;
@@ -296,8 +311,6 @@
     iframe {
         height: 300px; /* Tinggi iframe disesuaikan */
     }
-
-
 
     /* -------------------- */
 
@@ -368,7 +381,6 @@
         font-size: 18px;
     }
 
-    
     /* --------------- */
     /* pop up event */
     .popup-content-event {
@@ -458,15 +470,15 @@
         margin: 20px 20px 0px 20px;
     }
 
-    .area-image-thumbnail{
+    .area-image-thumbnail {
         height: 250px;
     }
 
-    .area-title-thumbnail{
-        margin: 15px 0px ;
+    .area-title-thumbnail {
+        margin: 15px 0px;
     }
 
-    .title-thumbnail{
+    .title-thumbnail {
         font-size: 36px;
     }
 
@@ -475,20 +487,20 @@
         margin: 0px 20px 0px 20px;
     }
 
-    .text-choose{
+    .text-choose {
         font-size: 18px;
     }
 
-    .dropdown-btn-search{
+    .dropdown-btn-search {
         width: 150px;
         padding: 5px;
     }
 
-    .dropdown-item{
+    .dropdown-item {
         font-size: 16px;
     }
 
-    .video--wrapper{
+    .video--wrapper {
         width: calc(33.33% - 15px);
     }
 
@@ -505,13 +517,13 @@
         font-size: 14px;
     }
 
-    .video--details__meta h3{
+    .video--details__meta h3 {
         margin: 4px 0;
         font-family: "Poppins";
         font-size: 15px;
         color: white;
     }
-    
+
     .video--details__meta-data {
         display: flex;
         gap: 10px;
@@ -738,14 +750,14 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
     }
-    
-    .banner-youtube{
+
+    .banner-youtube {
         border-radius: 0px;
         -webkit-border-radius: 0px;
         -moz-border-radius: 0px;
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
-}
+    }
 
     .area-title-thumbnail {
         margin: 10px 0px;
@@ -760,21 +772,21 @@
         margin: 20px 20px 0px 20px;
     }
 
-    .text-choose{
+    .text-choose {
         font-size: 14px;
     }
 
-    .dropdown-btn-search{
+    .dropdown-btn-search {
         width: 100px;
         /* padding: 5px; */
         font-size: 12px;
     }
 
-    .dropdown-item{
+    .dropdown-item {
         font-size: 12px;
     }
 
-    .video--wrapper{
+    .video--wrapper {
         width: calc(50% - 10px);
     }
 
@@ -791,13 +803,13 @@
         font-size: 12px;
     }
 
-    .video--details__meta h3{
+    .video--details__meta h3 {
         margin: 0px 0px;
         font-family: "Poppins";
         font-size: 13px;
         color: white;
     }
-    
+
     .video--details__meta-data {
         display: flex;
         gap: 10px;
@@ -1019,14 +1031,14 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
     }
-    
-    .banner-youtube{
+
+    .banner-youtube {
         border-radius: 0px;
         -webkit-border-radius: 0px;
         -moz-border-radius: 0px;
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
-}
+    }
 
     .area-title-thumbnail {
         margin: 10px 0px;
@@ -1041,25 +1053,25 @@
         margin: 20px 8px 0px 8px;
     }
 
-    .text-choose{
+    .text-choose {
         font-size: 12px;
     }
 
-    .dropdown-btn-search{
+    .dropdown-btn-search {
         width: 100px;
         /* padding: 5px; */
         font-size: 10px;
     }
 
-    .dropdown-item{
+    .dropdown-item {
         font-size: 10px;
     }
 
-    .video{
+    .video {
         display: flex;
     }
 
-    .video--wrapper{
+    .video--wrapper {
         width: 100%;
     }
 
@@ -1067,9 +1079,9 @@
         width: 25px;
         height: 25px;
         display: none;
-        }
+    }
 
-    .video--details{
+    .video--details {
         padding: 0px 10px;
         width: 50%;
     }
@@ -1082,13 +1094,13 @@
         font-size: 12px;
     }
 
-    .video--details__meta h3{
+    .video--details__meta h3 {
         margin: 0px 0px;
         font-family: "Poppins";
         font-size: 13px;
         color: white;
     }
-    
+
     .video--details__meta-data {
         display: flex;
         gap: 10px;
@@ -1098,7 +1110,7 @@
         font-weight: 200;
     }
 
-    .video--thumbnail{
+    .video--thumbnail {
         height: fit-content;
         width: 50%;
     }
@@ -1109,7 +1121,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
+    }
 
     .video--thumbnail__overlays {
         font-size: 8px;
@@ -1327,14 +1339,14 @@
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
     }
-    
-    .banner-youtube{
+
+    .banner-youtube {
         border-radius: 0px;
         -webkit-border-radius: 0px;
         -moz-border-radius: 0px;
         -ms-border-radius: 0px;
         -o-border-radius: 0px;
-}
+    }
 
     .area-title-thumbnail {
         margin: 10px 0px;
@@ -1349,25 +1361,25 @@
         margin: 20px 8px 0px 8px;
     }
 
-    .text-choose{
+    .text-choose {
         font-size: 12px;
     }
 
-    .dropdown-btn-search{
+    .dropdown-btn-search {
         width: 100px;
         /* padding: 5px; */
         font-size: 10px;
     }
 
-    .dropdown-item{
+    .dropdown-item {
         font-size: 10px;
     }
 
-    .video{
+    .video {
         display: flex;
     }
 
-    .video--wrapper{
+    .video--wrapper {
         width: 100%;
     }
 
@@ -1375,9 +1387,9 @@
         width: 25px;
         height: 25px;
         display: none;
-        }
+    }
 
-    .video--details{
+    .video--details {
         padding: 0px 10px;
         width: 50%;
     }
@@ -1390,13 +1402,13 @@
         font-size: 12px;
     }
 
-    .video--details__meta h3{
+    .video--details__meta h3 {
         margin: 0px 0px;
         font-family: "Poppins";
         font-size: 13px;
         color: white;
     }
-    
+
     .video--details__meta-data {
         display: flex;
         gap: 10px;
@@ -1406,7 +1418,7 @@
         font-weight: 200;
     }
 
-    .video--thumbnail{
+    .video--thumbnail {
         height: fit-content;
         width: 50%;
     }
@@ -1417,7 +1429,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
+    }
 
     .video--thumbnail__overlays {
         font-size: 8px;
