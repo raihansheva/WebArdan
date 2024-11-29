@@ -30,8 +30,9 @@
                                     data-audio-src="{{ $streamList->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
-                                <audio  class="audio-streaming"
-                                    id="audio-streaming" preload="auto">
+
+                                <!-- Ganti dengan MediaElement.js -->
+                                <audio class="audio-streaming" id="audio-streaming" preload="auto">
                                     <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
                                 </audio>
                             </div>
@@ -39,7 +40,7 @@
                                 <div class="view" id="btn-tonton">
                                     <p class="text-watchS">Tonton Siaran</p>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                         <div class="card-B">
                             <div class="card-body-B">
@@ -48,9 +49,8 @@
                                     <video id="hlsPlayer" controls width="640" height="360"></video>
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player"
-                                    data-pl="{{ $streamList->stream_video_url }}"
-                                    style="display: none;"></div>
+                                <div id="player" data-pl="{{ $streamList->stream_video_url }}" style="display: none;">
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="view-B">
@@ -103,7 +103,8 @@
                         <swiper-slide style="background-image: url('./storage/{{ $programList->image_program }}') "
                             class="box-program" data-title="{{ $programList->judul_program }}"
                             data-description="{{ $programList->deskripsi_program }}"
-                            data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}" onclick="showPopup(this)">
+                            data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
+                            onclick="showPopup(this)">
                             {{-- <img src="./storage/{{ $programList->image_program }}" alt=""> --}}
                         </swiper-slide>
                     @endforeach
@@ -476,8 +477,8 @@
                         <div class="tombol-kanan-announcer"></div>
                     </div>
                     <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
-                    autoplay-disable-on-interaction="false"
-                    breakpoints='{
+                        autoplay-disable-on-interaction="false"
+                        breakpoints='{
                         "320": { "slidesPerView": 1 },
                         "375": { "slidesPerView": 1 },
                         "480": { "slidesPerView": 1 },
@@ -486,7 +487,7 @@
                         "1280": { "slidesPerView": 5 },
                         "2560": { "slidesPerView" : 5}
                     }'
-                    space-between="20">
+                        space-between="20">
                         @foreach ($announcer as $announcerList)
                             <swiper-slide class="box-announcer" data-bio="{{ strip_tags($announcerList->bio) }}"
                                 data-image="./storage/{{ $announcerList->image_announcer }}"
@@ -705,7 +706,8 @@
                             <div class="area-bio-schedule">
                                 <div class="bio-schedule">
                                     <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
-                                    <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} - {{ $scheduleList->jam_selesai }}</p>
+                                    <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} -
+                                        {{ $scheduleList->jam_selesai }}</p>
                                 </div>
                             </div>
                         </div>

@@ -55,6 +55,44 @@ function stopAllAudio() {
 
 document.addEventListener("DOMContentLoaded", function () {
     let previousIsStreamingPlaying = null;
+    let audioStream = document.getElementById("audio-streaming"); // Ambil elemen audio
+    let isStreamingPlaying = false; // Status play/pause
+    // Inisialisasi MediaElement.js tanpa kontrol default
+    let mediaPlayer = new MediaElementPlayer("audio-streaming", {
+        features: [], // Hapus fitur kontrol default
+        success: function (mediaElement, originalNode) {
+            console.log("MediaElement instance:", mediaElement); // Debug log
+            console.log("Original node:", originalNode); // Debug log untuk elemen asli
+    
+            // Mengatur event play/pause
+            mediaElement.addEventListener("play", function () {
+                isStreamingPlaying = true;
+                const audioElement = document.getElementById("audio-streaming"); // Elemen asli
+                // startSpectrumAudio(audioElement); // Pastikan elemen audio asli digunakan
+                updatePlayPauseButtonStateS(); // Update status tombol play/pause
+            });
+    
+            mediaElement.addEventListener("pause", function () {
+                isStreamingPlaying = false;
+                updatePlayPauseButtonStateS(); // Update status tombol play/pause
+            });
+        }
+    });
+
+    // Jika Anda ingin menambahkan pengendalian play/pause manual
+    // document.getElementById("BtnStream").addEventListener("click", function () {
+    //     // Dapatkan elemen audio
+    //     let audioStream = document.getElementById("audio-streaming");
+
+    //     // Jika audio sedang diputar, hentikan. Jika berhenti, mulai memutar.
+    //     if (isStreamingPlaying) {
+    //         audioStream.pause(); // Menghentikan pemutaran
+    //     } else {
+    //         musicName.innerHTML = "Streaming Audio"; // Atur nama audio
+    //         musicArtist.innerHTML = "Live Stream"; // Atur artis audio
+    //         audioStream.play(); // Memulai pemutaran
+    //     }
+    // });
 
     // Fungsi untuk toggle play/pause pada audio streaming
     function toggleStreaming() {
@@ -74,6 +112,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fungsi untuk memutar audio streaming
     window.playStreaming = function () {
+        let audioStream = document.getElementById("audio-streaming");
+        // console.log(audioStream);
+        let spectrumStream = audioStream.querySelector("source");
+        if (!audioStream) {
+            console.error("Audio element not found");
+            return;
+        }
+
         if (activeAudioSource !== "streaming") {
             stopActiveAudio(); // Hentikan audio lain
             activeAudioSource = "streaming";
@@ -90,26 +136,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Jika audio belum dimainkan, langsung mainkan
         if (!isStreamingPlaying) {
-            AudioStream.play()
-                .then(() => {
-                    isStreamingPlaying = true;
-                    musicName.innerHTML = "Streaming Audio"; // Atur nama audio
-                    musicArtist.innerHTML = "Live Stream"; // Atur artis audio
-                    updatePlayPauseButtonStateS();
-                })
-                .catch((error) => {
-                    console.error("Error playing streaming audio:", error);
-                    alert("Failed to play audio: " + error);
-                });
+            audioStream.play();
+            // isStreamingPlaying = true;
+
+            // updatePlayPauseButtonStateS();
+            // console.error("Error playing streaming audio:", error);
+            // alert("Failed to play audio: " + error);
         }
 
-        startSpectrumAudio(AudioStream);
-        proggresBarAudio(AudioStream);
+        // startSpectrumAudio(audioStream);
+        // proggresBarAudio(audioStream);
     };
 
     // Fungsi untuk menjeda audio streaming
     window.pauseStreaming = function () {
-        AudioStream.pause(); // Jeda audio streaming
+        let audioStream = document.getElementById("audio-streaming");
+        audioStream.pause(); // Jeda audio streaming
         activeAudioSource = null; // Hapus status sumber aktif
         isStreamingPlaying = false;
         updatePlayPauseButtonStateS(); // Perbarui status tombol play/pause
@@ -138,22 +180,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener untuk tombol play/pause
     document.querySelectorAll(".btn-play-streaming").forEach((button) => {
         button.addEventListener("click", () => {
-            const streamingSrc = button.getAttribute("data-audio-src");
+            let audioStream = document.getElementById("audio-streaming");
 
-            // Cek apakah sumber streaming berubah
-            if (AudioStream.src !== streamingSrc) {
-                // Jika sumber streaming berbeda, perbarui sumber dan langsung mainkan
-                AudioStream.src = streamingSrc;
-                AudioStream.crossOrigin = "anonymous";
+            // Jika audio sedang diputar, hentikan. Jika berhenti, mulai memutar.
+            if (isStreamingPlaying) {
+                pauseStreaming();
+            } else {
                 musicName.innerHTML = "Streaming Audio"; // Atur nama audio
                 musicArtist.innerHTML = "Live Stream"; // Atur artis audio
-                // AudioStream.load(); // Muat audio baru
-
-                playStreaming(); // Mainkan setelah siap
-                // AudioStream.oncanplay = () => {
-                // };
-            } else {
-                toggleStreaming(); // Jika sumber sama, toggle play/pause
+                playStreaming();
             }
         });
     });
@@ -645,39 +680,47 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------
     // Spectrum Audio Visualization
     // ----------------------------
-    const svg = document.getElementById("visual");
-    // const audio = AudioChart;
-    const path = svg.querySelector("#layer1");
+    // ----------------------------
+    // Spectrum Audio Visualization
+    // ----------------------------
+    const audioSourceMap = new Map(); // Untuk memastikan satu audio tidak terhubung dua kali
 
-    // Gunakan satu instance AudioContext untuk semua audio
-    const audioContext = new (window.AudioContext ||
-        window.webkitAudioContext)();
-    const analyser = audioContext.createAnalyser();
-    analyser.fftSize = 2048;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-
-    // Cache untuk MediaElementSourceNode
-    const audioSourceMap = new Map();
     function startSpectrumAudio(audio) {
-        function updateVisualization() {
-            if (!audioSourceMap.has(audio)) {
-                const source = audioContext.createMediaElementSource(audio);
-                source.connect(analyser);
-                analyser.connect(audioContext.destination);
-                audioSourceMap.set(audio, source);
-            }
+        // Pastikan audio adalah instance dari HTMLMediaElement
+        if (!(audio instanceof HTMLMediaElement)) {
+            console.error("Parameter 'audio' bukan HTMLMediaElement.");
+            return;
+        }
 
+        const svg = document.getElementById("visual");
+        const path = svg.querySelector("#layer1");
+
+        const audioContext = new (window.AudioContext ||
+            window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+
+        // Pastikan audio belum terhubung sebelumnya
+        if (!audioSourceMap.has(audio)) {
+            const source = audioContext.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+            audioSourceMap.set(audio, source);
+        }
+
+        function updateVisualization() {
             analyser.getByteFrequencyData(dataArray);
 
             const width = svg.clientWidth;
             const height = svg.clientHeight;
 
-            const numPoints = 7; // Jumlah titik yang ditampilkan
+            const numPoints = 7; // Jumlah titik untuk visualisasi
             const step = width / (numPoints - 1);
-            const waveHeight = height / 1.5; // Tinggi gelombang
+            const waveHeight = height / 1.5;
 
-            let newPath = `M0 ${height / 2}`;
+            let newPath = `M0 ${height / 2}`; // Awal path
 
             for (let i = 1; i < numPoints; i++) {
                 const index = Math.floor(i * (bufferLength / numPoints));
@@ -708,19 +751,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            newPath += `L${width} ${height / 2}`;
+            newPath += `L${width} ${height / 2}`; // Akhir path
             path.setAttribute("d", newPath);
             requestAnimationFrame(updateVisualization);
         }
 
-        // Mulai visualisasi saat audio diputar
+        // Memulai visualisasi ketika audio dimainkan
         audio.addEventListener("play", () => {
             audioContext.resume().then(() => {
                 updateVisualization();
             });
         });
 
-        // Bersihkan SVG saat jendela diubah ukurannya
+        // Membersihkan visualisasi saat jendela di-resize
         window.addEventListener("resize", () => {
             path.setAttribute("d", "");
         });
