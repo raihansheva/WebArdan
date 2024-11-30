@@ -32,7 +32,7 @@
                                 </div>
 
                                 <!-- Ganti dengan MediaElement.js -->
-                                <audio class="audio-streaming" id="audio-streaming" preload="auto">
+                                <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous" >
                                     <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
                                 </audio>
                             </div>
@@ -61,20 +61,76 @@
                     @endforeach
                 </div>
                 <div class="contentS-kanan">
-                    @if ($streamUpcoming)
-                        @foreach ($streamUpcoming as $streamUpcomingList)
-                            <div class="area-nextP">
-                                <div class="area-title-nextP">
-                                    <p class="title-nextP"> Next Program</p>
+                    {{-- @if ($streamUpcoming)
+                        @foreach ($streamUpcoming as $streamUpcomingList) --}}
+                    <div class="area-nextP">
+                        <div class="area-title-nextP">
+                            <p class="title-nextP"> Next Program</p>
+                        </div>
+                        <div class="area-thumbnail-nextP">
+                            <img class="image-stream-upcoming" id="program-image" src="" alt="">
+                        </div>
+                    </div>
+                    {{-- @endforeach
+                    @else
+                    @endif --}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-3" id="info-news">
+        <div class="area-info-news">
+            <div class="line-info"></div>
+            <div class="area-content-info-news">
+                <div class="area-content-news">
+                    <div class="header-news">
+                        <h1 class="title-news">Top Info</h1>
+                    </div>
+                    <div class="content-news">
+                        @foreach ($top_info as $topInfoList)
+                            <a class="link-box-news" href="/info-detail/{{ $topInfoList->slug }}">
+                                <div class="box-news">
+                                    <div class="area-image">
+                                        <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                            alt="">
+                                    </div>
+                                    <div class="area-text">
+                                        <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                    </div>
                                 </div>
-                                <div class="area-thumbnail-nextP">
-                                    <img class="image-stream-upcoming"
-                                        src="./storage/{{ $streamUpcomingList->image_stream }}" alt="">
-                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="area-content-info">
+                    <div class="header-info">
+                        <h1 class="title-info">More News</h1>
+                    </div>
+                    <div class="content-info">
+                        @foreach ($taginfo as $tagInfoList)
+                            <div class="box-info">
+                                <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                    <div class="area-tag-info">
+                                        <h3 class="tag-info">#{{ $tagInfoList->nama_tag }}</h3>
+                                    </div>
+                                    @if ($tagInfoList->info->isNotEmpty())
+                                        <img class="image-info"
+                                            src="{{ asset('storage/' . $tagInfoList->info->first()->image_info) }}"
+                                            alt="">
+                                    @else
+                                        <p>Tidak ada info untuk tag ini.</p>
+                                    @endif
+                                </a>
                             </div>
                         @endforeach
-                    @else
-                    @endif
+                    </div>
+                    <div class="area-bottom-info">
+                        <div class="box-title-bottom">
+                            <a href="/info-news">
+                                <h1 class="title-bottom-info">Show more</h1>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,61 +178,7 @@
             </div>
         </div>
     </section>
-    <section class="page-3" id="info-news">
-        <div class="area-info-news">
-            <div class="line-info"></div>
-            <div class="area-content-info-news">
-                <div class="area-content-news">
-                    <div class="header-news">
-                        <h1 class="title-news">Top Info</h1>
-                    </div>
-                    <div class="content-news">
-                        @foreach ($top_info as $topInfoList)
-                            <div class="box-news">
-                                <div class="area-image">
-                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
-                                        alt="">
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="area-content-info">
-                    <div class="header-info">
-                        <h1 class="title-info">Tag Info</h1>
-                    </div>
-                    <div class="content-info">
-                        @foreach ($taginfo as $tagInfoList)
-                            <div class="box-info">
-                                <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
-                                    <div class="area-tag-info">
-                                        <h3 class="tag-info">#{{ $tagInfoList->nama_tag }}</h3>
-                                    </div>
-                                    @if ($tagInfoList->info->isNotEmpty())
-                                        <img class="image-info"
-                                            src="{{ asset('storage/' . $tagInfoList->info->first()->image_info) }}"
-                                            alt="">
-                                    @else
-                                        <p>Tidak ada info untuk tag ini.</p>
-                                    @endif
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="area-bottom-info">
-                        <div class="box-title-bottom">
-                            <a href="/info-news">
-                                <h1 class="title-bottom-info">Show more</h1>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <section class="page-ig-twitter" id="ig-twitter">
         <div class="area-ig-twitter">
             <div class="line-ig-twitter"></div>
@@ -767,4 +769,23 @@
     <script src="js/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script>
+        // Function to fetch the next program's image
+        async function fetchNextProgramImage() {
+            try {
+                const response = await fetch('/api/next-program-image');
+                const data = await response.json();
+
+                // Update the image source
+                const programImage = document.getElementById('program-image');
+                programImage.src = data.image; // Path langsung dari API
+            } catch (error) {
+                console.error('Error fetching next program image:', error);
+            }
+        }
+
+        // Fetch image every 1 minute
+        fetchNextProgramImage(); // Initial fetch
+        setInterval(fetchNextProgramImage, 60000); // Refresh every 60 seconds
+    </script>
 @endsection

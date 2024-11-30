@@ -185,11 +185,11 @@
         @yield('content')
     </main>
     {{-- ------- --}}
-    <div id="scrollToTopBtn" ><i onclick="scrollToTop()" class='bx bx-up-arrow-alt'></i>
+    <div id="scrollToTopBtn"><i onclick="scrollToTop()" class='bx bx-up-arrow-alt'></i>
     </div>
     {{-- audio player --}}
     <div class="audio-player-container">
-        
+
         <svg id="visual" viewBox="0 0 900 600" width="1800" height="800" xmlns="http://www.w3.org/2000/svg">
             <path id="layer1" fill="#f8c301" stroke="#f8c301" stroke-width="2" stroke-linecap="round"></path>
         </svg>
@@ -213,7 +213,7 @@
             </div>
             <div class="area-control-progres">
                 <div class="image-wrapper">
-                    <div class="music-image"  id="image">
+                    <div class="music-image" id="image">
                         <img src="" alt="-" />
                     </div>
                 </div>
@@ -302,7 +302,8 @@
                             <div class="area-box-partner">
                                 @foreach ($partner as $partnerList)
                                     <div class="partner">
-                                        <img class="image-partner" src="./storage/{{ $partnerList->logo_partner }}" alt="">
+                                        <img class="image-partner" src="./storage/{{ $partnerList->logo_partner }}"
+                                            alt="">
                                     </div>
                                 @endforeach
                             </div>
@@ -327,5 +328,56 @@
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script>
+    const urlCek = window.location.pathname;
+    console.log("Current Path:", urlCek);
+    if (!urlCek.includes("detail-podcast")) {
+        document.addEventListener("DOMContentLoaded", () => {
+            const btnPlayStream = document.getElementById("BtnStream");
+            const audioPlayerContainer = document.querySelector(".audio-player-container");
+
+            // Pastikan audio player tersembunyi di awal
+            audioPlayerContainer.style.opacity = "0";
+            audioPlayerContainer.style.visibility = "hidden";
+
+            // Fungsi untuk mengecek apakah elemen terlihat di viewport
+            function isElementInViewport(el) {
+                if (!el) return false; // Jika elemen tidak ditemukan
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            // Fungsi untuk mengatur visibilitas Audio Player
+            function updateAudioPlayerVisibility() {
+                if (btnPlayStream) {
+                    if (isElementInViewport(btnPlayStream)) {
+                        // Jika tombol Play Stream terlihat, sembunyikan Audio Player
+                        audioPlayerContainer.style.opacity = "0";
+                        audioPlayerContainer.style.visibility = "hidden";
+                    } else {
+                        // Jika tombol Play Stream tidak terlihat, tampilkan Audio Player
+                        audioPlayerContainer.style.opacity = "1";
+                        audioPlayerContainer.style.visibility = "visible";
+                    }
+                } else {
+                    // Jika tombol Play Stream tidak ada di halaman, tampilkan Audio Player
+                    audioPlayerContainer.style.opacity = "1";
+                    audioPlayerContainer.style.visibility = "visible";
+                }
+            }
+
+            // Panggil fungsi saat halaman dimuat
+            updateAudioPlayerVisibility();
+
+            // Pantau perubahan saat pengguna menggulir
+            window.addEventListener("scroll", updateAudioPlayerVisibility);
+        });
+    }
+</script>
 
 </html>

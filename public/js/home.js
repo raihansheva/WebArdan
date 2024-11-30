@@ -486,15 +486,15 @@ function showScheduleForDay(day) {
     // Menyembunyikan semua konten schedule
     scheduleContent.forEach((content) => content.classList.add("hidden"));
 
-    // Menampilkan konten yang sesuai dengan hari yang dipilih
-    const selectedSchedule = document.querySelector(
+    // Menampilkan semua konten yang sesuai dengan hari yang dipilih
+    const selectedSchedules = document.querySelectorAll(
         `.box-schedule[data-day="${day}"]`
     );
 
-    if (selectedSchedule) {
-        selectedSchedule.classList.remove("hidden");
+    if (selectedSchedules.length > 0) {
+        selectedSchedules.forEach((schedule) => schedule.classList.remove("hidden"));
     } else {
-        console.warn(`Schedule for day '${day}' not found.`);
+        console.warn(`No schedules found for day '${day}'.`);
     }
 
     // Menandai tab hari sebagai aktif dan menghapus kelas aktif dari tab lainnya

@@ -47,7 +47,7 @@ class HomeController extends Controller
         $Kategori = Kategori::with('charts')->get();
 
         $schedule = Schedule::with('program')->get();
-
+        
         $artis = Artis::all()->take(3);
 
         // foreach ($artis as $berita) {
@@ -64,7 +64,7 @@ class HomeController extends Controller
         $playlist = Youtube::first();
         $apiKey = env('YOUTUBE_API_KEY');
         $playlistId = $playlist->link_youtube;
-
+        // dd($schedule);
         // Panggil YouTube API untuk mendapatkan video dari playlist
         $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
             'part' => 'snippet',
@@ -269,6 +269,31 @@ class HomeController extends Controller
         // dd($info);
 
         return view('page.detailTaginfo', [
+            'bannerInfo' => $bannerI,
+            'info' => $info,
+            'taginfo' => $taginfo,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
+            'stream' => $stream
+        ]);
+    }
+
+    public function detailInfo($slug)
+    {
+        $info = Info::whereHas('tagInfo', function ($query) use ($slug) {
+            $query->where('slug', $slug); // Filter berdasarkan nama_tag di tabel tag_infos
+        })->with('tagInfo')->get();
+        $taginfo = TagInfo::with('info')->get();;
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::all();
+        $bannerI = BannerInfo::all();
+        $stream = Streaming::where('status', 'streaming')->first();
+
+        // dd($info);
+
+        return view('page.detailInfo', [
             'bannerInfo' => $bannerI,
             'info' => $info,
             'taginfo' => $taginfo,

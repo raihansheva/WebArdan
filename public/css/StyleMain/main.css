@@ -318,6 +318,7 @@ body {
     z-index: 1000;
     /* gap: 10px; */
     /* border: 1px black solid; */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .content {

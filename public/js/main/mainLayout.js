@@ -59,24 +59,22 @@ document.addEventListener("DOMContentLoaded", function () {
     let isStreamingPlaying = false; // Status play/pause
     // Inisialisasi MediaElement.js tanpa kontrol default
     let mediaPlayer = new MediaElementPlayer("audio-streaming", {
-        features: [], // Hapus fitur kontrol default
+        features: [],
         success: function (mediaElement, originalNode) {
-            console.log("MediaElement instance:", mediaElement); // Debug log
-            console.log("Original node:", originalNode); // Debug log untuk elemen asli
-    
-            // Mengatur event play/pause
+            // console.log(originalNode);
+            
+            mediaElement.src = "https://stream.rcs.revma.com/ugpyzu9n5k3vv"; // URL proxy
             mediaElement.addEventListener("play", function () {
                 isStreamingPlaying = true;
-                const audioElement = document.getElementById("audio-streaming"); // Elemen asli
-                // startSpectrumAudio(audioElement); // Pastikan elemen audio asli digunakan
-                updatePlayPauseButtonStateS(); // Update status tombol play/pause
+                startSpectrumAudio(AudioStream);
+                updatePlayPauseButtonStateS();
             });
     
             mediaElement.addEventListener("pause", function () {
                 isStreamingPlaying = false;
-                updatePlayPauseButtonStateS(); // Update status tombol play/pause
+                updatePlayPauseButtonStateS();
             });
-        }
+        },
     });
 
     // Jika Anda ingin menambahkan pengendalian play/pause manual
@@ -113,8 +111,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fungsi untuk memutar audio streaming
     window.playStreaming = function () {
         let audioStream = document.getElementById("audio-streaming");
-        // console.log(audioStream);
-        let spectrumStream = audioStream.querySelector("source");
+        
+       
+        
         if (!audioStream) {
             console.error("Audio element not found");
             return;
@@ -144,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // alert("Failed to play audio: " + error);
         }
 
-        // startSpectrumAudio(audioStream);
+        startSpectrumAudio(AudioStream);
         // proggresBarAudio(audioStream);
     };
 
@@ -189,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 musicName.innerHTML = "Streaming Audio"; // Atur nama audio
                 musicArtist.innerHTML = "Live Stream"; // Atur artis audio
                 playStreaming();
+                // startSpectrumAudio(AudioStream)
             }
         });
     });
@@ -683,91 +683,96 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------
     // Spectrum Audio Visualization
     // ----------------------------
-    const audioSourceMap = new Map(); // Untuk memastikan satu audio tidak terhubung dua kali
+    const audioSourceMap = new Map();
 
-    function startSpectrumAudio(audio) {
-        // Pastikan audio adalah instance dari HTMLMediaElement
-        if (!(audio instanceof HTMLMediaElement)) {
-            console.error("Parameter 'audio' bukan HTMLMediaElement.");
-            return;
-        }
+function startSpectrumAudio(audio) {
+    if (!(audio instanceof HTMLMediaElement)) {
+        console.error("Invalid audio element:", audio);
+        return;
+    }
 
-        const svg = document.getElementById("visual");
-        const path = svg.querySelector("#layer1");
-
-        const audioContext = new (window.AudioContext ||
-            window.webkitAudioContext)();
+    // Ambil atau buat AudioContext
+    let audioContext;
+    if (!audioSourceMap.has(audio)) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioContext.createMediaElementSource(audio);
         const analyser = audioContext.createAnalyser();
         analyser.fftSize = 2048;
-        const bufferLength = analyser.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
 
-        // Pastikan audio belum terhubung sebelumnya
-        if (!audioSourceMap.has(audio)) {
-            const source = audioContext.createMediaElementSource(audio);
-            source.connect(analyser);
-            analyser.connect(audioContext.destination);
-            audioSourceMap.set(audio, source);
-        }
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
 
-        function updateVisualization() {
-            analyser.getByteFrequencyData(dataArray);
-
-            const width = svg.clientWidth;
-            const height = svg.clientHeight;
-
-            const numPoints = 7; // Jumlah titik untuk visualisasi
-            const step = width / (numPoints - 1);
-            const waveHeight = height / 1.5;
-
-            let newPath = `M0 ${height / 2}`; // Awal path
-
-            for (let i = 1; i < numPoints; i++) {
-                const index = Math.floor(i * (bufferLength / numPoints));
-                const amplitude = dataArray[index] || 0;
-                const scaledAmplitude = (amplitude / 255) * waveHeight;
-
-                const x = i * step;
-                const y = height / 2 - scaledAmplitude;
-
-                if (i > 0) {
-                    const prevX = (i - 1) * step;
-                    const prevY =
-                        height / 2 -
-                        ((dataArray[
-                            Math.floor((i - 1) * (bufferLength / numPoints))
-                        ] || 0) /
-                            255) *
-                            waveHeight;
-
-                    const controlX1 = prevX + (x - prevX) * 0.4;
-                    const controlY1 = prevY;
-                    const controlX2 = prevX + (x - prevX) * 0.6;
-                    const controlY2 = y;
-
-                    newPath += `C${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x} ${y}`;
-                } else {
-                    newPath += `L${x} ${y}`;
-                }
-            }
-
-            newPath += `L${width} ${height / 2}`; // Akhir path
-            path.setAttribute("d", newPath);
-            requestAnimationFrame(updateVisualization);
-        }
-
-        // Memulai visualisasi ketika audio dimainkan
-        audio.addEventListener("play", () => {
-            audioContext.resume().then(() => {
-                updateVisualization();
-            });
-        });
-
-        // Membersihkan visualisasi saat jendela di-resize
-        window.addEventListener("resize", () => {
-            path.setAttribute("d", "");
-        });
+        audioSourceMap.set(audio, { audioContext, analyser });
+    } else {
+        const audioData = audioSourceMap.get(audio);
+        audioContext = audioData.audioContext;
     }
+
+    const { analyser } = audioSourceMap.get(audio);
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+    const svg = document.getElementById("visual");
+    const path = svg.querySelector("#layer1");
+
+    function updateVisualization() {
+        analyser.getByteFrequencyData(dataArray);
+
+        const width = svg.clientWidth;
+        const height = svg.clientHeight;
+
+        const numPoints = 7;
+        const step = width / (numPoints - 1);
+        const waveHeight = height / 1.5;
+
+        let newPath = `M0 ${height / 2}`;
+        for (let i = 1; i < numPoints; i++) {
+            const index = Math.floor(i * (dataArray.length / numPoints));
+            const amplitude = dataArray[index] || 0;
+            const scaledAmplitude = (amplitude / 255) * waveHeight;
+
+            const x = i * step;
+            const y = height / 2 - scaledAmplitude;
+
+            if (i > 0) {
+                const prevX = (i - 1) * step;
+                const prevY =
+                    height / 2 -
+                    ((dataArray[
+                        Math.floor((i - 1) * (dataArray.length / numPoints))
+                    ] || 0) / 255) *
+                        waveHeight;
+
+                const controlX1 = prevX + (x - prevX) * 0.4;
+                const controlY1 = prevY;
+                const controlX2 = prevX + (x - prevX) * 0.6;
+                const controlY2 = y;
+
+                newPath += `C${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x} ${y}`;
+            } else {
+                newPath += `L${x} ${y}`;
+            }
+        }
+
+        newPath += `L${width} ${height / 2}`;
+        path.setAttribute("d", newPath);
+        requestAnimationFrame(updateVisualization);
+    }
+
+    audio.addEventListener("play", () => {
+        audioContext.resume().then(() => {
+            updateVisualization();
+        });
+    });
+
+    audio.addEventListener("pause", () => {
+        path.setAttribute("d", ""); // Reset visualisasi saat pause
+    });
+
+    window.addEventListener("resize", () => {
+        path.setAttribute("d", "");
+    });
+}
+
 });
 
 // function updateVisualization() {
