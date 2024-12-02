@@ -31,7 +31,7 @@ class HomeController extends Controller
         $banner = Banner::all();
 
         $stream = Streaming::where('status', 'streaming')->get();
-        $streamUpcoming = Streaming::where('status' , 'upcoming')->limit(1)->get();
+        $streamUpcoming = Streaming::where('status', 'upcoming')->limit(1)->get();
 
         $program = Program::all();
 
@@ -39,7 +39,13 @@ class HomeController extends Controller
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
 
         $taginfo = TagInfo::with('info')->get();
-        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $topInfo = Info::where('top_news', true)
+            ->limit(3)
+            ->with('tagInfo') // Eager loading tagInfo
+            ->get();
+        $Info = Info::with('tagInfo')
+            ->limit(10)
+            ->get();
 
         $announcer = Announcer::all();
 
@@ -47,7 +53,7 @@ class HomeController extends Controller
         $Kategori = Kategori::with('charts')->get();
 
         $schedule = Schedule::with('program')->get();
-        
+
         $artis = Artis::all()->take(3);
 
         // foreach ($artis as $berita) {
@@ -64,7 +70,7 @@ class HomeController extends Controller
         $playlist = Youtube::first();
         $apiKey = env('YOUTUBE_API_KEY');
         $playlistId = $playlist->link_youtube;
-        // dd($schedule);
+        // dd($topInfo);
         // Panggil YouTube API untuk mendapatkan video dari playlist
         $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
             'part' => 'snippet',
@@ -94,6 +100,7 @@ class HomeController extends Controller
             'program' => $program,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
+            'info' => $Info,
             'taginfo' => $taginfo,
             'top_info' => $topInfo,
             'podcast' => $podcast,
@@ -237,7 +244,7 @@ class HomeController extends Controller
         $info = Info::with('tagInfo')->get();
         $taginfo = TagInfo::with('info')->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
-        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();      
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
         $stream = Streaming::where('status', 'streaming')->first();

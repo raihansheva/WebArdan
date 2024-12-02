@@ -84,22 +84,58 @@
             <div class="area-content-info-news">
                 <div class="area-content-news">
                     <div class="header-news">
-                        <h1 class="title-news">Top Info</h1>
+                        <h1 class="title-news">Info</h1>
                     </div>
                     <div class="content-news">
-                        @foreach ($top_info as $topInfoList)
-                            <a class="link-box-news" href="/info-detail/{{ $topInfoList->slug }}">
+                        @foreach ($info as $InfoList)
+                            <a class="link-box-news" href="/info-detail/{{ $InfoList->slug }}">
                                 <div class="box-news">
                                     <div class="area-image">
-                                        <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                        <img class="image-top-info" src="./storage/{{ $InfoList->image_info }}"
                                             alt="">
                                     </div>
-                                    <div class="area-text">
-                                        <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
+                                    <div class="area-text-desk">
+                                        <div class="area-tag">
+                                            <p class="tag-news">#{{ $InfoList->tagInfo->nama_tag }}</p>
+                                        </div>
+                                        <div class="area-text">
+                                            <p class="desk-news">{{ $InfoList->deskripsi_info }}</p>
+                                        </div>
+                                        <div class="area-date">
+                                            <p class="date-news">{{ $InfoList->date_info }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         @endforeach
+                    </div>
+                    <div class="area-top-info">
+                        <div class="header-top-info">
+                            <h1 class="title-top-info">Top Info</h1>
+                        </div>
+                        <div class="content-top-info">
+                            @foreach ($top_info as $topInfoList)
+                                <a class="link-box-top-info" href="/info-detail/{{ $topInfoList->slug }}">
+                                    <div class="box-top-info">
+                                        <div class="area-image-top-info">
+                                            <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                                alt="">
+                                        </div>
+                                        <div class="area-text-desk-top-info">
+                                            <div class="area-tag">
+                                                <p class="tag-top-info">#{{ $topInfoList->tagInfo->nama_tag }}</p>
+                                            </div>
+                                            <div class="area-text">
+                                                <p class="desk-top-info">{{ $topInfoList->deskripsi_info }}</p>
+                                            </div>
+                                            <div class="area-date">
+                                                <p class="date-top-info">{{ $topInfoList->date_info }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <div class="area-content-info">
@@ -235,22 +271,6 @@
                     </div>
                 </div>
                 <div class="area-content-twitter">
-                    {{-- <div class="header-news">
-                        <h1 class="title-news">Top Info</h1>
-                    </div>
-                    <div class="content-news">
-                        @foreach ($top_info as $topInfoList)
-                            <div class="box-news">
-                                <div class="area-image">
-                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
-                                        alt="">
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div> --}}
                 </div>
             </div>
         </div>
