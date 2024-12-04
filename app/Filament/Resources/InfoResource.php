@@ -8,6 +8,7 @@ use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
@@ -67,11 +68,19 @@ class InfoResource extends Resource
                             ->label('Slug :')
                             ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
                             ->required(),
-                        Toggle::make('top_news')
-                            ->label('Top News')
-                            ->onColor('success') // Optional: Mengatur warna saat toggle aktif
-                            ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
-                            ->default(false), // Defa
+                        Grid::make(2) // Membuat Grid dengan 2 kolom
+                            ->schema([
+                                Toggle::make('top_news')
+                                    ->label('Top News')
+                                    ->onColor('success') // Optional: Mengatur warna saat toggle aktif
+                                    ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
+                                    ->default(false), // Default: tidak aktif
+                                Toggle::make('trending')
+                                    ->label('Trending')
+                                    ->onColor('success') // Optional: Mengatur warna saat toggle aktif
+                                    ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
+                                    ->default(false), // Default: tidak aktif
+                            ]),
                         RichEditor::make('deskripsi_info')
                             ->label('Deskripsi Info :')
                             ->required()
@@ -98,6 +107,11 @@ class InfoResource extends Resource
                     ->label('Top News')
                     ->getStateUsing(function ($record) {
                         return $record->top_news ? 'Top-News' : '-';
+                    }),
+                TextColumn::make('trending')
+                    ->label('Trending')
+                    ->getStateUsing(function ($record) {
+                        return $record->trending ? 'Trending' : '-';
                     }),
             ])
             ->filters([

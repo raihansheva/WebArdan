@@ -119,12 +119,12 @@
                         </div>
                         <div class="line-streaming"></div>
                     </div>
-                    <div class="area-news">
+                    {{-- <div class="area-news">
                         <div class="area-header-news">
                             <h2 class="header-news">More Tag Info</h2>
                         </div>
                         <div class="area-box-news">
-                            {{-- @foreach ($taginfo as $tagInfoList)
+                            @foreach ($taginfo as $tagInfoList)
                                 <div class="box-news">
                                     <a href="/info-tag/{{ $tagInfoList->na }}">
                                         <div class="area-tag-news">
@@ -139,11 +139,10 @@
                                         @endif
                                     </a>
                                 </div>
-                            @endforeach --}}
+                            @endforeach
                         </div>
-                        <div class="line-news"></div>
-                    </div>
-
+                    </div> --}}
+                    <div class="line-news"></div>
                     <div class="area-top-news">
                         <div class="header-top-news">
                             <h1 class="title-top-news">Top News</h1>

@@ -41,7 +41,7 @@ class HomeController extends Controller
         // $taginfo = TagInfo::with('info')->get();
         $Info = Info::all();
         $topInfo = Info::where('top_news', true)->limit(3)->get();
-        $TrendingInfo = Info::all();
+        $TrendingInfo = Info::where('trending', true)->limit(5)->get();
 
         $announcer = Announcer::all();
 
