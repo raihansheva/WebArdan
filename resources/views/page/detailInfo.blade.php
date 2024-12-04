@@ -113,9 +113,9 @@
                             </div>
 
                             <!-- Ganti dengan MediaElement.js -->
-                            <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
+                            {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
                                 <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
-                            </audio>
+                            </audio> --}}
                         </div>
                         <div class="line-streaming"></div>
                     </div>

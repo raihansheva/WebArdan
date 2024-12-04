@@ -52,6 +52,7 @@ function stopAllAudio() {
     // Update semua tombol
     updatePlayPauseButtonStateC();
 }
+const audioSourceMap = new Map();
 
 document.addEventListener("DOMContentLoaded", function () {
     let previousIsStreamingPlaying = null;
@@ -62,14 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
         features: [],
         success: function (mediaElement, originalNode) {
             // console.log(originalNode);
-            
+
             mediaElement.src = "https://stream.rcs.revma.com/ugpyzu9n5k3vv"; // URL proxy
             mediaElement.addEventListener("play", function () {
                 isStreamingPlaying = true;
                 startSpectrumAudio(AudioStream);
                 updatePlayPauseButtonStateS();
             });
-    
+
             mediaElement.addEventListener("pause", function () {
                 isStreamingPlaying = false;
                 updatePlayPauseButtonStateS();
@@ -111,9 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fungsi untuk memutar audio streaming
     window.playStreaming = function () {
         let audioStream = document.getElementById("audio-streaming");
-        
-       
-        
+
         if (!audioStream) {
             console.error("Audio element not found");
             return;
@@ -146,6 +145,34 @@ document.addEventListener("DOMContentLoaded", function () {
         startSpectrumAudio(AudioStream);
         // proggresBarAudio(audioStream);
     };
+
+    if (audioStream) {
+        // Cek status audio dari localStorage
+        const isPaused = localStorage.getItem("audioPaused") === "true";
+        const currentTime =
+            parseFloat(localStorage.getItem("audioCurrentTime")) || 0;
+
+        // Jika audio tidak dalam keadaan pause, lanjutkan pemutaran
+        if (!isPaused) {
+            audioStream.currentTime = currentTime;
+            audioStream
+                .play()
+                .catch((err) => console.error("Gagal memutar audio:", err));
+
+            // Tentukan nama audio dan artis
+            musicName.innerHTML = "Streaming Audio";
+            musicArtist.innerHTML = "Live Stream";
+
+            startSpectrumAudio(audioStream);
+        }
+
+        // Simpan status audio sebelum halaman ditutup atau berpindah
+        window.addEventListener("beforeunload", () => {
+            // Menyimpan status audio (apakah sedang dipause) dan waktu pemutaran ke localStorage
+            localStorage.setItem("audioPaused", audioStream.paused);
+            localStorage.setItem("audioCurrentTime", audioStream.currentTime);
+        });
+    }
 
     // Fungsi untuk menjeda audio streaming
     window.pauseStreaming = function () {
@@ -683,96 +710,96 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------
     // Spectrum Audio Visualization
     // ----------------------------
-    const audioSourceMap = new Map();
 
-function startSpectrumAudio(audio) {
-    if (!(audio instanceof HTMLMediaElement)) {
-        console.error("Invalid audio element:", audio);
-        return;
-    }
-
-    // Ambil atau buat AudioContext
-    let audioContext;
-    if (!audioSourceMap.has(audio)) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const source = audioContext.createMediaElementSource(audio);
-        const analyser = audioContext.createAnalyser();
-        analyser.fftSize = 2048;
-
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
-
-        audioSourceMap.set(audio, { audioContext, analyser });
-    } else {
-        const audioData = audioSourceMap.get(audio);
-        audioContext = audioData.audioContext;
-    }
-
-    const { analyser } = audioSourceMap.get(audio);
-    const dataArray = new Uint8Array(analyser.frequencyBinCount);
-
-    const svg = document.getElementById("visual");
-    const path = svg.querySelector("#layer1");
-
-    function updateVisualization() {
-        analyser.getByteFrequencyData(dataArray);
-
-        const width = svg.clientWidth;
-        const height = svg.clientHeight;
-
-        const numPoints = 7;
-        const step = width / (numPoints - 1);
-        const waveHeight = height / 1.5;
-
-        let newPath = `M0 ${height / 2}`;
-        for (let i = 1; i < numPoints; i++) {
-            const index = Math.floor(i * (dataArray.length / numPoints));
-            const amplitude = dataArray[index] || 0;
-            const scaledAmplitude = (amplitude / 255) * waveHeight;
-
-            const x = i * step;
-            const y = height / 2 - scaledAmplitude;
-
-            if (i > 0) {
-                const prevX = (i - 1) * step;
-                const prevY =
-                    height / 2 -
-                    ((dataArray[
-                        Math.floor((i - 1) * (dataArray.length / numPoints))
-                    ] || 0) / 255) *
-                        waveHeight;
-
-                const controlX1 = prevX + (x - prevX) * 0.4;
-                const controlY1 = prevY;
-                const controlX2 = prevX + (x - prevX) * 0.6;
-                const controlY2 = y;
-
-                newPath += `C${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x} ${y}`;
-            } else {
-                newPath += `L${x} ${y}`;
-            }
+    function startSpectrumAudio(audio) {
+        if (!(audio instanceof HTMLMediaElement)) {
+            console.error("Invalid audio element:", audio);
+            return;
         }
 
-        newPath += `L${width} ${height / 2}`;
-        path.setAttribute("d", newPath);
-        requestAnimationFrame(updateVisualization);
-    }
+        // Ambil atau buat AudioContext
+        let audioContext;
+        if (!audioSourceMap.has(audio)) {
+            audioContext = new (window.AudioContext ||
+                window.webkitAudioContext)();
+            const source = audioContext.createMediaElementSource(audio);
+            const analyser = audioContext.createAnalyser();
+            analyser.fftSize = 2048;
 
-    audio.addEventListener("play", () => {
-        audioContext.resume().then(() => {
-            updateVisualization();
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+
+            audioSourceMap.set(audio, { audioContext, analyser });
+        } else {
+            const audioData = audioSourceMap.get(audio);
+            audioContext = audioData.audioContext;
+        }
+
+        const { analyser } = audioSourceMap.get(audio);
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+        const svg = document.getElementById("visual");
+        const path = svg.querySelector("#layer1");
+
+        function updateVisualization() {
+            analyser.getByteFrequencyData(dataArray);
+
+            const width = svg.clientWidth;
+            const height = svg.clientHeight;
+
+            const numPoints = 7;
+            const step = width / (numPoints - 1);
+            const waveHeight = height / 1.5;
+
+            let newPath = `M0 ${height / 2}`;
+            for (let i = 1; i < numPoints; i++) {
+                const index = Math.floor(i * (dataArray.length / numPoints));
+                const amplitude = dataArray[index] || 0;
+                const scaledAmplitude = (amplitude / 255) * waveHeight;
+
+                const x = i * step;
+                const y = height / 2 - scaledAmplitude;
+
+                if (i > 0) {
+                    const prevX = (i - 1) * step;
+                    const prevY =
+                        height / 2 -
+                        ((dataArray[
+                            Math.floor((i - 1) * (dataArray.length / numPoints))
+                        ] || 0) /
+                            255) *
+                            waveHeight;
+
+                    const controlX1 = prevX + (x - prevX) * 0.4;
+                    const controlY1 = prevY;
+                    const controlX2 = prevX + (x - prevX) * 0.6;
+                    const controlY2 = y;
+
+                    newPath += `C${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x} ${y}`;
+                } else {
+                    newPath += `L${x} ${y}`;
+                }
+            }
+
+            newPath += `L${width} ${height / 2}`;
+            path.setAttribute("d", newPath);
+            requestAnimationFrame(updateVisualization);
+        }
+
+        audio.addEventListener("play", () => {
+            audioContext.resume().then(() => {
+                updateVisualization();
+            });
         });
-    });
 
-    audio.addEventListener("pause", () => {
-        path.setAttribute("d", ""); // Reset visualisasi saat pause
-    });
+        audio.addEventListener("pause", () => {
+            path.setAttribute("d", ""); // Reset visualisasi saat pause
+        });
 
-    window.addEventListener("resize", () => {
-        path.setAttribute("d", "");
-    });
-}
-
+        window.addEventListener("resize", () => {
+            path.setAttribute("d", "");
+        });
+    }
 });
 
 // function updateVisualization() {

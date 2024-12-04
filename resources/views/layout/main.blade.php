@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    @livewireStyles
 
 </head>
 
@@ -241,6 +242,9 @@
 
         <audio src="" class="main-song" id="audio"></audio>
         {{-- <audio src="" class="main-song-streaming" id="audio-streaming"></audio> --}}
+        <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
+            <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
+        </audio>
     </div>
     {{-- ------- --}}
     <footer class="footer" id="contact">

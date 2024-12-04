@@ -90,9 +90,10 @@
                             <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $stream->stream_audio_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
-                            <audio class="audio-streaming" id="audio-streaming" preload="auto">
+                            {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
                                 <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
-                            </audio>
+                            </audio> --}}
+                            {{-- <livewire:audio-player /> --}}
                         </div>
                         <div class="line-streaming"></div>
                     </div>

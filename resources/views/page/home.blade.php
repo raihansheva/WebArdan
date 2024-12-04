@@ -1,6 +1,7 @@
 @extends('layout.main')
 <link rel="stylesheet" href="css/StyleContent/home.css">
 <link rel="stylesheet" href="css/ResponsiveStyle/responsiveHome.css">
+@livewireStyles
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @section('content')
@@ -22,19 +23,20 @@
             </div>
             <div class="content-streaming">
                 <div class="contentS-kiri">
-                    @foreach ($stream as $streamList)
+                    {{-- @foreach ($stream as $streamList) --}}
                         <div class="card-A">
                             <div class="card-body">
-                                <img class="image-streaming" src="./storage/{{ $streamList->image_stream }}">
+                                <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
                                 <div class="btn-play-streaming" id="BtnStream"
-                                    data-audio-src="{{ $streamList->stream_audio_url }}">
+                                    data-audio-src="{{ $stream->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
 
                                 <!-- Ganti dengan MediaElement.js -->
-                                <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
+                                {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
                                     <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
-                                </audio>
+                                </audio> --}}
+                                {{-- <livewire:audio-player /> --}}
                             </div>
                             <div class="card-header">
                                 <div class="view" id="btn-tonton">
@@ -49,7 +51,7 @@
                                     <video id="hlsPlayer" controls width="640" height="360"></video>
                                 </div>
                                 <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player" data-pl="{{ $streamList->stream_video_url }}" style="display: none;">
+                                <div id="player" data-pl="{{ $stream->stream_video_url }}" style="display: none;">
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -58,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
                 <div class="contentS-kanan">
                     {{-- @if ($streamUpcoming)
@@ -838,6 +840,7 @@
     </div> --}}
     {{-- ------- --}}
     {{-- <script src="js/playlist.js"></script> --}}
+    @livewireScripts
     <script src="js/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $banner = Banner::all();
 
-        $stream = Streaming::where('status', 'streaming')->get();
+        $stream = Streaming::where('status', 'streaming')->first();
         $streamUpcoming = Streaming::where('status', 'upcoming')->limit(1)->get();
 
         $program = Program::all();

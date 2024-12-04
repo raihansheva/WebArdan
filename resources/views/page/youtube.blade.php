@@ -201,9 +201,9 @@
                                     data-audio-src="{{ $stream->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
-                                <audio class="audio-streaming" id="audio-streaming" preload="auto">
+                                {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto">
                                     <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
-                                </audio>
+                                </audio> --}}
                             </div>
                         </div>
                     </div>
