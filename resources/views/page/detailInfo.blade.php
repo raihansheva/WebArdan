@@ -1,9 +1,9 @@
 @extends('layout.main')
 <base href="{{ url('/') }}/">
-<link rel="stylesheet" href="css/StyleContent/infoNews.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveInfoNews.css">
+<link rel="stylesheet" href="css/StyleContent/detailInfo.css">
+<link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfo.css">
 @section('content')
-    <section class="page-news-1">
+    {{-- <section class="page-news-1">
         <div class="header-info-news">
             @foreach ($bannerInfo as $bannerInfoList)
                 <div class="image-header-info-news">
@@ -13,50 +13,122 @@
                 </div>
             @endforeach
         </div>
-    </section>
+    </section> --}}
     <section class="page-news-2">
         <div class="area-info-news">
             <div class="content-info-news">
                 <div class="content-IN-kiri" id="style-3">
-                    @foreach ($info as $infoList)
-                        <div class="box-info">
-                            <div class="content-box-info">
-                                <div class="area-image-info">
-                                    <img class="image-info" src="../storage/{{ $infoList->image_info }}" alt="">
-                                </div>
-                                <div class="area-info">
-                                    <div class="area-tagar-info">
-                                        <h2 class="tagar-info">#{{ $infoList->tagInfo->nama_tag }}</h2>
-                                    </div>
-                                    <div class="area-title-info">
-                                        <h2 class="title-info">{{ $infoList->judul_info }}</h2>
-                                    </div>
-                                    <div class="area-desk-info">
-                                        <p class="desk-info">{{ $infoList->deskripsi_info }}</p>
-                                    </div>
-                                    <div class="area-date-info">
-                                        <p class="date-info">{{ $infoList->date_info }}</p>
-                                    </div>
-                                </div>
+                    <div class="area-info">
+                        <div class="area-url-info">
+                            <h2 class="url-info">
+                                <a class="link-url-info" href="{{ url('/') }}">Home</a> >
+                                {{ str_replace('-', ' ', request()->segment(1)) }} >
+                                {{ str_replace('-', ' ', $info->slug) }}
+                            </h2>
+                        </div>
+                        <div class="area-span-info">
+                            <p class="text-span-info">Info</p>
+                        </div>
+                        <div class="area-title-info">
+                            <h2 class="title-info">{{ $info->judul_info }}</h2>
+                        </div>
+                        <div class="area-date-info">
+                            <p class="date-info">
+                                {{ \Carbon\Carbon::parse($info->date_info)->translatedFormat('l, d F Y') }}
+                            </p>
+                        </div>
+                        <div class="area-image-info">
+                            <img class="image-info" src="../storage/{{ $info->image_info }}" alt="">
+                        </div>
+                        <div class="area-desk-info">
+                            <p class="desk-info">{{ $info->deskripsi_info }}</p>
+                        </div>
+
+                        <div class="area-tagar-info">
+                            <div class="header-tagar">
+                                <h2 class="text-header-tagar">Tags</h2>
+                            </div>
+                            <div class="area-text-tagar">
+                                @if (is_array($info->tag_info))
+                                    @foreach ($info->tag_info as $tag)
+                                        <h2 class="tagar-info">#{{ $tag }}</h2>
+                                    @endforeach
+                                @else
+                                    <h2 class="tagar-info">#-</h2>
+                                @endif
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                <div class="area-bottom-box-info">
-                    <h2 class="title-bottom" onclick="toggleBoxes()">See more</h2>
+                    </div>
+                    <div class="line-detail-info"></div>
+                    <div class="area-trending-info">
+                        <div class="header-trending-info">
+                            <h1 class="title-trending-info">Trending Info</h1>
+                        </div>
+                        <div class="content-trending-info">
+                            @foreach ($trending_info as $trendingInfoList)
+                                <a class="link-box-trending-info" href="/info-detail/{{ $trendingInfoList->slug }}">
+                                    <div class="box-trending-info">
+                                        <div class="area-image-trending-info">
+                                            <img class="image-trending-info"
+                                                src="./storage/{{ $trendingInfoList->image_info }}" alt="">
+                                        </div>
+                                        <div class="line-trending-info"></div>
+                                        <div class="area-text-desk-trending-info">
+                                            <div class="area-tag">
+                                                @if (is_array($trendingInfoList->tag_info))
+                                                    @foreach ($trendingInfoList->tag_info as $tag)
+                                                        <h2 class="tag-trending-info">#{{ $tag }}</h2>
+                                                    @endforeach
+                                                @else
+                                                    <h2 class="tag-trending-info">#-</h2>
+                                                @endif
+                                                {{-- <p class="tag-trending-info">#{{ $trendingInfoList->tag_info }}
+                                                </p> --}}
+                                            </div>
+                                            <div class="area-text">
+                                                <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
+                                            </div>
+                                            <div class="area-date">
+                                                <p class="date-trending-info">{{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="content-IN-kanan">
+                    <div class="area-streaming">
+                        <div class="area-header-streaming">
+                            <h2 class="title-streaming">Streaming</h2>
+                        </div>
+                        <div class="area-thumbnail">
+                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
+                            <div class="btn-play-streaming" id="BtnStream"
+                                data-audio-src="{{ $stream->stream_audio_url }}">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
+
+                            <!-- Ganti dengan MediaElement.js -->
+                            <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
+                                <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
+                            </audio>
+                        </div>
+                        <div class="line-streaming"></div>
+                    </div>
                     <div class="area-news">
                         <div class="area-header-news">
-                            <h2 class="header-news">Tag Info</h2>
+                            <h2 class="header-news">More Tag Info</h2>
                         </div>
                         <div class="area-box-news">
-                            @foreach ($taginfo as $tagInfoList)
+                            {{-- @foreach ($taginfo as $tagInfoList)
                                 <div class="box-news">
-                                    <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                    <a href="/info-tag/{{ $tagInfoList->na }}">
                                         <div class="area-tag-news">
-                                            <h3 class="tag-news">#{{ $tagInfoList->nama_tag }}</h3>
+                                            <h3 class="tag-news">#{{ $tagInfoList->tag_info}}</h3>
                                         </div>
                                         @if ($tagInfoList->info->isNotEmpty())
                                             <img class="image-news"
@@ -67,43 +139,44 @@
                                         @endif
                                     </a>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <div class="line-news"></div>
                     </div>
-                    <div class="area-streaming">
-                        <div class="area-header-streaming">
-                            <h2 class="title-streaming">Streaming</h2>
-                        </div>
-                        <div class="area-thumbnail">
-                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
-                                <div class="btn-play-streaming" id="BtnStream"
-                                    data-audio-src="{{ $stream->stream_audio_url }}">
-                                    <span class="material-symbols-rounded">play_arrow</span>
-                                </div>
 
-                                <!-- Ganti dengan MediaElement.js -->
-                                <audio class="audio-streaming" id="audio-streaming" preload="auto">
-                                    <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
-                                </audio>
-                        </div>
-                        <div class="line-streaming"></div>
-                    </div>
                     <div class="area-top-news">
                         <div class="header-top-news">
                             <h1 class="title-top-news">Top News</h1>
                         </div>
                         <div class="content-top-news">
                             @foreach ($top_info as $topInfoList)
-                                <div class="box-top-news">
-                                    <div class="area-top-image">
-                                        <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
-                                            alt="">
+                                <a class="link-box-top-info" href="/info-detail/{{ $topInfoList->slug }}">
+                                    <div class="box-top-info">
+                                        <div class="area-top-image">
+                                            <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                                alt="">
+                                        </div>
+                                        <div class="area-text-desk-top-info">
+                                            <div class="area-tag">
+                                                @if (is_array($topInfoList->tag_info))
+                                                    @foreach ($topInfoList->tag_info as $tag)
+                                                        <h2 class="tag-top-info">#{{ $tag }}</h2>
+                                                    @endforeach
+                                                @else
+                                                    <h2 class="tag-top-info">#-</h2>
+                                                @endif
+                                            </div>
+                                            <div class="area-text">
+                                                <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
+                                            </div>
+                                            <div class="area-date">
+                                                <p class="date-top-info">
+                                                    {{ \Carbon\Carbon::parse($topInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="area-top-text">
-                                        <p class="desk-top-news">{{ $topInfoList->deskripsi_info }}</p>
-                                    </div>
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -211,5 +284,5 @@
             <div class="line-info-artis"></div>
         </div>
     </section>
-    <script src="js/detailTaginfo.js"></script>
+    <script src="js/infoNews.js"></script>
 @endsection

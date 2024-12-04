@@ -327,7 +327,9 @@
     }
 
     .area-content-VNS {
+        height: fit-content;
         gap: 10px;
+        /* border: 1px red solid; */
     }
 
     /* content kiri */
@@ -407,22 +409,23 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 44%;
+        height: 602px;
         gap: 10px;
     }
 
     /* area news */
 
-    .content-news {
+    /* .content-news {
         height: 85%;
-        /* border: 1px blue solid; */
-    }
+        border: 1px blue solid;
+    } */
 
     .title-news {
         font-size: 34px;
     }
 
     .box-news {
-        /* height: 100%; */
+        height: 55px;
         padding: 8px;
     }
 
@@ -430,24 +433,32 @@
         height: 100%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
         font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
     }
     /* ------------ */
 
     /* area content stream */
 
-    .content-streaming {
-        height: 20%;
-        /* border: 1px  red solid; */
+    .area-content-streaming {
+        width: 100%;
+        height: fit-content;
     }
 
     .title-streaming {
-        font-size: 34px;
+        font-size: 30px;
     }
 
     .box-streaming {
-        height: 100%;
+        height: 108px;
     }
 
     .btn-play-streaming {
@@ -672,6 +683,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 45%;
+        height: 595px;
         gap: 6px;
         /* border: 1px red solid; */
     }
@@ -693,19 +705,28 @@
     }
 
     .area-image {
+        width: 40%;
         height: 100%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
         font-size: 10px;
     }
     /* ------------ */
 
     /* area content stream */
 
-    .content-streaming {
-        height: 20%;
-        /* border: 1px  red solid; */
+    .area-content-streaming {
+        width: 100%;
+        height: fit-content;
     }
 
     .title-streaming {
@@ -713,7 +734,7 @@
     }
 
     .box-streaming {
-        height: 100%;
+        height: 108px;
     }
 
     .btn-play-streaming {
@@ -769,7 +790,7 @@
 
     /* page youtube 2 */
     .area-video-youtube {
-        margin: 20px 20px 0px 20px;
+        margin: 20px 8px 0px 8px;
     }
 
     .text-choose {
@@ -843,7 +864,7 @@
     }
 
     .area-event-news-streaming {
-        margin: 30px 20px 30px 20px;
+        margin: 30px 8px 30px 8px;
     }
 
     .area-content-VNS {
@@ -978,10 +999,19 @@
     }
 
     .area-image {
+        width: 40%;
         height: 100%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
         font-size: 10px;
     }
     /* ------------ */
@@ -1285,11 +1315,19 @@
     }
 
     .area-image {
-        height: 100%;
-        width: 30%;
+        /* height: 100%; */
+        width: 40%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
         font-size: 10px;
     }
     /* ------------ */
@@ -1592,13 +1630,20 @@
         padding: 6px;
     }
 
-    .area-image {
-        height: 100%;
-        width: 30%;
+    .area-top-image {
+        width: 40%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 12px;
+    }
+
+    .desk-top-info {
         font-size: 10px;
+    }
+
+    .date-top-info {
+        font-size: 8px;
     }
     /* ------------ */
 

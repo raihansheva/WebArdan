@@ -676,6 +676,7 @@ swiper-slide img {
 .header-news {
     width: 100%;
     height: fit-content;
+    margin-top: 20px;
 }
 
 .title-news {
@@ -748,6 +749,12 @@ swiper-slide img {
     font-size: 12px;
     overflow-wrap: break-word;
     padding: 2px 0;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
 }
 
 .date-news{
@@ -756,7 +763,6 @@ swiper-slide img {
     font-size: 12px;
     overflow-wrap: break-word;
     padding: 2px 0;
-    font-weight: 700;
 }
 
 
@@ -776,7 +782,7 @@ swiper-slide img {
 .area-top-info{
     width: auto;
     height: auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .header-top-info {
@@ -796,13 +802,13 @@ swiper-slide img {
     width: 100%; /* Pastikan kontainer fleksibel */
     display: flex;
     flex-wrap: wrap; /* Membiarkan elemen turun jika tidak cukup ruang */
-    gap: 20px; /* Mengatur jarak antar-elemen */
+    gap: 15px; /* Mengatur jarak antar-elemen */
     box-sizing: border-box; /* Menghindari konflik padding/margin */
     /* border: 1px solid red; */
 }
 
 .link-box-top-info{
-    width: calc(33.33% - 20px); /* Setengah kontainer minus setengah gap */
+    width: calc(33.33% - 10px); /* Setengah kontainer minus setengah gap */
     color: black;
 }
 
@@ -831,6 +837,14 @@ swiper-slide img {
     /* height: 100%; */
 }
 
+
+.line-top-info{
+    width: 100%;
+    height: 5px;
+    background-color: var(--primary-color);
+    margin-top: 10px;
+}
+
 .area-text-desk-top-info{
     width: 100%;
     height: fit-content;
@@ -839,6 +853,11 @@ swiper-slide img {
     flex-direction: column;
     /* justify-content: space-between; */
     margin-top: 10px;
+}
+
+.area-tag{
+    display: flex;
+    gap: 4px;
 }
 
 .tag-top-info{
@@ -857,10 +876,11 @@ swiper-slide img {
     overflow-wrap: break-word;
     padding: 2px 0;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Membatasi 3 baris */
+    -webkit-line-clamp: 2; /* Membatasi 3 baris */
     -webkit-box-orient: vertical;
     overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
     text-overflow: ellipsis;
+    font-weight: 700;
 }
 
 .date-top-info{
@@ -869,7 +889,6 @@ swiper-slide img {
     font-size: 12px;
     overflow-wrap: break-word;
     padding: 2px 0;
-    font-weight: 700;
 }
 
 
@@ -877,11 +896,124 @@ swiper-slide img {
     width: 100%;
     height: 50%;
     object-fit: cover;
+    border-radius: 15px;
+}
+/* ------------------- */
+
+/* area trending info */
+.area-trending-info{
+    width: auto;
+    height: auto;
+    /* margin-top: 20px; */
+}
+
+.header-trending-info {
+    width: 100%;
+    height: fit-content;
+}
+
+.title-trending-info {
+    margin: 0px;
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    font-weight: 200;
+    color: white;
+}
+
+.content-trending-info {
+    width: 100%; /* Pastikan kontainer fleksibel */
+    display: flex;
+    flex-wrap: wrap; /* Membiarkan elemen turun jika tidak cukup ruang */
+    gap: 15px; /* Mengatur jarak antar-elemen */
+    box-sizing: border-box; /* Menghindari konflik padding/margin */
+    /* border: 1px solid red; */
+}
+
+.link-box-trending-info{
+    width: 100%; /* Setengah kontainer minus setengah gap */
+    color: black;
+}
+
+
+.box-trending-info {
+    width: 100%;
+    height: fit-content;
+    /* max-height: 120px; */
+    background-color: #f0f0f0;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    /* display: flex; */
+    padding: 10px;
+    /* justify-content: center;
+    align-items: center; */
+    box-sizing: border-box;
+    gap: 8px;
+}
+
+.area-image-trending-info {
+    width: 100%;
+    /*border: 1px black solid;
+    */
+    border-radius: 20px;
+
+    background-color: #333;
+    /* height: 100%; */
+}
+
+
+.line-trending-info{
+    width: 100%;
+    height: 5px;
+    background-color: var(--primary-color);
+    margin-top: 10px;
+}
+
+.area-text-desk-trending-info{
+    width: 100%;
+    height: fit-content;
+    max-height: 50%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    margin-top: 10px;
+}
+
+.tag-trending-info{
+    font-family: "Bebas Neue";
+    margin: 0px;
+    font-size: 22px;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+}
+
+.desk-trending-info {
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 12px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+.date-trending-info{
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 12px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+}
+
+
+.image-trending-info{
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 15px;
 }
 /* ------------------- */
 /* area info & news */

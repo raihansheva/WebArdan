@@ -873,29 +873,32 @@
 /* area content kanan */
 .area-content-VNS-kanan {
     width: 50%;
-    /* height: 750px; */
+    height: 802px;
     /* border: 1px green solid; */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 5px;
 }
 
 .area-content-news {
-    height: 70%;
+    height: fit-content;
     width: 100%;
     /* border: 1px #ffdb00 solid; */
+    display: flex;
+    flex-direction: column;
 }
 
 .header-news {
     width: 100%;
-    height: 5%;
-    text-align: end;
+    height: fit-content;
+    /* text-align: end; */
 }
 
 .title-news {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 40px;
+    font-size: 38px;
     font-weight: 200;
     color: white;
 }
@@ -906,12 +909,12 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 5px;
-    height: 64%;
+    height: fit-content;
 }
 
 .box-news {
     width: auto;
-    height: 80px;
+    height: auto;
     background-color: #f0f0f0;
     border-radius: 10px;
     display: flex;
@@ -922,12 +925,12 @@
 }
 
 .area-image {
-    width: 30%;
+    width: 28%;
     /*border: 1px black solid;
     */
     background-color: #333;
     border-radius: 10px;
-    height: auto;
+    height: 100%;
 }
 
 .image-top-info{
@@ -941,18 +944,54 @@
     -o-border-radius: 10px;
 }
 
-.area-text {
-    width: 70%;
-    /* border: 1px black solid; */
-    height: fit-content;
+.area-text-desk-top-info{
+    width: 100%;
+    height: 100%;
+    /* max-height: 100%; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* margin-top: 10px; */
 }
 
-.desk-news {
-    font-family: "Poppins";
+.area-tag{
+    display: flex;
+    gap: 4px;
+}
+
+.tag-top-info{
+    font-family: "Bebas Neue";
     margin: 0px;
     font-size: 16px;
+    font-weight: 500;
     overflow-wrap: break-word;
     padding: 2px 0;
+    color: black;
+}
+
+.desk-top-info {
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    /* padding: 2px 0; */
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
+    font-weight: 700;
+    color: black;
+}
+
+.date-top-info{
+    font-family: "Poppins";
+    margin: 0px;
+    font-size: 12px;
+    overflow-wrap: break-word;
+    padding: 2px 0;
+    font-weight: 500;
+    color: black;
 }
 /* ------------------------ */
 
@@ -960,13 +999,14 @@
 
 .area-content-streaming {
     width: 100%;
-    height: 30%;
+    height: fit-content;
     /* border: 1px red solid; */
 }
 
 .header-streaming {
     width: 100%;
-    height: 5%;
+    /* height: 5%; */
+    height: fit-content;
 }
 
 .title-streaming {
@@ -979,58 +1019,24 @@
 
 .content-streaming {
     width: 100%;
-    height: 20%;
+    /* height: 100%; */
+    /* border: 1px red solid; */
 }
 
 .box-streaming {
     width: 100%;
-    height: 100%;
+    height: 150px;
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* .btn-play-streaming{
-    height: auto;
-    width: auto;
-    border: 1px var(--primary-color) solid;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
-    border-radius: 8px;
-    color: var(--primary-color);
-    
-}
-
-.btn-play-streaming:hover{
-    border-radius: 8px;
-    background-color: var(--primary-color);
-    color: black;
-}
-
-.link-streaming:hover{
-    border-radius: 8px;
-    background-color: var(--primary-color);
-    color: black;
-}
-
-.link-streaming{
-    text-decoration: none;
-} */
-
-.text-streaming {
-    font-size: 18px;
-    font-family: "Poppins";
-    font-weight: 300;
-    margin: 5px 15px;
-}
-
 .btn-play-streaming {
     height: 55px;
     width: 55px;
     border-radius: 50%;
-    color: var(--primary-color);
-    background-color: rgb(48, 48, 48);
+    background-color: var(--primary-color);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -1049,6 +1055,7 @@
 .btn-play-streaming span {
     font-size: 28px;
 }
+
 
 /* .btn-play-streaming:hover{
     background-color: #bd4200;

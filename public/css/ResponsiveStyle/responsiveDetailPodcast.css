@@ -1082,22 +1082,17 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 44%;
+        height: 602px;
         gap: 10px;
     }
 
     /* area news */
-
-    .content-news {
-        height: 85%;
-        /* border: 1px blue solid; */
-    }
-
     .title-news {
         font-size: 34px;
     }
 
     .box-news {
-        height: auto;
+        height: 55px;
         padding: 8px;
     }
 
@@ -1105,35 +1100,41 @@
         height: 100%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
         font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
     }
     /* ------------ */
 
     /* area content stream */
 
-    .content-streaming {
-        height: 20%;
-        /* border: 1px  red solid; */
+    .area-content-streaming {
+        width: 100%;
+        height: fit-content;
     }
 
     .title-streaming {
-        font-size: 34px;
+        font-size: 30px;
     }
 
     .box-streaming {
-        height: 100%;
-    }
-
-    .text-streaming {
-        font-size: 12px;
-        margin: 5px 10px;
+        height: 108px;
     }
 
     .btn-play-streaming {
-        height: 40px;
         width: 40px;
-        font-size: 14px;
+        height: 40px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 26px;
     }
 
     /* ------------------- */
@@ -1650,6 +1651,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 45%;
+        height: 540px;
         gap: 6px;
         /* border: 1px red solid; */
     }
@@ -1659,6 +1661,7 @@
     .content-news {
         height: 100%;
         /* border: 1px blue solid; */
+        gap: 6px;
     }
 
     .title-news {
@@ -1666,41 +1669,51 @@
     }
 
     .box-news {
-        height: auto;
+        height: 45px;
         padding: 8px;
     }
 
     .area-image {
+        width: 40%;
         height: 100%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 12px;
+    }
+
+    .desk-top-info {
         font-size: 10px;
+    }
+
+    .date-top-info {
+        font-size: 8px;
+        padding: 0px;
     }
     /* ------------ */
 
     /* area content stream */
 
-    .content-streaming {
-        height: 20%;
-        /* border: 1px  red solid; */
+    .area-content-streaming {
+        width: 100%;
+        height: fit-content;
     }
 
     .title-streaming {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     .box-streaming {
-        height: 100%;
-    }
-
-    .text-streaming {
-        font-size: 12px;
-        margin: 5px 10px;
+        height: 108px;
     }
 
     .btn-play-streaming {
-        font-size: 12px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 26px;
     }
     /* ------------------- */
     /* --------------- */
@@ -2190,7 +2203,6 @@
     /* ------------------- */
 
     /* area VNS */
-
     .page-detail-3 {
         height: auto;
     }
@@ -2256,6 +2268,7 @@
         width: 100%;
         /* gap: 6px; */
         /* border: 1px red solid; */
+        height: fit-content;
     }
 
     /* area news */
@@ -2276,11 +2289,19 @@
 
     .area-image {
         height: 100%;
-        width: 25%;
+        width: 40%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
         font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
     }
     /* ------------ */
 
@@ -2865,6 +2886,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 100%;
+        height: fit-content;
         /* gap: 6px; */
         /* border: 1px red solid; */
     }
@@ -2887,10 +2909,18 @@
 
     .area-image {
         height: 100%;
-        width: 25%;
+        width: 40%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
         font-size: 10px;
     }
     /* ------------ */
@@ -3474,6 +3504,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 100%;
+        height: fit-content;
         /* gap: 6px; */
         /* border: 1px red solid; */
     }
@@ -3483,7 +3514,7 @@
     .content-news {
         height: 80%;
         /* border: 1px blue solid; */
-        gap: 6px;
+        gap: 4px;
         margin-top: 0px;
     }
 
@@ -3498,15 +3529,24 @@
     .box-news {
         height: auto;
         padding: 5px;
+        gap: 4px;
     }
 
     .area-image {
         height: 100%;
-        width: 25%;
+        width: 35%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 12px;
+    }
+
+    .desk-top-info {
         font-size: 10px;
+    }
+
+    .date-top-info {
+        font-size: 8px;
     }
     /* ------------ */
 

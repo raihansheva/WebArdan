@@ -10,6 +10,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -42,11 +43,13 @@ class InfoResource extends Resource
                                 $set('slug', Str::slug($state));
                             })
                             ->required(),
-                        Select::make('tag_info_id')
+                        // Select::make('tag_info_id')
+                        //     ->label('Tag Info')
+                        //     ->relationship('tagInfo', 'nama_tag') // Menggunakan nama tag
+                        //     ->required(),
+                        TagsInput::make('tag_info')
                             ->label('Tag Info')
-                            ->relationship('tagInfo', 'nama_tag') // Menggunakan nama tag
                             ->required(),
-
                         FileUpload::make('image_info')
                             ->label('Info Image :')
                             ->directory('uploads/images_info')
@@ -83,11 +86,11 @@ class InfoResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('judul_info')->searchable(),
-                TextColumn::make('tagInfo.nama_tag')->label('Tag Info')->sortable()->searchable(),
+                TextColumn::make('tag_info')->label('Tag Info'),
                 TextColumn::make('deskripsi_info')
-                ->formatStateUsing(function ($state) {
-                    return strip_tags($state); // Menghapus tag HTML
-                }),
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),
                 TextColumn::make('slug'),

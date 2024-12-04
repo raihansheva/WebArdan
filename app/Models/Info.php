@@ -14,7 +14,11 @@ class Info extends Model implements HasMedia
     use HasFactory , InteractsWithMedia;
 
 
-    protected $fillable = ['id' , 'judul_info' , 'tag_info_id' , 'deskripsi_info' , 'image_info' , 'date_info' , 'top_news' , 'slug'];
+    protected $fillable = ['id' , 'judul_info' , 'tag_info' , 'deskripsi_info' , 'image_info' , 'date_info' , 'top_news' , 'slug'];
+
+    protected $casts = [
+        'tag_info' => 'array', // Konversi JSON ke array
+    ];
 
     public function registerMediaCollections(): void
     {
@@ -47,8 +51,8 @@ class Info extends Model implements HasMedia
         });
     }
 
-    public function tagInfo(): BelongsTo
-    {
-        return $this->belongsTo(TagInfo::class, 'tag_info_id');
-    }
+    // public function tagInfo(): BelongsTo
+    // {
+    //     return $this->belongsTo(TagInfo::class, 'tag_info_id');
+    // }
 }

@@ -566,10 +566,24 @@
 
     .box-news {
         height: 60px;
+        padding: 8px;
     }
 
-    .desk-news {
+    .area-image {
+        height: 100%;
+        width: 40%;
+    }
+
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
         font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
     }
     /*--------------- */
 
@@ -847,18 +861,29 @@
     }
 
     .content-news {
-        gap: 12px;
+        gap: 10px;
     }
 
-    .bop-news {
-        height: auto;
+    .box-news {
+        height: 66px;
         padding: 5px;
     }
 
-    .desk-news {
-        font-size: 11px;
-        overflow: hidden; /* Menyembunyikan teks yang melewati batas */
-        text-overflow: ellipsis;
+    .area-image {
+        width: 40%;
+        height: 100%;
+    }
+
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
     }
     /*--------------- */
 
@@ -1167,12 +1192,25 @@
         gap: 18px;
     }
 
-    .bop-news {
+    .box-news {
         height: 60px;
     }
 
-    .desk-news {
+    .area-image {
+        width: 40%;
+        height: 100%;
+    }
+
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
         font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
     }
     /*--------------- */
 
@@ -1483,7 +1521,20 @@
         height: 60px;
     }
 
-    .desk-news {
+    .area-image {
+        /* height: 100%; */
+        width: 40%;
+    }
+
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
         font-size: 10px;
     }
     /*--------------- */
@@ -1798,8 +1849,20 @@
         padding: 8px;
     }
 
-    .desk-news {
+    .area-top-image {
+        width: 40%;
+    }
+
+    .tag-top-info {
+        font-size: 12px;
+    }
+
+    .desk-top-info {
         font-size: 10px;
+    }
+
+    .date-top-info {
+        font-size: 8px;
     }
     /*--------------- */
 

@@ -18,27 +18,37 @@
             <div class="content-info-news">
                 <div class="content-IN-kiri" id="style-3">
                     @foreach ($info as $infoList)
-                        <div class="box-info">
-                            <div class="content-box-info">
-                                <div class="area-image-info">
-                                    <img class="image-info" src="../storage/{{ $infoList->image_info }}" alt="">
+                    <div class="box-info">
+                                <a class="link-info" href="/info-detail/{{ $infoList->slug }}">
+                                <div class="content-box-info">
+                                    <div class="area-image-info">
+                                        <img class="image-info" src="../storage/{{ $infoList->image_info }}" alt="">
+                                    </div>
+                                    <div class="area-info">
+                                        <div class="area-tagar-info">
+                                            @if (is_array($infoList->tag_info))
+                                                @foreach ($infoList->tag_info as $tag)
+                                                    <h2 class="tagar-info">#{{ $tag }}</h2>
+                                                @endforeach
+                                            @else
+                                                <h2 class="tagar-info">#-</h2>
+                                            @endif
+                                        </div>
+                                        <div class="area-title-info">
+                                            <h2 class="title-info">{{ $infoList->judul_info }}</h2>
+                                        </div>
+                                        <div class="area-desk-info">
+                                            <p class="desk-info">{{ $infoList->deskripsi_info }}</p>
+                                        </div>
+                                        <div class="area-date-info">
+                                            <p class="date-info">
+                                                {{ \Carbon\Carbon::parse($infoList->date_info)->translatedFormat('l, d F Y') }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="area-info">
-                                    <div class="area-tagar-info">
-                                        <h2 class="tagar-info">#{{ $infoList->tagInfo->nama_tag }}</h2>
-                                    </div>
-                                    <div class="area-title-info">
-                                        <h2 class="title-info">{{ $infoList->judul_info }}</h2>
-                                    </div>
-                                    <div class="area-desk-info">
-                                        <p class="desk-info">{{ $infoList->deskripsi_info }}</p>
-                                    </div>
-                                    <div class="area-date-info">
-                                        <p class="date-info">{{ $infoList->date_info }}</p>
-                                    </div>
-                                </div>
+                            </a>
                             </div>
-                        </div>
                     @endforeach
                 </div>
                 <div class="area-bottom-box-info">
@@ -46,7 +56,7 @@
                 </div>
 
                 <div class="content-IN-kanan">
-                    <div class="area-news">
+                    {{-- <div class="area-news">
                         <div class="area-header-news">
                             <h2 class="header-news">Tag Info</h2>
                         </div>
@@ -69,7 +79,7 @@
                             @endforeach
                         </div>
                         <div class="line-news"></div>
-                    </div>
+                    </div> --}}
                     <div class="area-streaming">
                         <div class="area-header-streaming">
                             <h2 class="title-streaming">Streaming</h2>
@@ -77,8 +87,7 @@
                         <div class="area-thumbnail">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
                                 srcset="">
-                            <div class="btn-play-streaming" id="BtnStream"
-                                data-audio-src="{{ $stream->stream_audio_url }}">
+                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $stream->stream_audio_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                             <audio class="audio-streaming" id="audio-streaming" preload="auto">
@@ -98,8 +107,24 @@
                                         <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
                                             alt="">
                                     </div>
-                                    <div class="area-top-text">
-                                        <p class="desk-top-news">{{ $topInfoList->deskripsi_info }}</p>
+                                    <div class="area-text-desk-top-info">
+                                        <div class="area-tag">
+                                            @if (is_array($topInfoList->tag_info))
+                                                @foreach ($topInfoList->tag_info as $tag)
+                                                    <h2 class="tag-top-info">#{{ $tag }}</h2>
+                                                @endforeach
+                                            @else
+                                                <h2 class="tag-top-info">#-</h2>
+                                            @endif
+                                        </div>
+                                        <div class="area-text">
+                                            <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
+                                        </div>
+                                        <div class="area-date">
+                                            <p class="date-top-info">
+                                                {{ \Carbon\Carbon::parse($topInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

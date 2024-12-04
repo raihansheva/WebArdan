@@ -32,7 +32,7 @@
                                 </div>
 
                                 <!-- Ganti dengan MediaElement.js -->
-                                <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous" >
+                                <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
                                     <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
                                 </audio>
                             </div>
@@ -83,32 +83,6 @@
             <div class="line-info"></div>
             <div class="area-content-info-news">
                 <div class="area-content-news">
-                    <div class="header-news">
-                        <h1 class="title-news">Info</h1>
-                    </div>
-                    <div class="content-news">
-                        @foreach ($info as $InfoList)
-                            <a class="link-box-news" href="/info-detail/{{ $InfoList->slug }}">
-                                <div class="box-news">
-                                    <div class="area-image">
-                                        <img class="image-top-info" src="./storage/{{ $InfoList->image_info }}"
-                                            alt="">
-                                    </div>
-                                    <div class="area-text-desk">
-                                        <div class="area-tag">
-                                            <p class="tag-news">#{{ $InfoList->tagInfo->nama_tag }}</p>
-                                        </div>
-                                        <div class="area-text">
-                                            <p class="desk-news">{{ $InfoList->deskripsi_info }}</p>
-                                        </div>
-                                        <div class="area-date">
-                                            <p class="date-news">{{ $InfoList->date_info }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
                     <div class="area-top-info">
                         <div class="header-top-info">
                             <h1 class="title-top-info">Top Info</h1>
@@ -121,15 +95,24 @@
                                             <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
                                                 alt="">
                                         </div>
+                                        <div class="line-top-info"></div>
                                         <div class="area-text-desk-top-info">
                                             <div class="area-tag">
-                                                <p class="tag-top-info">#{{ $topInfoList->tagInfo->nama_tag }}</p>
+                                                @if (is_array($topInfoList->tag_info))
+                                                    @foreach ($topInfoList->tag_info as $tag)
+                                                        <p class="tag-top-info">#{{ $tag }}</p>
+                                                    @endforeach
+                                                @else
+                                                    <p class="tag-top-info">#-</p>
+                                                @endif
                                             </div>
                                             <div class="area-text">
                                                 <p class="desk-top-info">{{ $topInfoList->deskripsi_info }}</p>
                                             </div>
                                             <div class="area-date">
-                                                <p class="date-top-info">{{ $topInfoList->date_info }}</p>
+                                                <p class="date-top-info">
+                                                    {{ \Carbon\Carbon::parse($topInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -137,9 +120,42 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="header-news">
+                        <h1 class="title-news">Info</h1>
+                    </div>
+                    <div class="content-news">
+                        @foreach ($info as $InfoList)
+                            <a class="link-box-news" href="/info-detail/{{ $InfoList->slug }}">
+                                <div class="box-news">
+                                    <div class="area-image">
+                                        <img class="image-info" src="./storage/{{ $InfoList->image_info }}"
+                                            alt="">
+                                    </div>
+                                    <div class="area-text-desk">
+                                        <div class="area-tag">
+                                            @if (is_array($InfoList->tag_info))
+                                                @foreach ($InfoList->tag_info as $tag)
+                                                    <p class="tag-news">#{{ $tag }}</p>
+                                                @endforeach
+                                            @else
+                                                <p class="tag-news">#-</p>
+                                            @endif
+                                        </div>
+                                        <div class="area-text">
+                                            <p class="desk-news">{{ $InfoList->deskripsi_info }}</p>
+                                        </div>
+                                        <div class="area-date">                    
+                                            <p class="date-news">{{ \Carbon\Carbon::parse($InfoList->date_info)->translatedFormat('l, d F Y') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+
                 </div>
                 <div class="area-content-info">
-                    <div class="header-info">
+                    {{-- <div class="header-info">
                         <h1 class="title-info">More News</h1>
                     </div>
                     <div class="content-info">
@@ -147,6 +163,7 @@
                             <div class="box-info">
                                 <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
                                     <div class="area-tag-info">
+                                        
                                         <h3 class="tag-info">#{{ $tagInfoList->nama_tag }}</h3>
                                     </div>
                                     @if ($tagInfoList->info->isNotEmpty())
@@ -165,6 +182,41 @@
                             <a href="/info-news">
                                 <h1 class="title-bottom-info">Show more</h1>
                             </a>
+                        </div>
+                    </div> --}}
+                    <div class="area-trending-info">
+                        <div class="header-trending-info">
+                            <h1 class="title-trending-info">Trending Info</h1>
+                        </div>
+                        <div class="content-trending-info">
+                            @foreach ($trending_info as $trendingInfoList)
+                                <a class="link-box-trending-info" href="/info-detail/{{ $trendingInfoList->slug }}">
+                                    <div class="box-trending-info">
+                                        {{-- <div class="area-image-trending-info">
+                                            <img class="image-trending-info" src="./storage/{{ $trendingInfoList->image_info }}"
+                                                alt="">
+                                        </div> --}}
+                                        <div class="line-trending-info"></div>
+                                        <div class="area-text-desk-trending-info">
+                                            <div class="area-tag">
+                                                @if (is_array($trendingInfoList->tag_info))
+                                                @foreach ($trendingInfoList->tag_info as $tag)
+                                                    <p class="tag-trending-info">#{{ $tag }}</p>
+                                                @endforeach
+                                            @else
+                                                <p class="tag-trending-info">#-</p>
+                                            @endif
+                                            </div>
+                                            <div class="area-text">
+                                                <p class="desk-trending-info">{{ $trendingInfoList->deskripsi_info }}</p>
+                                            </div>
+                                            <div class="area-date">
+                                                <p class="date-trending-info">{{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

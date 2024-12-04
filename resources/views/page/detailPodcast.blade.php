@@ -196,43 +196,60 @@
                     </div>
                 </div>
                 <div class="area-content-VNS-kanan">
-                    {{-- <div class="area-content-news"> --}}
-                    <div class="header-news">
-                        <h1 class="title-news">Top News</h1>
+                    <div class="area-content-news">
+                        <div class="header-news">
+                            <h1 class="title-news">Top News</h1>
+                        </div>
+                        <div class="content-news">
+                            @foreach ($top_info as $topInfoList)
+                                <a class="link-box-news" href="/info-detail/{{ $topInfoList->slug }}">
+                                    <div class="box-news">
+                                        <div class="area-image">
+                                            <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
+                                                alt="">
+                                        </div>
+                                        <div class="area-text-desk-top-info">
+                                            <div class="area-tag">
+                                                @if (is_array($topInfoList->tag_info))
+                                                    @foreach ($topInfoList->tag_info as $tag)
+                                                        <h2 class="tag-top-info">#{{ $tag }}</h2>
+                                                    @endforeach
+                                                @else
+                                                    <h2 class="tag-top-info">#-</h2>
+                                                @endif
+                                            </div>
+                                            <div class="area-text">
+                                                <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
+                                            </div>
+                                            <div class="area-date">
+                                                <p class="date-top-info">
+                                                    {{ \Carbon\Carbon::parse($topInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
-                    <div class="content-news">
-                        @foreach ($top_info as $topInfoList)
-                            <div class="box-news">
-                                <div class="area-image">
-                                    <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
-                                        alt="">
-                                </div>
-                                <div class="area-text">
-                                    <p class="desk-news">{{ $topInfoList->deskripsi_info }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    {{-- </div> --}}
-                    {{-- <div class="area-content-streaming"> --}}
-                    <div class="header-streaming">
-                        <h2 class="title-streaming">Streaming</h2>
-                    </div>
-                    <div class="content-streaming">
-                        <div class="box-streaming">
-                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
-                                srcset="">
+                    <div class="area-content-streaming">
+                        <div class="header-streaming">
+                            <h2 class="title-streaming">Streaming</h2>
+                        </div>
+                        <div class="content-streaming">
+                            <div class="box-streaming">
+                                <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
+                                    srcset="">
                                 <div class="btn-play-streaming" id="BtnStream"
                                     data-audio-src="{{ $stream->stream_audio_url }}">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
-                                <audio  class="audio-streaming"
-                                    id="audio-streaming" preload="auto">
+                                <audio class="audio-streaming" id="audio-streaming" preload="auto">
                                     <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
                                 </audio>
+                            </div>
                         </div>
                     </div>
-                    {{-- </div> --}}
                 </div>
             </div>
         </div>

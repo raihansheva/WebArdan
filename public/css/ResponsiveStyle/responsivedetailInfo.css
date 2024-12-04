@@ -339,49 +339,71 @@
 
     /* content kiri */
     .content-IN-kiri {
-        width: 55%;
+        width: 65%;
     }
 
-    .box-info {
-        height: 540px;
+    .link-url-info {
+        font-size: 12px;
     }
 
-    .content-box-info {
-        margin: 15px;
+    .url-info {
+        font-size: 12px;
     }
 
-    .area-image-info {
-        height: 45%;
-    }
-
-    .area-info {
-        margin-top: 15px;
-    }
-
-    .tagar-info {
-        font-size: 28px;
+    .text-span-info {
+        font-size: 13px;
     }
 
     .title-info {
-        font-size: 32px;
-    }
-
-    .desk-info {
-        font-size: 16px;
+        font-size: 30px;
     }
 
     .date-info {
         font-size: 14px;
     }
+
+    .area-image-info {
+        height: 280px;
+    }
+
+    .desk-info {
+        font-size: 12px;
+    }
+
+    .text-header-tagar {
+        font-size: 22px;
+    }
+
+    .tagar-info {
+        font-size: 12px;
+    }
+
+    /* area trending info */
+
+    .title-trending-info {
+        font-size: 28px;
+    }
+
+    .tag-trending-info {
+        font-size: 16px;
+    }
+
+    .desk-trending-info {
+        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    }
+
+    .date-trending-info {
+        font-size: 10px;
+    }
+    /* ------------------ */
+
     /* ------------ */
 
     /* content kanan */
     .content-IN-kanan {
-        width: 45%;
+        width: 35%;
     }
-
     /* area-news */
-
     .header-news {
         font-size: 34px;
     }
@@ -635,78 +657,76 @@
 
     /* content kiri */
     .content-IN-kiri {
-        width: 55%;
+        width: 60%;
     }
 
-    .box-info {
-        height: auto;
+    .link-url-info {
+        font-size: 10px;
     }
 
-    .content-box-info {
-        margin: 15px;
-        height: fit-content;
+    .url-info {
+        font-size: 10px;
     }
 
-    .area-image-info {
-        height: 40%;
-    }
-
-    .area-info {
-        margin-top: 15px;
-    }
-
-    .tagar-info {
-        font-size: 22px;
+    .text-span-info {
+        font-size: 11px;
     }
 
     .title-info {
-        font-size: 28px;
-    }
-
-    .desk-info {
-        font-size: 14px;
+        font-size: 24px;
     }
 
     .date-info {
-        font-size: 13px;
+        font-size: 12px;
     }
 
-    #style-3::-webkit-scrollbar-track {
-        border-radius: 15px;
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        background-color: transparent;
-        -webkit-border-radius: 15px;
-        -moz-border-radius: 15px;
-        -ms-border-radius: 15px;
-        -o-border-radius: 15px;
+    .area-image-info {
+        height: 240px;
     }
 
-    #style-3::-webkit-scrollbar {
-        width: 8px;
-        background-color: #292929;
-        border-radius: 10px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        -ms-border-radius: 10px;
-        -o-border-radius: 10px;
+    .desk-info {
+        font-size: 12px;
     }
 
-    #style-3::-webkit-scrollbar-thumb {
-        margin: 3px 0px;
-        border-radius: 10px;
-        background-color: var(--primary-color);
-        /* cursor: pointer; */
+    .text-header-tagar {
+        font-size: 18px;
     }
+
+    .tagar-info {
+        font-size: 12px;
+    }
+
+    /* area trending info */
+
+    .title-trending-info {
+        font-size: 26px;
+    }
+
+    .link-box-trending-info {
+        width: calc(50% - 10px);
+    }
+
+    .tag-trending-info {
+        font-size: 16px;
+    }
+
+    .desk-trending-info {
+        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    }
+
+    .date-trending-info {
+        font-size: 10px;
+    }
+    /* ------------------ */
 
     /* ------------ */
 
     /* content kanan */
     .content-IN-kanan {
-        width: 45%;
+        width: 40%;
     }
 
     /* area-news */
-
     .header-news {
         font-size: 26px;
     }
@@ -756,7 +776,7 @@
 
     /* area news */
     .title-top-news {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .content-top-news {
@@ -1358,6 +1378,31 @@
         font-size: 16px;
     }
 
+    /* area trending info */
+    .title-trending-info {
+        font-size: 26px;
+    }
+
+    .link-box-trending-info {
+        width: calc(50% - 10px);
+    }
+
+    .box-trending-info {
+        max-height: 240px;
+    }
+
+    .tag-trending-info {
+        font-size: 14px;
+    }
+
+    .desk-trending-info {
+        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+        font-size: 10px;
+    }
+
+    .date-trending-info {
+        font-size: 8px;
+    }
     /* ------------ */
 
     #style-3::-webkit-scrollbar-track {
@@ -1650,56 +1695,74 @@
         overflow-y: hidden;
     }
 
-    .box-info {
-        height: auto;
-        display: none;
+    .link-url-info {
+        font-size: 8px;
     }
 
-    .box-info.visible {
-        display: block; /* Tampilkan box yang memiliki kelas "visible" */
-    }
-    .toggle-btn {
-        display: block; /* Tampilkan tombol "See More / See Less" */
+    .url-info {
+        font-size: 8px;
     }
 
-    .content-box-info {
-        margin: 15px;
-        height: fit-content;
-    }
-
-    .area-image-info {
-        height: 30%;
-    }
-
-    .area-info {
-        margin-top: 15px;
-    }
-
-    .tagar-info {
-        font-size: 22px;
+    .text-span-info {
+        font-size: 11px;
     }
 
     .title-info {
-        font-size: 28px;
-    }
-
-    .desk-info {
-        font-size: 14px;
+        font-size: 24px;
     }
 
     .date-info {
-        font-size: 13px;
+        font-size: 12px;
     }
 
-    .area-bottom-box-info {
-        display: block;
+    .area-image-info {
+        height: 240px;
     }
 
-    .title-bottom {
-        /* padding-top: 20px; */
+    .desk-info {
+        font-size: 12px;
+    }
+
+    .text-header-tagar {
+        font-size: 16px;
+    }
+
+    .tagar-info {
+        font-size: 12px;
+    }
+
+    /* area trending info */
+    .title-trending-info {
+        font-size: 26px;
+    }
+
+    .link-box-trending-info {
+        width: calc(50% - 10px);
+    }
+
+    .box-trending-info {
+        max-height: 220px;
+        padding: 6px;
+    }
+
+    .image-trending-info {
+        height: 40%;
+        border-radius: 10px;
+    }
+
+    .tag-trending-info {
         font-size: 14px;
     }
 
+    .desk-trending-info {
+        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+        font-size: 10px;
+    }
+
+    .date-trending-info {
+        font-size: 8px;
+    }
+    /* ------------ */
     /* ------------ */
 
     #style-3::-webkit-scrollbar-track {
