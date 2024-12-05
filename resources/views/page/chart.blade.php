@@ -39,6 +39,7 @@
                                                     data-id="{{ $kategoriList->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
+                                                <audio src="" id="audio-chart" class="audio-chart"></audio>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -62,7 +63,7 @@
                     <div class="content-SN-kiri">
                         <div class="box-streaming">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
-                                srcset="">
+                                srcset="" >
                             <div class="btn-play-streaming" id="BtnStream"
                                 data-audio-src="{{ $stream->stream_audio_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>

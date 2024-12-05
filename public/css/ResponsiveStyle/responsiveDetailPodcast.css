@@ -176,8 +176,7 @@
         padding-bottom: 41%; /* 16:9 aspect ratio */
         overflow: hidden;
     }
-    
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -445,11 +444,11 @@
     }
 
     .area-video-news-stream {
-        margin: 0px 128px 0px 128px;
+        margin: 0px 128px 90px 128px;
     }
 
     .area-content-VNS {
-        gap: 10px;
+        gap: 20px;
     }
 
     /* content kiri */
@@ -461,23 +460,24 @@
     .title-video {
         font-size: 44px;
     }
-    
-    .area-video-top , .area-video-bottom{
+
+    .area-video-top,
+    .area-video-bottom {
         height: 335px;
     }
-    
-    .area-video-mid{
+
+    .area-video-mid {
         height: 335px;
     }
 
     .content-kiri-video {
-        gap: 10px;
+        gap: 15px;
         height: auto;
     }
 
     .area-video-top,
     .area-video-bottom {
-        gap: 10px;
+        gap: 15px;
     }
 
     .btn-play-video {
@@ -508,44 +508,46 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 44%;
+        height: 1092px;
         gap: 10px;
     }
 
     /* area news */
 
-    .content-news {
-        height: fit-content;
-        /* border: 1px blue solid; */
-        margin-top: 0px;
-    }
+    /* .content-news {
+height: 85%;
+border: 1px blue solid;
+} */
 
     .title-news {
         font-size: 44px;
     }
 
     .box-news {
-        height: calc(20% - 10px);
-        padding: 8px;
+        height: 105px;
+        padding: 14px;
     }
 
     .area-image {
         height: 100%;
     }
 
-    .desk-news {
-        font-size: 18px;
+    .tag-top-info {
+        font-size: 24px;
+    }
+
+    .desk-top-info {
+        font-size: 26px;
+    }
+
+    .date-top-info {
+        font-size: 22px;
     }
     /* ------------ */
-
     /* area content stream */
-
-    .content-streaming {
-        height: 20%;
-        /* border: 1px  red solid; */
-    }
-    
-    .header-streaming{
-        height: auto;
+    .area-content-streaming {
+        width: 100%;
+        height: fit-content;
     }
 
     .title-streaming {
@@ -553,18 +555,16 @@
     }
 
     .box-streaming {
-        height: 100%;
-    }
-
-    .text-streaming {
-        font-size: 12px;
-        margin: 5px 10px;
+        height: 240px;
     }
 
     .btn-play-streaming {
-        height: 65px;
         width: 65px;
-        font-size: 18px;
+        height: 65px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 32px;
     }
 
     /* ------------------- */
@@ -1325,8 +1325,7 @@
         padding-bottom: 58.25%; /* 16:9 aspect ratio */
         overflow: hidden;
     }
-    
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -1904,8 +1903,7 @@
         padding-bottom: 50.25%; /* 16:9 aspect ratio */
         overflow: hidden;
     }
-    
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -1978,7 +1976,7 @@
     /* ------------ */
     /* area detail kanan */
 
-    .area-detail-kanan{
+    .area-detail-kanan {
         width: 100%;
     }
 
@@ -1998,12 +1996,12 @@
     .card-episode {
         margin-right: 0px;
         padding: 20px 15px;
-        flex:1 1 calc(50% - 10px);
+        flex: 1 1 calc(50% - 10px);
         margin-bottom: 0px;
         display: none;
     }
 
-    .card-episode.visible{
+    .card-episode.visible {
         display: block;
     }
 
@@ -2024,15 +2022,14 @@
         width: 8px;
     }
 
-
-    .area-see-more{
+    .area-see-more {
         width: 100%;
         height: fit-content;
         display: block;
         text-align: center;
     }
 
-    .text-see-more{
+    .text-see-more {
         font-size: 14px;
         font-weight: 300;
         font-family: "Poppins";
@@ -2426,7 +2423,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
+    }
 
     .text-watchP {
         color: rgb(48, 48, 48);
@@ -2517,8 +2514,7 @@
         padding-bottom: 52.25%; /* 16:9 aspect ratio */
         overflow: hidden;
     }
-    
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -2597,7 +2593,7 @@
     /* ------------ */
     /* area detail kanan */
 
-    .area-detail-kanan{
+    .area-detail-kanan {
         width: 100%;
     }
 
@@ -2617,12 +2613,12 @@
     .card-episode {
         margin-right: 0px;
         padding: 20px 15px;
-        flex:1 1 calc(50% - 10px);
+        flex: 1 1 calc(50% - 10px);
         margin-bottom: 0px;
         display: none;
     }
 
-    .card-episode.visible{
+    .card-episode.visible {
         display: block;
     }
 
@@ -2643,15 +2639,14 @@
         width: 8px;
     }
 
-
-    .area-see-more{
+    .area-see-more {
         width: 100%;
         height: fit-content;
         display: block;
         text-align: center;
     }
 
-    .text-see-more{
+    .text-see-more {
         font-size: 14px;
         font-weight: 300;
         font-family: "Poppins";
@@ -3046,7 +3041,7 @@
         -moz-border-radius: 8px;
         -ms-border-radius: 8px;
         -o-border-radius: 8px;
-}
+    }
 
     .text-watchP {
         color: rgb(48, 48, 48);
@@ -3135,8 +3130,7 @@
         padding-bottom: 58.25%; /* 16:9 aspect ratio */
         overflow: hidden;
     }
-    
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -3215,7 +3209,7 @@
     /* ------------ */
     /* area detail kanan */
 
-    .area-detail-kanan{
+    .area-detail-kanan {
         width: 100%;
     }
 
@@ -3235,12 +3229,12 @@
     .card-episode {
         margin-right: 0px;
         padding: 10px 8px;
-        flex:1 1 calc(50% - 10px);
+        flex: 1 1 calc(50% - 10px);
         margin-bottom: 0px;
         display: none;
     }
 
-    .card-episode.visible{
+    .card-episode.visible {
         display: block;
     }
 
@@ -3261,15 +3255,14 @@
         width: 8px;
     }
 
-
-    .area-see-more{
+    .area-see-more {
         width: 100%;
         height: fit-content;
         display: block;
         text-align: center;
     }
 
-    .text-see-more{
+    .text-see-more {
         font-size: 14px;
         font-weight: 300;
         font-family: "Poppins";
@@ -3518,7 +3511,7 @@
         margin-top: 0px;
     }
 
-    .header-news{
+    .header-news {
         text-align: start;
     }
 

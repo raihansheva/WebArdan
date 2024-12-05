@@ -174,7 +174,7 @@ tbody tr {
     display: flex;
     gap: 15px;
     /* margin-top: ; */
-    padding-top: 30px;
+    /* padding-top: 10px; */
     margin-bottom: 100px;
 }
 
@@ -193,7 +193,7 @@ tbody tr {
 }
 
 .title-SN-kiri{
-    font-size: 38px;
+    font-size: 34px;
     font-family: "Bebas Neue";
     font-weight: 200;
     color: white;
@@ -203,7 +203,7 @@ tbody tr {
 .content-SN-kiri{
     width: 100%;
     height: auto;
-    margin-top: 10px;
+    /* margin-top: 8px; */
 }
 
 .box-streaming{
@@ -266,7 +266,7 @@ tbody tr {
 .title-news {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 38px;
+    font-size: 34px;
     font-weight: 200;
     color: white;
 }
@@ -276,7 +276,7 @@ tbody tr {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .box-news {

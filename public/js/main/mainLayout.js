@@ -101,6 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (isStreamingPlaying) {
+            console.log("halooo ini pause dari audio floating");
+
             pauseStreaming();
         } else {
             musicName.innerHTML = "Streaming Audio"; // Atur nama audio
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Jika audio belum dimainkan, langsung mainkan
         if (!isStreamingPlaying) {
             audioStream.play();
-            // isStreamingPlaying = true;
+            isStreamingPlaying = true;
 
             // updatePlayPauseButtonStateS();
             // console.error("Error playing streaming audio:", error);
@@ -158,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
             audioStream
                 .play()
                 .catch((err) => console.error("Gagal memutar audio:", err));
-
+            isStreamingPlaying = true;
             // Tentukan nama audio dan artis
             musicName.innerHTML = "Streaming Audio";
             musicArtist.innerHTML = "Live Stream";
@@ -225,7 +227,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const playPauseBtn = document.querySelector(".play-pause-stream");
         if (playPauseBtn) {
             clearInterval(intervalId);
-            playPauseBtn.addEventListener("click", toggleStreaming);
+            playPauseBtn.addEventListener("click", () => {
+                if (isStreamingPlaying) {
+                    pauseStreaming();
+                } else {
+                    musicName.innerHTML = "Streaming Audio"; // Atur nama audio
+                    musicArtist.innerHTML = "Live Stream"; // Atur artis audio
+                    playStreaming();
+                    // startSpectrumAudio(AudioStream)
+                }
+            });
         }
     }, 100); // Periksa setiap 100ms untuk elemen yang tersedia
 
@@ -865,7 +876,7 @@ document
     });
 
 window.onclick = function (event) {
-    if (!event.target.matches(".arrow-down")) {
+    if (!event.target.matches(".arrow-down , .dropText")) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
         for (var i = 0; i < dropdowns.length; i++) {
             var openDropdown = dropdowns[i];

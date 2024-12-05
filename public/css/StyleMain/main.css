@@ -182,7 +182,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.link:hover {
+.link:hover , .arrow-down:hover {
     color: var(--primary-color);
     /* font-weight: 400; */
 }
@@ -190,6 +190,10 @@ body {
 .link.active p {
     color: #ffdb00;
     font-weight: 600;
+}
+
+.dropText{
+    cursor: pointer;
 }
 
 .dropdown {

@@ -47,7 +47,7 @@
     }
 
     .area-content-SN{
-        margin-bottom: 30px;
+        margin-bottom: 60px;
     }
 
     /* content kiri */
@@ -85,20 +85,29 @@
         width: 40%;
     }
 
-    .title-news{
+    .title-news {
         font-size: 44px;
     }
 
-    .content-news{
+    .content-top-news {
         gap: 18px;
     }
 
-    .box-news{
-        height: 100px;
+    .box-news {
+        height: 120px;
+        padding: 15px;
     }
 
-    .desk-news{
-        font-size: 18px;
+    .tag-top-info {
+        font-size: 28px;
+    }
+
+    .desk-top-info {
+        font-size: 26px;
+    }
+
+    .date-top-info {
+        font-size: 22px;
     }
     /*--------------- */
 

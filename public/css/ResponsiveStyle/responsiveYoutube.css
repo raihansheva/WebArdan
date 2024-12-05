@@ -4,6 +4,13 @@
         margin: 30px 32px 0px 32px;
     }
 
+    .area-image-thumbnail {
+        width: 100%;
+        height: 400px;
+        background-color: gainsboro;
+        border-radius: 15px;
+    }
+
     /* page youtube 2 */
     .area-video-youtube {
         margin: 0px 128px 0px 128px;
@@ -18,21 +25,26 @@
     }
 
     .text-choose {
-        font-size: 18px;
+        font-size: 26px;
     }
 
     .dropdown-btn-search {
-        width: 180px;
+        width: 220px;
         padding: 5px;
+        font-size: 20px;
     }
 
     .dropdown-item {
-        font-size: 16px;
+        font-size: 18px;
+    }
+
+    .video--wrapper {
+        width: calc(20% - 20px);
     }
 
     .video--details__avatar img {
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
     }
 
     .video--details__title {
@@ -40,20 +52,20 @@
     }
 
     .video--details__channelTitle {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .video--details__meta h3 {
         margin: 4px 0;
         font-family: "Poppins";
-        font-size: 15px;
+        font-size: 20px;
         color: white;
     }
 
     .video--details__meta-data {
         display: flex;
         gap: 10px;
-        font-size: 0.7rem;
+        font-size: 1.1rem;
         color: #ffffff;
         font-family: "Poppins";
         font-weight: 200;
@@ -70,6 +82,10 @@
 
     /* page youtube 3 */
 
+    .page-youtube-3{
+        height: auto;
+    }
+
     .line-VNS {
         width: 100%;
         border: 1px white solid;
@@ -77,43 +93,43 @@
     }
 
     .area-event-news-streaming {
-        margin: 0px 128px 30px 128px;
+        margin: 0px 128px 90px 128px;
     }
 
     .area-content-VNS {
-        gap: 10px;
+        gap: 20px;
     }
 
     /* content kiri */
 
     .area-content-VNS-kiri {
         width: 55%;
-        height: fit-content;
     }
-
+    
     .title-event {
         font-size: 44px;
     }
-
+    
     .content-kiri-event {
-        gap: 10px;
+        gap: 15px;
+        height: 924px;
         /* height: auto; */
     }
 
     .area-countdown {
-        height: 65px;
+        height: 105px;
     }
 
     .timer {
-        font-size: 28px;
+        font-size: 34px;
     }
 
     .title-timer {
-        font-size: 16px;
+        font-size: 28px;
     }
 
     .date-month {
-        font-size: 22px;
+        font-size: 34px;
     }
 
     .year {
@@ -122,15 +138,15 @@
 
     .area-event-bottom {
         height: 30%;
-        gap: 10px;
+        gap: 15px;
     }
 
     .area-days-date-right {
-        height: 35px;
+        height: 65px;
     }
 
     .date-month-right {
-        font-size: 18px;
+        font-size: 28px;
     }
 
     .year-right {
@@ -160,63 +176,57 @@
         font-size: 18px;
     }
 
+    /* content kanan */
     .area-content-VNS-kanan {
-        width: 50%;
-        height: 750px;
-        /* border: 1px green solid; */
-        /* display: grid; */
-        /* flex-direction: column; */
-        gap: 5px;
+        width: 44%;
+        height: 980px;
+        gap: 10px;
     }
 
     /* area news */
 
-    .content-news {
-        height: 100%;
-        /* border: 1px blue solid; */
-        margin-top: 12px;
-    }
+    /* .content-news {
+    height: 85%;
+    border: 1px blue solid;
+} */
 
     .title-news {
         font-size: 44px;
     }
 
     .box-news {
-        /* height: 100%; */
+        height: 95px;
         padding: 8px;
-        height: calc(20% - 10px);
     }
 
     .area-image {
         height: 100%;
     }
 
-    .desk-news {
+    .tag-top-info {
+        font-size: 22px;
+    }
+
+    .desk-top-info {
+        font-size: 20px;
+    }
+
+    .date-top-info {
         font-size: 18px;
     }
     /* ------------ */
-
     /* area content stream */
-
-    .content-streaming {
-        height: 26.5%;
-        /* border: 1px  green solid; */
-        margin-top: 12px;
-    }
-
-    .header-streaming {
+    .area-content-streaming {
         width: 100%;
-        height: 5%;
-        margin-top: 12px;
+        height: fit-content;
     }
 
     .title-streaming {
         font-size: 44px;
-        /* margin-top: 4px; */
     }
 
     .box-streaming {
-        height: 100%;
+        height: 240px;
     }
 
     .btn-play-streaming {
@@ -227,6 +237,7 @@
     .btn-play-streaming span {
         font-size: 32px;
     }
+
     /* ------------------- */
     /* --------------- */
 

@@ -38,25 +38,65 @@
         height: 45%;
     } */
 
-    .area-info {
-        margin-top: 15px;
+    .link-url-info {
+        font-size: 22px;
     }
 
-    .tagar-info {
-        font-size: 34px;
+    .url-info {
+        font-size: 22px;
+    }
+
+    .text-span-info {
+        font-size: 24px;
     }
 
     .title-info {
-        font-size: 36px;
-    }
-
-    .desk-info {
-        font-size: 20px;
+        font-size: 44px;
     }
 
     .date-info {
-        font-size: 18px;
+        font-size: 22px;
     }
+
+    .area-image-info {
+        height: 450px;
+    }
+
+    .desk-info {
+        font-size: 22px;
+    }
+
+    .text-header-tagar {
+        font-size: 32px;
+    }
+
+    .tagar-info {
+        font-size: 24px;
+    }
+
+    /* area trending info */
+    .box-trending-info {
+        max-height: 360px;
+        padding: 20px;
+    }
+
+    .title-trending-info {
+        font-size: 48px;
+    }
+
+    .tag-trending-info {
+        font-size: 26px;
+    }
+
+    .desk-trending-info {
+        font-size: 22px;
+        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    }
+
+    .date-trending-info {
+        font-size: 20px;
+    }
+    /* ------------------ */
     /* ------------ */
 
     /* content kanan */
@@ -139,23 +179,27 @@
 
     /* area news */
     .title-top-news {
-        font-size: 44px;
+        font-size: 46px;
     }
 
     .content-top-news {
-        gap: 18px;
+        gap: 14px;
     }
 
-    .box-top-news {
-        height: 120px;
-        border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
-        -ms-border-radius: 20px;
-        -o-border-radius: 20px;
+    .box-top-info {
+        height: 105px;
+        padding: 15px;
     }
 
-    .desk-top-news {
+    .tag-top-info {
+        font-size: 26px;
+    }
+
+    .desk-top-info {
+        font-size: 24px;
+    }
+
+    .date-top-info {
         font-size: 18px;
     }
     /* ------------- */
