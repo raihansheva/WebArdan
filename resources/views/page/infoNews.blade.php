@@ -1,6 +1,15 @@
 @extends('layout.main')
-<link rel="stylesheet" href="css/StyleContent/infoNews.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveInfoNews.css">
+
+@push('meta-seo')
+    <meta name="description" content="{{ \App\Helpers\Settings::get('site_description', 'Default Site Title') }}">
+@endpush
+
+@push('Style.css')
+    <link rel="stylesheet" href="css/StyleContent/infoNews.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveInfoNews.css">
+@endpush
+
+@section('title', 'INFO | ARDAN RADIO')
 @section('content')
     <section class="page-news-1">
         <div class="header-info-news">
@@ -18,8 +27,8 @@
             <div class="content-info-news">
                 <div class="content-IN-kiri" id="style-3">
                     @foreach ($info as $infoList)
-                    <div class="box-info">
-                                <a class="link-info" href="/info-detail/{{ $infoList->slug }}">
+                        <div class="box-info">
+                            <a class="link-info" href="/info-detail/{{ $infoList->slug }}">
                                 <div class="content-box-info">
                                     <div class="area-image-info">
                                         <img class="image-info" src="../storage/{{ $infoList->image_info }}" alt="">
@@ -48,7 +57,7 @@
                                     </div>
                                 </div>
                             </a>
-                            </div>
+                        </div>
                     @endforeach
                 </div>
                 <div class="area-bottom-box-info">
@@ -87,7 +96,8 @@
                         <div class="area-thumbnail">
                             <img class="image-streaming" src="./storage/{{ $stream->image_stream }}" alt=""
                                 srcset="">
-                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $stream->stream_audio_url }}">
+                            <div class="btn-play-streaming" id="BtnStream"
+                                data-audio-src="{{ $stream->stream_audio_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
                             {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">

@@ -51,7 +51,7 @@ class HomeController extends Controller
         $schedule = Schedule::with('program')->get();
 
         $artis = Artis::all()->take(3);
-
+        
         // foreach ($artis as $berita) {
         //     // Tentukan status publish langsung berdasarkan kondisi
         //     if ($berita->publish_sekarang) {
@@ -117,12 +117,13 @@ class HomeController extends Controller
     {
 
         $program = Program::all()->take(4);
-
+        $stream = Streaming::where('status', 'streaming')->first();
         $event_soon = Event::where('status', 'soon')->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
 
         return view('page.event', [
             'program' => $program,
+            'stream' => $stream,
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
         ]);

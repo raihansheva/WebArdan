@@ -1,7 +1,16 @@
 @extends('layout.main')
 <base href="{{ url('/') }}/">
-<link rel="stylesheet" href="css/StyleContent/detailInfo.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfo.css">
+
+@push('meta-seo')
+    <meta name="description" content="{{ $info->deskripsi_info }}">
+@endpush
+
+@push('Style.css')
+    <link rel="stylesheet" href="css/StyleContent/detailInfo.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfo.css">
+@endpush
+
+@section('title', $info->judul_info)
 @section('content')
     {{-- <section class="page-news-1">
         <div class="header-info-news">
@@ -89,7 +98,9 @@
                                                 <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
                                             </div>
                                             <div class="area-date">
-                                                <p class="date-trending-info">{{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}</p>
+                                                <p class="date-trending-info">
+                                                    {{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

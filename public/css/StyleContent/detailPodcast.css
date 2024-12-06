@@ -49,7 +49,7 @@
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease;
-    height: 500px;
+    /* height: 500px; */
     position: relative;
 }
 
@@ -62,8 +62,8 @@
 }
 
 .card-DP .card-DP-body {
-    /*width: 100%;
-    */height: 60%;
+    /*width: 100%;*/
+    height: 315px;
     background-color: white;
     padding: 30px;
     overflow: hidden;
@@ -210,7 +210,7 @@
     position: relative;
     width: 100%;
     height: fit-content;
-    padding-bottom: 47.25%; /* 16:9 aspect ratio */
+    padding-bottom: 49%; /* 16:9 aspect ratio */
     overflow: hidden;
 }
 
@@ -220,7 +220,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     border: none;
 }
 
@@ -241,6 +241,7 @@
     opacity: 1;
     transform: translateY(0);
     width: 100%;
+    height: auto;
 }
 .card-DP-B.show {
     opacity: 1;

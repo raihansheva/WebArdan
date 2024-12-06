@@ -1,7 +1,16 @@
 @extends('layout.main')
 <base href="{{ url('/') }}/">
-<link rel="stylesheet" href="css/StyleContent/detailPodcast.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveDetailPodcast.css">
+@push('meta-seo')
+    <meta name="description" content="{{ \Illuminate\Support\Str::limit($detail_podcast->deskripsi_podcast, 100, '') }}">
+@endpush
+
+@push('Style.css')
+    <link rel="stylesheet" href="css/StyleContent/detailPodcast.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveDetailPodcast.css">
+@endpush
+
+@section('title' , 'PODCAST | ' .  $detail_podcast->judul_podcast)
+
 @section('content')
     <section class="page-detail-1">
         <div class="area-detail-podcast">

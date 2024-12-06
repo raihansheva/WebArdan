@@ -1,49 +1,62 @@
 @extends('layout.main')
-<link rel="stylesheet" href="css/StyleContent/event.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveEvent.css" @section('content') <section class="page-event-1">
-    <div class="area-event">
-        <div class="header-event">
-            <h2 class="title-event">Upcoming Event</h2>
-        </div>
-        <div class="content-event">
-            @foreach ($event_soon as $eventSoonList)
-                <div class="content-event-CD" onclick="showPopupEvent(this)"
-                    data-description="{{ $eventSoonList->deskripsi_event }}"
-                    data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
-                    style="background-image: url('./storage/{{ $eventSoonList->image_event }}')">
-                </div>
-                <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
-                <div class="area-countdown">
-                    <div class="area-content-countdown">
-                        <div class="countdown">
-                            <div class="time-countdown">
-                                <h2 class="timer" id="days"></h2>
-                                <span class="title-timer">Days</span>
+
+@push('meta-seo')
+    <meta name="description" content="{{ \App\Helpers\Settings::get('site_description', 'Default Site Title') }}">
+    <meta name="keyword" content="{{ \App\Helpers\Settings::get('site_keyword', 'Default Site Title') }}">
+@endpush
+
+@push('Style.css')
+    <link rel="stylesheet" href="css/StyleContent/event.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveEvent.css">
+@endpush
+
+@section('title', 'EVENT | ' . \App\Helpers\Settings::get('site_title', 'Default Site Title'))
+
+@section('content')
+    <section class="page-event-1">
+        <div class="area-event">
+            <div class="header-event">
+                <h2 class="title-event">Upcoming Event</h2>
+            </div>
+            <div class="content-event">
+                @foreach ($event_soon as $eventSoonList)
+                    <div class="content-event-CD" onclick="showPopupEvent(this)"
+                        data-description="{{ $eventSoonList->deskripsi_event }}"
+                        data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
+                        style="background-image: url('./storage/{{ $eventSoonList->image_event }}')">
+                    </div>
+                    <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
+                    <div class="area-countdown">
+                        <div class="area-content-countdown">
+                            <div class="countdown">
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="days"></h2>
+                                    <span class="title-timer">Days</span>
+                                </div>
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="hours"></h2>
+                                    <span class="title-timer">Hours</span>
+                                </div>
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="minutes"></h2>
+                                    <span class="title-timer">Minutes</span>
+                                </div>
+                                <div class="time-countdown">
+                                    <h2 class="timer" id="seconds"></h2>
+                                    <span class="title-timer">Second</span>
+                                </div>
                             </div>
-                            <div class="time-countdown">
-                                <h2 class="timer" id="hours"></h2>
-                                <span class="title-timer">Hours</span>
-                            </div>
-                            <div class="time-countdown">
-                                <h2 class="timer" id="minutes"></h2>
-                                <span class="title-timer">Minutes</span>
-                            </div>
-                            <div class="time-countdown">
-                                <h2 class="timer" id="seconds"></h2>
-                                <span class="title-timer">Second</span>
-                            </div>
-                        </div>
-                        <div class="area-days-date">
-                            <div class="box-days-date">
-                                <h3 class="date-month">
-                                    {{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}</h3>
+                            <div class="area-days-date">
+                                <div class="box-days-date">
+                                    <h3 class="date-month">
+                                        {{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
-    </div>
     </section>
     <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
         <div class="popup-content-event">

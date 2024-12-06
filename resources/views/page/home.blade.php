@@ -1,9 +1,20 @@
 @extends('layout.main')
-<link rel="stylesheet" href="css/StyleContent/home.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveHome.css">
+
+@section('title', \App\Helpers\Settings::get('site_title', 'Default Site Title'))
+
+@push('meta-seo')
+    <meta name="description" content="{{ \App\Helpers\Settings::get('site_description', 'Default Site Title') }}">
+    <meta name="keyword" content="{{ \App\Helpers\Settings::get('site_keyword', 'Default Site Title') }}">
+@endpush
+
+@push('Style.css')
+    <link rel="stylesheet" href="css/StyleContent/home.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveHome.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+@endpush
+
 @livewireStyles
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @section('content')
     <section class="section-banner">
         <div class="area-banner">
@@ -24,42 +35,41 @@
             <div class="content-streaming">
                 <div class="contentS-kiri">
                     {{-- @foreach ($stream as $streamList) --}}
-                        <div class="card-A">
-                            <div class="card-body">
-                                <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
-                                <div class="btn-play-streaming" id="BtnStream"
-                                    data-audio-src="{{ $stream->stream_audio_url }}">
-                                    <span class="material-symbols-rounded">play_arrow</span>
-                                </div>
+                    <div class="card-A">
+                        <div class="card-body">
+                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
+                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $stream->stream_audio_url }}">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
 
-                                <!-- Ganti dengan MediaElement.js -->
-                                {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
+                            <!-- Ganti dengan MediaElement.js -->
+                            {{-- <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
                                     <source type="audio/mpeg" src="{{ $streamList->stream_audio_url }}" />
                                 </audio> --}}
-                                {{-- <livewire:audio-player /> --}}
-                            </div>
-                            <div class="card-header">
-                                <div class="view" id="btn-tonton">
-                                    <p class="text-watchS">Tonton Siaran</p>
-                                </div>
+                            {{-- <livewire:audio-player /> --}}
+                        </div>
+                        <div class="card-header">
+                            <div class="view" id="btn-tonton">
+                                <p class="text-watchS">Tonton Siaran</p>
                             </div>
                         </div>
-                        <div class="card-B">
-                            <div class="card-body-B">
-                                <div class="video-container">
-                                    <!-- Elemen video untuk memutar HLS -->
-                                    <video id="hlsPlayer" controls width="640" height="360"></video>
-                                </div>
-                                <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                                <div id="player" data-pl="{{ $stream->stream_video_url }}" style="display: none;">
-                                </div>
+                    </div>
+                    <div class="card-B">
+                        <div class="card-body-B">
+                            <div class="video-container">
+                                <!-- Elemen video untuk memutar HLS -->
+                                <video id="hlsPlayer" controls width="640" height="360"></video>
                             </div>
-                            <div class="card-footer">
-                                <div class="view-B">
-                                    <p class="text-watchS-B">Dengar Siaran</p>
-                                </div>
+                            <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
+                            <div id="player" data-pl="{{ $stream->stream_video_url }}" style="display: none;">
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <div class="view-B">
+                                <p class="text-watchS-B">Dengar Siaran</p>
+                            </div>
+                        </div>
+                    </div>
                     {{-- @endforeach --}}
                 </div>
                 <div class="contentS-kanan">
@@ -130,8 +140,7 @@
                             <a class="link-box-news" href="/info-detail/{{ $InfoList->slug }}">
                                 <div class="box-news">
                                     <div class="area-image">
-                                        <img class="image-info" src="./storage/{{ $InfoList->image_info }}"
-                                            alt="">
+                                        <img class="image-info" src="./storage/{{ $InfoList->image_info }}" alt="">
                                     </div>
                                     <div class="area-text-desk">
                                         <div class="area-tag">
@@ -146,8 +155,10 @@
                                         <div class="area-text">
                                             <p class="desk-news">{{ $InfoList->deskripsi_info }}</p>
                                         </div>
-                                        <div class="area-date">                    
-                                            <p class="date-news">{{ \Carbon\Carbon::parse($InfoList->date_info)->translatedFormat('l, d F Y') }}</p>
+                                        <div class="area-date">
+                                            <p class="date-news">
+                                                {{ \Carbon\Carbon::parse($InfoList->date_info)->translatedFormat('l, d F Y') }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -202,18 +213,20 @@
                                         <div class="area-text-desk-trending-info">
                                             <div class="area-tag">
                                                 @if (is_array($trendingInfoList->tag_info))
-                                                @foreach ($trendingInfoList->tag_info as $tag)
-                                                    <p class="tag-trending-info">#{{ $tag }}</p>
-                                                @endforeach
-                                            @else
-                                                <p class="tag-trending-info">#-</p>
-                                            @endif
+                                                    @foreach ($trendingInfoList->tag_info as $tag)
+                                                        <p class="tag-trending-info">#{{ $tag }}</p>
+                                                    @endforeach
+                                                @else
+                                                    <p class="tag-trending-info">#-</p>
+                                                @endif
                                             </div>
                                             <div class="area-text">
                                                 <p class="desk-trending-info">{{ $trendingInfoList->deskripsi_info }}</p>
                                             </div>
                                             <div class="area-date">
-                                                <p class="date-trending-info">{{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}</p>
+                                                <p class="date-trending-info">
+                                                    {{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

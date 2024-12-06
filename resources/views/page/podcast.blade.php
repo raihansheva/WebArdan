@@ -1,7 +1,13 @@
 @extends('layout.main')
 
-<link rel="stylesheet" href="css/StyleContent/podcast.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsivePodcast.css">
+@push('meta-seo')
+@endpush
+
+@push('Style.css')
+    <link rel="stylesheet" href="css/StyleContent/podcast.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsivePodcast.css">
+@endpush
+@section('title' , 'PODCAST | '. \App\Helpers\Settings::get('site_title', 'Default Site Title'))
 @section('content')
     <section class="page-podcast-1">
         @foreach ($bannerP as $bannerPList)
