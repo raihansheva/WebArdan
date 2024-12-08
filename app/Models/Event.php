@@ -12,7 +12,7 @@ class Event extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'image_event' , 'deskripsi_event' , 'date_event' , 'time_countdown' , 'status'];
+    protected $fillable = ['id' , 'image_event' , 'deskripsi_event' , 'date_event' , 'time_countdown' , 'status' , 'meta_title', 'meta_description', 'meta_keywords'];
 
     public function registerMediaCollections(): void
     {

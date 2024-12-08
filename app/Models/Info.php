@@ -11,10 +11,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Info extends Model implements HasMedia
 {
-    use HasFactory , InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
 
-    protected $fillable = ['id' , 'judul_info' , 'tag_info' , 'deskripsi_info' , 'image_info' , 'date_info' , 'top_news', 'trending' , 'slug'];
+    protected $fillable = [
+        'id',
+        'judul_info',
+        'tag_info',
+        'deskripsi_info',
+        'image_info',
+        'date_info',
+        'top_news',
+        'trending',
+        'slug',
+        'meta_title',
+        'meta_description',
+        'meta_keywords'
+    ];
 
     protected $casts = [
         'tag_info' => 'array', // Konversi JSON ke array

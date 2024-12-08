@@ -2,7 +2,8 @@
 <base href="{{ url('/') }}/">
 
 @push('meta-seo')
-    <meta name="description" content="{{ $info->deskripsi_info }}">
+    <meta name="description" content="{{ $info->meta_description }}">
+    <meta name="keyword" content="{{ $info->meta_keywords }}">
 @endpush
 
 @push('Style.css')
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfo.css">
 @endpush
 
-@section('title', $info->judul_info)
+@section('title',  $info->meta_title)
 @section('content')
     {{-- <section class="page-news-1">
         <div class="header-info-news">

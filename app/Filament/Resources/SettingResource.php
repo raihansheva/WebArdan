@@ -45,6 +45,14 @@ class SettingResource extends Resource
                             ->image() // Pastikan hanya file gambar yang diizinkan
                             ->preserveFilenames()
                             ->required(fn($record) => $record?->key === 'site_logo'),
+                        FileUpload::make('value')  // Untuk input file logo
+                            ->label('Site icon')
+                            ->visible(fn($record) => $record?->key === 'site_icon') // Hanya tampil jika key adalah 'site_logo'
+                            ->disk('public') // Tentukan disk untuk menyimpan file ke public
+                            ->directory('icon') // Tentukan subfolder untuk menyimpan logo
+                            ->image() // Pastikan hanya file gambar yang diizinkan
+                            ->preserveFilenames()
+                            ->required(fn($record) => $record?->key === 'site_icon'),
                     ])
                     ->columns(2),
             ]);

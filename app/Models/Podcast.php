@@ -25,6 +25,9 @@ class Podcast extends Model implements HasMedia
         'episode_number',
         'is_episode',
         'podcast_id',
+        'meta_title',
+        'meta_description',
+        'meta_keywords'
     ];
 
     public function registerMediaCollections(): void

@@ -12,6 +12,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -42,6 +43,7 @@ class InfoResource extends Resource
                             ->live(onBlur: true)
                             ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
                                 $set('slug', Str::slug($state));
+                                $set('meta_title', $state);
                             })
                             ->required(),
                         // Select::make('tag_info_id')
@@ -85,6 +87,19 @@ class InfoResource extends Resource
                             ->label('Deskripsi Info :')
                             ->required()
                             ->columnSpan(2),
+                        TextInput::make('meta_title')
+                            ->label('Title Info :')
+                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
+                            ->maxLength(100)
+                            ->required(),
+                        Textarea::make('meta_description')
+                            ->label('Description Info :')
+                            ->placeholder('Masukan meta description')
+                            ->required(),
+                        TextInput::make('meta_keywords')
+                            ->label('Keyword :')
+                            ->placeholder('Masukan meta keyword')
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
@@ -104,15 +119,18 @@ class InfoResource extends Resource
                 TextColumn::make('date_info'),
                 TextColumn::make('slug'),
                 TextColumn::make('top_news')
-                    ->label('Top News')
-                    ->getStateUsing(function ($record) {
-                        return $record->top_news ? 'Top-News' : '-';
-                    }),
+                ->label('Top News')
+                ->getStateUsing(function ($record) {
+                    return $record->top_news ? 'Top-News' : '-';
+                }),
                 TextColumn::make('trending')
-                    ->label('Trending')
-                    ->getStateUsing(function ($record) {
-                        return $record->trending ? 'Trending' : '-';
-                    }),
+                ->label('Trending')
+                ->getStateUsing(function ($record) {
+                    return $record->trending ? 'Trending' : '-';
+                }),
+                TextColumn::make('meta_title'),
+                TextColumn::make('meta_description'),
+                TextColumn::make('meta_keywords'),
             ])
             ->filters([
                 //

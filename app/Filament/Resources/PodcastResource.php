@@ -10,6 +10,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -41,6 +42,7 @@ class PodcastResource extends Resource
                             ->live(onBlur: true)
                             ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
                                 $set('slug', Str::slug($state));
+                                $set('meta_title', $state);
                             })
                             ->required(),
                         TextInput::make('genre_podcast')->label('Genre Podcast :')->required(),
@@ -98,6 +100,19 @@ class PodcastResource extends Resource
                             ->label('Deskripsi Podcast :')
                             ->required()
                             ->columnSpan(2),
+                        TextInput::make('meta_title')
+                            ->label('Title Info :')
+                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
+                            ->maxLength(100)
+                            ->required(),
+                        Textarea::make('meta_description')
+                            ->label('Description Info :')
+                            ->placeholder('Masukan meta description')
+                            ->required(),
+                        TextInput::make('meta_keywords')
+                            ->label('Keyword :')
+                            ->placeholder('Masukan meta keyword')
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
@@ -126,6 +141,9 @@ class PodcastResource extends Resource
 
                 // Menampilkan episode yang terkait
                 TextColumn::make('episode_number'),
+                TextColumn::make('meta_title'),
+                TextColumn::make('meta_description'),
+                TextColumn::make('meta_keywords'),
             ])
             ->filters([
                 //

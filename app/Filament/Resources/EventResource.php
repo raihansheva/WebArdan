@@ -23,6 +23,7 @@ use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\EventResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\EventResource\RelationManagers;
+use Filament\Forms\Components\TextInput;
 
 class EventResource extends Resource
 {
@@ -49,19 +50,32 @@ class EventResource extends Resource
                             ->rules(['required', 'image', 'dimensions:width=864,height=500']) // Ubah format ke array
                             ->validationAttribute('Image Event')
                             ->helperText('The image must be 864x500 pixels.'),
-                            DatePicker::make('date_event')->label('Date Event :')->required(),
-                            DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
-                            Select::make('status')
+                        DatePicker::make('date_event')->label('Date Event :')->required(),
+                        DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
+                        Select::make('status')
                             ->label('Status Event :')
                             ->options([
                                 'soon' => 'Soon',
                                 'upcoming' => 'Upcoming',
                                 'completed' => 'Completed',
                             ]),
-                            RichEditor::make('deskripsi_event')
-                                ->label('Deksripsi Event :')
-                                ->required()
-                                ->columnSpan(2),
+                        RichEditor::make('deskripsi_event')
+                            ->label('Deksripsi Event :')
+                            ->required()
+                            ->columnSpan(2),
+                        TextInput::make('meta_title')
+                            ->label('Title Info :')
+                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
+                            ->maxLength(100)
+                            ->required(),
+                        Textarea::make('meta_description')
+                            ->label('Description Info :')
+                            ->placeholder('Masukan meta description')
+                            ->required(),
+                        TextInput::make('meta_keywords')
+                            ->label('Keyword :')
+                            ->placeholder('Masukan meta keyword')
+                            ->required(),
                     ])
 
                     ->columns(2),
@@ -74,9 +88,9 @@ class EventResource extends Resource
             ->columns([
                 ImageColumn::make('image_event'),
                 TextColumn::make('deskripsi_event')
-                ->formatStateUsing(function ($state) {
-                    return strip_tags($state); // Menghapus tag HTML
-                }),
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
                 TextColumn::make('date_event')->searchable()->sortable(),
                 TextColumn::make('time_countdown'),
                 TextColumn::make('status')
@@ -86,6 +100,9 @@ class EventResource extends Resource
                         'completed' => 'success',    // Hijau untuk completed
                         default => 'secondary',       // Warna default
                     }),
+                TextColumn::make('meta_title'),
+                TextColumn::make('meta_description'),
+                TextColumn::make('meta_keywords'),
             ])
             ->filters([
                 //
