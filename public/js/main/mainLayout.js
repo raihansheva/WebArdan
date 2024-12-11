@@ -662,14 +662,23 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
     }
-
+    function stopPodcast() {
+        if (!AudioPodcast.paused) {
+            AudioPodcast.pause();  // Hentikan audio yang sedang diputar
+        }
+        playPodcastStatus[currentPodcastId].isPlaying = false;  // Reset status
+        updatePodcastPlayButtonState(currentPodcastId);  // Update status tombol play/pause
+    }
+    
     // Event listener untuk tombol next dan prev
     nextBtn.addEventListener("click", () => {
+        stopPodcast();
         eps++; // Increment episode number
         loadEpisode(podcastId, eps, "next");
     });
 
     prevBtn.addEventListener("click", () => {
+        stopPodcast();
         eps = Math.max(1, eps - 1); // Ensure eps doesn't go below 1
         loadEpisode(podcastId, eps, "previous");
     });

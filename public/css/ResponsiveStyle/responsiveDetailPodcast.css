@@ -1,7 +1,7 @@
 /* Desktop dan Laptop */
-@media (width: 2560px) {
+@media (min-width: 1960px) {
     .page-detail-1 {
-        height: 1060px;
+        height: 860px;
     }
 
     .area-detail-podcast {
@@ -29,7 +29,7 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 540px;
+        height: 400px;
         background-color: white;
         padding: 30px;
         overflow: hidden;
@@ -92,8 +92,8 @@
     }
 
     .btn-play-DP {
-        height: 70px;
-        width: 70px;
+        height: 60px;
+        width: 60px;
         border-radius: 50%;
         background-color: var(--secondary-color);
         cursor: pointer;
@@ -143,8 +143,6 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        display: flex;
-        justify-content: start;
         margin-top: 8px;
     }
 
@@ -171,13 +169,16 @@
 
     .video-container {
         position: relative;
-        width: 100%;
-        height: fit-content;
-        padding-bottom: 41%; /* 16:9 aspect ratio */
+        padding-bottom: 42.85%; /* 16:9 aspect ratio */
+        height: 0;
         overflow: hidden;
+        width: 100%;
+        background-color: black; /* Optional: background color if needed */
+        /* border: 1px red solid; */
     }
 
-    .video-container video {
+    .video-container iframe,
+    .video-container #player {
         position: absolute;
         top: 0;
         left: 0;
@@ -185,7 +186,7 @@
         height: 100%;
         border: none;
     }
-
+    /* ---------------------- */
     /* animasi */
     /* Kelas untuk menampilkan card dengan animasi */
     .card-DP.show {
@@ -235,7 +236,7 @@
     }
 
     .desk-podcast {
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 200;
     }
     /* ------------ */
@@ -272,23 +273,26 @@
     /* ---------------- */
 
     /* area other podcast */
-    .page-detail-2 {
-        height: 760px;
+
+    .page-detail-2{
+        margin-bottom: 20px;
     }
 
     .area-content-OP {
         padding: 0px 128px 0px 128px;
         margin-top: 40px;
-        height: 640px;
+        height: fit-content;
+        padding-bottom: 20px;
     }
 
     .title-OP {
-        font-size: 44px;
+        font-size: 40px;
         padding: 25px 0px 5px 0px;
     }
 
     .content-OP {
         margin-top: 10px;
+        margin-bottom: 20px;
     }
 
     .area-content-card-OP {
@@ -302,21 +306,21 @@
 
     .tombol-kiri-OP,
     .tombol-kanan-OP {
-        height: 80px;
-        width: 80px;
+        height: 50px;
+        width: 50px;
     }
 
     .tombol-kanan-OP {
-        right: -20;
+        right: -15;
     }
 
     .tombol-kiri-OP {
-        left: -20;
+        left: -15;
     }
 
     .card-podcast {
         flex: 1 0 calc(33.33% - 14px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
-        height: 550px;
+        height: fit-content;
     }
 
     .card-podcast .card-header-podcast {
@@ -329,17 +333,17 @@
 
     .card-podcast .card-body-podcast {
         /* width: 100%; */
-        height: 70%;
+        height: 380px;
         background-color: white;
         padding: 30px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         gap: 12px;
-        border-bottom-right-radius: 25px;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-        padding: 25px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 20px;
     }
 
     .head-body-podcast {
@@ -357,7 +361,7 @@
     }
 
     .title-genre {
-        font-size: 26px;
+        font-size: 18px;
         font-family: "Bebas Neue";
         font-weight: 200;
         margin: 3px 20px;
@@ -369,7 +373,7 @@
     }
 
     .card-text-podcast {
-        font-size: 38px;
+        font-size: 32px;
         margin: 0px;
         font-weight: 200;
         font-family: "Bebas Neue";
@@ -388,24 +392,24 @@
         align-items: center;
         gap: 10px;
         font-weight: 600;
-        width: 58%;
-        height: 55px;
+        width: 57%;
+        height: 50px;
         display: flex;
         background-color: white;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
         /* border: 1px black solid; */
     }
 
     .card-podcast .card-header-podcast .author-podcast::before {
         background-color: transparent;
-        border-top-left-radius: 25px;
-        box-shadow: -22px -22px 0 white;
+        border-top-left-radius: 10px;
+        box-shadow: -30px -30px 0 white;
         position: absolute;
         bottom: 0;
         right: 0;
         height: 55px;
-        width: 42%;
+        width: 43%;
         content: "";
         /* border: 1px black solid; */
     }
@@ -417,7 +421,7 @@
         align-items: center;
         display: flex;
         height: 25px;
-        width: 90%;
+        width: 85%;
         /* background-color: #ff004d; */
         border-radius: 12px;
         padding: 10px;
@@ -433,56 +437,53 @@
 
     .text-watch-podcast {
         font-family: "Poppins";
-        font-size: 20px;
+        font-size: 14px;
     }
     /* ------------------- */
 
     /* area VNS */
 
     .page-detail-3 {
-        height: auto;
+        height: fit-content;
     }
 
     .area-video-news-stream {
-        margin: 0px 128px 90px 128px;
+        margin: 0px 128px 0px 128px;
     }
 
     .area-content-VNS {
-        gap: 20px;
+        gap: 25px;
+        height: fit-content;
     }
 
     /* content kiri */
 
     .area-content-VNS-kiri {
-        width: 55%;
+        width: 60%;
     }
 
     .title-video {
-        font-size: 44px;
-    }
-
-    .area-video-top,
-    .area-video-bottom {
-        height: 335px;
-    }
-
-    .area-video-mid {
-        height: 335px;
+        font-size: 40px;
     }
 
     .content-kiri-video {
-        gap: 15px;
-        height: auto;
+        gap: 17px;
+        height: fit-content;
     }
 
     .area-video-top,
     .area-video-bottom {
-        gap: 15px;
+        gap: 20px;
+        height: 200px;
+    }
+
+    .box-video-mid{
+        height: 350px;
     }
 
     .btn-play-video {
-        height: 65px;
-        width: 65px;
+        height: 45px;
+        width: 45px;
     }
 
     .btn-play-video span {
@@ -490,8 +491,8 @@
     }
 
     .btn-play-video-mid {
-        width: 65px;
-        height: 65px;
+        width: 55px;
+        height: 55px;
     }
 
     .btn-play-video-mid span {
@@ -499,33 +500,35 @@
     }
 
     .popup-content-yt {
-        width: 1280px; /* Disesuaikan agar proporsional */
-        height: 720px; /* Rasio 16:9 */
+        width: 560px;
+        height: 315px;
     }
 
     /* --------------- */
 
     /* content kanan */
     .area-content-VNS-kanan {
-        width: 44%;
-        height: 1092px;
+        width: 40%;
+        height: fit-content;
         gap: 10px;
     }
 
+    .area-content-news{
+        height: fit-content;
+    }
+
+    .content-news{
+        height: 560px;
+    }
+
     /* area news */
-
-    /* .content-news {
-height: 85%;
-border: 1px blue solid;
-} */
-
     .title-news {
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .box-news {
-        height: 105px;
-        padding: 14px;
+        height: 85px;
+        padding: 8px;
     }
 
     .area-image {
@@ -533,47 +536,46 @@ border: 1px blue solid;
     }
 
     .tag-top-info {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .desk-top-info {
-        font-size: 26px;
+        font-size: 18px;
     }
 
     .date-top-info {
-        font-size: 22px;
+        font-size: 16px;
     }
     /* ------------ */
+
     /* area content stream */
+
     .area-content-streaming {
         width: 100%;
         height: fit-content;
     }
 
     .title-streaming {
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .box-streaming {
-        height: 240px;
+        height: 158px;
     }
 
     .btn-play-streaming {
-        width: 65px;
-        height: 65px;
+        width: 40px;
+        height: 40px;
     }
 
     .btn-play-streaming span {
-        font-size: 32px;
+        font-size: 26px;
     }
 
     /* ------------------- */
     /* --------------- */
 
     /* -------------------- */
-}
-@media (max-width: 1920px) {
-    /* Gaya untuk monitor Full HD */
 }
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
@@ -1023,7 +1025,7 @@ border: 1px blue solid;
     /* area VNS */
 
     .page-detail-3 {
-        height: 800px;
+        height: fit-content;
     }
 
     .area-video-news-stream {
@@ -1032,6 +1034,7 @@ border: 1px blue solid;
 
     .area-content-VNS {
         gap: 10px;
+        height: fit-content;
     }
 
     /* content kiri */
@@ -1046,12 +1049,17 @@ border: 1px blue solid;
 
     .content-kiri-video {
         gap: 10px;
-        height: 555px;
+        height: fit-content;
     }
 
     .area-video-top,
     .area-video-bottom {
         gap: 10px;
+        height: 150px;
+    }
+
+    .box-video-mid{
+        height: 300px;
     }
 
     .btn-play-video {
@@ -1081,9 +1089,17 @@ border: 1px blue solid;
 
     /* content kanan */
     .area-content-VNS-kanan {
-        width: 44%;
-        height: 602px;
+        width: 40%;
+        height: fit-content;
         gap: 10px;
+    }
+
+    .area-content-news{
+        height: fit-content;
+    }
+
+    .content-news{
+        height: 460px;
     }
 
     /* area news */

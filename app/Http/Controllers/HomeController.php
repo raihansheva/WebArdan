@@ -38,7 +38,7 @@ class HomeController extends Controller
         $event_soon = Event::where('status', 'soon')->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
 
-        // $taginfo = TagInfo::with('info')->get();
+        $kategoriInfo = TagInfo::with('info')->get();
         $Info = Info::all();
         $topInfo = Info::where('top_news', true)->limit(3)->get();
         $TrendingInfo = Info::where('trending', true)->limit(5)->get();
@@ -51,7 +51,7 @@ class HomeController extends Controller
         $schedule = Schedule::with('program')->get();
 
         $artis = Artis::all()->take(3);
-        
+        // dd($kategoriInfo);
         // foreach ($artis as $berita) {
         //     // Tentukan status publish langsung berdasarkan kondisi
         //     if ($berita->publish_sekarang) {
@@ -97,7 +97,7 @@ class HomeController extends Controller
             'event_soon' => $event_soon,
             'event_upcoming' => $event_upcoming,
             'info' => $Info,
-            // 'taginfo' => $taginfo,
+            'kategoriInfo' => $kategoriInfo,
             'top_info' => $topInfo,
             'trending_info' => $TrendingInfo,
             'podcast' => $podcast,
@@ -262,7 +262,7 @@ class HomeController extends Controller
     public function tagInfo($tag)
     {
         $info = Info::whereHas('tagInfo', function ($query) use ($tag) {
-            $query->where('nama_tag', $tag); // Filter berdasarkan nama_tag di tabel tag_infos
+            $query->where('nama_kategori', $tag); // Filter berdasarkan nama_tag di tabel tag_infos
         })->with('tagInfo')->get();
         $taginfo = TagInfo::with('info')->get();;
         $topInfo = Info::where('top_news', true)->limit(5)->get();

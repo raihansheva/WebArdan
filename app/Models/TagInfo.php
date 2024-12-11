@@ -10,11 +10,13 @@ class TagInfo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'nama_tag'];
+    protected $table = 'kategori_infos';
+
+    protected $fillable = ['id', 'nama_kategori' , 'is_visible'];
 
 
     public function info()
     {
-        return $this->hasMany(Info::class, 'tag_info_id');
+        return $this->hasMany(Info::class , 'id');
     }
 }

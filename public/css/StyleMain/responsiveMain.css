@@ -59,7 +59,6 @@
     .dropdown-content a {
         font-size: 24px; /* Ukuran font sedikit lebih kecil */
     }
-    
 
     .arrow-down {
         padding: 3px;
@@ -198,11 +197,224 @@
         -moz-transform: scale(3, 5);
         -ms-transform: scale(3, 5);
         -o-transform: scale(3, 5);
-}
+    }
     /* ----------------- */
 }
 
 /* Untuk Tablet (width antara 768px hingga 1024px) */
+@media (min-width: 1960px) {
+    #scrollToTopBtn {
+        bottom: 65px;
+        right: 15px;
+        /* font-size: 20px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15px;
+        width: 15px;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 16px;
+    }
+
+    .navbar {
+        padding: 0px 128px;
+        height: 100px;
+    }
+
+    .image-brand {
+        width: 110px;
+        height: 60px;
+    }
+
+    .area-kiri-navbar {
+        width: 30%;
+    }
+
+    .area-kanan-navbar {
+        width: 70%;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    .menu-link-navbar {
+        gap: 10px;
+    }
+
+    .link {
+        font-size: 16px;
+    }
+
+    .dropdown-text {
+        font-size: 16px;
+    }
+    .dropdown-content,
+    .dropdown-content.show {
+        min-width: 160px !important;
+        padding: 0px 10px 10px 10px !important;
+    }
+
+
+    
+
+    .show {
+        width: 120px;
+    }
+
+    .dropdown-content a {
+        font-size: 16px; /* Ukuran font sedikit lebih kecil */
+    }
+    .arrow-down {
+        padding: 3px;
+        margin-bottom: 3px;
+        margin-left: 10px;
+    }
+
+    .kotak-socmed i {
+        font-size: 22px;
+    }
+
+    /* area-footer */
+    body .footer {
+        height: 300px; /* Tetap fleksibel */
+    }
+
+    .footer .top-footer {
+        height: auto; /* Biarkan fleksibel untuk konten */
+        height: 90%;
+        padding: 0px 128px;
+    }
+
+    .footer .text-contact {
+        font-size: 2.2rem;
+    }
+
+    .footer .text-name {
+        font-size: 16px;
+    }
+
+    .footer .footer-address {
+        font-size: 16px;
+    }
+
+    .text-app-download {
+        font-size: 1.9rem;
+    }
+
+    .area-footer-download {
+        gap: 8px;
+    }
+
+    .kotak-download {
+        width: auto;
+        height: 40px;
+    }
+
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .text-partner {
+        font-size: 1.9rem;
+    }
+
+    .partner {
+        /* width: 130px; */
+        height: 60px;
+    }
+
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .text-copyRight {
+        font-size: 14px;
+    }
+
+    .name-owners {
+        font-size: 15px;
+    }
+
+    /* ----------- */
+
+    /* area-audio-player */
+
+    .audio-player-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        /* padding: 0 15px; */
+        height: 80px;
+        width: 90%;
+    }
+
+    .control-btn span {
+        width: 35px;
+        height: 35px;
+        font-size: 22px;
+    }
+
+    .icon-menu .bx-menu {
+        font-size: 28px;
+    }
+
+    .music-image {
+        width: 80px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: 120px;
+    }
+
+    .music-titles .name {
+        font-size: 12px;
+    }
+
+    .music-titles .artist {
+        font-size: 12px;
+    }
+
+    .area-line {
+        width: 800px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .control-btn {
+        width: fit-content;
+        border-radius: 15px;
+    }
+
+    .area-control-progres {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    #visual {
+        height: 160px;
+    }
+
+    #layer1 {
+        position: absolute;
+        transform: scale(2, 3);
+        z-index: 100;
+    }
+    /* ----------------- */
+}
+
 @media (max-width: 1024px) {
     #scrollToTopBtn {
         bottom: 65px;
@@ -227,6 +439,7 @@
     .navbar {
         padding: 0px 32px;
         height: 80px;
+        top: 1;
     }
 
     .image-brand {
@@ -261,7 +474,7 @@
         padding: 0px 10px 10px 10px !important;
     }
 
-    .show{
+    .show {
         width: 120px;
     }
 
@@ -385,7 +598,7 @@
     }
 
     .control-btn {
-        width: 150px;
+        width: auto;
     }
 
     #visual {
@@ -680,11 +893,11 @@
     }
 
     .control-btn {
-        width: 80px;
+        width: auto;
         height: 45px;
         /* /*position: fixed; */
         border: 3px white solid;
-}
+    }
 
     .control-btn span {
         width: 25px;
@@ -693,7 +906,7 @@
         /* position: fixed; */
     }
 
-    .icon-menu .bx-menu {
+    .icon-menu .bx-menu{
         display: none;
     }
 
@@ -907,7 +1120,449 @@
         height: 45px;
         /* /*position: fixed; */
         border: 2px white solid;
+    }
+
+    .control-btn span {
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+        /* position: fixed; */
+    }
+
+    .icon-menu .bx-menu {
+        display: none;
+    }
+
+    #visual {
+        height: 160px;
+        display: none;
+    }
+    /* ----------------- */
 }
+@media (max-width: 375px) {
+    #scrollToTopBtn {
+        bottom: 15px;
+        right: 15px;
+        /* font-size: 20px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15px;
+        width: 15px;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 16px;
+    }
+
+    .navbar {
+        padding: 0px 8px;
+        height: 60px;
+    }
+
+    .image-brand {
+        width: 80px;
+        height: 40px;
+    }
+
+    .dropdown-text {
+        font-size: 12px;
+    }
+
+    .link {
+        font-size: 12px;
+    }
+
+    .kotak-socmed i {
+        font-size: 18px;
+    }
+
+    /* area-footer */
+    body .footer {
+        height: auto; /* Tetap fleksibel */
+    }
+
+    .footer .top-footer {
+        height: auto; /* Biarkan fleksibel untuk konten */
+        height: 100%;
+        padding: 0px 20px;
+    }
+
+    .group-top-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .area-group-kiri {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer .text-contact {
+        font-size: 2rem;
+    }
+
+    .footer .text-name {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .footer .footer-address {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .area-group-tengah {
+        width: 100%;
+    }
+
+    .area-app-download {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-app-download {
+        font-size: 1.7rem;
+    }
+
+    .area-footer-download {
+        gap: 8px;
+        margin-top: 5px;
+    }
+
+    .kotak-download {
+        width: auto;
+        height: 30px;
+    }
+
+    .area-group-kanan {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .area-partner {
+        width: auto;
+    }
+
+    .text-partner {
+        font-size: 1.6rem;
+    }
+
+    .partner {
+        /* width: 130px; */
+        height: 50px;
+    }
+
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .text-copyRight {
+        font-size: 10px;
+    }
+
+    .name-owners {
+        font-size: 12px;
+    }
+
+    .bottom-footer-dummy {
+        display: none;
+    }
+
+    /* ----------- */
+
+    /* area-audio-player */
+    .content {
+        /* padding: 0 15px; */
+        height: 60px;
+        /* display: none; */
+    }
+
+    .audio-player-container {
+        width: fit-content;
+        /* display: none; */
+        /* background-color: red; */
+    }
+
+    .music-image {
+        width: 80px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: 120px;
+    }
+
+    .music-titles .name {
+        font-size: 10px;
+    }
+
+    .music-titles .artist {
+        font-size: 12px;
+    }
+
+    .area-control-progres {
+        display: none;
+        background: transparent;
+    }
+
+    .area-line {
+        width: 500px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .area-control-btn {
+        width: auto;
+    }
+
+    .control-btn {
+        width: 70px;
+        height: 45px;
+        /* /*position: fixed; */
+        border: 2px white solid;
+    }
+
+    .control-btn span {
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+        /* position: fixed; */
+    }
+
+    .icon-menu .bx-menu {
+        display: none;
+    }
+
+    #visual {
+        height: 160px;
+        display: none;
+    }
+    /* ----------------- */
+}
+@media (max-width: 320px) {
+    #scrollToTopBtn {
+        bottom: 15px;
+        right: 15px;
+        /* font-size: 20px; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 15px;
+        width: 15px;
+    }
+
+    #scrollToTopBtn:hover {
+        background-color: var(--primary-color);
+        color: black;
+    }
+
+    #scrollToTopBtn i {
+        font-size: 16px;
+    }
+
+    .navbar {
+        padding: 0px 8px;
+        height: 60px;
+    }
+
+    .image-brand {
+        width: 80px;
+        height: 40px;
+    }
+
+    .dropdown-text {
+        font-size: 12px;
+    }
+
+    .link {
+        font-size: 12px;
+    }
+
+    .kotak-socmed i {
+        font-size: 18px;
+    }
+
+    /* area-footer */
+    body .footer {
+        height: auto; /* Tetap fleksibel */
+    }
+
+    .footer .top-footer {
+        height: auto; /* Biarkan fleksibel untuk konten */
+        height: 100%;
+        padding: 0px 20px;
+    }
+
+    .group-top-footer {
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .area-group-kiri {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer .text-contact {
+        font-size: 2rem;
+    }
+
+    .footer .text-name {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .footer .footer-address {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .area-group-tengah {
+        width: 100%;
+    }
+
+    .area-app-download {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-app-download {
+        font-size: 1.7rem;
+    }
+
+    .area-footer-download {
+        gap: 8px;
+        margin-top: 5px;
+    }
+
+    .kotak-download {
+        width: auto;
+        height: 30px;
+    }
+
+    .area-group-kanan {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-platform {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .area-partner {
+        width: auto;
+    }
+
+    .text-partner {
+        font-size: 1.6rem;
+    }
+
+    .partner {
+        /* width: 130px; */
+        height: 50px;
+    }
+
+    .image-partner {
+        object-fit: contain;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .text-copyRight {
+        font-size: 10px;
+    }
+
+    .name-owners {
+        font-size: 12px;
+    }
+
+    .bottom-footer-dummy {
+        display: none;
+    }
+
+    /* ----------- */
+
+    /* area-audio-player */
+    .content {
+        /* padding: 0 15px; */
+        height: 60px;
+        /* display: none; */
+    }
+
+    .audio-player-container {
+        width: fit-content;
+        /* display: none; */
+        /* background-color: red; */
+    }
+
+    .music-image {
+        width: 80px;
+        height: 50px;
+    }
+
+    .music-titles {
+        width: 120px;
+    }
+
+    .music-titles .name {
+        font-size: 10px;
+    }
+
+    .music-titles .artist {
+        font-size: 12px;
+    }
+
+    .area-control-progres {
+        display: none;
+        background: transparent;
+    }
+
+    .area-line {
+        width: 500px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .area-control-btn {
+        width: auto;
+    }
+
+    .control-btn {
+        width: 70px;
+        height: 45px;
+        /* /*position: fixed; */
+        border: 2px white solid;
+    }
 
     .control-btn span {
         width: 25px;

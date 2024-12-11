@@ -1,18 +1,18 @@
 /* Desktop dan Laptop */
-@media (width: 2560px) {
+@media (min-width: 1960px) {
     .area-event {
         width: auto;
         margin: 0px 128px 0px 128px;
     }
     .title-event {
-        font-size: 44px;
+        font-size: 34px;
     }
     .content-event {
         width: auto;
         /* border: 1px red solid; */
     }
     .content-event-CD {
-        height: 515px;
+        height: 445px;
     }
     .area-countdown {
         height: 80px;
@@ -23,38 +23,38 @@
     }
 
     .timer {
-        font-size: 38px;
+        font-size: 32px;
     }
     .title-timer {
         font-size: 22px;
     }
     .date-month {
-        font-size: 34px;
+        font-size: 30px;
     }
     .year {
         font-size: 28px;
     }
     /* pop up event */
     .popup-content-event {
-        width: 850px;
-        height: 400px;
-        padding: 50px;
+        width: 450px;
+        height: 200px;
+        padding: 25px;
     }
 
     .desk-event {
-        font-size: 22px;
+        font-size: 16px;
     }
 
     .jam-event {
-        font-size: 24px;
+        font-size: 14px;
     }
 
     .title-box-event {
-        font-size: 38px;
+        font-size: 28px;
     }
 
     .link-event {
-        font-size: 18px;
+        font-size: 16px;
     }
     /* -------------- */
     /* area other upcoming event */
@@ -65,7 +65,7 @@
         margin-top: 30px;
     }
     .title-event-other {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .area-content-OV {
@@ -74,13 +74,13 @@
     }
 
     .content-event-OV {
-        height: 360px;
+        height: 320px;
     }
     .area-days-date-right {
-        height: 55px;
+        height: 35px;
     }
     .date-month-right {
-        font-size: 34px;
+        font-size: 22px;
     }
     .year-right {
         font-size: 18px;
@@ -89,9 +89,10 @@
     /* area program page event */
     .area-programE {
         margin: 0px 128px 0px 128px;
+        padding-bottom: 60px;
     }
     .title-programE {
-        font-size: 44px;
+        font-size: 38px;
     }
     .content-programE {
         margin-top: 10px;
@@ -103,29 +104,25 @@
     /* pop up program */
 
     .popup-content {
-        width: 850px;
-        height: 400px;
-        padding: 50px;
+        width: 450px;
+        height: 200px;
+        padding: 25px;
     }
 
     .desk-program {
-        font-size: 22px;
+        font-size: 16px;
     }
 
     .jam-program {
-        font-size: 24px;
+        font-size: 14px;
     }
 
     .title-box-program {
-        font-size: 38px;
+        font-size: 28px;
     }
 
     /* -------------- */
     /* --------------------- */
-}
-
-@media (max-width: 1920px) {
-    /* Gaya untuk monitor Full HD */
 }
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
@@ -226,6 +223,7 @@
     /* area program page event */
     .area-programE {
         margin: 0px 32px 0px 32px;
+        padding-bottom: 30px;
     }
     .title-programE {
         font-size: 38px;
@@ -358,6 +356,7 @@
     }
     .area-programE {
         margin: 0px 20px 0px 20px;
+        padding-bottom: 30px;
     }
     .title-programE {
         font-size: 30px;

@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\TagInfoResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\TagInfoResource\RelationManagers;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\IconColumn;
 
 class TagInfoResource extends Resource
 {
@@ -22,7 +24,7 @@ class TagInfoResource extends Resource
 
     protected static ?string $navigationGroup = 'Info';
 
-    protected static ?string $navigationLabel = 'TagInfo';
+    protected static ?string $navigationLabel = 'Kategori Info';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -32,8 +34,11 @@ class TagInfoResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('nama_tag')->label('Tag Name:')
-                        ->required(),
+                        TextInput::make('nama_kategori')->label('Kategori Name:')
+                            ->required(),
+                        Toggle::make('is_visible')
+                            ->label('Tampilkan di website?')
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
@@ -43,7 +48,12 @@ class TagInfoResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama_tag'),
+                TextColumn::make('nama_kategori'),
+                IconColumn::make('is_visible')
+                    ->label('Ditampilkan')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
                 //

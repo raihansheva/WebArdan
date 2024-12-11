@@ -51,7 +51,7 @@
                             <img class="image-info" src="../storage/{{ $info->image_info }}" alt="">
                         </div>
                         <div class="area-desk-info">
-                            <p class="desk-info">{{ $info->deskripsi_info }}</p>
+                            {!! str($info->deskripsi_info)->sanitizeHtml() !!}
                         </div>
 
                         <div class="area-tagar-info">

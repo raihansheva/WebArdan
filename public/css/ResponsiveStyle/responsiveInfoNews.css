@@ -1,8 +1,7 @@
-/* Desktop dan Laptop */
-@media (width: 2560px) {
-    /* page news 1 */
+
+@media (min-width: 1960px) {
     .header-info-news {
-        height: 380px;
+        height: 280px;
     }
 
     .title-header {
@@ -24,19 +23,25 @@
     /* content kiri */
     .content-IN-kiri {
         width: 55%;
+        gap: 20px;
+    }
+
+    .link-box-info{
+        width: calc(50% - 20px);
     }
 
     .box-info {
-        height: auto;
-        border-radius: 20px;
+        height: 100%;
+        max-height: 320px;
+        padding: 15px;
     }
 
     .content-box-info {
-        margin: 25px;
+        margin: 15px;
     }
 
     .area-image-info {
-        height: 450px;
+        height: 180px;
     }
 
     .area-info {
@@ -44,19 +49,19 @@
     }
 
     .tagar-info {
-        font-size: 38px;
+        font-size: 28px;
     }
 
     .title-info {
-        font-size: 40px;
+        font-size: 32px;
     }
 
     .desk-info {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .date-info {
-        font-size: 20px;
+        font-size: 14px;
     }
     /* ------------ */
 
@@ -68,18 +73,14 @@
     /* area-news */
 
     .header-news {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .box-news {
         flex: 0 0 calc(50% - 5px);
-        height: 200px;
-        /* /*background-color: #f0f0f0; */
-        border-radius: 50px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        -ms-border-radius: 10px;
-        -o-border-radius: 10px;
+        height: 100px;
+        /* background-color: #f0f0f0; */
+        /* border-radius: 10px; */
     }
 
     .area-tag-news {
@@ -116,11 +117,11 @@
     /* area streaming */
 
     .title-streaming {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .area-thumbnail {
-        height: 220px;
+        height: 180px;
     }
 
     .text-streaming {
@@ -128,60 +129,60 @@
     }
 
     .btn-play-streaming {
-        width: 65px;
-        height: 65px;
+        width: 45px;
+        height: 45px;
     }
 
     .btn-play-streaming span {
-        font-size: 32px;
+        font-size: 28px;
     }
 
     /* ------------- */
 
     /* area news */
     .title-top-news {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .content-top-news {
-        gap: 18px;
+        gap: 14px;
     }
 
     .box-top-news {
-        height: 120px;
+        height: fit-content;
         padding: 15px;
     }
 
     .tag-top-info {
-        font-size: 28px;
+        font-size: 22px;
     }
 
     .desk-top-info {
-        font-size: 26px;
+        font-size: 20px;
     }
 
     .date-top-info {
-        font-size: 24px;
+        font-size: 18px;
     }
     /* ------------- */
 
     /* area event */
 
     .title-event {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .area-event-bottom {
-        height: 580px;
+        height: 480px;
         gap: 15px;
     }
 
     .area-days-date-right {
-        height: 60px;
+        height: 40px;
     }
 
     .date-month-right {
-        font-size: 32px;
+        font-size: 22px;
     }
 
     .year-right {
@@ -193,30 +194,30 @@
     }
 
     .see-more {
-        font-size: 28px;
+        font-size: 18px;
     }
 
     /* pop up event */
     .popup-content-event {
-        width: 850px;
-        height: 400px;
-        padding: 50px;
+        width: 450px;
+        height: 200px;
+        padding: 25px;
     }
 
     .desk-event {
-        font-size: 22px;
+        font-size: 16px;
     }
 
     .jam-event {
-        font-size: 24px;
+        font-size: 14px;
     }
 
     .title-box-event {
-        font-size: 38px;
+        font-size: 28px;
     }
 
     .link-event {
-        font-size: 18px;
+        font-size: 16px;
     }
     /* -------------- */
 
@@ -233,7 +234,7 @@
     }
 
     .title-info-artis {
-        font-size: 44px;
+        font-size: 40px;
     }
 
     /* area box */
@@ -258,59 +259,52 @@
         font-size: 13px;
     }
 
-    .area-header-artis {
-        height: 40%;
+    .area-image-artis {
+        height: 35%;
     }
 
-    .area-image-artis {
-        height: 40%;
+    .area-header-artis{
+        height: 35%;
     }
 
     .name-artis {
-        font-size: 32px;
-    }
-
-    .area-bio-artis {
-        padding: 20px;
+        font-size: 22px;
     }
 
     .judul-berita {
-        font-size: 32px;
+        font-size: 22px;
     }
 
     .desk-berita {
-        font-size: 23px;
+        font-size: 13px;
     }
 
     .see-more-news {
-        font-size: 24px;
+        font-size: 12px;
     }
 
     .popup-content-artis {
-        width: 1050px;
-        max-height: 500px;
-        padding: 20px;
+        width: 440px;
+        max-height: 400px;
     }
 
     .header-popup-artis {
-        font-size: 44px;
+        font-size: 24px;
     }
 
     .popUp-judul-berita {
-        font-size: 38px;
+        font-size: 26px;
     }
 
     .popUp-desk-berita {
-        font-size: 24px;
+        font-size: 13px;
     }
 
     /* ----------- */
 
     /* ------------- */
 }
-@media (max-width: 1920px) {
-    /* Gaya untuk monitor Full HD */
-}
+
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
 }
@@ -348,7 +342,8 @@
     }
 
     .box-info {
-        height: 540px;
+        height: 100%;
+        max-height: 270px;
     }
 
     .content-box-info {
@@ -644,36 +639,87 @@
     }
 
     .box-info {
-        height: auto;
-    }
-
-    .content-box-info {
-        margin: 15px;
+        width: 100%;
         height: fit-content;
+        /* max-height: 120px; */
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        /* display: flex; */
+        padding: 10px;
+        /* justify-content: center;
+        align-items: center; */
+        box-sizing: border-box;
+        gap: 8px;
     }
-
+    
     .area-image-info {
-        height: 40%;
+        width: 100%;
+        /*border: 1px black solid;
+        */
+        border-radius: 10px;
+        /* height: 180px; */
     }
-
-    .area-info {
-        margin-top: 15px;
+    
+    
+    .line-info{
+        width: 100%;
+        height: 5px;
+        background-color: var(--primary-color);
+        margin-top: 10px;
     }
-
-    .tagar-info {
-        font-size: 22px;
+    
+    .area-text-desk-info{
+        width: 100%;
+        height: fit-content;
+        max-height: 50%;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
+        margin-top: 10px;
     }
-
-    .title-info {
-        font-size: 28px;
+    
+    .area-tag{
+        display: flex;
+        gap: 4px;
     }
-
+    
+    .tag-info{
+        font-family: "Bebas Neue";
+        margin: 0px;
+        font-size: 18px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
     .desk-info {
-        font-size: 14px;
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 12px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
+        font-weight: 700;
     }
-
-    .date-info {
-        font-size: 13px;
+    
+    .date-info{
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
+    
+    .image-info{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
     }
 
     #style-3::-webkit-scrollbar-track {
@@ -992,24 +1038,43 @@
         height: 30%;
     }
 
-    .area-info {
-        margin-top: 15px;
+    .tag-info{
+        font-family: "Bebas Neue";
+        margin: 0px;
+        font-size: 18px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        padding: 2px 0;
     }
-
-    .tagar-info {
-        font-size: 22px;
-    }
-
-    .title-info {
-        font-size: 28px;
-    }
-
+    
     .desk-info {
-        font-size: 14px;
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 12px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
+        font-weight: 700;
     }
-
-    .date-info {
-        font-size: 13px;
+    
+    .date-info{
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
+    
+    .image-info{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
     }
 
     .area-bottom-box-info {
@@ -1278,6 +1343,367 @@
 
     /* ------------- */
 }
+@media (max-width: 344px) {
+    /* page news 1 */
+    .page-news-1 {
+        margin-bottom: 25px;
+    }
+
+    .header-info-news {
+        height: 200px;
+    }
+
+    .title-header {
+        font-size: 34px;
+        margin: 0px 8px;
+    }
+
+    /* -------------- */
+
+    /* page news 2 */
+    .area-info-news {
+        margin: 0px 8px 0px 8px;
+    }
+
+    .content-info-news {
+        flex-direction: column;
+        gap: 35px;
+        margin-top: 0px;
+    }
+
+    /* content kiri */
+    .content-IN-kiri {
+        width: 100%;
+        height: auto;
+        overflow-y: hidden;
+    }
+
+    .box-info {
+        height: auto;
+        display: none;
+    }
+
+    .box-info.visible {
+        display: block; /* Tampilkan box yang memiliki kelas "visible" */
+    }
+    .toggle-btn {
+        display: block; /* Tampilkan tombol "See More / See Less" */
+    }
+
+    .content-box-info {
+        margin: 15px;
+        height: fit-content;
+    }
+
+    .area-image-info {
+        height: 30%;
+    }
+
+    .tag-info{
+        font-family: "Bebas Neue";
+        margin: 0px;
+        font-size: 16px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
+    .desk-info {
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
+        font-weight: 700;
+    }
+    
+    .date-info{
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 8px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
+    
+    .image-info{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+
+    .area-bottom-box-info {
+        display: block;
+    }
+
+    .title-bottom {
+        /* padding-top: 20px; */
+        font-size: 16px;
+    }
+
+    /* ------------ */
+
+    #style-3::-webkit-scrollbar-track {
+        border-radius: 15px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: transparent;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        -ms-border-radius: 15px;
+        -o-border-radius: 15px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 8px;
+        background-color: #292929;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    #style-3::-webkit-scrollbar-thumb {
+        margin: 3px 0px;
+        border-radius: 10px;
+        background-color: var(--primary-color);
+        /* cursor: pointer; */
+    }
+
+    /* content kanan */
+    .content-IN-kanan {
+        width: 100%;
+    }
+
+    /* area-news */
+
+    .header-news {
+        font-size: 30px;
+    }
+
+    .box-news {
+        flex: 0 0 calc(50% - 5px);
+        height: 80px;
+    }
+
+    .tag-news {
+        font-size: 18px;
+    }
+
+    .image-news {
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+    }
+
+    /* ----------- */
+
+    /* area streaming */
+
+    .title-streaming {
+        font-size: 30px;
+    }
+
+    .area-thumbnail {
+        height: 100px;
+    }
+
+    .text-streaming {
+        font-size: 10px;
+    }
+
+    .btn-play-streaming {
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 22px;
+    }
+
+    /* ------------- */
+
+    /* area news */
+    .title-top-news {
+        font-size: 28px;
+    }
+
+    .content-top-news {
+        gap: 8px;
+    }
+
+    .box-top-info {
+        height: 60px;
+        padding: 6px;
+    }
+
+    .tag-top-info {
+        font-size: 14px;
+    }
+
+    .desk-top-info {
+        font-size: 12px;
+    }
+
+    .date-top-info {
+        font-size: 10px;
+    }
+    /* ------------- */
+
+    /* area event */
+
+    .title-event {
+        font-size: 30px;
+    }
+
+    .area-event-bottom {
+        height: 440px;
+        gap: 15px;
+    }
+
+    .area-days-date-right {
+        height: 30px;
+    }
+
+    .date-month-right {
+        font-size: 18px;
+    }
+
+    .year-right {
+        font-size: 18px;
+    }
+
+    .area-see-more {
+        margin-top: 15px;
+    }
+
+    .see-more {
+        font-size: 16px;
+    }
+
+    /* ------------- */
+
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .area-info-event {
+        gap: 3px;
+    }
+
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
+
+    /* ------------ */
+
+    /* -------------- */
+
+    /* page news 3 */
+
+    .area-info-artis {
+        margin: 0px 8px 15px 8px;
+    }
+
+    .title-info-artis {
+        font-size: 32px;
+    }
+
+    /* area box */
+
+    .area-box-info-artis {
+        margin-top: 15px;
+        /* border: 1px red solid; */
+        gap: 10px;
+    }
+
+    .box-artis {
+        flex: 1 1 calc(50% - 15px);
+        max-width: calc(50% - 10px);
+        height: auto;
+    }
+
+    .nama {
+        font-size: 12px;
+    }
+
+    .bio {
+        font-size: 10px;
+    }
+
+    .area-image-artis {
+        height: 35%;
+    }
+
+    .area-header-artis {
+        height: 35%;
+    }
+
+    .name-artis {
+        font-size: 22px;
+    }
+
+    .judul-berita {
+        font-size: 14px;
+    }
+
+    .desk-berita {
+        font-size: 9px;
+    }
+
+    .see-more-news {
+        font-size: 8px;
+    }
+
+    .popup-content-artis {
+        width: 260px;
+        max-height: 180px;
+    }
+
+    .popUp-area-info-artis {
+        gap: 0px;
+    }
+
+    .header-popup-artis {
+        font-size: 18px;
+    }
+
+    .popUp-judul-berita {
+        font-size: 20px;
+    }
+
+    .popUp-desk-berita {
+        font-size: 7px;
+    }
+
+    /* ----------- */
+
+    /* ------------- */
+}
 @media (max-width: 375px) {
     /* page news 1 */
     .page-news-1 {
@@ -1334,24 +1760,43 @@
         height: 30%;
     }
 
-    .area-info {
-        margin-top: 15px;
+    .tag-info{
+        font-family: "Bebas Neue";
+        margin: 0px;
+        font-size: 16px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        padding: 2px 0;
     }
-
-    .tagar-info {
-        font-size: 22px;
-    }
-
-    .title-info {
-        font-size: 28px;
-    }
-
+    
     .desk-info {
-        font-size: 14px;
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
+        font-weight: 700;
     }
-
-    .date-info {
-        font-size: 13px;
+    
+    .date-info{
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 8px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
+    
+    .image-info{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
     }
 
     .area-bottom-box-info {
@@ -1655,6 +2100,11 @@
         overflow-y: hidden;
     }
 
+    .link-box-info{
+        width: 100%; /* Setengah kontainer minus setengah gap */
+        color: black;
+    }
+
     .box-info {
         height: auto;
         display: none;
@@ -1673,27 +2123,46 @@
     }
 
     .area-image-info {
-        height: 30%;
+        height: 140px;
     }
 
-    .area-info {
-        margin-top: 15px;
+    .tag-info{
+        font-family: "Bebas Neue";
+        margin: 0px;
+        font-size: 18px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        padding: 2px 0;
     }
-
-    .tagar-info {
-        font-size: 22px;
-    }
-
-    .title-info {
-        font-size: 28px;
-    }
-
+    
     .desk-info {
-        font-size: 14px;
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 12px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
+        font-weight: 700;
     }
-
-    .date-info {
-        font-size: 13px;
+    
+    .date-info{
+        font-family: "Poppins";
+        margin: 0px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+        padding: 2px 0;
+    }
+    
+    
+    .image-info{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
     }
 
     .area-bottom-box-info {

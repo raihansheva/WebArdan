@@ -33,7 +33,7 @@
     background-color: gainsboro;
 }
 
-.image-podcast-detail{
+.image-podcast-detail {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -45,7 +45,8 @@
 .card-DP {
     width: 100%;
     /*background-color: darkgrey;
-    */display: block;
+    */
+    display: block;
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -69,7 +70,8 @@
     overflow: hidden;
     display: flex;
     /*flex-direction: column;
-    */justify-content: center;
+    */
+    justify-content: center;
     align-items: center;
     position: relative;
     gap: 12px;
@@ -213,7 +215,6 @@
     padding-bottom: 49%; /* 16:9 aspect ratio */
     overflow: hidden;
 }
-
 
 .video-container video {
     position: absolute;
@@ -454,7 +455,7 @@
 /* area other podcast */
 .page-detail-2 {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     /* background-color: #f0f0f0; */
     /* border: 1px white solid; */
 }
@@ -467,6 +468,7 @@
     /* top: 85px; */
     margin-top: 60px;
     padding: 0px 64px 0px 64px;
+    margin-bottom: 20px;
 }
 
 .header-OP {
@@ -610,7 +612,7 @@
     border-radius: 10px;
 }
 
-.image-podcast{
+.image-podcast {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -686,7 +688,8 @@
 /* area video news stream */
 .page-detail-3 {
     width: 100%;
-    height: 1000px;
+    height: fit-content;
+    margin-bottom: 30px;
 }
 
 .area-video-news-stream {
@@ -698,7 +701,7 @@
 
 .area-content-VNS {
     width: 100%;
-    height: auto;
+    height: 802px;
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -706,7 +709,7 @@
 
 /* area content kiri */
 .area-content-VNS-kiri {
-    width: 50%;
+    width: 60%;
     height: auto;
     /* border: 1px green solid; */
 }
@@ -726,15 +729,15 @@
 }
 
 .content-kiri-video {
-    width: auto;
-    height: 750px;
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
 .area-video-top {
-    height: 25%;
+    height: 180px;
     width: 100%;
     /* border: 1px #ff004d solid; */
     display: flex;
@@ -742,7 +745,7 @@
 }
 
 .area-video-bottom {
-    height: 25%;
+    height: 180px;
     width: 100%;
     /* border: 1px #ff004d solid; */
     display: flex;
@@ -757,7 +760,8 @@
     top: 0;
     left: 0;
     filter: brightness(0.5);
-    /*Menambahkanefekgelappadathumbnail*/z-index: 1;
+    /*Menambahkanefekgelappadathumbnail*/
+    z-index: 1;
     -webkit-filter: brightness(0.5);
 }
 
@@ -773,7 +777,7 @@
 
 .btn-play-video {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -803,7 +807,7 @@
 
 .box-video-mid {
     width: 100%;
-    height: 100%;
+    height: 352px;
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
@@ -813,7 +817,7 @@
 
 .btn-play-video-mid {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
     height: 55px;
     width: 55px;
     border-radius: 50%;
@@ -868,13 +872,12 @@
     height: 100%;
 }
 
-
 /* --------------------- */
 
 /* area content kanan */
 .area-content-VNS-kanan {
-    width: 50%;
-    height: 802px;
+    width: 40%;
+    height: 100%;
     /* border: 1px green solid; */
     display: flex;
     flex-direction: column;
@@ -910,12 +913,12 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 5px;
-    height: fit-content;
+    height: 543px;
 }
 
 .box-news {
     width: auto;
-    height: auto;
+    height: 80px;
     background-color: #f0f0f0;
     border-radius: 10px;
     display: flex;
@@ -934,7 +937,7 @@
     height: 100%;
 }
 
-.image-top-info{
+.image-top-info {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -945,7 +948,7 @@
     -o-border-radius: 10px;
 }
 
-.area-text-desk-top-info{
+.area-text-desk-top-info {
     width: 100%;
     height: 100%;
     /* max-height: 100%; */
@@ -955,12 +958,12 @@
     /* margin-top: 10px; */
 }
 
-.area-tag{
+.area-tag {
     display: flex;
     gap: 4px;
 }
 
-.tag-top-info{
+.tag-top-info {
     font-family: "Bebas Neue";
     margin: 0px;
     font-size: 16px;
@@ -985,7 +988,7 @@
     color: black;
 }
 
-.date-top-info{
+.date-top-info {
     font-family: "Poppins";
     margin: 0px;
     font-size: 12px;
@@ -1000,7 +1003,7 @@
 
 .area-content-streaming {
     width: 100%;
-    height: fit-content;
+    height: 202px;
     /* border: 1px red solid; */
 }
 
@@ -1045,7 +1048,7 @@
     position: absolute;
 }
 
-.image-streaming{
+.image-streaming {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1057,11 +1060,10 @@
     font-size: 28px;
 }
 
-
 /* .btn-play-streaming:hover{
     background-color: #bd4200;
 }
-
+    
 .btn-play-streaming span {
     color: rgb(238, 238, 238);
     font-size: 35px;

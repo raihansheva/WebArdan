@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\InfoResource\Pages;
 use App\Models\Info;
+use App\Models\TagInfo;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
@@ -22,6 +23,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\TrixEditor;
 
 class InfoResource extends Resource
 {
@@ -50,6 +52,10 @@ class InfoResource extends Resource
                         //     ->label('Tag Info')
                         //     ->relationship('tagInfo', 'nama_tag') // Menggunakan nama tag
                         //     ->required(),
+                        Select::make('kategori_id')
+                            ->label('Kategori Info :')
+                            ->options(TagInfo::all()->pluck('nama_kategori', 'id')) // Mengambil data kategori
+                            ->required(),
                         TagsInput::make('tag_info')
                             ->label('Tag Info')
                             ->required(),
@@ -85,6 +91,9 @@ class InfoResource extends Resource
                             ]),
                         RichEditor::make('deskripsi_info')
                             ->label('Deskripsi Info :')
+                            ->fileAttachmentsDisk('public') // Menyimpan file di disk 'public'
+                            ->fileAttachmentsDirectory('info') // File akan disimpan di folder 'info' dalam 'public'
+                            ->fileAttachmentsVisibility('public')
                             ->required()
                             ->columnSpan(2),
                         TextInput::make('meta_title')
@@ -110,6 +119,7 @@ class InfoResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('judul_info')->searchable(),
+                TextColumn::make('tagInfo.nama_kategori')->label('Kategori'),
                 TextColumn::make('tag_info')->label('Tag Info'),
                 TextColumn::make('deskripsi_info')
                     ->formatStateUsing(function ($state) {
@@ -119,15 +129,15 @@ class InfoResource extends Resource
                 TextColumn::make('date_info'),
                 TextColumn::make('slug'),
                 TextColumn::make('top_news')
-                ->label('Top News')
-                ->getStateUsing(function ($record) {
-                    return $record->top_news ? 'Top-News' : '-';
-                }),
+                    ->label('Top News')
+                    ->getStateUsing(function ($record) {
+                        return $record->top_news ? 'Top-News' : '-';
+                    }),
                 TextColumn::make('trending')
-                ->label('Trending')
-                ->getStateUsing(function ($record) {
-                    return $record->trending ? 'Trending' : '-';
-                }),
+                    ->label('Trending')
+                    ->getStateUsing(function ($record) {
+                        return $record->trending ? 'Trending' : '-';
+                    }),
                 TextColumn::make('meta_title'),
                 TextColumn::make('meta_description'),
                 TextColumn::make('meta_keywords'),

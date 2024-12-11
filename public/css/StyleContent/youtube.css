@@ -234,7 +234,7 @@
 
 .page-youtube-3 {
     width: 100%;
-    height: 1000px;
+    height: fit-content;
 }
 
 .line-VNS {
@@ -246,7 +246,7 @@
 .area-event-news-streaming {
     width: auto;
     height: auto;
-    margin: 100px 64px 30px 64px;
+    margin: 40px 64px 60px 64px;
     /* border: 1px red solid; */
 }
 
@@ -597,7 +597,7 @@
 }
 
 .area-image {
-    width: 20%;
+    width: 30%;
     /*border: 1px black solid;
     */
     background-color: #333;

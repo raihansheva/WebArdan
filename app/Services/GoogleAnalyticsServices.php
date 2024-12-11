@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Google_Client;
-use Google_Service_Analytics;
+use Google\Client as Google_Client;
+use Google\Service\Analytics as Google_Service_Analytics;
 
 class GoogleAnalyticsServices
 {

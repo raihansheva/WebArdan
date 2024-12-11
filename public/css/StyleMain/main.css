@@ -82,7 +82,7 @@ body {
     padding: 0px 64px 0px;
     background-color: black;
     position: sticky;
-    top: -1;
+    top: -1px;
     z-index: 1000;
 }
 /* <--------------------> */

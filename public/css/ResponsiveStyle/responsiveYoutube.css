@@ -1,5 +1,5 @@
-/* Desktop dan Laptop */
-@media (width: 2560px) {
+
+@media (min-width: 1920px) {
     .area-thumbnail-youtube {
         margin: 30px 32px 0px 32px;
     }
@@ -83,7 +83,7 @@
     /* page youtube 3 */
 
     .page-youtube-3{
-        height: auto;
+        height: fit-content;
     }
 
     .line-VNS {
@@ -242,10 +242,6 @@
     /* --------------- */
 
     /* -------------------- */
-}
-
-@media (width: 1920px) {
-    /* Gaya untuk monitor Full HD */
 }
 
 @media (max-width: 1440px) {

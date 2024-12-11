@@ -1,40 +1,38 @@
-
-/* Desktop dan Laptop */
-@media (width: 2560px) {
-    .area-chart{
+@media (min-width: 1960px) {
+    .area-chart {
         margin: 15px 128px 0px 128px;
     }
 
-    .title-chart{
+    .title-chart {
         font-size: 44px;
     }
 
-    .content-chart{
+    .content-chart {
         margin-top: 15px;
     }
 
-    .area-top-chart{
+    .area-top-chart {
         gap: 15px;
     }
 
-    .tab-chart{
+    .tab-chart {
         height: 60px;
     }
 
-    .text-tab{
+    .text-tab {
         font-size: 30px;
     }
 
-    thead tr{
+    thead tr {
         font-size: 32px;
     }
 
-    tbody tr{
+    tbody tr {
         font-size: 30px;
         height: 60px;
     }
 
-    .btn-play-chart span{
+    .btn-play-chart span {
         font-size: 28px;
     }
 
@@ -42,82 +40,66 @@
         font-size: 20px;
     }
 
-    .area-streaming-news{
+    .area-streaming-news {
         margin: 0px 128px 0px 128px;
     }
 
-    .area-content-SN{
+    .area-content-SN {
         margin-bottom: 60px;
     }
 
     /* content kiri */
-    .area-content-SN-kiri{
+    .area-content-SN-kiri {
         width: 60%;
     }
 
-    .title-SN-kiri{
-        font-size: 44px;
-    }
-    
-    .box-streaming{
-        height: 250px;
-    }
-
-    .text-streaming{
-        font-size: 14px;
-        margin: 5px 10px;
-    }
-
-    .btn-play-streaming{
-        height: 65px;
-        width: 65px;
-    }
-
-    .btn-play-streaming span{
+    .title-SN-kiri {
         font-size: 34px;
+    }
+
+    .box-streaming {
+        height: 200px;
+    }
+
+    .btn-play-streaming {
+        height: 50px;
+        width: 50px;
     }
 
     /* -------------- */
 
-
     /* content kanan */
-    .area-content-SN-kanan{
+    .area-content-SN-kanan {
         width: 40%;
     }
 
-    .title-news {
-        font-size: 44px;
+    .title-top-news {
+        font-size: 34px;
     }
 
     .content-top-news {
-        gap: 18px;
+        gap: 14px;
     }
 
     .box-news {
-        height: 120px;
+        height: fit-content;
         padding: 15px;
     }
 
     .tag-top-info {
-        font-size: 28px;
+        font-size: 22px;
     }
 
     .desk-top-info {
-        font-size: 26px;
+        font-size: 20px;
     }
 
     .date-top-info {
-        font-size: 22px;
+        font-size: 18px;
     }
     /*--------------- */
-
-
-
     /* ------------------ */
     /* ------------------ */
-}
-@media (max-width: 1920px) {
-    /* Gaya untuk monitor Full HD */
 }
 
 @media (max-width: 1440px) {
@@ -133,36 +115,35 @@
 }
 
 @media (max-width: 1024px) {
-
-    .area-chart{
+    .area-chart {
         margin: 15px 32px 0px 32px;
     }
 
-    .title-chart{
+    .title-chart {
         font-size: 36px;
     }
 
-    .content-chart{
+    .content-chart {
         margin-top: 15px;
     }
 
-    .area-top-chart{
+    .area-top-chart {
         gap: 15px;
     }
 
-    .tab-chart{
+    .tab-chart {
         height: 40px;
     }
 
-    .text-tab{
+    .text-tab {
         font-size: 20px;
     }
 
-    thead tr{
+    thead tr {
         font-size: 26px;
     }
 
-    tbody tr{
+    tbody tr {
         font-size: 24px;
         height: 60px;
     }
@@ -171,54 +152,53 @@
         font-size: 16px;
     }
 
-    .area-streaming-news{
+    .area-streaming-news {
         margin: 0px 32px 0px 32px;
     }
 
-    .area-content-SN{
+    .area-content-SN {
         margin-bottom: 30px;
     }
 
     /* content kiri */
-    .area-content-SN-kiri{
+    .area-content-SN-kiri {
         width: 60%;
     }
 
-    .title-SN-kiri{
+    .title-SN-kiri {
         font-size: 34px;
     }
-    
-    .box-streaming{
+
+    .box-streaming {
         height: 150px;
     }
 
-    .text-streaming{
+    .text-streaming {
         font-size: 14px;
         margin: 5px 10px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         height: 45px;
         width: 45px;
     }
 
     /* -------------- */
 
-
     /* content kanan */
-    .area-content-SN-kanan{
+    .area-content-SN-kanan {
         width: 40%;
     }
 
-    .title-news{
+    .title-news {
         font-size: 34px;
     }
 
-    .content-news{
+    .content-news {
         gap: 14px;
     }
 
-    .bop-news{
+    .bop-news {
         height: 60px;
     }
 
@@ -240,35 +220,35 @@
 
 /* Tablet */
 @media (max-width: 768px) {
-    .area-chart{
+    .area-chart {
         margin: 10px 20px 0px 20px;
     }
 
-    .title-chart{
+    .title-chart {
         font-size: 34px;
     }
 
-    .content-chart{
+    .content-chart {
         margin-top: 10px;
     }
 
-    .area-top-chart{
+    .area-top-chart {
         gap: 10px;
     }
 
-    .tab-chart{
+    .tab-chart {
         height: 30px;
     }
 
-    .text-tab{
+    .text-tab {
         font-size: 18px;
     }
 
-    thead tr{
+    thead tr {
         font-size: 22px;
     }
 
-    tbody tr{
+    tbody tr {
         font-size: 18px;
         height: 45px;
     }
@@ -278,49 +258,48 @@
     }
 
     /* page chart 2 */
-    .area-streaming-news{
+    .area-streaming-news {
         margin: 0px 20px 0px 20px;
     }
 
-    .area-content-SN{
+    .area-content-SN {
         margin-bottom: 30px;
     }
 
     /* content kiri */
-    .area-content-SN-kiri{
+    .area-content-SN-kiri {
         width: 60%;
     }
 
-    .title-SN-kiri{
+    .title-SN-kiri {
         font-size: 30px;
     }
-    
-    .box-streaming{
+
+    .box-streaming {
         height: 130px;
     }
 
-    .text-streaming{
+    .text-streaming {
         font-size: 12px;
         margin: 5px 10px;
     }
 
     /* -------------- */
 
-
     /* content kanan */
-    .area-content-SN-kanan{
+    .area-content-SN-kanan {
         width: 40%;
     }
 
-    .title-news{
+    .title-news {
         font-size: 30px;
     }
 
-    .content-news{
+    .content-news {
         gap: 10px;
     }
 
-    .box-news{
+    .box-news {
         height: 60px;
         padding: 8px;
     }
@@ -347,38 +326,38 @@
 
 /* Mobile Devices */
 @media (max-width: 480px) {
-    .area-chart{
+    .area-chart {
         margin: 5px 8px 0px 8px;
     }
 
-    .title-chart{
+    .title-chart {
         font-size: 30px;
     }
 
-    .content-chart{
+    .content-chart {
         margin-top: 10px;
     }
 
-    .area-top-chart{
+    .area-top-chart {
         gap: 10px;
         flex-wrap: wrap;
         flex: 1 2 calc(50% - 10px);
     }
 
-    .tab-chart{
+    .tab-chart {
         height: 30px;
-        border: 2px #FFDB00 solid;
+        border: 2px #ffdb00 solid;
     }
 
-    .text-tab{
+    .text-tab {
         font-size: 18px;
     }
 
-    thead tr{
+    thead tr {
         font-size: 22px;
     }
 
-    tbody tr{
+    tbody tr {
         font-size: 18px;
         height: 40px;
     }
@@ -388,59 +367,58 @@
     }
 
     /* page chart 2 */
-    .area-streaming-news{
+    .area-streaming-news {
         margin: 0px 8px 0px 8px;
     }
 
-    .area-content-SN{
+    .area-content-SN {
         margin-bottom: 30px;
         flex-direction: column;
     }
 
     /* content kiri */
-    .area-content-SN-kiri{
+    .area-content-SN-kiri {
         width: 100%;
     }
 
-    .title-SN-kiri{
+    .title-SN-kiri {
         font-size: 28px;
     }
-    
-    .box-streaming{
+
+    .box-streaming {
         height: 100px;
     }
 
-    .text-streaming{
+    .text-streaming {
         font-size: 10px;
         margin: 5px 10px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         height: 35px;
         width: 35px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 20px;
     }
 
     /* -------------- */
 
-
     /* content kanan */
-    .area-content-SN-kanan{
+    .area-content-SN-kanan {
         width: 100%;
     }
 
-    .title-news{
+    .title-news {
         font-size: 28px;
     }
 
-    .content-news{
+    .content-news {
         gap: 10px;
     }
 
-    .box-news{
+    .box-news {
         height: 60px;
     }
 
@@ -457,45 +435,43 @@
     }
     /*--------------- */
 
-
-
     /* ------------------ */
     /* ------------------ */
 }
 
 @media (max-width: 375px) {
-    .area-chart{
+    .area-chart {
         margin: 5px 8px 0px 8px;
     }
 
-    .title-chart{
+    .title-chart {
         font-size: 30px;
     }
 
-    .content-chart{
+    .content-chart {
         margin-top: 10px;
     }
 
-    .area-top-chart{
+    .area-top-chart {
         gap: 10px;
         flex-wrap: wrap;
         flex: 1 2 calc(50% - 10px);
     }
 
-    .tab-chart{
+    .tab-chart {
         height: 30px;
-        border: 2px #FFDB00 solid;
+        border: 2px #ffdb00 solid;
     }
 
-    .text-tab{
+    .text-tab {
         font-size: 18px;
     }
 
-    thead tr{
+    thead tr {
         font-size: 22px;
     }
 
-    tbody tr{
+    tbody tr {
         font-size: 18px;
         height: 40px;
     }
@@ -505,64 +481,63 @@
     }
 
     /* page chart 2 */
-    .area-streaming-news{
+    .area-streaming-news {
         margin: 0px 8px 0px 8px;
     }
 
-    .area-content-SN{
+    .area-content-SN {
         margin-bottom: 30px;
         flex-direction: column;
     }
 
     /* content kiri */
-    .area-content-SN-kiri{
+    .area-content-SN-kiri {
         width: 100%;
     }
 
-    .title-SN-kiri{
+    .title-SN-kiri {
         font-size: 28px;
     }
-    
-    .box-streaming{
+
+    .box-streaming {
         height: 100px;
     }
 
-    .text-streaming{
+    .text-streaming {
         font-size: 10px;
         margin: 5px 10px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         height: 35px;
         width: 35px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 20px;
     }
 
     /* -------------- */
 
-
     /* content kanan */
-    .area-content-SN-kanan{
+    .area-content-SN-kanan {
         width: 100%;
     }
 
-    .title-news{
+    .title-news {
         font-size: 28px;
     }
 
-    .content-news{
+    .content-news {
         gap: 10px;
     }
 
-    .box-news{
+    .box-news {
         height: 60px;
         gap: 6px;
     }
 
-    .area-image{
+    .area-image {
         width: 30%;
     }
 
@@ -583,38 +558,38 @@
 }
 
 @media (max-width: 320px) {
-    .area-chart{
+    .area-chart {
         margin: 5px 8px 0px 8px;
     }
 
-    .title-chart{
+    .title-chart {
         font-size: 30px;
     }
 
-    .content-chart{
+    .content-chart {
         margin-top: 6px;
     }
 
-    .area-top-chart{
+    .area-top-chart {
         gap: 10px;
         flex-wrap: wrap;
         flex: 1 2 calc(50% - 10px);
     }
 
-    .tab-chart{
+    .tab-chart {
         height: 30px;
-        border: 2px #FFDB00 solid;
+        border: 2px #ffdb00 solid;
     }
 
-    .text-tab{
+    .text-tab {
         font-size: 18px;
     }
 
-    thead tr{
+    thead tr {
         font-size: 20px;
     }
 
-    tbody tr{
+    tbody tr {
         font-size: 16px;
         height: 40px;
     }
@@ -627,73 +602,72 @@
         -moz-border-radius: 4px;
         -ms-border-radius: 4px;
         -o-border-radius: 4px;
-}
+    }
 
     /* page chart 2 */
-    .area-streaming-news{
+    .area-streaming-news {
         margin: 0px 8px 0px 8px;
     }
 
-    .area-content-SN{
+    .area-content-SN {
         margin-bottom: 30px;
         flex-direction: column;
     }
 
-    .content-SN-kiri{
+    .content-SN-kiri {
         margin-top: 5px;
     }
 
     /* content kiri */
-    .area-content-SN-kiri{
+    .area-content-SN-kiri {
         width: 100%;
     }
 
-    .title-SN-kiri{
+    .title-SN-kiri {
         font-size: 28px;
     }
-    
-    .box-streaming{
+
+    .box-streaming {
         height: 100px;
     }
 
-    .text-streaming{
+    .text-streaming {
         font-size: 10px;
         margin: 5px 10px;
     }
 
-    .btn-play-streaming{
+    .btn-play-streaming {
         height: 35px;
         width: 35px;
     }
 
-    .btn-play-streaming span{
+    .btn-play-streaming span {
         font-size: 20px;
     }
 
     /* -------------- */
 
-
     /* content kanan */
-    .area-content-SN-kanan{
+    .area-content-SN-kanan {
         width: 100%;
     }
 
-    .title-news{
+    .title-news {
         font-size: 26px;
     }
 
-    .content-news{
+    .content-news {
         gap: 10px;
         margin-top: 6px;
     }
 
-    .box-news{
+    .box-news {
         height: 60px;
         padding: 6px;
         gap: 4px;
     }
 
-    .area-image{
+    .area-image {
         width: 40%;
     }
 
@@ -712,4 +686,3 @@
     /* ------------------ */
     /* ------------------ */
 }
-

@@ -19,27 +19,28 @@
             <div class="content-info-news">
                 <div class="content-IN-kiri" id="style-3">
                     @foreach ($info as $infoList)
+                    <a class="link-box-info" href="/info-detail/{{ $infoList->slug }}">
                         <div class="box-info">
-                            <div class="content-box-info">
-                                <div class="area-image-info">
-                                    <img class="image-info" src="../storage/{{ $infoList->image_info }}" alt="">
+                            <div class="area-image-info">
+                                <img class="image-info" src="./storage/{{ $infoList->image_info }}"
+                                    alt="">
+                            </div>
+                            <div class="line-info"></div>
+                            <div class="area-text-desk-info">
+                                <div class="area-tag">
+                                    <p class="tag-info">{{ $infoList->tagInfo->nama_kategori }}</p>
                                 </div>
-                                <div class="area-info">
-                                    <div class="area-tagar-info">
-                                        <h2 class="tagar-info">#{{ $infoList->tagInfo->nama_tag }}</h2>
-                                    </div>
-                                    <div class="area-title-info">
-                                        <h2 class="title-info">{{ $infoList->judul_info }}</h2>
-                                    </div>
-                                    <div class="area-desk-info">
-                                        <p class="desk-info">{{ $infoList->deskripsi_info }}</p>
-                                    </div>
-                                    <div class="area-date-info">
-                                        <p class="date-info">{{ $infoList->date_info }}</p>
-                                    </div>
+                                <div class="area-text">
+                                    <p class="desk-info">{{ $infoList->judul_info }}</p>
+                                </div>
+                                <div class="area-date">
+                                    <p class="date-info">
+                                        {{ \Carbon\Carbon::parse($infoList->date_info)->translatedFormat('l, d F Y') }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
+                    </a>
                     @endforeach
                 </div>
                 <div class="area-bottom-box-info">
@@ -54,9 +55,9 @@
                         <div class="area-box-news">
                             @foreach ($taginfo as $tagInfoList)
                                 <div class="box-news">
-                                    <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                    <a href="/info-tag/{{ $tagInfoList->nama_kategori }}">
                                         <div class="area-tag-news">
-                                            <h3 class="tag-news">#{{ $tagInfoList->nama_tag }}</h3>
+                                            <h3 class="tag-news">#{{ $tagInfoList->nama_kategori }}</h3>
                                         </div>
                                         @if ($tagInfoList->info->isNotEmpty())
                                             <img class="image-news"
@@ -100,8 +101,18 @@
                                         <img class="image-top-info" src="./storage/{{ $topInfoList->image_info }}"
                                             alt="">
                                     </div>
-                                    <div class="area-top-text">
-                                        <p class="desk-top-news">{{ $topInfoList->deskripsi_info }}</p>
+                                    <div class="area-text-desk-top-info">
+                                        <div class="area-tag">
+                                            <h2 class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</h2>
+                                        </div>
+                                        <div class="area-text">
+                                            <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
+                                        </div>
+                                        <div class="area-date">
+                                            <p class="date-top-info">
+                                                {{ \Carbon\Carbon::parse($topInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach

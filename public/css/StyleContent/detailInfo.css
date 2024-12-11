@@ -190,6 +190,40 @@
     height: fit-content;
     /* border: 1px green solid; */
     margin-top: 15px;
+    font-size: 16px;
+    font-family: "Poppins";
+    font-weight: 300;
+    margin: 0px;
+    color: #fff;
+}
+
+figure{
+    margin: 0px;
+    /* border: 1px red solid; */
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+figure img{
+    width: 100%;
+    height: auto;
+}
+
+figure p{
+    font-size: 16px;
+    font-family: "Poppins";
+    margin: 0px;
+    font-weight: 300;
+    color: #fff;
+}
+
+figcaption span{
+    color: white;
+}
+
+figcaption span:hover{
+    color: white;
+    text-decoration: underline;
 }
 
 .desk-info {

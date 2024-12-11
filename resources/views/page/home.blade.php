@@ -110,16 +110,10 @@
                                         <div class="line-top-info"></div>
                                         <div class="area-text-desk-top-info">
                                             <div class="area-tag">
-                                                @if (is_array($topInfoList->tag_info))
-                                                    @foreach ($topInfoList->tag_info as $tag)
-                                                        <p class="tag-top-info">#{{ $tag }}</p>
-                                                    @endforeach
-                                                @else
-                                                    <p class="tag-top-info">#-</p>
-                                                @endif
+                                                <p class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</p>
                                             </div>
                                             <div class="area-text">
-                                                <p class="desk-top-info">{{ $topInfoList->deskripsi_info }}</p>
+                                                <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
                                             </div>
                                             <div class="area-date">
                                                 <p class="date-top-info">
@@ -144,16 +138,10 @@
                                     </div>
                                     <div class="area-text-desk">
                                         <div class="area-tag">
-                                            @if (is_array($InfoList->tag_info))
-                                                @foreach ($InfoList->tag_info as $tag)
-                                                    <p class="tag-news">#{{ $tag }}</p>
-                                                @endforeach
-                                            @else
-                                                <p class="tag-news">#-</p>
-                                            @endif
+                                            <p class="tag-news">{{ $InfoList->tagInfo->nama_kategori }}</p>
                                         </div>
                                         <div class="area-text">
-                                            <p class="desk-news">{{ $InfoList->deskripsi_info }}</p>
+                                            <p class="desk-news">{{ $InfoList->judul_info }}</p>
                                         </div>
                                         <div class="area-date">
                                             <p class="date-news">
@@ -168,20 +156,20 @@
 
                 </div>
                 <div class="area-content-info">
-                    {{-- <div class="header-info">
+                    <div class="header-info">
                         <h1 class="title-info">More News</h1>
                     </div>
                     <div class="content-info">
-                        @foreach ($taginfo as $tagInfoList)
+                        @foreach ($kategoriInfo as $kategoriInfoList)
                             <div class="box-info">
-                                <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                <a href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
                                     <div class="area-tag-info">
                                         
-                                        <h3 class="tag-info">#{{ $tagInfoList->nama_tag }}</h3>
+                                        <h3 class="tag-info">#{{ $kategoriInfoList->nama_kategori }}</h3>
                                     </div>
-                                    @if ($tagInfoList->info->isNotEmpty())
+                                    @if ($kategoriInfoList->info->isNotEmpty())
                                         <img class="image-info"
-                                            src="{{ asset('storage/' . $tagInfoList->info->first()->image_info) }}"
+                                            src="{{ asset('storage/' . $kategoriInfoList->info->first()->image_info) }}"
                                             alt="">
                                     @else
                                         <p>Tidak ada info untuk tag ini.</p>
@@ -196,7 +184,7 @@
                                 <h1 class="title-bottom-info">Show more</h1>
                             </a>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="area-trending-info">
                         <div class="header-trending-info">
                             <h1 class="title-trending-info">Trending Info</h1>
@@ -212,16 +200,10 @@
                                         <div class="line-trending-info"></div>
                                         <div class="area-text-desk-trending-info">
                                             <div class="area-tag">
-                                                @if (is_array($trendingInfoList->tag_info))
-                                                    @foreach ($trendingInfoList->tag_info as $tag)
-                                                        <p class="tag-trending-info">#{{ $tag }}</p>
-                                                    @endforeach
-                                                @else
-                                                    <p class="tag-trending-info">#-</p>
-                                                @endif
+                                                <p class="tag-trending-info">{{ $trendingInfoList->tagInfo->nama_kategori }}</p>
                                             </div>
                                             <div class="area-text">
-                                                <p class="desk-trending-info">{{ $trendingInfoList->deskripsi_info }}</p>
+                                                <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
                                             </div>
                                             <div class="area-date">
                                                 <p class="date-trending-info">
@@ -497,7 +479,7 @@
             </div>
         </div>
     </section>
-    <br>
+    {{-- <br> --}}
     <section class="page-6" id="announcer">
         <div class="area-announcer">
             {{-- <div class="area-svg">
@@ -570,10 +552,12 @@
                         breakpoints='{
                         "320": { "slidesPerView": 1 },
                         "375": { "slidesPerView": 1 },
-                        "480": { "slidesPerView": 1 },
-                        "768": { "slidesPerView": 2 },
-                        "1024": { "slidesPerView": 3 },
+                        "425": { "slidesPerView": 2 },
+                        "480": { "slidesPerView": 2 },
+                        "768": { "slidesPerView": 3 },
+                        "1024": { "slidesPerView": 4 },
                         "1280": { "slidesPerView": 5 },
+                        "1960": { "slidesPerView": 5 },
                         "2560": { "slidesPerView" : 5}
                     }'
                         space-between="20">

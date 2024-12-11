@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FeedInstagramController;
+use App\Http\Controllers\GoogleAnalyticsControllers;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\ProgramController;
@@ -65,6 +66,9 @@ Route::get('/analytics-test', function (GoogleAnalyticsServices $analyticsServic
     $data = $analyticsService->getWebsiteTraffic('30daysAgo', 'today');
     return response()->json($data);
 });
+
+Route::get('/get-realtime-analytics', [GoogleAnalyticsControllers::class, 'getGoogleAnalyticsData']);
+
 
 Route::get('/', [HomeController::class, 'index']);
 

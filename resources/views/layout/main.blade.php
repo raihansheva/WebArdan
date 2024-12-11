@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    {{-- <meta name="apple-mobile-web-app-capable" content="yes"> --}}
     <link rel="icon" href="./storage/{{ \App\Helpers\Settings::get('site_icon', 'Default Site Title') }}">
     <title>@yield('title')</title>
     {{-- <title>{{ \App\Helpers\Settings::get('site_title', 'Default Site Title') }}</title> --}}

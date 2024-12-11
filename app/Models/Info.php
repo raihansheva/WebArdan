@@ -17,6 +17,7 @@ class Info extends Model implements HasMedia
     protected $fillable = [
         'id',
         'judul_info',
+        'kategori_id',
         'tag_info',
         'deskripsi_info',
         'image_info',
@@ -64,8 +65,8 @@ class Info extends Model implements HasMedia
         });
     }
 
-    // public function tagInfo(): BelongsTo
-    // {
-    //     return $this->belongsTo(TagInfo::class, 'tag_info_id');
-    // }
+    public function tagInfo(): BelongsTo
+    {
+        return $this->belongsTo(TagInfo::class, 'kategori_id');
+    }
 }

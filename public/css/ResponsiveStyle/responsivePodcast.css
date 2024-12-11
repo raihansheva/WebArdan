@@ -1,31 +1,27 @@
-/* Desktop dan Laptop */
-@media (width: 2560px) {
-    .page-podcast-1 {
-        height: 380px;
-    }
 
-    .area-header-podcast {
-        height: 400px;
+@media (min-width: 1960px) {
+    .page-podcast-1 {
+        height: fit-content;
     }
 
     .banner-podcast {
         width: 100%;
-        /* height: fit-content; */
+        height: 500px;
         object-fit: cover;
     }
 
     .title-header-podcast {
-        font-size: 44px;
+        font-size: 40px;
         margin: 80px 128px 0px 128px;
     }
 
     /* area content card podcast */
     .area-card-podcast {
-        margin: 40px 128px 0px 128px;
+        margin: 20px 128px 0px 128px;
     }
 
     .title-header-card-podcast {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .content-card-podcast {
@@ -40,7 +36,7 @@
 
     .card-podcast {
         flex: 1 1 calc(33.33% - 15px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
-        height: auto;
+        height: fit-content;
         margin-top: 10px;
     }
 
@@ -54,17 +50,17 @@
 
     .card-podcast .card-body-podcast {
         /* width: 100%; */
-        height: 80%;
+        height: 300px;
         background-color: white;
         padding: 30px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
         gap: 8px;
-        border-bottom-right-radius: 25px;
-        border-top-left-radius: 25px;
-        border-top-right-radius: 25px;
-        padding: 25px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 15px;
     }
 
     .head-body-podcast {
@@ -82,7 +78,7 @@
     }
 
     .title-genre {
-        font-size: 26px;
+        font-size: 16px;
         font-family: "Bebas Neue";
         font-weight: 200;
         margin: 5px 25px;
@@ -94,7 +90,7 @@
     }
 
     .card-text-podcast {
-        font-size: 38px;
+        font-size: 30px;
         margin: 0px;
         font-weight: 200;
         font-family: "Bebas Neue";
@@ -102,7 +98,7 @@
 
     .card-image-podcast {
         width: 100%;
-        height: 240px;
+        height: 200px;
         background-color: #f0f0f0;
         border-radius: 10px;
     }
@@ -113,24 +109,24 @@
         align-items: center;
         gap: 10px;
         font-weight: 600;
-        width: 56.5%;
+        width: 55%;
         height: 50px;
         display: flex;
         background-color: white;
-        border-bottom-left-radius: 25px;
-        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
         /* border: 1px black solid; */
     }
 
     .card-podcast .card-header-podcast .author-podcast::before {
         background-color: transparent;
-        border-top-left-radius: 25px;
-        box-shadow: -20px -20px 0 white;
+        border-top-left-radius: 10px;
+        box-shadow: -15px -15px 0 white;
         position: absolute;
         bottom: 0;
         right: 0;
-        height: 54px;
-        width: 44%;
+        height: 55px;
+        width: 45%;
         content: "";
         /* border: 1px black solid; */
     }
@@ -142,7 +138,7 @@
         align-items: center;
         display: flex;
         height: 25px;
-        width: 90%;
+        width: 85%;
         border-radius: 12px;
         padding: 10px;
         margin-top: 10px;
@@ -156,18 +152,15 @@
     .text-watch-podcast {
         /* color: white; */
         font-family: "Poppins";
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .area-bottom-card-podcast {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin-top: 20px;
     }
 
     .title-bottom {
-        font-size: 26px;
+        font-size: 18px;
     }
     /* ------------------------- */
 
@@ -183,21 +176,23 @@
     /* content videoYT */
 
     .page-podcast-3 {
-        height: 850px;
+        height: fit-content;
+        margin-bottom: 0px;
     }
 
     .area-content-videoYT {
         gap: 15px;
+        padding-bottom: 30px;
     }
 
     .area-contentYT-kiri {
         width: 65%;
-        height: 665px;
+        height: 480px;
     }
 
     .btn-play-videoYT-kiri {
-        height: 65px;
-        width: 65px;
+        height: 60px;
+        width: 60px;
     }
 
     .btn-play-videoYT-kiri span {
@@ -206,7 +201,7 @@
 
     .area-contentYT-kanan {
         width: 35%;
-        height: 665px;
+        height: 480px;
         gap: 15px;
     }
 
@@ -220,8 +215,8 @@
     }
 
     .popup-content-yt {
-        width: 1280px; /* Disesuaikan agar proporsional */
-        height: 720px; /* Rasio 16:9 */
+        width: 560px;
+        height: 315px;
     }
     /* -------------------- */
 
@@ -235,7 +230,7 @@
     }
 
     .area-content-SN {
-        margin-bottom: 60px;
+        margin-bottom: 30px;
     }
 
     /* content kiri */
@@ -244,16 +239,16 @@
     }
 
     .title-SN-kiri {
-        font-size: 44px;
+        font-size: 34px;
     }
 
     .box-streaming {
-        height: 260px;
+        height: 200px;
     }
 
     .btn-play-streaming {
-        height: 65px;
-        width: 65px;
+        height: 50px;
+        width: 50px;
     }
 
     /* -------------- */
@@ -263,37 +258,34 @@
         width: 40%;
     }
 
-    .title-news {
-        font-size: 44px;
+    .title-top-news {
+        font-size: 34px;
     }
 
     .content-top-news {
-        gap: 18px;
+        gap: 14px;
     }
 
     .box-news {
-        height: 120px;
+        height: fit-content;
         padding: 15px;
     }
 
     .tag-top-info {
-        font-size: 28px;
+        font-size: 22px;
     }
 
     .desk-top-info {
-        font-size: 26px;
+        font-size: 20px;
     }
 
     .date-top-info {
-        font-size: 22px;
+        font-size: 18px;
     }
     /*--------------- */
 
     /* ------------------ */
     /* ------------------ */
-}
-@media (max-width: 1920px) {
-    /* Gaya untuk monitor Full HD */
 }
 
 @media (max-width: 1440px) {

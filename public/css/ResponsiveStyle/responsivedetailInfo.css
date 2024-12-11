@@ -1,5 +1,5 @@
-/* Desktop dan Laptop */
-@media (width: 2560px) {
+
+@media (min-width: 1920px) {
     /* page news 1 */
     .header-info-news {
         height: 380px;
@@ -18,12 +18,12 @@
     }
 
     .content-info-news {
-        gap: 35px;
+        gap: 15px;
     }
 
     /* content kiri */
     .content-IN-kiri {
-        width: 55%;
+        width: 65%;
     }
 
     .box-info {
@@ -39,11 +39,11 @@
     } */
 
     .link-url-info {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .url-info {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .text-span-info {
@@ -51,57 +51,62 @@
     }
 
     .title-info {
-        font-size: 44px;
+        font-size: 40px;
     }
 
     .date-info {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .area-image-info {
         height: 450px;
+        font-size: 20px;
+    }
+
+    .area-desk-info{
+        font-size: 20px;
     }
 
     .desk-info {
-        font-size: 22px;
+        font-size: 24px;
     }
 
     .text-header-tagar {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .tagar-info {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     /* area trending info */
     .box-trending-info {
-        max-height: 360px;
+        max-height: 350px;
         padding: 20px;
     }
 
     .title-trending-info {
-        font-size: 48px;
+        font-size: 46px;
     }
 
     .tag-trending-info {
-        font-size: 26px;
+        font-size: 24px;
     }
 
     .desk-trending-info {
-        font-size: 22px;
+        font-size: 20px;
         -webkit-line-clamp: 2; /* Membatasi 3 baris */
     }
 
     .date-trending-info {
-        font-size: 20px;
+        font-size: 18px;
     }
     /* ------------------ */
     /* ------------ */
 
     /* content kanan */
     .content-IN-kanan {
-        width: 45%;
+        width: 35%;
     }
 
     /* area-news */
@@ -159,7 +164,7 @@
     }
 
     .area-thumbnail {
-        height: 220px;
+        height: 180px;
     }
 
     .text-streaming {
@@ -191,12 +196,16 @@
         padding: 15px;
     }
 
+    .area-top-image{
+        width: 40%;
+    }
+
     .tag-top-info {
-        font-size: 26px;
+        font-size: 22px;
     }
 
     .desk-top-info {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .date-top-info {
@@ -347,9 +356,6 @@
 
     /* ------------- */
 }
-@media (max-width: 1920px) {
-    /* Gaya untuk monitor Full HD */
-}
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
 }
@@ -408,6 +414,10 @@
 
     .area-image-info {
         height: 280px;
+    }
+
+    .area-desk-info {
+        font-size: 12px;
     }
 
     .desk-info {
@@ -726,6 +736,10 @@
 
     .area-image-info {
         height: 240px;
+    }
+
+    .area-desk-info {
+        font-size: 12px;
     }
 
     .desk-info {
@@ -1061,6 +1075,10 @@
 
     .title-info {
         font-size: 28px;
+    }
+
+    .area-desk-info {
+        font-size: 14px;
     }
 
     .desk-info {
@@ -1403,6 +1421,10 @@
 
     .title-info {
         font-size: 28px;
+    }
+
+    .area-desk-info {
+        font-size: 14px;
     }
 
     .desk-info {
@@ -1761,6 +1783,10 @@
 
     .area-image-info {
         height: 240px;
+    }
+
+    .area-desk-info {
+        font-size: 12px;
     }
 
     .desk-info {
