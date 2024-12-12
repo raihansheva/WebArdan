@@ -241,6 +241,7 @@ swiper-slide img {
     background-color: var(--primary-color);
     border-radius: 12px;
     padding: 10px;
+    margin-top: 10px;
     cursor: pointer;
 }
 
@@ -251,8 +252,8 @@ swiper-slide img {
 .video-container {
     position: relative;
     width: 100%;
-    height: 0;
-    padding-bottom: 52.25%; /* 16:9 aspect ratio */
+    height: 325px;
+    /* padding-bottom: 52.25%; */
     overflow: hidden;
 }
 
@@ -564,12 +565,13 @@ swiper-slide img {
     height: fit-content;
     /* border: 1px white solid; */
     text-align: left;
+    margin-top: 20px;
 }
 
 .title-info {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 200;
     color: white;
 }
@@ -634,7 +636,7 @@ swiper-slide img {
     height: fit-content;
     /* border: 1px white solid; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .box-title-bottom{
@@ -683,7 +685,7 @@ swiper-slide img {
 .title-news {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 200;
     color: white;
 }
@@ -794,7 +796,7 @@ swiper-slide img {
 .title-top-info {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 200;
     color: white;
 }
@@ -905,7 +907,7 @@ swiper-slide img {
 .area-trending-info{
     width: auto;
     height: auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .header-trending-info {
@@ -916,7 +918,7 @@ swiper-slide img {
 .title-trending-info {
     margin: 0px;
     font-family: "Bebas Neue";
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 200;
     color: white;
 }
@@ -2338,7 +2340,7 @@ swiper-slide img {
 
 /* area chart */
 .area-content-chart {
-    width: 60%;
+    width: 70%;
     height: 100%;
     /* background-color: var(--primary-color); */
     display: flex;
@@ -2462,7 +2464,7 @@ tbody td {
 
 /* area-artis */
 .area-content-artis {
-    width: 40%;
+    width: 30%;
     height: auto;
     background-color: #ffffff;
     padding: 25px 64px 0px 30px;
@@ -2523,7 +2525,7 @@ tbody td {
     height: 100%;
     /*Pastikanmenutupiseluruharea.box-artis*/background-color: rgba(0, 0, 0, 0.7);
     /*Backgroundsemitransparanagarbioterlihat*/color: white;
-    opacity: 0;
+    opacity: 1;
     /*Awalnyatidakterlihat*/display: flex;
     /*Agarkontenbiobisadiaturposisinyadenganmudah*/justify-content: center;
     align-items: center;
@@ -2542,7 +2544,7 @@ tbody td {
 
 
 .nama{
-    font-size: 16px;
+    font-size: 14px;
     font-family: "Poppins";
     margin: 0px;
     text-align: center;
@@ -2762,6 +2764,19 @@ tbody td {
     margin: 0px;
 }
 
+
+/* schedule mobile */
+
+.top-content-schedule-mobile{
+    display: none;
+}
+
+.content-schedule-mobile{
+    display: none;
+}
+
+
+/* --------------- */
 /* .content-schedule .box-schedule {
     display: none;
 }

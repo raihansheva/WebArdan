@@ -105,7 +105,7 @@
                     <div class="box-programE" style="background-image: url('./storage/{{ $programList->image_program }}') "
                         class="box-program" data-title="{{ $programList->judul_program }}"
                         data-description="{{ $programList->deskripsi_program }}"
-                        data-time="{{ $programList->jam_program }}" onclick="showPopup(this)"></div>
+                        data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}" onclick="showPopup(this)"></div>
                 @endforeach
             </div>
         </div>

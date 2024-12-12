@@ -10,9 +10,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Artis extends Model implements HasMedia
 {
-    use HasFactory , InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['id' , 'nama' , 'bio' ,'image_artis', 'judul_berita', 'ringkasan_berita' , 'konten_berita' , 'publish_sekarang' , 'tanggal_dibuat' ,'tanggal_publikasi'];
+    protected $fillable = [
+        'id',
+        'nama',
+        'kategori_info',
+        'image_artis',
+        'judul_berita',
+        'slug',
+        'ringkasan_berita',
+        'konten_berita',
+        'publish_sekarang',
+        'tanggal_dibuat',
+        'tanggal_publikasi',
+        'meta_title',
+        'meta_description',
+        'meta_keywords'
+    ];
 
 
     public function registerMediaCollections(): void
@@ -45,5 +60,4 @@ class Artis extends Model implements HasMedia
             }
         });
     }
-
 }

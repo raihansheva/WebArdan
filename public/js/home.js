@@ -521,7 +521,44 @@ const currentDayName = dayMapping[currentDayIndex]; // Nama hari dalam bahasa In
 // Secara otomatis tampilkan program untuk hari ini
 showScheduleForDay(currentDayName);
 // });
+if (window.matchMedia("(max-width: 480px)").matches) {
+    const days = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu"];
+    const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const currentDayIndex = new Date().getDay() - 1; // JavaScript getDay() Sunday=0
+    let selectedDayIndex = currentDayIndex < 0 ? 6 : currentDayIndex; // Adjust for Monday start
+    const currentDayElement = document.getElementById("currentDay");
+    const prevButton = document.getElementById("prevDay");
+    const nextButton = document.getElementById("nextDay");
+    const scheduleBoxes = document.querySelectorAll(".box-schedule-mobile");
 
+    function updateSchedule() {
+        const selectedDay = days[selectedDayIndex];
+        currentDayElement.textContent = dayNames[selectedDayIndex];
+
+        // Tampilkan jadwal sesuai hari
+        scheduleBoxes.forEach((box) => {
+            if (box.dataset.day === selectedDay) {
+                box.classList.add("active");
+            } else {
+                box.classList.remove("active");
+            }
+        });
+    }
+
+    // Navigasi antar hari
+    prevButton.addEventListener("click", () => {
+        selectedDayIndex = (selectedDayIndex - 1 + days.length) % days.length;
+        updateSchedule();
+    });
+
+    nextButton.addEventListener("click", () => {
+        selectedDayIndex = (selectedDayIndex + 1) % days.length;
+        updateSchedule();
+    });
+
+    // Inisialisasi tampilan awal
+    updateSchedule();
+}
 // Load YouTube API
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("hlsPlayer");

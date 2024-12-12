@@ -186,7 +186,7 @@
     height: auto;
     display: flex;
     justify-content: start;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .card-DP-B .view-DP-B {
@@ -212,7 +212,8 @@
     position: relative;
     width: 100%;
     height: fit-content;
-    padding-bottom: 49%; /* 16:9 aspect ratio */
+    /* padding-bottom: 49%; */
+    height: 375px;
     overflow: hidden;
 }
 

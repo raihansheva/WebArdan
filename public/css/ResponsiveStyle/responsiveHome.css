@@ -64,7 +64,7 @@
     }
 
     .card-A .card-body {
-        height: 462px;
+        height: 454px;
         /* padding: 25px; */
         /* border: 1px red solid; */
     }
@@ -91,8 +91,8 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        /* padding-bottom: 50.25%; */
+        height: 454px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -229,13 +229,24 @@
     }
 
     .content-info {
-        gap: 12px;
+        gap: 8px;
     }
 
     .box-info {
-        flex: 0 0 calc(33.33% - 8px);
-        height: 245px;
+        flex: 0 0 calc(50% - 4px);
+        height: 125px;
     }
+
+    .tag-info {
+        font-size: 28px;
+    }
+
+    .title-info{
+        font-size: 3.6rem;
+    }
+
+
+
 
     .area-top-info {
         width: auto;
@@ -1009,6 +1020,10 @@
     .box-artis {
         height: 220px;
     }
+
+    .nama{
+        font-size: 24px;
+    }
     /* ----------------- */
     /* area-schedule */
 
@@ -1113,6 +1128,21 @@
     /* ----------------- */
 }
 
+@media (min-width: 1280px) {
+    .video-container {
+        position: relative;
+        /* padding-bottom: 52.25%; */
+        /* height: 325px; */
+        overflow: hidden;
+        width: 100%;
+        background-color: rgb(
+            0,
+            0,
+            0
+        ); /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+}
 
 
 @media (max-width: 1024px) {
@@ -1186,13 +1216,13 @@
     .card-B .view-B {
         height: 20px;
         width: 28%;
-        margin-top: 0px;
+        /* margin-top: 0px; */
     }
 
     .video-container {
         position: relative;
-        padding-bottom: 47.15%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        /* padding-bottom: 47.15%; */
+        height: 230px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -1307,25 +1337,25 @@
     }
 
     .content-info {
-        gap: 12px;
+        gap: 8px;
     }
 
     .box-info {
-        flex: 0 0 calc(33.33% - 8px);
-        height: 145px;
+        flex: 0 0 calc(50% - 4px);
+        height: 75px;
     }
 
     .tag-info {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .title-info,
     .title-news {
-        font-size: 38px;
+        font-size: 30px;
     }
 
     .title-bottom-info {
-        font-size: 18px;
+        font-size: 12px;
     }
 
     .area-content-news {
@@ -2096,7 +2126,7 @@
     }
 
     .area-content-chart {
-        width: 60%;
+        width: 70%;
         height: auto;
         display: flex;
         padding: 0px 32px 0px 32px;
@@ -2132,7 +2162,7 @@
     }
 
     .area-content-artis {
-        width: 40%;
+        width: 30%;
         padding: 20px 32px 20px 32px;
     }
 
@@ -2143,6 +2173,11 @@
     .box-artis {
         height: 120px;
     }
+
+    .nama{
+        font-size: 10px;
+    }
+
     /* ----------------- */
     /* area-schedule */
 
@@ -2260,13 +2295,13 @@
     .card-B .view-B {
         height: 20px;
         width: 28%;
-        margin-top: 0px;
+        /* margin-top: 0px; */
     }
 
     .video-container {
         position: relative;
-        padding-bottom: 47.6%; /* 16:9 aspect ratio */
-        height: 0;
+        /* padding-bottom: 47.6%; */
+        height: 329px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -2870,7 +2905,7 @@
     /* area-info-news */
     /* area-podcast-video */
     .area-podcast-video {
-        margin: 0px 20px 10px 20px;
+        margin: 0px 20px 30px 20px;
     }
 
     .area-content-PV {
@@ -3200,7 +3235,7 @@
     }
 
     .area-content-chart {
-        width: 60%;
+        width: 70%;
         height: auto;
         display: flex;
         padding: 0px 20px 0px 20px;
@@ -3248,7 +3283,7 @@
     }
 
     .area-content-artis {
-        width: 35%;
+        width: 30%;
         padding: 20px;
         /* height: 380px; */
     }
@@ -3262,7 +3297,7 @@
     }
 
     .nama {
-        font-size: 12px;
+        font-size: 8px;
     }
 
     .bio {
@@ -3399,7 +3434,7 @@
     .card-B .view-B {
         height: 20px;
         width: 28%;
-        margin-top: 0px;
+        /* margin-top: 0px; */
     }
 
     .text-watchS {
@@ -3411,8 +3446,8 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        /* padding-bottom: 56.25%; */
+        height: 211px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -4463,6 +4498,8 @@
         display: flex;
         flex-direction: column;
         /* border: 1px red solid; */
+        margin-bottom: 8px;
+
     }
 
     .header-schedule {
@@ -4478,6 +4515,7 @@
     .top-content-schedule {
         width: auto;
         height: 40px;
+        display: none;
     }
 
     .schedule {
@@ -4496,6 +4534,7 @@
         gap: 10px;
         margin-top: 10px;
         height: auto;
+        display: none;
     }
 
     .box-schedule {
@@ -4509,8 +4548,65 @@
     .jam-programs {
         font-size: 12px;
     }
-
     /* ---------------- */
+    /* schedule mobile */
+    .top-content-schedule-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        /* display: block;   */
+    }
+    
+    .schedule-day-mobile {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        margin: 0;
+        font-family: "Poppins";
+    }
+    
+    .nav-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-button i {
+        color: white;
+        font-size: 28px;
+    }
+    
+    .content-schedule-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        height: auto;
+        display: block;
+    }
+    
+    .box-schedule-mobile {
+        display: none; /* Hanya tampilkan yang aktif */
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+        width: 50%;
+    }
+    
+    .box-schedule-mobile.active {
+        display: block;
+        width: 50%;
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
+    
 }
 @media (max-width: 375px) {
     .area-banner {
@@ -4585,7 +4681,7 @@
     .card-B .view-B {
         height: 20px;
         width: 28%;
-        margin-top: 0px;
+        margin-top: 8px;
     }
 
     .text-watchS-B {
@@ -4594,8 +4690,8 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 60.5%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        /* padding-bottom: 60.5%; */
+        height: 200px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -5671,8 +5767,64 @@
     .jam-programs {
         font-size: 10px;
     }
-
     /* ---------------- */
+     /* schedule mobile */
+     .top-content-schedule-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        /* display: block;   */
+    }
+    
+    .schedule-day-mobile {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+        margin: 0;
+        font-family: "Poppins";
+    }
+    
+    .nav-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-button i {
+        color: white;
+        font-size: 28px;
+    }
+    
+    .content-schedule-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        height: auto;
+        display: block;
+    }
+    
+    .box-schedule-mobile {
+        display: none; /* Hanya tampilkan yang aktif */
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+        width: 50%;
+    }
+    
+    .box-schedule-mobile.active {
+        display: block;
+        width: 50%;
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
 }
 @media (max-width: 344px) {
     .area-banner {
@@ -5743,9 +5895,9 @@
         /* border: 1px red solid; */
     }
     .card-B .view-B {
-        height: 15 px;
+        height: 15px;
         width: 28%;
-        margin-top: 0px;
+        margin-top: 10px;
     }
 
     .text-watchS-B {
@@ -5754,8 +5906,8 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 58%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        /* padding-bottom: 58%; */
+        height: 162px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -5878,12 +6030,12 @@
     }
 
     .content-info {
-        gap: 12px;
+        gap: 8px;
     }
 
     .box-info {
-        flex: 0 0 calc(33.33% - 8px);
-        height: 100px;
+        flex: 0 0 calc(50% - 4px);
+        height: 80px;
     }
 
     .title-info,
@@ -6869,8 +7021,64 @@ align-items: center; */
     .jam-programs {
         font-size: 10px;
     }
-
     /* ---------------- */
+     /* schedule mobile */
+     .top-content-schedule-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        /* display: block;   */
+    }
+    
+    .schedule-day-mobile {
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        margin: 0;
+        font-family: "Poppins";
+    }
+    
+    .nav-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-button i {
+        color: white;
+        font-size: 28px;
+    }
+    
+    .content-schedule-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        height: auto;
+        display: block;
+    }
+    
+    .box-schedule-mobile {
+        display: none; /* Hanya tampilkan yang aktif */
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+        width: 50%;
+    }
+    
+    .box-schedule-mobile.active {
+        display: block;
+        width: 50%;
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
 }
 @media (max-width: 320px) {
     .area-banner {
@@ -6941,9 +7149,9 @@ align-items: center; */
         /* border: 1px red solid; */
     }
     .card-B .view-B {
-        height: 15 px;
+        height: 15px;
         width: 28%;
-        margin-top: 0px;
+        /* margin-top: 0px; */
     }
 
     .text-watchS-B {
@@ -6952,8 +7160,8 @@ align-items: center; */
 
     .video-container {
         position: relative;
-        padding-bottom: 58%; /* 16:9 aspect ratio */
-        /* height: 0; */
+        /* padding-bottom: 58%; */
+        height: 162px;
         overflow: hidden;
         width: 100%;
         background-color: rgb(
@@ -7076,12 +7284,12 @@ align-items: center; */
     }
 
     .content-info {
-        gap: 12px;
+        gap: 8px;
     }
 
     .box-info {
-        flex: 0 0 calc(33.33% - 8px);
-        height: 100px;
+        flex: 0 0 calc(50% - 4px);
+        height: 80px;
     }
 
     .title-info,
@@ -8067,6 +8275,62 @@ align-items: center; */
     .jam-programs {
         font-size: 10px;
     }
-
     /* ---------------- */
+     /* schedule mobile */
+     .top-content-schedule-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        /* display: block;   */
+    }
+    
+    .schedule-day-mobile {
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: white;
+        margin: 0;
+        font-family: "Poppins";
+    }
+    
+    .nav-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-button i {
+        color: white;
+        font-size: 24px;
+    }
+    
+    .content-schedule-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        height: auto;
+        display: block;
+    }
+    
+    .box-schedule-mobile {
+        display: none; /* Hanya tampilkan yang aktif */
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+        width: 50%;
+    }
+    
+    .box-schedule-mobile.active {
+        display: block;
+        width: 50%;
+        height: 100px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
 }

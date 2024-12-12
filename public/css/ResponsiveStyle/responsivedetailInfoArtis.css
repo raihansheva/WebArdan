@@ -277,7 +277,7 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 128px 20px 128px;
+        margin: 0px 0px 20px 0px;
     }
 
     .title-info-artis {
@@ -307,7 +307,7 @@
     }
 
     .area-header-artis {
-        height: 40%;
+        height: 150px;
     }
 
     .area-image-artis {
@@ -323,15 +323,15 @@
     }
 
     .judul-berita {
-        font-size: 32px;
+        font-size: 30px;
     }
 
     .desk-berita {
-        font-size: 23px;
+        font-size: 18px;
     }
 
     .see-more-news {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .popup-content-artis {
@@ -616,11 +616,11 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 32px 20px 32px;
+        margin: 0px 0px 20px 0px;
     }
 
     .title-info-artis {
-        font-size: 40px;
+        font-size: 36px;
     }
 
     /* area box */
@@ -632,8 +632,8 @@
     }
 
     .box-artis {
-        flex: 1 1 calc(33.33% - 15px);
-        max-width: calc(33.33% - 15px);
+        flex: 1 1 calc(33.33% - 10px);
+        max-width: calc(33.33% - 10px);
         height: auto;
     }
 
@@ -646,7 +646,7 @@
     }
 
     .area-image-artis {
-        height: 35%;
+        height: 125px;
     }
 
     .name-artis {
@@ -658,7 +658,12 @@
     }
 
     .desk-berita {
-        font-size: 13px;
+        font-size: 11px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {
@@ -927,7 +932,7 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 20px 20px 20px;
+        margin: 0px 0px 20px 0px;
     }
 
     .title-info-artis {
@@ -937,14 +942,14 @@
     /* area box */
 
     .area-box-info-artis {
-        margin-top: 15px;
+        margin-top: 10px;
         /* border: 1px red solid; */
         gap: 15px;
     }
 
     .box-artis {
-        flex: 1 1 calc(33.333% - 15px);
-        max-width: calc(33.333% - 15px);
+        flex: 1 1 calc(50% - 8px);
+        max-width: calc(50% - 8px);
         height: auto;
     }
 
@@ -957,7 +962,7 @@
     }
 
     .area-image-artis {
-        height: 35%;
+        height: 125px;
     }
 
     .area-header-artis {
@@ -974,6 +979,11 @@
 
     .desk-berita {
         font-size: 11px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {
@@ -1307,7 +1317,7 @@
     }
 
     .area-image-artis {
-        height: 35%;
+        height: 100px;
     }
 
     .area-header-artis {
@@ -1324,6 +1334,11 @@
 
     .desk-berita {
         font-size: 9px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {
@@ -1666,7 +1681,7 @@
     .box-artis {
         flex: 1 1 calc(50% - 15px);
         max-width: calc(50% - 10px);
-        height: auto;
+        /* height: auto; */
     }
 
     .nama {
@@ -1678,7 +1693,7 @@
     }
 
     .area-image-artis {
-        height: 35%;
+        height: 90px;
     }
 
     .area-header-artis {
@@ -1695,6 +1710,11 @@
 
     .desk-berita {
         font-size: 9px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {
@@ -2033,8 +2053,7 @@
     .box-artis {
         flex: 1 1 calc(50% - 15px);
         max-width: calc(50% - 10px);
-        height: auto;
-        margin-top: 10px;
+        /* height: auto; */
     }
 
     .nama {
@@ -2050,7 +2069,7 @@
     }
 
     .area-header-artis {
-        height: 35%;
+        height: 80px;
     }
 
     .name-artis {
@@ -2063,6 +2082,11 @@
 
     .desk-berita {
         font-size: 7px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {
@@ -2388,6 +2412,7 @@
 
     .title-info-artis {
         font-size: 32px;
+        margin-bottom: 10px;
     }
 
     /* area box */
@@ -2399,10 +2424,10 @@
     }
 
     .box-artis {
-        flex: 1 1 calc(50% - 15px);
-        max-width: calc(50% - 10px);
-        height: auto;
-        margin-top: 10px;
+        flex: 1 1 calc(50% - 6px);
+        max-width: 50%;
+        height: fit-content;
+        margin-top: 0px;
     }
 
     .nama {
@@ -2414,7 +2439,7 @@
     }
 
     .area-image-artis {
-        height: 35%;
+        height: 80px;
     }
 
     .area-header-artis {
@@ -2431,6 +2456,11 @@
 
     .desk-berita {
         font-size: 7px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {

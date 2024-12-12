@@ -677,6 +677,148 @@
     /* -------------- */
     /* ------------------ */
 }
+@media (max-width: 344px) {
+    .area-event {
+        width: auto;
+        margin: 0px 8px 0px 8px;
+    }
+    .title-event {
+        font-size: 26px;
+    }
+    .content-event {
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD {
+        margin-top: 10px;
+        height: 200px;
+    }
+    .area-content-countdown {
+        width: 100%;
+    }
+    .area-countdown {
+        height: 70px;
+        padding: 5px;
+    }
+
+    .countdown {
+        gap: 10px;
+    }
+
+    .timer {
+        font-size: 24px;
+    }
+    .title-timer {
+        font-size: 10px;
+    }
+    .date-month {
+        font-size: 20px;
+    }
+    .year {
+        font-size: 20px;
+    }
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .area-info-event {
+        gap: 3px;
+    }
+
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
+    /* area other upcoming event */
+    .area-other-event {
+        margin: 0px 8px 0px 8px;
+    }
+    .header-other-event {
+        margin-top: 30px;
+    }
+    .title-event-other {
+        font-size: 28px;
+    }
+    .area-content-OV {
+        flex-direction: column;
+        height: 500px;
+        gap: 10px;
+        /* border: 1px red solid; */
+    }
+    .content-event-OV {
+        height: 140px;
+    }
+    .area-days-date-right {
+        height: 20px;
+    }
+    .date-month-right {
+        font-size: 18px;
+    }
+    .year-right {
+        font-size: 12px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .page-event-3 {
+        height: auto;
+    }
+    .area-programE {
+        margin: 0px 8px 0px 8px;
+    }
+    .title-programE {
+        font-size: 28px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE {
+        flex: 1 1 calc(50% - 10px);
+        height: 120px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .area-info-program {
+        gap: 5px;
+    }
+
+    .desk-program {
+        font-size: 8px;
+    }
+
+    .jam-program {
+        font-size: 10px;
+    }
+
+    .title-box-program {
+        font-size: 18px;
+    }
+
+    /* -------------- */
+    /* ------------------ */
+}
 @media (max-width: 320px) {
     .area-event {
         width: auto;

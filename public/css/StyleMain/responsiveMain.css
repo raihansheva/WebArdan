@@ -260,9 +260,6 @@
         padding: 0px 10px 10px 10px !important;
     }
 
-
-    
-
     .show {
         width: 120px;
     }
@@ -906,7 +903,7 @@
         /* position: fixed; */
     }
 
-    .icon-menu .bx-menu{
+    .icon-menu .bx-menu {
         display: none;
     }
 
@@ -1039,6 +1036,10 @@
 
     .area-partner {
         width: auto;
+        text-align: center;
+    }
+    .area-box-partner {
+        justify-content: center;
     }
 
     .text-partner {
@@ -1260,8 +1261,11 @@
 
     .area-partner {
         width: auto;
+        text-align: center;
     }
-
+    .area-box-partner {
+        justify-content: center;
+    }
     .text-partner {
         font-size: 1.6rem;
     }
@@ -1481,10 +1485,15 @@
 
     .area-partner {
         width: auto;
+        text-align: center;
     }
 
     .text-partner {
         font-size: 1.6rem;
+    }
+
+    .area-box-partner {
+        justify-content: center;
     }
 
     .partner {

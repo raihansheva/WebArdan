@@ -9,9 +9,12 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
@@ -32,8 +35,13 @@ class ArtisResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('nama'),
-                        Textarea::make('bio'),
+                        TextInput::make('nama')->label('Nama Artis :'),
+                        Select::make('kategori_info')
+                            ->label('Kategori Info :')
+                            ->options([
+                                'info_artis' => 'Info Artis', // key => value
+                            ])
+                            ->required(),
                         FileUpload::make('image_artis')
                             ->label('Artis Image :')
                             ->image()
@@ -42,6 +50,15 @@ class ArtisResource extends Resource
                             ->preserveFilenames(),
                         TextInput::make('judul_berita')
                             ->label('Judul Berita')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, string $state, Set $set) {
+                                $set('slug', Str::slug($state));
+                                $set('meta_title', $state);
+                            })
+                            ->required(),
+                        TextInput::make('slug')
+                            ->label('Slug :')
+                            ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
                             ->required(),
                         Textarea::make('ringkasan_berita')
                             ->label('Ringkasan Berita :')
@@ -71,6 +88,19 @@ class ArtisResource extends Resource
                             ->label('Konten Berita')
                             ->required()
                             ->columnSpan(2),
+                        TextInput::make('meta_title')
+                            ->label('Title Info :')
+                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
+                            ->maxLength(100)
+                            ->required(),
+                        Textarea::make('meta_description')
+                            ->label('Description Info :')
+                            ->placeholder('Masukan meta description')
+                            ->required(),
+                        TextInput::make('meta_keywords')
+                            ->label('Keyword :')
+                            ->placeholder('Masukan meta keyword')
+                            ->required(),
                     ])
                     ->columns(2),
             ]);
@@ -81,17 +111,21 @@ class ArtisResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama')->searchable()->sortable(),
-                TextColumn::make('bio'),
+                TextColumn::make('kategori_info'),
                 ImageColumn::make('image_artis'),
                 TextColumn::make('judul_berita'),
+                TextColumn::make('slug'),
                 TextColumn::make('ringkasan_berita'),
                 TextColumn::make('konten_berita')
-                ->formatStateUsing(function ($state) {
-                    return strip_tags($state); // Menghapus tag HTML
-                }),
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
                 TextColumn::make('publish_sekarang'),
                 TextColumn::make('tanggal_dibuat'),
                 TextColumn::make('tanggal_publikasi'),
+                TextColumn::make('meta_title'),
+                TextColumn::make('meta_description'),
+                TextColumn::make('meta_keywords'),
             ])
             ->filters([
                 //

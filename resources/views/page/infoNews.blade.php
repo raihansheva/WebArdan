@@ -61,19 +61,12 @@
                         <a class="link-box-info" href="/info-detail/{{ $infoList->slug }}">
                             <div class="box-info">
                                 <div class="area-image-info">
-                                    <img class="image-info" src="./storage/{{ $infoList->image_info }}"
-                                        alt="">
+                                    <img class="image-info" src="./storage/{{ $infoList->image_info }}" alt="">
                                 </div>
                                 <div class="line-info"></div>
                                 <div class="area-text-desk-info">
                                     <div class="area-tag">
-                                        @if (is_array($infoList->tag_info))
-                                            @foreach ($infoList->tag_info as $tag)
-                                                <p class="tag-info">#{{ $tag }}</p>
-                                            @endforeach
-                                        @else
-                                            <p class="tag-info">#-</p>
-                                        @endif
+                                        <p class="tag-info">{{ $infoList->tagInfo->nama_kategori }}</p>
                                     </div>
                                     <div class="area-text">
                                         <p class="desk-info">{{ $infoList->judul_info }}</p>
@@ -93,16 +86,16 @@
                 </div>
 
                 <div class="content-IN-kanan">
-                    {{-- <div class="area-news">
+                    <div class="area-news">
                         <div class="area-header-news">
-                            <h2 class="header-news">Tag Info</h2>
+                            <h2 class="header-news">Kategori Info</h2>
                         </div>
                         <div class="area-box-news">
                             @foreach ($taginfo as $tagInfoList)
                                 <div class="box-news">
-                                    <a href="/info-tag/{{ $tagInfoList->nama_tag }}">
+                                    <a href="/info-tag/{{ $tagInfoList->nama_kategori }}">
                                         <div class="area-tag-news">
-                                            <h3 class="tag-news">#{{ $tagInfoList->nama_tag }}</h3>
+                                            <h3 class="tag-news">#{{ $tagInfoList->nama_kategori }}</h3>
                                         </div>
                                         @if ($tagInfoList->info->isNotEmpty())
                                             <img class="image-news"
@@ -116,7 +109,7 @@
                             @endforeach
                         </div>
                         <div class="line-news"></div>
-                    </div> --}}
+                    </div>
                     <div class="area-streaming">
                         <div class="area-header-streaming">
                             <h2 class="title-streaming">Streaming</h2>
@@ -148,13 +141,7 @@
                                     </div>
                                     <div class="area-text-desk-top-info">
                                         <div class="area-tag">
-                                            @if (is_array($topInfoList->tag_info))
-                                                @foreach ($topInfoList->tag_info as $tag)
-                                                    <h2 class="tag-top-info">#{{ $tag }}</h2>
-                                                @endforeach
-                                            @else
-                                                <h2 class="tag-top-info">#-</h2>
-                                            @endif
+                                            <h2 class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</h2>
                                         </div>
                                         <div class="area-text">
                                             <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
@@ -240,9 +227,12 @@
                                     Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
                                 </p> --}}
-                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
+                                {{-- <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
                                     data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
-                                    onclick="showPopupArtis(this)">See More Details</span>
+                                    onclick="showPopupArtis(this)">See More Details</span> --}}
+                                <a href="/detail-info-artis/{{ $berita->slug }}">
+                                    <span class="see-more-news">See More Details</span>
+                                </a>
                             </div>
                         </div>
                     </div>

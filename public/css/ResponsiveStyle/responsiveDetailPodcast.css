@@ -143,7 +143,7 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .card-DP-B .view-DP-B {
@@ -169,8 +169,8 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 42.85%; /* 16:9 aspect ratio */
-        height: 0;
+        /* padding-bottom: 42.85%; */
+        height: 465px;
         overflow: hidden;
         width: 100%;
         background-color: black; /* Optional: background color if needed */
@@ -730,7 +730,7 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .card-DP-B .view-DP-B {
@@ -756,8 +756,8 @@
 
     .video-container {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
+        /* padding-bottom: 56.25%; */
+        height: 271px;
         overflow: hidden;
         width: 100%;
         background-color: black; /* Optional: background color if needed */
@@ -1239,7 +1239,7 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        height: 25px;
+        height: 15px;
         width: calc(26% - 2px);
         background-color: var(--secondary-color);
         border-radius: 12px;
@@ -1251,7 +1251,7 @@
     .text-watchP {
         color: rgb(48, 48, 48);
         font-family: "Poppins";
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .btn-play-DP {
@@ -1306,7 +1306,7 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .card-DP-B .view-DP-B {
@@ -1338,7 +1338,8 @@
         position: relative;
         width: 100%;
         height: fit-content;
-        padding-bottom: 65.25%; /* 16:9 aspect ratio */
+        /* padding-bottom: 65.25%; */
+        height: 282px;
         overflow: hidden;
     }
 
@@ -1824,10 +1825,10 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        height: 20px;
+        height: 15px;
         width: calc(25% - 2px);
         background-color: var(--secondary-color);
-        border-radius: 12px;
+        border-radius: 8px;
         padding: 10px;
         margin-top: 10px;
         cursor: pointer;
@@ -1836,7 +1837,7 @@
     .text-watchP {
         color: rgb(48, 48, 48);
         font-family: "Poppins";
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .btn-play-DP {
@@ -1886,7 +1887,7 @@
     .card-DP-footer {
         width: 100%;
         height: auto;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .card-DP-B .view-DP-B {
@@ -1915,8 +1916,8 @@
     .video-container {
         position: relative;
         width: 100%;
-        height: fit-content;
-        padding-bottom: 50.25%; /* 16:9 aspect ratio */
+        height: 190px;
+        /* padding-bottom: 50.25%; */
         overflow: hidden;
     }
 
@@ -2496,7 +2497,7 @@
         height: auto;
         display: flex;
         justify-content: start;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .card-DP-B .view-DP-B {
@@ -2504,7 +2505,7 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        height: 15px;
+        height: 12px;
         width: calc(25% - 2px);
         background-color: var(--secondary-color);
         border-radius: 8px;
@@ -2526,8 +2527,8 @@
     .video-container {
         position: relative;
         width: 100%;
-        height: fit-content;
-        padding-bottom: 52.25%; /* 16:9 aspect ratio */
+        height: 180px;
+        /* padding-bottom: 52.25%; */
         overflow: hidden;
     }
 
@@ -2961,6 +2962,630 @@
 
     /* -------------------- */
 }
+@media (max-width: 344px) {
+    .page-detail-1 {
+        height: auto;
+    }
+
+    .area-detail-podcast {
+        margin: 0px 8px 0px 8px;
+        /* border: 1px red solid; */
+        flex-direction: column;
+    }
+
+    .area-detail-kiri {
+        width: 100%;
+    }
+
+    .card-DP {
+        width: 100%;
+        /* background-color: darkgrey; */
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* height: 350px; */
+    }
+
+    .card-DP .card-DP-header {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP .card-DP-body {
+        /* width: 100%; */
+        height: 109px;
+        background-color: white;
+        padding: 30px;
+        overflow: hidden;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .card-DP .card-DP-header .DP-author {
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        width: 68%;
+        height: 50px;
+        display: flex;
+        background-color: white;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        cursor: pointer;
+        /* border: 1px black solid; */
+    }
+
+    .card-DP .card-DP-header .DP-author::before {
+        background-color: transparent;
+        border-top-left-radius: 20px;
+        box-shadow: -30px -30px 0 white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 50px;
+        width: 32%;
+        content: "";
+        cursor: pointer;
+        /* border: 1px black solid; */
+    }
+
+    .card-DP .card-DP-header .DP-view {
+        font-weight: 600;
+        color: rgb(238, 238, 238);
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 15px;
+        width: calc(27% - 2px);
+        background-color: var(--secondary-color);
+        border-radius: 8px;
+        padding: 8px;
+        margin-top: 10px;
+        cursor: pointer;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+    }
+
+    .text-watchP {
+        color: rgb(48, 48, 48);
+        font-family: "Poppins";
+        font-size: 8px;
+    }
+
+    .btn-play-DP {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        cursor: pointer;
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-play-DP span {
+        /* color: rgb(238, 238, 238); */
+        font-size: 22px;
+    }
+
+    /* card B */
+    .card-DP-B {
+        width: 100%;
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* border: 1px green solid; */
+        height: auto;
+    }
+
+    .card-DP-B .card-header-DP-B {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP-B .card-body-DP-B {
+        width: auto;
+        overflow: hidden;
+        display: flex;
+        gap: 12px;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP-footer {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: start;
+        margin-top: 10px;
+    }
+
+    .card-DP-B .view-DP-B {
+        font-weight: 600;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 15px;
+        width: calc(27% - 2px);
+        background-color: var(--secondary-color);
+        border-radius: 8px;
+        padding: 8px;
+        cursor: pointer;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        -ms-border-radius: 8px;
+        -o-border-radius: 8px;
+    }
+
+    .text-watchP-B {
+        font-family: "Poppins";
+        font-size: 8px;
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 169px;
+        /* padding-bottom: 58.25%; */
+        overflow: hidden;
+    }
+
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    /* ---------------------- */
+    /* animasi */
+    /* Kelas untuk menampilkan card dengan animasi */
+    .card-DP.show {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+        height: fit-content;
+    }
+    .card-DP-B.show {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+        height: auto;
+    }
+
+    /* Kelas untuk menyembunyikan card dengan animasi */
+    .card-DP.hide,
+    .card-DP-B.hide {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* content */
+    .content-detail-podcast {
+        margin-top: 20px;
+        flex-direction: column;
+    }
+
+    .content-detail-kiri {
+        width: 100%;
+    }
+
+    .line-detail-podcast {
+        margin: 20px 8px;
+    }
+
+    .area-header-DP {
+        gap: 10px;
+    }
+
+    .area-detail-genre {
+        width: 100px;
+        height: 100%;
+        /* border: 1px white solid; */
+    }
+
+    .detail-genre {
+        font-size: 14px;
+        padding: 4px 0px;
+        border-radius: 5px;
+    }
+
+    .detail-title {
+        font-size: 22px;
+    }
+
+    .area-desk-detail-podcast {
+        margin-top: 5px;
+        /* border: 1px red solid; */
+        height: 200px;
+    }
+
+    .desk-podcast {
+        font-size: 10px;
+        font-weight: 200;
+    }
+    /* ------------ */
+    /* area detail kanan */
+
+    .area-detail-kanan {
+        width: 100%;
+    }
+
+    .title-detail-kanan {
+        font-size: 26px;
+    }
+
+    .area-episodeP {
+        height: auto;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dua kolom */
+        gap: 10px;
+        width: 100%;
+    }
+
+    .card-episode {
+        margin-right: 0px;
+        padding: 10px 8px;
+        flex: 1 1 calc(50% - 10px);
+        margin-bottom: 0px;
+        display: none;
+    }
+
+    .card-episode.visible {
+        display: block;
+    }
+
+    .title-genre-episode {
+        font-size: 10px;
+        margin: 2px 10px;
+    }
+
+    .card-text-podcast-episode {
+        font-size: 18px;
+    }
+
+    .card-image-podcast-episode {
+        height: 100px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .area-see-more {
+        width: 100%;
+        height: fit-content;
+        display: block;
+        text-align: center;
+    }
+
+    .text-see-more {
+        font-size: 14px;
+        font-weight: 300;
+        font-family: "Poppins";
+        color: var(--secondary-color);
+    }
+    /* ---------------- */
+    /* area other podcast */
+
+    .area-content-OP {
+        padding: 0px 8px 0px 8px;
+        margin-top: 40px;
+        height: 450px;
+    }
+
+    .title-OP {
+        font-size: 26px;
+        padding: 25px 0px 5px 0px;
+    }
+
+    .content-OP {
+        margin-top: 5px;
+    }
+
+    .area-content-card-OP {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 0px;
+    }
+
+    .tombol-kiri-OP,
+    .tombol-kanan-OP {
+        height: 40px;
+        width: 40px;
+        top: 40;
+    }
+
+    .tombol-kanan-OP {
+        right: -15;
+    }
+
+    .tombol-kiri-OP {
+        left: -15;
+    }
+
+    .card-podcast {
+        flex: 1 0 100%; /* Membuat card mengambil 50% lebar, dengan margin antar card */
+        height: 330px;
+    }
+
+    .card-podcast .card-header-podcast {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-podcast .card-body-podcast {
+        /* width: 100%; */
+        height: 65%;
+        background-color: white;
+        padding: 30px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 15px;
+    }
+
+    .head-body-podcast {
+        width: 100%;
+        height: auto;
+        /* border: 1px black solid; */
+    }
+
+    .genre {
+        width: fit-content;
+        height: fit-content;
+        text-align: center;
+        border: 1px black solid;
+        border-radius: 5px;
+    }
+
+    .title-genre {
+        font-size: 14px;
+        font-family: "Bebas Neue";
+        font-weight: 200;
+        margin: 3px 20px;
+    }
+
+    .area-card-text {
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .card-text-podcast {
+        font-size: 28px;
+        margin: 0px;
+        font-weight: 200;
+        font-family: "Bebas Neue";
+    }
+
+    .card-image-podcast {
+        width: 100%;
+        height: 125px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+    }
+
+    .card-podcast .card-header-podcast .author-podcast {
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        width: 48%;
+        height: 50px;
+        display: flex;
+        background-color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        /* border: 1px black solid; */
+    }
+
+    .card-podcast .card-header-podcast .author-podcast::before {
+        background-color: transparent;
+        border-top-left-radius: 10px;
+        box-shadow: -30px -30px 0 white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 52px;
+        width: 52%;
+        content: "";
+        /* border: 1px black solid; */
+    }
+
+    .card-podcast .card-header-podcast .view-podcast {
+        font-weight: 600;
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 22px;
+        width: 82%;
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .link-podcast {
+        width: 48%;
+        /* border: 1px red solid; */
+        z-index: 10;
+        text-decoration: none;
+    }
+
+    .text-watch-podcast {
+        font-family: "Poppins";
+        font-size: 12px;
+    }
+    /* ------------------- */
+
+    /* area VNS */
+
+    .page-detail-3 {
+        height: auto;
+    }
+
+    .area-video-news-stream {
+        margin: 0px 8px 0px 8px;
+    }
+
+    .area-content-VNS {
+        gap: 20px;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+
+    /* content kiri */
+
+    .area-content-VNS-kiri {
+        width: 100%;
+        /* border: 1px green solid; */
+    }
+
+    .title-video {
+        font-size: 28px;
+    }
+
+    .content-kiri-video {
+        gap: 10px;
+        height: 500px;
+    }
+
+    .area-video-top,
+    .area-video-bottom {
+        gap: 10px;
+    }
+
+    .btn-play-video {
+        height: 35px;
+        width: 35px;
+    }
+
+    .btn-play-video span {
+        font-size: 26px;
+    }
+
+    .btn-play-video-mid {
+        width: 50px;
+        height: 50px;
+    }
+
+    .btn-play-video-mid span {
+        font-size: 30px;
+    }
+
+    .popup-content-yt {
+        width: 320px;
+        height: 180px;
+    }
+
+    /* --------------- */
+
+    /* content kanan */
+    .area-content-VNS-kanan {
+        width: 100%;
+        height: fit-content;
+        /* gap: 6px; */
+        /* border: 1px red solid; */
+    }
+
+    /* area news */
+
+    .content-news {
+        height: 80%;
+        /* border: 1px blue solid; */
+        gap: 4px;
+        margin-top: 0px;
+    }
+
+    .header-news {
+        text-align: start;
+    }
+
+    .title-news {
+        font-size: 26px;
+    }
+
+    .box-news {
+        height: auto;
+        padding: 5px;
+        gap: 4px;
+    }
+
+    .area-image {
+        height: 100%;
+        width: 35%;
+    }
+
+    .tag-top-info {
+        font-size: 12px;
+    }
+
+    .desk-top-info {
+        font-size: 10px;
+    }
+
+    .date-top-info {
+        font-size: 8px;
+    }
+    /* ------------ */
+
+    /* area content stream */
+
+    .content-streaming {
+        height: 85px;
+        /* border: 1px  red solid; */
+        margin-top: 0px;
+    }
+
+    .title-streaming {
+        padding-top: 10px;
+        font-size: 26px;
+    }
+
+    .box-streaming {
+        height: 100%;
+    }
+
+    .text-streaming {
+        font-size: 10px;
+        margin: 5px 10px;
+    }
+    /* ------------------- */
+    /* --------------- */
+
+    /* -------------------- */
+}
 @media (max-width: 320px) {
     .page-detail-1 {
         height: auto;
@@ -3046,7 +3671,7 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        height: 12px;
+        height: 15px;
         width: calc(27% - 2px);
         background-color: var(--secondary-color);
         border-radius: 8px;
@@ -3114,7 +3739,7 @@
         height: auto;
         display: flex;
         justify-content: start;
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .card-DP-B .view-DP-B {
@@ -3142,8 +3767,8 @@
     .video-container {
         position: relative;
         width: 100%;
-        height: fit-content;
-        padding-bottom: 58.25%; /* 16:9 aspect ratio */
+        height: 169px;
+        /* padding-bottom: 58.25%; */
         overflow: hidden;
     }
 

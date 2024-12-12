@@ -156,15 +156,47 @@
 
                 </div>
                 <div class="area-content-info">
+                    <div class="area-trending-info">
+                        <div class="header-trending-info">
+                            <h1 class="title-trending-info">Trending Info</h1>
+                        </div>
+                        <div class="content-trending-info">
+                            @foreach ($trending_info as $trendingInfoList)
+                                <a class="link-box-trending-info" href="/info-detail/{{ $trendingInfoList->slug }}">
+                                    <div class="box-trending-info">
+                                        {{-- <div class="area-image-trending-info">
+                                            <img class="image-trending-info" src="./storage/{{ $trendingInfoList->image_info }}"
+                                                alt="">
+                                        </div> --}}
+                                        <div class="line-trending-info"></div>
+                                        <div class="area-text-desk-trending-info">
+                                            <div class="area-tag">
+                                                <p class="tag-trending-info">
+                                                    {{ $trendingInfoList->tagInfo->nama_kategori }}</p>
+                                            </div>
+                                            <div class="area-text">
+                                                <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
+                                            </div>
+                                            <div class="area-date">
+                                                <p class="date-trending-info">
+                                                    {{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="header-info">
-                        <h1 class="title-info">More News</h1>
+                        <h1 class="title-info">Kategori Info</h1>
                     </div>
                     <div class="content-info">
                         @foreach ($kategoriInfo as $kategoriInfoList)
                             <div class="box-info">
                                 <a href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
                                     <div class="area-tag-info">
-                                        
+
                                         <h3 class="tag-info">#{{ $kategoriInfoList->nama_kategori }}</h3>
                                     </div>
                                     @if ($kategoriInfoList->info->isNotEmpty())
@@ -183,37 +215,6 @@
                             <a href="/info-news">
                                 <h1 class="title-bottom-info">Show more</h1>
                             </a>
-                        </div>
-                    </div>
-                    <div class="area-trending-info">
-                        <div class="header-trending-info">
-                            <h1 class="title-trending-info">Trending Info</h1>
-                        </div>
-                        <div class="content-trending-info">
-                            @foreach ($trending_info as $trendingInfoList)
-                                <a class="link-box-trending-info" href="/info-detail/{{ $trendingInfoList->slug }}">
-                                    <div class="box-trending-info">
-                                        {{-- <div class="area-image-trending-info">
-                                            <img class="image-trending-info" src="./storage/{{ $trendingInfoList->image_info }}"
-                                                alt="">
-                                        </div> --}}
-                                        <div class="line-trending-info"></div>
-                                        <div class="area-text-desk-trending-info">
-                                            <div class="area-tag">
-                                                <p class="tag-trending-info">{{ $trendingInfoList->tagInfo->nama_kategori }}</p>
-                                            </div>
-                                            <div class="area-text">
-                                                <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
-                                            </div>
-                                            <div class="area-date">
-                                                <p class="date-trending-info">
-                                                    {{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -787,7 +788,26 @@
                     @endforeach
                 </div>
             </div>
-
+            <div class="top-content-schedule-mobile">
+                <button id="prevDay" class="nav-button"><i class='bx bx-chevron-left'></i></button>
+                <p id="currentDay" class="schedule-day-mobile"></p>
+                <button id="nextDay" class="nav-button"><i class='bx bx-chevron-right'></i></i></button>
+            </div>
+            <div class="content-schedule-mobile">
+                @foreach ($schedule as $scheduleList)
+                    <div class="box-schedule-mobile hidden" data-day="{{ strtolower($scheduleList->hari) }}">
+                        <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}"
+                            alt="">
+                        <div class="area-bio-schedule">
+                            <div class="bio-schedule">
+                                <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
+                                <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} -
+                                    {{ $scheduleList->jam_selesai }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </section>
 

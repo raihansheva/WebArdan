@@ -11,11 +11,12 @@
     <link rel="icon" href="./storage/{{ \App\Helpers\Settings::get('site_icon', 'Default Site Title') }}">
     <title>@yield('title')</title>
     {{-- <title>{{ \App\Helpers\Settings::get('site_title', 'Default Site Title') }}</title> --}}
-    
+
     @stack('meta-seo')
     <link rel="stylesheet" href="css/StyleMain/main.css">
     <link rel="stylesheet" href="css/StyleMain/responsiveMain.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
 
@@ -346,7 +347,7 @@
     console.log("Current Path:", urlCek);
     if (!urlCek.includes("detail-podcast")) {
         document.addEventListener("DOMContentLoaded", () => {
-            const btnPlayStream = document.getElementById("BtnStream");
+            const btnPlayStream = document.querySelector(".btn-play-streaming");
             const audioPlayerContainer = document.querySelector(".audio-player-container");
 
             // Pastikan audio player tersembunyi di awal
@@ -368,21 +369,23 @@
             // Fungsi untuk mengatur visibilitas Audio Player
             function updateAudioPlayerVisibility() {
                 if (btnPlayStream) {
+                    console.log("BtnStream Found. Checking visibility...");
                     if (isElementInViewport(btnPlayStream)) {
-                        // Jika tombol Play Stream terlihat, sembunyikan Audio Player
+                        console.log("BtnStream is in viewport. Hiding audio player.");
                         audioPlayerContainer.style.opacity = "0";
                         audioPlayerContainer.style.visibility = "hidden";
                     } else {
-                        // Jika tombol Play Stream tidak terlihat, tampilkan Audio Player
+                        console.log("BtnStream is not in viewport. Showing audio player.");
                         audioPlayerContainer.style.opacity = "1";
                         audioPlayerContainer.style.visibility = "visible";
                     }
                 } else {
-                    // Jika tombol Play Stream tidak ada di halaman, tampilkan Audio Player
+                    console.log("BtnStream not found. Showing audio player.");
                     audioPlayerContainer.style.opacity = "1";
                     audioPlayerContainer.style.visibility = "visible";
                 }
             }
+
 
             // Panggil fungsi saat halaman dimuat
             updateAudioPlayerVisibility();

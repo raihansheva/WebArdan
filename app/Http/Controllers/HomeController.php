@@ -240,7 +240,7 @@ class HomeController extends Controller
     public function info()
     {
         $info = Info::all();
-        // $taginfo = TagInfo::with('info')->get();
+        $taginfo = TagInfo::with('info')->get();
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
         $artis = Artis::all();
@@ -251,7 +251,7 @@ class HomeController extends Controller
         return view('page.infoNews', [
             'bannerInfo' => $bannerI,
             'info' => $info,
-            // 'taginfo' => $taginfo,
+            'taginfo' => $taginfo,
             'top_info' => $topInfo,
             'event_upcoming' => $event_upcoming,
             'artis' => $artis,
@@ -287,7 +287,7 @@ class HomeController extends Controller
     public function detailInfo($slug)
     {
         $info = Info::where('slug', $slug)->first();
-        // $taginfo = TagInfo::with('info')->get();
+        $kategoriInfo = TagInfo::with('info')->get();
         // dd($info->tag_info);
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $TrendingInfo = Info::all();
@@ -301,6 +301,7 @@ class HomeController extends Controller
         return view('page.detailInfo', [
             'bannerInfo' => $bannerI,
             'info' => $info,
+            'kategoriInfo' => $kategoriInfo,
             'trending_info' => $TrendingInfo,
             'top_info' => $topInfo,
             'event_upcoming' => $event_upcoming,
@@ -329,6 +330,34 @@ class HomeController extends Controller
         ]);
     }
 
+
+    public function detailInfoArtis($slug)
+    {
+        // $info = Info::where('slug', $slug)->first();
+        $kategoriInfo = TagInfo::with('info')->get();
+        // dd($info->tag_info);
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $TrendingInfo = Info::all();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::where('slug', $slug)->first();
+        $artisO = Artis::all();
+        $bannerI = BannerInfo::all();
+        $stream = Streaming::where('status', 'streaming')->first();
+
+        // dd($info);
+
+        return view('page.detailInfoArtis', [
+            'bannerInfo' => $bannerI,
+            // 'info' => $info,
+            'kategoriInfo' => $kategoriInfo,
+            'trending_info' => $TrendingInfo,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
+            'artisO' => $artisO,
+            'stream' => $stream
+        ]);
+    }
 
 
     public function create()

@@ -50,7 +50,7 @@
                 <div class="content-IN-kanan">
                     <div class="area-news">
                         <div class="area-header-news">
-                            <h2 class="header-news">Tag Info</h2>
+                            <h2 class="header-news">Kategori Info</h2>
                         </div>
                         <div class="area-box-news">
                             @foreach ($taginfo as $tagInfoList)

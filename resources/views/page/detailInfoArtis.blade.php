@@ -2,16 +2,16 @@
 <base href="{{ url('/') }}/">
 
 @push('meta-seo')
-    <meta name="description" content="{{ $info->meta_description }}">
-    <meta name="keyword" content="{{ $info->meta_keywords }}">
+    <meta name="description" content="{{ $artis->meta_description }}">
+    <meta name="keyword" content="{{ $artis->meta_keywords }}">
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/detailInfo.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfo.css">
+    <link rel="stylesheet" href="css/StyleContent/detailInfoArtis.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfoArtis.css">
 @endpush
 
-@section('title',  $info->meta_title)
+@section('title', $artis->meta_title)
 @section('content')
     {{-- <section class="page-news-1">
         <div class="header-info-news">
@@ -33,28 +33,28 @@
                             <h2 class="url-info">
                                 <a class="link-url-info" href="{{ url('/') }}">Home</a> >
                                 {{ str_replace('-', ' ', request()->segment(1)) }} >
-                                {{ str_replace('-', ' ', $info->slug) }}
+                                {{ str_replace('-', ' ', $artis->slug) }}
                             </h2>
                         </div>
                         <div class="area-span-info">
-                            <p class="text-span-info">{{ $info->tagInfo->nama_kategori }}</p>
+                            <p class="text-span-info">{{ $artis->kategori_info }}</p>
                         </div>
                         <div class="area-title-info">
-                            <h2 class="title-info">{{ $info->judul_info }}</h2>
+                            <h2 class="title-info">{{ $artis->judul_berita }}</h2>
                         </div>
                         <div class="area-date-info">
                             <p class="date-info">
-                                {{ \Carbon\Carbon::parse($info->date_info)->translatedFormat('l, d F Y') }}
+                                {{ \Carbon\Carbon::parse($artis->tanggal_dibuat)->translatedFormat('l, d F Y') }}
                             </p>
                         </div>
                         <div class="area-image-info">
-                            <img class="image-info" src="../storage/{{ $info->image_info }}" alt="">
+                            <img class="image-info" src="../storage/{{ $artis->image_artis }}" alt="">
                         </div>
                         <div class="area-desk-info">
-                            {!! str($info->deskripsi_info)->sanitizeHtml() !!}
+                            {!! str($artis->konten_berita)->sanitizeHtml() !!}
                         </div>
 
-                        <div class="area-tagar-info">
+                        {{-- <div class="area-tagar-info">
                             <div class="header-tagar">
                                 <h2 class="text-header-tagar">Tags</h2>
                             </div>
@@ -67,39 +67,68 @@
                                     <h2 class="tagar-info">#-</h2>
                                 @endif
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="line-detail-info"></div>
-                    <div class="area-trending-info">
-                        <div class="header-trending-info">
-                            <h1 class="title-trending-info">Trending Info</h1>
+                    <div class="area-info-artis">
+                        <div class="header-info-artis">
+                            <h2 class="title-info-artis">Info Artis Lainnya</h2>
                         </div>
-                        <div class="content-trending-info">
-                            @foreach ($trending_info as $trendingInfoList)
-                                <a class="link-box-trending-info" href="/info-detail/{{ $trendingInfoList->slug }}">
-                                    <div class="box-trending-info">
-                                        <div class="area-image-trending-info">
-                                            <img class="image-trending-info"
-                                                src="./storage/{{ $trendingInfoList->image_info }}" alt="">
-                                        </div>
-                                        <div class="line-trending-info"></div>
-                                        <div class="area-text-desk-trending-info">
-                                            <div class="area-tag">
-                                                <h2 class="tag-trending-info">{{ $trendingInfoList->tagInfo->nama_kategori }}</h2>
-                                            </div>
-                                            <div class="area-text">
-                                                <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
-                                            </div>
-                                            <div class="area-date">
-                                                <p class="date-trending-info">
-                                                    {{ \Carbon\Carbon::parse($trendingInfoList->date_info)->translatedFormat('l, d F Y') }}
-                                                </p>
-                                            </div>
+                        <div class="area-box-info-artis">
+                            @foreach ($artisO as $beritaO)
+                                <div class="box-artis">
+                                    <div class="area-image-artis">
+                                        <img class="image-artis" src="./storage/{{ $beritaO->image_artis }}" alt="">
+                                        <div class="area-header-artis">
+                                            <h2 class="name-artis">{{ $beritaO->nama_artis }}</h2>
                                         </div>
                                     </div>
-                                </a>
+                                    <div class="area-bio-artis">
+                                        <div class="area-judul-berita">
+                                            <p class="judul-berita">{{ $beritaO->judul_berita }}</p>
+                                        </div>
+                                        <div class="area-konten-berita">
+                                            <p class="desk-berita">{{ strip_tags($beritaO->ringkasan_berita) }}</p>
+                                            {{-- <p class="desk-berita">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                                Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
+                                                Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                            </p> --}}
+                                            {{-- <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
+                                                data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
+                                                onclick="showPopupArtis(this)">See More Details</span> --}}
+                                            <a href="/detail-info-artis/{{ $beritaO->slug }}">
+                                                <span class="see-more-news">See More Details</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
+                            <div id="popupArtis" class="popup-artis" onclick="closePopupOutsideArtis(event)">
+                                <div class="popup-content-artis">
+                                    <span class="close" onclick="closePopupArtis()">&times;</span>
+                                    <div class="popUp-area-info-artis">
+                                        <div class="area-popup-header">
+                                            <h2 class="header-popup-artis">#Info Artis</h2>
+                                        </div>
+                                        <div class="area-judul-berita">
+                                            <p class="popUp-judul-berita"></p>
+                                        </div>
+                                        <div class="popUP-area-konten-berita" id="style-popUp-scroll">
+                                            <p class="popUp-desk-berita"></p>
+                                            {{-- <p class="desk-berita">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                                Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
+                                                Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                            </p> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="line-info-artis"></div>
                     </div>
 
                 </div>
@@ -224,63 +253,7 @@
         </div>
     </section>
     <section class="page-news-3">
-        <div class="area-info-artis">
-            <div class="header-info-artis">
-                <h2 class="title-info-artis">Info Artis</h2>
-            </div>
-            <div class="area-box-info-artis">
-                @foreach ($artis as $berita)
-                    <div class="box-artis">
-                        <div class="area-image-artis">
-                            <img class="image-artis" src="./storage/{{ $berita->image_artis }}" alt="">
-                            <div class="area-header-artis">
-                                <h2 class="name-artis">{{ $berita->nama }}</h2>
-                            </div>
-                        </div>
-                        <div class="area-bio-artis">
-                            <div class="area-judul-berita">
-                                <p class="judul-berita">{{ $berita->judul_berita }}</p>
-                            </div>
-                            <div class="area-konten-berita">
-                                <p class="desk-berita">{{ strip_tags($berita->ringkasan_berita) }}</p>
-                                {{-- <p class="desk-berita">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
-                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                </p> --}}
-                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
-                                    data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
-                                    onclick="showPopupArtis(this)">See More Details</span>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                <div id="popupArtis" class="popup-artis" onclick="closePopupOutsideArtis(event)">
-                    <div class="popup-content-artis">
-                        <span class="close" onclick="closePopupArtis()">&times;</span>
-                        <div class="popUp-area-info-artis">
-                            <div class="area-popup-header">
-                                <h2 class="header-popup-artis">#Info Artis</h2>
-                            </div>
-                            <div class="area-judul-berita">
-                                <p class="popUp-judul-berita"></p>
-                            </div>
-                            <div class="popUP-area-konten-berita" id="style-popUp-scroll">
-                                <p class="popUp-desk-berita"></p>
-                                {{-- <p class="desk-berita">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
-                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                </p> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="line-info-artis"></div>
-        </div>
+        
     </section>
-    <script src="js/infoNews.js"></script>
+    <script src="js/infoArtis.js"></script>
 @endsection
