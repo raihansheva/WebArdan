@@ -187,8 +187,9 @@
                                 <div class="box-event"
                                     style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                                     onclick="showPopupEvent(this)"
-                                    data-description="{{ $eventUpcomingList->deskripsi_event }}"
-                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
+                                    data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
+                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
+                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">
@@ -206,7 +207,7 @@
                                 <div class="area-info-event">
                                     <p class="desk-event"></p>
                                     <h2 class="title-box-event"></h2>
-                                    <a href="/event">
+                                    <a href="#" class="detail-link">
                                         <p class="link-event">See detail</p>
                                     </a>
                                 </div>
@@ -249,9 +250,9 @@
                                     Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
                                 </p> --}}
-                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
-                                    data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
-                                    onclick="showPopupArtis(this)">See More Details</span>
+                                <a href="/detail-info-artis/{{ $berita->slug }}">
+                                    <span class="see-more-news">See More Details</span>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,8 @@
                     <div class="content-event-CD" onclick="showPopupEvent(this)"
                         data-description="{{ $eventSoonList->deskripsi_event }}"
                         data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
-                        style="background-image: url('./storage/{{ $eventSoonList->image_event }}')">
+                        style="background-image: url('./storage/{{ $eventSoonList->image_event }}')"
+                        data-slug="{{ $eventSoonList->slug }}" data-deskShort="{{ $eventSoonList->deskripsi_event }}">
                     </div>
                     <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
                     <div class="area-countdown">
@@ -63,7 +64,7 @@
             <div class="area-info-event">
                 <p class="desk-event"></p>
                 <h2 class="title-box-event"></h2>
-                <a href="/event">
+                <a href="#" class="detail-link">
                     <p class="link-event">See detail</p>
                 </a>
             </div>
@@ -79,7 +80,9 @@
                     <div class="content-event-OV"
                         style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                         onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_event }}"
-                        data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
+                        data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
+                        data-slug="{{ $eventUpcomingList->slug }}"
+                        data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
                         <div class="area-days-date-right">
                             <div class="content-days-date-right">
                                 <div class="box-days-date-right">
@@ -104,8 +107,10 @@
                 @foreach ($program as $programList)
                     <div class="box-programE" style="background-image: url('./storage/{{ $programList->image_program }}') "
                         class="box-program" data-title="{{ $programList->judul_program }}"
-                        data-description="{{ $programList->deskripsi_program }}"
-                        data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}" onclick="showPopup(this)"></div>
+                        data-description="{{ $programList->deskripsi_pendek }}"
+                        data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
+                        data-slugP="{{ $programList->slug }}" data-deskP="{{ $programList->deskripsi_program }}"
+                        onclick="showPopup(this)"></div>
                 @endforeach
             </div>
         </div>
@@ -115,7 +120,10 @@
                 <div class="area-info-program">
                     <p class="desk-program">Program Description</p> <!-- Pastikan elemen ini ada -->
                     <h2 class="title-box-program">Program Title</h2> <!-- Pastikan elemen ini ada -->
-                    <p class="jam-program">Program Time</p> <!-- Pastikan elemen ini ada -->
+                    <p class="jam-program">Program Time</p> 
+                    <a href="#" class="detail-link-program">
+                        <p class="link-program">See detail</p>
+                    </a>
                 </div>
             </div>
         </div>

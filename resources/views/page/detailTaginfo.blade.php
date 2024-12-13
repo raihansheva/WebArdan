@@ -127,8 +127,9 @@
                                 <div class="box-event"
                                     style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                                     onclick="showPopupEvent(this)"
-                                    data-description="{{ $eventUpcomingList->deskripsi_event }}"
-                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
+                                    data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
+                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
+                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">
@@ -146,7 +147,7 @@
                                 <div class="area-info-event">
                                     <p class="desk-event"></p>
                                     <h2 class="title-box-event"></h2>
-                                    <a href="/event">
+                                    <a href="#" class="detail-link">
                                         <p class="link-event">See detail</p>
                                     </a>
                                 </div>

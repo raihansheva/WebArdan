@@ -7,15 +7,17 @@ use App\Models\Program;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-
+use Illuminate\Support\Str;
 class ProgramResource extends Resource
 {
     protected static ?string $model = Program::class;
@@ -32,8 +34,16 @@ class ProgramResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('text_header')->label('Text Header :')->required(),
-                        TextInput::make('judul_program')->label('Nama Program :')->required(),
+                        TextInput::make('judul_program')->label('Nama Program :')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, string $state, Set $set) {
+                                $set('slug', Str::slug($state));
+                                $set('meta_title', $state);
+                            })->required(),
+                        Textarea::make('deskripsi_pendek')->label('Deskripsi Singkat :')->required(),
+                        TextInput::make('slug')->label('Slug :')
+                        ->readOnly()
+                        ->required(),
                         FileUpload::make('image_program')
                             ->label('Program Image :')
                             ->image()
@@ -54,8 +64,10 @@ class ProgramResource extends Resource
                             ->rule('after:jam_mulai'),
                         RichEditor::make('deskripsi_program')
                             ->label('Deskripsi Program :')
-                            ->required()
                             ->columnSpan(2),
+                        Textarea::make('meta_title')->label('Meta Title :')->required(),
+                        Textarea::make('meta_description')->label('Meta Description :')->required(),
+                        Textarea::make('meta_keywords')->label('Meta Keywords :')->required(),
 
                     ])
                     ->columns(2),
@@ -66,17 +78,21 @@ class ProgramResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('text_header'),
                 TextColumn::make('judul_program')->searchable()->sortable(),
+                TextColumn::make('deskripsi_pendek'),
                 TextColumn::make('deskripsi_program')
-                    ->formatStateUsing(function ($state) {
-                        return strip_tags($state); // Menghapus tag HTML
-                    }),
+                ->formatStateUsing(function ($state) {
+                    return strip_tags($state); // Menghapus tag HTML
+                }),
+                TextColumn::make('slug'),
                 TextColumn::make('jam_mulai')
-                    ->label('Jam Mulai'),
+                ->label('Jam Mulai'),
                 TextColumn::make('jam_selesai')
-                    ->label('Jam Selesai'),
+                ->label('Jam Selesai'),
                 ImageColumn::make('image_program'),
+                TextColumn::make('meta_title'),
+                TextColumn::make('meta_description'),
+                TextColumn::make('meta_keywords')
             ])
             ->filters([
                 //

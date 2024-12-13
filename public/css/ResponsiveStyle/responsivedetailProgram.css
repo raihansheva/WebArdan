@@ -1,4 +1,3 @@
-
 @media (min-width: 1920px) {
     /* page news 1 */
     .header-info-news {
@@ -13,11 +12,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 128px 0px 128px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         gap: 15px;
     }
 
@@ -38,70 +37,89 @@
         height: 45%;
     } */
 
-    .link-url-info {
+    .link-url-detail-program {
         font-size: 20px;
     }
 
-    .url-info {
+    .url-detail-program {
         font-size: 20px;
     }
 
-    .text-span-info {
-        font-size: 24px;
+    .text-span-detail-program {
+        font-size: 20px;
     }
 
-    .title-info {
+    .title-detail-program {
         font-size: 40px;
     }
 
-    .date-info {
+    .date-detail-program {
         font-size: 20px;
     }
 
-    .area-image-info {
+    .area-image-detail-program {
         height: 450px;
         font-size: 20px;
     }
 
-    .area-desk-info{
+    .area-desk-detail-program {
         font-size: 20px;
     }
 
-    .desk-info {
+    .desk-detail-program {
         font-size: 24px;
     }
 
-    .text-header-tagar {
+    .text-header-ticket-event {
         font-size: 30px;
     }
 
-    .tagar-info {
+    .text-ticket {
         font-size: 22px;
     }
 
-    /* area trending info */
-    .box-trending-info {
-        max-height: 350px;
-        padding: 20px;
+    /* area program page event */
+    .area-programE {
+        /* margin: 0px 128px 0px 128px; */
+        padding-bottom: 60px;
+    }
+    .title-programE {
+        font-size: 38px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 15px;
+    }
+    .box-programE {
+        flex: 1 1 calc(25% - 15px);
+        height: 260px;
+    }
+    /* pop up program */
+
+    .popup-content {
+        width: 850px;
+        height: 400px;
+        padding: 50px;
     }
 
-    .title-trending-info {
-        font-size: 46px;
+    .desk-program {
+        font-size: 26px;
     }
 
-    .tag-trending-info {
+    .jam-program {
         font-size: 24px;
     }
 
-    .desk-trending-info {
-        font-size: 20px;
-        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    .title-box-program {
+        font-size: 34px;
     }
 
-    .date-trending-info {
-        font-size: 18px;
+    .link-program{
+        font-size: 20px;
     }
-    /* ------------------ */
+
+
+    /* -------------- */
     /* ------------ */
 
     /* content kanan */
@@ -196,7 +214,7 @@
         padding: 15px;
     }
 
-    .area-top-image{
+    .area-top-image {
         width: 40%;
     }
 
@@ -277,7 +295,7 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 0px 20px 0px;
+        margin: 0px 128px 20px 128px;
     }
 
     .title-info-artis {
@@ -293,8 +311,8 @@
     }
 
     .box-artis {
-        flex: 1 1 calc(33.33% - 15px);
-        max-width: calc(33.33% - 15px);
+        flex: 1 1 calc(33.33% - 12px);
+        max-width: calc(33.33% - 12px);
         height: fit-content;
     }
 
@@ -307,11 +325,11 @@
     }
 
     .area-header-artis {
-        height: 150px;
+        height: 40%;
     }
 
     .area-image-artis {
-        height: 230px;
+        height: 240px;
     }
 
     .name-artis {
@@ -323,15 +341,20 @@
     }
 
     .judul-berita {
-        font-size: 30px;
+        font-size: 32px;
     }
 
     .desk-berita {
-        font-size: 18px;
+        font-size: 20px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .see-more-news {
-        font-size: 16px;
+        font-size: 22px;
     }
 
     .popup-content-artis {
@@ -379,11 +402,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 32px 0px 32px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         gap: 35px;
     }
 
@@ -392,64 +415,84 @@
         width: 65%;
     }
 
-    .link-url-info {
+    .link-url-detail-program {
         font-size: 12px;
     }
 
-    .url-info {
+    .url-detail-program {
         font-size: 12px;
     }
 
-    .text-span-info {
+    .text-span-detail-program {
         font-size: 13px;
     }
 
-    .title-info {
+    .title-detail-program {
         font-size: 30px;
     }
 
-    .date-info {
+    .date-detail-program {
         font-size: 14px;
     }
 
-    .area-image-info {
+    .area-image-detail-program {
         height: 280px;
     }
 
-    .area-desk-info {
+    .area-desk-detail-program {
         font-size: 12px;
     }
 
-    .desk-info {
+    .desk-detail-program {
         font-size: 12px;
     }
 
-    .text-header-tagar {
-        font-size: 22px;
+    /* area program page event */
+    .area-programE {
+        /* margin: 0px 32px 0px 32px; */
+        padding-bottom: 30px;
+    }
+    .title-programE {
+        font-size: 34px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .box-programE {
+        flex: 1 1 calc(25% - 10px);
+        height: 145px;
+    }
+    /* pop up program */
+
+    .popup-content {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
     }
 
-    .tagar-info {
-        font-size: 12px;
+    .area-info-program {
+        gap: 4px;
     }
 
-    /* area trending info */
-
-    .title-trending-info {
-        font-size: 28px;
-    }
-
-    .tag-trending-info {
+    .desk-program {
         font-size: 16px;
     }
 
-    .desk-trending-info {
-        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    .jam-program {
+        font-size: 14px;
     }
 
-    .date-trending-info {
-        font-size: 10px;
+    .title-box-program {
+        font-size: 28px;
     }
-    /* ------------------ */
+
+    .link-program{
+        font-size: 18px;
+    }
+
+
+    /* -------------- */
 
     /* ------------ */
 
@@ -616,11 +659,11 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 0px 20px 0px;
+        margin: 0px 32px 20px 32px;
     }
 
     .title-info-artis {
-        font-size: 36px;
+        font-size: 40px;
     }
 
     /* area box */
@@ -632,8 +675,8 @@
     }
 
     .box-artis {
-        flex: 1 1 calc(33.33% - 10px);
-        max-width: calc(33.33% - 10px);
+        flex: 1 1 calc(33.33% - 15px);
+        max-width: calc(33.33% - 15px);
         height: auto;
     }
 
@@ -646,7 +689,7 @@
     }
 
     .area-image-artis {
-        height: 125px;
+        height: 160px;
     }
 
     .name-artis {
@@ -658,9 +701,8 @@
     }
 
     .desk-berita {
-        font-size: 11px;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
+        font-size: 13px;
+        -webkit-line-clamp: 4; /* Membatasi 3 baris */
         -webkit-box-orient: vertical;
         overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
         text-overflow: ellipsis;
@@ -706,11 +748,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 20px 0px 20px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         gap: 20px;
     }
 
@@ -719,68 +761,84 @@
         width: 60%;
     }
 
-    .link-url-info {
+    .link-url-detail-program {
         font-size: 10px;
     }
 
-    .url-info {
+    .url-detail-program {
         font-size: 10px;
     }
 
-    .text-span-info {
+    .text-span-detail-program {
         font-size: 11px;
     }
 
-    .title-info {
+    .title-detail-program {
         font-size: 24px;
     }
 
-    .date-info {
+    .date-detail-program {
         font-size: 12px;
     }
 
-    .area-image-info {
+    .area-image-detail-program {
         height: 240px;
     }
 
-    .area-desk-info {
+    .area-desk-detail-program {
         font-size: 12px;
     }
 
-    .desk-info {
+    .desk-detail-program {
+        font-size: 12px;
+    }
+    /* ----------------- */
+
+    .area-programE {
+        /* margin: 0px 20px 0px 20px; */
+        padding-bottom: 30px;
+    }
+    .title-programE {
+        font-size: 30px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 10px;
+        margin-bottom: 60px;
+    }
+    .box-programE {
+        flex: 1 1 calc(50% - 10px);
+        height: 170px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 400px;
+        height: 180px;
+        padding: 25px;
+    }
+
+    .area-info-program {
+        gap: 3px;
+    }
+
+    .desk-program {
+        font-size: 14px;
+    }
+
+    .jam-program {
         font-size: 12px;
     }
 
-    .text-header-tagar {
-        font-size: 18px;
-    }
-
-    .tagar-info {
-        font-size: 12px;
-    }
-
-    /* area trending info */
-
-    .title-trending-info {
+    .title-box-program {
         font-size: 26px;
     }
 
-    .link-box-trending-info {
-        width: calc(50% - 10px);
-    }
-
-    .tag-trending-info {
+    .link-program{
         font-size: 16px;
     }
 
-    .desk-trending-info {
-        -webkit-line-clamp: 2; /* Membatasi 3 baris */
-    }
 
-    .date-trending-info {
-        font-size: 10px;
-    }
-    /* ------------------ */
+    /* -------------- */
 
     /* ------------ */
 
@@ -866,6 +924,8 @@
 
     /* area event */
 
+    /* area event */
+
     .title-event {
         font-size: 26px;
     }
@@ -932,7 +992,7 @@
     /* page news 3 */
 
     .area-info-artis {
-        margin: 0px 0px 20px 0px;
+        margin: 0px 20px 20px 20px;
     }
 
     .title-info-artis {
@@ -942,14 +1002,14 @@
     /* area box */
 
     .area-box-info-artis {
-        margin-top: 10px;
+        margin-top: 15px;
         /* border: 1px red solid; */
         gap: 15px;
     }
 
     .box-artis {
-        flex: 1 1 calc(50% - 8px);
-        max-width: calc(50% - 8px);
+        flex: 1 1 calc(33.333% - 15px);
+        max-width: calc(33.333% - 15px);
         height: auto;
     }
 
@@ -962,7 +1022,7 @@
     }
 
     .area-image-artis {
-        height: 125px;
+        height: 120px;
     }
 
     .area-header-artis {
@@ -980,7 +1040,7 @@
     .desk-berita {
         font-size: 11px;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 4; /* Membatasi 3 baris */
         -webkit-box-orient: vertical;
         overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
         text-overflow: ellipsis;
@@ -1037,11 +1097,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 8px 0px 8px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         flex-direction: column;
         gap: 35px;
         margin-top: 0px;
@@ -1075,27 +1135,36 @@
         height: 30%;
     }
 
-    .area-info {
+    .link-url-detail-program,
+    .url-detail-program {
+        font-size: 12px;
+    }
+
+    .area-detail-program {
         margin-top: 15px;
     }
 
-    .tagar-info {
-        font-size: 22px;
+    .text-ticket {
+        font-size: 14px;
     }
 
-    .title-info {
+    .text-header-ticket-program {
+        font-size: 16px;
+    }
+
+    .title-detail-program {
         font-size: 28px;
     }
 
-    .area-desk-info {
+    .area-desk-detail-program {
         font-size: 14px;
     }
 
-    .desk-info {
+    .desk-detail-program {
         font-size: 14px;
     }
 
-    .date-info {
+    .date-detail-program {
         font-size: 13px;
     }
 
@@ -1136,7 +1205,49 @@
         background-color: var(--primary-color);
         /* cursor: pointer; */
     }
+    /* area program O */
+    .title-programE {
+        font-size: 28px;
+    }
+    .content-programE {
+        margin-top: 8px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE {
+        flex: 1 1 calc(50% - 10px);
+        height: 150px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
 
+    .area-info-program {
+        gap: 2px;
+    }
+
+    .desk-program {
+        font-size: 8px;
+    }
+
+    .jam-program {
+        font-size: 10px;
+    }
+
+    .title-box-program {
+        font-size: 18px;
+    }
+
+    .link-program{
+        font-size: 10px;
+    }
+
+
+    /* -------------- */
     /* content kanan */
     .content-IN-kanan {
         width: 100%;
@@ -1299,13 +1410,13 @@
     .area-box-info-artis {
         margin-top: 15px;
         /* border: 1px red solid; */
-        gap: 15px;
+        gap: 10px;
     }
 
     .box-artis {
-        flex: 1 1 calc(50% - 15px);
-        max-width: calc(50% - 10px);
-        height: auto;
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 5px);
+        height: fit-content;
     }
 
     .nama {
@@ -1321,7 +1432,7 @@
     }
 
     .area-header-artis {
-        height: 35%;
+        height: 100px;
     }
 
     .name-artis {
@@ -1330,12 +1441,17 @@
 
     .judul-berita {
         font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; /* Membatasi 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+        text-overflow: ellipsis;
     }
 
     .desk-berita {
         font-size: 9px;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4; /* Membatasi 3 baris */
         -webkit-box-orient: vertical;
         overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
         text-overflow: ellipsis;
@@ -1388,11 +1504,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 8px 0px 8px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         flex-direction: column;
         gap: 35px;
         margin-top: 0px;
@@ -1426,27 +1542,35 @@
         height: 30%;
     }
 
-    .area-info {
+    .area-detail-program {
         margin-top: 15px;
     }
 
-    .tagar-info {
-        font-size: 22px;
+    .link-url-detail-program,
+    .url-detail-program {
+        font-size: 12px;
     }
 
-    .title-info {
+    .text-header-ticket-event {
+        font-size: 16px;
+    }
+
+    .text-ticket {
+        font-size: 12px;
+    }
+    .title-detail-program {
         font-size: 28px;
     }
 
-    .area-desk-info {
-        font-size: 14px;
+    .area-desk-detail-program {
+        font-size: 12px;
     }
 
-    .desk-info {
-        font-size: 14px;
+    .desk-detail-program {
+        font-size: 12px;
     }
 
-    .date-info {
+    .date-detail-program {
         font-size: 13px;
     }
 
@@ -1458,33 +1582,49 @@
         /* padding-top: 20px; */
         font-size: 16px;
     }
-
-    /* area trending info */
-    .title-trending-info {
-        font-size: 26px;
+    /* area program o */
+    .title-programE {
+        font-size: 28px;
+    }
+    .content-programE {
+        margin-top: 6px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE {
+        flex: 1 1 calc(50% - 10px);
+        height: 150px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
     }
 
-    .link-box-trending-info {
-        width: calc(50% - 10px);
+    .area-info-program {
+        gap: 2px;
     }
 
-    .box-trending-info {
-        max-height: 240px;
+    .desk-program {
+        font-size: 8px;
     }
 
-    .tag-trending-info {
-        font-size: 14px;
-    }
-
-    .desk-trending-info {
-        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    .jam-program {
         font-size: 10px;
     }
 
-    .date-trending-info {
-        font-size: 8px;
+    .title-box-program {
+        font-size: 18px;
     }
-    /* ------------ */
+
+    .link-program{
+        font-size: 10px;
+    }
+
+
+    /* -------------- */
 
     #style-3::-webkit-scrollbar-track {
         border-radius: 15px;
@@ -1681,7 +1821,7 @@
     .box-artis {
         flex: 1 1 calc(50% - 15px);
         max-width: calc(50% - 10px);
-        /* height: auto; */
+        height: fit-content;
     }
 
     .nama {
@@ -1693,7 +1833,7 @@
     }
 
     .area-image-artis {
-        height: 90px;
+        height: 80px;
     }
 
     .area-header-artis {
@@ -1711,7 +1851,7 @@
     .desk-berita {
         font-size: 9px;
         display: -webkit-box;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 3; /* Membatasi 3 baris */
         -webkit-box-orient: vertical;
         overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
         text-overflow: ellipsis;
@@ -1764,11 +1904,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 8px 0px 8px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         flex-direction: column;
         gap: 35px;
         margin-top: 0px;
@@ -1781,78 +1921,85 @@
         overflow-y: hidden;
     }
 
-    .link-url-info {
+    .link-url-detail-program,
+    .url-detail-program {
+        font-size: 10px;
+    }
+
+    .text-span-detail-program {
         font-size: 8px;
     }
 
-    .url-info {
-        font-size: 8px;
-    }
-
-    .text-span-info {
-        font-size: 11px;
-    }
-
-    .title-info {
+    .title-detail-program {
         font-size: 24px;
     }
 
-    .date-info {
+    .date-detail-program {
         font-size: 12px;
     }
 
-    .area-image-info {
+    .area-image-detail-program {
         height: 240px;
     }
 
-    .area-desk-info {
+    .area-desk-detail-program {
+        font-size: 10px;
+    }
+
+    .desk-detail-program {
         font-size: 12px;
     }
 
-    .desk-info {
-        font-size: 12px;
-    }
-
-    .text-header-tagar {
+    .text-header-ticket-event {
         font-size: 16px;
     }
 
-    .tagar-info {
+    .text-ticket {
         font-size: 12px;
     }
 
     /* area trending info */
-    .title-trending-info {
-        font-size: 26px;
+    .title-programE {
+        font-size: 28px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE {
+        flex: 1 1 calc(50% - 10px);
+        height: 120px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
     }
 
-    .link-box-trending-info {
-        width: calc(50% - 10px);
+    .area-info-program {
+        gap: 2px;
     }
 
-    .box-trending-info {
-        max-height: 220px;
-        padding: 6px;
+    .desk-program {
+        font-size: 8px;
     }
 
-    .image-trending-info {
-        height: 40%;
-        border-radius: 10px;
-    }
-
-    .tag-trending-info {
-        font-size: 14px;
-    }
-
-    .desk-trending-info {
-        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    .jam-program {
         font-size: 10px;
     }
 
-    .date-trending-info {
-        font-size: 8px;
+    .title-box-program {
+        font-size: 18px;
     }
-    /* ------------ */
+
+    .link-program{
+        font-size: 10px;
+    }
+
+    /* -------------- */
     /* ------------ */
 
     #style-3::-webkit-scrollbar-track {
@@ -2045,21 +2192,17 @@
     /* area box */
 
     .area-box-info-artis {
-        margin-top: 0px;
+        margin-top: 6px;
         /* border: 1px red solid; */
         gap: 10px;
     }
 
     .box-artis {
-        flex: 1 1 calc(50% - 15px);
-        max-width: calc(50% - 10px);
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 5px);
         height: fit-content;
+        /* margin-top: 10px; */
     }
-
-    .area-bio-artis{
-        padding: 8px;
-    }
-
 
     .nama {
         font-size: 8px;
@@ -2070,11 +2213,11 @@
     }
 
     .area-image-artis {
-        height: 100px;
+        height: 60px;
     }
 
     .area-header-artis {
-        height: 80px;
+        height: 35%;
     }
 
     .name-artis {
@@ -2087,8 +2230,7 @@
 
     .desk-berita {
         font-size: 7px;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3; /* Membatasi 3 baris */
         -webkit-box-orient: vertical;
         overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
         text-overflow: ellipsis;
@@ -2141,11 +2283,11 @@
     /* -------------- */
 
     /* page news 2 */
-    .area-info-news {
+    .area-detail-program {
         margin: 0px 8px 0px 8px;
     }
 
-    .content-info-news {
+    .content-detail-program {
         flex-direction: column;
         gap: 35px;
         margin-top: 0px;
@@ -2158,78 +2300,85 @@
         overflow-y: hidden;
     }
 
-    .link-url-info {
-        font-size: 8px;
-    }
-
-    .url-info {
-        font-size: 8px;
-    }
-
-    .text-span-info {
-        font-size: 11px;
-    }
-
-    .title-info {
-        font-size: 24px;
-    }
-
-    .date-info {
-        font-size: 12px;
-    }
-
-    .area-image-info {
-        height: 240px;
-    }
-
-    .area-desk-info {
-        font-size: 12px;
-    }
-
-    .desk-info {
-        font-size: 12px;
-    }
-
-    .text-header-tagar {
-        font-size: 16px;
-    }
-
-    .tagar-info {
-        font-size: 12px;
-    }
-
-    /* area trending info */
-    .title-trending-info {
-        font-size: 26px;
-    }
-
-    .link-box-trending-info {
-        width: calc(50% - 10px);
-    }
-
-    .box-trending-info {
-        max-height: 220px;
-        padding: 6px;
-    }
-
-    .image-trending-info {
-        height: 40%;
-        border-radius: 10px;
-    }
-
-    .tag-trending-info {
-        font-size: 14px;
-    }
-
-    .desk-trending-info {
-        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    .link-url-detail-program,
+    .url-detail-program {
         font-size: 10px;
     }
 
-    .date-trending-info {
+    .text-span-detail-program {
         font-size: 8px;
     }
-    /* ------------ */
+
+    .title-detail-program {
+        font-size: 24px;
+    }
+
+    .date-detail-program {
+        font-size: 12px;
+    }
+
+    .area-image-detail-program {
+        height: 240px;
+    }
+
+    .area-desk-detail-program {
+        font-size: 10px;
+    }
+
+    .desk-detail-program {
+        font-size: 12px;
+    }
+
+    .text-header-ticket-event {
+        font-size: 16px;
+    }
+
+    .text-ticket {
+        font-size: 12px;
+    }
+
+    .title-programE {
+        font-size: 28px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE {
+        flex: 1 1 calc(50% - 10px);
+        height: 120px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: 110px;
+        padding: 15px;
+    }
+
+    .area-info-program {
+        gap: 2px;
+    }
+
+    .desk-program {
+        font-size: 8px;
+    }
+
+    .jam-program {
+        font-size: 10px;
+    }
+
+    .title-box-program {
+        font-size: 18px;
+    }
+
+    .link-program{
+        font-size: 10px;
+    }
+
+
+    /* -------------- */
     /* ------------ */
 
     #style-3::-webkit-scrollbar-track {
@@ -2417,7 +2566,6 @@
 
     .title-info-artis {
         font-size: 32px;
-        margin-bottom: 10px;
     }
 
     /* area box */
@@ -2429,16 +2577,11 @@
     }
 
     .box-artis {
-        flex: 1 1 calc(50% - 6px);
-        max-width: 50%;
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 5px);
         height: fit-content;
-        margin-top: 0px;
+        /* margin-top: 10px; */
     }
-
-    .area-bio-artis{
-        padding: 8px;
-    }
-
 
     .nama {
         font-size: 8px;
@@ -2449,7 +2592,7 @@
     }
 
     .area-image-artis {
-        height: 80px;
+        height: 60px;
     }
 
     .area-header-artis {
@@ -2466,8 +2609,7 @@
 
     .desk-berita {
         font-size: 7px;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 3; /* Membatasi 3 baris */
         -webkit-box-orient: vertical;
         overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
         text-overflow: ellipsis;

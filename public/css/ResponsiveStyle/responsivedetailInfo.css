@@ -245,26 +245,26 @@
     }
 
     /* pop up event */
-    .popup-content-event {
-        width: 850px;
-        height: 400px;
-        padding: 50px;
+    .popup-content {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
     }
 
-    .desk-event {
-        font-size: 22px;
+    .desk-program {
+        font-size: 16px;
     }
 
-    .jam-event {
-        font-size: 24px;
+    .jam-program {
+        font-size: 14px;
     }
 
-    .title-box-event {
-        font-size: 38px;
+    .title-box-program {
+        font-size: 28px;
     }
 
-    .link-event {
-        font-size: 18px;
+    .link-program {
+        font-size: 20px;
     }
     /* -------------- */
 

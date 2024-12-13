@@ -748,9 +748,7 @@
     transition: 0.3s ease;
 }
 
-.image-artis:hover {
-    filter: brightness(0.5); /* Membuat gambar menjadi lebih gelap */
-}
+/*  */
 
 .area-header-artis{
     position: absolute;
@@ -768,9 +766,9 @@
     align-items: center;
 }
 
-.area-image-artis:hover .area-header-artis:hover{
+/* .area-image-artis:hover .area-header-artis:hover{
     opacity: 1;
-}
+} */
 
 .name-artis{
     font-size: 24px;
@@ -791,6 +789,11 @@
     font-size: 26px;
     font-family: "Bebas Neue";
     margin: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
 }
 
 .desk-berita {
@@ -799,6 +802,11 @@
     margin: 0px;
     font-weight: 300;
     line-height: 1.5; /* Sesuaikan dengan kebutuhan */
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
     position: relative;
 }
 

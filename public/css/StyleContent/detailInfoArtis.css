@@ -956,9 +956,9 @@ figcaption span:hover {
     transition: 0.3s ease;
 }
 
-.image-artis:hover {
-    filter: brightness(0.5); /* Membuat gambar menjadi lebih gelap */
-}
+/* .image-artis:hover {
+    filter: brightness(0.5);
+} */
 
 .area-header-artis {
     position: absolute;
@@ -976,9 +976,9 @@ figcaption span:hover {
     align-items: center;
 }
 
-.area-image-artis:hover .area-header-artis:hover {
+/* .area-image-artis:hover .area-header-artis:hover {
     opacity: 1;
-}
+} */
 
 .name-artis {
     font-size: 24px;

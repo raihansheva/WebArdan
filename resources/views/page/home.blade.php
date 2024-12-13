@@ -244,8 +244,10 @@
                     @foreach ($program as $programList)
                         <swiper-slide style="background-image: url('./storage/{{ $programList->image_program }}') "
                             class="box-program" data-title="{{ $programList->judul_program }}"
-                            data-description="{{ $programList->deskripsi_program }}"
+                            data-description="{{ $programList->deskripsi_pendek }}"
                             data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
+                            data-slugP="{{ $programList->slug }}"
+                            data-deskP="{{ $programList->deskripsi_program }}"
                             onclick="showPopup(this)">
                             {{-- <img src="./storage/{{ $programList->image_program }}" alt=""> --}}
                         </swiper-slide>
@@ -260,6 +262,9 @@
                     <p class="desk-program">Program Description</p> <!-- Pastikan elemen ini ada -->
                     <h2 class="title-box-program">Program Title</h2> <!-- Pastikan elemen ini ada -->
                     <p class="jam-program">Program Time</p> <!-- Pastikan elemen ini ada -->
+                    <a href="#" class="detail-link-program">
+                        <p class="link-program">See detail</p>
+                    </a>
                 </div>
             </div>
         </div>

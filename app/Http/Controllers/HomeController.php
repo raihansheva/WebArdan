@@ -87,7 +87,7 @@ class HomeController extends Controller
 
 
         $videos = $response->json()['items'];
-
+        
         // Kirim semua data ke view
         return view('page.home', [
             'banner' => $banner,
@@ -113,6 +113,36 @@ class HomeController extends Controller
      * Show the form for creating a new resource.
      */
 
+    public function detailprogram($slug)
+    {
+        // $info = Info::where('slug', $slug)->first();
+        $kategoriInfo = TagInfo::with('info')->get();
+        // dd($info->tag_info);
+        $program = Program::where('slug', $slug)->first();
+        $programO = Program::where('slug', '!=', $slug)->take(4)->get();
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $TrendingInfo = Info::all();
+        // $event = Event::where('slug', $slug)->first();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::all();
+        $bannerI = BannerInfo::all();
+        $stream = Streaming::where('status', 'streaming')->first();
+
+        // dd($info);
+
+        return view('page.detailProgram', [
+            'bannerInfo' => $bannerI,
+            'program' => $program,
+            'programO' => $programO,
+            'kategoriInfo' => $kategoriInfo,
+            'trending_info' => $TrendingInfo,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
+            'stream' => $stream
+        ]);
+    }
+
     public function event()
     {
 
@@ -137,7 +167,7 @@ class HomeController extends Controller
         $topInfo = Info::where('top_news', true)->limit(5)->get();
         $TrendingInfo = Info::all();
         $event = Event::where('slug', $slug)->first();
-        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $event_upcoming = Event::where('slug', '!=' , $slug)->limit(2)->get();
         $artis = Artis::all();
         $bannerI = BannerInfo::all();
         $stream = Streaming::where('status', 'streaming')->first();

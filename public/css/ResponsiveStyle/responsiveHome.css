@@ -207,6 +207,11 @@
         font-size: 38px;
     }
 
+    .link-program{
+        font-size: 20px;
+    }
+
+
     /* -------------- */
     /* -------------- */
 
@@ -1315,6 +1320,10 @@
         font-size: 28px;
     }
 
+    .link-program{
+        font-size: 18px;
+    }
+
     /* -------------- */
     /* -------------- */
 
@@ -2387,6 +2396,10 @@
 
     .title-box-program {
         font-size: 26px;
+    }
+
+    .link-program{
+        font-size: 16px;
     }
 
     /* -------------- */
@@ -3531,6 +3544,10 @@
 
     .title-box-program {
         font-size: 18px;
+    }
+
+    .link-program{
+        font-size: 12px;
     }
 
     /* -------------- */
@@ -4777,6 +4794,10 @@
         font-size: 18px;
     }
 
+    .link-program{
+        font-size: 12px;
+    }
+
     /* -------------- */
 
     /* ------------- */
@@ -5991,6 +6012,10 @@
 
     .title-box-program {
         font-size: 18px;
+    }
+
+    .link-program{
+        font-size: 10px;
     }
 
     /* -------------- */
@@ -7245,6 +7270,10 @@ align-items: center; */
 
     .title-box-program {
         font-size: 18px;
+    }
+
+    .link-program{
+        font-size: 10px;
     }
 
     /* -------------- */

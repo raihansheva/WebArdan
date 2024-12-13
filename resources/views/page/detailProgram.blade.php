@@ -2,16 +2,16 @@
 <base href="{{ url('/') }}/">
 
 @push('meta-seo')
-    <meta name="description" content="{{ $event->meta_description }}">
-    <meta name="keyword" content="{{ $event->meta_keywords }}">
+    <meta name="description" content="{{ $program->meta_description }}">
+    <meta name="keyword" content="{{ $program->meta_keywords }}">
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/detailEvent.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailEvent.css">
+    <link rel="stylesheet" href="css/StyleContent/detailProgram.css">
+    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailProgram.css">
 @endpush
 
-@section('title', $event->meta_title)
+@section('title', $program->meta_title)
 @section('content')
     {{-- <section class="page-news-1">
         <div class="header-info-news">
@@ -25,87 +25,75 @@
         </div>
     </section> --}}
     <section class="page-news-2">
-        <div class="area-detail-event">
-            <div class="content-detail-event">
+        <div class="area-detail-program">
+            <div class="content-detail-program">
                 <div class="content-IN-kiri" id="style-3">
-                    <div class="area-content-DE">
-                        <div class="area-title-detail-event">
-                            <h2 class="title-detail-event">{{ $event->nama_event }}</h2>
+                    <div class="area-content-DP">
+                        <div class="area-title-detail-program">
+                            <h2 class="title-detail-program">{{ $program->judul_program }}</h2>
                         </div>
-                        <div class="area-url-detail-event">
-                            <h2 class="url-detail-event">
-                                <a class="link-url-detail-event" href="{{ url('/') }}">Home</a> >
+                        <div class="area-url-detail-program">
+                            <h2 class="url-detail-program">
+                                <a class="link-url-detail-program" href="{{ url('/') }}">Home</a> >
                                 {{ str_replace('-', ' ', request()->segment(1)) }} >
-                                {{ str_replace('-', ' ', $event->slug) }}
+                                {{ str_replace('-', ' ', $program->slug) }}
                             </h2>
                         </div>
-                        <div class="area-span-detail-event">
-                            <p class="text-span-detail-event">Event</p>
+                        <div class="area-span-detail-program">
+                            <p class="text-span-detail-program">Program</p>
                         </div>
-                        <div class="area-date-detail-event">
-                            <p class="date-detail-event">
-                                {{ \Carbon\Carbon::parse($event->date_event)->translatedFormat('l, d F Y') }}
+                        <div class="area-date-detail-program">
+                            <p class="date-detail-program">
+                                Pukul {{ $program->jam_mulai }} - {{ $program->jam_selesai }} Wib.
                             </p>
                         </div>
-                        <div class="area-image-detail-event">
-                            <img class="image-detail-event" src="../storage/{{ $event->image_event }}" alt="">
+                        <div class="area-image-detail-program">
+                            <img class="image-detail-program" src="../storage/{{ $program->image_program }}" alt="">
                         </div>
-                        <div class="area-desk-detail-event">
-                            {!! str($event->deskripsi_event)->sanitizeHtml() !!}
+                        <div class="area-desk-detail-program">
+                            {!! str($program->deskripsi_program)->sanitizeHtml() !!}
                         </div>
-                        @if ($event->has_ticket)
+                        {{-- @if ($event->has_ticket)
                             <div class="area-ticket-event">
                                 <div class="header-ticket-event">
                                     <h2 class="text-header-ticket-event">Get Ticket Now</h2>
                                 </div>
-                                <a class="link-text-ticket" href="{{ $event->ticket_url }}">
                                 <div class="area-text-ticket">
+                                    <a class="link-text-ticket" href="{{ $event->ticket_url }}">
                                         <p class="text-ticket">Buy Now</p>
-                                    </div>
-                                </a>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="line-detail-info"></div>
-                    <div class="area-event">
-                        <div class="area-header-event">
-                            <h2 class="title-event">Event</h2>
-                        </div>
-                        <div class="area-event-bottom">
-                            @foreach ($event_upcoming as $eventUpcomingList)
-                                <div class="box-event"
-                                    style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
-                                    onclick="showPopupEvent(this)"
-                                    data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
-                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
-                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
-                                    <div class="area-days-date-right">
-                                        <div class="content-days-date-right">
-                                            <div class="box-days-date-right">
-                                                <h3 class="date-month-right">
-                                                    {{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
-                            <div class="popup-content-event">
-                                <div class="area-info-event">
-                                    <p class="desk-event"></p>
-                                    <h2 class="title-box-event"></h2>
-                                    <a href="#" class="detail-link">
-                                        <p class="link-event">See detail</p>
                                     </a>
                                 </div>
                             </div>
+                        @endif --}}
+                    </div>
+                    <div class="line-detail-info"></div>
+                    <div class="area-programE">
+                        <div class="header-programE">
+                            <h2 class="title-programE">Program Ardan</h2>
                         </div>
-                        <div class="area-see-more">
-                            <a href="">
-                                <h2 class="see-more">See More</h2>
-                            </a>
+                        <div class="content-programE">
+                            @foreach ($programO as $programList)
+                                <div class="box-programE" style="background-image: url('./storage/{{ $programList->image_program }}') "
+                                    class="box-program" data-title="{{ $programList->judul_program }}"
+                                    data-description="{{ $programList->deskripsi_pendek }}"
+                                    data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
+                                    data-slugP="{{ $programList->slug }}"
+                                    data-deskP="{{ $programList->deskripsi_program }}"
+                                    onclick="showPopup(this)"></div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div id="popup" class="popup" style="display: none;" onclick="closePopupOutside(event)">
+                        <div class="popup-content">
+                            <span class="close" onclick="closePopup()">&times;</span>
+                            <div class="area-info-program">
+                                <p class="desk-program">Program Description</p> <!-- Pastikan elemen ini ada -->
+                                <h2 class="title-box-program">Program Title</h2> <!-- Pastikan elemen ini ada -->
+                                <p class="jam-program">Program Time</p> <!-- Pastikan elemen ini ada -->
+                                <a href="#" class="detail-link-program">
+                                    <p class="link-program">See detail</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -184,10 +172,51 @@
                             @endforeach
                         </div>
                     </div>
-
+                    <div class="area-event">
+                        <div class="area-header-event">
+                            <h2 class="title-event">Event</h2>
+                        </div>
+                        <div class="area-event-bottom">
+                            @foreach ($event_upcoming as $eventUpcomingList)
+                                <div class="box-event"
+                                    style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
+                                    onclick="showPopupEvent(this)"
+                                    data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
+                                    data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
+                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    <div class="area-days-date-right">
+                                        <div class="content-days-date-right">
+                                            <div class="box-days-date-right">
+                                                <h3 class="date-month-right">
+                                                    {{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+                            <div class="popup-content-event">
+                                <div class="area-info-event">
+                                    <p class="desk-event"></p>
+                                    <h2 class="title-box-event"></h2>
+                                    <a href="#" class="detail-link">
+                                        <p class="link-event">See detail</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="area-see-more">
+                            <a href="">
+                                <h2 class="see-more">See More</h2>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="line-info-news"></div>
+            
         </div>
     </section>
     <section class="page-news-3">
@@ -249,5 +278,5 @@
             <div class="line-info-artis"></div>
         </div>
     </section>
-    <script src="js/detailEvent.js"></script>
+    <script src="js/detailProgram.js"></script>
 @endsection

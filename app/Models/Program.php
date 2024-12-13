@@ -12,7 +12,7 @@ class Program extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['id', 'text_header', 'judul_program', 'deskripsi_program', 'jam_mulai', 'jam_selesai', 'image_program'];
+    protected $fillable = ['id', 'judul_program', 'deskripsi_pendek', 'deskripsi_program', 'jam_mulai', 'jam_selesai', 'image_program', 'slug', 'meta_title', 'meta_description', 'meta_keywords'];
 
     public function getJamMulaiAttribute($value)
     {

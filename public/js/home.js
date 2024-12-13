@@ -143,22 +143,33 @@ function onPlayerReady(event) {
 }
 
 function showPopup(element) {
+    document.getElementById("popup").style.display = "flex"; // Tampilkan popup
+
     const title = element.getAttribute("data-title");
     const description = element.getAttribute("data-description");
     const time = element.getAttribute("data-time");
+    const slug = element.getAttribute("data-slugP");
+    const deskP =element.getAttribute("data-deskP");
 
     // Log data untuk debug
     console.log("Title:", title); // Pastikan ini mencetak judul
     console.log("Description:", description); // Pastikan ini mencetak deskripsi
     console.log("Time:", time); // Pastikan ini mencetak waktu
+    console.log("Time:", deskP); // Pastikan ini mencetak waktu
 
-    if (title && description && time) {
-        document.querySelector(".title-box-program").textContent = title;
-        document.querySelector(".desk-program").textContent = description;
-        document.querySelector(".jam-program").textContent = time;
-        document.getElementById("popup").style.display = "flex"; // Tampilkan popup
+    document.querySelector(".title-box-program").textContent = title || "Deskripsi tidak tersedia";
+    document.querySelector(".desk-program").textContent = description || "Deskripsi tidak tersedia";
+    document.querySelector(".jam-program").textContent = time || "Deskripsi tidak tersedia";
+
+    const detailLink = document.querySelector(".detail-link-program");
+
+    if (deskP) {
+        // Tampilkan detailLink jika deskShort ada
+        detailLink.style.display = "block";
+        detailLink.href = `/detail-program/${slug}`; // Update URL sesuai dengan slug
     } else {
-        console.error("Data tidak ditemukan untuk elemen yang diklik!");
+        // Sembunyikan detailLink jika deskShort tidak ada
+        detailLink.style.display = "none";
     }
 }
 
