@@ -664,12 +664,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     function stopPodcast() {
         if (!AudioPodcast.paused) {
-            AudioPodcast.pause();  // Hentikan audio yang sedang diputar
+            AudioPodcast.pause(); // Hentikan audio yang sedang diputar
         }
-        playPodcastStatus[currentPodcastId].isPlaying = false;  // Reset status
-        updatePodcastPlayButtonState(currentPodcastId);  // Update status tombol play/pause
+        playPodcastStatus[currentPodcastId].isPlaying = false; // Reset status
+        updatePodcastPlayButtonState(currentPodcastId); // Update status tombol play/pause
     }
-    
+
     // Event listener untuk tombol next dan prev
     nextBtn.addEventListener("click", () => {
         stopPodcast();
@@ -1074,28 +1074,41 @@ function showPopupEvent(element) {
     popupEvent.classList.add("muncul");
     popupEvent.style.display = "flex";
 
+    // Ambil atribut dari elemen yang diklik
     const description = element.getAttribute("data-description");
     const date = element.getAttribute("data-date");
+    const slug = element.getAttribute("data-slug");
+    const deskShort = element.getAttribute("data-deskShort");
 
     console.log("Deskripsi:", description);
     console.log("Tanggal:", date);
+    console.log("Slug :", slug);
+    console.log("deskShort :", deskShort);
 
+    // Update konten pop-up
     document.querySelector(".desk-event").textContent =
         description || "Deskripsi tidak tersedia";
     document.querySelector(".title-box-event").textContent =
         date || "Tanggal tidak tersedia";
-    document.getElementById("popupEvent").style.display = "flex";
+
+    const detailLink = document.querySelector(".detail-link");
+
+    if (description) {
+        // Tampilkan detailLink jika deskShort ada
+        detailLink.style.display = "block";
+        detailLink.href = `/detail-event/${slug}`; // Update URL sesuai dengan slug
+    } else {
+        // Sembunyikan detailLink jika deskShort tidak ada
+        detailLink.style.display = "none";
+    }
 }
 
 function closePopupEvent() {
     const popupEvent = document.getElementById("popupEvent");
     popupEvent.classList.remove("muncul");
     popupEvent.classList.add("tutup");
-
-    setTimeout(() => {
-        popupEvent.style.display = "none";
-        popupEvent.classList.remove("tutup");
-    }, 300);
+    popupEvent.style.display = "none";
+    popupEvent.classList.remove("tutup");
 }
 
 function closePopupOutsideEvent(event) {
@@ -1103,4 +1116,5 @@ function closePopupOutsideEvent(event) {
         closePopupEvent();
     }
 }
+
 // -----------

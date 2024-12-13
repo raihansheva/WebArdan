@@ -4584,7 +4584,7 @@
         margin-top: 10px;
         margin-bottom: 40px;
         height: auto;
-        display: block;
+        display: flex;
     }
     
     .box-schedule-mobile {
@@ -5803,7 +5803,7 @@
         margin-top: 10px;
         margin-bottom: 40px;
         height: auto;
-        display: block;
+        display: flex;
     }
     
     .box-schedule-mobile {
@@ -7057,7 +7057,7 @@ align-items: center; */
         margin-top: 10px;
         margin-bottom: 40px;
         height: auto;
-        display: block;
+        display: flex;
     }
     
     .box-schedule-mobile {
@@ -8311,7 +8311,7 @@ align-items: center; */
         margin-top: 10px;
         margin-bottom: 40px;
         height: auto;
-        display: block;
+        display: flex;
     }
     
     .box-schedule-mobile {

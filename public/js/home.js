@@ -182,16 +182,22 @@ function showPopupEvent(element) {
     console.log("Fungsi showPopupEvent dipanggil"); // Log ini akan menunjukkan apakah fungsi dipanggil
     const description = element.getAttribute("data-description");
     const date = element.getAttribute("data-date");
+    const slug = element.getAttribute("data-slug"); // Ambil slug dari data attribute
 
     // Log untuk melihat nilai yang diambil
     console.log("Deskripsi:", description);
     console.log("Tanggal:", date);
+    console.log("Slug:", slug);
 
     // Menampilkan data di dalam pop-up
     document.querySelector(".desk-event").textContent =
         description || "Deskripsi tidak tersedia";
     document.querySelector(".title-box-event").textContent =
         date || "Tanggal tidak tersedia";
+
+    // Set href pada link "See detail"
+    const detailLink = document.querySelector(".detail-link");
+    detailLink.href = `/detail-event/${slug}`; // Update URL sesuai dengan slug
 
     // Menampilkan pop-up
     document.getElementById("popupEvent").style.display = "flex";

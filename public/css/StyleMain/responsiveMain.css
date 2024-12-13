@@ -1117,7 +1117,7 @@
     }
 
     .control-btn {
-        width: 70px;
+        width: fit-content;
         height: 45px;
         /* /*position: fixed; */
         border: 2px white solid;
@@ -1341,7 +1341,7 @@
     }
 
     .control-btn {
-        width: 70px;
+        width: fit-content;
         height: 45px;
         /* /*position: fixed; */
         border: 2px white solid;
@@ -1567,7 +1567,7 @@
     }
 
     .control-btn {
-        width: 70px;
+        width: fit-content;
         height: 45px;
         /* /*position: fixed; */
         border: 2px white solid;

@@ -13,7 +13,6 @@ use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use function Laravel\Prompts\textarea;
 use Filament\Forms\Components\Textarea;
-
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\DatePicker;
@@ -24,6 +23,9 @@ use App\Filament\Resources\EventResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\EventResource\RelationManagers;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\IconColumn;
+use Illuminate\Support\Str;
 
 class EventResource extends Resource
 {
@@ -41,6 +43,15 @@ class EventResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
+                        TextInput::make('nama_event')
+                            ->label('Nama Event:')
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (string $operation, string $state, Forms\Set $set) {
+                                $set('slug', Str::slug($state));
+                                $set('meta_title', $state);
+                            })
+                            ->maxLength(100)
+                            ->required(),
                         FileUpload::make('image_event')
                             ->label('Image Event :')
                             ->image()
@@ -59,10 +70,16 @@ class EventResource extends Resource
                                 'upcoming' => 'Upcoming',
                                 'completed' => 'Completed',
                             ]),
+                        Textarea::make('deskripsi_pendek')
+                            ->label('Deskripsi Singkat :')
+                            ->required(),
                         RichEditor::make('deskripsi_event')
                             ->label('Deksripsi Event :')
-                            ->required()
                             ->columnSpan(2),
+                        TextInput::make('slug')
+                            ->label('Slug :')
+                            ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
+                            ->required(),
                         TextInput::make('meta_title')
                             ->label('Title Info :')
                             ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
@@ -76,6 +93,23 @@ class EventResource extends Resource
                             ->label('Keyword :')
                             ->placeholder('Masukan meta keyword')
                             ->required(),
+                        Toggle::make('has_ticket')
+                            ->label('Ada Ticket?')
+                            ->helperText('Aktifkan jika acara memiliki tiket.')
+                            ->reactive()
+                            ->required()
+                            ->afterStateUpdated(function (callable $get, callable $set) {
+                                // Reset nilai ticket_url saat toggle berubah
+                                if (!$get('has_ticket')) {
+                                    $set('ticket_url', null); // Kosongkan nilai jika toggle tidak aktif
+                                }
+                            }),
+                        // Input ticket_url yang hanya muncul jika has_ticket dicentang
+                        TextInput::make('ticket_url')
+                            ->label('Link Ticket :')
+                            ->placeholder('Masukan link pembelian tiket')
+                            ->visible(fn(callable $get) => $get('has_ticket')) // Muncul hanya jika has_ticket == true
+                            ->required(fn(callable $get) => $get('has_ticket')), // Wajib diisi hanya jika has_ticket == true
                     ])
 
                     ->columns(2),
@@ -86,7 +120,9 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('nama_event'),
                 ImageColumn::make('image_event'),
+                TextColumn::make('deskripsi_pendek'),
                 TextColumn::make('deskripsi_event')
                     ->formatStateUsing(function ($state) {
                         return strip_tags($state); // Menghapus tag HTML
@@ -100,9 +136,16 @@ class EventResource extends Resource
                         'completed' => 'success',    // Hijau untuk completed
                         default => 'secondary',       // Warna default
                     }),
+                TextColumn::make('slug'),
                 TextColumn::make('meta_title'),
                 TextColumn::make('meta_description'),
                 TextColumn::make('meta_keywords'),
+                TextColumn::make('ticket_url'),
+                IconColumn::make('has_ticket')
+                    ->label('Ada Tiket?')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
                 //

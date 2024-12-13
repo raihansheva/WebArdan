@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->string('nama_event')->nullable()->after('id'); // Kolom meta title
-            $table->string('deskripsi_pendek')->nullable()->after('image_event'); // Kolom meta title
+            $table->text('deskripsi_event')->nullable()->change();
+            $table->string('deskripsi_pendek')->nullable()->after('image_event');
+            $table->string('ticket_url')->nullable()->after('status');
+            $table->boolean('has_ticket')->default(false)->after('ticket_url');
+            $table->string('slug')->after('has_ticket');
         });
     }
 
@@ -23,8 +27,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('events', function (Blueprint $table) {
+            $table->text('deskripsi_event')->nullable(false)->change();
             // Menghapus kolom yang telah ditambahkan di fungsi up
-            $table->dropColumn(['nama_event', 'deskripsi_pendek']);
+            $table->dropColumn(['nama_event', 'deskripsi_pendek' , 'ticket_url' , 'has_ticket' , 'slug']);
         });
     }
 };

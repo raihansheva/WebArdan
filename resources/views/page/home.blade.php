@@ -336,9 +336,10 @@
                 <div class="area-content-event-kiri">
                     @foreach ($event_soon as $eventSoonList)
                         <div class="content-event-CD" onclick="showPopupEvent(this)"
-                            data-description="{{ $eventSoonList->deskripsi_event }}"
+                            data-description="{{ $eventSoonList->deskripsi_pendek }}"
                             data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
-                            style="background-image: url('./storage/{{ $eventSoonList->image_event }}')">
+                            style="background-image: url('./storage/{{ $eventSoonList->image_event }}')"
+                            data-slug="{{ $eventSoonList->slug }}"  data-deskShort="{{ $eventSoonList->deskripsi_event }}">
                             <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
                             <div class="area-countdown">
                                 <div class="countdown">
@@ -374,8 +375,9 @@
                     @foreach ($event_upcoming as $eventUpcomingList)
                         <div class="content-event"
                             style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
-                            onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_event }}"
-                            data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}">
+                            onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
+                            data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
+                            data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
                             <div class="area-days-date-right">
                                 <div class="content-days-date-right">
                                     <div class="box-days-date-right">
@@ -386,18 +388,18 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                    <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
-                        <div class="popup-content-event">
-                            <div class="area-info-event">
-                                <p class="desk-event"></p>
-                                <h2 class="title-box-event"></h2>
-                                <a href="/event">
-                                    <p class="link-event">See detail</p>
-                                </a>
+                        @endforeach
+                        <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+                            <div class="popup-content-event">
+                                <div class="area-info-event">
+                                    <p class="desk-event"></p>
+                                    <h2 class="title-box-event"></h2>
+                                    <a href="#" class="detail-link">
+                                        <p class="link-event">See detail</p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

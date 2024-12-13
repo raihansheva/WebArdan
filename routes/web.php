@@ -76,6 +76,7 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::get('/detail-info-artis/{slug}', [HomeController::class, 'detailInfoArtis']);
 
 Route::get('/event', [HomeController::class, 'event']);
+Route::get('/detail-event/{slug}', [HomeController::class, 'detailEvent']);
 
 Route::get('/podcast', [HomeController::class, 'podcast']);
 

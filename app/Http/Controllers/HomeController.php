@@ -129,6 +129,34 @@ class HomeController extends Controller
         ]);
     }
 
+    public function detailEvent($slug)
+    {
+        // $info = Info::where('slug', $slug)->first();
+        $kategoriInfo = TagInfo::with('info')->get();
+        // dd($info->tag_info);
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $TrendingInfo = Info::all();
+        $event = Event::where('slug', $slug)->first();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::all();
+        $bannerI = BannerInfo::all();
+        $stream = Streaming::where('status', 'streaming')->first();
+
+        // dd($info);
+
+        return view('page.detailEvent', [
+            'bannerInfo' => $bannerI,
+            'event' => $event,
+            'kategoriInfo' => $kategoriInfo,
+            'trending_info' => $TrendingInfo,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
+            'stream' => $stream
+        ]);
+    }
+
+
     public function podcast()
     {
         $bannerP = BannerPodcast::all();
