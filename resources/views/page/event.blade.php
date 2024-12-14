@@ -6,8 +6,8 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/event.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveEvent.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/event.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveEvent.css?v=' . time()) }}">
 @endpush
 
 @section('title', 'EVENT | ' . \App\Helpers\Settings::get('site_title', 'Default Site Title'))
@@ -128,5 +128,5 @@
             </div>
         </div>
     </section>
-    <script src="js/event.js"></script>
+    <script src="{{ asset('js/event.js?v=' . time()) }}"></script>
 @endsection

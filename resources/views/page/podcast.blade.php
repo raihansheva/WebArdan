@@ -1,13 +1,14 @@
 @extends('layout.main')
 
 @push('meta-seo')
+    <meta name="description" content="{{ \App\Helpers\Settings::get('site_description', 'Default Site Title') }}">
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/podcast.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsivePodcast.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/podcast.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsivePodcast.css?v=' . time()) }}">
 @endpush
-@section('title' , 'PODCAST | '. \App\Helpers\Settings::get('site_title', 'Default Site Title'))
+@section('title', 'PODCAST | ' . \App\Helpers\Settings::get('site_title', 'Default Site Title'))
 @section('content')
     <section class="page-podcast-1">
         @foreach ($bannerP as $bannerPList)
@@ -25,7 +26,7 @@
             <div class="line-podcast"></div>
             <div class="content-card-podcast">
                 @foreach ($podcast as $podcastList)
-                    <div class="card-podcast">
+                    <div class="card-podcast" data-slug="{{ $podcastList->slug }}">
                         <div class="card-body-podcast">
                             <div class="head-body-podcast">
                                 <div class="genre">
@@ -64,7 +65,8 @@
             <div class="area-content-videoYT">
                 <div class="area-contentYT-kiri">
                     @foreach ($videos as $video)
-                        <div class="box-area-videoYT-kiri" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                        <div class="box-area-videoYT-kiri"
+                            data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
                             <img class="video-thumbnail"
                                 src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
                                 alt="Thumbnail">
@@ -159,5 +161,23 @@
         </div>
     </div>
 </section>
-<script src="js/podcast.js"></script>
+<script src="{{ asset('js/podcast.js?v=' . time()) }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Pilih semua elemen dengan class "card-podcast"
+        const podcastCards = document.querySelectorAll(".card-podcast");
+
+        podcastCards.forEach((card) => {
+            card.addEventListener("click", () => {
+                // Ambil slug dari atribut data-slug
+                const slug = card.getAttribute("data-slug");
+
+                if (slug) {
+                    // Redirect user ke halaman detail podcast sesuai slug
+                    window.location.href = `/detail-podcast/${slug}`;
+                }
+            });
+        });
+    });
+</script>
 @endsection

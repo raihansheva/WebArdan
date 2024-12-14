@@ -43,7 +43,6 @@ swiper-slide img {
     object-fit: cover;
 }
 
-
 /* ----------- */
 .audio-card {
     position: relative;
@@ -53,7 +52,6 @@ swiper-slide img {
 }
 
 .audio-control-container {
-    
     position: absolute;
     top: 50%;
     left: 50%;
@@ -256,7 +254,6 @@ swiper-slide img {
     /* padding-bottom: 52.25%; */
     overflow: hidden;
 }
-
 
 .video-container video {
     position: absolute;
@@ -506,7 +503,7 @@ swiper-slide img {
     margin: 0px;
 }
 
-.link-program{
+.link-program {
     text-decoration: none;
     font-size: 18px;
     font-family: "Poppins";
@@ -520,7 +517,7 @@ swiper-slide img {
     -o-transition: all 0.3s ease-in-out;
 }
 
-.link-program:hover{
+.link-program:hover {
     text-decoration: underline;
 }
 
@@ -603,16 +600,14 @@ swiper-slide img {
     gap: 8px;
 }
 
-
 .box-info {
     flex: 0 0 calc(50% - 6px);
     height: 80px;
     /* background-color: #f0f0f0; */
     /* border-radius: 10px; */
-    
 }
 
-.area-tag-info{
+.area-tag-info {
     width: auto;
     height: fit-content;
     /* border: 1px red solid; */
@@ -621,7 +616,7 @@ swiper-slide img {
     z-index: 2;
 }
 
-.tag-info{
+.tag-info {
     margin: 0px;
     font-family: "Bebas Neue";
     color: white;
@@ -629,7 +624,7 @@ swiper-slide img {
     font-size: 22px;
 }
 
-.image-info{
+.image-info {
     position: relative;
     width: 100%;
     height: 100%;
@@ -646,7 +641,8 @@ swiper-slide img {
 
 .box-info:hover .image-info {
     filter: brightness(0.8);
-    /*Gelapkangambarsaatdi-hover*/cursor: pointer;
+    /*Gelapkangambarsaatdi-hover*/
+    cursor: pointer;
     -webkit-filter: brightness(0.8);
 }
 .area-bottom-info {
@@ -657,7 +653,7 @@ swiper-slide img {
     /* justify-content: center; */
 }
 
-.box-title-bottom{
+.box-title-bottom {
     width: fit-content;
     height: fit-content;
     margin-top: 10px;
@@ -679,10 +675,10 @@ swiper-slide img {
     -o-transition: all 0.3s ease-in-out;
 }
 
-.title-bottom-info:hover{
+.title-bottom-info:hover {
     background-color: var(--primary-color);
     color: black;
-    font-weight: 400;   
+    font-weight: 400;
 }
 
 /* ------------------ */
@@ -717,11 +713,10 @@ swiper-slide img {
     /* border: 1px solid red; */
 }
 
-.link-box-news{
+.link-box-news {
     width: calc(50% - 5px); /* Setengah kontainer minus setengah gap */
     color: black;
 }
-
 
 .box-news {
     width: 100%;
@@ -750,12 +745,12 @@ swiper-slide img {
     height: 100%;
 }
 
-.area-text-desk{
+.area-text-desk {
     width: 70%;
     height: fit-content;
 }
 
-.tag-news{
+.tag-news {
     font-family: "Bebas Neue";
     margin: 0px;
     font-size: 16px;
@@ -778,7 +773,7 @@ swiper-slide img {
     text-overflow: ellipsis;
 }
 
-.date-news{
+.date-news {
     font-family: "Poppins";
     margin: 0px;
     font-size: 12px;
@@ -786,8 +781,7 @@ swiper-slide img {
     padding: 2px 0;
 }
 
-
-.image-top-info{
+.image-top-info {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -800,7 +794,7 @@ swiper-slide img {
 /* ------------------ */
 /* area top info */
 
-.area-top-info{
+.area-top-info {
     width: auto;
     height: auto;
     /* margin-top: 20px; */
@@ -828,11 +822,10 @@ swiper-slide img {
     /* border: 1px solid red; */
 }
 
-.link-box-top-info{
+.link-box-top-info {
     width: calc(33.33% - 10px); /* Setengah kontainer minus setengah gap */
     color: black;
 }
-
 
 .box-top-info {
     width: 100%;
@@ -858,15 +851,14 @@ swiper-slide img {
     /* height: 100%; */
 }
 
-
-.line-top-info{
+.line-top-info {
     width: 100%;
     height: 5px;
     background-color: var(--primary-color);
     margin-top: 10px;
 }
 
-.area-text-desk-top-info{
+.area-text-desk-top-info {
     width: 100%;
     height: fit-content;
     max-height: 50%;
@@ -876,12 +868,12 @@ swiper-slide img {
     margin-top: 10px;
 }
 
-.area-tag{
+.area-tag {
     display: flex;
     gap: 4px;
 }
 
-.tag-top-info{
+.tag-top-info {
     font-family: "Bebas Neue";
     margin: 0px;
     font-size: 22px;
@@ -904,7 +896,7 @@ swiper-slide img {
     font-weight: 700;
 }
 
-.date-top-info{
+.date-top-info {
     font-family: "Poppins";
     margin: 0px;
     font-size: 12px;
@@ -912,8 +904,7 @@ swiper-slide img {
     padding: 2px 0;
 }
 
-
-.image-top-info{
+.image-top-info {
     width: 100%;
     height: 50%;
     object-fit: cover;
@@ -922,7 +913,7 @@ swiper-slide img {
 /* ------------------- */
 
 /* area trending info */
-.area-trending-info{
+.area-trending-info {
     width: auto;
     height: auto;
     /* margin-top: 20px; */
@@ -950,11 +941,10 @@ swiper-slide img {
     /* border: 1px solid red; */
 }
 
-.link-box-trending-info{
+.link-box-trending-info {
     width: 100%; /* Setengah kontainer minus setengah gap */
     color: black;
 }
-
 
 .box-trending-info {
     width: 100%;
@@ -980,15 +970,14 @@ swiper-slide img {
     /* height: 100%; */
 }
 
-
-.line-trending-info{
+.line-trending-info {
     width: 100%;
     height: 5px;
     background-color: var(--primary-color);
     margin-top: 10px;
 }
 
-.area-text-desk-trending-info{
+.area-text-desk-trending-info {
     width: 100%;
     height: fit-content;
     max-height: 50%;
@@ -998,7 +987,7 @@ swiper-slide img {
     margin-top: 10px;
 }
 
-.tag-trending-info{
+.tag-trending-info {
     font-family: "Bebas Neue";
     margin: 0px;
     font-size: 22px;
@@ -1021,7 +1010,7 @@ swiper-slide img {
     font-weight: 700;
 }
 
-.date-trending-info{
+.date-trending-info {
     font-family: "Poppins";
     margin: 0px;
     font-size: 12px;
@@ -1029,8 +1018,7 @@ swiper-slide img {
     padding: 2px 0;
 }
 
-
-.image-trending-info{
+.image-trending-info {
     width: 100%;
     height: 50%;
     object-fit: cover;
@@ -1044,7 +1032,6 @@ swiper-slide img {
     /* background-color: #353535; */
     position: relative; /* Tambahkan posisi relatif untuk membuat SVG di belakang bekerja */
 }
-
 
 .area-ig-twitter {
     width: auto;
@@ -1075,7 +1062,7 @@ swiper-slide img {
 /* ------- */
 
 /* area-content-info */
-.area-content-feed-instagram{
+.area-content-feed-instagram {
     width: 100%;
     height: 100%;
     /* border: 1px red solid; */
@@ -1101,7 +1088,6 @@ swiper-slide img {
     height: auto;
     margin-top: 10px;
 }
-
 
 .area-content-box-feed-instagram {
     width: 100%;
@@ -1195,8 +1181,6 @@ swiper-slide img {
 
 /* ------------------ */
 
-
-
 /* ------------------ */
 
 /* area-event */
@@ -1286,7 +1270,7 @@ swiper-slide img {
     justify-content: end;
     align-items: end;
     padding: 5px 0px;
-} 
+}
 
 .time-countdown {
     display: flex;
@@ -1451,7 +1435,7 @@ swiper-slide img {
     margin: 0px;
 }
 
-.link-event{
+.link-event {
     text-decoration: none;
     font-size: 18px;
     font-family: "Poppins";
@@ -1465,7 +1449,7 @@ swiper-slide img {
     -o-transition: all 0.3s ease-in-out;
 }
 
-.link-event:hover{
+.link-event:hover {
     text-decoration: underline;
 }
 
@@ -1647,7 +1631,7 @@ swiper-slide img {
     -o-transition: all 0.3s ease-in-out;
 }
 
-.text-podcast:hover{
+.text-podcast:hover {
     background-color: var(--primary-color);
     color: black;
 }
@@ -1666,6 +1650,7 @@ swiper-slide img {
         50% - 10px
     ); /* Membuat card mengambil 50% lebar, dengan margin antar card */
     height: 400px;
+    cursor: pointer;
 }
 
 .card-podcast .card-header-podcast {
@@ -1731,7 +1716,7 @@ swiper-slide img {
     border-radius: 10px;
 }
 
-.image-podcast{
+.image-podcast {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1858,7 +1843,7 @@ swiper-slide img {
 
 .btn-play-video {
     position: relative;
-    z-index: 2; 
+    z-index: 2;
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -1900,7 +1885,7 @@ swiper-slide img {
     -o-border-radius: 8px;
 }
 
-.text-video:hover{
+.text-video:hover {
     background-color: var(--primary-color);
     color: black;
 }
@@ -2088,7 +2073,7 @@ swiper-slide img {
     box-sizing: border-box;
 }
 
-.image-announcer{
+.image-announcer {
     object-fit: cover;
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -2096,10 +2081,9 @@ swiper-slide img {
     cursor: pointer;
 }
 
-.image-announcer:hover{
+.image-announcer:hover {
     filter: brightness(0.5); /* membuat gambar menjadi lebih gelap */
 }
-
 
 /* .area-profile-announcer {
     position: absolute;
@@ -2118,8 +2102,6 @@ swiper-slide img {
     font-size: 28px;
     color: white;
 } */
-
-
 
 .line-announcer {
     width: auto;
@@ -2175,13 +2157,13 @@ swiper-slide img {
     gap: 10px;
 }
 
-.area-IA-kiri{
+.area-IA-kiri {
     width: 35%;
     height: 100%;
     /* border: 1px black solid; */
 }
 
-.popUp-image-announcer{
+.popUp-image-announcer {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -2194,7 +2176,7 @@ swiper-slide img {
     -o-border-radius: 10px;
 }
 
-.area-IA-kanan{
+.area-IA-kanan {
     width: 65%;
     height: 100%;
     /* border: 1px black solid; */
@@ -2203,22 +2185,21 @@ swiper-slide img {
     gap: 10px;
 }
 
-.area-name-announcer{
+.area-name-announcer {
     width: fit-content;
     height: fit-content;
     text-align: start;
 }
 
-.title-name-announcer{
+.title-name-announcer {
     font-size: 16px;
     font-family: "Poppins";
     font-weight: 500;
     margin: 0px;
     color: white;
-
 }
 
-.name-announcer{
+.name-announcer {
     font-family: "Poppins";
     font-weight: 300;
     margin: 0px;
@@ -2226,19 +2207,18 @@ swiper-slide img {
     font-size: 20px;
 }
 
-.area-sosmed{
+.area-sosmed {
     width: 100%;
     height: fit-content;
     text-align: start;
 }
 
-.title-sosmed{
+.title-sosmed {
     font-size: 16px;
     font-family: "Poppins";
     font-weight: 500;
     margin: 0px;
     color: white;
-
 }
 
 .area-profile-announcer {
@@ -2248,7 +2228,7 @@ swiper-slide img {
     margin-top: 8px;
 }
 
-.area-profile-announcer i{
+.area-profile-announcer i {
     font-size: 26px;
     color: rgb(255, 255, 255);
     transition: all 0.3s ease-in-out;
@@ -2258,26 +2238,25 @@ swiper-slide img {
     -o-transition: all 0.3s ease-in-out;
 }
 
-.area-profile-announcer i:hover{
+.area-profile-announcer i:hover {
     color: var(--primary-color);
 }
 
-.area-bio{
+.area-bio {
     width: 100%;
     height: fit-content;
     text-align: start;
 }
 
-.title-bio{
+.title-bio {
     font-size: 16px;
     font-family: "Poppins";
     font-weight: 500;
     margin: 0px;
     color: white;
-
 }
 
-.bio-announcer{
+.bio-announcer {
     font-size: 14px;
     font-weight: 300;
     margin: 0px;
@@ -2297,7 +2276,7 @@ swiper-slide img {
 
 .area-chart-artis {
     width: auto;
-    height: 600px;
+    height: fit-content;
     /* margin: 20px 64px 0px 64px; */
     margin-top: 30px;
 }
@@ -2405,7 +2384,7 @@ thead tr {
     color: white;
 }
 
-thead th{
+thead th {
     font-weight: 300;
 }
 
@@ -2413,7 +2392,7 @@ tbody tr {
     font-size: 22px;
     border-bottom: 1px solid #fff;
     color: white;
-    height: 64px !important; 
+    height: 64px !important;
 }
 
 tbody td {
@@ -2483,9 +2462,9 @@ tbody td {
 /* area-artis */
 .area-content-artis {
     width: 30%;
-    height: auto;
+    height: fit-content;
     background-color: #ffffff;
-    padding: 25px 64px 0px 30px;
+    padding: 25px 64px 20px 30px;
 }
 
 .header-artis {
@@ -2541,11 +2520,15 @@ tbody td {
     left: 0;
     width: 100%;
     height: 100%;
-    /*Pastikanmenutupiseluruharea.box-artis*/background-color: rgba(0, 0, 0, 0.7);
-    /*Backgroundsemitransparanagarbioterlihat*/color: white;
+    /*Pastikanmenutupiseluruharea.box-artis*/
+    background-color: rgba(0, 0, 0, 0.7);
+    /*Backgroundsemitransparanagarbioterlihat*/
+    color: white;
     opacity: 1;
-    /*Awalnyatidakterlihat*/display: flex;
-    /*Agarkontenbiobisadiaturposisinyadenganmudah*/justify-content: center;
+    /*Awalnyatidakterlihat*/
+    display: flex;
+    /*Agarkontenbiobisadiaturposisinyadenganmudah*/
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     transition: opacity 0.4s ease;
@@ -2559,9 +2542,7 @@ tbody td {
     opacity: 1; /* Menjadi terlihat saat hover */
 }
 
-
-
-.nama{
+.nama {
     font-size: 14px;
     font-family: "Poppins";
     margin: 0px;
@@ -2569,7 +2550,7 @@ tbody td {
     color: white;
 }
 
-.bio{
+.bio {
     font-size: 16px;
     font-family: "Poppins";
     margin: 0px;
@@ -2622,6 +2603,43 @@ tbody td {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.area-bottom-artis {
+    width: 100%;
+    height: fit-content;
+    /* border: 1px white solid; */
+    display: flex;
+    /* justify-content: center; */
+}
+
+.box-title-bottom-artis {
+    width: fit-content;
+    height: fit-content;
+    margin-top: 10px;
+}
+
+.title-bottom-artis {
+    margin: 0px;
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 200;
+    color: var(--primary-color);
+    padding: 5px 20px;
+    border-radius: 8px;
+    border: 1px var(--primary-color) solid;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    background-color: var(--primary-color);
+    color: black;
+    font-weight: 400;
+}
+
+.title-bottom-artis:hover {
+    background-color: #dbac00;
 }
 
 /* .desk-program {
@@ -2744,7 +2762,7 @@ tbody td {
     position: relative;
 }
 
-.image-schedule-program{
+.image-schedule-program {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2762,7 +2780,7 @@ tbody td {
     align-items: end;
 }
 
-.bio-schedule{
+.bio-schedule {
     display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
     justify-content: start;
     align-items: start;
@@ -2770,29 +2788,27 @@ tbody td {
     padding: 10px 20px;
 }
 
-.nama-programS{
+.nama-programS {
     font-size: 18px;
     font-family: "poppins";
     margin: 0px;
 }
 
-.jam-programS{
+.jam-programS {
     font-size: 16px;
     font-family: "poppins";
     margin: 0px;
 }
 
-
 /* schedule mobile */
 
-.top-content-schedule-mobile{
+.top-content-schedule-mobile {
     display: none;
 }
 
-.content-schedule-mobile{
+.content-schedule-mobile {
     display: none;
 }
-
 
 /* --------------- */
 /* .content-schedule .box-schedule {

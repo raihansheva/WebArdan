@@ -86,10 +86,12 @@
     max-width: calc(33.33% - 14px);
     height: 400px;
     display: none; 
+
 }
 
 .card-podcast:nth-child(-n+6) {
     display: block;
+    cursor: pointer;
 }
 
 .card-podcast .card-header-podcast {

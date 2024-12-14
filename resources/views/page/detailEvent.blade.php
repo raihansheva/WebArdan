@@ -7,8 +7,8 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/detailEvent.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailEvent.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/detailEvent.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsivedetailEvent.css?v=' . time()) }}">
 @endpush
 
 @section('title', $event->meta_title)
@@ -249,5 +249,5 @@
             <div class="line-info-artis"></div>
         </div>
     </section>
-    <script src="js/detailEvent.js"></script>
+    <script src="{{ asset('js/detailEvent.js?v=' . time()) }}"></script>
 @endsection

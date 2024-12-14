@@ -373,7 +373,7 @@
     }
 
     .music-titles {
-        width: 120px;
+        width: fit-content;
     }
 
     .music-titles .name {
@@ -406,7 +406,7 @@
 
     #layer1 {
         position: absolute;
-        transform: scale(2, 3);
+        transform: scale(2, 4);
         z-index: 100;
     }
     /* ----------------- */

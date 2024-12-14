@@ -317,6 +317,28 @@ class HomeController extends Controller
         ]);
     }
 
+    public function artis()
+    {
+        $info = Info::all();
+        $taginfo = TagInfo::with('info')->get();
+        $topInfo = Info::where('top_news', true)->limit(5)->get();
+        $event_upcoming = Event::where('status', 'upcoming')->limit(2)->get();
+        $artis = Artis::all();
+        $bannerI = BannerInfo::all();
+        $stream = Streaming::where('status', 'streaming')->first();
+        // $time = Carbon::now('UTC')->toDateString();
+        // dd($time);
+        return view('page.infoArtis', [
+            'bannerInfo' => $bannerI,
+            'info' => $info,
+            'taginfo' => $taginfo,
+            'top_info' => $topInfo,
+            'event_upcoming' => $event_upcoming,
+            'artis' => $artis,
+            'stream' => $stream
+        ]);
+    }
+
     public function tagInfo($tag)
     {
         $info = Info::whereHas('tagInfo', function ($query) use ($tag) {

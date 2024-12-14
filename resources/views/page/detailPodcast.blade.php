@@ -6,11 +6,11 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/detailPodcast.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveDetailPodcast.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/detailPodcast.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveDetailPodcast.css?v=' . time()) }}">
 @endpush
 
-@section('title' , 'PODCAST | ' .  $detail_podcast->meta_title)
+@section('title', 'PODCAST | ' . $detail_podcast->meta_title)
 
 @section('content')
     <section class="page-detail-1">
@@ -118,7 +118,7 @@
                     </div>
                     <div class="area-content-card-OP">
                         @foreach ($all_podcast as $allpodcastList)
-                            <div class="card-podcast">
+                            <div class="card-podcast" data-slug="{{ $allpodcastList->slug }}">
                                 <div class="card-body-podcast">
                                     <div class="head-body-podcast">
                                         <div class="genre">
@@ -264,5 +264,23 @@
             </div>
         </div>
     </section>
-    <script src="js/detailPodcast.js"></script>
+    <script src="{{ asset('js/detailPodcast.js?v=' . time()) }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Pilih semua elemen dengan class "card-podcast"
+            const podcastCards = document.querySelectorAll(".card-podcast");
+
+            podcastCards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    // Ambil slug dari atribut data-slug
+                    const slug = card.getAttribute("data-slug");
+
+                    if (slug) {
+                        // Redirect user ke halaman detail podcast sesuai slug
+                        window.location.href = `/detail-podcast/${slug}`;
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

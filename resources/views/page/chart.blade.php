@@ -1,6 +1,6 @@
 @extends('layout.main')
-<link rel="stylesheet" href="../css/StyleContent/chart.css">
-<link rel="stylesheet" href="../css/ResponsiveStyle/responsiveChart.css">
+<link rel="stylesheet" href="{{ asset('css/StyleContent/chart.css?v=' . time()) }}">
+<link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveChart.css?v=' . time()) }}">
 @section('content')
     <section class="page-chart-1">
         <div class="area-chart">
@@ -115,5 +115,5 @@
     </section>
 
 
-    <script src="../js/chart.js"></script>
+    <script src="{{ asset('js/chart.js?v=' . time()) }}"></script>
 @endsection

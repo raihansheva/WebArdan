@@ -1029,6 +1029,10 @@
     .nama{
         font-size: 24px;
     }
+
+    .title-bottom-artis{
+        font-size: 18px;
+    }
     /* ----------------- */
     /* area-schedule */
 
@@ -1094,43 +1098,6 @@
 
     /* ---------------- */
 
-    /* area-audio-player */
-    .content {
-        /* padding: 0 15px; */
-        height: 60px;
-    }
-
-    .music-image {
-        width: 80px;
-        height: 50px;
-    }
-
-    .music-titles {
-        width: 120px;
-    }
-
-    .music-titles .name {
-        font-size: 12px;
-    }
-
-    .music-titles .artist {
-        font-size: 12px;
-    }
-
-    .area-line {
-        width: 500px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .control-btn {
-        width: fit-content;
-    }
-
-    #visual {
-        height: 160px;
-    }
-    /* ----------------- */
 }
 
 @media (min-width: 1280px) {
@@ -2185,6 +2152,14 @@
 
     .nama{
         font-size: 10px;
+    }
+
+    .box-title-bottom-artis{
+        margin-top: 5px;
+    }
+
+    .title-bottom-artis{
+        font-size: 12px;
     }
 
     /* ----------------- */
@@ -3315,6 +3290,15 @@
 
     .bio {
         font-size: 14px;
+    }
+
+    .box-title-bottom-artis{
+        margin-top: 2px;
+    }
+
+    .title-bottom-artis{
+        font-size: 8px;
+        padding: 5px 12px;
     }
 
     /* ----------------- */
@@ -4492,6 +4476,15 @@
     .box-artis {
         height: 100px;
         width: 100%;
+    }
+
+    .box-title-bottom-artis{
+        margin-top: 2px;
+    }
+
+    .title-bottom-artis{
+        font-size: 10px;
+        padding: 5px 15px;
     }
 
     /* ----------------- */
@@ -5714,6 +5707,15 @@
     .box-artis {
         height: 100px;
         width: 100%;
+    }
+
+    .box-title-bottom-artis{
+        margin-top: 2px;
+    }
+
+    .title-bottom-artis{
+        font-size: 10px;
+        padding: 5px 15px;
     }
 
     /* ----------------- */
@@ -6974,6 +6976,15 @@ align-items: center; */
         width: 100%;
     }
 
+    .box-title-bottom-artis{
+        margin-top: 2px;
+    }
+
+    .title-bottom-artis{
+        font-size: 10px;
+        padding: 5px 15px;
+    }
+
     /* ----------------- */
     /* area-schedule */
 
@@ -8230,6 +8241,15 @@ align-items: center; */
     .box-artis {
         height: 100px;
         width: 100%;
+    }
+
+    .box-title-bottom-artis{
+        margin-top: 2px;
+    }
+
+    .title-bottom-artis{
+        font-size: 10px;
+        padding: 5px 15px;
     }
 
     /* ----------------- */

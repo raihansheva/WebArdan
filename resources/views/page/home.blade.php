@@ -8,8 +8,8 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/home.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsiveHome.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/home.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveHome.css?v=' . time()) }}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 @endpush
@@ -246,8 +246,7 @@
                             class="box-program" data-title="{{ $programList->judul_program }}"
                             data-description="{{ $programList->deskripsi_pendek }}"
                             data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
-                            data-slugP="{{ $programList->slug }}"
-                            data-deskP="{{ $programList->deskripsi_program }}"
+                            data-slugP="{{ $programList->slug }}" data-deskP="{{ $programList->deskripsi_program }}"
                             onclick="showPopup(this)">
                             {{-- <img src="./storage/{{ $programList->image_program }}" alt=""> --}}
                         </swiper-slide>
@@ -344,7 +343,8 @@
                             data-description="{{ $eventSoonList->deskripsi_pendek }}"
                             data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
                             style="background-image: url('./storage/{{ $eventSoonList->image_event }}')"
-                            data-slug="{{ $eventSoonList->slug }}"  data-deskShort="{{ $eventSoonList->deskripsi_event }}">
+                            data-slug="{{ $eventSoonList->slug }}"
+                            data-deskShort="{{ $eventSoonList->deskripsi_event }}">
                             <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
                             <div class="area-countdown">
                                 <div class="countdown">
@@ -382,7 +382,8 @@
                             style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                             onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                             data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
-                            data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                            data-slug="{{ $eventUpcomingList->slug }}"
+                            data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
                             <div class="area-days-date-right">
                                 <div class="content-days-date-right">
                                     <div class="box-days-date-right">
@@ -393,18 +394,18 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-                        <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
-                            <div class="popup-content-event">
-                                <div class="area-info-event">
-                                    <p class="desk-event"></p>
-                                    <h2 class="title-box-event"></h2>
-                                    <a href="#" class="detail-link">
-                                        <p class="link-event">See detail</p>
-                                    </a>
-                                </div>
+                    @endforeach
+                    <div id="popupEvent" class="popup-event" onclick="closePopupOutsideEvent(event)">
+                        <div class="popup-content-event">
+                            <div class="area-info-event">
+                                <p class="desk-event"></p>
+                                <h2 class="title-box-event"></h2>
+                                <a href="#" class="detail-link">
+                                    <p class="link-event">See detail</p>
+                                </a>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -426,8 +427,9 @@
                     </div>
                     <div class="content-podcast">
                         @foreach ($podcast as $podcastList)
-                            <div class="card-podcast">
+                            <div class="card-podcast" data-slug="{{ $podcastList->slug }}">
                                 <div class="card-body-podcast">
+                                    {{-- <a class="link-podcast" href="/detail-podcast/{{ $podcastList->slug }}"> --}}
                                     <div class="head-body-podcast">
                                         <div class="genre">
                                             <h1 class="title-genre">{{ $podcastList->genre_podcast }}</h1>
@@ -440,6 +442,7 @@
                                         <img src="./storage/{{ $podcastList->image_podcast }}" alt=""
                                             class="image-podcast">
                                     </div>
+                                    {{-- </a> --}}
                                 </div>
                                 <div class="card-header-podcast">
                                     <div class="author-podcast">
@@ -721,7 +724,7 @@
                     </div>
                     <div class="content-artis">
                         @foreach ($artis as $artisList)
-                            <a href="{{ url('info-news') }}#info-artis">
+                            <a href="/detail-info-artis/{{ $artisList->slug }}">
                                 <div class="box-artis">
                                     <img class="image-artis" src="./storage/{{ $artisList->image_artis }}"
                                         alt="">
@@ -736,6 +739,13 @@
                                 </div>
                             </a>
                         @endforeach
+                        <div class="area-bottom-artis">
+                            <div class="box-title-bottom-artis">
+                                <a href="/info-artis">
+                                    <h1 class="title-bottom-artis">See More</h1>
+                                </a>
+                            </div>
+                        </div>
                         {{-- <div id="popupArtis" class="popup-artis" style="display: none;"
                             onclick="closePopupOutsideArtis(event)">
                             <div class="popup-content-artis">
@@ -865,10 +875,26 @@
     {{-- ------- --}}
     {{-- <script src="js/playlist.js"></script> --}}
     @livewireScripts
-    <script src="js/home.js"></script>
+    <script src="{{ asset('js/home.js?v=' . time()) }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Pilih semua elemen dengan class "card-podcast"
+            const podcastCards = document.querySelectorAll(".card-podcast");
+
+            podcastCards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    // Ambil slug dari atribut data-slug
+                    const slug = card.getAttribute("data-slug");
+
+                    if (slug) {
+                        // Redirect user ke halaman detail podcast sesuai slug
+                        window.location.href = `/detail-podcast/${slug}`;
+                    }
+                });
+            });
+        });
         // Function to fetch the next program's image
         async function fetchNextProgramImage() {
             try {

@@ -548,6 +548,7 @@
 .card-podcast {
     flex: 1 0 calc(33.33% - 14px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
     height: 435px;
+    cursor: pointer;
 }
 
 .card-podcast .card-header-podcast {

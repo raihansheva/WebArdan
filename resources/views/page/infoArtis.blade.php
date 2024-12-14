@@ -5,13 +5,13 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="{{ asset('css/StyleContent/infoNews.css?v=' . time()) }}">
-    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveInfoNews.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/infoArtis.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveInfoArtis.css?v=' . time()) }}">
 @endpush
 
 @section('title', 'INFO | ARDAN RADIO')
 @section('content')
-    <section class="page-news-1">
+    {{-- <section class="page-news-1">
         <div class="header-info-news">
             @foreach ($bannerInfo as $bannerInfoList)
                 <div class="image-header-info-news">
@@ -20,6 +20,68 @@
                         srcset="">
                 </div>
             @endforeach
+        </div>
+    </section> --}}
+    <section class="page-news-3">
+        <div class="area-info-artis">
+            <div class="header-info-artis">
+                <h2 class="title-info-artis">Info Artis</h2>
+            </div>
+            <div class="area-box-info-artis">
+                @foreach ($artis as $berita)
+                    <div class="box-artis">
+                        <div class="area-image-artis">
+                            <img class="image-artis" src="./storage/{{ $berita->image_artis }}" alt="">
+                            <div class="area-header-artis">
+                                <h2 class="name-artis">{{ $berita->nama }}</h2>
+                            </div>
+                        </div>
+                        <div class="area-bio-artis">
+                            <div class="area-judul-berita">
+                                <p class="judul-berita">{{ $berita->judul_berita }}</p>
+                            </div>
+                            <div class="area-konten-berita">
+                                <p class="desk-berita">{{ strip_tags($berita->ringkasan_berita) }}</p>
+                                {{-- <p class="desk-berita">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
+                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                </p> --}}
+                                {{-- <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
+                                    data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
+                                    onclick="showPopupArtis(this)">See More Details</span> --}}
+                                <a href="/detail-info-artis/{{ $berita->slug }}">
+                                    <span class="see-more-news">See More Details</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                <div id="popupArtis" class="popup-artis" onclick="closePopupOutsideArtis(event)">
+                    <div class="popup-content-artis">
+                        <span class="close" onclick="closePopupArtis()">&times;</span>
+                        <div class="popUp-area-info-artis">
+                            <div class="area-popup-header">
+                                <h2 class="header-popup-artis">#Info Artis</h2>
+                            </div>
+                            <div class="area-judul-berita">
+                                <p class="popUp-judul-berita"></p>
+                            </div>
+                            <div class="popUP-area-konten-berita" id="style-popUp-scroll">
+                                <p class="popUp-desk-berita"></p>
+                                {{-- <p class="desk-berita">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
+                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
+                                </p> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line-info-artis"></div>
         </div>
     </section>
     <section class="page-news-2">
@@ -202,68 +264,6 @@
                 </div>
             </div>
             <div class="line-info-news"></div>
-        </div>
-    </section>
-    <section class="page-news-3">
-        <div class="area-info-artis">
-            <div class="header-info-artis">
-                <h2 class="title-info-artis">Info Artis</h2>
-            </div>
-            <div class="area-box-info-artis">
-                @foreach ($artis as $berita)
-                    <div class="box-artis">
-                        <div class="area-image-artis">
-                            <img class="image-artis" src="./storage/{{ $berita->image_artis }}" alt="">
-                            <div class="area-header-artis">
-                                <h2 class="name-artis">{{ $berita->nama }}</h2>
-                            </div>
-                        </div>
-                        <div class="area-bio-artis">
-                            <div class="area-judul-berita">
-                                <p class="judul-berita">{{ $berita->judul_berita }}</p>
-                            </div>
-                            <div class="area-konten-berita">
-                                <p class="desk-berita">{{ strip_tags($berita->ringkasan_berita) }}</p>
-                                {{-- <p class="desk-berita">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
-                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                </p> --}}
-                                {{-- <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
-                                    data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
-                                    onclick="showPopupArtis(this)">See More Details</span> --}}
-                                <a href="/detail-info-artis/{{ $berita->slug }}">
-                                    <span class="see-more-news">See More Details</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                <div id="popupArtis" class="popup-artis" onclick="closePopupOutsideArtis(event)">
-                    <div class="popup-content-artis">
-                        <span class="close" onclick="closePopupArtis()">&times;</span>
-                        <div class="popUp-area-info-artis">
-                            <div class="area-popup-header">
-                                <h2 class="header-popup-artis">#Info Artis</h2>
-                            </div>
-                            <div class="area-judul-berita">
-                                <p class="popUp-judul-berita"></p>
-                            </div>
-                            <div class="popUP-area-konten-berita" id="style-popUp-scroll">
-                                <p class="popUp-desk-berita"></p>
-                                {{-- <p class="desk-berita">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                    Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
-                                    Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
-                                </p> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="line-info-artis"></div>
         </div>
     </section>
     <script src="{{ asset('js/infoNews.js?v=' . time()) }}"></script>

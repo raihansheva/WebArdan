@@ -7,8 +7,8 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/detailInfoArtis.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailInfoArtis.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/detailInfoArtis.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsivedetailInfoArtis.css?v=' . time()) }}">
 @endpush
 
 @section('title', $artis->meta_title)
@@ -256,5 +256,5 @@
     <section class="page-news-3">
         
     </section>
-    <script src="js/infoArtis.js"></script>
+    <script src="{{ asset('js/infoArtis.js?v=' . time()) }}"></script>
 @endsection

@@ -1,6 +1,6 @@
 @extends('layout.main')
-<link rel="stylesheet" href="css/StyleContent/youtube.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveYoutube.css">
+<link rel="stylesheet" href="{{ asset('css/StyleContent/youtube.css?v=' . time()) }}">
+<link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveYoutube.css?v=' . time()) }}">
 @section('content')
     <section class="page-youtube-1">
         <div class="area-thumbnail-youtube">
@@ -88,7 +88,8 @@
                                     data-description="{{ $eventSoonList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
                                     style="background-image: url('./storage/{{ $eventSoonList->image_event }}')"
-                                    data-slug="{{ $eventSoonList->slug }}" data-deskShort="{{ $eventSoonList->deskripsi_event }}">
+                                    data-slug="{{ $eventSoonList->slug }}"
+                                    data-deskShort="{{ $eventSoonList->deskripsi_event }}">
                                     <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
                                     <div class="area-countdown">
                                         <div class="countdown">
@@ -127,7 +128,8 @@
                                     onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
-                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    data-slug="{{ $eventUpcomingList->slug }}"
+                                    data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">
@@ -212,5 +214,5 @@
             </div>
         </div>
     </section>
-    <script src="js/youtube.js"></script>
+    <script src="{{ asset('js/youtube.js?v=' . time()) }}"></script>
 @endsection

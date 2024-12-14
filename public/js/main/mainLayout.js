@@ -917,7 +917,7 @@ document
     .getElementById("hamburger-icon")
     .addEventListener("click", function () {
         const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.toggle("active");
+        mobileMenu.classList.toggle("nyala");
     });
 
 const closeMenu = document.getElementById("close-menu") || null;
@@ -927,7 +927,7 @@ if (closeMenu) {
     closeMenu.addEventListener("click", function () {
         const mobileMenu = document.getElementById("mobile-menu");
         if (mobileMenu) {
-            mobileMenu.classList.remove("active");
+            mobileMenu.classList.remove("nyala");
         }
     });
 }
@@ -943,10 +943,10 @@ document.addEventListener("click", function (event) {
     if (
         !isClickInsideMenu &&
         !isClickInsideHamburger &&
-        mobileMenu.classList.contains("active")
+        mobileMenu.classList.contains("nyala")
     ) {
         // console.log("Closing mobile menu");
-        mobileMenu.classList.remove("active");
+        mobileMenu.classList.remove("nyala");
     }
 });
 window.onload = function () {

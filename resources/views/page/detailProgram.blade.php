@@ -7,8 +7,8 @@
 @endpush
 
 @push('Style.css')
-    <link rel="stylesheet" href="css/StyleContent/detailProgram.css">
-    <link rel="stylesheet" href="css/ResponsiveStyle/responsivedetailProgram.css">
+    <link rel="stylesheet" href="{{ asset('css/StyleContent/detailProgram.css?v=' . time()) }}">
+    <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsivedetailProgram.css?v=' . time()) }}">
 @endpush
 
 @section('title', $program->meta_title)
@@ -278,5 +278,5 @@
             <div class="line-info-artis"></div>
         </div>
     </section>
-    <script src="js/detailProgram.js"></script>
+    <script src="{{ asset('js/detailProgram.js?v=' . time()) }}"></script>
 @endsection

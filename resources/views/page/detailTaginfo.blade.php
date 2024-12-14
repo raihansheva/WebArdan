@@ -1,7 +1,7 @@
 @extends('layout.main')
 <base href="{{ url('/') }}/">
-<link rel="stylesheet" href="css/StyleContent/infoNews.css">
-<link rel="stylesheet" href="css/ResponsiveStyle/responsiveInfoNews.css">
+<link rel="stylesheet" href="{{ asset('css/StyleContent/infoNews.css?v=' . time()) }}">
+<link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveInfoNews.css?v=' . time()) }}">
 @section('content')
     <section class="page-news-1">
         <div class="header-info-news">
@@ -223,5 +223,5 @@
             <div class="line-info-artis"></div>
         </div>
     </section>
-    <script src="js/detailTaginfo.js"></script>
+    <script src="{{ asset('js/detailTaginfo.js?v=' . time()) }}"></script>
 @endsection

@@ -73,6 +73,7 @@ Route::get('/get-realtime-analytics', [GoogleAnalyticsControllers::class, 'getGo
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('/info-artis', [HomeController::class, 'artis']);
 Route::get('/detail-info-artis/{slug}', [HomeController::class, 'detailInfoArtis']);
 
 Route::get('/event', [HomeController::class, 'event']);

@@ -120,7 +120,7 @@ body {
 }
 
 /* Mobile Menu Active (Shown) */
-.mobile-menu.active {
+.mobile-menu.nyala {
     display: block;
     right: 0;
 }
