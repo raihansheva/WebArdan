@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateArtis extends CreateRecord
 {
     protected static string $resource = ArtisResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

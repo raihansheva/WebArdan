@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateStream extends CreateRecord
 {
     protected static string $resource = StreamResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

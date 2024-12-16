@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAnnouncer extends CreateRecord
 {
     protected static string $resource = AnnouncerResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

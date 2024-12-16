@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\InfoResource\Pages;
 use App\Models\Info;
+use App\Models\Kategori;
 use App\Models\TagInfo;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -96,6 +97,11 @@ class InfoResource extends Resource
                             ->fileAttachmentsVisibility('public')
                             ->required()
                             ->columnSpan(2),
+
+                    ])
+                    ->columns(2),
+                Card::make()
+                    ->schema([
                         TextInput::make('meta_title')
                             ->label('Title Info :')
                             ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
@@ -143,7 +149,10 @@ class InfoResource extends Resource
                 TextColumn::make('meta_keywords'),
             ])
             ->filters([
-                //
+                // Filter kategori
+                Tables\Filters\SelectFilter::make('kategori_id')
+                    ->label('Kategori')
+                    ->options(TagInfo::all()->pluck('nama_kategori', 'id')), // Mengambil semua kategori untuk opsi
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

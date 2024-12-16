@@ -77,16 +77,11 @@
                             <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="area-thumbnail">
-                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
-                                <div class="btn-play-streaming" id="BtnStream"
-                                    data-audio-src="{{ $stream->stream_audio_url }}">
-                                    <span class="material-symbols-rounded">play_arrow</span>
-                                </div>
+                            <img class="image-streaming" src="./storage/{{ $streamAudio->image_stream }}">
+                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $streamAudio->stream_url }}">
+                                <span class="material-symbols-rounded">play_arrow</span>
+                            </div>
 
-                                <!-- Ganti dengan MediaElement.js -->
-                                <audio class="audio-streaming" id="audio-streaming" preload="auto">
-                                    <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
-                                </audio>
                         </div>
                         <div class="line-streaming"></div>
                     </div>
@@ -154,7 +149,7 @@
                             </div>
                         </div>
                         <div class="area-see-more">
-                            <a href="">
+                            <a href="/event">
                                 <h2 class="see-more">See More</h2>
                             </a>
                         </div>
@@ -190,9 +185,9 @@
                                     Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
                                 </p> --}}
-                                <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
-                                    data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
-                                    onclick="showPopupArtis(this)">See More Details</span>
+                                <a href="/detail-info-artis/{{ $berita->slug }}">
+                                    <span class="see-more-news">See More Details</span>
+                                </a>
                             </div>
                         </div>
                     </div>

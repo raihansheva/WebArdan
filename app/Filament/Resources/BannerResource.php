@@ -25,7 +25,7 @@ class BannerResource extends Resource
     protected static ?string $navigationGroup = 'Menu';
 
     protected static ?string $navigationLabel = 'Banner';
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-flag';
 
     public static function form(Form $form): Form
@@ -53,7 +53,9 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title_banner')->searchable()->sortable(),
+                TextColumn::make('title_banner')
+                    ->searchable()
+                    ->sortable(),
                 ImageColumn::make('image_banner'),
             ])
             ->filters([

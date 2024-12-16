@@ -116,9 +116,8 @@
                             <h2 class="title-streaming">Streaming</h2>
                         </div>
                         <div class="area-thumbnail">
-                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
-                            <div class="btn-play-streaming" id="BtnStream"
-                                data-audio-src="{{ $stream->stream_audio_url }}">
+                            <img class="image-streaming" src="./storage/{{ $streamAudio->image_stream }}">
+                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $streamAudio->stream_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
 

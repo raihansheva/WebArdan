@@ -13,7 +13,7 @@ class Streaming extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['id', 'title_stream', 'stream_video_url', 'stream_audio_url', 'image_stream' , 'status'];
+    protected $fillable = ['id', 'type_url', 'stream_url', 'image_stream'];
 
     // Event saat model di-update
     // public static function boot()

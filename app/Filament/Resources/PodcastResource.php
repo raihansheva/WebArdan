@@ -100,6 +100,11 @@ class PodcastResource extends Resource
                             ->label('Deskripsi Podcast :')
                             ->required()
                             ->columnSpan(2),
+
+                    ])
+                    ->columns(2),
+                Card::make()
+                    ->schema([
                         TextInput::make('meta_title')
                             ->label('Title Info :')
                             ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input

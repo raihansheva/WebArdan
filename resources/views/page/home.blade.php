@@ -37,8 +37,8 @@
                     {{-- @foreach ($stream as $streamList) --}}
                     <div class="card-A">
                         <div class="card-body">
-                            <img class="image-streaming" src="./storage/{{ $stream->image_stream }}">
-                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $stream->stream_audio_url }}">
+                            <img class="image-streaming" src="./storage/{{ $streamAudio->image_stream }}">
+                            <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $streamAudio->stream_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
 
@@ -61,7 +61,7 @@
                                 <video id="hlsPlayer" controls width="640" height="360"></video>
                             </div>
                             <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                            <div id="player" data-pl="{{ $stream->stream_video_url }}" style="display: none;">
+                            <div id="player" data-pl="{{ $streamVideo->stream_url }}" style="display: none;">
                             </div>
                         </div>
                         <div class="card-footer">

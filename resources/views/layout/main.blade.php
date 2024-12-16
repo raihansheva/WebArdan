@@ -253,7 +253,7 @@
         <audio src="" class="main-song" id="audio"></audio>
         {{-- <audio src="" class="main-song-streaming" id="audio-streaming"></audio> --}}
         <audio class="audio-streaming" id="audio-streaming" preload="auto" crossorigin="anonymous">
-            <source type="audio/mpeg" src="{{ $stream->stream_audio_url }}" />
+            <source type="audio/mpeg" src="{{ $streamAudio->stream_url }}" />
         </audio>
     </div>
     {{-- ------- --}}

@@ -31,7 +31,15 @@ class AnnouncerResource extends Resource
     ->schema([
         Card::make()
             ->schema([
-                TextInput::make('name_announcer')->label('Name Announcer :')->required(),
+                TextInput::make('name_announcer')->label('Name Announcer :')
+                ->columnSpan(2)
+                ->required(),
+                TextInput::make('link_instagram')->label('Link Instagram :')
+                ->columnSpan(2),
+                TextInput::make('link_tiktok')->label('Link TikTok :')
+                ->columnSpan(2),
+                TextInput::make('link_twitter')->label('Link Twitter :')
+                ->columnSpan(2),
                 FileUpload::make('image_announcer')
                     ->label('Announcer Image')
                     ->image()
@@ -40,18 +48,15 @@ class AnnouncerResource extends Resource
                     ->preserveFilenames()
                     ->rules(['required', 'image', 'dimensions:width=254,height=300'])
                     ->validationAttribute('Image Announcer')
-                    ->helperText('The image must be 254x300 pixels.'),
-                TextInput::make('link_instagram')->label('Link Instagram :'),
-                TextInput::make('link_tiktok')->label('Link TikTok :'),
-                TextInput::make('link_twitter')->label('Link Twitter :'),
-
+                    ->helperText('The image must be 254x300 pixels.')
+                    ->columnSpan(2),
                 // RichEditor di bagian paling bawah dan lebar penuh
                 RichEditor::make('bio')
                     ->label('Bio :')
                     ->required()
                     ->columnSpan(2), // Membuat RichEditor lebar penuh (full width)
             ])
-            ->columns(2), // Menentukan bahwa form menggunakan 2 kolom
+            ->columns(1), // Menentukan bahwa form menggunakan 2 kolom
     ]);
     }
 

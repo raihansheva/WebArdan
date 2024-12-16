@@ -18,6 +18,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+
 class ProgramResource extends Resource
 {
     protected static ?string $model = Program::class;
@@ -42,8 +43,8 @@ class ProgramResource extends Resource
                             })->required(),
                         Textarea::make('deskripsi_pendek')->label('Deskripsi Singkat :')->required(),
                         TextInput::make('slug')->label('Slug :')
-                        ->readOnly()
-                        ->required(),
+                            ->readOnly()
+                            ->required(),
                         FileUpload::make('image_program')
                             ->label('Program Image :')
                             ->image()
@@ -65,10 +66,13 @@ class ProgramResource extends Resource
                         RichEditor::make('deskripsi_program')
                             ->label('Deskripsi Program :')
                             ->columnSpan(2),
+                    ])
+                    ->columns(2),
+                Card::make()
+                    ->schema([
                         Textarea::make('meta_title')->label('Meta Title :')->required(),
                         Textarea::make('meta_description')->label('Meta Description :')->required(),
                         Textarea::make('meta_keywords')->label('Meta Keywords :')->required(),
-
                     ])
                     ->columns(2),
             ]);
@@ -81,14 +85,14 @@ class ProgramResource extends Resource
                 TextColumn::make('judul_program')->searchable()->sortable(),
                 TextColumn::make('deskripsi_pendek'),
                 TextColumn::make('deskripsi_program')
-                ->formatStateUsing(function ($state) {
-                    return strip_tags($state); // Menghapus tag HTML
-                }),
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
                 TextColumn::make('slug'),
                 TextColumn::make('jam_mulai')
-                ->label('Jam Mulai'),
+                    ->label('Jam Mulai'),
                 TextColumn::make('jam_selesai')
-                ->label('Jam Selesai'),
+                    ->label('Jam Selesai'),
                 ImageColumn::make('image_program'),
                 TextColumn::make('meta_title'),
                 TextColumn::make('meta_description'),

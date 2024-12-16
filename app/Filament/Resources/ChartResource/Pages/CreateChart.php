@@ -11,7 +11,7 @@ class CreateChart extends CreateRecord
 {
     protected static string $resource = ChartResource::class;
 
-protected function handleRecordCreation(array $data): Chart
+    protected function handleRecordCreation(array $data): Chart
     {
         // Ambil kategori_id dari form
         $kategoriId = $data['kategori_id'];
@@ -28,5 +28,10 @@ protected function handleRecordCreation(array $data): Chart
 
         // Kembalikan record pertama untuk rute edit
         return $charts[0];
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

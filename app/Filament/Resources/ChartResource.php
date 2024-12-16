@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ChartResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ChartResource\RelationManagers;
+use Filament\Actions\ActionGroup;
+use Filament\Tables\Filters\SelectFilter;
 
 class ChartResource extends Resource
 {
@@ -40,18 +42,17 @@ class ChartResource extends Resource
                             ->label('Kategori :')
                             ->options(Kategori::all()->pluck('nama_kategori', 'id')) // Mengambil data kategori
                             ->required(),
-
-                            Repeater::make('songs')
+                        Repeater::make('songs')
                             ->label('Upload MP3 :')
                             ->schema([
-                                TextInput::make('name')->label('Song Name')->required(),
+                                TextInput::make('name')->label('Nama Lagu : ')->required(),
                                 FileUpload::make('link_audio')
-                                    ->label('Audio File')
+                                    ->label('Audio File : ')
                                     ->preserveFilenames()
                                     ->directory('audioChart')
                                     ->acceptedFileTypes(['audio/mpeg'])
                                     ->required(),
-                            ])
+                            ])->columns(2)
                             ->defaultItems(1)
                             ->minItems(1)
                             ->required(),
@@ -64,15 +65,29 @@ class ChartResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('kategori.nama_kategori')->label('Kategori')->searchable()->sortable(),
-                TextColumn::make('name')->label('Nama Artis')->searchable(),
-                TextColumn::make('link_audio')->label('File Audio'),
+                TextColumn::make('kategori.nama_kategori')
+                    ->label('Kategori')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('name')
+                    ->label('Nama Artis')
+                    ->searchable(),
+                TextColumn::make('link_audio')
+                    ->label('File Audio'),
             ])
             ->filters([
-                //
+                // Filter kategori
+                Tables\Filters\SelectFilter::make('kategori_id')
+                    ->label('Kategori')
+                    ->options(Kategori::all()->pluck('nama_kategori', 'id')), // Mengambil semua kategori untuk opsi
+            ])
+            ->headerActions([
+
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->modalHeading('Edit Chart')
+                    ->modalButton('Simpan'),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
@@ -81,6 +96,7 @@ class ChartResource extends Resource
                 ]),
             ]);
     }
+    
 
     public static function getRelations(): array
     {

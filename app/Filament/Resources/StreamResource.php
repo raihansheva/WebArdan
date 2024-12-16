@@ -35,23 +35,14 @@ class StreamResource extends Resource
             ->schema([
                 Card::make()
                     ->schema([
-                        TextInput::make('title_stream')->label('Title Stream :')->required(),
-                        TextInput::make('stream_video_url')->label('Url Stream Video :')->required(),
-                        TextInput::make('stream_audio_url')->label('Url Stream Audio :')->required(),
+                        TextInput::make('type_url')->label('Type Url :')->required(),
+                        TextInput::make('stream_url')->label('Url Stream :')->required(),
                         FileUpload::make('image_stream')
                             ->label('Stream Image :')
                             ->image()
                             ->directory('uploads/images_stream')
                             ->disk('public')
                             ->preserveFilenames(),
-                        Select::make('status')
-                            ->label('Streaming Status :')
-                            ->options([
-                                'streaming' => 'Streaming',
-                                'upcoming' => 'Upcoming',
-                                'completed' => 'Completed',
-                            ])
-                            ->default('Upcoming'),
                     ])
                     ->columns(2),
             ]);
@@ -61,17 +52,9 @@ class StreamResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title_stream')->searchable()->sortable(),
-                TextColumn::make('stream_video_url'),
-                TextColumn::make('stream_audio_url'),
+                TextColumn::make('type_url')->searchable()->sortable(),
+                TextColumn::make('stream_url'),
                 ImageColumn::make('image_stream'),
-                TextColumn::make('status')
-                    ->color(fn($record) => match ($record->status) {
-                        'streaming' => 'danger',    // Merah untuk streaming
-                        'upcoming' => 'warning',     // Oren untuk upcoming
-                        'completed' => 'success',    // Hijau untuk completed
-                        default => 'secondary',       // Warna default
-                    })->searchable()->sortable(),
 
             ])
             ->filters([

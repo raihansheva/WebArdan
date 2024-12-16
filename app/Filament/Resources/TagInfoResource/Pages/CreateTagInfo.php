@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateTagInfo extends CreateRecord
 {
     protected static string $resource = TagInfoResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

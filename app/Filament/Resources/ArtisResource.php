@@ -25,7 +25,7 @@ class ArtisResource extends Resource
 {
     protected static ?string $model = Artis::class;
 
-    protected static ?string $navigationGroup = 'Chart';
+    protected static ?string $navigationGroup = 'Info';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -88,6 +88,11 @@ class ArtisResource extends Resource
                             ->label('Konten Berita')
                             ->required()
                             ->columnSpan(2),
+
+                    ])
+                    ->columns(2),
+                Card::make()
+                    ->schema([
                         TextInput::make('meta_title')
                             ->label('Title Info :')
                             ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input

@@ -80,19 +80,6 @@ class EventResource extends Resource
                             ->label('Slug :')
                             ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
                             ->required(),
-                        TextInput::make('meta_title')
-                            ->label('Title Info :')
-                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
-                            ->maxLength(100)
-                            ->required(),
-                        Textarea::make('meta_description')
-                            ->label('Description Info :')
-                            ->placeholder('Masukan meta description')
-                            ->required(),
-                        TextInput::make('meta_keywords')
-                            ->label('Keyword :')
-                            ->placeholder('Masukan meta keyword')
-                            ->required(),
                         Toggle::make('has_ticket')
                             ->label('Ada Ticket?')
                             ->helperText('Aktifkan jika acara memiliki tiket.')
@@ -111,7 +98,23 @@ class EventResource extends Resource
                             ->visible(fn(callable $get) => $get('has_ticket')) // Muncul hanya jika has_ticket == true
                             ->required(fn(callable $get) => $get('has_ticket')), // Wajib diisi hanya jika has_ticket == true
                     ])
-
+                    ->columns(2),
+                Card::make()
+                    ->schema([
+                        TextInput::make('meta_title')
+                            ->label('Title Info :')
+                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
+                            ->maxLength(100)
+                            ->required(),
+                        Textarea::make('meta_description')
+                            ->label('Description Info :')
+                            ->placeholder('Masukan meta description')
+                            ->required(),
+                        TextInput::make('meta_keywords')
+                            ->label('Keyword :')
+                            ->placeholder('Masukan meta keyword')
+                            ->required(),
+                    ])
                     ->columns(2),
             ]);
     }

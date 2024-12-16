@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateFeedInstagram extends CreateRecord
 {
     protected static string $resource = FeedInstagramResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
