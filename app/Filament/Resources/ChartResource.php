@@ -42,8 +42,12 @@ class ChartResource extends Resource
                             ->label('Kategori :')
                             ->options(Kategori::all()->pluck('nama_kategori', 'id')) // Mengambil data kategori
                             ->required(),
+                    ])
+                    ->columns(1),
+                Card::make()
+                    ->schema([
                         Repeater::make('songs')
-                            ->label('Upload MP3 :')
+                            ->label('Pilih Lagu :')
                             ->schema([
                                 TextInput::make('name')->label('Nama Lagu : ')->required(),
                                 FileUpload::make('link_audio')

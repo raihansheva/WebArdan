@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArtisResource\Pages;
 use App\Models\Artis;
+use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
@@ -17,8 +18,10 @@ use Filament\Forms\Set;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 
 class ArtisResource extends Resource
@@ -125,7 +128,12 @@ class ArtisResource extends Resource
                     ->formatStateUsing(function ($state) {
                         return strip_tags($state); // Menghapus tag HTML
                     }),
-                TextColumn::make('publish_sekarang'),
+                IconColumn::make('publish_sekarang') // Menggunakan IconColumn
+                    ->boolean() // Secara otomatis mendukung true/false atau 1/0
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
+                    ->trueColor('success') // Warna ikon untuk true (hijau)
+                    ->falseColor('danger'),
                 TextColumn::make('tanggal_dibuat'),
                 TextColumn::make('tanggal_publikasi'),
                 TextColumn::make('meta_title'),
@@ -133,7 +141,13 @@ class ArtisResource extends Resource
                 TextColumn::make('meta_keywords'),
             ])
             ->filters([
-                //
+                Filter::make('published')
+                    ->query(fn(Builder $query) => $query->where('publish_sekarang', true)
+                        ->orWhere(function (Builder $query) {
+                            $query->whereNotNull('tanggal_publikasi')
+                                ->where('tanggal_publikasi', '<=', now());
+                        }))
+                    ->label('Published'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -160,5 +174,23 @@ class ArtisResource extends Resource
             'create' => Pages\CreateArtis::route('/create'),
             'edit' => Pages\EditArtis::route('/{record}/edit'),
         ];
+    }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['publish_sekarang']) {
+            $data['tanggal_publikasi'] = now(); // Jika publish sekarang, isi tanggal_publikasi dengan waktu saat ini
+        }
+
+        return $data;
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['publish_sekarang']) {
+            $data['tanggal_publikasi'] = now(); // Memastikan logika sama saat data diupdate
+        }
+
+        return $data;
     }
 }

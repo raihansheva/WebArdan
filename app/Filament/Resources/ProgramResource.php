@@ -5,7 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProgramResource\Pages;
 use App\Models\Program;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -14,6 +17,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -68,13 +72,43 @@ class ProgramResource extends Resource
                             ->columnSpan(2),
                     ])
                     ->columns(2),
-                Card::make()
+                Grid::make(2) // Tetapkan Grid memiliki 2 kolom
                     ->schema([
-                        Textarea::make('meta_title')->label('Meta Title :')->required(),
-                        Textarea::make('meta_description')->label('Meta Description :')->required(),
-                        Textarea::make('meta_keywords')->label('Meta Keywords :')->required(),
-                    ])
-                    ->columns(2),
+                        Card::make()
+                            ->schema([
+                                TextInput::make('meta_title')
+                                    ->label('Title Info :')
+                                    ->placeholder('Masukan meta title')
+                                    ->maxLength(100)
+                                    ->required(),
+                                Textarea::make('meta_description')
+                                    ->label('Description Info :')
+                                    ->placeholder('Masukan meta description')
+                                    ->required(),
+                                TextInput::make('meta_keywords')
+                                    ->label('Keyword :')
+                                    ->placeholder('Masukan meta keyword')
+                                    ->required(),
+                            ]),
+                        Card::make()
+                            ->schema([
+                                Checkbox::make('publish_now')
+                                    ->label('Publish Sekarang')
+                                    ->reactive()
+                                    ->afterStateUpdated(function ($state, $get, $set) {
+                                        // Jika "Publish Sekarang" dicentang, kosongkan "tanggal_publikasi"
+                                        if ($state) {
+                                            $set('tanggal_publikasi', null);
+                                        }
+                                    }),
+
+                                DatePicker::make('tanggal_publikasi')
+                                    ->label('Publish By Tanggal :')
+                                    ->format('Y-m-d')
+                                    ->visible(fn($get) => !$get('publish_now')) // Muncul hanya jika "Publish Sekarang" tidak dicentang
+                                    ->required(fn($get) => !$get('publish_now')), // Wajib diisi jika "Publish Sekarang" tidak dicentang
+                            ]),
+                    ])->columnSpan(2),
             ]);
     }
 
@@ -94,6 +128,13 @@ class ProgramResource extends Resource
                 TextColumn::make('jam_selesai')
                     ->label('Jam Selesai'),
                 ImageColumn::make('image_program'),
+                IconColumn::make('publish_now') // Menggunakan IconColumn
+                    ->boolean() // Secara otomatis mendukung true/false atau 1/0
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
+                    ->trueColor('success') // Warna ikon untuk true (hijau)
+                    ->falseColor('danger'),
+                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
                 TextColumn::make('meta_title'),
                 TextColumn::make('meta_description'),
                 TextColumn::make('meta_keywords')
@@ -126,5 +167,23 @@ class ProgramResource extends Resource
             'create' => Pages\CreateProgram::route('/create'),
             'edit' => Pages\EditProgram::route('/{record}/edit'),
         ];
+    }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Jika publish sekarang, isi tanggal_publikasi dengan waktu saat ini
+        }
+
+        return $data;
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Memastikan logika sama saat data diupdate
+        }
+
+        return $data;
     }
 }

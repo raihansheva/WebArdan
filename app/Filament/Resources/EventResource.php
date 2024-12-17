@@ -22,6 +22,8 @@ use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\EventResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\EventResource\RelationManagers;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\IconColumn;
@@ -99,23 +101,43 @@ class EventResource extends Resource
                             ->required(fn(callable $get) => $get('has_ticket')), // Wajib diisi hanya jika has_ticket == true
                     ])
                     ->columns(2),
-                Card::make()
+                Grid::make(2) // Tetapkan Grid memiliki 2 kolom
                     ->schema([
-                        TextInput::make('meta_title')
-                            ->label('Title Info :')
-                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
-                            ->maxLength(100)
-                            ->required(),
-                        Textarea::make('meta_description')
-                            ->label('Description Info :')
-                            ->placeholder('Masukan meta description')
-                            ->required(),
-                        TextInput::make('meta_keywords')
-                            ->label('Keyword :')
-                            ->placeholder('Masukan meta keyword')
-                            ->required(),
-                    ])
-                    ->columns(2),
+                        Card::make()
+                            ->schema([
+                                TextInput::make('meta_title')
+                                    ->label('Title Info :')
+                                    ->placeholder('Masukan meta title')
+                                    ->maxLength(100)
+                                    ->required(),
+                                Textarea::make('meta_description')
+                                    ->label('Description Info :')
+                                    ->placeholder('Masukan meta description')
+                                    ->required(),
+                                TextInput::make('meta_keywords')
+                                    ->label('Keyword :')
+                                    ->placeholder('Masukan meta keyword')
+                                    ->required(),
+                            ]),
+                        Card::make()
+                            ->schema([
+                                Checkbox::make('publish_now')
+                                    ->label('Publish Sekarang')
+                                    ->reactive()
+                                    ->afterStateUpdated(function ($state, $get, $set) {
+                                        // Jika "Publish Sekarang" dicentang, kosongkan "tanggal_publikasi"
+                                        if ($state) {
+                                            $set('tanggal_publikasi', null);
+                                        }
+                                    }),
+
+                                DatePicker::make('tanggal_publikasi')
+                                    ->label('Publish By Tanggal :')
+                                    ->format('Y-m-d')
+                                    ->visible(fn($get) => !$get('publish_now')) // Muncul hanya jika "Publish Sekarang" tidak dicentang
+                                    ->required(fn($get) => !$get('publish_now')), // Wajib diisi jika "Publish Sekarang" tidak dicentang
+                            ]),
+                    ])->columnSpan(2),
             ]);
     }
 
@@ -131,6 +153,13 @@ class EventResource extends Resource
                         return strip_tags($state); // Menghapus tag HTML
                     }),
                 TextColumn::make('date_event')->searchable()->sortable(),
+                IconColumn::make('publish_now') // Menggunakan IconColumn
+                    ->boolean() // Secara otomatis mendukung true/false atau 1/0
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
+                    ->trueColor('success') // Warna ikon untuk true (hijau)
+                    ->falseColor('danger'),
+                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
                 TextColumn::make('time_countdown'),
                 TextColumn::make('status')
                     ->color(fn($record) => match ($record->status) {
@@ -178,5 +207,23 @@ class EventResource extends Resource
             'create' => Pages\CreateEvent::route('/create'),
             'edit' => Pages\EditEvent::route('/{record}/edit'),
         ];
+    }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Jika publish sekarang, isi tanggal_publikasi dengan waktu saat ini
+        }
+
+        return $data;
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Memastikan logika sama saat data diupdate
+        }
+
+        return $data;
     }
 }

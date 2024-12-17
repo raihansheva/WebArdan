@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use App\Models\TagInfo;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
@@ -25,6 +26,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\TrixEditor;
+use Filament\Tables\Columns\IconColumn;
 
 class InfoResource extends Resource
 {
@@ -100,23 +102,45 @@ class InfoResource extends Resource
 
                     ])
                     ->columns(2),
-                Card::make()
+                Grid::make(2) // Tetapkan Grid memiliki 2 kolom
                     ->schema([
-                        TextInput::make('meta_title')
-                            ->label('Title Info :')
-                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
-                            ->maxLength(100)
-                            ->required(),
-                        Textarea::make('meta_description')
-                            ->label('Description Info :')
-                            ->placeholder('Masukan meta description')
-                            ->required(),
-                        TextInput::make('meta_keywords')
-                            ->label('Keyword :')
-                            ->placeholder('Masukan meta keyword')
-                            ->required(),
-                    ])
-                    ->columns(2),
+                        Card::make()
+                            ->schema([
+                                TextInput::make('meta_title')
+                                    ->label('Title Info :')
+                                    ->placeholder('Masukan meta title')
+                                    ->maxLength(100)
+                                    ->required(),
+                                Textarea::make('meta_description')
+                                    ->label('Description Info :')
+                                    ->placeholder('Masukan meta description')
+                                    ->required(),
+                                TextInput::make('meta_keywords')
+                                    ->label('Keyword :')
+                                    ->placeholder('Masukan meta keyword')
+                                    ->required(),
+                            ]),
+                        Card::make()
+                            ->schema([
+                                Checkbox::make('publish_now')
+                                    ->label('Publish Sekarang')
+                                    ->reactive()
+                                    ->afterStateUpdated(function ($state, $get, $set) {
+                                        // Jika publish_sekarang true, set tanggal_dibuat ke tanggal saat ini
+                                        if ($state) {
+                                            $set('date_podcast', now('UTC')->toDateString()); // Set tanggal_dibuat ke tanggal sekarang
+                                        } else {
+                                            // Jika publish_sekarang false, kosongkan tanggal_dibuat
+                                            $set('date_podcast', null);
+                                        }
+                                    }),
+                                DatePicker::make('tanggal_publikasi')
+                                    ->label('Publish By Tanggal :')
+                                    ->format('Y-m-d')
+                                    ->visible(fn($get) => !$get('publish_now')) // Hanya muncul jika "Publish Sekarang" tidak dicentang
+                                    ->required(fn($get) => !$get('publish_now')),
+                            ]),
+                    ])->columnSpan(3),
             ]);
     }
 
@@ -133,6 +157,13 @@ class InfoResource extends Resource
                     }),
                 ImageColumn::make('image_info'),
                 TextColumn::make('date_info'),
+                IconColumn::make('publish_now') // Menggunakan IconColumn
+                    ->boolean() // Secara otomatis mendukung true/false atau 1/0
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
+                    ->trueColor('success') // Warna ikon untuk true (hijau)
+                    ->falseColor('danger'),
+                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
                 TextColumn::make('slug'),
                 TextColumn::make('top_news')
                     ->label('Top News')
@@ -179,5 +210,23 @@ class InfoResource extends Resource
             'create' => Pages\CreateInfo::route('/create'),
             'edit' => Pages\EditInfo::route('/{record}/edit'),
         ];
+    }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Jika publish sekarang, isi tanggal_publikasi dengan waktu saat ini
+        }
+
+        return $data;
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Memastikan logika sama saat data diupdate
+        }
+
+        return $data;
     }
 }

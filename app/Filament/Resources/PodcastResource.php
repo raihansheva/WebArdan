@@ -6,10 +6,13 @@ use App\Filament\Resources\PodcastResource\Pages;
 use App\Models\Podcast;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -36,6 +39,7 @@ class PodcastResource extends Resource
     {
         return $form
             ->schema([
+                // Bagian utama
                 Card::make()
                     ->schema([
                         TextInput::make('judul_podcast')->label('Judul Podcast :')
@@ -45,9 +49,9 @@ class PodcastResource extends Resource
                                 $set('meta_title', $state);
                             })
                             ->required(),
-                        TextInput::make('genre_podcast')->label('Genre Podcast :')->required(),
-
-                        // TextInput::make('eps_podcast')->label('Eps Podcast :')->required(),
+                        TagsInput::make('genre_podcast')
+                            ->label('Genre Podcast :')
+                            ->required(),
                         FileUpload::make('image_podcast')
                             ->label('Podcast Image :')
                             ->image()
@@ -56,41 +60,34 @@ class PodcastResource extends Resource
                             ->preserveFilenames(),
                         FileUpload::make('file')
                             ->label('Upload MP3')
-                            ->acceptedFileTypes(['audio/mpeg']) // Khusus untuk file MP3
-                            ->directory('audioPodcast') // Direktori penyimpanan di dalam storage
-                            ->preserveFilenames() // Agar nama file asli tetap dipertahankan
-                            ->maxSize(10240), // Ukuran maksimum dalam KB (10 MB pada contoh ini),
+                            ->acceptedFileTypes(['audio/mpeg'])
+                            ->directory('audioPodcast')
+                            ->preserveFilenames()
+                            ->maxSize(10240),
                         DatePicker::make('date_podcast')->label('Date Podcast :')->required(),
                         TextInput::make('link_podcast')->label('Link Podcast :')->required(),
                         TextInput::make('slug')
                             ->label('Slug :')
-                            ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
+                            ->readOnly()
                             ->required(),
-                        // Checkbox untuk menentukan apakah ada episode
                         Toggle::make('is_episode')
                             ->label('Tambah episode?')
                             ->required()
                             ->reactive()
                             ->afterStateUpdated(function (callable $get, callable $set) {
-                                // Ketika toggle diubah, jika 'is_episode' dicentang
-                                // maka kita set 'episode_number' ke null atau value lain
                                 if ($get('is_episode')) {
-                                    $set('episode_number', null); // Reset atau set nilai default
-                                    $set('podcast_id', null); // Reset atau set nilai default
+                                    $set('episode_number', null);
+                                    $set('podcast_id', null);
                                 } else {
-                                    $set('episode_number', null); // Atau nilai lain yang diinginkan
-                                    $set('podcast_id', null); // Atau nilai lain yang diinginkan
+                                    $set('episode_number', null);
+                                    $set('podcast_id', null);
                                 }
                             }),
-
-                        // Input untuk nomor episode yang hanya muncul jika checkbox dicentang
                         TextInput::make('episode_number')
                             ->numeric()
                             ->nullable()
                             ->label('Nomor Episode')
-                            ->visible(fn(callable $get) => $get('is_episode')), // Menampilkan hanya jika is_episode dicentang
-
-                        // Menambahkan dropdown untuk memilih podcast
+                            ->visible(fn(callable $get) => $get('is_episode')),
                         Select::make('podcast_id')
                             ->label('Pilih Podcast')
                             ->relationship('podcasts', 'judul_podcast')
@@ -100,28 +97,51 @@ class PodcastResource extends Resource
                             ->label('Deskripsi Podcast :')
                             ->required()
                             ->columnSpan(2),
-
                     ])
-                    ->columns(2),
-                Card::make()
+                    ->columns(2), // Membuat Card utama memiliki 2 kolom
+                // Bagian Grid kedua
+                Grid::make(2) // Tetapkan Grid memiliki 2 kolom
                     ->schema([
-                        TextInput::make('meta_title')
-                            ->label('Title Info :')
-                            ->placeholder('Masukan meta title') // Menambahkan placeholder untuk panduan input
-                            ->maxLength(100)
-                            ->required(),
-                        Textarea::make('meta_description')
-                            ->label('Description Info :')
-                            ->placeholder('Masukan meta description')
-                            ->required(),
-                        TextInput::make('meta_keywords')
-                            ->label('Keyword :')
-                            ->placeholder('Masukan meta keyword')
-                            ->required(),
-                    ])
-                    ->columns(2),
+                        Card::make()
+                            ->schema([
+                                TextInput::make('meta_title')
+                                    ->label('Title Info :')
+                                    ->placeholder('Masukan meta title')
+                                    ->maxLength(100)
+                                    ->required(),
+                                Textarea::make('meta_description')
+                                    ->label('Description Info :')
+                                    ->placeholder('Masukan meta description')
+                                    ->required(),
+                                TextInput::make('meta_keywords')
+                                    ->label('Keyword :')
+                                    ->placeholder('Masukan meta keyword')
+                                    ->required(),
+                            ]),
+                        Card::make()
+                            ->schema([
+                                Checkbox::make('publish_now')
+                                    ->label('Publish Sekarang')
+                                    ->reactive()
+                                    ->afterStateUpdated(function ($state, $get, $set) {
+                                        // Jika publish_sekarang true, set tanggal_dibuat ke tanggal saat ini
+                                        if ($state) {
+                                            $set('date_podcast', now('UTC')->toDateString()); // Set tanggal_dibuat ke tanggal sekarang
+                                        } else {
+                                            // Jika publish_sekarang false, kosongkan tanggal_dibuat
+                                            $set('date_podcast', null);
+                                        }
+                                    }),
+                                DatePicker::make('tanggal_publikasi')
+                                    ->label('Publish By Tanggal :')
+                                    ->format('Y-m-d')
+                                    ->visible(fn($get) => !$get('publish_now')) // Hanya muncul jika "Publish Sekarang" tidak dicentang
+                                    ->required(fn($get) => !$get('publish_now')),
+                            ]),
+                    ])->columnSpan(3),
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
@@ -135,6 +155,13 @@ class PodcastResource extends Resource
                     }),
                 ImageColumn::make('image_podcast'),
                 TextColumn::make('date_podcast')->searchable()->sortable(),
+                IconColumn::make('publish_now') // Menggunakan IconColumn
+                    ->boolean() // Secara otomatis mendukung true/false atau 1/0
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
+                    ->trueColor('success') // Warna ikon untuk true (hijau)
+                    ->falseColor('danger'),
+                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
                 TextColumn::make('link_podcast'),
                 TextColumn::make('file'),
                 TextColumn::make('slug'),
@@ -178,5 +205,23 @@ class PodcastResource extends Resource
             'create' => Pages\CreatePodcast::route('/create'),
             'edit' => Pages\EditPodcast::route('/{record}/edit'),
         ];
+    }
+
+    public static function mutateFormDataBeforeCreate(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Jika publish sekarang, isi tanggal_publikasi dengan waktu saat ini
+        }
+
+        return $data;
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        if ($data['publish_now']) {
+            $data['tanggal_publikasi'] = now(); // Memastikan logika sama saat data diupdate
+        }
+
+        return $data;
     }
 }

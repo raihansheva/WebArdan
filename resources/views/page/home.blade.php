@@ -432,7 +432,13 @@
                                     {{-- <a class="link-podcast" href="/detail-podcast/{{ $podcastList->slug }}"> --}}
                                     <div class="head-body-podcast">
                                         <div class="genre">
-                                            <h1 class="title-genre">{{ $podcastList->genre_podcast }}</h1>
+                                            @if (is_array($podcastList->genre_podcast))
+                                                @foreach ($podcastList->genre_podcast as $genre)
+                                                    <h1 class="title-genre">{{ $genre }}</h1>
+                                                @endforeach
+                                            @else
+                                                <h1 class="title-genre">-</h1>
+                                            @endif
                                         </div>
                                         <div class="area-card-text">
                                             <h1 class="card-text-podcast">{{ $podcastList->judul_podcast }}</h1>
