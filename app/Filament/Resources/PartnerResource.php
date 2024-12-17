@@ -53,6 +53,11 @@ class PartnerResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('name_partner')->searchable()->sortable(),
                 ImageColumn::make('logo_partner'),
             ])

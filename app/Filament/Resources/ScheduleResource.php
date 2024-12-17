@@ -88,6 +88,11 @@ class ScheduleResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('program.judul_program')->searchable()->sortable(),
                 TextColumn::make('jam_mulai')->searchable()->sortable(),
                 TextColumn::make('jam_selesai')->searchable()->sortable(),

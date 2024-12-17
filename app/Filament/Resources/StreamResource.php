@@ -52,6 +52,11 @@ class StreamResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('type_url')->searchable()->sortable(),
                 TextColumn::make('stream_url'),
                 ImageColumn::make('image_stream'),

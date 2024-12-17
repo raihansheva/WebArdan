@@ -118,6 +118,11 @@ class ArtisResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('nama')->searchable()->sortable(),
                 TextColumn::make('kategori_info'),
                 ImageColumn::make('image_artis'),

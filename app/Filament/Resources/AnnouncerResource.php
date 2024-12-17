@@ -64,6 +64,11 @@ class AnnouncerResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('name_announcer')->searchable()->sortable(),
                 ImageColumn::make('image_announcer'),
                 TextColumn::make('link_instagram'),

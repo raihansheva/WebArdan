@@ -48,6 +48,11 @@ class TagInfoResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('nama_kategori'),
                 IconColumn::make('is_visible')
                     ->label('Ditampilkan')

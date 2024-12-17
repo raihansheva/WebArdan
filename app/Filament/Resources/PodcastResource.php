@@ -147,6 +147,11 @@ class PodcastResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('judul_podcast')->searchable()->sortable(),
                 TextColumn::make('genre_podcast')->searchable()->sortable(),
                 TextColumn::make('deskripsi_podcast')

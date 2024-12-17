@@ -53,6 +53,11 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('title_banner')
                     ->searchable()
                     ->sortable(),

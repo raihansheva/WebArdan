@@ -48,6 +48,11 @@ class ContactResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('text_1'),
                 TextColumn::make('text_2'),
                 TextColumn::make('email_collab'),

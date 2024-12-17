@@ -148,6 +148,11 @@ class InfoResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('judul_info')->searchable(),
                 TextColumn::make('tagInfo.nama_kategori')->label('Kategori'),
                 TextColumn::make('tag_info')->label('Tag Info'),

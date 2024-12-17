@@ -145,6 +145,11 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('nama_event'),
                 ImageColumn::make('image_event'),
                 TextColumn::make('deskripsi_pendek'),

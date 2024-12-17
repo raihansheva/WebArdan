@@ -43,6 +43,11 @@ class YoutubeResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('row_number')
+                    ->label('No')
+                    ->getStateUsing(static function ($rowLoop) {
+                        return $rowLoop->iteration;
+                    }),
                 TextColumn::make('nama_playlist'),
                 TextColumn::make('link_youtube'),
             ])
