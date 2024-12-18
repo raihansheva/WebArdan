@@ -121,26 +121,26 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-var player;
-var playlistID = document.getElementById("player").getAttribute("data-pl");
+// var player;
+// var playlistID = document.getElementById("player").getAttribute("data-pl");
 
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player("player", {
-        height: "360",
-        width: "640",
-        playerVars: {
-            listType: "playlist",
-            list: playlistID,
-        },
-        events: {
-            onReady: onPlayerReady,
-        },
-    });
-}
+// function onYouTubeIframeAPIReady() {
+//     player = new YT.Player("player", {
+//         height: "360",
+//         width: "640",
+//         playerVars: {
+//             listType: "playlist",
+//             list: playlistID,
+//         },
+//         events: {
+//             onReady: onPlayerReady,
+//         },
+//     });
+// }
 
-function onPlayerReady(event) {
-    event.target.playVideo();
-}
+// function onPlayerReady(event) {
+//     event.target.playVideo();
+// }
 
 function showPopup(element) {
     document.getElementById("popup").style.display = "flex"; // Tampilkan popup
@@ -149,7 +149,7 @@ function showPopup(element) {
     const description = element.getAttribute("data-description");
     const time = element.getAttribute("data-time");
     const slug = element.getAttribute("data-slugP");
-    const deskP =element.getAttribute("data-deskP");
+    const deskP = element.getAttribute("data-deskP");
 
     // Log data untuk debug
     console.log("Title:", title); // Pastikan ini mencetak judul
@@ -157,9 +157,12 @@ function showPopup(element) {
     console.log("Time:", time); // Pastikan ini mencetak waktu
     console.log("Time:", deskP); // Pastikan ini mencetak waktu
 
-    document.querySelector(".title-box-program").textContent = title || "Deskripsi tidak tersedia";
-    document.querySelector(".desk-program").textContent = description || "Deskripsi tidak tersedia";
-    document.querySelector(".jam-program").textContent = time || "Deskripsi tidak tersedia";
+    document.querySelector(".title-box-program").textContent =
+        title || "Deskripsi tidak tersedia";
+    document.querySelector(".desk-program").textContent =
+        description || "Deskripsi tidak tersedia";
+    document.querySelector(".jam-program").textContent =
+        time || "Deskripsi tidak tersedia";
 
     const detailLink = document.querySelector(".detail-link-program");
 
@@ -509,7 +512,9 @@ function showScheduleForDay(day) {
     );
 
     if (selectedSchedules.length > 0) {
-        selectedSchedules.forEach((schedule) => schedule.classList.remove("hidden"));
+        selectedSchedules.forEach((schedule) =>
+            schedule.classList.remove("hidden")
+        );
     } else {
         console.warn(`No schedules found for day '${day}'.`);
     }
@@ -539,8 +544,24 @@ const currentDayName = dayMapping[currentDayIndex]; // Nama hari dalam bahasa In
 showScheduleForDay(currentDayName);
 // });
 if (window.matchMedia("(max-width: 480px)").matches) {
-    const days = ["senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu"];
-    const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const days = [
+        "senin",
+        "selasa",
+        "rabu",
+        "kamis",
+        "jumat",
+        "sabtu",
+        "minggu",
+    ];
+    const dayNames = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+    ];
     const currentDayIndex = new Date().getDay() - 1; // JavaScript getDay() Sunday=0
     let selectedDayIndex = currentDayIndex < 0 ? 6 : currentDayIndex; // Adjust for Monday start
     const currentDayElement = document.getElementById("currentDay");
@@ -577,43 +598,30 @@ if (window.matchMedia("(max-width: 480px)").matches) {
     updateSchedule();
 }
 // Load YouTube API
-document.addEventListener("DOMContentLoaded", function () {
-    const video = document.getElementById("hlsPlayer");
-    const hlsUrl = document.getElementById("player").getAttribute("data-pl");
+// document.addEventListener("DOMContentLoaded", function () {
+//     const video = document.getElementById("hlsPlayer");
+//     const hlsUrl = document.getElementById("player").getAttribute("data-pl");
 
-    if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(hlsUrl);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-            // Menghapus video.play() di sini
-            // Video tidak akan diputar otomatis saat manifest diparsing
-        });
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-        video.src = hlsUrl;
-        // Menghapus video.play() di sini
-        // Video tidak akan diputar otomatis saat metadata dimuat
-    }
+//     if (Hls.isSupported()) {
+//         const hls = new Hls();
+//         hls.loadSource(hlsUrl);
+//         hls.attachMedia(video);
+//         hls.on(Hls.Events.MANIFEST_PARSED, function () {
+//             // Menghapus video.play() di sini
+//             // Video tidak akan diputar otomatis saat manifest diparsing
+//         });
+//     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+//         video.src = hlsUrl;
+//         // Menghapus video.play() di sini
+//         // Video tidak akan diputar otomatis saat metadata dimuat
+//     }
 
-    // Menambahkan event listener agar video hanya diputar ketika user melakukan interaksi
-    video.addEventListener("click", function () {
-        video.play();
-    });
+//     // Menambahkan event listener agar video hanya diputar ketika user melakukan interaksi
+//     video.addEventListener("click", function () {
+//         video.play();
+//     });
 
-    // Tombol "Dengar Siaran"
-    tontonSiaranBtnB.addEventListener("click", function () {
-        hideCard(cardB);
-        // Hentikan video
-        if (!video.paused) {
-            video.pause();
-            video.currentTime = 0; // Reset video ke awal
-        }
-        setTimeout(() => {
-            showCard(cardA);
-        }, 500);
-    });
-});
-
+// });
 
 // api untuk feed instagram
 // Mengambil data feed dari API

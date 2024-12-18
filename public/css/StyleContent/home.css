@@ -71,7 +71,8 @@ swiper-slide img {
 
 .area-streaming {
     width: 100%;
-    height: 500px;
+    height: fit-content;
+    margin-bottom: 30px;
     /* border: 1px red solid; */
 }
 
@@ -115,7 +116,7 @@ swiper-slide img {
 }
 
 .card-A .card-body {
-    height: 325px;
+    height: 385px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -250,28 +251,30 @@ swiper-slide img {
 .video-container {
     position: relative;
     width: 100%;
-    height: 325px;
-    /* padding-bottom: 52.25%; */
+    height: 385px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     overflow: hidden;
 }
 
-.video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Maintain aspect ratio */
-    border: none;
+.videoPlayer-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    padding-top: 385px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
 }
 
-.video-container iframe,
-.video-container #player {
+.video-container .video-js {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: none;
+    object-fit: cover; /* Pastikan video memenuhi container tanpa distorsi */
+}
+
+.video-container video {
+    position: absolute; /* Position the video inside the container */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make video take full width */
+    height: 100%; /* Make video take full height */
+    border: none; /* Remove border */
 }
 
 .card-A.show,

@@ -29,9 +29,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 400px;
+        height: 460px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -176,6 +176,11 @@
         background-color: black; /* Optional: background color if needed */
         /* border: 1px red solid; */
     }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 465px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
 
     .video-container iframe,
     .video-container #player {
@@ -335,7 +340,7 @@
         /* width: 100%; */
         height: 380px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -616,9 +621,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 271px;
+        height: 315px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -757,12 +762,17 @@
     .video-container {
         position: relative;
         /* padding-bottom: 56.25%; */
-        height: 271px;
+        height: 320px;
         overflow: hidden;
         width: 100%;
         background-color: black; /* Optional: background color if needed */
         /* border: 1px red solid; */
     }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 320px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
 
     .video-container iframe,
     .video-container #player {
@@ -1189,9 +1199,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 222px;
+        height: 282px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -1342,6 +1352,11 @@
         height: 282px;
         overflow: hidden;
     }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 282px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
 
     .video-container video {
         position: absolute;
@@ -1775,9 +1790,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 130px;
+        height: 190px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -1921,6 +1936,10 @@
         overflow: hidden;
     }
 
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 190px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
     .video-container video {
         position: absolute;
         top: 0;
@@ -2379,9 +2398,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 120px;
+        height: 180px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -2532,6 +2551,10 @@
         overflow: hidden;
     }
 
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 180px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
     .video-container video {
         position: absolute;
         top: 0;
@@ -2997,9 +3020,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 109px;
+        height: 169px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -3147,6 +3170,11 @@
         /* padding-bottom: 58.25%; */
         overflow: hidden;
     }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 169px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
 
     .video-container video {
         position: absolute;
@@ -3344,7 +3372,7 @@
         /* width: 100%; */
         height: 65%;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         flex-direction: column;
@@ -3621,9 +3649,9 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 109px;
+        height: 169px;
         background-color: white;
-        padding: 30px;
+        /* padding: 30px; */
         overflow: hidden;
         display: flex;
         /* flex-direction: column; */
@@ -3771,6 +3799,11 @@
         /* padding-bottom: 58.25%; */
         overflow: hidden;
     }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+        padding-top: 169px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+    
 
     .video-container video {
         position: absolute;

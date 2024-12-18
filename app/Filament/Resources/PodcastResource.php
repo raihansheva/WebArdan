@@ -30,7 +30,7 @@ class PodcastResource extends Resource
     protected static ?string $model = Podcast::class;
 
     protected static ?string $navigationGroup = 'Podcast';
-
+    
     protected static ?string $navigationLabel = 'Podcast';
 
     protected static ?string $navigationIcon = 'heroicon-o-microphone';

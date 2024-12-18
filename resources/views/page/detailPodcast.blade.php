@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/StyleContent/detailPodcast.css?v=' . time()) }}">
     <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsiveDetailPodcast.css?v=' . time()) }}">
 @endpush
+<link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
 
 @section('title', 'PODCAST | ' . $detail_podcast->meta_title)
 
@@ -40,8 +41,16 @@
                     <div class="card-DP-B">
                         <div class="card-body-DP-B">
                             <div class="video-container">
-                                <video id="hlsPlayer" controls width="640" height="360"></video>
-                                <div id="player" data-pl="{{ $detail_podcast->link_podcast }}"></div>
+                                @if (!empty($detail_podcast->link_podcast))
+                                    <video id="PlayerVid" class="video-js" controls preload="auto" poster=""
+                                        data-setup='{"fluid": true}'>
+                                        <source src="{{ $detail_podcast->link_podcast }}" type="application/x-mpegURL" />
+                                    </video>
+                                @else
+                                    <p>Streaming URL tidak tersedia.</p>
+                                @endif
+                                {{-- <video id="hlsPlayer" controls width="640" height="360"></video>
+                                <div id="player" data-pl="{{ $detail_podcast->link_podcast }}"></div> --}}
                             </div>
                         </div>
                         <div class="card-DP-footer">
@@ -55,7 +64,13 @@
                     <div class="content-detail-kiri">
                         <div class="area-header-DP">
                             <div class="area-detail-genre">
-                                <h2 class="detail-genre">{{ $detail_podcast->genre_podcast }}</h2>
+                                @if (is_array($detail_podcast->genre_podcast))
+                                    @foreach ($detail_podcast->genre_podcast as $genre)
+                                        <h2 class="detail-genre">{{ $genre }}</h2>
+                                    @endforeach
+                                @else
+                                    <h2 class="detail-genre">-</h2>
+                                @endif
                             </div>
                             <div class="area-detail-title-podcast">
                                 <h2 class="detail-title">{{ $detail_podcast->judul_podcast }}</h2>
@@ -122,8 +137,8 @@
                                 <div class="card-body-podcast">
                                     <div class="head-body-podcast">
                                         <div class="genre">
-                                            @if (is_array($podcastList->genre_podcast))
-                                                @foreach ($podcastList->genre_podcast as $genre)
+                                            @if (is_array($allpodcastList->genre_podcast))
+                                                @foreach ($allpodcastList->genre_podcast as $genre)
                                                     <h1 class="title-genre">{{ $genre }}</h1>
                                                 @endforeach
                                             @else
@@ -270,6 +285,7 @@
         </div>
     </section>
     <script src="{{ asset('js/detailPodcast.js?v=' . time()) }}"></script>
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Pilih semua elemen dengan class "card-podcast"
@@ -286,6 +302,17 @@
                     }
                 });
             });
+
+            var player = videojs("PlayerVid", {
+                controls: true,
+                autoplay: false,
+                preload: "auto",
+                fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
+                aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
+                responsive: true,
+            });
+
+
         });
     </script>
 @endsection

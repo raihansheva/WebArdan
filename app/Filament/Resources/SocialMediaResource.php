@@ -25,7 +25,7 @@ class SocialMediaResource extends Resource
 
     protected static ?string $navigationLabel = 'Social Media';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-link';
 
     public static function form(Form $form): Form
     {

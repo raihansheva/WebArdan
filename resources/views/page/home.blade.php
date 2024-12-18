@@ -57,11 +57,25 @@
                     <div class="card-B">
                         <div class="card-body-B">
                             <div class="video-container">
-                                <!-- Elemen video untuk memutar HLS -->
-                                <video id="hlsPlayer" controls width="640" height="360"></video>
-                            </div>
-                            <!-- Elemen untuk menyimpan URL HLS menggunakan data-pl -->
-                            <div id="player" data-pl="{{ $streamVideo->stream_url }}" style="display: none;">
+                                <!-- Video.js Player -->
+                                @if (!empty($streamVideo->stream_url))
+                                    <video id="videoPlayer" class="video-js" controls preload="auto"
+                                        poster="./storage/{{ $streamVideo->image_stream }}" data-setup='{"fluid": true}'>
+                                        <source
+                                            src="{{ $streamVideo->stream_url }}"
+                                            type="application/x-mpegURL" />
+                                    </video>
+                                @else
+                                    <p>Streaming URL tidak tersedia.</p>
+                                @endif
+                                {{-- <video id="videoPlayer" class="video-js vjs-default-skin" controls width="640"
+                                    height="360" data-setup='{}'>
+                                    <!-- Format HLS untuk stream -->
+                                    <source src="{{ $streamVideo->stream_url }}" type="application/x-mpegURL">
+                                    <!-- HLS stream -->
+                                    <p class="vjs-no-js">Untuk melihat video ini, aktifkan JavaScript atau gunakan browser
+                                        lain yang mendukung HTML5.</p>
+                                </video> --}}
                             </div>
                         </div>
                         <div class="card-footer">
@@ -899,6 +913,37 @@
                         window.location.href = `/detail-podcast/${slug}`;
                     }
                 });
+            });
+
+            var player = videojs("videoPlayer", {
+                controls: true,
+                autoplay: false,
+                preload: "auto",
+                fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
+                aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
+                responsive: true,
+            });
+
+            player.aspectRatio('16:9'); 
+
+            tontonSiaranBtnA.addEventListener("click", function() {
+                hideCard(cardA);
+                pauseStreaming();
+                setTimeout(() => {
+                    player.play();
+                    showCard(cardB);
+                }, 500);
+            });
+
+            //     // Tombol "Dengar Siaran"
+            tontonSiaranBtnB.addEventListener("click", function() {
+                hideCard(cardB);
+                // Hentikan video
+                player.pause();
+                setTimeout(() => {
+                    playStreaming();
+                    showCard(cardA);
+                }, 500);
             });
         });
         // Function to fetch the next program's image

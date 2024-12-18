@@ -64,9 +64,9 @@
 
 .card-DP .card-DP-body {
     /*width: 100%;*/
-    height: 315px;
+    height: 375px;
     background-color: white;
-    padding: 30px;
+    /* padding: 30px; */
     overflow: hidden;
     display: flex;
     /*flex-direction: column;
@@ -215,6 +215,10 @@
     /* padding-bottom: 49%; */
     height: 375px;
     overflow: hidden;
+}
+
+.PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    padding-top: 375px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
 }
 
 .video-container video {

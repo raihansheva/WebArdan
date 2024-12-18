@@ -24,7 +24,7 @@ class CopyRightResource extends Resource
 
     protected static ?string $navigationLabel = 'CopyRight';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
 
     public static function form(Form $form): Form
     {

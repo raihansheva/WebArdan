@@ -19,6 +19,7 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -339,7 +340,9 @@
 <script src="{{ asset('js/main/playlist.js?v=' . time()) }}"></script>
 <script src="{{ asset('js/main/mainLayout.js?v=' . time()) }}"></script>
 {{-- <script src="js/main/streamingPlayer.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> --}}
+<script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.14.0/dist/videojs-contrib-hls.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script>
