@@ -30,7 +30,9 @@
     <section class="page-1" id="home">
         <div class="area-streaming">
             <div class="header-streaming">
-                <h1 class="title-streaming">ON AIR</h1>
+                {{-- <h1 class="title-streaming">ON AIR</h1> --}}
+                <img src="../image/giphy.gif" alt="GIF Image" width="140" height="140">
+                {{-- <p><a href="https://giphy.com/stickers/RTLNL-transparent-A2cYA4qIR4XasAYORu">via GIPHY</a></p> --}}
             </div>
             <div class="content-streaming">
                 <div class="contentS-kiri">
@@ -61,9 +63,7 @@
                                 @if (!empty($streamVideo->stream_url))
                                     <video id="videoPlayer" class="video-js" controls preload="auto"
                                         poster="./storage/{{ $streamVideo->image_stream }}" data-setup='{"fluid": true}'>
-                                        <source
-                                            src="{{ $streamVideo->stream_url }}"
-                                            type="application/x-mpegURL" />
+                                        <source src="{{ $streamVideo->stream_url }}" type="application/x-mpegURL" />
                                     </video>
                                 @else
                                     <p>Streaming URL tidak tersedia.</p>
@@ -924,27 +924,145 @@
                 responsive: true,
             });
 
-            player.aspectRatio('16:9'); 
+            let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali
+            let isManualPiPActive = false; // Flag untuk melacak jika PiP diaktifkan secara manual
 
+            // Deteksi apakah perangkat adalah iOS
+            const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+            // Fungsi untuk mengecek apakah elemen terlihat di viewport
+            function isElementInViewport(el) {
+                if (!el) return false;
+                const rect = el.getBoundingClientRect();
+                return rect.top >= 0 && rect.bottom <= window.innerHeight;
+            }
+
+            // Fungsi untuk mengaktifkan PiP jika video tidak terlihat dan PiP belum aktif
+            async function activatePiPIfNeeded() {
+                const videoElement = player.el().querySelector('video'); // Dapatkan elemen video dari player
+                if (!videoElement) {
+                    console.error("Video element tidak ditemukan");
+                    return; // Keluar jika video element tidak ditemukan
+                }
+
+                // Jika perangkat adalah iOS, tidak mengaktifkan PiP otomatis
+                if (isIOS) {
+                    console.log("PiP otomatis tidak didukung di iOS");
+                    return;
+                }
+
+                // Pastikan interaksi pengguna sudah terjadi, PiP belum aktif secara manual, dan video tidak terlihat
+                if (
+                    userInteracted &&
+                    !isManualPiPActive &&
+                    !document.pictureInPictureElement &&
+                    !isElementInViewport(videoElement)
+                ) {
+                    if (!videoElement.paused) {
+                        try {
+                            await videoElement.requestPictureInPicture();
+                            console.log("PiP diaktifkan otomatis");
+                        } catch (err) {
+                            console.error("Gagal mengaktifkan PiP:", err);
+                        }
+                    }
+                }
+            }
+
+            // Fungsi untuk keluar dari PiP jika video kembali terlihat
+            async function exitPiPIfNeeded() {
+                const videoElement = player.el().querySelector('video'); // Dapatkan elemen video dari player
+                if (document.pictureInPictureElement && videoElement && isElementInViewport(videoElement)) {
+                    try {
+                        await document.exitPictureInPicture();
+                        console.log("Keluar dari PiP");
+                    } catch (err) {
+                        console.error("Gagal keluar dari PiP:", err);
+                    }
+                }
+            }
+
+            // Fungsi untuk menangani interaksi pengguna pertama kali
+            function handleUserInteraction() {
+                if (!userInteracted) {
+                    userInteracted = true;
+                    console.log("Interaksi pertama terdeteksi");
+                }
+            }
+
+            // Fungsi untuk menangani event Picture-in-Picture
+            function handlePiPEvents(videoElement) {
+                videoElement.addEventListener("enterpictureinpicture", () => {
+                    isManualPiPActive = true; // Menandai bahwa PiP diaktifkan secara manual
+                    console.log("PiP diaktifkan secara manual");
+                });
+
+                videoElement.addEventListener("leavepictureinpicture", () => {
+                    isManualPiPActive = false; // Menandai bahwa PiP tidak lagi aktif secara manual
+                    console.log("PiP dimatikan");
+                });
+            }
+
+            // Menambahkan event listener untuk interaksi pengguna pertama kali
+            player.on("play", handleUserInteraction); // Gunakan event "play" dari Video.js
+
+            // Menambahkan event listener untuk PiP
+            const videoElement = player.el().querySelector('video');
+            if (videoElement) {
+                handlePiPEvents(videoElement);
+            }
+
+            // Panggil fungsi saat halaman dimuat, scroll, atau resize
+            document.addEventListener("DOMContentLoaded", () => {
+                activatePiPIfNeeded(); // Pastikan PiP diaktifkan jika video tidak terlihat
+            });
+
+            // Event listener untuk menangani scroll dan resize
+            window.addEventListener("scroll", () => {
+                activatePiPIfNeeded(); // Aktifkan PiP saat video tidak terlihat dan sedang diputar
+                exitPiPIfNeeded(); // Keluar dari PiP jika video terlihat
+            });
+
+            window.addEventListener("resize", () => {
+                activatePiPIfNeeded(); // Aktifkan PiP saat ukuran viewport berubah
+                exitPiPIfNeeded(); // Keluar dari PiP jika video terlihat
+            });
+
+            // Tambahkan event listener untuk touch pada perangkat mobile
+            if ("ontouchstart" in window) {
+                window.addEventListener("touchstart", () => {
+                    if (!userInteracted) {
+                        handleUserInteraction();
+                    }
+                });
+            }
+
+
+
+
+            // Tombol "Tonton Siaran"
             tontonSiaranBtnA.addEventListener("click", function() {
                 hideCard(cardA);
                 pauseStreaming();
                 setTimeout(() => {
                     player.play();
+                    // handleUserInteraction();
                     showCard(cardB);
                 }, 500);
             });
 
-            //     // Tombol "Dengar Siaran"
+            // Tombol "Dengar Siaran"
             tontonSiaranBtnB.addEventListener("click", function() {
                 hideCard(cardB);
                 // Hentikan video
                 player.pause();
+                playStreaming();
                 setTimeout(() => {
-                    playStreaming();
                     showCard(cardA);
                 }, 500);
             });
+
+
         });
         // Function to fetch the next program's image
         async function fetchNextProgramImage() {

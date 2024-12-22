@@ -78,6 +78,16 @@ swiper-slide img {
 
 .header-streaming {
     width: auto;
+    margin-bottom: 10px;
+}
+
+.header-streaming img {
+    /* position: relative; */
+    /* top: -1px; */
+    width: 140px;
+    height: auto;
+    max-width: 20%;
+    z-index: 2;
 }
 
 .title-streaming {
@@ -116,7 +126,7 @@ swiper-slide img {
 }
 
 .card-A .card-body {
-    height: 385px;
+    height: 392px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -251,12 +261,12 @@ swiper-slide img {
 .video-container {
     position: relative;
     width: 100%;
-    height: 385px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    height: 392px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     overflow: hidden;
 }
 
 .videoPlayer-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
-    padding-top: 385px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    padding-top: 392px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
 }
 
 .video-container .video-js {

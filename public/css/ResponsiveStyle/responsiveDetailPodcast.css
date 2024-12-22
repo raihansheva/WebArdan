@@ -29,7 +29,7 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 460px;
+        height: 605px;
         background-color: white;
         /* padding: 30px; */
         overflow: hidden;
@@ -170,17 +170,16 @@
     .video-container {
         position: relative;
         /* padding-bottom: 42.85%; */
-        height: 465px;
+        height: 610px;
         overflow: hidden;
         width: 100%;
         background-color: black; /* Optional: background color if needed */
         /* border: 1px red solid; */
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
-        padding-top: 465px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 610px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
 
     .video-container iframe,
     .video-container #player {
@@ -279,7 +278,7 @@
 
     /* area other podcast */
 
-    .page-detail-2{
+    .page-detail-2 {
         margin-bottom: 20px;
     }
 
@@ -482,7 +481,7 @@
         height: 200px;
     }
 
-    .box-video-mid{
+    .box-video-mid {
         height: 350px;
     }
 
@@ -518,11 +517,11 @@
         gap: 10px;
     }
 
-    .area-content-news{
+    .area-content-news {
         height: fit-content;
     }
 
-    .content-news{
+    .content-news {
         height: 560px;
     }
 
@@ -582,14 +581,43 @@
 
     /* -------------------- */
 }
-@media (max-width: 1440px) {
-    /* Gaya untuk desktop besar */
-}
 @media (max-width: 1366px) {
-    /* Gaya untuk laptop widescreen */
+    .card-DP .card-DP-body {
+        height: 440px;
+    }
+
+    .video-container {
+        position: relative;
+        /* padding-bottom: 56.25%; */
+        height: 440px;
+        overflow: hidden;
+        width: 100%;
+        background-color: black; /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 440px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
 }
 @media (max-width: 1280px) {
-    /* Gaya untuk laptop standar */
+    .card-DP .card-DP-body {
+        height: 405px;
+    }
+
+    .video-container {
+        position: relative;
+        /* padding-bottom: 56.25%; */
+        height: 405px;
+        overflow: hidden;
+        width: 100%;
+        background-color: black; /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 405px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
 }
 @media (max-width: 1024px) {
     .page-detail-1 {
@@ -621,7 +649,7 @@
 
     .card-DP .card-DP-body {
         /* width: 100%; */
-        height: 315px;
+        height: 330px;
         background-color: white;
         /* padding: 30px; */
         overflow: hidden;
@@ -681,6 +709,7 @@
 
     .text-watchP {
         font-family: "Poppins";
+        font-size: 14px;
     }
 
     .btn-play-DP {
@@ -762,17 +791,16 @@
     .video-container {
         position: relative;
         /* padding-bottom: 56.25%; */
-        height: 320px;
+        height: 335px;
         overflow: hidden;
         width: 100%;
         background-color: black; /* Optional: background color if needed */
         /* border: 1px red solid; */
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
-        padding-top: 320px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 335px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
 
     .video-container iframe,
     .video-container #player {
@@ -1068,7 +1096,7 @@
         height: 150px;
     }
 
-    .box-video-mid{
+    .box-video-mid {
         height: 300px;
     }
 
@@ -1104,11 +1132,11 @@
         gap: 10px;
     }
 
-    .area-content-news{
+    .area-content-news {
         height: fit-content;
     }
 
-    .content-news{
+    .content-news {
         height: 460px;
     }
 
@@ -1353,10 +1381,9 @@
         overflow: hidden;
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
         padding-top: 282px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
 
     .video-container video {
         position: absolute;
@@ -1936,10 +1963,10 @@
         overflow: hidden;
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
         padding-top: 190px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -2551,10 +2578,10 @@
         overflow: hidden;
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
         padding-top: 180px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
+
     .video-container video {
         position: absolute;
         top: 0;
@@ -3171,10 +3198,9 @@
         overflow: hidden;
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
         padding-top: 169px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
 
     .video-container video {
         position: absolute;
@@ -3800,10 +3826,9 @@
         overflow: hidden;
     }
 
-    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
         padding-top: 169px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
     }
-    
 
     .video-container video {
         position: absolute;

@@ -708,22 +708,82 @@ document.addEventListener("DOMContentLoaded", function () {
     // progress bar
     // ----------------------------
     function proggresBarAudio(Audio) {
-        Audio.addEventListener("timeupdate", () => {
+        // const progressDetails = document.querySelector('.progress-details');
+        // const progressBar = document.querySelector('.progress-bar');
+        let isDragging = false;
+        let isUserInteracting = false; // Flag to track user interaction
+
+        // Update progress bar based on current time
+        const updateProgressBar = () => {
             if (Audio.duration) {
                 const progressPercent =
                     (Audio.currentTime / Audio.duration) * 100;
-                progressBar.style.width = `${progressPercent}%`; // Update progress bar width
-                // updateAudioTimeDisplay();
+                progressBar.style.width = `${progressPercent}%`;
+            }
+        };
+
+        const calculateNewTime = (event) => {
+            const rect = progressDetails.getBoundingClientRect();
+            const offsetX = event.clientX - rect.left;
+            const progress = Math.min(Math.max(offsetX / rect.width, 0), 1);
+            return progress * Audio.duration;
+        };
+
+        // Event listener untuk klik pada progress bar
+        progressDetails.addEventListener("click", (event) => {
+            if (Audio.duration) {
+                const newTime = calculateNewTime(event);
+                console.log("Click - New Time:", newTime);
+                Audio.currentTime = newTime; // Set the current time
+                updateProgressBar(); // Update the progress bar immediately
             }
         });
 
-        // Update progress bar based on audio time update
-        // Seek functionality: Jump to clicked position on progress bar
-        progressDetails.addEventListener("click", (event) => {
-            const clickPosition = event.offsetX / progressDetails.clientWidth;
-            Audio.currentTime = clickPosition * Audio.duration;
+        // Event listener untuk mulai drag
+        progressDetails.addEventListener("mousedown", (event) => {
+            isDragging = true;
+            isUserInteracting = true;
+            const newTime = calculateNewTime(event);
+            console.log("MouseDown - New Time:", newTime);
+            Audio.currentTime = newTime; // Set the current time immediately
+            updateProgressBar(); // Update the progress bar immediately
+        });
+
+        // Event listener untuk drag (mousemove)
+        document.addEventListener("mousemove", (event) => {
+            if (isDragging && Audio.duration) {
+                const newTime = calculateNewTime(event);
+                console.log("MouseMove - New Time:", newTime);
+                Audio.currentTime = newTime; // Update current time while dragging
+                updateProgressBar(); // Update progress bar during dragging
+            }
+        });
+
+        // Event listener untuk berhenti drag
+        document.addEventListener("mouseup", () => {
+            if (isDragging) {
+                isDragging = false;
+                console.log("MouseUp - Dragging Ended");
+            }
+        });
+
+        // Update progress bar saat timeupdate
+        Audio.addEventListener("timeupdate", () => {
+            if (!isUserInteracting) {
+                updateProgressBar(); // Update progress bar automatically when user is not interacting
+            }
+        });
+
+        // Reset user interaction flag when audio is paused or ended
+        Audio.addEventListener("pause", () => {
+            isUserInteracting = false;
+        });
+
+        Audio.addEventListener("ended", () => {
+            isUserInteracting = false;
         });
     }
+
     // ----------------------------
     // Spectrum Audio Visualization
     // ----------------------------

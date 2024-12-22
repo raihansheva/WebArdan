@@ -69,6 +69,7 @@ tontonSiaranBtnA.addEventListener("click", function () {
 tontonSiaranBtnB.addEventListener("click", function () {
     hideCard(cardB);
     setTimeout(() => {
+        playPodcast(idP);
         showCard(cardA);
     }, 500);
 });

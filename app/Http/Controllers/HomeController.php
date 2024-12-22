@@ -142,6 +142,9 @@ class HomeController extends Controller
             'key' => $apiKey,
         ]);
 
+        // $fmt = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
+        // $test = $fmt->format(123456.789);
+        // dd($test);
 
         //  Buat ngcek kalo ada error
         // if ($response->successful()) {

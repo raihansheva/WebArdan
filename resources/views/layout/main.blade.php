@@ -38,7 +38,7 @@
         </div>
         <div class="area-kanan-navbar">
             <div class="menu-link-navbar">
-                <a class="link" href="/home">
+                <a class="link" href="/">
                     <p>Home</p>
                 </a>
                 <div class="dropdown">
@@ -47,7 +47,7 @@
                         @if (Request::is('/') || Request::is('/home'))
                             <a href="#program">Program</a>
                         @else
-                            <a href="{{ url('/home') }}#program">Program</a>
+                            <a href="{{ url('/') }}#program">Program</a>
                         @endif
                         <div class="line"></div>
                         <a href="/info-news">Info News</a>
@@ -65,25 +65,25 @@
                         <p>Announcer</p>
                     </a>
                 @else
-                    <a class="link" href="{{ url('/home') }}#announcer">
+                    <a class="link" href="{{ url('/') }}#announcer">
                         <p>Announcer</p>
                     </a>
                 @endif
-                @if (Request::is('/') || Request::is('/home'))
+                @if (Request::is('/') || Request::is('/'))
                     <a class="link" href="#chart">
                         <p>Chart</p>
                     </a>
                 @else
-                    <a class="link" href="{{ url('/home') }}#chart">
+                    <a class="link" href="{{ url('/') }}#chart">
                         <p>Chart</p>
                     </a>
                 @endif
-                @if (Request::is('/') || Request::is('/home'))
+                @if (Request::is('/') || Request::is('/'))
                     <a class="link" href="#schedule">
                         <p>Schedule</p>
                     </a>
                 @else
-                    <a class="link" href="{{ url('/home') }}#schedule">
+                    <a class="link" href="{{ url('/') }}#schedule">
                         <p>Schedule</p>
                     </a>
                 @endif
@@ -149,16 +149,16 @@
                 <a class="link-mobile" href="/event">Event</a>
                 <a class="link-mobile" href="/ardan-youtube">Playlist Youtube</a>
                 <a class="link-mobile" href="/podcast">Podcast</a>
-                @if (Request::is('/') || Request::is('/home'))
+                @if (Request::is('/') || Request::is('/'))
                     <a class="link-mobile" href="#announcer">Announcer</a>
                 @else
-                    <a class="link-mobile" href="{{ url('home') }}#announcer">Announcer</a>
+                    <a class="link-mobile" href="{{ url('') }}#announcer">Announcer</a>
                 @endif
                 <a class="link-mobile" href="/chart">Chart</a>
-                @if (Request::is('/') || Request::is('/home'))
+                @if (Request::is('/') || Request::is('/'))
                     <a class="link-mobile" href="#schedule">Schedule</a>
                 @else
-                    <a class="link-mobile" href="{{ url('home') }}#schedule">Schedule</a>
+                    <a class="link-mobile" href="{{ url('') }}#schedule">Schedule</a>
                 @endif
                 <a class="link-mobile" href="#contact">Contact</a>
             </div>
@@ -238,10 +238,6 @@
                         <div class="progress-bar">
                             <span></span>
                         </div>
-                        <!-- <div class="time">
-                                                <span class="current">0:00</span>
-                                                <span class="final">5:30</span>
-                                              </div> -->
                     </div>
                 </div>
                 {{-- <div class="music-titles">
@@ -348,7 +344,7 @@
 <script>
     const urlCek = window.location.pathname;
     console.log("Current Path:", urlCek);
-    if (!urlCek.includes("detail-podcast")) {
+    if (!urlCek.includes("detail-podcast") && !urlCek.includes("chart")) {
         document.addEventListener("DOMContentLoaded", () => {
             const btnPlayStream = document.querySelector(".btn-play-streaming");
             const audioPlayerContainer = document.querySelector(".audio-player-container");
@@ -374,16 +370,16 @@
                 if (btnPlayStream) {
                     console.log("BtnStream Found. Checking visibility...");
                     if (isElementInViewport(btnPlayStream)) {
-                        console.log("BtnStream is in viewport. Hiding audio player.");
+                        // console.log("BtnStream is in viewport. Hiding audio player.");
                         audioPlayerContainer.style.opacity = "0";
                         audioPlayerContainer.style.visibility = "hidden";
                     } else {
-                        console.log("BtnStream is not in viewport. Showing audio player.");
+                        // console.log("BtnStream is not in viewport. Showing audio player.");
                         audioPlayerContainer.style.opacity = "1";
                         audioPlayerContainer.style.visibility = "visible";
                     }
                 } else {
-                    console.log("BtnStream not found. Showing audio player.");
+                    // console.log("BtnStream not found. Showing audio player.");
                     audioPlayerContainer.style.opacity = "1";
                     audioPlayerContainer.style.visibility = "visible";
                 }

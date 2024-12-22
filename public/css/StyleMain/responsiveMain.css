@@ -1342,15 +1342,15 @@
 
     .control-btn {
         width: fit-content;
-        height: 45px;
+        height: 60px;
         /* /*position: fixed; */
         border: 2px white solid;
     }
 
     .control-btn span {
-        width: 25px;
-        height: 25px;
-        font-size: 18px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
         /* position: fixed; */
     }
 

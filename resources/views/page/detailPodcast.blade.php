@@ -313,6 +313,24 @@
             });
 
 
+            tontonSiaranBtnA.addEventListener("click", function() {
+                hideCard(cardA);
+                pausePodcast(idP)
+                player.play();
+                setTimeout(() => {
+                    showCard(cardB);
+                }, 500);
+            });
+
+            tontonSiaranBtnB.addEventListener("click", function() {
+                hideCard(cardB);
+                player.pause();
+                setTimeout(() => {
+                    playPodcast(idP);
+                    showCard(cardA);
+                }, 500);
+            });
+
         });
     </script>
 @endsection
