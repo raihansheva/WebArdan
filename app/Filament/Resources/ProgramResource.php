@@ -20,6 +20,8 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
@@ -121,17 +123,17 @@ class ProgramResource extends Resource
                     ->getStateUsing(static function ($rowLoop) {
                         return $rowLoop->iteration;
                     }),
-                TextColumn::make('judul_program')->searchable()->sortable(),
-                TextColumn::make('deskripsi_pendek'),
+                TextColumn::make('judul_program')->sortable(),
+                TextColumn::make('deskripsi_pendek')->sortable(),
                 TextColumn::make('deskripsi_program')
                     ->formatStateUsing(function ($state) {
                         return strip_tags($state); // Menghapus tag HTML
-                    }),
+                    })->sortable(),
                 TextColumn::make('slug'),
                 TextColumn::make('jam_mulai')
-                    ->label('Jam Mulai'),
+                    ->label('Jam Mulai')->sortable(),
                 TextColumn::make('jam_selesai')
-                    ->label('Jam Selesai'),
+                    ->label('Jam Selesai')->sortable(),
                 ImageColumn::make('image_program'),
                 IconColumn::make('publish_now') // Menggunakan IconColumn
                     ->boolean() // Secara otomatis mendukung true/false atau 1/0
@@ -139,14 +141,60 @@ class ProgramResource extends Resource
                     ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
                     ->trueColor('success') // Warna ikon untuk true (hijau)
                     ->falseColor('danger'),
-                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
-                TextColumn::make('meta_title'),
-                TextColumn::make('meta_description'),
-                TextColumn::make('meta_keywords')
+                TextColumn::make('tanggal_publikasi')->sortable(),
+                TextColumn::make('meta_title')->sortable(),
+                TextColumn::make('meta_description')->sortable(),
+                TextColumn::make('meta_keywords')->sortable(),
             ])
             ->filters([
-                //
-            ])
+                Filter::make('search')
+                    ->form([
+                        TextInput::make('judul_program')
+                            ->label('Search :')
+                            ->placeholder('search')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['judul_program'], function ($q, $judulProgram) {
+                            $searchTerm = strtolower($judulProgram); // Mengubah input pencarian menjadi huruf kecil
+                            $q->whereRaw('LOWER(judul_program) LIKE ?', ["%{$searchTerm}%"]); // Pencarian case-insensitive pada judul_program
+                        });
+                    }),
+                Filter::make('jam_mulai')
+                    ->form([
+                        TimePicker::make('jam_mulai')
+                            ->label('Jam Mulai :')
+                            ->placeholder('Pilih jam mulai...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['jam_mulai'], function ($q, $jamMulai) {
+                            $q->where('jam_mulai', $jamMulai);
+                        });
+                    }),
+
+                Filter::make('jam_selesai')
+                    ->form([
+                        TimePicker::make('jam_selesai')
+                            ->label('Jam Selesai :')
+                            ->placeholder('Pilih jam selesai...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['jam_selesai'], function ($q, $jamSelesai) {
+                            $q->where('jam_selesai', $jamSelesai);
+                        });
+                    }),
+
+                Filter::make('tanggal_publikasi')
+                    ->form([
+                        DatePicker::make('tanggal_publikasi')
+                            ->label('Tanggal Publikasi :')
+                            ->placeholder('Pilih tanggal publikasi...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['tanggal_publikasi'], function ($q, $tanggalPublikasi) {
+                            $q->whereDate('tanggal_publikasi', $tanggalPublikasi);
+                        });
+                    }),
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

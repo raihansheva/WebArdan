@@ -4,11 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ArtisResource\Pages;
 use App\Models\Artis;
+use Carbon\Carbon;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -21,6 +23,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 
@@ -123,37 +126,76 @@ class ArtisResource extends Resource
                     ->getStateUsing(static function ($rowLoop) {
                         return $rowLoop->iteration;
                     }),
-                TextColumn::make('nama')->searchable()->sortable(),
+                TextColumn::make('nama')->sortable(),
                 TextColumn::make('kategori_info'),
                 ImageColumn::make('image_artis'),
-                TextColumn::make('judul_berita'),
+                TextColumn::make('judul_berita')->sortable(),
                 TextColumn::make('slug'),
-                TextColumn::make('ringkasan_berita'),
+                TextColumn::make('ringkasan_berita')->sortable(),
                 TextColumn::make('konten_berita')
                     ->formatStateUsing(function ($state) {
                         return strip_tags($state); // Menghapus tag HTML
-                    }),
+                    })->sortable(),
                 IconColumn::make('publish_sekarang') // Menggunakan IconColumn
                     ->boolean() // Secara otomatis mendukung true/false atau 1/0
                     ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
                     ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
                     ->trueColor('success') // Warna ikon untuk true (hijau)
                     ->falseColor('danger'),
-                TextColumn::make('tanggal_dibuat'),
-                TextColumn::make('tanggal_publikasi'),
-                TextColumn::make('meta_title'),
-                TextColumn::make('meta_description'),
-                TextColumn::make('meta_keywords'),
+                TextColumn::make('tanggal_dibuat')->sortable(),
+                TextColumn::make('tanggal_publikasi')->sortable(),
+                TextColumn::make('meta_title')->sortable(),
+                TextColumn::make('meta_description')->sortable(),
+                TextColumn::make('meta_keywords')->sortable(),
             ])
             ->filters([
-                Filter::make('published')
-                    ->query(fn(Builder $query) => $query->where('publish_sekarang', true)
-                        ->orWhere(function (Builder $query) {
-                            $query->whereNotNull('tanggal_publikasi')
-                                ->where('tanggal_publikasi', '<=', now());
-                        }))
-                    ->label('Published'),
-            ])
+                // Filter pencarian teks
+                Tables\Filters\Filter::make('search')
+                    ->form([
+                        TextInput::make('query')
+                            ->label('Search : ')
+                            ->placeholder('search'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        if (!empty($data['query'])) {
+                            $searchTerm = strtolower($data['query']); // Ubah input pencarian menjadi lowercase
+                            $query->where(function ($query) use ($searchTerm) {
+                                $query->whereRaw('LOWER(judul_berita) LIKE ?', ["%{$searchTerm}%"]) // Pencarian judul_berita
+                                    ->orWhereRaw('LOWER(kategori_info) LIKE ?', ["%{$searchTerm}%"]) // Pencarian kategori_info
+                                    ->orWhereRaw('LOWER(nama) LIKE ?', ["%{$searchTerm}%"]); // Pencarian nama
+                            });
+                        }
+                        return $query;
+                    }),
+                // Filter tanggal (tanggal_dibuat dan tanggal_publikasi)
+                // Filter untuk tanggal_dibuat
+                Tables\Filters\Filter::make('tanggal_dibuat_filter')
+                    ->form([
+                        DatePicker::make('tanggal_dibuat')
+                            ->label('Tanggal Dibuat')
+                            ->placeholder('Pilih Tanggal Dibuat'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        if (!empty($data['tanggal_dibuat'])) {
+                            $query->whereDate('tanggal_dibuat', Carbon::parse($data['tanggal_dibuat'])->toDateString());
+                        }
+                        return $query;
+                    }),
+
+                // Filter untuk tanggal_publikasi
+                Tables\Filters\Filter::make('tanggal_publikasi_filter')
+                    ->form([
+                        DatePicker::make('tanggal_publikasi')
+                            ->label('Tanggal Publikasi')
+                            ->placeholder('Pilih Tanggal Publikasi'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        if (!empty($data['tanggal_publikasi'])) {
+                            $query->whereDate('tanggal_publikasi', Carbon::parse($data['tanggal_publikasi'])->toDateString());
+                        }
+                        return $query;
+                    }),
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

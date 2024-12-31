@@ -15,6 +15,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use App\Filament\Resources\ScheduleResource\Pages;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
 
 class ScheduleResource extends Resource
 {
@@ -41,8 +43,8 @@ class ScheduleResource extends Resource
                                 $program = Program::find($state); // Ambil data program berdasarkan ID
                                 if ($program) {
                                     // Gabungkan jam_mulai dan jam_selesai
-                                    $set('jam_mulai',$program->jam_mulai);
-                                    $set('jam_selesai',$program->jam_selesai);
+                                    $set('jam_mulai', $program->jam_mulai);
+                                    $set('jam_selesai', $program->jam_selesai);
                                     $set('deskripsi', $program->deskripsi_program); // Isi deskripsi jika diperlukan
                                 }
                             }),
@@ -93,15 +95,70 @@ class ScheduleResource extends Resource
                     ->getStateUsing(static function ($rowLoop) {
                         return $rowLoop->iteration;
                     }),
-                TextColumn::make('program.judul_program')->searchable()->sortable(),
-                TextColumn::make('jam_mulai')->searchable()->sortable(),
-                TextColumn::make('jam_selesai')->searchable()->sortable(),
-                TextColumn::make('hari')->searchable(),
+                TextColumn::make('program.judul_program')->sortable(),
+                TextColumn::make('jam_mulai')->sortable(),
+                TextColumn::make('jam_selesai')->sortable(),
+                TextColumn::make('hari'),
                 TextColumn::make('deskripsi'),
             ])
             ->filters([
-                //
-            ])
+                Filter::make('judul_program')
+                    ->form([
+                        TextInput::make('judul_program')
+                            ->label('Search :')
+                            ->placeholder('search')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['judul_program'], function ($q, $judulProgram) {
+                            $q->whereHas('program', function ($query) use ($judulProgram) {
+                                $query->where('judul_program', 'like', '%' . $judulProgram . '%');
+                            });
+                        });
+                    }),
+                Filter::make('jam_mulai')
+                    ->form([
+                        TimePicker::make('jam_mulai')
+                            ->label('Jam Mulai :')
+                            ->placeholder('Pilih jam mulai...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['jam_mulai'], function ($q, $jamMulai) {
+                            $q->where('jam_mulai', $jamMulai);
+                        });
+                    }),
+
+                Filter::make('jam_selesai')
+                    ->form([
+                        TimePicker::make('jam_selesai')
+                            ->label('Jam Selesai :')
+                            ->placeholder('Pilih jam selesai...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['jam_selesai'], function ($q, $jamSelesai) {
+                            $q->where('jam_selesai', $jamSelesai);
+                        });
+                    }),
+                Filter::make('hari')
+                    ->form([
+                        Select::make('hari')
+                            ->label('Hari')
+                            ->placeholder('Pilih hari...')
+                            ->options([
+                                'Senin' => 'Senin',
+                                'Selasa' => 'Selasa',
+                                'Rabu' => 'Rabu',
+                                'Kamis' => 'Kamis',
+                                'Jumat' => 'Jumat',
+                                'Sabtu' => 'Sabtu',
+                                'Minggu' => 'Minggu',
+                            ])
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['hari'], function ($q, $hari) {
+                            $q->where('hari', $hari);
+                        });
+                    }),
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

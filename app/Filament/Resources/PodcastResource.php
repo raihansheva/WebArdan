@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PodcastResource\Pages;
 use App\Models\Podcast;
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Checkbox;
@@ -22,6 +23,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
@@ -30,7 +32,7 @@ class PodcastResource extends Resource
     protected static ?string $model = Podcast::class;
 
     protected static ?string $navigationGroup = 'Podcast';
-    
+
     protected static ?string $navigationLabel = 'Podcast';
 
     protected static ?string $navigationIcon = 'heroicon-o-microphone';
@@ -152,21 +154,21 @@ class PodcastResource extends Resource
                     ->getStateUsing(static function ($rowLoop) {
                         return $rowLoop->iteration;
                     }),
-                TextColumn::make('judul_podcast')->searchable()->sortable(),
-                TextColumn::make('genre_podcast')->searchable()->sortable(),
+                TextColumn::make('judul_podcast')->sortable(),
+                TextColumn::make('genre_podcast')->sortable(),
                 TextColumn::make('deskripsi_podcast')
                     ->formatStateUsing(function ($state) {
                         return strip_tags($state); // Menghapus tag HTML
                     }),
                 ImageColumn::make('image_podcast'),
-                TextColumn::make('date_podcast')->searchable()->sortable(),
+                TextColumn::make('date_podcast')->sortable(),
                 IconColumn::make('publish_now') // Menggunakan IconColumn
                     ->boolean() // Secara otomatis mendukung true/false atau 1/0
                     ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
                     ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
                     ->trueColor('success') // Warna ikon untuk true (hijau)
                     ->falseColor('danger'),
-                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
+                TextColumn::make('tanggal_publikasi')->sortable(),
                 TextColumn::make('link_podcast'),
                 TextColumn::make('file'),
                 TextColumn::make('slug'),
@@ -178,13 +180,57 @@ class PodcastResource extends Resource
 
                 // Menampilkan episode yang terkait
                 TextColumn::make('episode_number'),
-                TextColumn::make('meta_title'),
-                TextColumn::make('meta_description'),
-                TextColumn::make('meta_keywords'),
+                TextColumn::make('meta_title')->sortable(),
+                TextColumn::make('meta_description')->sortable(),
+                TextColumn::make('meta_keywords')->sortable(),
             ])
             ->filters([
-                //
-            ])
+                // Filter gabungan untuk judul_podcast, genre_podcast, dan date_podcast
+                Tables\Filters\Filter::make('search_filter')
+                    ->form([
+                        TextInput::make('search_input')
+                            ->label('Search :')
+                            ->placeholder('search')
+                            ->required(false),
+                    ])
+                    ->query(function ($query, array $data) {
+                        if (!empty($data['search_input'])) {
+                            $searchTerm = strtolower($data['search_input']); // Ubah input pencarian menjadi lowercase
+                            $query->where(function ($query) use ($searchTerm) {
+                                $query->whereRaw('LOWER(judul_podcast) LIKE ?', ['%' . $searchTerm . '%'])
+                                    ->orWhereRaw('LOWER(genre_podcast) LIKE ?', ['%' . $searchTerm . '%'])
+                                    ->orWhereRaw('LOWER(date_podcast) LIKE ?', ['%' . $searchTerm . '%']); // Pencarian case-insensitive
+                            });
+                        }
+                        return $query;
+                    }),
+                // Filter untuk date_podcast
+                Tables\Filters\Filter::make('date_podcast_filter')
+                    ->form([
+                        DatePicker::make('date_podcast')
+                            ->label('Tanggal Podcast :')
+                            ->placeholder('Pilih Tanggal Podcast'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        if (!empty($data['date_podcast'])) {
+                            $query->whereDate('date_podcast', Carbon::parse($data['date_podcast'])->toDateString());
+                        }
+                        return $query;
+                    }),
+                // Filter untuk tanggal_publikasi
+                Tables\Filters\Filter::make('tanggal_publikasi_filter')
+                    ->form([
+                        DatePicker::make('tanggal_publikasi')
+                            ->label('Tanggal Publikasi :')
+                            ->placeholder('Pilih Tanggal Publikasi'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        if (!empty($data['tanggal_publikasi'])) {
+                            $query->whereDate('tanggal_publikasi', Carbon::parse($data['tanggal_publikasi'])->toDateString());
+                        }
+                        return $query;
+                    }),
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

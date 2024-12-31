@@ -27,6 +27,8 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Str;
 
 class EventResource extends Resource
@@ -150,21 +152,21 @@ class EventResource extends Resource
                     ->getStateUsing(static function ($rowLoop) {
                         return $rowLoop->iteration;
                     }),
-                TextColumn::make('nama_event'),
+                TextColumn::make('nama_event')->sortable(),
                 ImageColumn::make('image_event'),
-                TextColumn::make('deskripsi_pendek'),
+                TextColumn::make('deskripsi_pendek')->sortable(),
                 TextColumn::make('deskripsi_event')
                     ->formatStateUsing(function ($state) {
                         return strip_tags($state); // Menghapus tag HTML
-                    }),
-                TextColumn::make('date_event')->searchable()->sortable(),
+                    })->sortable(),
+                TextColumn::make('date_event')->sortable(),
                 IconColumn::make('publish_now') // Menggunakan IconColumn
                     ->boolean() // Secara otomatis mendukung true/false atau 1/0
                     ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true
                     ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
                     ->trueColor('success') // Warna ikon untuk true (hijau)
                     ->falseColor('danger'),
-                TextColumn::make('tanggal_publikasi')->searchable()->sortable(),
+                TextColumn::make('tanggal_publikasi')->sortable(),
                 TextColumn::make('time_countdown'),
                 TextColumn::make('status')
                     ->color(fn($record) => match ($record->status) {
@@ -174,9 +176,9 @@ class EventResource extends Resource
                         default => 'secondary',       // Warna default
                     }),
                 TextColumn::make('slug'),
-                TextColumn::make('meta_title'),
-                TextColumn::make('meta_description'),
-                TextColumn::make('meta_keywords'),
+                TextColumn::make('meta_title')->sortable(),
+                TextColumn::make('meta_description')->sortable(),
+                TextColumn::make('meta_keywords')->sortable(),
                 TextColumn::make('ticket_url'),
                 IconColumn::make('has_ticket')
                     ->label('Ada Tiket?')
@@ -185,8 +187,58 @@ class EventResource extends Resource
                     ->falseIcon('heroicon-o-x-circle'),
             ])
             ->filters([
-                //
-            ])
+                Filter::make('nama_event')
+                    ->form([
+                        TextInput::make('nama_event')
+                            ->label('Search : ')
+                            ->placeholder('search')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['nama_event'], function ($q, $namaEvent) {
+                            $q->where('nama_event', 'like', '%' . $namaEvent . '%');
+                        });
+                    }),
+
+                Filter::make('date_event')
+                    ->form([
+                        DatePicker::make('date_event')
+                            ->label('Tanggal Event :')
+                            ->placeholder('Pilih tanggal event...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['date_event'], function ($q, $dateEvent) {
+                            $q->whereDate('date_event', $dateEvent);
+                        });
+                    }),
+
+                Filter::make('tanggal_publikasi')
+                    ->form([
+                        DatePicker::make('tanggal_publikasi')
+                            ->label('Tanggal Publikasi :')
+                            ->placeholder('Pilih tanggal publikasi...')
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['tanggal_publikasi'], function ($q, $tanggalPublikasi) {
+                            $q->whereDate('tanggal_publikasi', $tanggalPublikasi);
+                        });
+                    }),
+                Filter::make('status')
+                    ->form([
+                        Select::make('status')
+                            ->label('Status Event :')
+                            ->placeholder('Pilih status...')
+                            ->options([
+                                'soon' => 'Soon',
+                                'upcoming' => 'Upcoming',
+                                'completed' => 'Completed',
+                            ])
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['status'], function ($q, $status) {
+                            $q->where('status', $status);
+                        });
+                    }),
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),

@@ -20,6 +20,7 @@ use App\Filament\Resources\ChartResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ChartResource\RelationManagers;
 use Filament\Actions\ActionGroup;
+use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
 
 class ChartResource extends Resource
@@ -76,23 +77,42 @@ class ChartResource extends Resource
                     }),
                 TextColumn::make('kategori.nama_kategori')
                     ->label('Kategori')
-                    ->searchable()
                     ->sortable(),
                 TextColumn::make('name')
                     ->label('Nama Artis')
-                    ->searchable(),
+                    ->sortable(),
                 TextColumn::make('link_audio')
-                    ->label('File Audio'),
+                    ->label('File Audio')
+                    ->sortable(),
             ])
             ->filters([
-                // Filter kategori
+                Tables\Filters\Filter::make('search')
+                    ->form([
+                        Forms\Components\TextInput::make('query')
+                            ->label('Search :')
+                            ->placeholder('Search'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        return $query
+                            ->when(
+                                $data['query'] ?? null,
+                                fn($query, $searchTerm) =>
+                                $query->where(function ($query) use ($searchTerm) {
+                                    $lowerSearchTerm = strtolower($searchTerm); // Ubah input pencarian menjadi lowercase
+                                    $query->whereRaw('LOWER(name) LIKE ?', ["%{$lowerSearchTerm}%"])
+                                        ->orWhereHas(
+                                            'kategori',
+                                            fn($query) =>
+                                            $query->whereRaw('LOWER(nama_kategori) LIKE ?', ["%{$lowerSearchTerm}%"])
+                                        );
+                                })
+                            );
+                    }),
                 Tables\Filters\SelectFilter::make('kategori_id')
-                    ->label('Kategori')
-                    ->options(Kategori::all()->pluck('nama_kategori', 'id')), // Mengambil semua kategori untuk opsi
-            ])
-            ->headerActions([
-
-            ])
+                    ->label('Kategori :')
+                    ->options(Kategori::all()->pluck('nama_kategori', 'id'))
+            ], layout: FiltersLayout::AboveContent)
+            ->headerActions([])
             ->actions([
                 Tables\Actions\EditAction::make()
                     ->modalHeading('Edit Chart')
@@ -105,7 +125,7 @@ class ChartResource extends Resource
                 ]),
             ]);
     }
-    
+
 
     public static function getRelations(): array
     {
