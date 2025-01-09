@@ -254,7 +254,7 @@
                             </div>
                         </div>
                         <div class="area-see-more">
-                            <a href="">
+                            <a href="/event">
                                 <h2 class="see-more">See More</h2>
                             </a>
                         </div>
