@@ -159,6 +159,17 @@
             <div class="line-info-news"></div>
         </div>
     </section>
+    <section class="section-banner">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
+        </div>
+    </section>
     <section class="page-news-3">
         <div class="area-info-artis">
             <div class="header-info-artis">

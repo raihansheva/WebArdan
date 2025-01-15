@@ -183,15 +183,20 @@
 
 .area-image-detail-program {
     width: auto;
-    height: 350px;
+    height: 780px;
     background-color: gainsboro;
     margin-top: 12px;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-detail-program{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0; /* Atur posisi di kiri */
 }
 
 .area-desk-detail-program {
@@ -318,7 +323,7 @@ figcaption span:hover{
     height: auto;
     /* border: 1px red solid; */
     /* margin: 0px 64px 0px 64px; */
-    padding-bottom: 30px;
+    /* padding-bottom: 30px; */
 }
 
 .header-programE{
@@ -345,11 +350,23 @@ figcaption span:hover{
     margin-top: 15px;
 }
 
-.box-programE{
+
+.image-programEE {
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0; /* Atur posisi di kiri */
+}
+
+.box-programE {
     flex: 1 1 calc(25% - 10px);
     height: 200px;
     background-color: #f0f0f0;
     cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden; /* Untuk memastikan gambar tidak keluar dari kotak */
 }
 
 
@@ -921,7 +938,7 @@ figcaption span:hover{
 .area-info-artis {
     width: auto;
     height: auto;
-    margin: 0px 64px 20px 64px;
+    margin: 20px 64px 20px 64px;
     /* border: 1px red solid; */
 }
 

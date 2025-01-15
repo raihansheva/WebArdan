@@ -16,17 +16,19 @@
 
 @livewireStyles
 @section('content')
-    <section class="section-banner">
-        <div class="area-banner">
-            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
-                autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
-                @endforeach
-            </swiper-container>
-        </div>
-    </section>
+    {{-- @if ($banner->where('position', 'top')->count() > 0) --}}
+        <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
+            <div class="area-banner">
+                <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                    autoplay-disable-on-interaction="false" loop="true">
+                    @foreach ($banner->where('position', 'top') as $list)
+                        <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                alt=""></swiper-slide>
+                    @endforeach
+                </swiper-container>
+            </div>
+        </section>
+    {{-- @endif --}}
     <section class="page-1" id="home">
         <div class="area-streaming">
             <div class="header-streaming">
@@ -231,6 +233,17 @@
                             </a>
                         </div>
                     </div>
+                    <section class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
+                        <div class="area-banner-small">
+                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1600"
+                                autoplay-disable-on-interaction="false" loop="true">
+                                @foreach ($banner->where('position', 'bottom_kategori') as $list)
+                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                            alt=""></swiper-slide>
+                                @endforeach
+                            </swiper-container>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -241,10 +254,10 @@
                 <h1 class="title-program">PROGRAM</h1>
             </div>
             <div class="area-content-program">
-                <div class="area-tombol">
+                {{-- <div class="area-tombol">
                     <div class="tombol-kiri"></div>
                     <div class="tombol-kanan"></div>
-                </div>
+                </div> --}}
                 <swiper-container class="area-content-box-program" loop="true" autoplay-delay="2500"
                     autoplay-disable-on-interaction="false"
                     breakpoints='{
@@ -256,13 +269,12 @@
                     }'
                     space-between="20">
                     @foreach ($program as $programList)
-                        <swiper-slide style="background-image: url('./storage/{{ $programList->image_program }}') "
-                            class="box-program" data-title="{{ $programList->judul_program }}"
+                        <swiper-slide class="box-program" data-title="{{ $programList->judul_program }}"
                             data-description="{{ $programList->deskripsi_pendek }}"
                             data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
                             data-slugP="{{ $programList->slug }}" data-deskP="{{ $programList->deskripsi_program }}"
                             onclick="showPopup(this)">
-                            {{-- <img src="./storage/{{ $programList->image_program }}" alt=""> --}}
+                            <img class="image-program" src="./storage/{{ $programList->image_program }}" alt="">
                         </swiper-slide>
                     @endforeach
                 </swiper-container>
@@ -424,6 +436,7 @@
             </div>
         </div>
     </section>
+
     <section class="page-5" id="podcast-video">
         <div class="area-podcast-video">
             <div class="area-content-PV">
@@ -476,6 +489,17 @@
                             </div>
                         @endforeach
                     </div>
+                    <section class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
+                        <div class="area-banner-small">
+                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1800"
+                                autoplay-disable-on-interaction="false" loop="true">
+                                @foreach ($banner->where('position', 'bottom_kategori') as $list)
+                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                            alt=""></swiper-slide>
+                                @endforeach
+                            </swiper-container>
+                        </div>
+                    </section>
                 </div>
                 <div class="line-PV"></div>
                 <div class="area-content-video">
@@ -718,7 +742,7 @@
                                                     data-audio-src="./storage/{{ $chart->link_audio }}"
                                                     data-name="{{ $chart->name }}"
                                                     data-kategori="{{ $kategoriList->nama_kategori }}"
-                                                    data-id="{{ $kategoriList->id }}">
+                                                    data-id="{{ $chart->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
                                                 <audio src="" id="audio-chart" class="audio-chart"></audio>
@@ -778,6 +802,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner->where('position', 'middle') as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
         </div>
     </section>
     <section class="page-8" id="schedule">
@@ -848,7 +883,7 @@
         </div>
     </section>
 
-
+    <br>
 
     {{-- audio player --}}
     {{-- <div class="audio-player-container">

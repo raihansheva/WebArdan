@@ -74,6 +74,17 @@
             <div class="line-VNS"></div>
         </div>
     </section>
+    <section class="section-banner">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
+        </div>
+    </section>
     <section class="page-youtube-3">
         <div class="area-event-news-streaming">
             <div class="area-content-VNS">

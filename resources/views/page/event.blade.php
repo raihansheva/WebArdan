@@ -98,6 +98,17 @@
             <div class="line-event"></div>
         </div>
     </section>
+    <section class="section-banner">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
+        </div>
+    </section>
     <section class="page-event-3">
         <div class="area-programE">
             <div class="header-programE">
@@ -105,12 +116,13 @@
             </div>
             <div class="content-programE">
                 @foreach ($program as $programList)
-                    <div class="box-programE" style="background-image: url('./storage/{{ $programList->image_program }}') "
+                    <div class="box-programE"
                         class="box-program" data-title="{{ $programList->judul_program }}"
                         data-description="{{ $programList->deskripsi_pendek }}"
                         data-time="{{ $programList->jam_mulai }} - {{ $programList->jam_selesai }}"
                         data-slugP="{{ $programList->slug }}" data-deskP="{{ $programList->deskripsi_program }}"
-                        onclick="showPopup(this)"></div>
+                        onclick="showPopup(this)">
+                        <img class="image-programEE" src="./storage/{{ $programList->image_program }}" alt="" srcset=""></div>
                 @endforeach
             </div>
         </div>

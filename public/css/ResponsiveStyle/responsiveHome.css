@@ -188,7 +188,7 @@
     }
 
     /* pop up program */
-
+    
     .popup-content {
         width: 850px;
         height: 400px;
@@ -2391,7 +2391,7 @@
 
     .box-program {
         flex: 0 0 calc(50% - 10px); /* Mengubah lebar box menjadi 50% untuk tablet */
-        height: 250px; /* Mengurangi tinggi box */
+        height: 325px; /* Mengurangi tinggi box */
     }
 
     .tombol-kiri,
@@ -3547,7 +3547,7 @@
 
     .box-program {
         flex: 0 0 100%; /* Mengubah lebar box menjadi 50% untuk tablet */
-        height: 250px; /* Mengurangi tinggi box */
+        height: 335px; /* Mengurangi tinggi box */
     }
 
     .tombol-kiri,
@@ -3557,6 +3557,11 @@
     }
 
     /* pop up program */
+
+    .area-info-program{
+        gap: 5px;
+    }
+
     .popup-content {
         width: 200px;
         height: 110px;
@@ -3570,6 +3575,8 @@
 
     .desk-program {
         font-size: 8px;
+        -webkit-line-clamp: 4;
+        text-overflow: ellipsis;
     }
 
     .jam-program {
@@ -4803,7 +4810,7 @@
 
     .box-program {
         flex: 0 0 100%; /* Mengubah lebar box menjadi 50% untuk tablet */
-        height: 250px; /* Mengurangi tinggi box */
+        height: 280px; /* Mengurangi tinggi box */
     }
 
     .tombol-kiri,
@@ -6033,7 +6040,7 @@
 
     .box-program {
         flex: 0 0 100%; /* Mengubah lebar box menjadi 50% untuk tablet */
-        height: 220px; /* Mengurangi tinggi box */
+        height: 250px; /* Mengurangi tinggi box */
     }
 
     .tombol-kiri,
@@ -7301,7 +7308,7 @@ align-items: center; */
 
     .box-program {
         flex: 0 0 100%; /* Mengubah lebar box menjadi 50% untuk tablet */
-        height: 220px; /* Mengurangi tinggi box */
+        height: 230px;  /* Mengurangi tinggi box */
     }
 
     .tombol-kiri,

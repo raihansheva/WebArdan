@@ -27,7 +27,7 @@
     {{-- Style Page Content --}}
     @stack('Style.css')
     @livewireStyles
-
+    
 </head>
 
 <body>
@@ -341,6 +341,7 @@
 {{-- <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.14.0/dist/videojs-contrib-hls.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 <script>
     const urlCek = window.location.pathname;
     console.log("Current Path:", urlCek);

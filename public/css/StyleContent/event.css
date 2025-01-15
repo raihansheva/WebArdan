@@ -331,7 +331,7 @@
     width: auto;
     height: auto;
     /* border: 1px red solid; */
-    margin: 0px 64px 0px 64px;
+    margin: 20px 64px 0px 64px;
     padding-bottom: 30px;
 }
 
@@ -358,11 +358,22 @@
     margin-top: 15px;
 }
 
-.box-programE{
-    flex: 1 1 calc(33.33% - 20px);
-    height: 260px;
+.image-programEE {
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0; /* Atur posisi di kiri */
+}
+
+.box-programE {
+    flex: 1 1 calc(25% - 10px);
+    height: 280px;
     background-color: #f0f0f0;
     cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden; /* Untuk memastikan gambar tidak keluar dari kotak */
 }
 
 

@@ -70,6 +70,17 @@
                         </div>
                     </div>
                     <div class="line-detail-info"></div>
+                    <section class="section-banner-small">
+                        <div class="area-banner-small">
+                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                                autoplay-disable-on-interaction="false" loop="true">
+                                @foreach ($banner as $list)
+                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                            alt=""></swiper-slide>
+                                @endforeach
+                            </swiper-container>
+                        </div>
+                    </section>
                     <div class="area-trending-info">
                         <div class="header-trending-info">
                             <h1 class="title-trending-info">Trending Info</h1>
@@ -221,6 +232,17 @@
                 </div>
             </div>
             <div class="line-info-news"></div>
+        </div>
+    </section>
+    <section class="section-banner">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
         </div>
     </section>
     <section class="page-news-3">

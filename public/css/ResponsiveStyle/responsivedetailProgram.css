@@ -79,10 +79,9 @@
     }
 
     /* area program page event */
-    .area-programE {
-        /* margin: 0px 128px 0px 128px; */
+    /* .area-programE {
         padding-bottom: 60px;
-    }
+    } */
     .title-programE {
         font-size: 38px;
     }
@@ -436,7 +435,7 @@
     }
 
     .area-image-detail-program {
-        height: 280px;
+        height: 580px;
     }
 
     .area-desk-detail-program {
@@ -448,10 +447,10 @@
     }
 
     /* area program page event */
-    .area-programE {
-        /* margin: 0px 32px 0px 32px; */
+    /* .area-programE {
+        margin: 0px 32px 0px 32px;
         padding-bottom: 30px;
-    }
+    } */
     .title-programE {
         font-size: 34px;
     }
@@ -782,7 +781,7 @@
     }
 
     .area-image-detail-program {
-        height: 240px;
+        height: 400px;
     }
 
     .area-desk-detail-program {
@@ -794,10 +793,10 @@
     }
     /* ----------------- */
 
-    .area-programE {
-        /* margin: 0px 20px 0px 20px; */
+    /* .area-programE {
+        margin: 0px 20px 0px 20px;
         padding-bottom: 30px;
-    }
+    } */
     .title-programE {
         font-size: 30px;
     }
@@ -808,7 +807,7 @@
     }
     .box-programE {
         flex: 1 1 calc(50% - 10px);
-        height: 170px;
+        height: 200px;
     }
     /* pop up program */
     .popup-content {
@@ -1103,7 +1102,7 @@
 
     .content-detail-program {
         flex-direction: column;
-        gap: 35px;
+        gap: 0px;
         margin-top: 0px;
     }
 
@@ -1217,7 +1216,7 @@
     }
     .box-programE {
         flex: 1 1 calc(50% - 10px);
-        height: 150px;
+        height: 190px;
     }
     /* pop up program */
     .popup-content {
@@ -1510,7 +1509,7 @@
 
     .content-detail-program {
         flex-direction: column;
-        gap: 35px;
+        gap: 0px;
         margin-top: 0px;
     }
 
@@ -1594,7 +1593,7 @@
     }
     .box-programE {
         flex: 1 1 calc(50% - 10px);
-        height: 150px;
+        height: 160px;
     }
     /* pop up program */
     .popup-content {
@@ -1910,7 +1909,7 @@
 
     .content-detail-program {
         flex-direction: column;
-        gap: 35px;
+        gap: 0px;
         margin-top: 0px;
     }
 
@@ -2289,7 +2288,7 @@
 
     .content-detail-program {
         flex-direction: column;
-        gap: 35px;
+        gap: 0px;
         margin-top: 0px;
     }
 
@@ -2348,7 +2347,7 @@
     }
     .box-programE {
         flex: 1 1 calc(50% - 10px);
-        height: 120px;
+        height: 140px;
     }
     /* pop up program */
     .popup-content {

@@ -36,7 +36,14 @@ return [
             'serve' => true,
             'throw' => false,
         ],
-
+        
+        // 'public' => [
+        //     'driver' => 'local',
+        //     'root' => public_path('uploads'),
+        //     'url' => env('APP_URL') . '/uploads',
+        //     'visibility' => 'public',
+        // ],
+        
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
@@ -44,6 +51,7 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
 
         's3' => [
             'driver' => 's3',

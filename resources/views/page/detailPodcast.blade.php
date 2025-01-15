@@ -94,7 +94,14 @@
                                     <div class="card-body-episode">
                                         <div class="card-header-episode">
                                             <div class="genre-episode">
-                                                <h1 class="title-genre-episode">{{ $epsgroupList->genre_podcast }}</h1>
+                                                @if (is_array($epsgroupList->genre_podcast))
+                                                    @foreach ($epsgroupList->genre_podcast as $genre)
+                                                        <h1 class="title-genre-episode">{{ $genre }}
+                                                        </h1>
+                                                    @endforeach
+                                                @else
+                                                    <h1 class="title-genre-episode">-</h1>
+                                                @endif
                                             </div>
                                             <div class="area-card-text-episode">
                                                 <h1 class="card-text-podcast-episode">{{ $epsgroupList->judul_podcast }}
@@ -119,6 +126,17 @@
             </div>
         </div>
         <div class="line-detail-podcast"></div>
+    </section>
+    <section class="section-banner">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
+        </div>
     </section>
     <section class="page-detail-2">
         <div class="area-other-podcast">

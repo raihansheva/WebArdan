@@ -1,47 +1,4 @@
-/* area banner */
 
-.section-banner {
-    width: 100%;
-    height: auto;
-    padding-top: 40px;
-}
-
-.area-banner {
-    width: auto;
-    margin: 0px 64px 0px 64px;
-    height: 250px;
-    /* border: 1px red solid; */
-}
-
-.image-banner {
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-swiper-container {
-    width: 100%;
-    height: 100%;
-}
-
-swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 /* ----------- */
 .audio-card {
@@ -438,6 +395,15 @@ swiper-slide img {
     margin-bottom: 10px;
 }
 
+.image-program{
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0; /* Atur posisi di kiri */
+}
+
 .box-program {
     flex: 0 0 calc(25% - 15px);
     height: 280px;
@@ -446,6 +412,8 @@ swiper-slide img {
     margin: 0;
     box-sizing: border-box;
     cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .popup {
@@ -1572,7 +1540,7 @@ swiper-slide img {
     height: auto;
     display: flex;
     gap: 48px;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .line-PV {
@@ -2691,7 +2659,7 @@ tbody td {
     width: auto;
     height: 500px;
     /* border: 1px #ff004d solid; */
-    margin: 0px 64px 0px 64px;
+    margin: 20px 64px 0px 64px;
 }
 
 .area-content-schedule {

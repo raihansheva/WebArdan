@@ -368,6 +368,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const audioSrc = button.getAttribute("data-audio-src");
             const chartName = button.getAttribute("data-name");
             const chartArtist = button.getAttribute("data-kategori");
+            console.log(chartId);
+            
             changeIdPlayPause();
 
             // Hentikan streaming jika sedang berjalan

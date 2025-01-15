@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'home')->get();
 
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
         $streamVideo = Streaming::where('type_url', 'Video')->first();
@@ -185,6 +185,7 @@ class HomeController extends Controller
 
     public function detailprogram($slug)
     {
+        $banner = Banner::all();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -236,6 +237,7 @@ class HomeController extends Controller
         // dd($info);
 
         return view('page.detailProgram', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             'program' => $program,
             'programO' => $programO,
@@ -250,7 +252,7 @@ class HomeController extends Controller
 
     public function event()
     {
-
+        $banner = Banner::all();
         $program = Program::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -283,6 +285,7 @@ class HomeController extends Controller
             ->get();
 
         return view('page.event', [
+            'banner' => $banner,
             'program' => $program,
             'streamAudio' => $streamAudio,
             'event_soon' => $event_soon,
@@ -292,6 +295,7 @@ class HomeController extends Controller
 
     public function detailEvent($slug)
     {
+        $banner = Banner::all();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -347,6 +351,7 @@ class HomeController extends Controller
         // dd($info);
 
         return view('page.detailEvent', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             'event' => $event,
             'kategoriInfo' => $kategoriInfo,
@@ -361,6 +366,7 @@ class HomeController extends Controller
 
     public function podcast()
     {
+        $banner = Banner::all();
         $bannerP = BannerPodcast::all();
         $podcast = Podcast::all();
         $playlist = Youtube::first();
@@ -399,6 +405,7 @@ class HomeController extends Controller
         $videos = $response->json()['items'];
 
         return view('page.podcast', [
+            'banner' => $banner,
             'bannerP' => $bannerP,
             'podcast' => $podcast,
             'videos' => $videos,
@@ -409,6 +416,7 @@ class HomeController extends Controller
 
     public function detailpodcast($slug)
     {
+        $banner = Banner::all();
         // Cari podcast berdasarkan slug
         $detailpodcast = Podcast::where('slug', $slug)->firstOrFail();
 
@@ -457,6 +465,7 @@ class HomeController extends Controller
 
         // Tampilkan halaman detail dengan data podcast
         return view('page.detailPodcast', [
+            'banner' => $banner,
             'detail_podcast' => $detailpodcast,
             'eps_group' => $epsgroup,
             'all_podcast' => $allpodcast,
@@ -469,6 +478,7 @@ class HomeController extends Controller
 
     public function chart()
     {
+        $banner = Banner::all();
         $Kategori = Kategori::with('charts')->get();
 
         $topInfo = Info::where(function ($query) {
@@ -484,6 +494,7 @@ class HomeController extends Controller
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
 
         return view('page.chart', [
+            'banner' => $banner,
             'kategori' => $Kategori,
             'top_info' => $topInfo,
             'streamAudio' => $streamAudio,
@@ -493,6 +504,7 @@ class HomeController extends Controller
 
     public function info()
     {
+        $banner = Banner::all();
         $info = Info::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -540,6 +552,7 @@ class HomeController extends Controller
         // $time = Carbon::now('UTC')->toDateString();
         // dd($time);
         return view('page.infoNews', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             'info' => $info,
             'taginfo' => $taginfo,
@@ -552,6 +565,7 @@ class HomeController extends Controller
 
     public function artis()
     {
+        $banner = Banner::all();
         $info = Info::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -597,6 +611,7 @@ class HomeController extends Controller
         // $time = Carbon::now('UTC')->toDateString();
         // dd($time);
         return view('page.infoArtis', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             'info' => $info,
             'taginfo' => $taginfo,
@@ -609,6 +624,7 @@ class HomeController extends Controller
 
     public function tagInfo($tag)
     {
+        $banner = Banner::all();
         $info = Info::whereHas('tagInfo', function ($query) use ($tag) {
             $query->where('nama_kategori', $tag)
                 // Atau jika publish_sekarang false dan tanggal_publikasi <= sekarang
@@ -647,6 +663,7 @@ class HomeController extends Controller
         // dd($info);
 
         return view('page.detailTaginfo', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             'info' => $info,
             'taginfo' => $taginfo,
@@ -659,6 +676,7 @@ class HomeController extends Controller
 
     public function detailInfo($slug)
     {
+        $banner = Banner::all();
         $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -707,6 +725,7 @@ class HomeController extends Controller
         // dd($info);
 
         return view('page.detailInfo', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             'info' => $info,
             'kategoriInfo' => $kategoriInfo,
@@ -721,6 +740,7 @@ class HomeController extends Controller
 
     public function youtube()
     {
+        $banner = Banner::all();
         $youtube = Youtube::all();
         $event_soon = Event::where(function ($query) {
             // Tampilkan jika publish_sekarang true
@@ -756,6 +776,7 @@ class HomeController extends Controller
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
 
         return view('page.youtube', [
+            'banner' => $banner,
             'bannerYT' => $bannerYT,
             'youtube' => $youtube,
             'event_soon' => $event_soon,
@@ -768,6 +789,7 @@ class HomeController extends Controller
 
     public function detailInfoArtis($slug)
     {
+        $banner = Banner::all();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -817,6 +839,7 @@ class HomeController extends Controller
         // dd($info);
 
         return view('page.detailInfoArtis', [
+            'banner' => $banner,
             'bannerInfo' => $bannerI,
             // 'info' => $info,
             'kategoriInfo' => $kategoriInfo,

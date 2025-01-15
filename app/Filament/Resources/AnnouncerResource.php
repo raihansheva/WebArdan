@@ -28,36 +28,35 @@ class AnnouncerResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-    ->schema([
-        Card::make()
             ->schema([
-                TextInput::make('name_announcer')->label('Name Announcer :')
-                ->columnSpan(2)
-                ->required(),
-                TextInput::make('link_instagram')->label('Link Instagram :')
-                ->columnSpan(2),
-                TextInput::make('link_tiktok')->label('Link TikTok :')
-                ->columnSpan(2),
-                TextInput::make('link_twitter')->label('Link Twitter :')
-                ->columnSpan(2),
-                FileUpload::make('image_announcer')
-                    ->label('Announcer Image')
-                    ->image()
-                    ->directory('uploads/images_announcer')
-                    ->disk('public')
-                    ->preserveFilenames()
-                    ->rules(['required', 'image', 'dimensions:width=254,height=300'])
-                    ->validationAttribute('Image Announcer')
-                    ->helperText('The image must be 254x300 pixels.')
-                    ->columnSpan(2),
-                // RichEditor di bagian paling bawah dan lebar penuh
-                RichEditor::make('bio')
-                    ->label('Bio :')
-                    ->required()
-                    ->columnSpan(2), // Membuat RichEditor lebar penuh (full width)
-            ])
-            ->columns(1), // Menentukan bahwa form menggunakan 2 kolom
-    ]);
+                Card::make()
+                    ->schema([
+                        TextInput::make('name_announcer')->label('Name Announcer :')
+                            ->columnSpan(2)
+                            ->required(),
+                        TextInput::make('link_instagram')->label('Link Instagram :')
+                            ->columnSpan(2),
+                        TextInput::make('link_tiktok')->label('Link TikTok :')
+                            ->columnSpan(2),
+                        TextInput::make('link_twitter')->label('Link Twitter :')
+                            ->columnSpan(2),
+                        FileUpload::make('image_announcer')
+                            ->label('Announcer Image')
+                            ->image()
+                            ->directory('uploads/images_announcer')
+                            ->preserveFilenames()
+                            ->rules(['required', 'image', 'dimensions:width=254,height=300'])
+                            ->validationAttribute('Image Announcer')
+                            ->helperText('The image must be 254x300 pixels.')
+                            ->columnSpan(2),
+                        // RichEditor di bagian paling bawah dan lebar penuh
+                        RichEditor::make('bio')
+                            ->label('Bio :')
+                            ->required()
+                            ->columnSpan(2), // Membuat RichEditor lebar penuh (full width)
+                    ])
+                    ->columns(1), // Menentukan bahwa form menggunakan 2 kolom
+            ]);
     }
 
     public static function table(Table $table): Table
@@ -70,14 +69,15 @@ class AnnouncerResource extends Resource
                         return $rowLoop->iteration;
                     }),
                 TextColumn::make('name_announcer')->searchable()->sortable(),
-                ImageColumn::make('image_announcer'),
+                ImageColumn::make('image_announcer')
+                    ->url(fn($record) => asset($record->image_announcer)), // Mengakses gambar di folder images_announcer,
                 TextColumn::make('link_instagram'),
                 TextColumn::make('link_tiktok'),
                 TextColumn::make('link_twitter'),
                 TextColumn::make('bio')->label('Bio')
-                ->formatStateUsing(function ($state) {
-                    return strip_tags($state); // Menghapus tag HTML
-                }),
+                    ->formatStateUsing(function ($state) {
+                        return strip_tags($state); // Menghapus tag HTML
+                    }),
             ])
             ->filters([
                 //
