@@ -191,6 +191,8 @@
     margin-top: 12px;
 }
 
+
+
 .image-detail-event {
     width: 100%;
     height: 100%;
@@ -728,7 +730,6 @@ figcaption span:hover {
     width: 100%;
     /* border: 1px #ff004d solid; */
     display: flex;
-    /* flex-direction: column; */
     gap: 20px;
 }
 
@@ -739,7 +740,20 @@ figcaption span:hover {
     display: flex;
     justify-content: end;
     align-items: end;
+    box-sizing: border-box;
     cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
+}
+
+.image-EK{
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
+    z-index: 1;
 }
 
 .area-days-date-right {
@@ -748,6 +762,7 @@ figcaption span:hover {
     background-color: #333333b9;
     display: flex;
     padding: 10px 15px;
+    z-index: 2;
 }
 
 .content-days-date-right {

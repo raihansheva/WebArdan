@@ -48,7 +48,7 @@
                             </p>
                         </div>
                         <div class="area-image-detail-program">
-                            <img class="image-detail-program" src="../storage/{{ $program->image_program }}" alt="">
+                            <img class="image-detail-program" src="../storage/{{ $program->thumbnail_program }}" alt="">
                         </div>
                         <div class="area-desk-detail-program">
                             {!! str($program->deskripsi_program)->sanitizeHtml() !!}
@@ -67,11 +67,11 @@
                         @endif --}}
                     </div>
                     <div class="line-detail-info"></div>
-                    <section class="section-banner-small">
+                    <section class="section-banner-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-small">
                             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                                 autoplay-disable-on-interaction="false" loop="true">
-                                @foreach ($banner as $list)
+                                @foreach ($banner->where('position', 'bottom_detail') as $list)
                                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                                             alt=""></swiper-slide>
                                 @endforeach
@@ -231,11 +231,11 @@
             
         </div>
     </section>
-    <section class="section-banner">
+    <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
+                @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                             alt=""></swiper-slide>
                 @endforeach

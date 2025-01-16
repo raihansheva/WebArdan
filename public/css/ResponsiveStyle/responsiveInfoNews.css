@@ -994,11 +994,15 @@
     }
 
     .header-info-news {
-        height: 200px;
+        height: 141px;
+    }
+
+    .image-header-info-news{
+        justify-content: center;
     }
 
     .title-header {
-        font-size: 34px;
+        font-size: 30px;
         margin: 0px 8px;
     }
 
@@ -1365,11 +1369,16 @@
     }
 
     .header-info-news {
-        height: 200px;
+        height: 141px;
     }
 
+    .image-header-info-news{
+        justify-content: center;
+    }
+
+
     .title-header {
-        font-size: 34px;
+        font-size: 30px;
         margin: 0px 8px;
     }
 
@@ -1736,11 +1745,16 @@
     }
 
     .header-info-news {
-        height: 200px;
+        height: 141px;
     }
 
+    .image-header-info-news{
+        justify-content: center;
+    }
+
+
     .title-header {
-        font-size: 34px;
+        font-size: 30px;
         margin: 0px 8px;
     }
 
@@ -2107,11 +2121,15 @@
     }
 
     .header-info-news {
-        height: 150px;
+        height: 141px;
+    }
+
+    .image-header-info-news{
+        justify-content: center;
     }
 
     .title-header {
-        font-size: 34px;
+        font-size: 30px;
         margin: 0px 8px;
     }
 

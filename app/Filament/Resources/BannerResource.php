@@ -52,6 +52,7 @@ class BannerResource extends Resource
                                 'singlepage_info' => 'SinglePage Info',
                                 'singlepage_podcast' => 'SinglePage Podcast',
                                 'singlepage_artis' => 'SinglePage Artis',
+                                'singlepage_kategoriInfo' => 'SinglePage KategoriInfo',
                             ])
                             ->required()
                             ->label('Page')
@@ -60,16 +61,21 @@ class BannerResource extends Resource
                             ->options(function (callable $get) {
                                 $page = $get('page'); // Ambil nilai page yang dipilih
                                 switch ($page) {
+                                    case 'all':
+                                        return [
+                                            'top' => 'Top',
+                                        ];
                                     case 'home':
                                         return [
                                             'top' => 'Top',
                                             'middle' => 'Middle',
                                             'bottom_kategori' => 'Bottom Kategori',
+                                            'bottom_podcast' => 'Bottom Podcast',
                                         ];
                                     case 'info_news':
                                         return [
-                                            'top' => 'Top',
-                                            'bottom_kategori' => 'Bottom Kategori',
+                                            'bottom_topInfo' => 'bottom_topInfo',
+                                            'middle' => 'middle',
                                         ];
                                     case 'event':
                                         return [
@@ -86,31 +92,35 @@ class BannerResource extends Resource
                                         ];
                                     case 'singlepage_info':
                                         return [
-                                            'bottom_detail_info' => 'Bottom Detail Info',
+                                            'bottom_detail' => 'Bottom Detail Info',
                                             'middle' => 'Middle',
                                         ];
                                     case 'singlepage_event':
                                         return [
-                                            'bottom_detail_event' => 'Bottom Detail Event',
+                                            'bottom_detail' => 'Bottom Detail Event',
                                             'middle' => 'Middle',
                                         ];
                                     case 'singlepage_program':
                                         return [
-                                            'bottom_detail_program' => 'Bottom Detail Program',
+                                            'bottom_detailil' => 'Bottom Detail Program',
                                             'middle' => 'Middle',
                                         ];
                                     case 'singlepage_artis':
                                         return [
-                                            'bottom_detail_program' => 'Bottom Detail Program',
+                                            'bottom_detail' => 'Bottom Detail artis',
                                             'middle' => 'Middle',
                                         ];
                                     case 'info_artis':
                                         return [
                                             'middle' => 'Middle',
                                         ];
+                                    case 'kategori_info':
+                                        return [
+                                            'middle' => 'Middle',
+                                        ];
                                     case 'chart':
                                         return [
-                                            'bottom_top_info' => 'Bottom Top Info',
+                                            'bottom_topInfo' => 'Bottom Top Info',
                                         ];
                                     default:
                                         return [
@@ -125,11 +135,19 @@ class BannerResource extends Resource
                                 // Update width_type based on position value
                                 switch ($state) {
                                     case 'top':
+                                        $set('width_type', 'Full Width');
+                                        break;
+                                    case 'bottom_detail':
+                                        $set('width_type', 'Full Width Large');
+                                        break;
                                     case 'middle':
                                         $set('width_type', 'Full Width');
                                         break;
-                                    case 'bottom_top_info':
+                                    case 'bottom_topInfo':
                                         $set('width_type', 'Large');
+                                        break;
+                                    case 'bottom_podcast':
+                                        $set('width_type', 'Full Width Small');
                                         break;
                                     case 'bottom_kategori':
                                         $set('width_type', 'Small');
@@ -155,6 +173,10 @@ class BannerResource extends Resource
 
                                 // Validasi berdasarkan width_type
                                 switch ($widthType) {
+                                    case 'Full Width Large':
+                                        return ['required', 'image', 'dimensions:width=801,height=120'];
+                                    case 'Full Width Small':
+                                        return ['required', 'image', 'dimensions:width=720,height=120'];
                                     case 'Large':
                                         return ['required', 'image', 'dimensions:width=422,height=120'];
                                     case 'Small':
@@ -169,6 +191,10 @@ class BannerResource extends Resource
 
                                 // Tampilkan pesan helper berdasarkan width_type
                                 switch ($widthType) {
+                                    case 'Full Width Large':
+                                        return 'The image must be exactly 801x120 pixels.';
+                                    case 'Full Width Small':
+                                        return 'The image must be exactly 720x120 pixels.';
                                     case 'Large':
                                         return 'The image must be exactly 422x120 pixels.';
                                     case 'Small':

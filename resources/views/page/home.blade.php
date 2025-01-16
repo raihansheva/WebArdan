@@ -17,17 +17,17 @@
 @livewireStyles
 @section('content')
     {{-- @if ($banner->where('position', 'top')->count() > 0) --}}
-        <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
-            <div class="area-banner">
-                <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
-                    autoplay-disable-on-interaction="false" loop="true">
-                    @foreach ($banner->where('position', 'top') as $list)
-                        <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                alt=""></swiper-slide>
-                    @endforeach
-                </swiper-container>
-            </div>
-        </section>
+    <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
+        <div class="area-banner">
+            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
+                @foreach ($banner->where('position', 'top') as $list)
+                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt=""></swiper-slide>
+                @endforeach
+            </swiper-container>
+        </div>
+    </section>
     {{-- @endif --}}
     <section class="page-1" id="home">
         <div class="area-streaming">
@@ -41,7 +41,7 @@
                     {{-- @foreach ($stream as $streamList) --}}
                     <div class="card-A">
                         <div class="card-body">
-                            <img class="image-streaming" src="./storage/{{ $streamAudio->image_stream }}">
+                            <img class="image-streaming" id="thumbnail-stream" src="">
                             <div class="btn-play-streaming" id="BtnStream" data-audio-src="{{ $streamAudio->stream_url }}">
                                 <span class="material-symbols-rounded">play_arrow</span>
                             </div>
@@ -92,8 +92,14 @@
                     {{-- @if ($streamUpcoming)
                         @foreach ($streamUpcoming as $streamUpcomingList) --}}
                     <div class="area-nextP">
-                        <div class="area-title-nextP">
-                            <p class="title-nextP"> Next Program</p>
+                        <div class="area-title-detail">
+                            <div class="area-title-nextP">
+                                <p class="title-nextP">Next Program</p>
+                            </div>
+                            {{-- <div class="area-detail-NP">
+                                <h2 class="next-program-name" id="program-name"></h2>
+                                <p class="next-program-time" id="program-time"></p>
+                            </div> --}}
                         </div>
                         <div class="area-thumbnail-nextP">
                             <img class="image-stream-upcoming" id="program-image" src="" alt="">
@@ -113,7 +119,7 @@
                 <div class="area-content-news">
                     <div class="area-top-info">
                         <div class="header-top-info">
-                            <h1 class="title-top-info">Top Info</h1>
+                            <h1 class="title-top-info">Trending Info</h1>
                         </div>
                         <div class="content-top-info">
                             @foreach ($top_info as $topInfoList)
@@ -150,7 +156,8 @@
                             <a class="link-box-news" href="/info-detail/{{ $InfoList->slug }}">
                                 <div class="box-news">
                                     <div class="area-image">
-                                        <img class="image-info" src="./storage/{{ $InfoList->image_info }}" alt="">
+                                        <img class="image-info" src="./storage/{{ $InfoList->image_info }}"
+                                            alt="">
                                     </div>
                                     <div class="area-text-desk">
                                         <div class="area-tag">
@@ -174,7 +181,7 @@
                 <div class="area-content-info">
                     <div class="area-trending-info">
                         <div class="header-trending-info">
-                            <h1 class="title-trending-info">Trending Info</h1>
+                            <h1 class="title-trending-info">Top Info</h1>
                         </div>
                         <div class="content-trending-info">
                             @foreach ($trending_info as $trendingInfoList)
@@ -233,7 +240,8 @@
                             </a>
                         </div>
                     </div>
-                    <section class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
+                    <section
+                        class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-small">
                             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1600"
                                 autoplay-disable-on-interaction="false" loop="true">
@@ -368,10 +376,10 @@
                         <div class="content-event-CD" onclick="showPopupEvent(this)"
                             data-description="{{ $eventSoonList->deskripsi_pendek }}"
                             data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
-                            style="background-image: url('./storage/{{ $eventSoonList->image_event }}')"
                             data-slug="{{ $eventSoonList->slug }}"
                             data-deskShort="{{ $eventSoonList->deskripsi_event }}">
                             <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
+                            <img class="image-CD" src="./storage/{{ $eventSoonList->image_event }}" alt="">
                             <div class="area-countdown">
                                 <div class="countdown">
                                     <div class="time-countdown">
@@ -405,11 +413,12 @@
                 <div class="area-content-event-kanan">
                     @foreach ($event_upcoming as $eventUpcomingList)
                         <div class="content-event"
-                            style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
+                            style="background-image: url('')"
                             onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                             data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                             data-slug="{{ $eventUpcomingList->slug }}"
                             data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                            <img class="image-EK" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
                             <div class="area-days-date-right">
                                 <div class="content-days-date-right">
                                     <div class="box-days-date-right">
@@ -489,11 +498,12 @@
                             </div>
                         @endforeach
                     </div>
-                    <section class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
-                        <div class="area-banner-small">
+                    <section
+                        class="section-banner-full-small {{ $banner->where('position', 'bottom_podcast')->count() > 0 ? '' : 'hidden' }}">
+                        <div class="area-banner-full-small">
                             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1800"
                                 autoplay-disable-on-interaction="false" loop="true">
-                                @foreach ($banner->where('position', 'bottom_kategori') as $list)
+                                @foreach ($banner->where('position', 'bottom_podcast') as $list)
                                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                                             alt=""></swiper-slide>
                                 @endforeach
@@ -959,118 +969,118 @@
                 responsive: true,
             });
 
-            let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali
-            let isManualPiPActive = false; // Flag untuk melacak jika PiP diaktifkan secara manual
+            // let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali
+            // let isManualPiPActive = false; // Flag untuk melacak jika PiP diaktifkan secara manual
 
-            // Deteksi apakah perangkat adalah iOS
-            const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
+            // // Deteksi apakah perangkat adalah iOS
+            // const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-            // Fungsi untuk mengecek apakah elemen terlihat di viewport
-            function isElementInViewport(el) {
-                if (!el) return false;
-                const rect = el.getBoundingClientRect();
-                return rect.top >= 0 && rect.bottom <= window.innerHeight;
-            }
+            // // Fungsi untuk mengecek apakah elemen terlihat di viewport
+            // function isElementInViewport(el) {
+            //     if (!el) return false;
+            //     const rect = el.getBoundingClientRect();
+            //     return rect.top >= 0 && rect.bottom <= window.innerHeight;
+            // }
 
-            // Fungsi untuk mengaktifkan PiP jika video tidak terlihat dan PiP belum aktif
-            async function activatePiPIfNeeded() {
-                const videoElement = player.el().querySelector('video'); // Dapatkan elemen video dari player
-                if (!videoElement) {
-                    console.error("Video element tidak ditemukan");
-                    return; // Keluar jika video element tidak ditemukan
-                }
+            // // Fungsi untuk mengaktifkan PiP jika video tidak terlihat dan PiP belum aktif
+            // async function activatePiPIfNeeded() {
+            //     const videoElement = player.el().querySelector('video'); // Dapatkan elemen video dari player
+            //     if (!videoElement) {
+            //         console.error("Video element tidak ditemukan");
+            //         return; // Keluar jika video element tidak ditemukan
+            //     }
 
-                // Jika perangkat adalah iOS, tidak mengaktifkan PiP otomatis
-                if (isIOS) {
-                    console.log("PiP otomatis tidak didukung di iOS");
-                    return;
-                }
+            //     // Jika perangkat adalah iOS, tidak mengaktifkan PiP otomatis
+            //     if (isIOS) {
+            //         console.log("PiP otomatis tidak didukung di iOS");
+            //         return;
+            //     }
 
-                // Pastikan interaksi pengguna sudah terjadi, PiP belum aktif secara manual, dan video tidak terlihat
-                if (
-                    userInteracted &&
-                    !isManualPiPActive &&
-                    !document.pictureInPictureElement &&
-                    !isElementInViewport(videoElement)
-                ) {
-                    if (!videoElement.paused) {
-                        try {
-                            await videoElement.requestPictureInPicture();
-                            console.log("PiP diaktifkan otomatis");
-                        } catch (err) {
-                            console.error("Gagal mengaktifkan PiP:", err);
-                        }
-                    }
-                }
-            }
+            //     // Pastikan interaksi pengguna sudah terjadi, PiP belum aktif secara manual, dan video tidak terlihat
+            //     if (
+            //         userInteracted &&
+            //         !isManualPiPActive &&
+            //         !document.pictureInPictureElement &&
+            //         !isElementInViewport(videoElement)
+            //     ) {
+            //         if (!videoElement.paused) {
+            //             try {
+            //                 await videoElement.requestPictureInPicture();
+            //                 console.log("PiP diaktifkan otomatis");
+            //             } catch (err) {
+            //                 console.error("Gagal mengaktifkan PiP:", err);
+            //             }
+            //         }
+            //     }
+            // }
 
-            // Fungsi untuk keluar dari PiP jika video kembali terlihat
-            async function exitPiPIfNeeded() {
-                const videoElement = player.el().querySelector('video'); // Dapatkan elemen video dari player
-                if (document.pictureInPictureElement && videoElement && isElementInViewport(videoElement)) {
-                    try {
-                        await document.exitPictureInPicture();
-                        console.log("Keluar dari PiP");
-                    } catch (err) {
-                        console.error("Gagal keluar dari PiP:", err);
-                    }
-                }
-            }
+            // // Fungsi untuk keluar dari PiP jika video kembali terlihat
+            // async function exitPiPIfNeeded() {
+            //     const videoElement = player.el().querySelector('video'); // Dapatkan elemen video dari player
+            //     if (document.pictureInPictureElement && videoElement && isElementInViewport(videoElement)) {
+            //         try {
+            //             await document.exitPictureInPicture();
+            //             console.log("Keluar dari PiP");
+            //         } catch (err) {
+            //             console.error("Gagal keluar dari PiP:", err);
+            //         }
+            //     }
+            // }
 
-            // Fungsi untuk menangani interaksi pengguna pertama kali
-            function handleUserInteraction() {
-                if (!userInteracted) {
-                    userInteracted = true;
-                    console.log("Interaksi pertama terdeteksi");
-                }
-            }
+            // // Fungsi untuk menangani interaksi pengguna pertama kali
+            // function handleUserInteraction() {
+            //     if (!userInteracted) {
+            //         userInteracted = true;
+            //         console.log("Interaksi pertama terdeteksi");
+            //     }
+            // }
 
-            // Fungsi untuk menangani event Picture-in-Picture
-            function handlePiPEvents(videoElement) {
-                videoElement.addEventListener("enterpictureinpicture", () => {
-                    isManualPiPActive = true; // Menandai bahwa PiP diaktifkan secara manual
-                    console.log("PiP diaktifkan secara manual");
-                });
+            // // Fungsi untuk menangani event Picture-in-Picture
+            // function handlePiPEvents(videoElement) {
+            //     videoElement.addEventListener("enterpictureinpicture", () => {
+            //         isManualPiPActive = true; // Menandai bahwa PiP diaktifkan secara manual
+            //         console.log("PiP diaktifkan secara manual");
+            //     });
 
-                videoElement.addEventListener("leavepictureinpicture", () => {
-                    isManualPiPActive = false; // Menandai bahwa PiP tidak lagi aktif secara manual
-                    console.log("PiP dimatikan");
-                });
-            }
+            //     videoElement.addEventListener("leavepictureinpicture", () => {
+            //         isManualPiPActive = false; // Menandai bahwa PiP tidak lagi aktif secara manual
+            //         console.log("PiP dimatikan");
+            //     });
+            // }
 
-            // Menambahkan event listener untuk interaksi pengguna pertama kali
-            player.on("play", handleUserInteraction); // Gunakan event "play" dari Video.js
+            // // Menambahkan event listener untuk interaksi pengguna pertama kali
+            // player.on("play", handleUserInteraction); // Gunakan event "play" dari Video.js
 
-            // Menambahkan event listener untuk PiP
-            const videoElement = player.el().querySelector('video');
-            if (videoElement) {
-                handlePiPEvents(videoElement);
-            }
+            // // Menambahkan event listener untuk PiP
+            // const videoElement = player.el().querySelector('video');
+            // if (videoElement) {
+            //     handlePiPEvents(videoElement);
+            // }
 
-            // Panggil fungsi saat halaman dimuat, scroll, atau resize
-            document.addEventListener("DOMContentLoaded", () => {
-                activatePiPIfNeeded(); // Pastikan PiP diaktifkan jika video tidak terlihat
-            });
+            // // Panggil fungsi saat halaman dimuat, scroll, atau resize
+            // document.addEventListener("DOMContentLoaded", () => {
+            //     activatePiPIfNeeded(); // Pastikan PiP diaktifkan jika video tidak terlihat
+            // });
 
-            // Event listener untuk menangani scroll dan resize
-            window.addEventListener("scroll", () => {
-                activatePiPIfNeeded(); // Aktifkan PiP saat video tidak terlihat dan sedang diputar
-                exitPiPIfNeeded(); // Keluar dari PiP jika video terlihat
-            });
+            // // Event listener untuk menangani scroll dan resize
+            // window.addEventListener("scroll", () => {
+            //     activatePiPIfNeeded(); // Aktifkan PiP saat video tidak terlihat dan sedang diputar
+            //     exitPiPIfNeeded(); // Keluar dari PiP jika video terlihat
+            // });
 
-            window.addEventListener("resize", () => {
-                activatePiPIfNeeded(); // Aktifkan PiP saat ukuran viewport berubah
-                exitPiPIfNeeded(); // Keluar dari PiP jika video terlihat
-            });
+            // window.addEventListener("resize", () => {
+            //     activatePiPIfNeeded(); // Aktifkan PiP saat ukuran viewport berubah
+            //     exitPiPIfNeeded(); // Keluar dari PiP jika video terlihat
+            // });
 
-            // Tambahkan event listener untuk touch pada perangkat mobile
-            if ("ontouchstart" in window) {
-                window.addEventListener("touchstart", () => {
-                    if (!userInteracted) {
-                        handleUserInteraction();
-                    }
-                });
-            }
+            // // Tambahkan event listener untuk touch pada perangkat mobile
+            // if ("ontouchstart" in window) {
+            //     window.addEventListener("touchstart", () => {
+            //         if (!userInteracted) {
+            //             handleUserInteraction();
+            //         }
+            //     });
+            // }
 
 
 
@@ -1105,9 +1115,17 @@
                 const response = await fetch('/api/next-program-image');
                 const data = await response.json();
 
-                // Update the image source
                 const programImage = document.getElementById('program-image');
-                programImage.src = data.image; // Path langsung dari API
+                programImage.src = data.image;
+
+                // Update program name
+                const programName = document.getElementById('program-name');
+                programName.textContent = data.judul_program;
+
+                // Update program time
+                const programTime = document.getElementById('program-time');
+                programTime.textContent = data.jam_mulai !== '-' ? `Jam mulai: ${data.jam_mulai.substring(0, 5)}` :
+                    '-';
             } catch (error) {
                 console.error('Error fetching next program image:', error);
             }
@@ -1115,6 +1133,32 @@
 
         // Fetch image every 1 minute
         fetchNextProgramImage(); // Initial fetch
-        setInterval(fetchNextProgramImage, 60000); // Refresh every 60 seconds
+        setInterval(fetchNextProgramImage, 60000);
+        
+        async function fetchNextThumbnailImage() {
+            try {
+                const response = await fetch('/api/next-program-thumbnail');
+                const data = await response.json();
+
+                const thumbnailImage = document.getElementById('thumbnail-stream');
+                thumbnailImage.src = data.image;
+
+                // Update program name
+                const programName = document.getElementById('program-name');
+                programName.textContent = data.judul_program;
+
+                // Update program time
+                const programTime = document.getElementById('program-time');
+                programTime.textContent = data.jam_mulai !== '-' ? `Jam mulai: ${data.jam_mulai.substring(0, 5)}` :
+                    '-';
+            } catch (error) {
+                console.error('Error fetching next program image:', error);
+            }
+        }
+
+        // Fetch image every 1 minute
+        fetchNextThumbnailImage(); // Initial fetch
+        setInterval(fetchNextThumbnailImage, 60000);
+        // Refresh every 60 seconds
     </script>
 @endsection

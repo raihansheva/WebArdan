@@ -84,11 +84,11 @@
             <div class="line-info-artis"></div>
         </div>
     </section>
-    <section class="section-banner">
+    <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
+                @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                             alt=""></swiper-slide>
                 @endforeach
@@ -99,6 +99,9 @@
         <div class="area-info-news">
             <div class="content-info-news">
                 <div class="content-IN-kiri" id="style-3">
+                    <div class="area-header-news">
+                        <h2 class="header-news">Info</h2>
+                    </div>
                     @foreach ($info as $infoList)
                         {{-- <div class="box-info">
                             <a class="link-info" href="/info-detail/{{ $infoList->slug }}">
@@ -236,11 +239,11 @@
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
                                 <div class="box-event"
-                                    style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                                     onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                                     data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    <img class="image-OV" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">

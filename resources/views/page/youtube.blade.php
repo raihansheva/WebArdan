@@ -74,11 +74,11 @@
             <div class="line-VNS"></div>
         </div>
     </section>
-    <section class="section-banner">
+    <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
+                @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                             alt=""></swiper-slide>
                 @endforeach
@@ -98,9 +98,9 @@
                                 <div class="box-event-mid" onclick="showPopupEvent(this)"
                                     data-description="{{ $eventSoonList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventSoonList->date_event)->format('d F Y') }}"
-                                    style="background-image: url('./storage/{{ $eventSoonList->image_event }}')"
                                     data-slug="{{ $eventSoonList->slug }}"
                                     data-deskShort="{{ $eventSoonList->deskripsi_event }}">
+                                    <img class="image-EM" src="./storage/{{ $eventSoonList->image_event }}" alt="">
                                     <span id="dataTime" style="display: none">{{ $eventSoonList->time_countdown }}</span>
                                     <div class="area-countdown">
                                         <div class="countdown">
@@ -135,12 +135,12 @@
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
                                 <div class="box-event"
-                                    style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                                     onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                                     data-slug="{{ $eventUpcomingList->slug }}"
                                     data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    <img class="image-EB" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">

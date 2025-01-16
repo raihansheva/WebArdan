@@ -99,3 +99,4 @@ Route::get('/api/instagram/feed/{id}', [FeedInstagramController::class, 'getInst
 Route::get('/podcast/{idP}/episode/{eps}/{direction}', [PlaylistController::class, 'getEpisode']);
 Route::get('/podcast/details/{id}', [PlaylistController::class, 'showPodcastDetails']);
 Route::get('/api/next-program-image', [ProgramController::class, 'getNextProgramImage']);
+Route::get('/api/next-program-thumbnail', [ProgramController::class, 'getNextThumbnailImage']);

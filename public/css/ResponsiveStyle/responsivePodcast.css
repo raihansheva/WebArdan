@@ -1030,7 +1030,7 @@
         border-top-left-radius: 10px;
         box-shadow: -10px -10px 0 white;
         position: absolute;
-        bottom: 20;
+        bottom: 20px;
         right: 0;
         height: 20px;
         width: 50%;
@@ -1063,7 +1063,7 @@
     .text-watch-podcast {
         /* color: white; */
         font-family: "Poppins";
-        font-size: 9px;
+        font-size: 8px;
     }
 
     .area-bottom-card-podcast {

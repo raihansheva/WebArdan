@@ -1,5 +1,10 @@
 /* resposive */
 @media (width: 2560px) {
+    .area-banner {
+        margin: 0px 128px 0px 128px;
+        height: 300px;
+    }
+
     #scrollToTopBtn {
         bottom: 105px;
         right: 15px;
@@ -222,7 +227,7 @@
     #scrollToTopBtn i {
         font-size: 16px;
     }
-
+ 
     .navbar {
         padding: 0px 128px;
         height: 100px;
@@ -433,6 +438,14 @@
         font-size: 16px;
     }
 
+    .area-banner {
+        margin: 0px 32px 0px 32px;
+    }
+
+    .area-banner-full-small{
+        padding: 0px 0px 20px 0px;
+    }
+
     .navbar {
         padding: 0px 32px;
         height: 80px;
@@ -624,6 +637,19 @@
 
     #scrollToTopBtn i {
         font-size: 16px;
+    }
+
+    .area-banner {
+        margin: 0px 20px 0px 20px;
+        height: 200px;
+    }
+    
+    .area-banner-small{
+        height: 80px;
+    }
+
+    .area-banner-full-small{
+        height: 80px;
     }
 
     .navbar {
@@ -936,6 +962,19 @@
         font-size: 16px;
     }
 
+    .area-banner {
+        margin: 0px 8px 0px 8px;
+        height: 100px;
+    }
+
+    .area-banner-small{
+        height: 80px;
+    }
+
+    .area-banner-full-small{
+        height: 80px;
+    }
+
     .navbar {
         padding: 0px 8px;
         height: 60px;
@@ -1161,6 +1200,19 @@
         font-size: 16px;
     }
 
+    .area-banner {
+        margin: 0px 8px 0px 8px;
+        height: 100px;
+    }
+
+    .area-banner-small{
+        height: 80px;
+    }
+
+    .area-banner-full-small{
+        height: 80px;
+    }
+
     .navbar {
         padding: 0px 8px;
         height: 60px;
@@ -1383,6 +1435,19 @@
 
     #scrollToTopBtn i {
         font-size: 16px;
+    }
+
+    .area-banner {
+        margin: 0px 8px 0px 8px;
+        height: 80px;
+    }
+
+    .area-banner-small{
+        height: 60px;
+    }
+
+    .area-banner-full-small{
+        height: 60px;
     }
 
     .navbar {

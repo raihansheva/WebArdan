@@ -41,6 +41,20 @@
     justify-content: end;
     align-items: end;
     cursor: pointer;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
+}
+
+.image-CD{
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
+    z-index: 1;
 }
 
 .area-countdown {
@@ -50,6 +64,7 @@
     display: flex;
     justify-content: center;
     padding: 15px;
+    z-index: 2;
 }
 
 .area-content-countdown{
@@ -279,6 +294,20 @@
     justify-content: end;
     align-items: end;
     cursor: pointer;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
+}
+
+.image-OV{
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
+    z-index: 1;
 }
 
 .area-days-date-right {
@@ -287,6 +316,7 @@
     background-color: #333333b9;
     display: flex;
     padding: 15px;
+    z-index: 2;
 }
 
 .content-days-date-right {

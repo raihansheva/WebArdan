@@ -77,7 +77,7 @@
                             </div>
                         </div>
                         <div class="area-desk-detail-podcast">
-                            <p class="desk-podcast">{{ $detail_podcast->deskripsi_podcast }}</p>
+                            {!! str($detail_podcast->deskripsi_podcast)->sanitizeHtml() !!}
                         </div>
                     </div>
                 </div>
@@ -127,11 +127,11 @@
         </div>
         <div class="line-detail-podcast"></div>
     </section>
-    <section class="section-banner">
+    <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
+                @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                             alt=""></swiper-slide>
                 @endforeach

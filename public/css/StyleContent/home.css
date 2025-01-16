@@ -59,6 +59,7 @@
     width: auto;
     height: 80%;
     display: flex;
+    /* justify-content: space-between; */
 }
 
 .contentS-kiri {
@@ -90,6 +91,8 @@
     align-items: center;
     gap: 12px;
     border-radius: 10px;
+    border: 3px var(--primary-color) solid;
+
 }
 
 .card-A .card-header .author {
@@ -267,13 +270,20 @@
 .area-nextP {
     width: auto;
     height: auto;
-    border: 3px white solid;
     border-radius: 10px;
     padding: 20px;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.area-title-detail{
+    width: fit-content;
+    height: auto;
 }
 
 .area-title-nextP {
-    width: auto;
+    width: fit-content;
+    /* border: 1px white solid; */
 }
 
 .title-nextP {
@@ -281,21 +291,37 @@
     font-family: "Bebas Neue";
     color: white;
     font-weight: 400;
-    font-size: 2rem; /* mengubah satuan dari px ke rem */
+    font-size: 34px; /* mengubah satuan dari px ke rem */
+}
+
+.area-detail-NP{
+    width: auto;
+    height: auto;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
 }
 
 .area-thumbnail-nextP {
-    width: auto;
-    height: 235px;
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Rasio 16:9 */
     background-color: aliceblue;
     border-radius: 10px;
+    overflow: hidden;
+    max-height: 180px; /* Menambahkan max-height untuk memperpendek tinggi */
+    border: 3px var(--primary-color) solid;
 }
+
 
 .image-stream-upcoming {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* filter: brightness(0.5); */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
+
 }
 
 /* ---------------------- */
@@ -436,7 +462,7 @@
     text-align: center;
     width: 500px;
     /*Lebarpop-up*/
-    height: 250px;
+    height: fit-content;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
@@ -460,7 +486,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .desk-program {
@@ -468,6 +494,10 @@
     font-family: "Poppins";
     margin: 0px;
     font-weight: 300;
+    -webkit-line-clamp: 4; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
 }
 
 .jam-program {
@@ -495,6 +525,7 @@
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
+    text-decoration: underline;
     -o-transition: all 0.3s ease-in-out;
 }
 
@@ -1225,6 +1256,20 @@
     justify-content: end;
     align-items: end;
     cursor: pointer;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
+}
+
+.image-CD{
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
+    z-index: 1;
 }
 
 .area-countdown {
@@ -1233,6 +1278,7 @@
     background-color: #333333b9;
     display: flex;
     padding: 15px;
+    z-index: 2;
 }
 
 .countdown {
@@ -1451,15 +1497,30 @@
     display: flex;
     justify-content: end;
     align-items: end;
+    box-sizing: border-box;
     cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
+
+.image-EK{
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
+    z-index: 1;
+}
+
 
 .area-days-date-right {
     width: 100%;
     height: 40px;
     background-color: #333333b9;
     display: flex;
-    padding: 15px;
+    padding: 10px 15px;
+    z-index: 2;
 }
 
 .content-days-date-right {
@@ -2394,9 +2455,7 @@ tbody td {
     font-size: 32px;
 }
 
-.hidden {
-    display: none; /* Sembunyikan tabel yang tidak aktif */
-}
+
 .bottom-chart {
     width: 100%;
     height: auto;
@@ -2736,17 +2795,19 @@ tbody td {
 }
 
 .box-schedule {
-    height: 180px;
+    height: 280px;
     background-color: #f0f0f0;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-sizing: border-box;
     position: relative;
+    overflow: hidden; /* Untuk mencegah konten keluar dari box */
 }
 
 .image-schedule-program {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.8);
 }
 
 .area-bio-schedule {
@@ -2759,14 +2820,22 @@ tbody td {
     display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
     justify-content: start;
     align-items: end;
+    opacity: 0; /* Awalnya tidak terlihat */
+    transition: opacity 0.3s ease-in-out; /* Efek transisi kemunculan */
+}
+
+.box-schedule:hover .area-bio-schedule {
+    opacity: 1; /* Muncul saat hover */
 }
 
 .bio-schedule {
-    display: flex; /* Agar konten bio bisa diatur posisinya dengan mudah */
+    display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;
     padding: 10px 20px;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, #000);
 }
 
 .nama-programS {
@@ -2780,6 +2849,7 @@ tbody td {
     font-family: "poppins";
     margin: 0px;
 }
+
 
 /* schedule mobile */
 

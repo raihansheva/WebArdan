@@ -47,7 +47,10 @@ class ProgramResource extends Resource
                                 $set('slug', Str::slug($state));
                                 $set('meta_title', $state);
                             })->required(),
-                        Textarea::make('deskripsi_pendek')->label('Deskripsi Singkat :')->required(),
+                        Textarea::make('deskripsi_pendek')
+                            ->label('Deskripsi Singkat :')
+                            ->required()
+                            ->maxLength(280),
                         TextInput::make('slug')->label('Slug :')
                             ->readOnly()
                             ->required(),
@@ -60,6 +63,18 @@ class ProgramResource extends Resource
                             ->rules(['required', 'image', 'dimensions:width=286,height=280']) // Ubah format ke array
                             ->validationAttribute('Image Event')
                             ->helperText('The image must be 286x280 pixels.'),
+                        FileUpload::make('thumbnail_program')
+                            ->label('Program Thumbnail :')
+                            ->image()
+                            ->directory('uploads/thumbnail_program')
+                            ->disk('public')
+                            ->preserveFilenames()
+                            ->rules([
+                                'required',
+                                'image',
+                            ])
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must have a 16:9 aspect ratio.'),
                         TimePicker::make('jam_mulai')
                             ->label('Jam Mulai')
                             ->required()
@@ -135,6 +150,7 @@ class ProgramResource extends Resource
                 TextColumn::make('jam_selesai')
                     ->label('Jam Selesai')->sortable(),
                 ImageColumn::make('image_program'),
+                ImageColumn::make('thumbnail_program'),
                 IconColumn::make('publish_now') // Menggunakan IconColumn
                     ->boolean() // Secara otomatis mendukung true/false atau 1/0
                     ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true

@@ -18,11 +18,11 @@
             </div>
         @endforeach
     </section>
-    <section class="section-banner">
+    <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
+                @foreach ($banner->where('position', 'top') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                             alt=""></swiper-slide>
                 @endforeach
@@ -172,11 +172,11 @@
                         </a>
                     @endforeach
                 </div>
-                <section class="section-banner-small">
+                <section class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
                     <div class="area-banner-small">
                         <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                             autoplay-disable-on-interaction="false" loop="true">
-                            @foreach ($banner as $list)
+                            @foreach ($banner->where('position', 'bottom_topInfo') as $list)
                                 <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                                         alt=""></swiper-slide>
                             @endforeach

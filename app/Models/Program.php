@@ -21,6 +21,7 @@ class Program extends Model implements HasMedia
         'jam_mulai',
         'jam_selesai',
         'image_program',
+        'thumbnail_program',
         'publish_now',
         'tanggal_publikasi',
         'slug',

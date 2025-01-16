@@ -13,10 +13,7 @@
     }
 } */
 @media (min-width: 1960px) {
-    .area-banner {
-        margin: 0px 128px 0px 128px;
-        height: 300px;
-    }
+   
 
     .page-1 {
         /* height: 100vh; */
@@ -191,7 +188,7 @@
     
     .popup-content {
         width: 850px;
-        height: 400px;
+        height: fit-content;
         padding: 50px;
     }
 
@@ -1275,17 +1272,36 @@
         font-size: 2rem;
     }
 
+
+
     .title-nextP {
         font-size: 1.6rem;
     }
 
-    .area-nextP {
-        height: auto;
+    .next-program-name{
+        margin: 0px;
+        font-family: "Poppins";
+        /* color: white; */
+        font-weight: 500;
+        font-size: 14px;
+    }
+    .next-program-time{
+        margin: 0px;
+        font-family: "Poppins";
+        /* color: white; */
+        font-weight: 500;
+        font-size: 14px;
     }
 
-    .area-thumbnail-nextP {
-        height: 150px;
+    .area-nextP {
+        height: auto;
+
     }
+
+    /* .area-thumbnail-nextP {
+        width: 186px;
+        height: 180px;
+    } */
 
     /* area-program */
     .page-2 {
@@ -1319,7 +1335,7 @@
 
     .popup-content {
         width: 450px;
-        height: 200px;
+        height: fit-content;
         padding: 25px;
     }
 
@@ -1804,7 +1820,7 @@
 
     .area-days-date-right {
         /* padding: 10px; */
-        height: 30px;
+        height: 20px;
     }
 
     .title-event {
@@ -2368,13 +2384,18 @@
         font-size: 1.8rem;
     }
 
-    .area-nextP {
-        height: 40%;
+    .contentS-kanan{
+        width: 100%;
     }
 
-    .area-thumbnail-nextP {
-        height: 200px;
+    .area-nextP {
+        width: 55%;
     }
+
+    /* .area-thumbnail-nextP {
+        width: 206px;
+        height: 200px;
+    } */
 
     /* area-program */
     .page-2 {
@@ -2401,7 +2422,7 @@
     /* pop up program */
     .popup-content {
         width: 400px;
-        height: 180px;
+        height: fit-content;
         padding: 25px;
         border-radius: 8px;
         -webkit-border-radius: 8px;
@@ -3405,7 +3426,7 @@
     }
 
     .box-schedule {
-        height: 150px;
+        height: 220px;
     }
 
     .nama-programs {
@@ -3519,18 +3540,39 @@
         font-size: 1.5rem;
     }
 
+    .contentS-kanan{
+        width: 100%;
+    }
+
     .title-nextP {
         font-size: 1.5rem;
     }
 
+    .next-program-name{
+        margin: 0px;
+        font-family: "Poppins";
+        /* color: white; */
+        font-weight: 500;
+        font-size: 12px;
+    }
+    .next-program-time{
+        margin: 0px;
+        font-family: "Poppins";
+        /* color: white; */
+        font-weight: 500;
+        font-size: 12px;
+    }
+
     .area-nextP {
+        width: 75%;
         height: auto;
         padding: 10px;
     }
 
-    .area-thumbnail-nextP {
+    /* .area-thumbnail-nextP {
+        width: 156px;
         height: 150px;
-    }
+    } */
     /* area-program */
 
     .page-2 {
@@ -3564,7 +3606,7 @@
 
     .popup-content {
         width: 200px;
-        height: 110px;
+        height: fit-content;
         padding: 15px;
         border-radius: 8px;
         -webkit-border-radius: 8px;
@@ -3992,8 +4034,8 @@
         padding: 30px;
         border-radius: 15px;
         text-align: center;
-        width: 450px;
-        height: 200px;
+        width: 200px;
+        height: 110px;
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         -ms-border-radius: 15px;
@@ -4666,7 +4708,7 @@
     .box-schedule-mobile.active {
         display: block;
         width: 50%;
-        height: 100px;
+        height: 200px;
         background-color: #f0f0f0;
         border-radius: 10px;
         box-sizing: border-box;
@@ -4786,14 +4828,20 @@
         font-size: 1.5rem;
     }
 
+    .contentS-kanan{
+        width: 100%;
+    }
+
     .area-nextP {
+        width: auto;
         height: auto;
         padding: 10px;
     }
 
-    .area-thumbnail-nextP {
+    /* .area-thumbnail-nextP {
+        width: 156px;
         height: 150px;
-    }
+    } */
     /* area-program */
 
     .page-2 {
@@ -4822,7 +4870,7 @@
     /* pop up program */
     .popup-content {
         width: 200px;
-        height: 110px;
+        height: fit-content;
         padding: 15px;
         border-radius: 8px;
         -webkit-border-radius: 8px;
@@ -5220,8 +5268,8 @@
         padding: 30px;
         border-radius: 15px;
         text-align: center;
-        width: 450px;
-        height: 200px;
+        width: 200px;
+        height: 110px;
         -webkit-border-radius: 15px;
         -moz-border-radius: 15px;
         -ms-border-radius: 15px;
@@ -5898,7 +5946,7 @@
     .box-schedule-mobile.active {
         display: block;
         width: 50%;
-        height: 100px;
+        height: 180px;
         background-color: #f0f0f0;
         border-radius: 10px;
         box-sizing: border-box;
@@ -6021,9 +6069,9 @@
         padding: 10px;
     }
 
-    .area-thumbnail-nextP {
+    /* .area-thumbnail-nextP {
         height: 150px;
-    }
+    } */
     /* area-program */
 
     .page-2 {
@@ -6052,7 +6100,7 @@
     /* pop up program */
     .popup-content {
         width: 200px;
-        height: 110px;
+        height: fit-content;
         padding: 15px;
         border-radius: 8px;
         -webkit-border-radius: 8px;
@@ -7166,7 +7214,7 @@ align-items: center; */
     .box-schedule-mobile.active {
         display: block;
         width: 50%;
-        height: 100px;
+        height: 150px;
         background-color: #f0f0f0;
         border-radius: 10px;
         box-sizing: border-box;
@@ -7281,7 +7329,7 @@ align-items: center; */
     }
 
     .title-nextP {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 
     .area-nextP {
@@ -7289,9 +7337,10 @@ align-items: center; */
         padding: 10px;
     }
 
-    .area-thumbnail-nextP {
+    /* .area-thumbnail-nextP {
+        width: 156px;
         height: 150px;
-    }
+    } */
     /* area-program */
 
     .page-2 {
@@ -7320,7 +7369,7 @@ align-items: center; */
     /* pop up program */
     .popup-content {
         width: 200px;
-        height: 110px;
+        height: fit-content;
         padding: 15px;
         border-radius: 8px;
         -webkit-border-radius: 8px;
@@ -8434,10 +8483,11 @@ align-items: center; */
     .box-schedule-mobile.active {
         display: block;
         width: 50%;
-        height: 100px;
+        height: 150px;
         background-color: #f0f0f0;
         border-radius: 10px;
         box-sizing: border-box;
         position: relative;
     }
 }
+

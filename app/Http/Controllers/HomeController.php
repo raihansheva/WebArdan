@@ -185,7 +185,7 @@ class HomeController extends Controller
 
     public function detailprogram($slug)
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'singlepage_program')->get();;
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -252,7 +252,7 @@ class HomeController extends Controller
 
     public function event()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'event')->get();
         $program = Program::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -295,7 +295,7 @@ class HomeController extends Controller
 
     public function detailEvent($slug)
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'singlepage_event')->get();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -366,7 +366,7 @@ class HomeController extends Controller
 
     public function podcast()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'podcast')->get();
         $bannerP = BannerPodcast::all();
         $podcast = Podcast::all();
         $playlist = Youtube::first();
@@ -416,7 +416,7 @@ class HomeController extends Controller
 
     public function detailpodcast($slug)
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'singlepage_podcast')->get();
         // Cari podcast berdasarkan slug
         $detailpodcast = Podcast::where('slug', $slug)->firstOrFail();
 
@@ -478,7 +478,7 @@ class HomeController extends Controller
 
     public function chart()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'chart')->get();;
         $Kategori = Kategori::with('charts')->get();
 
         $topInfo = Info::where(function ($query) {
@@ -504,7 +504,7 @@ class HomeController extends Controller
 
     public function info()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'info_news')->get();
         $info = Info::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -565,7 +565,7 @@ class HomeController extends Controller
 
     public function artis()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'info_artis')->get();;
         $info = Info::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -624,7 +624,7 @@ class HomeController extends Controller
 
     public function tagInfo($tag)
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'kategori_info')->get();;
         $info = Info::whereHas('tagInfo', function ($query) use ($tag) {
             $query->where('nama_kategori', $tag)
                 // Atau jika publish_sekarang false dan tanggal_publikasi <= sekarang
@@ -676,7 +676,7 @@ class HomeController extends Controller
 
     public function detailInfo($slug)
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'singlepage_info')->get();
         $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -740,7 +740,7 @@ class HomeController extends Controller
 
     public function youtube()
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'youtube')->get();;
         $youtube = Youtube::all();
         $event_soon = Event::where(function ($query) {
             // Tampilkan jika publish_sekarang true
@@ -789,7 +789,7 @@ class HomeController extends Controller
 
     public function detailInfoArtis($slug)
     {
-        $banner = Banner::all();
+        $banner = Banner::where('page' , 'singlepage_artis')->get();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);

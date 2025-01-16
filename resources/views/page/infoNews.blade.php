@@ -22,6 +22,7 @@
             @endforeach
         </div>
     </section>
+    {{--  --}}
     <section class="page-news-2">
         <div class="area-info-news">
             <div class="content-info-news">
@@ -156,6 +157,17 @@
                             @endforeach
                         </div>
                     </div>
+                    <section class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
+                        <div class="area-banner-small">
+                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                                autoplay-disable-on-interaction="false" loop="true">
+                                @foreach ($banner->where('position', 'bottom_topInfo') as $list)
+                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                            alt=""></swiper-slide>
+                                @endforeach
+                            </swiper-container>
+                        </div>
+                    </section>
                     <div class="area-event">
                         <div class="area-header-event">
                             <h2 class="title-event">Event</h2>
@@ -163,12 +175,12 @@
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
                                 <div class="box-event"
-                                    style="background-image: url('./storage/{{ $eventUpcomingList->image_event }}')"
                                     onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                                     data-slug="{{ $eventUpcomingList->slug }}"
                                     data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    <img class="image-OV" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">
@@ -203,11 +215,11 @@
             <div class="line-info-news"></div>
         </div>
     </section>
-    <section class="section-banner">
+    <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
-                @foreach ($banner as $list)
+                @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
                             alt=""></swiper-slide>
                 @endforeach
