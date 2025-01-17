@@ -59,13 +59,7 @@
                                 <h2 class="text-header-tagar">Tags</h2>
                             </div>
                             <div class="area-text-tagar">
-                                @if (is_array($info->tag_info))
-                                    @foreach ($info->tag_info as $tag)
-                                        <h2 class="tagar-info">#{{ $tag }}</h2>
-                                    @endforeach
-                                @else
-                                    <h2 class="tagar-info">#-</h2>
-                                @endif
+                                <h2 class="tagar-info">{{ $info->tagInfo->nama_kategori }}</h2>
                             </div>
                         </div>
                     </div>
@@ -144,13 +138,13 @@
                                         <div class="area-tag-news">
                                             <h3 class="tag-news">{{ $kategoriInfoList->nama_kategori }}</h3>
                                         </div>
-                                        @if ($kategoriInfoList->info->isNotEmpty())
+                                        {{-- @if ($kategoriInfoList->info->isNotEmpty())
                                             <img class="image-news"
                                                 src="{{ asset('storage/' . $kategoriInfoList->info->first()->image_info) }}"
                                                 alt="">
                                         @else
                                             <p>Tidak ada info untuk tag ini.</p>
-                                        @endif
+                                        @endif --}}
                                     </a>
                                 </div>
                             @endforeach

@@ -173,13 +173,13 @@
                                         <div class="area-tag-news">
                                             <h3 class="tag-news">#{{ $tagInfoList->nama_kategori }}</h3>
                                         </div>
-                                        @if ($tagInfoList->info->isNotEmpty())
+                                        {{-- @if ($tagInfoList->info->isNotEmpty())
                                             <img class="image-news"
                                                 src="{{ asset('storage/' . $tagInfoList->info->first()->image_info) }}"
                                                 alt="">
                                         @else
                                             <p>Tidak ada info untuk tag ini.</p>
-                                        @endif
+                                        @endif --}}
                                     </a>
                                 </div>
                             @endforeach

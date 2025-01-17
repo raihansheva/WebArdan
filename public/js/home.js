@@ -59,19 +59,19 @@ const getScrollAmountA = () => {
     }
 };
 
-tombolKiriA.addEventListener("click", () => {
-    areaContentBoxA.scrollBy({
-        left: -getScrollAmountA(),
-        behavior: "smooth",
-    });
-});
+// tombolKiriA.addEventListener("click", () => {
+//     areaContentBoxA.scrollBy({
+//         left: -getScrollAmountA(),
+//         behavior: "smooth",
+//     });
+// });
 
-tombolKananA.addEventListener("click", () => {
-    areaContentBoxA.scrollBy({
-        left: getScrollAmountA(),
-        behavior: "smooth",
-    });
-});
+// tombolKananA.addEventListener("click", () => {
+//     areaContentBoxA.scrollBy({
+//         left: getScrollAmountA(),
+//         behavior: "smooth",
+//     });
+// });
 // ----------------------------------------
 
 // card-streaming

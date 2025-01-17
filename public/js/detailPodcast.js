@@ -19,19 +19,19 @@ const getScrollAmountA = () => {
     }
 };
 
-tombolKiriOP.addEventListener("click", () => {
-    areaContentBoxOP.scrollBy({
-        left: -getScrollAmountA(),
-        behavior: "smooth",
-    });
-});
+// tombolKiriOP.addEventListener("click", () => {
+//     areaContentBoxOP.scrollBy({
+//         left: -getScrollAmountA(),
+//         behavior: "smooth",
+//     });
+// });
 
-tombolKananOP.addEventListener("click", () => {
-    areaContentBoxOP.scrollBy({
-        left: getScrollAmountA(),
-        behavior: "smooth",
-    });
-});
+// tombolKananOP.addEventListener("click", () => {
+//     areaContentBoxOP.scrollBy({
+//         left: getScrollAmountA(),
+//         behavior: "smooth",
+//     });
+// });
 // -------------------------------
 
 const cardA = document.querySelector(".card-DP");

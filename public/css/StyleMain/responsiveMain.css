@@ -227,6 +227,22 @@
     #scrollToTopBtn i {
         font-size: 16px;
     }
+
+    .area-banner {
+        width: auto;
+        margin: 0px 128px 0px 128px;
+        height: 280px;
+        /* border: 1px red solid; */
+    }
+
+    .area-banner-full-small {
+        width: auto;
+        /* margin: 0px 64px 0px 64px; */
+        height: 200px;
+        /* border: 1px red solid; */
+        position: relative; /* Dibutuhkan untuk child position: absolute */
+        overflow: hidden;
+    }
  
     .navbar {
         padding: 0px 128px;
@@ -917,16 +933,20 @@
 
     .control-btn {
         width: auto;
-        height: 45px;
+        height: 70px;
         /* /*position: fixed; */
         border: 3px white solid;
     }
 
     .control-btn span {
-        width: 25px;
-        height: 25px;
-        font-size: 18px;
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
         /* position: fixed; */
+    }
+
+    .control-btn p{
+        display: none;
     }
 
     .icon-menu .bx-menu {
@@ -1157,16 +1177,20 @@
 
     .control-btn {
         width: fit-content;
-        height: 45px;
+        height: 60px;
         /* /*position: fixed; */
         border: 2px white solid;
     }
 
     .control-btn span {
-        width: 25px;
-        height: 25px;
-        font-size: 18px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
         /* position: fixed; */
+    }
+
+    .control-btn p{
+        display: none;
     }
 
     .icon-menu .bx-menu {
@@ -1406,6 +1430,10 @@
         /* position: fixed; */
     }
 
+    .control-btn p{
+        display: none;
+    }
+
     .icon-menu .bx-menu {
         display: none;
     }
@@ -1633,16 +1661,20 @@
 
     .control-btn {
         width: fit-content;
-        height: 45px;
+        height: 55px;
         /* /*position: fixed; */
         border: 2px white solid;
     }
 
     .control-btn span {
-        width: 25px;
-        height: 25px;
+        width: 35px;
+        height: 35px;
         font-size: 18px;
         /* position: fixed; */
+    }
+
+    .control-btn p{
+        display: none;
     }
 
     .icon-menu .bx-menu {

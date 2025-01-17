@@ -2272,7 +2272,7 @@
     }
 
     .area-content-VNS {
-        gap: 20px;
+        gap: 100px;
         flex-direction: column;
         margin-bottom: 30px;
     }
@@ -2334,7 +2334,7 @@
     /* area news */
 
     .content-news {
-        height: 80%;
+        height: fit-content;
         /* border: 1px blue solid; */
     }
 
@@ -2343,7 +2343,7 @@
     }
 
     .box-news {
-        height: auto;
+        height: 60px;
         padding: 8px;
     }
 
@@ -2390,6 +2390,9 @@
 
     /* -------------------- */
 }
+
+
+
 @media (max-width: 375px) {
     .page-detail-1 {
         height: auto;

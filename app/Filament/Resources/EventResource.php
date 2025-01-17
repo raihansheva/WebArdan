@@ -62,9 +62,14 @@ class EventResource extends Resource
                             ->directory('uploads/images_event')
                             ->disk('public')
                             ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=864,height=500']) // Ubah format ke array
+                            ->rules([
+                                'required',
+                                'image',
+                                'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=865,min_height=500' // Atur maksimal width dan height di sini
+                            ])
                             ->validationAttribute('Image Event')
-                            ->helperText('The image must be 864x500 pixels.'),
+                            ->helperText('The image must have min 865x500 pixel, max dimensions 1920x1080'),
                         DatePicker::make('date_event')->label('Date Event :')->required(),
                         DateTimePicker::make('time_countdown')->label('Time Countdown :')->required(),
                         Select::make('status')

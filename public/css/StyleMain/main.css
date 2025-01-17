@@ -61,21 +61,21 @@ swiper-container {
     height: 100%;
 }
 
-swiper-slide {
+/* swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
-swiper-slide img {
+/* swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+} */
 
 /* area banner small */
 
@@ -129,9 +129,12 @@ swiper-slide img {
     top: 0; /* Atur posisi di atas */
     left: 0;
 }
+
+.image-banner.loaded {
+    opacity: 1;
+}
+
 /* ----------------- */
-
-
 
 /* ----------------- */
 
@@ -636,6 +639,16 @@ swiper-slide img {
 }
 
 .control-btn span {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.control-btn p {
     width: 45px;
     height: 45px;
     border-radius: 50%;

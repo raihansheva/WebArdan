@@ -53,7 +53,15 @@ class ArtisResource extends Resource
                             ->image()
                             ->directory('uploads/images_artis')
                             ->disk('public')
-                            ->preserveFilenames(),
+                            ->preserveFilenames()
+                            ->rules([
+                                'required',
+                                'image',
+                                'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=800,min_height=450' // Atur maksimal width dan height di sini
+                            ])
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
                         TextInput::make('judul_berita')
                             ->label('Judul Berita')
                             ->live(onBlur: true)

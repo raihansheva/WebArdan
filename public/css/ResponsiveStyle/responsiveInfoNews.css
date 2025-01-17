@@ -88,14 +88,13 @@
         height: fit-content;
         /* border: 1px red solid; */
         padding: 10px;
-        position: absolute;
         z-index: 2;
     }
 
     .tag-news {
         margin: 0px;
         font-family: "Bebas Neue";
-        color: white;
+        /* color: white; */
         font-weight: 200;
         font-size: 26px;
     }

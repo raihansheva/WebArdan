@@ -59,7 +59,15 @@ class PodcastResource extends Resource
                             ->image()
                             ->directory('uploads/images_podcast')
                             ->disk('public')
-                            ->preserveFilenames(),
+                            ->preserveFilenames()
+                            ->rules([
+                                'required',
+                                'image',
+                                'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=800,min_height=450' // Atur maksimal width dan height di sini
+                            ])
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
                         FileUpload::make('file')
                             ->label('Upload MP3')
                             ->acceptedFileTypes(['audio/mpeg'])

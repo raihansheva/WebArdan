@@ -91,7 +91,7 @@
     align-items: center;
     gap: 12px;
     border-radius: 10px;
-    border: 3px var(--primary-color) solid;
+    border: 3px #D3D3D3 solid;
 
 }
 
@@ -310,7 +310,7 @@
     border-radius: 10px;
     overflow: hidden;
     max-height: 180px; /* Menambahkan max-height untuk memperpendek tinggi */
-    border: 3px var(--primary-color) solid;
+    border: 3px #D3D3D3 solid;
 }
 
 
@@ -615,8 +615,14 @@
 .box-info {
     flex: 0 0 calc(50% - 6px);
     height: 80px;
-    /* background-color: #f0f0f0; */
-    /* border-radius: 10px; */
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .area-tag-info {
@@ -624,23 +630,23 @@
     height: fit-content;
     /* border: 1px red solid; */
     padding: 10px;
-    position: absolute;
     z-index: 2;
 }
 
 .tag-info {
     margin: 0px;
     font-family: "Bebas Neue";
-    color: white;
+    color: black;
     font-weight: 200;
     font-size: 22px;
 }
 
 .image-info {
-    position: relative;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -755,6 +761,10 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .area-text-desk {
@@ -793,10 +803,13 @@
     padding: 2px 0;
 }
 
-.image-top-info {
+.image-all-info {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* position: absolute; */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -857,8 +870,12 @@
     width: 100%;
     /*border: 1px black solid;
     */
+    height: 50%;
     border-radius: 20px;
-
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
     background-color: #333;
     /* height: 100%; */
 }
@@ -918,8 +935,11 @@
 
 .image-top-info {
     width: 100%;
-    height: 50%;
-    object-fit: cover;
+    height: 100%;
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 15px;
 }
 /* ------------------- */
@@ -1756,12 +1776,19 @@
     height: 160px;
     background-color: #f0f0f0;
     border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-podcast {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -2533,19 +2560,23 @@ tbody td {
 }
 
 .box-artis {
-    position: relative; /* Tambahkan ini agar .area-bio-artis bisa diposisikan relatif terhadap box ini */
     width: 100%;
-    height: 150px;
+    height: 180px;
     background-color: #f0f0f0;
     border-radius: 10px;
-    overflow: hidden;
+    box-sizing: border-box;
     cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-artis {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     transition: 0.3s ease;
     cursor: pointer;
 }
@@ -2711,12 +2742,12 @@ tbody td {
 /* area-schedule */
 .page-8 {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
 }
 
 .area-schedule {
     width: auto;
-    height: 500px;
+    height: fit-content;
     /* border: 1px #ff004d solid; */
     margin: 20px 64px 0px 64px;
 }

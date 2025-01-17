@@ -97,13 +97,8 @@
                                     </div>
                                     <div class="area-text-desk-top-info">
                                         <div class="area-tag">
-                                            @if (is_array($topInfoList->tag_info))
-                                                @foreach ($topInfoList->tag_info as $tag)
-                                                    <h2 class="tag-top-info">#{{ $tag }}</h2>
-                                                @endforeach
-                                            @else
-                                                <h2 class="tag-top-info">#-</h2>
-                                            @endif
+                                            <h2 class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</h2>
+                                            
                                         </div>
                                         <div class="area-text">
                                             <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>

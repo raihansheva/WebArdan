@@ -31,13 +31,19 @@
     width: 100%;
     height: 500px;
     background-color: gainsboro;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-podcast-detail {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    position: absolute;
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     filter: brightness(0.5); /* Mengurangi brightness menjadi lebih gelap */
     /* opacity: 0.8; */
 }
@@ -968,18 +974,24 @@ figcaption span:hover{
 }
 
 .area-image {
-    width: 28%;
+    width: 30%;
     /*border: 1px black solid;
     */
     background-color: #333;
     border-radius: 10px;
     height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-top-info {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;

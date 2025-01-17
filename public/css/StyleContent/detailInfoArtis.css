@@ -173,16 +173,28 @@
 
 .area-image-info {
     width: auto;
-    height: 350px;
+    height: auto;
     background-color: gainsboro;
     margin-top: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.area-image-info::before {
+    content: '';
+    display: block;
+    padding-bottom: 56.25%; /* Rasio 16:9 (9 / 16 = 0.5625 atau 56.25%) */
 }
 
 .image-info {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 
 .area-desk-info {
     width: 100%;
@@ -624,18 +636,24 @@ figcaption span:hover {
 }
 
 .area-top-image {
-    width: 30%;
+    width: 40%;
     /*border: 1px black solid;
     */
     background-color: #333;
     border-radius: 10px;
     height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-top-info {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -955,21 +973,29 @@ figcaption span:hover {
     height: fit-content;
 }
 
-.area-image-artis {
+.area-image-artis{
     width: 100%;
     height: 145px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
 .image-artis {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     transition: 0.3s ease;
     cursor: pointer;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     transition: 0.3s ease;
 }
+
 
 /* .image-artis:hover {
     filter: brightness(0.5);

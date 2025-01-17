@@ -985,6 +985,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 100%;
+        height: fit-content;
         /* gap: 6px; */
         /* border: 1px red solid; */
     }
@@ -1001,8 +1002,8 @@
     }
 
     .box-news {
-        height: auto;
-        padding: 8px;
+    max-height: 60px;  /* Or any value that fits your design */
+    padding: 8px;
     }
 
     .area-image {
@@ -1052,6 +1053,8 @@
 
     /* -------------------- */
 }
+
+
 
 @media (max-width: 375px) {
     .area-thumbnail-youtube {
@@ -1301,6 +1304,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 100%;
+        height: fit-content;
         /* gap: 6px; */
         /* border: 1px red solid; */
     }
@@ -1617,6 +1621,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 100%;
+        height: fit-content;
         /* gap: 6px; */
         /* border: 1px red solid; */
     }
@@ -1931,6 +1936,7 @@
     /* content kanan */
     .area-content-VNS-kanan {
         width: 100%;
+        height: fit-content;
         /* gap: 6px; */
         /* border: 1px red solid; */
     }

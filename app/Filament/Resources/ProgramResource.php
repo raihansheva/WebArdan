@@ -72,9 +72,11 @@ class ProgramResource extends Resource
                             ->rules([
                                 'required',
                                 'image',
+                                'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=800,min_height=450' // Atur maksimal width dan height di sini
                             ])
                             ->validationAttribute('Image Event')
-                            ->helperText('The image must have a 16:9 aspect ratio.'),
+                            ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
                         TimePicker::make('jam_mulai')
                             ->label('Jam Mulai')
                             ->required()

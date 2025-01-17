@@ -155,12 +155,19 @@
     height: 160px;
     background-color: #f0f0f0;
     border-radius: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
 }
 
-.image-podcast{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.image-podcast {
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -480,7 +487,7 @@
 
 .box-streaming{
     width: 100%;
-    height: 240px;
+    height: 200px;
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;

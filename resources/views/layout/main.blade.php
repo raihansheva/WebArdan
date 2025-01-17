@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Untuk memastikan halaman merespons layar iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Mencegah highlight biru pada elemen klik -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
     {{-- <meta name="apple-mobile-web-app-capable" content="yes"> --}}
     <link rel="icon" href="./storage/{{ \App\Helpers\Settings::get('site_icon', 'Default Site Title') }}">
     <title>@yield('title')</title>
@@ -27,7 +34,7 @@
     {{-- Style Page Content --}}
     @stack('Style.css')
     @livewireStyles
-    
+
 </head>
 
 <body>
@@ -219,8 +226,8 @@
                         <span class="btn-play material-symbols-rounded">play_arrow</span>
                     </div>
                     <span class="material-symbols-rounded" id="next">skip_next</span>
-                    <span class="icon-menu" id="show-hide-player"><i class='bx bx-menu'></i></span>
-                    <!-- <span class="material-symbols-rounded" id="shuffle">shuffle</span> -->
+                    <p class="icon-menu" id="show-hide-player"><i class='bx bx-menu'></i></span>
+                        <!-- <span class="material-symbols-rounded" id="shuffle">shuffle</span> -->
                 </div>
             </div>
             <div class="area-control-progres">
@@ -394,6 +401,12 @@
             window.addEventListener("scroll", updateAudioPlayerVisibility);
         });
     }
+
+    document.querySelectorAll('.image-banner').forEach(img => {
+        img.onload = () => {
+            img.classList.add('loaded');
+        };
+    });
 </script>
 
 </html>

@@ -20,10 +20,10 @@
     <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
-                autoplay-disable-on-interaction="false" loop="true">
+                autoplay-disable-on-interaction="false" loop="true" >
                 @foreach ($banner->where('position', 'top') as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
+                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
+                            alt=""  loading="lazy"></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -156,7 +156,7 @@
                             <a class="link-box-news" href="/info-detail/{{ $InfoList->slug }}">
                                 <div class="box-news">
                                     <div class="area-image">
-                                        <img class="image-info" src="./storage/{{ $InfoList->image_info }}"
+                                        <img class="image-all-info" src="./storage/{{ $InfoList->image_info }}"
                                             alt="">
                                     </div>
                                     <div class="area-text-desk">
@@ -219,16 +219,15 @@
                             <div class="box-info">
                                 <a href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
                                     <div class="area-tag-info">
-
                                         <h3 class="tag-info">#{{ $kategoriInfoList->nama_kategori }}</h3>
                                     </div>
-                                    @if ($kategoriInfoList->info->isNotEmpty())
+                                    {{-- @if ($kategoriInfoList->info->isNotEmpty())
                                         <img class="image-info"
                                             src="{{ asset('storage/' . $kategoriInfoList->info->first()->image_info) }}"
                                             alt="">
                                     @else
                                         <p>Tidak ada info untuk tag ini.</p>
-                                    @endif
+                                    @endif --}}
                                 </a>
                             </div>
                         @endforeach
@@ -246,8 +245,8 @@
                             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1600"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_kategori') as $list)
-                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                            alt=""></swiper-slide>
+                                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
+                                            alt=""  loading="lazy"></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -504,8 +503,8 @@
                             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1800"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_podcast') as $list)
-                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                            alt=""></swiper-slide>
+                                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
+                                            alt="" loading="lazy" ></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -608,10 +607,10 @@
                     <h1 class="title-announcer">Announcer</h1>
                 </div>
                 <div class="content-announcer">
-                    <div class="area-tombol-announcer">
+                    {{-- <div class="area-tombol-announcer">
                         <div class="tombol-kiri-announcer"></div>
                         <div class="tombol-kanan-announcer"></div>
-                    </div>
+                    </div> --}}
                     <swiper-container class="area-content-box-announcer" loop="true" autoplay-delay="2500"
                         autoplay-disable-on-interaction="false"
                         breakpoints='{
@@ -819,8 +818,8 @@
             <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
+                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
+                            alt="" loading="lazy"></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>

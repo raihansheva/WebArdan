@@ -131,7 +131,6 @@
         height: fit-content;
         /* border: 1px red solid; */
         padding: 10px;
-        position: absolute;
         z-index: 2;
     }
 
@@ -274,84 +273,78 @@
 
     /* -------------- */
 
-    /* page news 3 */
+        /* page news 3 */
 
-    .area-info-artis {
-        margin: 0px 128px 20px 128px;
-    }
-
-    .title-info-artis {
-        font-size: 44px;
-    }
-
-    /* area box */
-
-    .area-box-info-artis {
-        margin-top: 15px;
-        /* border: 1px red solid; */
-        gap: 15px;
-    }
-
-    .box-artis {
-        flex: 1 1 calc(33.33% - 15px);
-        max-width: calc(33.33% - 15px);
-        height: auto;
-    }
-
-    .nama {
-        font-size: 15px;
-    }
-
-    .bio {
-        font-size: 13px;
-    }
-
-    .area-header-artis {
-        height: 40%;
-    }
-
-    .area-image-artis {
-        height: 40%;
-    }
-
-    .name-artis {
-        font-size: 32px;
-    }
-
-    .area-bio-artis {
-        padding: 20px;
-    }
-
-    .judul-berita {
-        font-size: 32px;
-    }
-
-    .desk-berita {
-        font-size: 23px;
-    }
-
-    .see-more-news {
-        font-size: 24px;
-    }
-
-    .popup-content-artis {
-        width: 1050px;
-        max-height: 500px;
-        padding: 20px;
-    }
-
-    .header-popup-artis {
-        font-size: 44px;
-    }
-
-    .popUp-judul-berita {
-        font-size: 38px;
-    }
-
-    .popUp-desk-berita {
-        font-size: 24px;
-    }
-
+        .area-info-artis {
+            margin: 0px 128px 20px 128px;
+        }
+    
+        .title-info-artis {
+            font-size: 40px;
+        }
+    
+        /* area box */
+    
+        .area-box-info-artis {
+            margin-top: 15px;
+            /* border: 1px red solid; */
+            gap: 15px;
+        }
+    
+        .box-artis {
+            flex: 1 1 calc(33.33% - 15px);
+            max-width: calc(33.33% - 15px);
+            height: fit-content;
+        }
+    
+        .nama {
+            font-size: 15px;
+        }
+    
+        .bio {
+            font-size: 13px;
+        }
+    
+        .area-image-artis {
+            height: 200px;
+        }
+    
+        .area-header-artis{
+            height: 35%;
+        }
+    
+        .name-artis {
+            font-size: 22px;
+        }
+    
+        .judul-berita {
+            font-size: 22px;
+        }
+    
+        .desk-berita {
+            font-size: 13px;
+        }
+    
+        .see-more-news {
+            font-size: 12px;
+        }
+    
+        .popup-content-artis {
+            width: 440px;
+            max-height: 400px;
+        }
+    
+        .header-popup-artis {
+            font-size: 24px;
+        }
+    
+        .popUp-judul-berita {
+            font-size: 26px;
+        }
+    
+        .popUp-desk-berita {
+            font-size: 13px;
+        }
     /* ----------- */
 
     /* ------------- */

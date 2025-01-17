@@ -145,12 +145,18 @@
                     <h1 class="title-OP">Other Podcast</h1>
                 </div>
                 <div class="content-OP">
-                    <div class="area-tombol-OP">
-                        <div class="tombol-kiri-OP"></div>
-                        <div class="tombol-kanan-OP"></div>
-                    </div>
-                    <div class="area-content-card-OP">
+                    <swiper-container class="area-content-card-OP" loop="true" autoplay-delay="2500"
+                    autoplay-disable-on-interaction="false"
+                    breakpoints='{
+                        "480": { "slidesPerView": 1 },
+                        "768": { "slidesPerView": 2 },
+                        "1024": { "slidesPerView": 3 },
+                        "1280": { "slidesPerView": 3 },
+                        "2560": { "slidesPerView" : 3}
+                    }'
+                    space-between="20">
                         @foreach ($all_podcast as $allpodcastList)
+                        <swiper-slide>
                             <div class="card-podcast" data-slug="{{ $allpodcastList->slug }}">
                                 <div class="card-body-podcast">
                                     <div class="head-body-podcast">
@@ -182,8 +188,9 @@
                                     </a>
                                 </div>
                             </div>
+                        </swiper-slide>
                         @endforeach
-                    </div>
+                    </swiper-container>
                 </div>
             </div>
         </div>
@@ -259,13 +266,8 @@
                                         </div>
                                         <div class="area-text-desk-top-info">
                                             <div class="area-tag">
-                                                @if (is_array($topInfoList->tag_info))
-                                                    @foreach ($topInfoList->tag_info as $tag)
-                                                        <h2 class="tag-top-info">#{{ $tag }}</h2>
-                                                    @endforeach
-                                                @else
-                                                    <h2 class="tag-top-info">#-</h2>
-                                                @endif
+                                                <h2 class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</h2>
+                                                
                                             </div>
                                             <div class="area-text">
                                                 <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>

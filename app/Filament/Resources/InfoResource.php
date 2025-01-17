@@ -69,9 +69,16 @@ class InfoResource extends Resource
                             ->directory('uploads/images_info')
                             ->disk('public')
                             ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=256,height=165']) // Ubah format ke array
+                            ->rules([
+                                'required',
+                                'image',
+                                'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=800,min_height=450' // Atur maksimal width dan height di sini
+                            ])
                             ->validationAttribute('Image Event')
-                            ->helperText('The image must be 256x165 pixels.'),
+                            ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
+                            // ->errorBag('The image does not meet the required dimensions. Ensure it is at least 800x450 pixels and at most 1920x1080 pixels.'),
+                        
                         DatePicker::make('date_info')
                             ->label('Info Date :')
                             ->required()
@@ -84,12 +91,12 @@ class InfoResource extends Resource
                         Grid::make(2) // Membuat Grid dengan 2 kolom
                             ->schema([
                                 Toggle::make('top_news')
-                                    ->label('Top News')
+                                    ->label('Trending')
                                     ->onColor('success') // Optional: Mengatur warna saat toggle aktif
                                     ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
                                     ->default(false), // Default: tidak aktif
                                 Toggle::make('trending')
-                                    ->label('Trending')
+                                    ->label('Top News')
                                     ->onColor('success') // Optional: Mengatur warna saat toggle aktif
                                     ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
                                     ->default(false), // Default: tidak aktif
@@ -205,7 +212,9 @@ class InfoResource extends Resource
                     ])
                     ->columnspan(1) // Mengambil semua kategori untuk opsi
                     ->query(function ($query, array $data) {
-                        return $query->when($data['query'] ?? null, fn($query, $searchTerm) =>
+                        return $query->when(
+                            $data['query'] ?? null,
+                            fn($query, $searchTerm) =>
                             $query->where(function ($query) use ($searchTerm) {
                                 $query->whereRaw('LOWER(judul_info) LIKE ?', ['%' . strtolower($searchTerm) . '%']) // Mencari di judul_info
                                     ->orWhereHas('tagInfo', function ($query) use ($searchTerm) {
