@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- Untuk memastikan halaman merespons layar iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    {{-- <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet"> --}}
     <!-- Mencegah highlight biru pada elemen klik -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/StyleMain/responsiveMain.css?v=' . time()) }}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
     <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
@@ -33,7 +34,6 @@
 
     {{-- Style Page Content --}}
     @stack('Style.css')
-    @livewireStyles
 
 </head>
 
@@ -345,10 +345,11 @@
 {{-- <script src="js/main/streamingPlayer.js"></script> --}}
 {{-- <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script> --}}
 <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+
 {{-- <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.14.0/dist/videojs-contrib-hls.min.js"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js" defer></script>
 <script>
     const urlCek = window.location.pathname;
     console.log("Current Path:", urlCek);
@@ -401,11 +402,20 @@
             window.addEventListener("scroll", updateAudioPlayerVisibility);
         });
     }
+    document.addEventListener("DOMContentLoaded", function() {
+        const swiperContainers = [
+            'swiper-xl',
+            'swiper-xl-bottom',
+            'swiper-l',
+            'swiper-s'
+        ];
 
-    document.querySelectorAll('.image-banner').forEach(img => {
-        img.onload = () => {
-            img.classList.add('loaded');
-        };
+        swiperContainers.forEach((id) => {
+            const swiperContainer = document.getElementById(id);
+            if (swiperContainer) {
+                swiperContainer.classList.add('loaded');
+            }
+        });
     });
 </script>
 

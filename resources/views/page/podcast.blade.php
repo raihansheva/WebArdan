@@ -20,7 +20,7 @@
     </section>
     <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
-            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+            <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'top') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
@@ -82,36 +82,33 @@
             <div class="area-content-videoYT">
                 <div class="area-contentYT-kiri">
                     @foreach ($videos as $video)
-                        <div class="box-area-videoYT-kiri"
-                            data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
-                            <img class="video-thumbnail"
-                                src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
-                                alt="Thumbnail">
-                            <div class="btn-play-videoYT-kiri"
-                                onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
-                                <span class="material-symbols-rounded">play_arrow</span>
-                            </div>
+                    <div class="box-area-videoYT-kiri" data-video-id="{{ $video['videoId'] }}">
+                        <img class="video-thumbnail"
+                            src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
+                            alt="Thumbnail">
+                        <div class="btn-play-videoYT-kiri"
+                            onclick="showPopupYT('{{ $video['videoId'] }}')">
+                            <span class="material-symbols-rounded">play_arrow</span>
                         </div>
+                    </div>
                     @break
                 @endforeach
             </div>
             <div class="area-contentYT-kanan">
                 @foreach (collect($videos)->slice(1, 2) as $video)
-                    <div class="box-area-videoYT-kanan"
-                        data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
-                        <img class="video-thumbnail"
-                            src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
-                            alt="Thumbnail">
-                        <div class="btn-play-videoYT-kanan"
-                            onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
-                            <span class="material-symbols-rounded">play_arrow</span>
-                        </div>
+                <div class="box-area-videoYT-kanan" data-video-id="{{ $video['videoId'] }}">
+                    <img class="video-thumbnail"
+                        src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
+                        alt="Thumbnail">
+                    <div class="btn-play-videoYT-kanan"
+                        onclick="showPopupYT('{{ $video['videoId'] }}')">
+                        <span class="material-symbols-rounded">play_arrow</span>
                     </div>
+                </div>
                 @endforeach
             </div>
             <div class="popup-player-yt" id="popup-player" style="display:none;">
                 <div class="popup-content-yt">
-                    {{-- <span id="close-popup" onclick="hidePopup()">X</span> --}}
                     <div id="player-yt"></div>
                 </div>
             </div>
@@ -168,7 +165,7 @@
                 </div>
                 <section class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
                     <div class="area-banner-small">
-                        <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                        <swiper-container class="mySwiper" id="swiper-s" centered-slides="true" autoplay-delay="2000"
                             autoplay-disable-on-interaction="false" loop="true">
                             @foreach ($banner->where('position', 'bottom_topInfo') as $list)
                                 <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"

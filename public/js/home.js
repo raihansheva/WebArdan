@@ -427,52 +427,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-var player;
+// Fungsi untuk menyembunyikan popup player
+function hidePopup() {
+    document.getElementById("popup-player").style.display = "none";
+    if (window.player) {
+        player.stopVideo(); // Hentikan video saat popup ditutup
+    }
+}
 
+// Fungsi untuk menampilkan popup player
 function showPopupYT(videoId) {
-    document.getElementById("popup-player").style.display = "flex";
+    const popupPlayer = document.getElementById("popup-player");
+    popupPlayer.style.display = "flex";
 
-    if (!player) {
-        player = new YT.Player("player-yt", {
-            height: "360",
+    // Jika player belum diinisialisasi, buat player baru
+    if (!window.player) {
+        window.player = new YT.Player("player-yt", {
+            height: "390",
             width: "640",
             videoId: videoId,
             events: {
-                onReady: function (event) {
-                    event.target.playVideo();
-                },
+                onReady: onPlayerReady,
             },
         });
     } else {
+        // Jika player sudah ada, ganti video yang diputar
         player.loadVideoById(videoId);
-        player.playVideo();
+    }
+
+    function onPlayerReady(event) {
+        event.target.playVideo(); // Memulai pemutaran video secara otomatis
     }
 }
 
-function hidePopup() {
-    document.getElementById("popup-player").style.display = "none";
-    player.stopVideo(); // Hentikan video saat popup ditutup
-}
+// Event listener untuk menyembunyikan popup saat klik di overlay
+document.getElementById("popup-player").addEventListener("click", hidePopup);
 
-// Load YouTube IFrame API
-var tag = document.createElement("script");
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName("script")[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-function onYouTubeIframeAPIReady() {
-    // IFrame API siap
-}
-function onPlayerReady(event) {
-    event.target.playVideo();
-}
 
-function hidePopup() {
-    document.getElementById("popup-player").style.display = "none";
-    if (player) {
-        player.stopVideo();
-    }
-}
 
 // Menambahkan event listener untuk klik di luar player
 document
@@ -508,7 +500,7 @@ function showScheduleForDay(day) {
 
     // Menampilkan semua konten yang sesuai dengan hari yang dipilih
     const selectedSchedules = document.querySelectorAll(
-        `.box-schedule[data-day="${day}"]`
+        `.box-schedule[data-day*="${day}"]`
     );
 
     if (selectedSchedules.length > 0) {
@@ -543,6 +535,7 @@ const currentDayName = dayMapping[currentDayIndex]; // Nama hari dalam bahasa In
 // Secara otomatis tampilkan program untuk hari ini
 showScheduleForDay(currentDayName);
 // });
+
 if (window.matchMedia("(max-width: 480px)").matches) {
     const days = [
         "senin",
@@ -575,6 +568,7 @@ if (window.matchMedia("(max-width: 480px)").matches) {
 
         // Tampilkan jadwal sesuai hari
         scheduleBoxes.forEach((box) => {
+            // Langsung bandingkan data-day dengan selectedDay
             if (box.dataset.day === selectedDay) {
                 box.classList.add("active");
             } else {
@@ -597,6 +591,8 @@ if (window.matchMedia("(max-width: 480px)").matches) {
     // Inisialisasi tampilan awal
     updateSchedule();
 }
+
+
 // Load YouTube API
 // document.addEventListener("DOMContentLoaded", function () {
 //     const video = document.getElementById("hlsPlayer");

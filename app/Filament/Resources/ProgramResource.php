@@ -60,9 +60,17 @@ class ProgramResource extends Resource
                             ->directory('uploads/images_program')
                             ->disk('public')
                             ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=286,height=280']) // Ubah format ke array
+                            // ->rules(['required', 'image', 'dimensions:width=286,height=280']) // Ubah format ke array
+                            // ->validationAttribute('Image Event')
+                            // ->helperText('The image must be 286x280 pixels.')
+                            ->rules([
+                                'required',
+                                'image',
+                                'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=286,min_height=280' // Atur maksimal width dan height di sini
+                            ])
                             ->validationAttribute('Image Event')
-                            ->helperText('The image must be 286x280 pixels.'),
+                            ->helperText('The image must have min 286x280 pixel, max dimensions 1920x1080'),
                         FileUpload::make('thumbnail_program')
                             ->label('Program Thumbnail :')
                             ->image()
@@ -70,7 +78,7 @@ class ProgramResource extends Resource
                             ->disk('public')
                             ->preserveFilenames()
                             ->rules([
-                                'required',
+                               'nullable',
                                 'image',
                                 'dimensions:max_width=1920,max_height=1080', // Atur maksimal width dan height di sini
                                 'dimensions:min_width=800,min_height=450' // Atur maksimal width dan height di sini

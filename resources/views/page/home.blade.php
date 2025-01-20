@@ -19,11 +19,11 @@
     {{-- @if ($banner->where('position', 'top')->count() > 0) --}}
     <section class="section-banner {{ $banner->where('position', 'top')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
-            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
-                autoplay-disable-on-interaction="false" loop="true" >
+            <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
+                autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'top') as $list)
                     <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
-                            alt=""  loading="lazy"></swiper-slide>
+                            alt="" loading="lazy"></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="card-header">
                             <div class="view" id="btn-tonton">
-                                <p class="text-watchS">Tonton Siaran</p>
+                                <p class="text-watchS">Watch <i class='bx bx-video'></i></p>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="view-B">
-                                <p class="text-watchS-B">Dengar Siaran</p>
+                                <p class="text-watchS-B">Hear <i class='bx bx-microphone'></i></p>
                             </div>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                     <section
                         class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-small">
-                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1600"
+                            <swiper-container class="mySwiper" id="swiper-s" centered-slides="true" autoplay-delay="1600"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_kategori') as $list)
                                     <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
@@ -308,7 +308,7 @@
             <div class="area-content-ig-twitter">
                 <div class="area-content-feed-instagram">
                     <div class="header-feed-instagram">
-                        <h1 class="title-feed-instagram">Feed Instagram</h1>
+                        <h1 class="title-feed-instagram">Instagram</h1>
                     </div>
                     <div class="content-feed-instagram">
                         {{-- <div class="area-tombol">
@@ -411,9 +411,8 @@
 
                 <div class="area-content-event-kanan">
                     @foreach ($event_upcoming as $eventUpcomingList)
-                        <div class="content-event"
-                            style="background-image: url('')"
-                            onclick="showPopupEvent(this)" data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
+                        <div class="content-event" style="background-image: url('')" onclick="showPopupEvent(this)"
+                            data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                             data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                             data-slug="{{ $eventUpcomingList->slug }}"
                             data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
@@ -500,7 +499,7 @@
                     <section
                         class="section-banner-full-small {{ $banner->where('position', 'bottom_podcast')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-full-small">
-                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="1800"
+                            <swiper-container class="mySwiper " id="swiper-l" centered-slides="true" autoplay-delay="1800"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_podcast') as $list)
                                     <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
@@ -517,12 +516,12 @@
                     </div>
                     <div class="content-video" id="content-video">
                         @foreach ($videos as $video)
-                            <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                            <div class="box-video" data-video-id="{{ $video['videoId'] }}">
                                 <img class="video-thumbnail"
-                                    src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                    src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                     alt="Thumbnail">
                                 <div class="btn-play-video"
-                                    onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                    onclick="showPopupYT('{{ $video['videoId'] }}')">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </div>
@@ -530,10 +529,10 @@
                     </div>
                     <div class="popup-player-yt" id="popup-player" style="display:none;">
                         <div class="popup-content-yt">
-                            {{-- <span id="close-popup" onclick="hidePopup()">X</span> --}}
                             <div id="player-yt"></div>
                         </div>
                     </div>
+                                        
                     <div class="link-text-video">
                         <a href="/ardan-youtube">
                             <h1 class="text-video">See more</h1>
@@ -637,26 +636,6 @@
                                 <img class="image-announcer" src="./storage/{{ $announcerList->image_announcer }}"
                                     alt="">
                                 <div class="area-profile-announcer">
-                                    {{-- @if ($announcerList->link_instagram)
-                                        <a href="{{ $announcerList->link_instagram }}" target="_blank">
-                                            <i class='bx bxl-instagram'></i>
-                                        </a>
-                                    @endif
-
-                                    @if ($announcerList->link_facebook)
-                                        <a href="{{ $announcerList->link_facebook }}" target="_blank">
-                                            <i class='bx bxl-facebook'></i>
-                                        </a>
-                                    @endif
-
-                                    @if ($announcerList->link_twitter)
-                                        <a href="{{ $announcerList->link_twitter }}" target="_blank">
-                                            <i class='bx bxl-twitter'></i>
-                                        </a>
-                                    @endif --}}
-                                    {{-- <div class="area-name-announcer"> --}}
-                                    {{-- <h3 class="name-announcer">{{ $announcerList->name_announcer }}</h3> --}}
-                                    {{-- </div> --}}
                                 </div>
                             </swiper-slide>
                         @endforeach
@@ -815,7 +794,7 @@
     </section>
     <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
-            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+            <swiper-container class="mySwiper " id="swiper-xl-bottom" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
@@ -854,18 +833,27 @@
                     </div>
                 </div>
                 <div class="content-schedule">
+                    <!-- Menampilkan konten berdasarkan hari yang dipilih -->
                     @foreach ($schedule as $scheduleList)
-                        <div class="box-schedule hidden" data-day="{{ strtolower($scheduleList->hari) }}">
-                            <img class="image-schedule-program"
-                                src="./storage/{{ $scheduleList->program->image_program }}" alt="">
-                            <div class="area-bio-schedule">
-                                <div class="bio-schedule">
-                                    <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
-                                    <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} -
-                                        {{ $scheduleList->jam_selesai }}</p>
+                        @php
+                            // Periksa apakah hari sudah berupa array
+                            $hariArray = is_array($scheduleList->hari) ? $scheduleList->hari : json_decode($scheduleList->hari, true);
+                        @endphp
+                
+                        <!-- Pastikan $hariArray tidak kosong sebelum menampilkan konten -->
+                        @if ($hariArray)
+                            @foreach ($hariArray as $day)
+                                <div class="box-schedule hidden" data-day="{{ strtolower($day) }}">
+                                    <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}" alt="">
+                                    <div class="area-bio-schedule">
+                                        <div class="bio-schedule">
+                                            <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
+                                            <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} - {{ $scheduleList->jam_selesai }}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -876,18 +864,28 @@
             </div>
             <div class="content-schedule-mobile">
                 @foreach ($schedule as $scheduleList)
-                    <div class="box-schedule-mobile hidden" data-day="{{ strtolower($scheduleList->hari) }}">
-                        <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}"
-                            alt="">
-                        <div class="area-bio-schedule">
-                            <div class="bio-schedule">
-                                <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
-                                <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} -
-                                    {{ $scheduleList->jam_selesai }}</p>
+                        @php
+                            // Periksa apakah hari sudah berupa array
+                            $hariArray = is_array($scheduleList->hari) ? $scheduleList->hari : json_decode($scheduleList->hari, true);
+                        @endphp
+                
+                        <!-- Pastikan $hariArray tidak kosong sebelum menampilkan konten -->
+                        @if ($hariArray)
+                            @foreach ($hariArray as $day)
+                            <div class="box-schedule-mobile hidden" data-day="{{ strtolower($day) }}">
+                                <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}"
+                                    alt="">
+                                <div class="area-bio-schedule">
+                                    <div class="bio-schedule">
+                                        <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
+                                        <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} -
+                                            {{ $scheduleList->jam_selesai }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                @endforeach
+                            @endforeach
+                        @endif
+                    @endforeach
             </div>
         </div>
     </section>
@@ -1116,15 +1114,8 @@
 
                 const programImage = document.getElementById('program-image');
                 programImage.src = data.image;
+                console.log(data.image);
 
-                // Update program name
-                const programName = document.getElementById('program-name');
-                programName.textContent = data.judul_program;
-
-                // Update program time
-                const programTime = document.getElementById('program-time');
-                programTime.textContent = data.jam_mulai !== '-' ? `Jam mulai: ${data.jam_mulai.substring(0, 5)}` :
-                    '-';
             } catch (error) {
                 console.error('Error fetching next program image:', error);
             }
@@ -1133,7 +1124,7 @@
         // Fetch image every 1 minute
         fetchNextProgramImage(); // Initial fetch
         setInterval(fetchNextProgramImage, 60000);
-        
+
         async function fetchNextThumbnailImage() {
             try {
                 const response = await fetch('/api/next-program-thumbnail');
@@ -1141,15 +1132,9 @@
 
                 const thumbnailImage = document.getElementById('thumbnail-stream');
                 thumbnailImage.src = data.image;
+                console.log(data.image);
+                
 
-                // Update program name
-                const programName = document.getElementById('program-name');
-                programName.textContent = data.judul_program;
-
-                // Update program time
-                const programTime = document.getElementById('program-time');
-                programTime.textContent = data.jam_mulai !== '-' ? `Jam mulai: ${data.jam_mulai.substring(0, 5)}` :
-                    '-';
             } catch (error) {
                 console.error('Error fetching next program image:', error);
             }
@@ -1159,5 +1144,7 @@
         fetchNextThumbnailImage(); // Initial fetch
         setInterval(fetchNextThumbnailImage, 60000);
         // Refresh every 60 seconds
+
+        
     </script>
 @endsection

@@ -15,6 +15,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use App\Filament\Resources\ScheduleResource\Pages;
+use Filament\Forms\Components\CheckboxList;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\Filter;
 
@@ -64,7 +65,7 @@ class ScheduleResource extends Resource
                             ->format('H:i')
                             ->rule('after:jam_mulai')
                             ->readOnly(),
-                        Select::make('hari')
+                        CheckboxList::make('hari')
                             ->label('Hari :')
                             ->options([
                                 'senin' => 'Senin',
@@ -75,7 +76,9 @@ class ScheduleResource extends Resource
                                 'sabtu' => 'Sabtu',
                                 'minggu' => 'Minggu',
                             ])
-                            ->default('Upcoming'),
+                            ->required()
+                            ->helperText('Pilih hari untuk program ini. Centang semua untuk seluruh minggu.')
+                            ->columns(3),
                         Textarea::make('deskripsi') // Pastikan field deskripsi ada
                             ->label('Deskripsi :')
                             ->required()
@@ -138,26 +141,32 @@ class ScheduleResource extends Resource
                             $q->where('jam_selesai', $jamSelesai);
                         });
                     }),
-                Filter::make('hari')
-                    ->form([
-                        Select::make('hari')
-                            ->label('Hari')
-                            ->placeholder('Pilih hari...')
-                            ->options([
-                                'Senin' => 'Senin',
-                                'Selasa' => 'Selasa',
-                                'Rabu' => 'Rabu',
-                                'Kamis' => 'Kamis',
-                                'Jumat' => 'Jumat',
-                                'Sabtu' => 'Sabtu',
-                                'Minggu' => 'Minggu',
-                            ])
-                    ])
-                    ->query(function ($query, $data) {
-                        return $query->when($data['hari'], function ($q, $hari) {
-                            $q->where('hari', $hari);
-                        });
-                    }),
+                    Filter::make('hari')
+                        ->form([
+                            CheckboxList::make('hari')
+                                ->label('Hari')
+                                ->options([
+                                    'senin' => 'Senin',
+                                    'selasa' => 'Selasa',
+                                    'rabu' => 'Rabu',
+                                    'kamis' => 'Kamis',
+                                    'jumat' => 'Jumat',
+                                    'sabtu' => 'Sabtu',
+                                    'minggu' => 'Minggu',
+                                ])
+                                ->columns(2),
+                        ])
+                        ->query(function ($query, $data) {
+                            return $query->when($data['hari'], function ($q, $hari) {
+                                // Cek apakah hari ada dalam array JSON
+                                $q->where(function ($query) use ($hari) {
+                                    foreach ($hari as $selectedDay) {
+                                        $query->orWhereJsonContains('hari', $selectedDay);
+                                    }
+                                });
+                            });
+                        }),
+                    
             ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),

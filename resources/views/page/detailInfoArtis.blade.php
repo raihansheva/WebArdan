@@ -129,9 +129,9 @@
                             </div>
                         </div>
                         <div class="line-info-artis"></div>
-                        <section class="section-banner-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
-                            <div class="area-banner-small">
-                                <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                        <section class="section-banner-full-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
+                            <div class="area-banner-full-small">
+                                <swiper-container class="mySwiper" id="swiper-l" centered-slides="true" autoplay-delay="2000"
                                     autoplay-disable-on-interaction="false" loop="true">
                                     @foreach ($banner->where('position', 'bottom_detail') as $list)
                                         <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"

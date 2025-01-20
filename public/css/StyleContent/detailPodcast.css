@@ -1,4 +1,8 @@
+
+
+
 /* area detail podcast */
+
 
 .page-detail-1 {
     width: 100%;
@@ -155,6 +159,17 @@
     font-size: 32px;
 }
 
+.text-watchP{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.text-watchP i{
+    font-size: 24px;
+}
+
 /* card B */
 .card-DP-B {
     width: 100%;
@@ -212,6 +227,14 @@
 
 .text-watchP-B {
     font-family: "Poppins";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.text-watchP-B i{
+    font-size: 24px;
 }
 
 .video-container {

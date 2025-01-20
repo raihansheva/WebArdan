@@ -61,6 +61,7 @@ function hideCard(card) {
 tontonSiaranBtnA.addEventListener("click", function () {
     hideCard(cardA);
     pausePodcast(idP)
+    console.log('klik pause');
     setTimeout(() => {
         showCard(cardB);
     }, 500);

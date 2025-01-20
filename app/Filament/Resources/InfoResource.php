@@ -77,8 +77,8 @@ class InfoResource extends Resource
                             ])
                             ->validationAttribute('Image Event')
                             ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
-                            // ->errorBag('The image does not meet the required dimensions. Ensure it is at least 800x450 pixels and at most 1920x1080 pixels.'),
-                        
+                        // ->errorBag('The image does not meet the required dimensions. Ensure it is at least 800x450 pixels and at most 1920x1080 pixels.'),
+
                         DatePicker::make('date_info')
                             ->label('Info Date :')
                             ->required()
@@ -101,6 +101,7 @@ class InfoResource extends Resource
                                     ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
                                     ->default(false), // Default: tidak aktif
                             ]),
+                        
                         RichEditor::make('deskripsi_info')
                             ->label('Deskripsi Info :')
                             ->fileAttachmentsDisk('public') // Menyimpan file di disk 'public'

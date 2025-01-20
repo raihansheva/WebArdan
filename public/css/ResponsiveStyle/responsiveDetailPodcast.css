@@ -1,5 +1,5 @@
 /* Desktop dan Laptop */
-@media (min-width: 1960px) {
+@media (min-width: 1920px) {
     .page-detail-1 {
         height: 860px;
     }
@@ -108,6 +108,18 @@
         font-size: 32px;
     }
 
+    .text-watchP {
+        font-family: "Poppins";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .text-watchP i {
+        font-size: 30px;
+    }
+
     /* card B */
     .card-DP-B {
         width: 100%;
@@ -153,7 +165,7 @@
         align-items: center;
         display: flex;
         height: 25px;
-        width: calc(20% - 2px);
+        width: calc(20% - 12px);
         background-color: var(--secondary-color);
         border-radius: 12px;
         padding: 10px;
@@ -164,7 +176,12 @@
     .text-watchP-B {
         color: rgb(48, 48, 48);
         font-family: "Poppins";
-        font-size: 14px;
+        font-size: 18px;
+        gap: 8px;
+    }
+
+    .text-watchP-B i {
+        font-size: 24px;
     }
 
     .video-container {
@@ -710,6 +727,11 @@
     .text-watchP {
         font-family: "Poppins";
         font-size: 14px;
+        gap: 4px;
+    }
+
+    .text-watchP i {
+        font-size: 20px;
     }
 
     .btn-play-DP {
@@ -786,6 +808,10 @@
         color: rgb(48, 48, 48);
         font-family: "Poppins";
         font-size: 14px;
+    }
+
+    .text-watchP-B i {
+        font-size: 20px;
     }
 
     .video-container {
@@ -1292,6 +1318,10 @@
         font-size: 12px;
     }
 
+    .text-watchP i {
+        font-size: 18px;
+    }
+
     .btn-play-DP {
         height: 50px;
         width: 50px;
@@ -1370,6 +1400,14 @@
     .text-watchP-B {
         font-family: "Poppins";
         font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text-watchP-B i {
+        font-size: 18px;
+        gap: 4px;
     }
 
     .video-container {
@@ -1868,7 +1906,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(25% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 10px;
@@ -1880,6 +1918,11 @@
         color: rgb(48, 48, 48);
         font-family: "Poppins";
         font-size: 10px;
+        padding: 2px 10px;
+    }
+
+    .text-watchP i {
+        font-size: 16px;
     }
 
     .btn-play-DP {
@@ -1938,7 +1981,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(25% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 10px;
@@ -1954,7 +1997,14 @@
     .text-watchP-B {
         font-family: "Poppins";
         font-size: 10px;
+        padding: 2px 10px;
+        gap: 2px;
     }
+
+    .text-watchP-B i {
+        font-size: 16px;
+    }
+
     .video-container {
         position: relative;
         width: 100%;
@@ -2391,8 +2441,6 @@
     /* -------------------- */
 }
 
-
-
 @media (max-width: 375px) {
     .page-detail-1 {
         height: auto;
@@ -2479,7 +2527,7 @@
         align-items: center;
         display: flex;
         height: 12px;
-        width: calc(25% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 10px;
@@ -2495,6 +2543,11 @@
         color: rgb(48, 48, 48);
         font-family: "Poppins";
         font-size: 10px;
+        padding: 2px 8px;
+    }
+
+    .text-watchP i{
+        font-size: 16px;
     }
 
     .btn-play-DP {
@@ -2555,7 +2608,7 @@
         align-items: center;
         display: flex;
         height: 12px;
-        width: calc(25% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 10px;
@@ -2571,6 +2624,13 @@
     .text-watchP-B {
         font-family: "Poppins";
         font-size: 10px;
+        padding: 2px 8px;
+        gap: 3px;
+    }
+
+    .text-watchP-B i{
+        font-family: "Poppins";
+        font-size: 16px;
     }
 
     .video-container {
@@ -3101,7 +3161,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(27% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 8px;
@@ -3116,7 +3176,12 @@
     .text-watchP {
         color: rgb(48, 48, 48);
         font-family: "Poppins";
-        font-size: 8px;
+        font-size: 10px;
+        padding: 1px 4px;
+    }
+
+    .text-watchP i {
+        font-size: 16px;
     }
 
     .btn-play-DP {
@@ -3177,7 +3242,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(27% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 8px;
@@ -3190,7 +3255,12 @@
 
     .text-watchP-B {
         font-family: "Poppins";
-        font-size: 8px;
+        font-size: 10px;
+        padding: 1px 8px;
+    }
+
+    .text-watchP-B i {
+        font-size: 16px;
     }
 
     .video-container {
@@ -3729,7 +3799,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(27% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 8px;
@@ -3744,7 +3814,12 @@
     .text-watchP {
         color: rgb(48, 48, 48);
         font-family: "Poppins";
-        font-size: 8px;
+        font-size: 10px;
+        padding: 1px 4px;
+    }
+
+    .text-watchP i {
+        font-size: 16px;
     }
 
     .btn-play-DP {
@@ -3805,7 +3880,7 @@
         align-items: center;
         display: flex;
         height: 15px;
-        width: calc(27% - 2px);
+        width: fit-content;
         background-color: var(--secondary-color);
         border-radius: 8px;
         padding: 8px;
@@ -3818,7 +3893,12 @@
 
     .text-watchP-B {
         font-family: "Poppins";
-        font-size: 8px;
+        font-size: 10px;
+        padding: 1px 4px;
+    }
+
+    .text-watchP-B i {
+        font-size: 16px;
     }
 
     .video-container {

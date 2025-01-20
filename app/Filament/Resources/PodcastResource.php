@@ -80,6 +80,11 @@ class PodcastResource extends Resource
                             ->label('Slug :')
                             ->readOnly()
                             ->required(),
+                        Toggle::make('is_highlight')
+                            ->label('Highlight')
+                            ->onColor('success') // Optional: Mengatur warna saat toggle aktif
+                            ->offColor('danger') // Optional: Mengatur warna saat toggle tidak aktif
+                            ->default(false),
                         Toggle::make('is_episode')
                             ->label('Tambah episode?')
                             ->required()
@@ -176,6 +181,11 @@ class PodcastResource extends Resource
                     ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false
                     ->trueColor('success') // Warna ikon untuk true (hijau)
                     ->falseColor('danger'),
+                TextColumn::make('is_highlight')
+                    ->label('Highlight')
+                    ->getStateUsing(function ($record) {
+                        return $record->trending ? 'Highlight' : '-';
+                    }),
                 TextColumn::make('tanggal_publikasi')->sortable(),
                 TextColumn::make('link_podcast'),
                 TextColumn::make('file'),

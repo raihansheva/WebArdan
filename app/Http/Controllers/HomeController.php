@@ -19,7 +19,9 @@ use App\Models\BannerInfo;
 use Illuminate\Http\Request;
 use App\Models\BannerPodcast;
 use App\Models\BannerYoutube;
+use App\Models\YoutubeHighlight;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -28,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $banner = Banner::where('page' , 'home')->get();
+        $banner = Banner::where('page', 'home')->get();
 
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
         $streamVideo = Streaming::where('type_url', 'Video')->first();
@@ -73,7 +75,8 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->get();
+        })
+            ->limit(8)->get();
         $topInfo = Info::where(function ($query) {
             $query->where('publish_now', true)
                 ->orWhere(function ($query) {
@@ -90,7 +93,8 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->where('trending', true) // Pastikan trending juga difilter
+        })->where('trending', true)
+            ->limit(8)
             ->get();
 
 
@@ -104,7 +108,11 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->take(4)->get();
+        })
+            ->where('is_highlight', true) // Menambahkan kondisi is_highlight = true
+            ->take(4)
+            ->get();
+
         $Kategori = Kategori::with('charts')->get();
 
         $schedule = Schedule::with('program')->get();
@@ -130,18 +138,43 @@ class HomeController extends Controller
         //     }
         // }
 
-        $playlist = Youtube::first();
-        $apiKey = env('YOUTUBE_API_KEY');
-        $playlistId = $playlist->link_youtube;
-        // dd($topInfo);
-        // Panggil YouTube API untuk mendapatkan video dari playlist
-        $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
-            'part' => 'snippet',
-            'maxResults' => 3,
-            'playlistId' => $playlistId,
-            'key' => $apiKey,
-        ]);
+        // $playlist = YoutubeHighlight::where('page' , 'home')->get();
+        // // dd($playlist);
+        // $apiKey = env('YOUTUBE_API_KEY');
+        // $apiKey = 'AIzaSyB-c0ageJpHiB5RN73CIXLTDiAHsuEDTjs';
+        // $playlistId = $playlist->link_youtube;
+        // // dd($topInfo);
+        // // Panggil YouTube API untuk mendapatkan video dari playlist
+        // $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
+        //     'part' => 'snippet',
+        //     'maxResults' => 3,
+        //     'playlistId' => $playlistId,
+        //     'key' => $apiKey,
+        // ]);
 
+        $playlist = YoutubeHighlight::where('page', 'home')->limit(3)->get();
+
+        $videos = [];
+        foreach ($playlist as $item) {
+            // Ambil videoId dari link_video
+            $url = $item->link_video;
+            if (Str::contains($url, 'youtu.be')) {
+                // Format https://youtu.be/VIDEO_ID
+                $videoId = explode('/', parse_url($url, PHP_URL_PATH))[1];
+            } elseif (Str::contains($url, 'youtube.com')) {
+                // Format https://www.youtube.com/watch?v=VIDEO_ID
+                parse_str(parse_url($url, PHP_URL_QUERY), $query);
+                $videoId = $query['v'] ?? null;
+            } else {
+                $videoId = null;
+            }
+
+            if ($videoId) {
+                $videos[] = [
+                    'videoId' => $videoId,
+                ];
+            }
+        }
         // $fmt = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
         // $test = $fmt->format(123456.789);
         // dd($test);
@@ -156,7 +189,7 @@ class HomeController extends Controller
         // --------------------------
 
 
-        $videos = $response->json()['items'];
+        // $videos = $response->json()['items'];
 
         // Kirim semua data ke view
         return view('page.home', [
@@ -183,9 +216,16 @@ class HomeController extends Controller
      * Show the form for creating a new resource.
      */
 
+    private function extractVideoId($url)
+    {
+        parse_str(parse_url($url, PHP_URL_QUERY), $queryParams);
+
+        return $queryParams['v'] ?? null;
+    }
+
     public function detailprogram($slug)
     {
-        $banner = Banner::where('page' , 'singlepage_program')->get();;
+        $banner = Banner::where('page', 'singlepage_program')->get();;
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -218,7 +258,8 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->where('trending', true) // Pastikan trending juga difilter
+        })->where('trending', true)
+            ->limit(3) // Pastikan trending juga difilter
             ->get();
 
         // $event = Event::where('slug', $slug)->first();
@@ -252,7 +293,7 @@ class HomeController extends Controller
 
     public function event()
     {
-        $banner = Banner::where('page' , 'event')->get();
+        $banner = Banner::where('page', 'event')->get();
         $program = Program::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -295,7 +336,7 @@ class HomeController extends Controller
 
     public function detailEvent($slug)
     {
-        $banner = Banner::where('page' , 'singlepage_event')->get();
+        $banner = Banner::where('page', 'singlepage_event')->get();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -315,7 +356,8 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->where('trending', true) // Pastikan trending juga difilter
+        })->where('trending', true)
+            ->limit(3) // Pastikan trending juga difilter
             ->get();
 
         $event = Event::where(function ($query) {
@@ -366,7 +408,7 @@ class HomeController extends Controller
 
     public function podcast()
     {
-        $banner = Banner::where('page' , 'podcast')->get();
+        $banner = Banner::where('page', 'podcast')->get();
         $bannerP = BannerPodcast::all();
         $podcast = Podcast::all();
         $playlist = Youtube::first();
@@ -379,17 +421,35 @@ class HomeController extends Controller
         })->where('top_news', true) // Kondisi ini harus selalu true
             ->limit(5)
             ->get();
-        $apiKey = env('YOUTUBE_API_KEY');
-        $playlistId = $playlist->link_youtube;
+        // $apiKey = env('YOUTUBE_API_KEY');
+        // $playlistId = $playlist->link_youtube;
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
 
-        // Panggil YouTube API untuk mendapatkan video dari playlist
-        $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
-            'part' => 'snippet',
-            'maxResults' => 3,
-            'playlistId' => $playlistId,
-            'key' => $apiKey,
-        ]);
+        $playlist = YoutubeHighlight::where('page', 'podcast')->limit(3)->get();
+
+        // dd($playlist);
+
+        $videos = [];
+        foreach ($playlist as $item) {
+            // Ambil videoId dari link_video
+            $url = $item->link_video;
+            if (Str::contains($url, 'youtu.be')) {
+                // Format https://youtu.be/VIDEO_ID
+                $videoId = explode('/', parse_url($url, PHP_URL_PATH))[1];
+            } elseif (Str::contains($url, 'youtube.com')) {
+                // Format https://www.youtube.com/watch?v=VIDEO_ID
+                parse_str(parse_url($url, PHP_URL_QUERY), $query);
+                $videoId = $query['v'] ?? null;
+            } else {
+                $videoId = null;
+            }
+
+            if ($videoId) {
+                $videos[] = [
+                    'videoId' => $videoId,
+                ];
+            }
+        }
 
 
         //  Buat ngcek kalo ada error
@@ -402,7 +462,7 @@ class HomeController extends Controller
         // --------------------------
 
 
-        $videos = $response->json()['items'];
+        // $videos = $response->json()['items'];
 
         return view('page.podcast', [
             'banner' => $banner,
@@ -416,7 +476,7 @@ class HomeController extends Controller
 
     public function detailpodcast($slug)
     {
-        $banner = Banner::where('page' , 'singlepage_podcast')->get();
+        $banner = Banner::where('page', 'singlepage_podcast')->get();
         // Cari podcast berdasarkan slug
         $detailpodcast = Podcast::where('slug', $slug)->firstOrFail();
 
@@ -438,18 +498,31 @@ class HomeController extends Controller
 
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
         // dd($epsgroup);
-        $playlist = Youtube::first();
+        $playlist = YoutubeHighlight::where('page', 'podcast')->limit(3)->get();
 
-        $apiKey = env('YOUTUBE_API_KEY');
-        $playlistId = $playlist->link_youtube;
+        // dd($playlist);
 
-        // Panggil YouTube API untuk mendapatkan video dari playlist
-        $response = Http::get('https://www.googleapis.com/youtube/v3/playlistItems', [
-            'part' => 'snippet',
-            'maxResults' => 5,
-            'playlistId' => $playlistId,
-            'key' => $apiKey,
-        ]);
+        $videos = [];
+        foreach ($playlist as $item) {
+            // Ambil videoId dari link_video
+            $url = $item->link_video;
+            if (Str::contains($url, 'youtu.be')) {
+                // Format https://youtu.be/VIDEO_ID
+                $videoId = explode('/', parse_url($url, PHP_URL_PATH))[1];
+            } elseif (Str::contains($url, 'youtube.com')) {
+                // Format https://www.youtube.com/watch?v=VIDEO_ID
+                parse_str(parse_url($url, PHP_URL_QUERY), $query);
+                $videoId = $query['v'] ?? null;
+            } else {
+                $videoId = null;
+            }
+
+            if ($videoId) {
+                $videos[] = [
+                    'videoId' => $videoId,
+                ];
+            }
+        }
 
 
         //  Buat ngcek kalo ada error
@@ -461,7 +534,7 @@ class HomeController extends Controller
         // }
         // --------------------------
 
-        $videos = $response->json()['items'];
+        // $videos = $response->json()['items'];
 
         // Tampilkan halaman detail dengan data podcast
         return view('page.detailPodcast', [
@@ -478,7 +551,7 @@ class HomeController extends Controller
 
     public function chart()
     {
-        $banner = Banner::where('page' , 'chart')->get();;
+        $banner = Banner::where('page', 'chart')->get();;
         $Kategori = Kategori::with('charts')->get();
 
         $topInfo = Info::where(function ($query) {
@@ -504,7 +577,7 @@ class HomeController extends Controller
 
     public function info()
     {
-        $banner = Banner::where('page' , 'info_news')->get();
+        $banner = Banner::where('page', 'info_news')->get();
         $info = Info::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -565,7 +638,7 @@ class HomeController extends Controller
 
     public function artis()
     {
-        $banner = Banner::where('page' , 'info_artis')->get();;
+        $banner = Banner::where('page', 'info_artis')->get();;
         $info = Info::where(function ($query) {
             // Tampilkan jika publish_sekarang true
             $query->where('publish_now', true)
@@ -624,7 +697,7 @@ class HomeController extends Controller
 
     public function tagInfo($tag)
     {
-        $banner = Banner::where('page' , 'kategori_info')->get();;
+        $banner = Banner::where('page', 'kategori_info')->get();;
         $info = Info::whereHas('tagInfo', function ($query) use ($tag) {
             $query->where('nama_kategori', $tag)
                 // Atau jika publish_sekarang false dan tanggal_publikasi <= sekarang
@@ -676,7 +749,7 @@ class HomeController extends Controller
 
     public function detailInfo($slug)
     {
-        $banner = Banner::where('page' , 'singlepage_info')->get();
+        $banner = Banner::where('page', 'singlepage_info')->get();
         $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -696,7 +769,8 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->where('trending', true) // Pastikan trending juga difilter
+        })->where('trending', true)
+            ->limit(3) // Pastikan trending juga difilter
             ->get();
 
         $event_upcoming = Event::where(function ($query) {
@@ -740,7 +814,7 @@ class HomeController extends Controller
 
     public function youtube()
     {
-        $banner = Banner::where('page' , 'youtube')->get();;
+        $banner = Banner::where('page', 'youtube')->get();;
         $youtube = Youtube::all();
         $event_soon = Event::where(function ($query) {
             // Tampilkan jika publish_sekarang true
@@ -789,7 +863,7 @@ class HomeController extends Controller
 
     public function detailInfoArtis($slug)
     {
-        $banner = Banner::where('page' , 'singlepage_artis')->get();
+        $banner = Banner::where('page', 'singlepage_artis')->get();
         // $info = Info::where('slug', $slug)->first();
         $kategoriInfo = TagInfo::where('is_visible', true)->with('info')->get();
         // dd($info->tag_info);
@@ -809,7 +883,8 @@ class HomeController extends Controller
                     $query->where('publish_now', false)
                         ->where('tanggal_publikasi', '<=', now());
                 });
-        })->where('trending', true) // Pastikan trending juga difilter
+        })->where('trending', true)
+            ->limit(3) // Pastikan trending juga difilter
             ->get();
 
         $event_upcoming = Event::where(function ($query) {

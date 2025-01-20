@@ -36,7 +36,8 @@ return [
     ],
 
     'youtube' => [
-        'api_key' => env('AIzaSyB-c0ageJpHiB5RN73CIXLTDiAHsuEDTjs'),
+        'api_key' => env('YOUTUBE_API_KEY', 'AIzaSyB-c0ageJpHiB5RN73CIXLTDiAHsuEDTjs'),
     ],
+
 
 ];

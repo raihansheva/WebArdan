@@ -21,6 +21,7 @@ class Podcast extends Model implements HasMedia
         'image_podcast',
         'date_podcast',
         'publish_now',
+        'is_highlight',
         'tanggal_publikasi',
         'link_podcast',
         'file',

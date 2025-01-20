@@ -10,6 +10,10 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = ['program_id', 'nama_program', 'jam_mulai' , 'jam_selesai', 'hari', 'deskripsi'];
+
+    protected $casts = [
+        'hari' => 'array', // Konversi JSON ke array
+    ];
     
     public function getJamMulaiAttribute($value)
     {

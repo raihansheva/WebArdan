@@ -22,11 +22,13 @@ class ProgramController extends Controller
         // Query untuk mendapatkan program berikutnya
         $nextProgram = DB::table('schedules')
             ->join('programs', 'schedules.program_id', '=', 'programs.id')
-            ->where('schedules.hari', $currentDay) // Cocokkan hari dalam bahasa Indonesia
+            ->whereRaw('JSON_EXTRACT(schedules.hari, "$") LIKE ?', ['%"' . $currentDay . '"%']) // Cek keberadaan hari
             ->where('schedules.jam_mulai', '>', $currentTime->format('H:i:s')) // Program setelah jam sekarang
             ->orderBy('schedules.jam_mulai', 'asc') // Urutkan berdasarkan jam mulai terdekat
-            ->select('programs.thumbnail_program', 'programs.judul_program', 'schedules.jam_mulai') // Hanya ambil kolom gambar
+            ->select('programs.thumbnail_program', 'programs.judul_program', 'schedules.jam_mulai') // Ambil kolom yang diperlukan
             ->first();
+
+
 
         // Jika tidak ada program berikutnya, kirim gambar placeholder
         if (!$nextProgram) {
@@ -59,7 +61,7 @@ class ProgramController extends Controller
         // Query untuk mendapatkan program yang sedang berlangsung atau berikutnya
         $currentOrNextProgram = DB::table('schedules')
             ->join('programs', 'schedules.program_id', '=', 'programs.id')
-            ->where('schedules.hari', $currentDay) // Cocokkan hari
+            ->whereRaw('JSON_EXTRACT(schedules.hari, "$") LIKE ?', ['%"' . $currentDay . '"%']) // Cocokkan hari
             ->where('schedules.jam_mulai', '<=', $currentTime->format('H:i:s')) // Jam mulai <= waktu sekarang
             ->orderBy('schedules.jam_mulai', 'desc') // Urutkan program yang sudah mulai
             ->select('programs.thumbnail_program', 'programs.judul_program', 'schedules.jam_mulai')

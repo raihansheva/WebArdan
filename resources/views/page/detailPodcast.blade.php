@@ -34,7 +34,7 @@
                             {{-- <div class="DP-author">
                             </div> --}}
                             <div class="DP-view" id="btn-tonton">
-                                <p class="text-watchP">Tonton Podcast</p>
+                                <p class="text-watchP">Watch <i class='bx bx-video'></i></p>
                             </div>
                         </div>
                     </div>
@@ -42,20 +42,18 @@
                         <div class="card-body-DP-B">
                             <div class="video-container">
                                 @if (!empty($detail_podcast->link_podcast))
-                                    <video id="PlayerVid" class="video-js" controls preload="auto" poster=""
-                                        data-setup='{"fluid": true}'>
+                                    <video id="PlayerVid" class="video-js" controls preload="auto" poster="">
                                         <source src="{{ $detail_podcast->link_podcast }}" type="application/x-mpegURL" />
                                     </video>
                                 @else
                                     <p>Streaming URL tidak tersedia.</p>
                                 @endif
-                                {{-- <video id="hlsPlayer" controls width="640" height="360"></video>
-                                <div id="player" data-pl="{{ $detail_podcast->link_podcast }}"></div> --}}
                             </div>
+                            
                         </div>
                         <div class="card-DP-footer">
                             <div class="view-DP-B">
-                                <p class="text-watchP-B">Dengar Podcast</p>
+                                <p class="text-watchP-B">Hear <i class='bx bx-microphone'></i></p>
                             </div>
                         </div>
                     </div>
@@ -125,11 +123,12 @@
                 </div>
             </div>
         </div>
+        {{--  --}}
         <div class="line-detail-podcast"></div>
     </section>
     <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
-            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+            <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
@@ -146,49 +145,49 @@
                 </div>
                 <div class="content-OP">
                     <swiper-container class="area-content-card-OP" loop="true" autoplay-delay="2500"
-                    autoplay-disable-on-interaction="false"
-                    breakpoints='{
+                        autoplay-disable-on-interaction="false"
+                        breakpoints='{
                         "480": { "slidesPerView": 1 },
                         "768": { "slidesPerView": 2 },
                         "1024": { "slidesPerView": 3 },
                         "1280": { "slidesPerView": 3 },
                         "2560": { "slidesPerView" : 3}
                     }'
-                    space-between="20">
+                        space-between="20">
                         @foreach ($all_podcast as $allpodcastList)
-                        <swiper-slide>
-                            <div class="card-podcast" data-slug="{{ $allpodcastList->slug }}">
-                                <div class="card-body-podcast">
-                                    <div class="head-body-podcast">
-                                        <div class="genre">
-                                            @if (is_array($allpodcastList->genre_podcast))
-                                                @foreach ($allpodcastList->genre_podcast as $genre)
-                                                    <h1 class="title-genre">{{ $genre }}</h1>
-                                                @endforeach
-                                            @else
-                                                <h1 class="title-genre">-</h1>
-                                            @endif
+                            <swiper-slide>
+                                <div class="card-podcast" data-slug="{{ $allpodcastList->slug }}">
+                                    <div class="card-body-podcast">
+                                        <div class="head-body-podcast">
+                                            <div class="genre">
+                                                @if (is_array($allpodcastList->genre_podcast))
+                                                    @foreach ($allpodcastList->genre_podcast as $genre)
+                                                        <h1 class="title-genre">{{ $genre }}</h1>
+                                                    @endforeach
+                                                @else
+                                                    <h1 class="title-genre">-</h1>
+                                                @endif
+                                            </div>
+                                            <div class="area-card-text">
+                                                <h1 class="card-text-podcast">{{ $allpodcastList->judul_podcast }}</h1>
+                                            </div>
                                         </div>
-                                        <div class="area-card-text">
-                                            <h1 class="card-text-podcast">{{ $allpodcastList->judul_podcast }}</h1>
+                                        <div class="card-image-podcast">
+                                            <img src="./storage/{{ $allpodcastList->image_podcast }}" alt=""
+                                                class="image-podcast">
                                         </div>
                                     </div>
-                                    <div class="card-image-podcast">
-                                        <img src="./storage/{{ $allpodcastList->image_podcast }}" alt=""
-                                            class="image-podcast">
+                                    <div class="card-header-podcast">
+                                        <div class="author-podcast">
+                                        </div>
+                                        <a class="link-podcast" href="/detail-podcast/{{ $allpodcastList->slug }}">
+                                            <div class="view-podcast">
+                                                <p class="text-watch-podcast">View Podcast</p>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="card-header-podcast">
-                                    <div class="author-podcast">
-                                    </div>
-                                    <a class="link-podcast" href="/detail-podcast/{{ $allpodcastList->slug }}">
-                                        <div class="view-podcast">
-                                            <p class="text-watch-podcast">View Podcast</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </swiper-slide>
+                            </swiper-slide>
                         @endforeach
                     </swiper-container>
                 </div>
@@ -205,12 +204,11 @@
                     <div class="content-kiri-video">
                         <div class="area-video-top">
                             @foreach (collect($videos)->slice(0, 2) as $video)
-                                <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                <div class="box-video" data-video-id="{{ $video['videoId'] }}">
                                     <img class="video-thumbnail"
-                                        src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                        src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                         alt="Thumbnail">
-                                    <div class="btn-play-video"
-                                        onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                    <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoId'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
                                     </div>
                                 </div>
@@ -218,13 +216,11 @@
                         </div>
                         <div class="area-video-mid">
                             @foreach (collect($videos)->slice(2, 1) as $video)
-                                <div class="box-video-mid"
-                                    data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                <div class="box-video-mid" data-video-id="{{ $video['videoId'] }}">
                                     <img class="video-thumbnail"
-                                        src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                        src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                         alt="Thumbnail">
-                                    <div class="btn-play-video-mid"
-                                        onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                    <div class="btn-play-video-mid" onclick="showPopupYT('{{ $video['videoId'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
                                     </div>
                                 </div>
@@ -232,12 +228,11 @@
                         </div>
                         <div class="area-video-bottom">
                             @foreach (collect($videos)->slice(3, 2) as $video)
-                                <div class="box-video" data-video-id="{{ $video['snippet']['resourceId']['videoId'] }}">
+                                <div class="box-video" data-video-id="{{ $video['videoId'] }}">
                                     <img class="video-thumbnail"
-                                        src="https://img.youtube.com/vi/{{ $video['snippet']['resourceId']['videoId'] }}/hqdefault.jpg"
+                                        src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                         alt="Thumbnail">
-                                    <div class="btn-play-video"
-                                        onclick="showPopupYT('{{ $video['snippet']['resourceId']['videoId'] }}')">
+                                    <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoId'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
                                     </div>
                                 </div>
@@ -267,7 +262,7 @@
                                         <div class="area-text-desk-top-info">
                                             <div class="area-tag">
                                                 <h2 class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</h2>
-                                                
+
                                             </div>
                                             <div class="area-text">
                                                 <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
@@ -323,14 +318,19 @@
                 });
             });
 
-            var player = videojs("PlayerVid", {
+            var player = videojs('PlayerVid', {
                 controls: true,
                 autoplay: false,
-                preload: "auto",
-                fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
-                aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
-                responsive: true,
+                preload: 'auto',
+                fluid: true,
+                aspectRatio: '16:9',
+                techOrder: ['html5'],
+                sources: [{
+                    src: "{{ $detail_podcast->link_podcast }}",
+                    type: "application/x-mpegURL"
+                }]
             });
+
 
 
             tontonSiaranBtnA.addEventListener("click", function() {

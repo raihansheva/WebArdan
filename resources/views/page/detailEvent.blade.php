@@ -69,7 +69,7 @@
                     <div class="line-detail-info"></div>
                     <section class="section-banner-full-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-full-small">
-                            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+                            <swiper-container class="mySwiper" id="swiper-l" centered-slides="true" autoplay-delay="2000"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_detail') as $list)
                                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
@@ -202,7 +202,7 @@
     </section>
     <section class="section-banner {{ $banner->where('position', 'middle')->count() > 0 ? '' : 'hidden' }}">
         <div class="area-banner">
-            <swiper-container class="mySwiper" centered-slides="true" autoplay-delay="2000"
+            <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"

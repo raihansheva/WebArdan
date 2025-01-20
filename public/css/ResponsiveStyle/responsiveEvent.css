@@ -1,5 +1,5 @@
 /* Desktop dan Laptop */
-@media (min-width: 1960px) {
+@media (min-width: 1920px) {
     .area-event {
         width: auto;
         margin: 0px 128px 0px 128px;
@@ -99,7 +99,7 @@
         gap: 15px;
     }
     .box-programE {
-        height: 320px;
+        height: 400px;
     }
     /* pop up program */
 
