@@ -502,7 +502,16 @@ const dayMapping = [
 // Fungsi untuk menampilkan program sesuai dengan hari yang dipilih
 function showScheduleForDay(day) {
     // Menyembunyikan semua konten schedule
-    scheduleContent.forEach((content) => content.classList.add("hidden"));
+    // scheduleContent.forEach((content) => content.classList.add("hidden"));
+    scheduleContent.forEach((content) => {
+        if (!content.classList.contains("hidden")) {
+            content.classList.add("fade-out");
+            setTimeout(() => {
+                content.classList.add("hidden");
+                content.classList.remove("fade-out");
+            }, 500); // Durasi fade-out sama dengan animasi CSS
+        }
+    });
 
     // Menampilkan semua konten yang sesuai dengan hari yang dipilih
     const selectedSchedules = document.querySelectorAll(
@@ -510,9 +519,15 @@ function showScheduleForDay(day) {
     );
 
     if (selectedSchedules.length > 0) {
-        selectedSchedules.forEach((schedule) =>
-            schedule.classList.remove("hidden")
-        );
+        selectedSchedules.forEach((schedule) => {
+            setTimeout(() => {
+                schedule.classList.remove("hidden");
+                schedule.classList.add("fade-in");
+                setTimeout(() => {
+                    schedule.classList.remove("fade-in");
+                }, 500); // Durasi fade-in sama dengan animasi CSS
+            }, 500); // Durasi sinkron dengan fade-out
+        });
     } else {
         console.warn(`No schedules found for day '${day}'.`);
     }
