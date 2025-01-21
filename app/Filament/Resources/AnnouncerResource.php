@@ -45,9 +45,14 @@ class AnnouncerResource extends Resource
                             ->image()
                             ->directory('uploads/images_announcer')
                             ->preserveFilenames()
-                            ->rules(['required', 'image', 'dimensions:width=254,height=300'])
-                            ->validationAttribute('Image Announcer')
-                            ->helperText('The image must be 254x300 pixels.')
+                            ->rules([
+                                'required',
+                                'image',
+                                'dimensions:max_width=1500,max_height=2000', // Atur maksimal width dan height di sini
+                                'dimensions:min_width=254,min_height=300' // Atur maksimal width dan height di sini
+                            ])
+                            ->validationAttribute('Image Event')
+                            ->helperText('The image must have min 254x300 pixel, max dimensions 1500x2000')
                             ->columnSpan(2),
                         // RichEditor di bagian paling bawah dan lebar penuh
                         RichEditor::make('bio')

@@ -217,7 +217,7 @@
                     <div class="content-info">
                         @foreach ($kategoriInfo as $kategoriInfoList)
                             <div class="box-info">
-                                <a href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
+                                <a class="link-box-info" href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
                                     <div class="area-tag-info">
                                         <h3 class="tag-info">#{{ $kategoriInfoList->nama_kategori }}</h3>
                                     </div>
@@ -302,7 +302,7 @@
         </div>
     </section>
 
-    <section class="page-ig-twitter" id="ig-twitter">
+    {{-- <section class="page-ig-twitter" id="ig-twitter">
         <div class="area-ig-twitter">
             <div class="line-ig-twitter"></div>
             <div class="area-content-ig-twitter">
@@ -311,10 +311,6 @@
                         <h1 class="title-feed-instagram">Instagram</h1>
                     </div>
                     <div class="content-feed-instagram">
-                        {{-- <div class="area-tombol">
-                            <div class="tombol-kiri"></div>
-                            <div class="tombol-kanan"></div>
-                        </div> --}}
                         <swiper-container class="area-content-box-feed-instagram" loop="true" autoplay-delay="2500"
                             autoplay-disable-on-interaction="false"
                             breakpoints='{
@@ -361,7 +357,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="page-4" id="event">
         <div class="area-event">
@@ -615,8 +611,8 @@
                         breakpoints='{
                         "320": { "slidesPerView": 1 },
                         "375": { "slidesPerView": 1 },
-                        "425": { "slidesPerView": 2 },
-                        "480": { "slidesPerView": 2 },
+                        "425": { "slidesPerView": 1 },
+                        "480": { "slidesPerView": 1 },
                         "768": { "slidesPerView": 3 },
                         "1024": { "slidesPerView": 4 },
                         "1280": { "slidesPerView": 5 },
@@ -843,7 +839,7 @@
                         <!-- Pastikan $hariArray tidak kosong sebelum menampilkan konten -->
                         @if ($hariArray)
                             @foreach ($hariArray as $day)
-                                <div class="box-schedule hidden" data-day="{{ strtolower($day) }}">
+                                <div class="box-schedule hide" data-day="{{ strtolower($day) }}">
                                     <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}" alt="">
                                     <div class="area-bio-schedule">
                                         <div class="bio-schedule">
@@ -957,14 +953,16 @@
                 });
             });
 
-            var player = videojs("videoPlayer", {
-                controls: true,
-                autoplay: false,
-                preload: "auto",
-                fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
-                aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
-                responsive: true,
-            });
+            // Pastikan videojs sudah terdefinisi
+window.player = videojs("videoPlayer", {
+    controls: true,
+    autoplay: false,
+    preload: "auto",
+    fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
+    aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
+    responsive: true,
+});
+
 
             // let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali
             // let isManualPiPActive = false; // Flag untuk melacak jika PiP diaktifkan secara manual
@@ -1083,26 +1081,26 @@
 
 
             // Tombol "Tonton Siaran"
-            tontonSiaranBtnA.addEventListener("click", function() {
-                hideCard(cardA);
-                pauseStreaming();
-                setTimeout(() => {
-                    player.play();
-                    // handleUserInteraction();
-                    showCard(cardB);
-                }, 500);
-            });
+            // tontonSiaranBtnA.addEventListener("click", function() {
+            //     hideCard(cardA);
+            //     pauseStreaming();
+            //     setTimeout(() => {
+            //         player.play();
+            //         // handleUserInteraction();
+            //         showCard(cardB);
+            //     }, 500);
+            // });
 
-            // Tombol "Dengar Siaran"
-            tontonSiaranBtnB.addEventListener("click", function() {
-                hideCard(cardB);
-                // Hentikan video
-                player.pause();
-                playStreaming();
-                setTimeout(() => {
-                    showCard(cardA);
-                }, 500);
-            });
+            // // Tombol "Dengar Siaran"
+            // tontonSiaranBtnB.addEventListener("click", function() {
+            //     hideCard(cardB);
+            //     // Hentikan video
+            //     player.pause();
+            //     playStreaming();
+            //     setTimeout(() => {
+            //         showCard(cardA);
+            //     }, 500);
+            // });
 
 
         });

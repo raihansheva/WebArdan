@@ -42,14 +42,18 @@
                         <div class="card-body-DP-B">
                             <div class="video-container">
                                 @if (!empty($detail_podcast->link_podcast))
-                                    <video id="PlayerVid" class="video-js" controls preload="auto" poster="">
-                                        <source src="{{ $detail_podcast->link_podcast }}" type="application/x-mpegURL" />
+                                    {{-- <video id="PlayerVid" class="video-js" controls preload="auto" poster="">
+                                        <source src="https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe"/>
+                                    </video> --}}
+                                    <video id="PlayerVid" class="video-js" controls preload="auto"
+                                        poster=""
+                                        data-setup='{"techOrder": ["youtube"], "sources": [{"src": "https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe", "type": "video/youtube"}]}'>
                                     </video>
                                 @else
                                     <p>Streaming URL tidak tersedia.</p>
                                 @endif
                             </div>
-                            
+
                         </div>
                         <div class="card-DP-footer">
                             <div class="view-DP-B">
@@ -151,7 +155,7 @@
                         "768": { "slidesPerView": 2 },
                         "1024": { "slidesPerView": 3 },
                         "1280": { "slidesPerView": 3 },
-                        "2560": { "slidesPerView" : 3}
+                        "2560": { "slidesPerView" : 4}
                     }'
                         space-between="20">
                         @foreach ($all_podcast as $allpodcastList)
@@ -301,6 +305,7 @@
     </section>
     <script src="{{ asset('js/detailPodcast.js?v=' . time()) }}"></script>
     <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-youtube/dist/Youtube.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Pilih semua elemen dengan class "card-podcast"
@@ -318,18 +323,19 @@
                 });
             });
 
-            var player = videojs('PlayerVid', {
+            const player = videojs('PlayerVid', {
                 controls: true,
                 autoplay: false,
                 preload: 'auto',
                 fluid: true,
                 aspectRatio: '16:9',
-                techOrder: ['html5'],
                 sources: [{
-                    src: "{{ $detail_podcast->link_podcast }}",
-                    type: "application/x-mpegURL"
-                }]
+                    src: 'https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe',
+                    type: 'video/youtube', // Tipe untuk YouTube
+                }, ],
             });
+
+
 
 
 

@@ -94,7 +94,7 @@
                         <div class="area-box-news">
                             @foreach ($taginfo as $tagInfoList)
                                 <div class="box-news">
-                                    <a href="/info-tag/{{ $tagInfoList->nama_kategori }}">
+                                    <a class="link-news" href="/info-tag/{{ $tagInfoList->nama_kategori }}">
                                         <div class="area-tag-news">
                                             <h3 class="tag-news">#{{ $tagInfoList->nama_kategori }}</h3>
                                         </div>
@@ -157,7 +157,8 @@
                             @endforeach
                         </div>
                     </div>
-                    <section class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
+                    <section
+                        class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-small">
                             <swiper-container class="mySwiper" id="swiper-s" centered-slides="true" autoplay-delay="2000"
                                 autoplay-disable-on-interaction="false" loop="true">
@@ -174,13 +175,13 @@
                         </div>
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
-                                <div class="box-event"
-                                    onclick="showPopupEvent(this)"
+                                <div class="box-event" onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                                     data-slug="{{ $eventUpcomingList->slug }}"
                                     data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
-                                    <img class="image-OV" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
+                                    <img class="image-OV" src="./storage/{{ $eventUpcomingList->image_event }}"
+                                        alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">
@@ -233,34 +234,34 @@
             </div>
             <div class="area-box-info-artis">
                 @foreach ($artis as $berita)
-                        <div class="box-artis">
-                            <div class="area-image-artis">
-                                <img class="image-artis" src="./storage/{{ $berita->image_artis }}" alt="">
-                                <div class="area-header-artis">
-                                    <h2 class="name-artis">{{ $berita->nama }}</h2>
-                                </div>
+                    <div class="box-artis">
+                        <div class="area-image-artis">
+                            <img class="image-artis" src="./storage/{{ $berita->image_artis }}" alt="">
+                            <div class="area-header-artis">
+                                <h2 class="name-artis">{{ $berita->nama }}</h2>
                             </div>
-                            <div class="area-bio-artis">
-                                <div class="area-judul-berita">
-                                    <p class="judul-berita">{{ $berita->judul_berita }}</p>
-                                </div>
-                                <div class="area-konten-berita">
-                                    <p class="desk-berita">{{ strip_tags($berita->ringkasan_berita) }}</p>
-                                    {{-- <p class="desk-berita">
+                        </div>
+                        <div class="area-bio-artis">
+                            <div class="area-judul-berita">
+                                <p class="judul-berita">{{ $berita->judul_berita }}</p>
+                            </div>
+                            <div class="area-konten-berita">
+                                <p class="desk-berita">{{ strip_tags($berita->ringkasan_berita) }}</p>
+                                {{-- <p class="desk-berita">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
                             Sed scelerisque turpis a felis consequat, ac pretium libero facilisis. Quisque non varius neque.
                             Integer facilisis nisi non risus fermentum, sed faucibus massa blandit.
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a eros vitae lectus consequat vulputate.
                         </p> --}}
-                                    {{-- <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
+                                {{-- <span class="see-more-news" data-judul-berita="{{ $berita->judul_berita }}"
                             data-desk-berita="{{ strip_tags($berita->konten_berita) }}"
                             onclick="showPopupArtis(this)">See More Details</span> --}}
-                                    <a href="/detail-info-artis/{{ $berita->slug }}">
-                                        <span class="see-more-news">See More Details</span>
-                                    </a>
-                                </div>
+                                <a href="/detail-info-artis/{{ $berita->slug }}">
+                                    <span class="see-more-news">See More Details</span>
+                                </a>
                             </div>
                         </div>
+                    </div>
                 @endforeach
                 <div id="popupArtis" class="popup-artis" onclick="closePopupOutsideArtis(event)">
                     <div class="popup-content-artis">

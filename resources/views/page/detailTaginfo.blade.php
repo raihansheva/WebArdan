@@ -55,7 +55,7 @@
                         <div class="area-box-news">
                             @foreach ($taginfo as $tagInfoList)
                                 <div class="box-news">
-                                    <a href="/info-tag/{{ $tagInfoList->nama_kategori }}">
+                                    <a class="link-news" href="/info-tag/{{ $tagInfoList->nama_kategori }}">
                                         <div class="area-tag-news">
                                             <h3 class="tag-news">#{{ $tagInfoList->nama_kategori }}</h3>
                                         </div>

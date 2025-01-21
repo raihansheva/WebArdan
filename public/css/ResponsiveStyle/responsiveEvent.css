@@ -1,5 +1,136 @@
 /* Desktop dan Laptop */
-@media (min-width: 1920px) {
+@media (min-width: 2560px) {
+    .area-event {
+        width: auto;
+        margin: 0px 200px 0px 200px;
+    }
+    .title-event {
+        font-size: 34px;
+    }
+    .content-event {
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD {
+        height: 880px;
+    }
+    .area-countdown {
+        height: 80px;
+    }
+
+    .countdown {
+        gap: 15px;
+    }
+
+    .timer {
+        font-size: 32px;
+    }
+    .title-timer {
+        font-size: 22px;
+    }
+    .date-month {
+        font-size: 30px;
+    }
+    .year {
+        font-size: 28px;
+    }
+    /* pop up event */
+    .popup-content-event {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
+    }
+
+    .desk-event {
+        font-size: 16px;
+    }
+
+    .jam-event {
+        font-size: 14px;
+    }
+
+    .title-box-event {
+        font-size: 28px;
+    }
+
+    .link-event {
+        font-size: 16px;
+    }
+    /* -------------- */
+    /* area other upcoming event */
+    .area-other-event {
+        margin: 0px 200px 0px 200px;
+    }
+    .header-other-event {
+        margin-top: 30px;
+    }
+    .title-event-other {
+        font-size: 34px;
+    }
+
+    .area-content-OV {
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .content-event-OV {
+        height: 520px;
+    }
+    .area-days-date-right {
+        height: 75px;
+    }
+    .date-month-right {
+        font-size: 42px;
+    }
+    .year-right {
+        font-size: 18px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .area-programE {
+        margin: 0px 200px 0px 200px;
+        padding-bottom: 60px;
+    }
+    .title-programE {
+        font-size: 38px;
+        margin-top: 15px;
+    }
+    .content-programE {
+        margin-top: 10px;
+        gap: 15px;
+    }
+    .box-programE {
+        height: 520px;
+    }
+    /* pop up program */
+
+    .popup-content {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
+    }
+
+    .desk-program {
+        font-size: 16px;
+    }
+
+    .jam-program {
+        font-size: 14px;
+    }
+
+    .title-box-program {
+        font-size: 28px;
+    }
+
+    .link-program {
+        font-size: 20px;
+    }
+
+    /* -------------- */
+    /* --------------------- */
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
     .area-event {
         width: auto;
         margin: 0px 128px 0px 128px;
@@ -128,6 +259,7 @@
     /* -------------- */
     /* --------------------- */
 }
+
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
 }

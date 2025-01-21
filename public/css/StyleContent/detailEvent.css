@@ -185,18 +185,24 @@
 }
 
 .area-image-detail-event {
-    width: auto;
-    height: 350px;
+    width: 100%; /* Atur lebar sesuai kebutuhan, 100% misalnya */
     background-color: gainsboro;
     margin-top: 12px;
+    position: relative; /* Dibutuhkan untuk child position: absolute */
+    overflow: hidden;
+
+    /* Gunakan padding-top untuk menjaga rasio 16:9 */
+    padding-top: 56.25%; /* Rasio 16:9 */
+    height: 0; /* Tinggi diatur oleh padding-top */
 }
 
-
-
 .image-detail-event {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%; /* Sesuaikan dengan lebar parent */
+    height: 100%; /* Sesuaikan dengan tinggi parent */
+    position: absolute; /* Untuk menempel pada parent */
+    object-fit: cover; /* Menjaga proporsi gambar */
+    top: 0; /* Atur posisi di atas */
+    left: 0; /* Atur posisi di kiri */
 }
 
 .area-desk-detail-event {
@@ -482,6 +488,15 @@ figcaption span:hover {
     gap: 8px;
 }
 
+.link-news{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .box-news {
     flex: 0 0 calc(50% - 6px);
     height: 80px;
@@ -490,9 +505,6 @@ figcaption span:hover {
     box-sizing: border-box;
     cursor: pointer; /* Dibutuhkan untuk child position: absolute */
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .area-tag-news {

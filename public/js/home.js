@@ -75,6 +75,7 @@ const getScrollAmountA = () => {
 // ----------------------------------------
 
 // card-streaming
+
 const cardA = document.querySelector(".card-A");
 const cardB = document.querySelector(".card-B");
 const tontonSiaranBtnA = document.querySelector(".card-A .view");
@@ -99,17 +100,22 @@ function hideCard(card) {
     }, 500);
 }
 
-tontonSiaranBtnA.addEventListener("click", function () {
+tontonSiaranBtnA.addEventListener("click", function() {
     hideCard(cardA);
     pauseStreaming();
     setTimeout(() => {
+        player.play();
+        // handleUserInteraction();
         showCard(cardB);
     }, 500);
 });
 
-tontonSiaranBtnB.addEventListener("click", function () {
+// Tombol "Dengar Siaran"
+tontonSiaranBtnB.addEventListener("click", function() {
     hideCard(cardB);
-    // playStreaming();
+    // Hentikan video
+    player.pause();
+    playStreaming();
     setTimeout(() => {
         showCard(cardA);
     }, 500);

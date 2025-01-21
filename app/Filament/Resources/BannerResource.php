@@ -174,16 +174,37 @@ class BannerResource extends Resource
                                 // Validasi berdasarkan width_type
                                 switch ($widthType) {
                                     case 'Full Width Large':
-                                        return ['required', 'image', 'dimensions:width=801,height=120'];
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions::min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                        ];
                                     case 'Full Width Small':
-                                        return ['required', 'image', 'dimensions:width=720,height=120'];
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions::min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                        ];
                                     case 'Large':
-                                        return ['required', 'image', 'dimensions:width=422,height=120'];
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions:min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                        ];
                                     case 'Small':
-                                        return ['required', 'image', 'dimensions:width=364,height=120'];
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions:min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                        ];
                                     default: // Default untuk 'Full Width'
-                                        return ['required', 'image', 'dimensions:width=1350,height=250'];
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions:min_width=1960,max_width=1800,min_height=200,max_height=250'
+                                        ];
                                 }
+                                
                             })
                             ->validationAttribute('Banner Image')
                             ->helperText(function (callable $get) {

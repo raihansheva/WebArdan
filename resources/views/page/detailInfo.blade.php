@@ -59,7 +59,14 @@
                                 <h2 class="text-header-tagar">Tags</h2>
                             </div>
                             <div class="area-text-tagar">
-                                <h2 class="tagar-info">{{ $info->tagInfo->nama_kategori }}</h2>
+                                @if (is_array( $info->tag_info))
+                                    @foreach ($info->tag_info as $tag)
+                                        <h2 class="tagar-info">#{{ $tag}}</h2>
+                                    @endforeach
+                                @else
+                                    <h2 class="tagar-info">-</h2>
+                                @endif
+                                {{-- <h2 class="tagar-info">{{ }}</h2> --}}
                             </div>
                         </div>
                     </div>
@@ -134,7 +141,7 @@
                         <div class="area-box-news">
                             @foreach ($kategoriInfo as $kategoriInfoList)
                                 <div class="box-news">
-                                    <a href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
+                                    <a class="link-news" href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
                                         <div class="area-tag-news">
                                             <h3 class="tag-news">{{ $kategoriInfoList->nama_kategori }}</h3>
                                         </div>

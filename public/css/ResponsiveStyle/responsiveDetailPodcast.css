@@ -1,5 +1,605 @@
 /* Desktop dan Laptop */
-@media (min-width: 1920px) {
+@media (min-width: 2560px) {
+    .page-detail-1 {
+        height: 860px;
+    }
+
+    .area-detail-podcast {
+        margin: 0px 200px 0px 200px;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP {
+        width: 100%;
+        /* background-color: darkgrey; */
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* height: 350px; */
+    }
+
+    .card-DP .card-DP-header {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP .card-DP-body {
+        /* width: 100%; */
+        height: 605px;
+        background-color: white;
+        /* padding: 30px; */
+        overflow: hidden;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .card-DP .card-DP-header .DP-author {
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        width: 73%;
+        height: 60px;
+        display: flex;
+        background-color: white;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        cursor: pointer;
+        /* border: 1px black solid; */
+    }
+
+    .card-DP .card-DP-header .DP-author::before {
+        background-color: transparent;
+        border-top-left-radius: 20px;
+        box-shadow: -30px -30px 0 white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 60px;
+        width: 27%;
+        content: "";
+        cursor: pointer;
+        /* border: 1px black solid; */
+    }
+
+    .card-DP .card-DP-header .DP-view {
+        font-weight: 600;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 30px;
+        width: calc(22% - 2px);
+        background-color: var(--secondary-color);
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .text-watchP {
+        font-family: "Poppins";
+    }
+
+    .btn-play-DP {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        cursor: pointer;
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn-play-DP span {
+        /* color: rgb(238, 238, 238); */
+        font-size: 32px;
+    }
+
+    .text-watchP {
+        font-family: "Poppins";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .text-watchP i {
+        font-size: 30px;
+    }
+
+    /* card B */
+    .card-DP-B {
+        width: 100%;
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        /* border: 1px green solid; */
+        height: auto;
+    }
+
+    .card-DP-B .card-header-DP-B {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-DP-B .card-body-DP-B {
+        width: auto;
+        /* height: 100%; */
+        /* background-color: white; */
+        /* padding: 30px; */
+        overflow: hidden;
+        display: flex;
+        /* flex-direction: column; */
+        gap: 12px;
+        /* border-radius: 20px; */
+        /* border: 1px red solid; */
+    }
+
+    .card-DP-footer {
+        width: 100%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .card-DP-B .view-DP-B {
+        font-weight: 600;
+        /* color: rgb(238, 238, 238); */
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 25px;
+        width: calc(20% - 12px);
+        background-color: var(--secondary-color);
+        border-radius: 12px;
+        padding: 10px;
+        /* margin-top: 5px; */
+        cursor: pointer;
+    }
+
+    .text-watchP-B {
+        color: rgb(48, 48, 48);
+        font-family: "Poppins";
+        font-size: 18px;
+        gap: 8px;
+    }
+
+    .text-watchP-B i {
+        font-size: 24px;
+    }
+
+    .video-container {
+        position: relative;
+        /* padding-bottom: 42.85%; */
+        height: 610px;
+        overflow: hidden;
+        width: 100%;
+        background-color: black; /* Optional: background color if needed */
+        /* border: 1px red solid; */
+    }
+
+    .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode) {
+        padding-top: 610px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
+    }
+
+    .video-container iframe,
+    .video-container #player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    /* ---------------------- */
+    /* animasi */
+    /* Kelas untuk menampilkan card dengan animasi */
+    .card-DP.show {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+        height: fit-content;
+    }
+    .card-DP-B.show {
+        opacity: 1;
+        transform: translateY(0);
+        width: 100%;
+        height: auto;
+    }
+
+    /* Kelas untuk menyembunyikan card dengan animasi */
+    .card-DP.hide,
+    .card-DP-B.hide {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* content */
+    .content-detail-podcast {
+        margin-top: 25px;
+    }
+
+    .line-detail-podcast {
+        margin: 20px 128px 30px 128px;
+    }
+
+    .area-header-DP {
+        gap: 15px;
+    }
+
+    .detail-genre {
+        font-size: 20px;
+        padding: 4px 15px;
+    }
+
+    .detail-title {
+        font-size: 36px;
+    }
+
+    .area-desk-detail-podcast {
+        margin-top: 10px;
+    }
+
+    .desk-podcast {
+        font-size: 16px;
+        font-weight: 200;
+    }
+    /* ------------ */
+    /* area detail kanan */
+
+    .title-detail-kanan {
+        font-size: 36px;
+    }
+
+    .area-episodeP {
+        height: 800px;
+    }
+
+    .card-episode {
+        padding: 20px 15px;
+    }
+
+    .title-genre-episode {
+        font-size: 16px;
+        margin: 3px 20px;
+    }
+
+    .card-text-podcast-episode {
+        font-size: 30px;
+    }
+
+    .card-image-podcast-episode {
+        height: 175px;
+    }
+
+    #style-3::-webkit-scrollbar {
+        width: 10px;
+    }
+    /* ---------------- */
+
+    /* area other podcast */
+
+    .page-detail-2 {
+        margin-bottom: 20px;
+    }
+
+    .area-content-OP {
+        padding: 0px 200px 0px 200px;
+        margin-top: 40px;
+        height: fit-content;
+        padding-bottom: 20px;
+    }
+
+    .title-OP {
+        font-size: 40px;
+        padding: 25px 0px 5px 0px;
+    }
+
+    .content-OP {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .area-content-card-OP {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 0px;
+    }
+
+    .tombol-kiri-OP,
+    .tombol-kanan-OP {
+        height: 50px;
+        width: 50px;
+    }
+
+    .tombol-kanan-OP {
+        right: -15;
+    }
+
+    .tombol-kiri-OP {
+        left: -15;
+    }
+
+    .card-podcast {
+        flex: 1 0 calc(25% - 14px); /* Membuat card mengambil 50% lebar, dengan margin antar card */
+        height: fit-content;
+    }
+
+    .card-podcast .card-header-podcast {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        width: 100%;
+        /* border: 1px red solid; */
+    }
+
+    .card-podcast .card-body-podcast {
+        /* width: 100%; */
+        height: 380px;
+        background-color: white;
+        /* padding: 30px; */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 20px;
+    }
+
+    .head-body-podcast {
+        width: 100%;
+        height: auto;
+        /* border: 1px black solid; */
+    }
+
+    .genre {
+        width: fit-content;
+        height: fit-content;
+        text-align: center;
+        border: 1px black solid;
+        border-radius: 5px;
+    }
+
+    .title-genre {
+        font-size: 18px;
+        font-family: "Bebas Neue";
+        font-weight: 200;
+        margin: 3px 20px;
+    }
+
+    .area-card-text {
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .card-text-podcast {
+        font-size: 32px;
+        margin: 0px;
+        font-weight: 200;
+        font-family: "Bebas Neue";
+    }
+
+    .card-image-podcast {
+        width: 100%;
+        height: 285px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+    }
+
+    .card-podcast .card-header-podcast .author-podcast {
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        width: 57%;
+        height: 50px;
+        display: flex;
+        background-color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        /* border: 1px black solid; */
+    }
+
+    .card-podcast .card-header-podcast .author-podcast::before {
+        background-color: transparent;
+        border-top-left-radius: 10px;
+        box-shadow: -30px -30px 0 white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 55px;
+        width: 43%;
+        content: "";
+        /* border: 1px black solid; */
+    }
+
+    .card-podcast .card-header-podcast .view-podcast {
+        font-weight: 600;
+        color: #333;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 25px;
+        width: 85%;
+        /* background-color: #ff004d; */
+        border-radius: 12px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .link-podcast {
+        width: 40%;
+        /* border: 1px red solid; */
+        z-index: 10;
+        text-decoration: none;
+    }
+
+    .text-watch-podcast {
+        font-family: "Poppins";
+        font-size: 14px;
+    }
+    /* ------------------- */
+
+    /* area VNS */
+
+    .page-detail-3 {
+        height: fit-content;
+    }
+
+    .area-video-news-stream {
+        margin: 0px 200px 0px 200px;
+    }
+
+    .area-content-VNS {
+        gap: 25px;
+        height: fit-content;
+    }
+
+    /* content kiri */
+
+    .area-content-VNS-kiri {
+        width: 60%;
+    }
+
+    .title-video {
+        font-size: 40px;
+    }
+
+    .content-kiri-video {
+        gap: 17px;
+        height: fit-content;
+    }
+
+    .area-video-top,
+    .area-video-bottom {
+        gap: 20px;
+        height: 200px;
+    }
+
+    .box-video-mid {
+        height: 350px;
+    }
+
+    .btn-play-video {
+        height: 45px;
+        width: 45px;
+    }
+
+    .btn-play-video span {
+        font-size: 30px;
+    }
+
+    .btn-play-video-mid {
+        width: 55px;
+        height: 55px;
+    }
+
+    .btn-play-video-mid span {
+        font-size: 33px;
+    }
+
+    .popup-content-yt {
+        width: 560px;
+        height: 315px;
+    }
+
+    /* --------------- */
+
+    /* content kanan */
+    .area-content-VNS-kanan {
+        width: 40%;
+        height: fit-content;
+        gap: 10px;
+    }
+
+    .area-content-news {
+        height: fit-content;
+    }
+
+    .content-news {
+        height: 560px;
+    }
+
+    /* area news */
+    .title-news {
+        font-size: 40px;
+    }
+
+    .box-news {
+        height: 85px;
+        padding: 8px;
+    }
+
+    .area-image {
+        height: 100%;
+    }
+
+    .tag-top-info {
+        font-size: 20px;
+    }
+
+    .desk-top-info {
+        font-size: 18px;
+    }
+
+    .date-top-info {
+        font-size: 16px;
+    }
+    /* ------------ */
+
+    /* area content stream */
+
+    .area-content-streaming {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .title-streaming {
+        font-size: 40px;
+    }
+
+    .box-streaming {
+        height: 158px;
+    }
+
+    .btn-play-streaming {
+        width: 40px;
+        height: 40px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 26px;
+    }
+
+    /* ------------------- */
+    /* --------------- */
+
+    /* -------------------- */
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
     .page-detail-1 {
         height: 860px;
     }
@@ -598,6 +1198,7 @@
 
     /* -------------------- */
 }
+
 @media (max-width: 1366px) {
     .card-DP .card-DP-body {
         height: 440px;

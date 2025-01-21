@@ -1141,7 +1141,7 @@ if (
             hoursElement.innerText = "00";
             minutesElement.innerText = "00";
             secondsElement.innerText = "00";
-            alert("Countdown selesai!");
+            // alert("Countdown selesai!");
         }
     }
 

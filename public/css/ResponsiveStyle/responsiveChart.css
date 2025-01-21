@@ -1,4 +1,108 @@
-@media (min-width: 192  0px) {
+@media (min-width: 2560px) {
+    .area-chart {
+        margin: 15px 200px 0px 200px;
+    }
+
+    .title-chart {
+        font-size: 44px;
+    }
+
+    .content-chart {
+        margin-top: 15px;
+    }
+
+    .area-top-chart {
+        gap: 15px;
+    }
+
+    .tab-chart {
+        height: 60px;
+    }
+
+    .text-tab {
+        font-size: 30px;
+    }
+
+    thead tr {
+        font-size: 32px;
+    }
+
+    tbody tr {
+        font-size: 30px;
+        height: 60px;
+    }
+
+    .btn-play-chart span {
+        font-size: 28px;
+    }
+
+    .btn-see-more {
+        font-size: 20px;
+    }
+
+    .area-streaming-news {
+        margin: 0px 200px 0px 200px;
+    }
+
+    .area-content-SN {
+        margin-bottom: 60px;
+    }
+
+    /* content kiri */
+    .area-content-SN-kiri {
+        width: 60%;
+    }
+
+    .title-SN-kiri {
+        font-size: 34px;
+    }
+
+    .box-streaming {
+        height: 200px;
+    }
+
+    .btn-play-streaming {
+        height: 50px;
+        width: 50px;
+    }
+
+    /* -------------- */
+
+    /* content kanan */
+    .area-content-SN-kanan {
+        width: 40%;
+    }
+
+    .title-top-news {
+        font-size: 34px;
+    }
+
+    .content-top-news {
+        gap: 14px;
+    }
+
+    .box-news {
+        height: fit-content;
+        padding: 15px;
+    }
+
+    .tag-top-info {
+        font-size: 22px;
+    }
+
+    .desk-top-info {
+        font-size: 20px;
+    }
+
+    .date-top-info {
+        font-size: 18px;
+    }
+    /*--------------- */
+    /* ------------------ */
+    /* ------------------ */
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
     .area-chart {
         margin: 15px 128px 0px 128px;
     }

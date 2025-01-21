@@ -1,4 +1,365 @@
-@media (min-width: 1920px) {
+@media (min-width: 2560px) {
+    /* page news 1 */
+    .header-info-news {
+        height: 380px;
+    }
+
+    .title-header {
+        font-size: 44px;
+        margin: 0px 200px;
+    }
+
+    /* -------------- */
+
+    /* page news 2 */
+    .area-detail-event {
+        margin: 0px 200px 0px 200px;
+    }
+
+    .content-detail-event {
+        gap: 15px;
+    }
+
+    /* content kiri */
+    .content-IN-kiri {
+        width: 65%;
+    }
+
+    .box-info {
+        height: auto;
+    }
+
+    .content-box-info {
+        margin: 15px;
+    }
+
+    /* .area-image-info {
+        height: 45%;
+    } */
+
+    .link-url-detail-event {
+        font-size: 22px;
+    }
+
+    .url-detail-event {
+        font-size: 22px;
+    }
+
+    .text-span-detail-event {
+        font-size: 26px;
+    }
+
+    .title-detail-event {
+        font-size: 42px;
+    }
+
+    .date-detail-event {
+        font-size: 22px;
+    }
+
+    .area-image-detail-event {
+        /* height: 450px; */
+        font-size: 20px;
+    }
+
+    .area-desk-detail-event {
+        font-size: 22px;
+    }
+
+    .desk-detail-event {
+        font-size: 26px;
+    }
+
+    .text-header-ticket-event {
+        font-size: 32px;
+    }
+
+    .text-ticket {
+        font-size: 24px;
+    }
+
+    /* area trending info */
+    .box-trending-info {
+        max-height: 350px;
+        padding: 20px;
+    }
+
+    .title-trending-info {
+        font-size: 46px;
+    }
+
+    .tag-trending-info {
+        font-size: 24px;
+    }
+
+    .desk-trending-info {
+        font-size: 20px;
+        -webkit-line-clamp: 2; /* Membatasi 3 baris */
+    }
+
+    .date-trending-info {
+        font-size: 18px;
+    }
+    /* ------------------ */
+    /* ------------ */
+
+    /* content kanan */
+    .content-IN-kanan {
+        width: 35%;
+    }
+
+    /* area-news */
+
+    .header-news {
+        font-size: 44px;
+    }
+
+    .box-news {
+        flex: 0 0 calc(50% - 5px);
+        height: 100px;
+        /* /*background-color: #f0f0f0; */
+        border-radius: 50px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+    }
+
+    .area-tag-news {
+        width: auto;
+        height: fit-content;
+        /* border: 1px red solid; */
+        padding: 10px;
+        z-index: 2;
+    }
+
+    .tag-news {
+        margin: 0px;
+        font-family: "Bebas Neue";
+        /* color: white; */
+        font-weight: 200;
+        font-size: 28px;
+    }
+
+    .image-news {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+    /* ----------- */
+
+    /* area streaming */
+
+    .title-streaming {
+        font-size: 44px;
+    }
+
+    .area-thumbnail {
+        height: 180px;
+    }
+
+    .text-streaming {
+        font-size: 14px;
+    }
+
+    .btn-play-streaming {
+        width: 65px;
+        height: 65px;
+    }
+
+    .btn-play-streaming span {
+        font-size: 32px;
+    }
+
+    /* ------------- */
+
+    /* area news */
+    .title-top-news {
+        font-size: 46px;
+    }
+
+    .content-top-news {
+        gap: 14px;
+    }
+
+    .box-top-info {
+        height: 105px;
+        padding: 15px;
+    }
+
+    .area-top-image {
+        width: 40%;
+    }
+
+    .tag-top-info {
+        font-size: 22px;
+    }
+
+    .desk-top-info {
+        font-size: 20px;
+    }
+
+    .date-top-info {
+        font-size: 18px;
+    }
+    /* ------------- */
+
+    /* area event */
+
+    .title-event {
+        font-size: 44px;
+    }
+
+    .area-event-bottom {
+        height: fit-content;
+        gap: 15px;
+    }
+
+    .box-event {
+        height: 350px;
+    }
+
+    .area-days-date-right {
+        height: 60px;
+    }
+
+    .date-month-right {
+        font-size: 32px;
+    }
+
+    .year-right {
+        font-size: 18px;
+    }
+
+    .area-see-more {
+        margin-top: 15px;
+    }
+
+    .see-more {
+        font-size: 24px;
+    }
+
+    /* pop up event */
+    .popup-content {
+        width: 450px;
+        height: 200px;
+        padding: 25px;
+    }
+
+    .desk-program {
+        font-size: 16px;
+    }
+
+    .jam-program {
+        font-size: 14px;
+    }
+
+    .title-box-program {
+        font-size: 28px;
+    }
+
+    .link-program {
+        font-size: 20px;
+    }
+    /* -------------- */
+
+    /* ------------- */
+
+    /* ------------ */
+
+    /* -------------- */
+
+    /* page news 3 */
+
+    .area-info-artis {
+        margin: 0px 200px 20px 200px;
+    }
+
+    .header-info-artis{
+        margin-top: 15px;
+    }
+
+    .title-info-artis {
+        font-size: 40px;
+    }
+
+    /* area box */
+
+    .area-box-info-artis {
+        margin-top: 15px;
+        /* border: 1px red solid; */
+        gap: 15px;
+    }
+
+    .box-artis {
+        flex: 1 1 calc(25% - 15px);
+        max-width: calc(25% - 15px);
+        height: fit-content;
+    }
+
+    .nama {
+        font-size: 15px;
+    }
+
+    .bio {
+        font-size: 13px;
+    }
+
+    .area-image-artis {
+        height: 250px;
+    }
+
+    .area-header-artis{
+        height: 35%;
+    }
+
+    .name-artis {
+        font-size: 22px;
+    }
+
+    .judul-berita {
+        font-size: 26px;
+    }
+
+    .desk-berita {
+        font-size: 18px;
+    }
+
+    .see-more-news {
+        font-size: 18px;
+    }
+
+    .popup-content-artis {
+        width: 1050px;
+        max-height: 500px;
+        padding: 20px;
+    }
+
+    .header-popup-artis {
+        font-size: 44px;
+    }
+
+    .popUp-judul-berita {
+        font-size: 38px;
+    }
+
+    .popUp-desk-berita {
+        font-size: 24px;
+    }
+
+    /* ----------- */
+
+    /* ------------- */
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
     /* page news 1 */
     .header-info-news {
         height: 380px;
@@ -363,6 +724,7 @@
 
     /* ------------- */
 }
+
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
 }

@@ -246,6 +246,11 @@
     overflow: hidden;
 }
 
+.PlayerVid-dimensions{
+    height: 100%;
+    width: 100%;
+}
+
 .PlayerVid-dimensions.vjs-fluid:not(.vjs-audio-only-mode){
     padding-top: 375px; /* Rasio 16:9 (9 / 16 = 0.5625 * 100) */
 }
