@@ -100,3 +100,4 @@ Route::get('/podcast/{idP}/episode/{eps}/{direction}', [PlaylistController::clas
 Route::get('/podcast/details/{id}', [PlaylistController::class, 'showPodcastDetails']);
 Route::get('/api/next-program-image', [ProgramController::class, 'getNextProgramImage']);
 Route::get('/api/next-program-thumbnail', [ProgramController::class, 'getNextThumbnailImage']);
+Route::get('/api/popup', [ProgramController::class, 'getPopup']);

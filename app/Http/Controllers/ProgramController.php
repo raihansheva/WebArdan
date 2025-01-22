@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PopupAds;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -85,6 +86,28 @@ class ProgramController extends Controller
     }
 
 
+    public function getPopup()
+    {
+        $currentDate = now()->toDateString();
+        $currentTime = now()->toTimeString();
+
+        // Mendapatkan popup aktif berdasarkan tanggal dan waktu
+        $popup = PopupAds::where('start_date', '<=', $currentDate)
+            ->where('end_date', '>=', $currentDate)
+            ->where(function ($query) use ($currentDate, $currentTime) {
+                $query->where(function ($subQuery) use ($currentTime) {
+                    // Jika jam selesai lebih besar atau sama dengan sekarang
+                    $subQuery->where('end_time', '>=', $currentTime);
+                })->orWhere(function ($subQuery) use ($currentDate) {
+                    // Atau jika tanggal selesai lebih besar dari sekarang
+                    $subQuery->where('end_date', '>', $currentDate);
+                });
+            })
+            ->first();
+
+        // Mengembalikan response JSON
+        return response()->json($popup);
+    }
 
 
     /**

@@ -1,0 +1,145 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Filament\Resources\PopUpAdsResource\Pages;
+use App\Filament\Resources\PopUpAdsResource\RelationManagers;
+use App\Models\PopUpAds;
+use Filament\Forms;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+class PopUpAdsResource extends Resource
+{
+    protected static ?string $model = PopupAds::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Card::make()
+                    ->schema([
+                        TextInput::make('title'),
+                        Textarea::make('message'),
+                        Select::make('image_ratio')
+                            ->options([
+                                'landscape' => 'Landscape',
+                                'portrait' => 'Portrait',
+                            ])
+                            ->required()
+                            ->label('Image Rasio')
+                            ->reactive(),
+                        FileUpload::make('images_ads')
+                            ->label('Ads Image :')
+                            ->image()
+                            ->directory('uploads/images_ads')
+                            ->disk('public')
+                            ->preserveFilenames()
+                            ->rules(function (callable $get) {
+                                $widthType = $get('image_rasio'); // Ambil nilai dari 'width_type'
+
+                                // Validasi berdasarkan width_type
+                                switch ($widthType) {
+                                    case 'portrait':
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions::min_width=800,min_height=600',
+                                            'dimensions::max_width=1960,max_height=1080'
+                                        ];
+                                    default: // Default untuk 'Full Width'
+                                        return [
+                                            'required',
+                                            'image',
+                                            'dimensions:max_width=1960,max_height=1800,'
+                                        ];
+                                }
+                            })
+                            ->validationAttribute('Banner Image')
+                            ->helperText(function (callable $get) {
+                                $widthType = $get('image_rasio'); // Ambil nilai dari 'width_type'
+
+                                // Tampilkan pesan helper berdasarkan width_type
+                                switch ($widthType) {
+                                    case 'portrait':
+                                        return 'The image must be minimun 800x600 pixels.';
+                                    default: // Default untuk 'Full Width'
+                                        return 'The image must be max 1960x1080 pixels.';
+                                }
+                            })
+                            ->reactive() // Untuk memastikan helper text dan rules berubah saat width_type berubah
+                            ->required(),
+                        DatePicker::make('start_date')
+                            ->label('Tanggal Mulai')
+                            ->required()
+                            ->placeholder('Pilih Tanggal Mulai')
+                            ->format('Y-m-d'),
+                        DatePicker::make('end_date')
+                            ->label('Tanggal Selesai')
+                            ->required()
+                            ->placeholder('Pilih Tanggal Selesai')
+                            ->format('Y-m-d')
+                            ->rule('after:start_date'),
+                        TimePicker::make('start_time')
+                            ->label('Jam Mulai')
+                            ->required()
+                            ->format('H:i'),
+                        TimePicker::make('end_time')
+                            ->label('Jam Selesai')
+                            ->required()
+                            ->format('H:i')
+                            ->rule('after:start_time'),
+                    ])
+                    ->columns(2),
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                //
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListPopUpAds::route('/'),
+            'create' => Pages\CreatePopUpAds::route('/create'),
+            'edit' => Pages\EditPopUpAds::route('/{record}/edit'),
+        ];
+    }
+}

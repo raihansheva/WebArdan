@@ -1,5 +1,18 @@
 /* resposive */
 @media (min-width: 2560px) {
+    /* area ads */
+
+    .popup-content-ads.landscape {
+        width: 700px;
+        height: 389px;
+    }
+    
+    .popup-content-ads.portrait {
+        width: 500px;
+        height: 500px;
+    }
+
+    /* ------- */
     .area-banner {
         margin: 0px 200px 0px 200px;
         height: 300px;
@@ -207,7 +220,19 @@
 }
 
 /* Untuk Tablet (width antara 768px hingga 1024px) */
-@media (min-width: 1920px) and (max-width: 2559px)  {
+@media (min-width: 1920px) and (max-width: 2559px) {
+    /* area ads */
+    .popup-content-ads.landscape {
+        width: 600px;
+        height: 333px;
+    }
+    .popup-content-ads.portrait {
+        width: 450px;
+        height: 450px;
+    }
+    /* ------- */
+
+
     #scrollToTopBtn {
         bottom: 65px;
         right: 15px;
@@ -243,7 +268,7 @@
         position: relative; /* Dibutuhkan untuk child position: absolute */
         overflow: hidden;
     }
- 
+
     .navbar {
         padding: 0px 128px;
         height: 100px;
@@ -434,6 +459,18 @@
 }
 
 @media (max-width: 1024px) {
+
+    /* area ads */
+    .popup-content-ads.landscape {
+        width: 480px;
+        height: 257px;
+    }
+    .popup-content-ads.portrait {
+        width: 285px;
+        height: 285px;
+    }
+    /* -------- */
+
     #scrollToTopBtn {
         bottom: 65px;
         right: 15px;
@@ -458,7 +495,7 @@
         margin: 0px 32px 0px 32px;
     }
 
-    .area-banner-full-small{
+    .area-banner-full-small {
         padding: 0px 0px 20px 0px;
     }
 
@@ -635,6 +672,18 @@
 
 /* Untuk Mobile (width lebih kecil dari 768px) */
 @media (max-width: 768px) {
+
+    /* area ads */
+    .popup-content-ads.landscape {
+        width: 470px;
+        height: 247px;
+    }
+    .popup-content-ads.portrait {
+        width: 245px;
+        height: 245px;
+    }
+    /* -------- */
+
     #scrollToTopBtn {
         bottom: 20px;
         right: 20px;
@@ -659,12 +708,12 @@
         margin: 0px 20px 0px 20px;
         height: 200px;
     }
-    
-    .area-banner-small{
+
+    .area-banner-small {
         height: 80px;
     }
 
-    .area-banner-full-small{
+    .area-banner-full-small {
         height: 80px;
     }
 
@@ -945,7 +994,7 @@
         /* position: fixed; */
     }
 
-    .control-btn p{
+    .control-btn p {
         display: none;
     }
 
@@ -962,6 +1011,16 @@
 
 /* Untuk ukuran mobile lebih kecil (contohnya iPhone 5) */
 @media (max-width: 480px) {
+
+    .popup-content-ads.landscape {
+        width: 280px;
+        height: 155px;
+    }
+    .popup-content-ads.portrait {
+        width: 200px;
+        height: 200px;
+    }
+
     #scrollToTopBtn {
         bottom: 15px;
         right: 15px;
@@ -971,6 +1030,7 @@
         align-items: center;
         height: 15px;
         width: 15px;
+        display: none;
     }
 
     #scrollToTopBtn:hover {
@@ -984,25 +1044,38 @@
 
     .area-banner {
         margin: 0px 8px 0px 8px;
-        height: 100px;
+        height: 120px;
     }
 
-    .area-banner-small{
+    .area-banner-small {
         height: 80px;
     }
 
-    .area-banner-full-small{
+    .area-banner-full-small {
         height: 80px;
     }
 
     .navbar {
-        padding: 0px 8px;
+        all: unset;
+        padding: 0 8px;
+        width: 100%;
         height: 60px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+        box-sizing: border-box; /* Tambahkan box-sizing untuk menghindari overflow */
     }
+    
 
     .image-brand {
         width: 120px;
         height: 40px;
+        display: none;
     }
 
     .dropdown-text {
@@ -1139,7 +1212,9 @@
     }
 
     .audio-player-container {
+        all: unset;
         width: fit-content;
+        /* position: relative; */
         /* display: none; */
         /* background-color: red; */
     }
@@ -1190,7 +1265,7 @@
         /* position: fixed; */
     }
 
-    .control-btn p{
+    .control-btn p {
         display: none;
     }
 
@@ -1205,6 +1280,16 @@
     /* ----------------- */
 }
 @media (max-width: 375px) {
+
+    .popup-content-ads.landscape {
+        width: 280px;
+        height: 155px;
+    }
+    .popup-content-ads.portrait {
+        width: 180px;
+        height: 180px;
+    }
+
     #scrollToTopBtn {
         bottom: 15px;
         right: 15px;
@@ -1230,11 +1315,11 @@
         height: 100px;
     }
 
-    .area-banner-small{
+    .area-banner-small {
         height: 80px;
     }
 
-    .area-banner-full-small{
+    .area-banner-full-small {
         height: 80px;
     }
 
@@ -1431,7 +1516,7 @@
         /* position: fixed; */
     }
 
-    .control-btn p{
+    .control-btn p {
         display: none;
     }
 
@@ -1446,6 +1531,16 @@
     /* ----------------- */
 }
 @media (max-width: 320px) {
+
+    .popup-content-ads.landscape {
+        width: 220px;
+        height: 129px;
+    }
+    .popup-content-ads.portrait {
+        width: 170px;
+        height: 170px;
+    }
+
     #scrollToTopBtn {
         bottom: 15px;
         right: 15px;
@@ -1471,11 +1566,11 @@
         height: 80px;
     }
 
-    .area-banner-small{
+    .area-banner-small {
         height: 60px;
     }
 
-    .area-banner-full-small{
+    .area-banner-full-small {
         height: 60px;
     }
 
@@ -1674,7 +1769,7 @@
         /* position: fixed; */
     }
 
-    .control-btn p{
+    .control-btn p {
         display: none;
     }
 

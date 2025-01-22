@@ -30,6 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        
         $banner = Banner::where('page', 'home')->get();
 
         $streamAudio = Streaming::where('type_url', 'Audio')->first();

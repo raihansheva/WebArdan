@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- Untuk memastikan halaman merespons layar iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    {{-- <link rel="icon" href="path/to/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="path/to/icon-192.png">
+    <link rel="manifest" href="path/to/manifest.json"> --}}
     {{-- <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet"> --}}
     <!-- Mencegah highlight biru pada elemen klik -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,6 +41,15 @@
 </head>
 
 <body>
+    <!-- Popup Modal -->
+    <div id="popup-ads" class="popup-ads-container">
+        <div class="popup-content-ads" id="imageAds">
+            <img id="image-ads" class="image-ads" src="" alt="" srcset="">
+            {{-- <h2 id="popup-title-ads"></h2>
+            <p id="popup-message-ads"></p>
+            <button id="close-popup-ads">Tutup</button> --}}
+        </div>
+    </div>
     {{-- navbar area --}}
     <nav class="navbar">
         <div class="area-kiri-navbar">
@@ -416,6 +428,46 @@
                 swiperContainer.classList.add('loaded');
             }
         });
+
+
+        fetch('/api/popup')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data) {
+                            console.log(data);
+                            if (data.image_ratio == "landscape") {
+                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
+                                document.getElementById('popup-ads').style.display = 'flex';
+                                document.getElementById('imageAds').classList.add('landscape');
+                            }else if (data.image_ratio == "portrait") {
+                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
+                                document.getElementById('popup-ads').style.display = 'flex';
+                                document.getElementById('imageAds').classList.add('portrait');
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching popup data:', error);
+                    });
+            // }
+                    // console.log(data.images_ads);
+                    
+            // Menutup popup ketika area di luar popup (background) diklik
+            document.getElementById('popup-ads').onclick = function(event) {
+                // Mengecek jika yang diklik adalah background (di luar popup-content)
+                if (event.target === document.getElementById('popup-ads')) {
+                    closePopup();
+                }
+            }
+
+            function closePopup() {
+                document.getElementById('popup-ads').style.display = 'none';
+            }
     });
 </script>
 

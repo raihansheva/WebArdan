@@ -242,11 +242,12 @@
                     <section
                         class="section-banner-small {{ $banner->where('position', 'bottom_kategori')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-small">
-                            <swiper-container class="mySwiper" id="swiper-s" centered-slides="true" autoplay-delay="1600"
-                                autoplay-disable-on-interaction="false" loop="true">
+                            <swiper-container class="mySwiper" id="swiper-s" centered-slides="true"
+                                autoplay-delay="1600" autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_kategori') as $list)
-                                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
-                                            alt=""  loading="lazy"></swiper-slide>
+                                    <swiper-slide><img class="image-banner"
+                                            src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                            loading="lazy"></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -495,11 +496,12 @@
                     <section
                         class="section-banner-full-small {{ $banner->where('position', 'bottom_podcast')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-full-small">
-                            <swiper-container class="mySwiper " id="swiper-l" centered-slides="true" autoplay-delay="1800"
-                                autoplay-disable-on-interaction="false" loop="true">
+                            <swiper-container class="mySwiper " id="swiper-l" centered-slides="true"
+                                autoplay-delay="1800" autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_podcast') as $list)
-                                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
-                                            alt="" loading="lazy" ></swiper-slide>
+                                    <swiper-slide><img class="image-banner"
+                                            src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                            loading="lazy"></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -516,8 +518,7 @@
                                 <img class="video-thumbnail"
                                     src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                     alt="Thumbnail">
-                                <div class="btn-play-video"
-                                    onclick="showPopupYT('{{ $video['videoId'] }}')">
+                                <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoId'] }}')">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </div>
@@ -528,7 +529,7 @@
                             <div id="player-yt"></div>
                         </div>
                     </div>
-                                        
+
                     <div class="link-text-video">
                         <a href="/ardan-youtube">
                             <h1 class="text-video">See more</h1>
@@ -833,18 +834,22 @@
                     @foreach ($schedule as $scheduleList)
                         @php
                             // Periksa apakah hari sudah berupa array
-                            $hariArray = is_array($scheduleList->hari) ? $scheduleList->hari : json_decode($scheduleList->hari, true);
+                            $hariArray = is_array($scheduleList->hari)
+                                ? $scheduleList->hari
+                                : json_decode($scheduleList->hari, true);
                         @endphp
-                
+
                         <!-- Pastikan $hariArray tidak kosong sebelum menampilkan konten -->
                         @if ($hariArray)
                             @foreach ($hariArray as $day)
                                 <div class="box-schedule hide" data-day="{{ strtolower($day) }}">
-                                    <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}" alt="">
+                                    <img class="image-schedule-program"
+                                        src="./storage/{{ $scheduleList->program->image_program }}" alt="">
                                     <div class="area-bio-schedule">
                                         <div class="bio-schedule">
                                             <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
-                                            <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} - {{ $scheduleList->jam_selesai }}</p>
+                                            <p class="jam-programS">Jam: {{ $scheduleList->jam_mulai }} -
+                                                {{ $scheduleList->jam_selesai }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -860,17 +865,19 @@
             </div>
             <div class="content-schedule-mobile">
                 @foreach ($schedule as $scheduleList)
-                        @php
-                            // Periksa apakah hari sudah berupa array
-                            $hariArray = is_array($scheduleList->hari) ? $scheduleList->hari : json_decode($scheduleList->hari, true);
-                        @endphp
-                
-                        <!-- Pastikan $hariArray tidak kosong sebelum menampilkan konten -->
-                        @if ($hariArray)
-                            @foreach ($hariArray as $day)
+                    @php
+                        // Periksa apakah hari sudah berupa array
+                        $hariArray = is_array($scheduleList->hari)
+                            ? $scheduleList->hari
+                            : json_decode($scheduleList->hari, true);
+                    @endphp
+
+                    <!-- Pastikan $hariArray tidak kosong sebelum menampilkan konten -->
+                    @if ($hariArray)
+                        @foreach ($hariArray as $day)
                             <div class="box-schedule-mobile hidden" data-day="{{ strtolower($day) }}">
-                                <img class="image-schedule-program" src="./storage/{{ $scheduleList->program->image_program }}"
-                                    alt="">
+                                <img class="image-schedule-program"
+                                    src="./storage/{{ $scheduleList->program->image_program }}" alt="">
                                 <div class="area-bio-schedule">
                                     <div class="bio-schedule">
                                         <h4 class="nama-programS">{{ $scheduleList->program->judul_program }}</h4>
@@ -879,9 +886,9 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-                        @endif
-                    @endforeach
+                        @endforeach
+                    @endif
+                @endforeach
             </div>
         </div>
     </section>
@@ -954,14 +961,14 @@
             });
 
             // Pastikan videojs sudah terdefinisi
-window.player = videojs("videoPlayer", {
-    controls: true,
-    autoplay: false,
-    preload: "auto",
-    fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
-    aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
-    responsive: true,
-});
+            window.player = videojs("videoPlayer", {
+                controls: true,
+                autoplay: false,
+                preload: "auto",
+                fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
+                aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
+                responsive: true,
+            });
 
 
             // let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali
@@ -1131,7 +1138,7 @@ window.player = videojs("videoPlayer", {
                 const thumbnailImage = document.getElementById('thumbnail-stream');
                 thumbnailImage.src = data.image;
                 console.log(data.image);
-                
+
 
             } catch (error) {
                 console.error('Error fetching next program image:', error);
@@ -1143,6 +1150,52 @@ window.player = videojs("videoPlayer", {
         setInterval(fetchNextThumbnailImage, 60000);
         // Refresh every 60 seconds
 
-        
+
+        // pop up
+        document.addEventListener("DOMContentLoaded", function() {
+            // console.log('looo');
+
+            // if (!localStorage.getItem('has_visited')) {
+            //     localStorage.setItem('has_visited', 'true');
+
+                fetch('/api/popup')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data) {
+                            console.log(data);
+                            if (data.image_ratio == "landscape") {
+                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
+                                document.getElementById('popup-ads').style.display = 'flex';
+                                document.getElementById('imageAds').classList.add('landscape');
+                            }else if (data.image_ratio == "portrait") {
+                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
+                                document.getElementById('popup-ads').style.display = 'flex';
+                                document.getElementById('imageAds').classList.add('portrait');
+                            }
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching popup data:', error);
+                    });
+            // }
+                    // console.log(data.images_ads);
+                    
+            // Menutup popup ketika area di luar popup (background) diklik
+            document.getElementById('popup-ads').onclick = function(event) {
+                // Mengecek jika yang diklik adalah background (di luar popup-content)
+                if (event.target === document.getElementById('popup-ads')) {
+                    closePopup();
+                }
+            }
+
+            function closePopup() {
+                document.getElementById('popup-ads').style.display = 'none';
+            }
+        });
     </script>
 @endsection
