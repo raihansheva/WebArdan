@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <!-- Untuk memastikan halaman merespons layar iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    {{-- <link rel="icon" href="path/to/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="path/to/icon-192.png">
-    <link rel="manifest" href="path/to/manifest.json"> --}}
+    <link rel="icon" href="" sizes="any">
+    <link rel="apple-touch-icon" href="./storage/{{ \App\Helpers\Settings::get('site_apple_touch_icon', 'Default Site Title') }}">
+    <link rel="manifest" href="">
     {{-- <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet"> --}}
     <!-- Mencegah highlight biru pada elemen klik -->
     <meta name="apple-mobile-web-app-capable" content="yes">

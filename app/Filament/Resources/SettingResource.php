@@ -55,6 +55,14 @@ class SettingResource extends Resource
                             ->image() // Pastikan hanya file gambar yang diizinkan
                             ->preserveFilenames()
                             ->required(fn($record) => $record?->key === 'site_icon'),
+                        FileUpload::make('value')  // Untuk input file logo
+                            ->label('Site Apple Icon')
+                            ->visible(fn($record) => $record?->key === 'site_apple_touch_icon') // Hanya tampil jika key adalah 'site_logo'
+                            ->disk('public') // Tentukan disk untuk menyimpan file ke public
+                            ->directory('icon_apple') // Tentukan subfolder untuk menyimpan logo
+                            ->image() // Pastikan hanya file gambar yang diizinkan
+                            ->preserveFilenames()
+                            ->required(fn($record) => $record?->key === 'site_apple_touch_icon'),
                     ])
                     ->columns(2),
             ]);

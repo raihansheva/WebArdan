@@ -18,5 +18,6 @@ class SettingSeeder extends Seeder
         Setting::updateOrCreate(['key' => 'site_keyword'], ['value' => 'Default Keyword']);
         Setting::updateOrCreate(['key' => 'site_logo'], ['value' => null]);
         Setting::updateOrCreate(['key' => 'site_icon'], ['value' => null]);
+        Setting::updateOrCreate(['key' => 'site_apple_touch_icon'], ['value' => null]);
     }
 }
