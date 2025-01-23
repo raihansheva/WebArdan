@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/ResponsiveStyle/responsivedetailInfo.css?v=' . time()) }}">
 @endpush
 
-@section('title',  $info->meta_title)
+@section('title', $info->meta_title)
 @section('content')
     {{-- <section class="page-news-1">
         <div class="header-info-news">
@@ -59,9 +59,9 @@
                                 <h2 class="text-header-tagar">Tags</h2>
                             </div>
                             <div class="area-text-tagar">
-                                @if (is_array( $info->tag_info))
+                                @if (is_array($info->tag_info))
                                     @foreach ($info->tag_info as $tag)
-                                        <h2 class="tagar-info">#{{ $tag}}</h2>
+                                        <h2 class="tagar-info">#{{ $tag }}</h2>
                                     @endforeach
                                 @else
                                     <h2 class="tagar-info">-</h2>
@@ -71,13 +71,16 @@
                         </div>
                     </div>
                     <div class="line-detail-info"></div>
-                    <section class="section-banner-full-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
+                    <section
+                        class="section-banner-full-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-full-small">
                             <swiper-container class="mySwiper" id="swiper-l" centered-slides="true" autoplay-delay="2000"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_detail') as $list)
-                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                            alt=""></swiper-slide>
+                                    <swiper-slide><a href="{{ $list->link_ads }}" class="link-ads-banner">
+                                            <img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                                alt="">
+                                        </a></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -97,7 +100,8 @@
                                         <div class="line-trending-info"></div>
                                         <div class="area-text-desk-trending-info">
                                             <div class="area-tag">
-                                                <h2 class="tag-trending-info">{{ $trendingInfoList->tagInfo->nama_kategori }}</h2>
+                                                <h2 class="tag-trending-info">
+                                                    {{ $trendingInfoList->tagInfo->nama_kategori }}</h2>
                                             </div>
                                             <div class="area-text">
                                                 <p class="desk-trending-info">{{ $trendingInfoList->judul_info }}</p>
@@ -195,12 +199,13 @@
                         </div>
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
-                                <div class="box-event"
-                                    onclick="showPopupEvent(this)"
+                                <div class="box-event" onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
-                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
-                                    <img class="image-OV" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
+                                    data-slug="{{ $eventUpcomingList->slug }}"
+                                    data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    <img class="image-OV" src="./storage/{{ $eventUpcomingList->image_event }}"
+                                        alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">

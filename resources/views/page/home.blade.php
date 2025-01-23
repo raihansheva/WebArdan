@@ -22,8 +22,12 @@
             <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'top') as $list)
-                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
-                            alt="" loading="lazy"></swiper-slide>
+                    <swiper-slide>
+                        <a class="link-ads-banner" href="{{ $list->link_ads }}">
+                            <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                loading="lazy">
+                        </a>
+                    </swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -245,9 +249,11 @@
                             <swiper-container class="mySwiper" id="swiper-s" centered-slides="true"
                                 autoplay-delay="1600" autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_kategori') as $list)
-                                    <swiper-slide><img class="image-banner"
-                                            src="{{ asset('storage/' . $list->image_banner) }}" alt=""
-                                            loading="lazy"></swiper-slide>
+                                    <swiper-slide>
+                                        <a class="link-ads-banner" href="{{ $list->link_ads }}"></a>
+                                        <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
+                                            alt="" loading="lazy">
+                                    </swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -499,9 +505,12 @@
                             <swiper-container class="mySwiper " id="swiper-l" centered-slides="true"
                                 autoplay-delay="1800" autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_podcast') as $list)
-                                    <swiper-slide><img class="image-banner"
-                                            src="{{ asset('storage/' . $list->image_banner) }}" alt=""
-                                            loading="lazy"></swiper-slide>
+                                    <swiper-slide>
+                                        <a href="{{ $list->link_ads }}" class="link-ads-banner">
+                                            <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
+                                                alt="" loading="lazy">
+                                        </a>
+                                    </swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -794,8 +803,12 @@
             <swiper-container class="mySwiper " id="swiper-xl-bottom" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
-                    <swiper-slide><img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}"
-                            alt="" loading="lazy"></swiper-slide>
+                    <swiper-slide>
+                        <a href="{{ $list->link_ads }}" class="link-ads-banner">
+                            <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                loading="lazy">
+                        </a>
+                    </swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -1158,33 +1171,33 @@
             // if (!localStorage.getItem('has_visited')) {
             //     localStorage.setItem('has_visited', 'true');
 
-                fetch('/api/popup')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
+            fetch('/api/popup')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data) {
+                        console.log(data);
+                        if (data.image_ratio == "landscape") {
+                            document.getElementById('image-ads').src = './storage/' + data.images_ads;
+                            document.getElementById('popup-ads').style.display = 'flex';
+                            document.getElementById('imageAds').classList.add('landscape');
+                        } else if (data.image_ratio == "portrait") {
+                            document.getElementById('image-ads').src = './storage/' + data.images_ads;
+                            document.getElementById('popup-ads').style.display = 'flex';
+                            document.getElementById('imageAds').classList.add('portrait');
                         }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data) {
-                            console.log(data);
-                            if (data.image_ratio == "landscape") {
-                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
-                                document.getElementById('popup-ads').style.display = 'flex';
-                                document.getElementById('imageAds').classList.add('landscape');
-                            }else if (data.image_ratio == "portrait") {
-                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
-                                document.getElementById('popup-ads').style.display = 'flex';
-                                document.getElementById('imageAds').classList.add('portrait');
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching popup data:', error);
-                    });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching popup data:', error);
+                });
             // }
-                    // console.log(data.images_ads);
-                    
+            // console.log(data.images_ads);
+
             // Menutup popup ketika area di luar popup (background) diklik
             document.getElementById('popup-ads').onclick = function(event) {
                 // Mengecek jika yang diklik adalah background (di luar popup-content)

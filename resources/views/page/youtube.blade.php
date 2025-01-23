@@ -79,8 +79,10 @@
             <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
+                    <swiper-slide><a class="link-ads-banner" href="{{ $list->link_ads }}">
+                            <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                loading="lazy">
+                        </a></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -134,13 +136,13 @@
                         </div>
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
-                                <div class="box-event"
-                                    onclick="showPopupEvent(this)"
+                                <div class="box-event" onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
                                     data-slug="{{ $eventUpcomingList->slug }}"
                                     data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
-                                    <img class="image-EB" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
+                                    <img class="image-EB" src="./storage/{{ $eventUpcomingList->image_event }}"
+                                        alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">

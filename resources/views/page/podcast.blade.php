@@ -23,8 +23,10 @@
             <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'top') as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
+                    <swiper-slide><a class="link-ads-banner" href="{{ $list->link_ads }}">
+                        <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                            loading="lazy">
+                    </a></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -168,8 +170,10 @@
                         <swiper-container class="mySwiper" id="swiper-s" centered-slides="true" autoplay-delay="2000"
                             autoplay-disable-on-interaction="false" loop="true">
                             @foreach ($banner->where('position', 'bottom_topInfo') as $list)
-                                <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                        alt=""></swiper-slide>
+                                <swiper-slide><a class="link-ads-banner" href="{{ $list->link_ads }}">
+                                    <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                        loading="lazy">
+                                </a></swiper-slide>
                             @endforeach
                         </swiper-container>
                     </div>

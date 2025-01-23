@@ -69,8 +69,7 @@ class PodcastResource extends Resource
                             ->validationAttribute('Image Event')
                             ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
                         FileUpload::make('file')
-                            ->label('Upload File')
-                            ->maxSize(env('UPLOAD_MAX_FILE_SIZE') * 1024) // Maksimal ukuran file (dalam KB)
+                            ->label('Upload File')// Maksimal ukuran file (dalam KB)
                             ->acceptedFileTypes(['audio/mpeg', 'audio/mp3', 'audio/wav'])
                             ->directory('audioPodcast')
                             ->preserveFilenames(),

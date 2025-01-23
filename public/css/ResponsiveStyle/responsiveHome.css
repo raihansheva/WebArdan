@@ -1680,13 +1680,18 @@
         gap: 10px;
     }
     /* area-event */
+
     .area-event {
         height: auto;
         margin: 0px 128px;
     }
 
     .area-content-event {
-        height: 750px;
+        height: 584px;
+    }
+
+    .area-content-event-kiri{
+        width: 63%;
     }
 
     .area-countdown {
@@ -2889,11 +2894,15 @@
     }
 
     .area-content-event {
-        height: 350px;
+        height: 339px;
     }
 
     .area-countdown {
         height: 50px;
+    }
+
+    .area-content-event-kanan{
+        width: 30%;
     }
 
     .area-days-date-right {
@@ -5215,7 +5224,7 @@
 
     .area-content-event-kiri {
         width: 100%;
-        height: 240px;
+        height: 207px;
         /* border: 1px red solid; */
     }
 
@@ -5228,11 +5237,12 @@
 
     .content-event {
         width: 50%;
-        height: 140px;
+        height: 100px;
     }
 
     .area-countdown {
-        height: 40px;
+        padding: 10px;
+        height: 20px;
     }
 
     .area-days-date-right {
@@ -5245,16 +5255,16 @@
     }
 
     .timer {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .title-timer {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .date-month,
     .year {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .box-days-date-right {
@@ -6463,9 +6473,9 @@
         margin-top: 25px;
     }
 
-    .area-content-event-kiri {
+     .area-content-event-kiri {
         width: 100%;
-        height: 240px;
+        height: 193px;
         /* border: 1px red solid; */
     }
 
@@ -6478,11 +6488,12 @@
 
     .content-event {
         width: 50%;
-        height: 140px;
+        height: 94px;
     }
 
     .area-countdown {
-        height: 40px;
+        padding: 10px;
+        height: 20px;
     }
 
     .area-days-date-right {
@@ -6495,16 +6506,16 @@
     }
 
     .timer {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .title-timer {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .date-month,
     .year {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .box-days-date-right {
@@ -7737,9 +7748,9 @@ align-items: center; */
         margin-top: 25px;
     }
 
-    .area-content-event-kiri {
+     .area-content-event-kiri {
         width: 100%;
-        height: 240px;
+        height: 221px;
         /* border: 1px red solid; */
     }
 
@@ -7752,16 +7763,16 @@ align-items: center; */
 
     .content-event {
         width: 50%;
-        height: 140px;
+        height: 108px;
     }
 
     .area-countdown {
-        height: 40px;
-        padding: 8px;
+        padding: 10px;
+        height: 20px;
     }
 
     .area-days-date-right {
-        padding: 8px;
+        /* padding: 10px; */
         height: 18px;
     }
 
@@ -7770,7 +7781,7 @@ align-items: center; */
     }
 
     .timer {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .title-timer {
@@ -7779,7 +7790,7 @@ align-items: center; */
 
     .date-month,
     .year {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .box-days-date-right {
@@ -9020,9 +9031,9 @@ align-items: center; */
         margin-top: 25px;
     }
 
-    .area-content-event-kiri {
+ .area-content-event-kiri {
         width: 100%;
-        height: 240px;
+        height: 162px;
         /* border: 1px red solid; */
     }
 
@@ -9035,16 +9046,16 @@ align-items: center; */
 
     .content-event {
         width: 50%;
-        height: 140px;
+        height: 78px;
     }
 
     .area-countdown {
-        height: 40px;
-        padding: 8px;
+        padding: 10px ;
+        height: 20px;
     }
 
     .area-days-date-right {
-        padding: 8px;
+        padding: 6px 10px;
         height: 18px;
     }
 
@@ -9053,11 +9064,16 @@ align-items: center; */
     }
 
     .timer {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .title-timer {
         font-size: 10px;
+    }
+
+    .date-month,
+    .year {
+        font-size: 14px;
     }
 
     .date-month,

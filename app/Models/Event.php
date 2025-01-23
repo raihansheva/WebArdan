@@ -24,6 +24,7 @@ class Event extends Model implements HasMedia
         'tanggal_publikasi',
         'time_countdown',
         'status',
+        'name_url',
         'ticket_url',
         'has_ticket',
         'slug',

@@ -58,8 +58,11 @@
             <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
+                    <swiper-slide>
+                        <a href="{{ $list->link_ads }}" class="link-ads-banner">
+                            <img class="image-banner" src="./storage/{{ $list->image_banner }}" alt="">
+                        </a>
+                    </swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -98,7 +101,7 @@
                                     <div class="area-text-desk-top-info">
                                         <div class="area-tag">
                                             <h2 class="tag-top-info">{{ $topInfoList->tagInfo->nama_kategori }}</h2>
-                                            
+
                                         </div>
                                         <div class="area-text">
                                             <p class="desk-top-info">{{ $topInfoList->judul_info }}</p>
@@ -113,13 +116,16 @@
                             </a>
                         @endforeach
                     </div>
-                    <section class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
+                    <section
+                        class="section-banner-small {{ $banner->where('position', 'bottom_topInfo')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-small">
                             <swiper-container class="mySwiper" id="swiper-s" centered-slides="true" autoplay-delay="2000"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_topInfo') as $list)
-                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                            alt=""></swiper-slide>
+                                    <swiper-slide><a href="{{ $list->link_ads }}" class="link-ads-banner">
+                                            <img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                                alt="">
+                                        </a></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>

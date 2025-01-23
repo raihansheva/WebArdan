@@ -56,24 +56,39 @@
                         @if ($event->has_ticket)
                             <div class="area-ticket-event">
                                 <div class="header-ticket-event">
-                                    <h2 class="text-header-ticket-event">Get Ticket Now</h2>
+                                    <h2 class="text-header-ticket-event">
+                                        @if ($event->name_url == 'ticket')
+                                            Get Ticket Now
+                                        @elseif($event->name_url == 'registrasi')
+                                            Registe
+                                        @endif
+                                    </h2>
                                 </div>
                                 <a class="link-text-ticket" href="{{ $event->ticket_url }}">
-                                <div class="area-text-ticket">
-                                        <p class="text-ticket">Buy Now</p>
+                                    <div class="area-text-ticket">
+                                        <p class="text-ticket">
+                                            @if ($event->name_url == 'ticket')
+                                                Buy Now
+                                            @elseif($event->name_url == 'registrasi')
+                                                Regis Now
+                                            @endif
+                                        </p>
                                     </div>
                                 </a>
                             </div>
                         @endif
                     </div>
                     <div class="line-detail-info"></div>
-                    <section class="section-banner-full-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
+                    <section
+                        class="section-banner-full-small {{ $banner->where('position', 'bottom_detail')->count() > 0 ? '' : 'hidden' }}">
                         <div class="area-banner-full-small">
                             <swiper-container class="mySwiper" id="swiper-l" centered-slides="true" autoplay-delay="2000"
                                 autoplay-disable-on-interaction="false" loop="true">
                                 @foreach ($banner->where('position', 'bottom_detail') as $list)
-                                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                            alt=""></swiper-slide>
+                                    <swiper-slide><a href="{{ $list->link_ads }}" class="link-ads-banner">
+                                            <img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                                alt="">
+                                        </a></swiper-slide>
                                 @endforeach
                             </swiper-container>
                         </div>
@@ -84,12 +99,13 @@
                         </div>
                         <div class="area-event-bottom">
                             @foreach ($event_upcoming as $eventUpcomingList)
-                                <div class="box-event"
-                                    onclick="showPopupEvent(this)"
+                                <div class="box-event" onclick="showPopupEvent(this)"
                                     data-description="{{ $eventUpcomingList->deskripsi_pendek }}"
                                     data-date="{{ \Carbon\Carbon::parse($eventUpcomingList->date_event)->format('d F Y') }}"
-                                    data-slug="{{ $eventUpcomingList->slug }}" data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
-                                    <img class="image-EK" src="./storage/{{ $eventUpcomingList->image_event }}" alt="">
+                                    data-slug="{{ $eventUpcomingList->slug }}"
+                                    data-deskShort="{{ $eventUpcomingList->deskripsi_event }}">
+                                    <img class="image-EK" src="./storage/{{ $eventUpcomingList->image_event }}"
+                                        alt="">
                                     <div class="area-days-date-right">
                                         <div class="content-days-date-right">
                                             <div class="box-days-date-right">
@@ -205,8 +221,10 @@
             <swiper-container class="mySwiper" id="swiper-xl" centered-slides="true" autoplay-delay="2000"
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
-                    <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                            alt=""></swiper-slide>
+                    <swiper-slide><a href="{{ $list->link_ads }}" class="link-ads-banner">
+                        <img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                            alt="">
+                    </a></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>

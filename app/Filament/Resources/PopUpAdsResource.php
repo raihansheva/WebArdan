@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PopUpAdsResource\Pages;
 use App\Filament\Resources\PopUpAdsResource\RelationManagers;
-use App\Models\PopUpAds;
+use App\Models\PopupAds;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\DatePicker;
@@ -16,7 +16,10 @@ use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Enums\FiltersLayout;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -24,6 +27,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class PopUpAdsResource extends Resource
 {
     protected static ?string $model = PopupAds::class;
+
+    protected static ?string $navigationGroup = 'Menu';
+
+    protected static ?string $navigationLabel = 'PopUp Ads';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -112,11 +119,82 @@ class PopUpAdsResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title')
+                    ->label('Title Ads'),
+                TextColumn::make('message')
+                    ->label('Message'),
+                TextColumn::make('image_ratio')
+                    ->label('Image Ratio'),
+                ImageColumn::make('images_ads')
+                    ->label('Image Ads'),
+                TextColumn::make('start_date')
+                    ->label('Tanggal Mulai')
+                    ->sortable(),
+                TextColumn::make('end_date')
+                    ->label('Tanggal Selesai')
+                    ->sortable(),
+                TextColumn::make('start_time')
+                    ->label('Jam Mulai')
+                    ->sortable(),
+                TextColumn::make('end_time')
+                    ->label('Jam Selesai')
+                    ->sortable(),
             ])
             ->filters([
-                //
-            ])
+                Filter::make('title')
+                    ->form([
+                        TextInput::make('title')
+                            ->label('Title :')
+                            ->placeholder('Search title...'),
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['title'], function ($q, $title) {
+                            $searchTerm = strtolower($title);
+                            $q->whereRaw('LOWER(title) LIKE ?', ["%{$searchTerm}%"]);
+                        });
+                    }),
+                Filter::make('start_date')
+                    ->form([
+                        DatePicker::make('start_date')
+                            ->label('Start Date :'),
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['start_date'], function ($q, $startDate) {
+                            $q->whereDate('start_date', '=', $startDate);
+                        });
+                    }),
+                Filter::make('end_date')
+                    ->form([
+                        DatePicker::make('end_date')
+                            ->label('End Date :'),
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['end_date'], function ($q, $endDate) {
+                            $q->whereDate('end_date', '=', $endDate);
+                        });
+                    }),
+                Filter::make('start_time')
+                    ->form([
+                        TimePicker::make('start_time')
+                            ->label('Start Time :'),
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['start_time'], function ($q, $startTime) {
+                            $q->whereTime('start_time', '=', $startTime);
+                        });
+                    }),
+                Filter::make('end_time')
+                    ->form([
+                        TimePicker::make('end_time')
+                            ->label('End Time :'),
+                    ])
+                    ->query(function ($query, $data) {
+                        return $query->when($data['end_time'], function ($q, $endTime) {
+                            $q->whereTime('end_time', '=', $endTime);
+                        });
+                    }),
+
+            ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])

@@ -89,9 +89,32 @@ class EventResource extends Resource
                             ->label('Slug :')
                             ->readOnly() // Menonaktifkan input manual karena slug dibuat otomatis
                             ->required(),
+                        Select::make('name_url')
+                            ->label('Nama Url:')
+                            ->options([
+                                'registrasi' => 'Registrasi',
+                                'ticket' => 'Ticket',
+                            ])
+                            ->placeholder('Pilih jenis URL')
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(function (callable $get, callable $set) {
+                                $nameUrl = $get('name_url'); // Ambil nilai name_url
+                                if ($nameUrl === 'registrasi') {
+                                    $set('helper_text', 'Masukkan URL untuk pendaftaran acara.');
+                                    $set('ticket_url_placeholder', 'Masukkan link untuk pendaftaran acara'); // Placeholder untuk registrasi
+                                } elseif ($nameUrl === 'ticket') {
+                                    $set('helper_text', 'Masukkan URL untuk pembelian tiket.');
+                                    $set('ticket_url_placeholder', 'Masukkan link untuk pembelian tiket'); // Placeholder untuk tiket
+                                } else {
+                                    $set('helper_text', null); // Kosongkan helper text jika tidak sesuai
+                                    $set('ticket_url_placeholder', null); // Kosongkan placeholder jika tidak sesuai
+                                }
+                            }),
+
                         Toggle::make('has_ticket')
-                            ->label('Ada Ticket?')
-                            ->helperText('Aktifkan jika acara memiliki tiket.')
+                            ->label('Ada link?')
+                            ->helperText(fn(callable $get) => $get('helper_text') ?? 'Aktifkan jika memiliki link.')
                             ->reactive()
                             ->required()
                             ->afterStateUpdated(function (callable $get, callable $set) {
@@ -100,12 +123,14 @@ class EventResource extends Resource
                                     $set('ticket_url', null); // Kosongkan nilai jika toggle tidak aktif
                                 }
                             }),
-                        // Input ticket_url yang hanya muncul jika has_ticket dicentang
+
                         TextInput::make('ticket_url')
-                            ->label('Link Ticket :')
-                            ->placeholder('Masukan link pembelian tiket')
+                            ->label('Link:')
+                            ->placeholder(fn(callable $get) => $get('ticket_url_placeholder') ?? 'Masukkan link') // Placeholder dinamis
                             ->visible(fn(callable $get) => $get('has_ticket')) // Muncul hanya jika has_ticket == true
                             ->required(fn(callable $get) => $get('has_ticket')), // Wajib diisi hanya jika has_ticket == true
+
+
                     ])
                     ->columns(2),
                 Grid::make(2) // Tetapkan Grid memiliki 2 kolom
@@ -173,6 +198,7 @@ class EventResource extends Resource
                     ->falseColor('danger'),
                 TextColumn::make('tanggal_publikasi')->sortable(),
                 TextColumn::make('time_countdown'),
+                TextColumn::make('name_url'),
                 TextColumn::make('status')
                     ->color(fn($record) => match ($record->status) {
                         'soon' => 'warning',    // Merah untuk streaming

@@ -429,7 +429,7 @@
             }
         });
 
-
+        // pop up ads
         fetch('/api/popup')
                     .then(response => {
                         if (!response.ok) {
@@ -468,6 +468,7 @@
             function closePopup() {
                 document.getElementById('popup-ads').style.display = 'none';
             }
+            // ----------------
     });
 </script>
 

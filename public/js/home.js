@@ -81,8 +81,8 @@ const cardB = document.querySelector(".card-B");
 const tontonSiaranBtnA = document.querySelector(".card-A .view");
 const tontonSiaranBtnB = document.querySelector(".card-B .view-B");
 
-cardA.style.display = "block";
-cardA.classList.add("show");
+cardB.style.display = "block";
+cardB.classList.add("show");
 
 function showCard(card) {
     card.style.display = "block";

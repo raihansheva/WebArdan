@@ -134,8 +134,10 @@
                                 <swiper-container class="mySwiper" id="swiper-l" centered-slides="true" autoplay-delay="2000"
                                     autoplay-disable-on-interaction="false" loop="true">
                                     @foreach ($banner->where('position', 'bottom_detail') as $list)
-                                        <swiper-slide><img class="image-banner" src="./storage/{{ $list->image_banner }}"
-                                                alt=""></swiper-slide>
+                                        <swiper-slide><a href="{{ $list->link_ads }}" class="link-ads-banner">
+                                            <img class="image-banner" src="./storage/{{ $list->image_banner }}"
+                                                alt="">
+                                        </a></swiper-slide>
                                     @endforeach
                                 </swiper-container>
                             </div>

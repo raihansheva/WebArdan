@@ -12,7 +12,7 @@ class Banner extends Model implements HasMedia
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'title_banner' , 'image_banner' , 'page', 'position'];
+    protected $fillable = ['id' , 'title_banner' , 'link_ads' ,'image_banner' , 'page', 'position'];
 
     public function registerMediaCollections(): void
     {

@@ -177,31 +177,31 @@ class BannerResource extends Resource
                                         return [
                                             'required',
                                             'image',
-                                            'dimensions::min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                            
                                         ];
                                     case 'Full Width Small':
                                         return [
                                             'required',
                                             'image',
-                                            'dimensions::min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                            
                                         ];
                                     case 'Large':
                                         return [
                                             'required',
                                             'image',
-                                            'dimensions:min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                        
                                         ];
                                     case 'Small':
                                         return [
                                             'required',
                                             'image',
-                                            'dimensions:min_width=1960,max_width=1080,min_height=100,max_height=120'
+                                        
                                         ];
                                     default: // Default untuk 'Full Width'
                                         return [
                                             'required',
                                             'image',
-                                            'dimensions:min_width=1960,max_width=1800,min_height=200,max_height=250'
+                                        
                                         ];
                                 }
                                 
@@ -226,7 +226,9 @@ class BannerResource extends Resource
                             })
                             ->reactive() // Untuk memastikan helper text dan rules berubah saat width_type berubah
                             ->required(), // FileUpload wajib diisi
-
+                            TextInput::make('link_ads')
+                            ->label('Link Ads :')
+                            ->required(),
 
                     ])
                     ->columns(2),
