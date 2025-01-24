@@ -587,13 +587,17 @@ if (window.matchMedia("(max-width: 480px)").matches) {
         const selectedDay = days[selectedDayIndex];
         currentDayElement.textContent = dayNames[selectedDayIndex];
 
-        // Tampilkan jadwal sesuai hari
+        // Tambahkan animasi pada jadwal yang sesuai
         scheduleBoxes.forEach((box) => {
-            // Langsung bandingkan data-day dengan selectedDay
             if (box.dataset.day === selectedDay) {
-                box.classList.add("active");
+                // Hapus fade-out jika ada, lalu tambahkan fade-in
+                box.classList.remove("fade-out");
+                box.classList.add("fade-in", "active");
             } else {
-                box.classList.remove("active");
+                // Tambahkan fade-out sebelum menyembunyikan
+                box.classList.remove("fade-in");
+                box.classList.add("fade-out");
+                setTimeout(() => box.classList.remove("active"), 500); // Delay sesuai durasi animasi
             }
         });
     }
@@ -612,6 +616,7 @@ if (window.matchMedia("(max-width: 480px)").matches) {
     // Inisialisasi tampilan awal
     updateSchedule();
 }
+
 
 
 // Load YouTube API

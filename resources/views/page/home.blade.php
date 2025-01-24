@@ -66,14 +66,14 @@
                         <div class="card-body-B">
                             <div class="video-container">
                                 <!-- Video.js Player -->
-                                @if (!empty($streamVideo->stream_url))
+                                {{-- @if (!empty($streamVideo->stream_url))
                                     <video id="videoPlayer" class="video-js" controls preload="auto"
                                         poster="./storage/{{ $streamVideo->image_stream }}" data-setup='{"fluid": true}'>
                                         <source src="{{ $streamVideo->stream_url }}" type="application/x-mpegURL" />
                                     </video>
                                 @else
                                     <p>Streaming URL tidak tersedia.</p>
-                                @endif
+                                @endif --}}
                                 {{-- <video id="videoPlayer" class="video-js vjs-default-skin" controls width="640"
                                     height="360" data-setup='{}'>
                                     <!-- Format HLS untuk stream -->
@@ -82,6 +82,9 @@
                                     <p class="vjs-no-js">Untuk melihat video ini, aktifkan JavaScript atau gunakan browser
                                         lain yang mendukung HTML5.</p>
                                 </video> --}}
+                                <iframe src="https://live.ardangroup.fm/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.html"
+                                    width="640" height="360" frameborder="no" scrolling="no"
+                                    allowfullscreen="true"></iframe>
                             </div>
                         </div>
                         <div class="card-footer">

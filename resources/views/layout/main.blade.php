@@ -10,7 +10,8 @@
     <!-- Untuk memastikan halaman merespons layar iOS -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" href="" sizes="any">
-    <link rel="apple-touch-icon" href="./storage/{{ \App\Helpers\Settings::get('site_apple_touch_icon', 'Default Site Title') }}">
+    <link rel="apple-touch-icon"
+        href="./storage/{{ \App\Helpers\Settings::get('site_apple_touch_icon', 'Default Site Title') }}">
     <link rel="manifest" href="">
     {{-- <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet"> --}}
     <!-- Mencegah highlight biru pada elemen klik -->
@@ -43,13 +44,14 @@
 <body>
     <!-- Popup Modal -->
     <div id="popup-ads" class="popup-ads-container">
-        <div class="popup-content-ads" id="imageAds">
-            <img id="image-ads" class="image-ads" src="" alt="" srcset="">
-            {{-- <h2 id="popup-title-ads"></h2>
-            <p id="popup-message-ads"></p>
-            <button id="close-popup-ads">Tutup</button> --}}
+        <div id="imageAds" class="popup-content-ads">
+            <img id="image-ads" class="image-ads" src="" alt="Popup Ads">
         </div>
+        <!-- Ikon close -->
+        <div id="close-icon" class="close-icon" style="display: none;">&times;</div>
     </div>
+
+
     {{-- navbar area --}}
     <nav class="navbar">
         <div class="area-kiri-navbar">
@@ -429,46 +431,156 @@
             }
         });
 
-        // pop up ads
-        fetch('/api/popup')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data) {
-                            console.log(data);
-                            if (data.image_ratio == "landscape") {
-                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
-                                document.getElementById('popup-ads').style.display = 'flex';
-                                document.getElementById('imageAds').classList.add('landscape');
-                            }else if (data.image_ratio == "portrait") {
-                                document.getElementById('image-ads').src = './storage/' + data.images_ads;
-                                document.getElementById('popup-ads').style.display = 'flex';
-                                document.getElementById('imageAds').classList.add('portrait');
-                            }
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching popup data:', error);
-                    });
-            // }
-                    // console.log(data.images_ads);
-                    
-            // Menutup popup ketika area di luar popup (background) diklik
-            document.getElementById('popup-ads').onclick = function(event) {
-                // Mengecek jika yang diklik adalah background (di luar popup-content)
-                if (event.target === document.getElementById('popup-ads')) {
-                    closePopup();
-                }
-            }
+        // // Fungsi untuk mendapatkan nama halaman saat ini
+        // function getCurrentPage() {
+        //     const path = window.location.pathname; // Mendapatkan path URL
+        //     const page = path.split('/').pop(); // Mendapatkan bagian terakhir dari path
+        //     return page || 'home'; // Default ke 'home' jika path kosong
+        // }
 
-            function closePopup() {
-                document.getElementById('popup-ads').style.display = 'none';
-            }
-            // ----------------
+        // // Fetch data popup
+        // fetch('/api/popup')
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then(data => {
+        //         if (data) {
+        //             const currentPage = getCurrentPage(); // Halaman saat ini
+        //             if (data.page.includes(currentPage)) { // Cek apakah halaman ada dalam daftar
+        //                 console.log(data);
+
+        //                 // Set properti popup berdasarkan rasio gambar
+        //                 const popupElement = document.getElementById('popup-ads');
+        //                 const imageAdsElement = document.getElementById('imageAds');
+        //                 document.getElementById('image-ads').src = './storage/' + data.images_ads;
+
+        //                 if (data.image_ratio === "landscape") {
+        //                     imageAdsElement.classList.add('landscape');
+        //                     imageAdsElement.classList.remove('portrait');
+        //                 } else if (data.image_ratio === "portrait") {
+        //                     imageAdsElement.classList.add('portrait');
+        //                     imageAdsElement.classList.remove('landscape');
+        //                 }
+
+        //                 // Tampilkan popup
+        //                 popupElement.style.display = 'flex';
+
+        //                 // Tentukan metode penutupan berdasarkan checkbox
+        //                 const closeWithIcon = data.close_with_icon;
+        //                 const closeWithClickAnywhere = data.close_with_click_anywhere;
+
+        //                 if (closeWithClickAnywhere) {
+        //                     popupElement.onclick = function(event) {
+        //                         if (event.target === popupElement) {
+        //                             closePopup();
+        //                         }
+        //                     };
+        //                 } else {
+        //                     popupElement.onclick = null; // Nonaktifkan klik di luar
+        //                 }
+
+        //                 // Jika bisa ditutup dengan ikon, pastikan ikon ada
+        //                 if (closeWithIcon) {
+        //                     const closeIcon = document.getElementById('close-icon');
+        //                     closeIcon.style.display = 'block'; // Tampilkan ikon
+        //                     closeIcon.onclick = closePopup;
+        //                 } else {
+        //                     document.getElementById('close-icon').style.display =
+        //                         'none'; // Sembunyikan ikon
+        //                 }
+        //             }
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Error fetching popup data:', error);
+        //     });
+
+        // // Menutup popup ketika area di luar popup (background) diklik
+        // document.getElementById('popup-ads').onclick = function(event) {
+        //     if (event.target === document.getElementById('popup-ads')) {
+        //         closePopup();
+        //     }
+        // };
+
+        // function closePopup() {
+        //     document.getElementById('popup-ads').style.display = 'none';
+        // }
+        // Fungsi untuk mendapatkan nama halaman saat ini
+        function getCurrentPage() {
+            const path = window.location.pathname; // Mendapatkan path URL
+            const page = path.split('/').pop(); // Mendapatkan bagian terakhir dari path
+            return page || 'home'; // Default ke 'home' jika path kosong
+        }
+
+        // Fetch data popup
+        fetch('/api/popup')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.showPopup && data.data) {
+                    const popupData = data.data;
+                    const currentPage = getCurrentPage(); // Halaman saat ini
+
+                    if (popupData.page.includes(currentPage)) { // Cek apakah halaman ada dalam daftar
+                        console.log(popupData);
+
+                        // Set properti popup berdasarkan rasio gambar
+                        const popupElement = document.getElementById('popup-ads');
+                        const imageAdsElement = document.getElementById('imageAds');
+                        document.getElementById('image-ads').src = './storage/' + popupData.images_ads;
+
+                        if (popupData.image_ratio === "landscape") {
+                            imageAdsElement.classList.add('landscape');
+                            imageAdsElement.classList.remove('portrait');
+                        } else if (popupData.image_ratio === "portrait") {
+                            imageAdsElement.classList.add('portrait');
+                            imageAdsElement.classList.remove('landscape');
+                        }
+
+                        // Tampilkan popup
+                        popupElement.style.display = 'flex';
+
+                        // Tentukan metode penutupan berdasarkan checkbox
+                        const closeWithIcon = popupData.close_with_icon;
+                        const closeWithClickAnywhere = popupData.close_with_click_anywhere;
+
+                        if (closeWithClickAnywhere) {
+                            popupElement.onclick = function(event) {
+                                if (event.target === popupElement) {
+                                    closePopup();
+                                }
+                            };
+                        } else {
+                            popupElement.onclick = null; // Nonaktifkan klik di luar
+                        }
+
+                        if (closeWithIcon) {
+                            const closeIcon = document.getElementById('close-icon');
+                            closeIcon.style.display = 'block'; // Tampilkan ikon
+                            closeIcon.onclick = closePopup;
+                        } else {
+                            document.getElementById('close-icon').style.display =
+                            'none'; // Sembunyikan ikon
+                        }
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching popup data:', error);
+            });
+
+        // Fungsi untuk menutup popup
+        function closePopup() {
+            document.getElementById('popup-ads').style.display = 'none';
+        }
+
     });
 </script>
 

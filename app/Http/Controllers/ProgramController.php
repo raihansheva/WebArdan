@@ -86,11 +86,31 @@ class ProgramController extends Controller
     }
 
 
-    public function getPopup()
+    // public function getPopup()
+    // {
+    //     $currentDate = now()->toDateString();
+    //     $currentTime = now()->toTimeString();
+
+    //     $popup = PopupAds::where('start_date', '<=', $currentDate)
+    //         ->where('end_date', '>=', $currentDate)
+    //         ->where(function ($query) use ($currentDate, $currentTime) {
+    //             $query->where(function ($subQuery) use ($currentTime) {
+    //                 $subQuery->where('end_time', '>=', $currentTime);
+    //             })->orWhere(function ($subQuery) use ($currentDate) {
+    //                 $subQuery->where('end_date', '>', $currentDate);
+    //             });
+    //         })
+    //         ->first();
+
+    //     return response()->json($popup);
+    // }
+
+    public function getPopup(Request $request)
     {
         $currentDate = now()->toDateString();
         $currentTime = now()->toTimeString();
 
+        // Ambil semua popup yang aktif berdasarkan tanggal dan waktu
         $popup = PopupAds::where('start_date', '<=', $currentDate)
             ->where('end_date', '>=', $currentDate)
             ->where(function ($query) use ($currentDate, $currentTime) {
@@ -102,8 +122,32 @@ class ProgramController extends Controller
             })
             ->first();
 
-        return response()->json($popup);
+        if ($popup) {
+            // Logika untuk target audiens
+            if ($popup->target_audience === 'new_users' && $request->cookie('hasVisited')) {
+                // Jika hanya untuk pengguna baru tetapi sudah pernah mengunjungi, jangan tampilkan
+                return response()->json(['showPopup' => false]);
+            }
+
+            // Jika popup ditemukan, set cookie `hasVisited` untuk pengguna baru
+            if ($popup->target_audience === 'new_users') {
+                return response()->json([
+                    'showPopup' => true,
+                    'data' => $popup,
+                ])->cookie('hasVisited', true, 60 * 24); // Cookie aktif selama 1 hari
+            }
+
+            // Untuk `all_users`, tampilkan popup tanpa memeriksa cookie
+            return response()->json([
+                'showPopup' => true,
+                'data' => $popup,
+            ]);
+        }
+
+        // Jika tidak ada popup yang sesuai
+        return response()->json(['showPopup' => false]);
     }
+
 
 
     /**

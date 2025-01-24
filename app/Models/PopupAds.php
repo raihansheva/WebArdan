@@ -11,7 +11,12 @@ class PopupAds extends Model
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'title' , 'message' , 'image_ratio' , 'images_ads' , 'start_date', 'end_date' , 'start_time' , 'end_time'];
+    protected $fillable = ['id' , 'title' , 'message' , 'image_ratio' , 'images_ads' , 'page' , 'close_with_icon' , 'close_with_click_anywhere', 'target_audience' , 'start_date', 'end_date' , 'start_time' , 'end_time'];
+
+
+    protected $casts = [
+        'page' => 'array', // Konversi JSON ke arrayb
+    ];
 
     public function registerMediaCollections(): void
     {
@@ -24,9 +29,9 @@ class PopupAds extends Model
 
         static::deleting(function (PopupAds $popupAds) {
             // Cek jika ada nama file gambar
-            if ($popupAds->image_banner) {
+            if ($popupAds->image_ads) {
                 // Hapus file gambar dari disk publik
-                Storage::disk('public')->delete($popupAds->image_banner);
+                Storage::disk('public')->delete($popupAds->image_ads);
             }
         });
 

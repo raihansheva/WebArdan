@@ -7,6 +7,7 @@ use App\Filament\Resources\PopUpAdsResource\RelationManagers;
 use App\Models\PopupAds;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -16,6 +17,7 @@ use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Enums\FiltersLayout;
@@ -90,6 +92,41 @@ class PopUpAdsResource extends Resource
                             })
                             ->reactive() // Untuk memastikan helper text dan rules berubah saat width_type berubah
                             ->required(),
+                        Select::make('page')
+                            ->options([
+                                'all' => 'All Page',
+                                'home' => 'Home',
+                                'info-news' => 'Info News',
+                                'event' => 'Event',
+                                'chart' => 'Chart',
+                                'youtube' => 'Youtube',
+                                'podcast' => 'Podcast',
+                                'info-artis' => 'Info Artis',
+                                'detail-program' => 'SinglePage Program',
+                                'detail-event' => 'SinglePage Event',
+                                'detail-info' => 'SinglePage Info',
+                                'detail-podcast' => 'SinglePage Podcast',
+                                'detail-artis' => 'SinglePage Artis',
+                                'detail-taginfo' => 'SinglePage KategoriInfo',
+                            ])
+                            ->multiple()
+                            ->required()
+                            ->label('Page'),
+                        Select::make('target_audience')
+                            ->options([
+                                'new_users' => 'Pengguna Baru',
+                                'all_users' => 'Semua Pengguna',
+                            ])
+                            ->default('all_users')
+                            ->label('Target Audiens')
+                            ->required(),
+                        Checkbox::make('close_with_icon')
+                            ->label('Tutup dengan ikon')
+                            ->default(true),
+                        Checkbox::make('close_with_click_anywhere')
+                            ->label('Tutup dengan klik di mana saja')
+                            ->default(false),
+
                         DatePicker::make('start_date')
                             ->label('Tanggal Mulai')
                             ->required()
@@ -127,6 +164,25 @@ class PopUpAdsResource extends Resource
                     ->label('Image Ratio'),
                 ImageColumn::make('images_ads')
                     ->label('Image Ads'),
+                TextColumn::make('page')
+                    ->label('Page'),
+                IconColumn::make('close_with_icon')
+                    ->label('Tutup dengan icon')
+                    ->boolean() // Secara otomatis menggunakan ikon `check` dan `x` untuk nilai boolean.
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true.
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false.
+                    ->trueColor('success') // Warna ikon untuk true.
+                    ->falseColor('danger'), // Warna ikon untuk false.
+                IconColumn::make('close_with_click_anywhere')
+                    ->label('Tutup dengan klik dimana aja')
+                    ->boolean() // Secara otomatis menggunakan ikon `check` dan `x` untuk nilai boolean.
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true.
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false.
+                    ->trueColor('success') // Warna ikon untuk true.
+                    ->falseColor('danger'), // Warna ikon untuk false.
+                TextColumn::make('target_audience')
+                    ->label('Targer User')
+                    ->sortable(),
                 TextColumn::make('start_date')
                     ->label('Tanggal Mulai')
                     ->sortable(),
@@ -197,6 +253,7 @@ class PopUpAdsResource extends Resource
             ], layout: FiltersLayout::AboveContent)
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
