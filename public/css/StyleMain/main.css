@@ -66,6 +66,29 @@ body {
     position: absolute;
 }
 
+/* Tombol */
+.btn-link {
+    display: block;
+    position: absolute;  /* Gunakan absolute agar bisa diposisikan di atas gambar */
+    top: 107%;             /* Tempatkan tombol di tengah */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;         /* Pastikan tombol di depan gambar */
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    font-family: "Poppins";
+    background-color: var(--primary-color);
+    font-size: 12px;
+    border-radius: 3px;
+    color: black;
+}
+
+#linkAdsBtn {
+    font-weight: 400;
+    color: black;
+}
+
 /* Ikon close */
 .close-icon {
     position: absolute;

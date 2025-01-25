@@ -43,7 +43,7 @@ class PopUpAdsResource extends Resource
                 Card::make()
                     ->schema([
                         TextInput::make('title'),
-                        Textarea::make('message'),
+                        TextInput::make('link_ads'),
                         Select::make('image_ratio')
                             ->options([
                                 'landscape' => 'Landscape',
@@ -68,13 +68,13 @@ class PopUpAdsResource extends Resource
                                             'required',
                                             'image',
                                             'dimensions::min_width=800,min_height=600',
-                                            'dimensions::max_width=1960,max_height=1080'
+                                            'dimensions::max_width=1080,max_height=1920'
                                         ];
                                     default: // Default untuk 'Full Width'
                                         return [
                                             'required',
                                             'image',
-                                            'dimensions:max_width=1960,max_height=1800,'
+                                            'dimensions:max_width=1920,max_height=1800,'
                                         ];
                                 }
                             })
@@ -87,7 +87,7 @@ class PopUpAdsResource extends Resource
                                     case 'portrait':
                                         return 'The image must be minimun 800x600 pixels.';
                                     default: // Default untuk 'Full Width'
-                                        return 'The image must be max 1960x1080 pixels.';
+                                        return 'The image must be max 1920x1080 pixels.';
                                 }
                             })
                             ->reactive() // Untuk memastikan helper text dan rules berubah saat width_type berubah
@@ -126,7 +126,9 @@ class PopUpAdsResource extends Resource
                         Checkbox::make('close_with_click_anywhere')
                             ->label('Tutup dengan klik di mana saja')
                             ->default(false),
-
+                        Checkbox::make('has_button')
+                            ->label('Tampilkan Button')
+                            ->default(true),
                         DatePicker::make('start_date')
                             ->label('Tanggal Mulai')
                             ->required()
@@ -158,8 +160,8 @@ class PopUpAdsResource extends Resource
             ->columns([
                 TextColumn::make('title')
                     ->label('Title Ads'),
-                TextColumn::make('message')
-                    ->label('Message'),
+                TextColumn::make('link_ads')
+                    ->label('Link Ads'),
                 TextColumn::make('image_ratio')
                     ->label('Image Ratio'),
                 ImageColumn::make('images_ads')
@@ -175,6 +177,13 @@ class PopUpAdsResource extends Resource
                     ->falseColor('danger'), // Warna ikon untuk false.
                 IconColumn::make('close_with_click_anywhere')
                     ->label('Tutup dengan klik dimana aja')
+                    ->boolean() // Secara otomatis menggunakan ikon `check` dan `x` untuk nilai boolean.
+                    ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true.
+                    ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false.
+                    ->trueColor('success') // Warna ikon untuk true.
+                    ->falseColor('danger'), // Warna ikon untuk false.
+                IconColumn::make('has_button')
+                    ->label('Gunakan Button')
                     ->boolean() // Secara otomatis menggunakan ikon `check` dan `x` untuk nilai boolean.
                     ->trueIcon('heroicon-o-check-circle') // Ikon untuk nilai true.
                     ->falseIcon('heroicon-o-x-circle')   // Ikon untuk nilai false.

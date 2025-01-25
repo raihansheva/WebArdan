@@ -11,7 +11,7 @@ class PopupAds extends Model
 {
     use HasFactory , InteractsWithMedia;
 
-    protected $fillable = ['id' , 'title' , 'message' , 'image_ratio' , 'images_ads' , 'page' , 'close_with_icon' , 'close_with_click_anywhere', 'target_audience' , 'start_date', 'end_date' , 'start_time' , 'end_time'];
+    protected $fillable = ['id' , 'title' , 'link_ads' , 'image_ratio' , 'images_ads' , 'page' , 'close_with_icon' , 'close_with_click_anywhere', 'target_audience' , 'has_button' , 'start_date', 'end_date' , 'start_time' , 'end_time'];
 
 
     protected $casts = [

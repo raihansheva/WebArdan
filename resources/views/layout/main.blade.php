@@ -45,7 +45,11 @@
     <!-- Popup Modal -->
     <div id="popup-ads" class="popup-ads-container">
         <div id="imageAds" class="popup-content-ads">
-            <img id="image-ads" class="image-ads" src="" alt="Popup Ads">
+            <a id="linkAds" href="">
+                <img id="image-ads" class="image-ads" src="" alt="Popup Ads">
+            </a>
+            <button id="btn-link" class="btn-link" style="display: none;"><a id="linkAdsBtn" href="">Click
+                    Me</a></button>
         </div>
         <!-- Ikon close -->
         <div id="close-icon" class="close-icon" style="display: none;">&times;</div>
@@ -528,24 +532,137 @@
                     const popupData = data.data;
                     const currentPage = getCurrentPage(); // Halaman saat ini
 
-                    if (popupData.page.includes(currentPage)) { // Cek apakah halaman ada dalam daftar
+                    if (popupData.page.includes(currentPage) || popupData.page.includes(
+                            'all')) { // Cek apakah halaman ada dalam daftar
                         console.log(popupData);
 
                         // Set properti popup berdasarkan rasio gambar
                         const popupElement = document.getElementById('popup-ads');
                         const imageAdsElement = document.getElementById('imageAds');
+                        // Logika has_button
+                        const hasButton = popupData.has_button;
+                        const anchorElement = document.getElementById('linkAds');
+                        const buttonElement = document.getElementById('btn-link');
+                        const anchorElementBtn = document.getElementById('linkAdsBtn');
                         document.getElementById('image-ads').src = './storage/' + popupData.images_ads;
+
+                        const getTopLandscapeValue = () => {
+                            if (window.matchMedia("(max-width: 320px)").matches) {
+                                return '114%';
+                            } else if (window.matchMedia("(max-width: 375px)").matches) {
+                                return '112%';
+                            } else if (window.matchMedia("(max-width: 480px)").matches) {
+                                return '112%';
+                            } else if (window.matchMedia("(max-width: 768px)").matches) {
+                                return '109%';
+                            } else if (window.matchMedia("(max-width: 1024px)").matches) {
+                                return '108%';
+                            } else {
+                                return '110%';
+                            }
+                        };
+
+                        const getTopPortraitValue = () => {
+                            if (window.matchMedia("(max-width: 320px)").matches) {
+                                return '109%';
+                            } else if (window.matchMedia("(max-width: 375px)").matches) {
+                                return '110%';
+                            } else if (window.matchMedia("(max-width: 480px)").matches) {
+                                return '109%';
+                            } else if (window.matchMedia("(max-width: 768px)").matches) {
+                                return '110%';
+                            } else if (window.matchMedia("(max-width: 1024px)").matches) {
+                                return '108%';
+                            } else {
+                                return '107%';
+                            }
+                        };
+
+                        const topValueLandscape = getTopLandscapeValue();
+                        const topValuePortrait = getTopPortraitValue();
 
                         if (popupData.image_ratio === "landscape") {
                             imageAdsElement.classList.add('landscape');
                             imageAdsElement.classList.remove('portrait');
+                            buttonElement.style.top = topValueLandscape;
                         } else if (popupData.image_ratio === "portrait") {
                             imageAdsElement.classList.add('portrait');
+                            buttonElement.style.top = topValuePortrait;
                             imageAdsElement.classList.remove('landscape');
                         }
 
+                        // Definisikan fungsi di cakupan global
+                        const getTRLandscapeValues = () => {
+                            if (window.matchMedia("(max-width: 320px)").matches) {
+                                return {
+                                    topIconLandscape: '34%',
+                                    rightIconLandscape: '3%'
+                                };
+                            } else if (window.matchMedia("(max-width: 375px)").matches) {
+                                return {
+                                    topIconLandscape: '31%',
+                                    rightIconLandscape: '3%'
+                                };
+                            } else if (window.matchMedia("(max-width: 480px)").matches) {
+                                return {
+                                    topIconLandscape: '31%',
+                                    rightIconLandscape: '8%'
+                                };
+                            } else if (window.matchMedia("(max-width: 768px)").matches) {
+                                return {
+                                    topIconLandscape: '21%',
+                                    rightIconLandscape: '14%'
+                                };
+                            } else if (window.matchMedia("(max-width: 1024px)").matches) {
+                                return {
+                                    topIconLandscape: '20%',
+                                    rightIconLandscape: '22%'
+                                };
+                            } else {
+                                return {
+                                    topIconLandscape: '23%',
+                                    rightIconLandscape: '28%'
+                                };
+                            }
+                        };
+
+                        const getTRPortraitValues = () => {
+                            if (window.matchMedia("(max-width: 320px)").matches) {
+                                return {
+                                    topIconPortrait: '30%',
+                                    rightIconPortrait: '10%'
+                                };
+                            } else if (window.matchMedia("(max-width: 375px)").matches) {
+                                return {
+                                    topIconPortrait: '29%',
+                                    rightIconPortrait: '14%'
+                                };
+                            } else if (window.matchMedia("(max-width: 480px)").matches) {
+                                return {
+                                    topIconPortrait: '27%',
+                                    rightIconPortrait: '16%'
+                                };
+                            } else if (window.matchMedia("(max-width: 768px)").matches) {
+                                return {
+                                    topIconPortrait: '23%',
+                                    rightIconPortrait: '28%'
+                                };
+                            } else if (window.matchMedia("(max-width: 1024px)").matches) {
+                                return {
+                                    topIconPortrait: '19%',
+                                    rightIconPortrait: '31%'
+                                };
+                            } else {
+                                return {
+                                    topIconPortrait: '16%',
+                                    rightIconPortrait: '32%'
+                                };
+                            }
+                        };
+
                         // Tampilkan popup
                         popupElement.style.display = 'flex';
+                        console.log(getTRPortraitValues);
 
                         // Tentukan metode penutupan berdasarkan checkbox
                         const closeWithIcon = popupData.close_with_icon;
@@ -560,14 +677,70 @@
                         } else {
                             popupElement.onclick = null; // Nonaktifkan klik di luar
                         }
+                        if (popupData.image_ratio === "landscape") {
+                            if (closeWithIcon) {
+                                const closeIcon = document.getElementById('close-icon');
+                                if (!closeIcon) {
+                                    console.error("Element with ID 'close-icon' not found");
+                                    return;
+                                }
 
-                        if (closeWithIcon) {
-                            const closeIcon = document.getElementById('close-icon');
-                            closeIcon.style.display = 'block'; // Tampilkan ikon
-                            closeIcon.onclick = closePopup;
+                                const {
+                                    topIconPortrait,
+                                    rightIconPortrait
+                                } = getTRPortraitValues();
+                                const {
+                                    topIconLandscape,
+                                    rightIconLandscape
+                                } = getTRLandscapeValues();
+
+                                closeIcon.style.display = 'block';
+                                closeIcon.style.top = topIconLandscape;
+                                closeIcon.style.right = rightIconLandscape;
+                                closeIcon.onclick = closePopup;
+                            } else {
+                                document.getElementById('close-icon').style.display = 'none';
+                            }
+                        } else if (popupData.image_ratio === "portrait") {
+                            if (closeWithIcon) {
+                                const closeIcon = document.getElementById('close-icon');
+                                if (!closeIcon) {
+                                    console.error("Element with ID 'close-icon' not found");
+                                    return;
+                                }
+
+                                const {
+                                    topIconPortrait,
+                                    rightIconPortrait
+                                } = getTRPortraitValues();
+                                const {
+                                    topIconLandscape,
+                                    rightIconLandscape
+                                } = getTRLandscapeValues();
+
+                                closeIcon.style.display = 'block';
+                                closeIcon.style.top = topIconPortrait;
+                                closeIcon.style.right = rightIconPortrait;
+                                closeIcon.onclick = closePopup;
+                            } else {
+                                document.getElementById('close-icon').style.display = 'none';
+                            }
+                        }
+
+
+
+
+                        if (hasButton) {
+                            // imageAdsElement.style.display = 'none';
+                            anchorElement.removeAttribute('href'); // Hilangkan link pada anchor
+                            buttonElement.style.display = 'inline-block'; // Tampilkan tombol
+                            anchorElementBtn.href = popupData.link_ads; // Set href ke link_ads
                         } else {
-                            document.getElementById('close-icon').style.display =
-                            'none'; // Sembunyikan ikon
+                            imageAdsElement.style.display = 'inline-block'; // Tampilkan gambar dalam anchor
+                            anchorElement.href = popupData.link_ads; // Set href ke link_ads
+                            buttonElement.style.display = 'none'; // Sembunyikan tombol
+                            console.log(popupData.link_ads);
+
                         }
                     }
                 }
