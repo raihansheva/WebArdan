@@ -45,10 +45,9 @@ class StreamResource extends Resource
                             ->rules([
                                 'required',
                                 'image',
-                                'dimensions:width=774,height=200', // Atur maksimal width dan height di sini
                             ])
                             ->validationAttribute('Image Event')
-                            ->helperText('The image must have 774x200 pixels')
+                            ->helperText('max dimensions 1920x1800')
                             ->preserveFilenames(),
                     ])
                     ->columns(2),

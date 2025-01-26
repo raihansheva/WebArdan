@@ -35,7 +35,7 @@
 
 .content-event-CD {
     width: 100%;
-    height:     480px;
+    height: 678px;
     background-color: #f0f0f0;
     display: flex;
     justify-content: end;
@@ -157,7 +157,7 @@
     border-radius: 15px;
     text-align: center;
     width: 500px;
-    height: 250px; /* Lebar pop-up */
+    height: fit-content; /* Lebar pop-up */
     display: flex;
     justify-content: center;
     align-items: end;
@@ -207,6 +207,11 @@
     font-family: "Poppins";
     margin: 0px;
     font-weight: 300;
+        display: -webkit-box;
+    -webkit-line-clamp: 5; /* Membatasi 3 baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Menyembunyikan sisa teks yang tidak muat */
+    text-overflow: ellipsis;
 }
 
 .jam-event {
@@ -288,7 +293,7 @@
 
 .content-event-OV{
     flex: 1 1 calc(33.33% - 20px);
-    height: 300px;
+    height: 333px;
     background-color: #f0f0f0;
     display: flex;
     justify-content: end;
@@ -391,14 +396,15 @@
 .image-programEE {
     width: 100%; /* Sesuaikan dengan lebar parent */
     height: 100%; /* Sesuaikan dengan tinggi parent */
-    position: absolute; /* Untuk menempel pada parent */
+    /*position: absolute;*/
     object-fit: cover; /* Menjaga proporsi gambar */
     top: 0; /* Atur posisi di atas */
     left: 0; /* Atur posisi di kiri */
 }
 
 .box-programE {
-    flex: 1 1 calc(25% - 10px);
+    /*flex: 1 1 calc(25% - 10px);*/
+    width: calc(25% - 10px);
     height: 280px;
     background-color: #f0f0f0;
     cursor: pointer;

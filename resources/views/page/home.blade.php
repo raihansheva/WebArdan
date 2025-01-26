@@ -82,9 +82,11 @@
                                     <p class="vjs-no-js">Untuk melihat video ini, aktifkan JavaScript atau gunakan browser
                                         lain yang mendukung HTML5.</p>
                                 </video> --}}
-                                <iframe src="https://live.ardangroup.fm/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.html"
+                                {{-- <iframe src="https://live.ardangroup.fm/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.html"
                                     width="640" height="360" frameborder="no" scrolling="no"
-                                    allowfullscreen="true"></iframe>
+                                    allowfullscreen="true"></iframe> --}}
+                                <div id="player" data-link="{{ $streamVideo->stream_url }}"
+                                    data-poster="./storage/{{ $streamVideo->image_stream }}"></div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -957,10 +959,22 @@
     {{-- <script src="js/playlist.js"></script> --}}
     @livewireScripts
     <script src="{{ asset('js/home.js?v=' . time()) }}"></script>
+    <script src="{{ asset('js/playerjs.js?v=' . time()) }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // pjs
+            const playerElement = document.getElementById("player");
+            const streamURL = playerElement.getAttribute("data-link");
+            const imageStream = playerElement.getAttribute("data-poster");
+
+            window.player = new Playerjs({
+                id: "player", // ID elemen target
+                file: streamURL, // URL streaming dari data-link
+                poster: imageStream, // Poster dari data-poster
+            });
+
             // Pilih semua elemen dengan class "card-podcast"
             const podcastCards = document.querySelectorAll(".card-podcast");
 
@@ -976,15 +990,15 @@
                 });
             });
 
-            // Pastikan videojs sudah terdefinisi
-            window.player = videojs("videoPlayer", {
-                controls: true,
-                autoplay: false,
-                preload: "auto",
-                fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
-                aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
-                responsive: true,
-            });
+            // // Pastikan videojs sudah terdefinisi
+            // window.player = videojs("videoPlayer", {
+            //     controls: true,
+            //     autoplay: false,
+            //     preload: "auto",
+            //     fluid: true, // Membuat player fleksibel mengikuti ukuran kontainer
+            //     aspectRatio: "16:9", // Rasio aspek untuk menjaga proporsi
+            //     responsive: true,
+            // });
 
 
             // let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali

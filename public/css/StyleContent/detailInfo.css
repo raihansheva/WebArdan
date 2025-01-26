@@ -178,7 +178,6 @@
     margin-top: 12px;
     position: relative; /* Dibutuhkan untuk child position: absolute */
     overflow: hidden;
-
     /* Gunakan padding-top untuk menjaga rasio 16:9 */
     padding-top: 56.25%; /* Rasio 16:9 */
     height: 0; /* Tinggi diatur oleh padding-top */

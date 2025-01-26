@@ -416,7 +416,7 @@
     }
 
     .area-image-info {
-        height: 450px;
+        /* height: 450px; */
         font-size: 20px;
     }
 
@@ -577,7 +577,7 @@
     }
 
     .area-event-bottom {
-        height: 580px;
+        height: 679px;
         gap: 15px;
     }
 
@@ -603,25 +603,25 @@
 
     /* pop up event */
     .popup-content-event {
-        width: 850px;
-        height: 400px;
-        padding: 50px;
+        width: 450px;
+        height: 200px;
+        padding: 25px;
     }
 
     .desk-event {
-        font-size: 22px;
+        font-size: 16px;
     }
 
     .jam-event {
-        font-size: 24px;
+        font-size: 14px;
     }
 
     .title-box-event {
-        font-size: 38px;
+        font-size: 28px;
     }
 
     .link-event {
-        font-size: 18px;
+        font-size: 16px;
     }
     /* -------------- */
 
@@ -771,9 +771,9 @@
         font-size: 14px;
     }
 
-    .area-image-info {
+    /* .area-image-info {
         height: 280px;
-    }
+    } */
 
     .area-desk-info {
         font-size: 12px;
@@ -918,16 +918,16 @@
     }
 
     .area-event-bottom {
-        height: 480px;
+        height: 370px;
         gap: 15px;
     }
 
     .area-days-date-right {
-        height: 40px;
+        height: 18px;
     }
 
     .date-month-right {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .year-right {
@@ -1098,9 +1098,9 @@
         font-size: 12px;
     }
 
-    .area-image-info {
+    /* .area-image-info {
         height: 240px;
-    }
+    } */
 
     .area-desk-info {
         font-size: 12px;
@@ -1230,16 +1230,16 @@
     }
 
     .area-event-bottom {
-        height: 440px;
+        height: 325px;
         gap: 15px;
     }
 
     .area-days-date-right {
-        height: 30px;
+        height: 11px;
     }
 
     .date-month-right {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .year-right {
@@ -1430,9 +1430,9 @@
         height: fit-content;
     }
 
-    .area-image-info {
+    /* .area-image-info {
         height: 30%;
-    }
+    } */
 
     .area-info {
         margin-top: 15px;
@@ -1585,12 +1585,12 @@
     }
 
     .area-event-bottom {
-        height: 440px;
+        height: 457px;
         gap: 15px;
     }
 
     .area-days-date-right {
-        height: 30px;
+        height: 15px;
     }
 
     .date-month-right {
@@ -1781,9 +1781,9 @@
         height: fit-content;
     }
 
-    .area-image-info {
+    /* .area-image-info {
         height: 30%;
-    }
+    } */
 
     .area-info {
         margin-top: 15px;
@@ -1961,12 +1961,12 @@
     }
 
     .area-event-bottom {
-        height: 440px;
+        height: 404px;
         gap: 15px;
     }
 
     .area-days-date-right {
-        height: 30px;
+        height: 16px;
     }
 
     .date-month-right {
@@ -2160,9 +2160,9 @@
         font-size: 12px;
     }
 
-    .area-image-info {
+    /* .area-image-info {
         height: 240px;
-    }
+    } */
 
     .area-desk-info {
         font-size: 12px;
@@ -2537,9 +2537,9 @@
         font-size: 12px;
     }
 
-    .area-image-info {
+    /* .area-image-info {
         height: 240px;
-    }
+    } */
 
     .area-desk-info {
         font-size: 12px;
@@ -2710,16 +2710,16 @@
     }
 
     .area-event-bottom {
-        height: 440px;
+        height: 333px;
         gap: 15px;
     }
 
     .area-days-date-right {
-        height: 30px;
+        height: 10px;
     }
 
     .date-month-right {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .year-right {

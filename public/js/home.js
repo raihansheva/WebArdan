@@ -104,7 +104,7 @@ tontonSiaranBtnA.addEventListener("click", function() {
     hideCard(cardA);
     pauseStreaming();
     setTimeout(() => {
-        player.play();
+        player.api("play");
         // handleUserInteraction();
         showCard(cardB);
     }, 500);
@@ -114,7 +114,7 @@ tontonSiaranBtnA.addEventListener("click", function() {
 tontonSiaranBtnB.addEventListener("click", function() {
     hideCard(cardB);
     // Hentikan video
-    player.pause();
+    player.api("pause");
     playStreaming();
     setTimeout(() => {
         showCard(cardA);

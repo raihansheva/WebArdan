@@ -143,7 +143,7 @@
         /* border: 1px red solid; */
     }
     .content-event-CD {
-        height: 445px;
+        height: 948px;
     }
     .area-countdown {
         height: 80px;
@@ -205,7 +205,7 @@
     }
 
     .content-event-OV {
-        height: 320px;
+        height: 470px;
     }
     .area-days-date-right {
         height: 35px;
@@ -259,7 +259,6 @@
     /* -------------- */
     /* --------------------- */
 }
-
 @media (max-width: 1440px) {
     /* Gaya untuk desktop besar */
 }
@@ -282,7 +281,7 @@
         /* border: 1px red solid; */
     }
     .content-event-CD {
-        height: 415px;
+        height: 531px;
     }
     .area-countdown {
         height: 80px;
@@ -412,7 +411,7 @@
         /* border: 1px red solid; */
     }
     .content-event-CD {
-        height: 325px;
+        height: 402px;
     }
     .area-countdown {
         height: 70px;
@@ -478,7 +477,7 @@
     }
 
     .content-event-OV {
-        height: 200px;
+        height: 196px;
     }
     .area-days-date-right {
         height: 25px;
@@ -553,7 +552,7 @@
     }
     .content-event-CD {
         margin-top: 10px;
-        height: 325px;
+        height: 203px;
     }
     .area-content-countdown {
         width: 100%;
@@ -617,7 +616,7 @@
     }
     .area-content-OV {
         flex-direction: column;
-        height: 500px;
+        height: 453px;
         gap: 10px;
         /* border: 1px red solid; */
     }
@@ -762,7 +761,7 @@
     }
     .area-content-OV {
         flex-direction: column;
-        height: 500px;
+        height: 396px;
         gap: 10px;
         /* border: 1px red solid; */
     }
@@ -829,6 +828,152 @@
     /* -------------- */
     /* ------------------ */
 }
+@media (max-width: 375px) {
+    .area-event {
+        width: auto;
+        margin: 0px 8px 0px 8px;
+    }
+    .title-event {
+        font-size: 26px;
+    }
+    .content-event {
+        width: auto;
+        /* border: 1px red solid; */
+    }
+    .content-event-CD {
+        margin-top: 10px;
+        height: 225px;
+    }
+    .area-content-countdown {
+        width: 100%;
+    }
+    .area-countdown {
+        height: 70px;
+    }
+
+    .countdown {
+        gap: 10px;
+    }
+
+    .timer {
+        font-size: 28px;
+    }
+    .title-timer {
+        font-size: 12px;
+    }
+    .date-month {
+        font-size: 20px;
+    }
+    .year {
+        font-size: 20px;
+    }
+    /* pop up event */
+    .popup-content-event {
+        width: 200px;
+        height: fit-content;
+        padding: 15px;
+    }
+
+    .area-info-event {
+        gap: 3px;
+    }
+
+    .desk-event {
+        font-size: 8px;
+    }
+
+    .jam-event {
+        font-size: 10px;
+    }
+
+    .title-box-event {
+        font-size: 18px;
+    }
+
+    .link-event {
+        font-size: 10px;
+    }
+    /* -------------- */
+    /* area other upcoming event */
+    .area-other-event {
+        margin: 0px 8px 0px 8px;
+    }
+    .header-other-event {
+        margin-top: 30px;
+    }
+    .title-event-other {
+        font-size: 28px;
+    }
+    .area-content-OV {
+        flex-direction: column;
+        height: 500px;
+        gap: 10px;
+        /* border: 1px red solid; */
+    }
+    .content-event-OV {
+        height: 180px;
+    }
+    .area-days-date-right {
+        height: 20px;
+    }
+    .date-month-right {
+        font-size: 18px;
+    }
+    .year-right {
+        font-size: 12px;
+    }
+    /* -------------- */
+    /* area program page event */
+    .page-event-3 {
+        height: auto;
+    }
+    .area-programE {
+        margin: 0px 8px 0px 8px;
+    }
+    .title-programE {
+        font-size: 28px;
+    }
+    .content-programE {
+        margin-top: 20px;
+        gap: 10px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+    }
+    .box-programE {
+        /*flex: 1 1 calc(50% - 10px);*/
+        width: calc(50% - 10px);
+        height: 155px;
+    }
+    /* pop up program */
+    .popup-content {
+        width: 200px;
+        height: fit-content;
+        padding: 15px;
+    }
+
+    .area-info-program {
+        gap: 0px;
+    }
+
+    .desk-program {
+        font-size: 8px;
+    }
+
+    .jam-program {
+        font-size: 10px;
+    }
+
+    .title-box-program {
+        font-size: 18px;
+    }
+
+    .link-program {
+        font-size: 10px;
+    }
+
+    /* -------------- */
+    /* ------------------ */
+}
 @media (max-width: 344px) {
     .area-event {
         width: auto;
@@ -843,7 +988,7 @@
     }
     .content-event-CD {
         margin-top: 10px;
-        height: 200px;
+        height: 193px;
     }
     .area-content-countdown {
         width: 100%;
@@ -908,7 +1053,7 @@
     }
     .area-content-OV {
         flex-direction: column;
-        height: 500px;
+        height: 332px;
         gap: 10px;
         /* border: 1px red solid; */
     }
@@ -989,7 +1134,7 @@
     }
     .content-event-CD {
         margin-top: 10px;
-        height: 200px;
+        height: 160px;
     }
     .area-content-countdown {
         width: 100%;
@@ -1054,7 +1199,7 @@
     }
     .area-content-OV {
         flex-direction: column;
-        height: 500px;
+        height: 332px;
         gap: 10px;
         /* border: 1px red solid; */
     }
