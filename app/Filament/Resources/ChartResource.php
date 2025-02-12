@@ -20,6 +20,7 @@ use App\Filament\Resources\ChartResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ChartResource\RelationManagers;
 use Filament\Actions\ActionGroup;
+use Filament\Forms\Components\Hidden;
 use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Filters\SelectFilter;
 
@@ -50,16 +51,19 @@ class ChartResource extends Resource
                         Repeater::make('songs')
                             ->label('Pilih Lagu :')
                             ->schema([
-                                TextInput::make('name')->label('Nama Lagu : ')->required(),
+                                Hidden::make('id'),
+                                TextInput::make('name')
+                                    ->label('Nama Lagu : ')
+                                    ->required(),
                                 FileUpload::make('link_audio')
                                     ->label('Audio File : ')
                                     ->preserveFilenames()
                                     ->directory('audioChart')
                                     ->acceptedFileTypes(['audio/mpeg'])
                                     ->required(),
-                            ])->columns(2)
+                            ])
                             ->defaultItems(1)
-                            ->minItems(1)
+                            ->minItems(1)                       
                             ->required(),
                     ])
                     ->columns(1),

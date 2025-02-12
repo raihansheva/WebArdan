@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        
+
         $banner = Banner::where('page', 'home')->get();
 
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
@@ -158,8 +158,9 @@ class HomeController extends Controller
 
         $videos = [];
         foreach ($playlist as $item) {
-            // Ambil videoId dari link_video
             $url = $item->link_video;
+            $videoId = null;
+
             if (Str::contains($url, 'youtu.be')) {
                 // Format https://youtu.be/VIDEO_ID
                 $videoId = explode('/', parse_url($url, PHP_URL_PATH))[1];
@@ -167,16 +168,16 @@ class HomeController extends Controller
                 // Format https://www.youtube.com/watch?v=VIDEO_ID
                 parse_str(parse_url($url, PHP_URL_QUERY), $query);
                 $videoId = $query['v'] ?? null;
-            } else {
-                $videoId = null;
             }
 
             if ($videoId) {
                 $videos[] = [
                     'videoId' => $videoId,
+                    'videoUrl' => $url, // Simpan URL asli
                 ];
             }
         }
+
         // $fmt = new \NumberFormatter('en_US', \NumberFormatter::CURRENCY);
         // $test = $fmt->format(123456.789);
         // dd($test);
@@ -500,14 +501,13 @@ class HomeController extends Controller
 
         $streamAudio = Streaming::where('type_url', 'Audio')->first();
         // dd($epsgroup);
-        $playlist = YoutubeHighlight::where('page', 'podcast')->limit(3)->get();
-
-        // dd($playlist);
+        $playlist = YoutubeHighlight::where('page', 'podcast')->limit(5)->get();
 
         $videos = [];
         foreach ($playlist as $item) {
-            // Ambil videoId dari link_video
             $url = $item->link_video;
+            $videoId = null;
+
             if (Str::contains($url, 'youtu.be')) {
                 // Format https://youtu.be/VIDEO_ID
                 $videoId = explode('/', parse_url($url, PHP_URL_PATH))[1];
@@ -515,13 +515,12 @@ class HomeController extends Controller
                 // Format https://www.youtube.com/watch?v=VIDEO_ID
                 parse_str(parse_url($url, PHP_URL_QUERY), $query);
                 $videoId = $query['v'] ?? null;
-            } else {
-                $videoId = null;
             }
 
             if ($videoId) {
                 $videos[] = [
                     'videoId' => $videoId,
+                    'videoUrl' => $url, // Simpan URL asli
                 ];
             }
         }
@@ -538,7 +537,17 @@ class HomeController extends Controller
 
         // $videos = $response->json()['items'];
 
-        // Tampilkan halaman detail dengan data podcast
+        // -----------------------------------------------
+        // Bagian untuk mengelola link_youtube di detail podcast
+        // -----------------------------------------------
+
+        $youtubeId = null;
+        if (!empty($detailpodcast->link_youtube)) {
+            // Mengekstrak ID YouTube dari link_youtube
+            $youtubeId = $this->getYoutubeId($detailpodcast->link_youtube);
+        }
+
+        // Kirim data ke view
         return view('page.detailPodcast', [
             'banner' => $banner,
             'detail_podcast' => $detailpodcast,
@@ -547,9 +556,18 @@ class HomeController extends Controller
             'top_info' => $topInfo,
             'videos' => $videos,
             'streamAudio' => $streamAudio,
+            'youtubeId' => $youtubeId,  // Kirim youtubeId ke Blade
         ]);
     }
 
+    /**
+     * Fungsi untuk mengekstrak ID YouTube dari URL.
+     */
+    private function getYoutubeId($url)
+    {
+        preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/', $url, $matches);
+        return $matches[1] ?? null;
+    }
 
     public function chart()
     {

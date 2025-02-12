@@ -60,8 +60,8 @@ function hideCard(card) {
 
 tontonSiaranBtnA.addEventListener("click", function () {
     hideCard(cardA);
-    pausePodcast(idP)
-    console.log('klik pause');
+    pausePodcast(idP);
+    console.log("klik pause");
     setTimeout(() => {
         showCard(cardB);
     }, 500);
@@ -98,40 +98,28 @@ tontonSiaranBtnB.addEventListener("click", function () {
 //     });
 // }
 
-// Menambahkan thumbnail YouTube secara dinamis di belakang tombol play
-document.querySelectorAll('.box-video, .box-video-mid').forEach(videoBox => {
-    const videoId = videoBox.getAttribute('data-video-id');
-    
-    if (videoId) {
-        // Membuat elemen img untuk thumbnail
-        const thumbnailImg = document.createElement('img');
-        thumbnailImg.classList.add('video-thumbnail');
-        thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-        thumbnailImg.alt = "Thumbnail";
-        
-        // Menyisipkan thumbnail ke dalam box-video atau box-video-mid
-        videoBox.prepend(thumbnailImg);
-    }
-});
+
+
+
 
 // Callback ketika player siap
 function onPlayerReady(event) {
     // Anda dapat menambahkan logika tambahan saat player siap, jika diperlukan
 }
 
-const cards = document.querySelectorAll('.card-episode');
-const seeMoreText = document.getElementById('toggleSeeMore');
+const cards = document.querySelectorAll(".card-episode");
+const seeMoreText = document.getElementById("toggleSeeMore");
 let isExpanded = false;
 
 function toggleCards() {
     if (isExpanded) {
         cards.forEach((card, index) => {
-            if (index >= 4) card.classList.remove('visible');
+            if (index >= 4) card.classList.remove("visible");
         });
-        seeMoreText.textContent = 'See more';
+        seeMoreText.textContent = "See more";
     } else {
-        cards.forEach(card => card.classList.add('visible'));
-        seeMoreText.textContent = 'See less';
+        cards.forEach((card) => card.classList.add("visible"));
+        seeMoreText.textContent = "See less";
     }
     isExpanded = !isExpanded;
 }
@@ -139,16 +127,16 @@ function toggleCards() {
 function handleResize() {
     if (window.innerWidth <= 480) {
         cards.forEach((card, index) => {
-            if (index < 4) card.classList.add('visible');
-            else card.classList.remove('visible');
+            if (index < 4) card.classList.add("visible");
+            else card.classList.remove("visible");
         });
-        seeMoreText.style.display = cards.length > 4 ? 'block' : 'none';
+        seeMoreText.style.display = cards.length > 4 ? "block" : "none";
     } else {
         // Reset state if window is larger than 480px
-        cards.forEach(card => card.classList.add('visible'));
-        seeMoreText.style.display = 'none';
+        cards.forEach((card) => card.classList.add("visible"));
+        seeMoreText.style.display = "none";
         isExpanded = false;
-        seeMoreText.textContent = 'See more';
+        seeMoreText.textContent = "See more";
     }
 }
 
@@ -156,37 +144,83 @@ function handleResize() {
 handleResize();
 
 // Add event listener for window resize
-window.addEventListener('resize', handleResize);
+window.addEventListener("resize", handleResize);
 
 // Add event listener for see more/see less toggle
-seeMoreText.addEventListener('click', toggleCards);
+seeMoreText.addEventListener("click", toggleCards);
 
-var player;
+// Menambahkan thumbnail YouTube secara dinamis di belakang tombol play
+document.querySelectorAll(".box-video, .box-video-mid").forEach((videoBox) => {
+    const videoId = videoBox.getAttribute("data-video-id");
 
-function showPopupYT(videoId) {
-    document.getElementById("popup-player").style.display = "flex";
+    if (videoId) {
+        // Membuat elemen img untuk thumbnail
+        const thumbnailImg = document.createElement("img");
+        thumbnailImg.classList.add("video-thumbnail");
+        thumbnailImg.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+        thumbnailImg.alt = "Thumbnail";
 
-    if (!player) {
-        player = new YT.Player("player-yt", {
-            height: "360",
-            width: "640",
-            videoId: videoId,
-            events: {
-                onReady: function (event) {
-                    event.target.playVideo();
-                },
-            },
-        });
-    } else {
-        player.loadVideoById(videoId);
-        player.playVideo();
+        // Menyisipkan thumbnail ke dalam box-video atau box-video-mid
+        videoBox.prepend(thumbnailImg);
     }
+});
+
+var playerYT;
+function hidePopup() {
+    const popupPlayer = document.getElementById("popup-player");
+    popupPlayer.style.display = "none";
+
+    // Hapus iframe agar video benar-benar berhenti
+    const playerContainer = document.getElementById("player-yt");
+    playerContainer.innerHTML = ""; 
 }
 
-function hidePopup() {
-    document.getElementById("popup-player").style.display = "none";
-    player.stopVideo(); // Hentikan video saat popup ditutup
+// Fungsi untuk menampilkan popup player
+function showPopupYT(videoUrl) {
+    const popupPlayer = document.getElementById("popup-player");
+    popupPlayer.style.display = "flex";
+
+    // Ambil video ID dari URL YouTube
+    const videoId = extractVideoId(videoUrl);
+
+    if (!videoId) {
+        console.error("Video ID tidak ditemukan dari URL:", videoUrl);
+        return;
+    }
+
+    // Buat ulang iframe setiap kali popup dibuka
+    const playerContainer = document.getElementById("player-yt");
+    playerContainer.innerHTML = `<iframe class="frame-yt-home" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
 }
+
+// Fungsi untuk mengambil videoId dari URL YouTube
+function extractVideoId(url) {
+    let videoId = null;
+
+    if (url.includes("youtu.be")) {
+        videoId = url.split("/").pop();
+    } else if (url.includes("youtube.com")) {
+        const urlParams = new URLSearchParams(new URL(url).search);
+        videoId = urlParams.get("v");
+    }
+
+    return videoId;
+}
+
+// Event listener untuk menyembunyikan popup saat klik di overlay
+document.getElementById("popup-player").addEventListener("click", hidePopup);
+
+// Menambahkan event listener untuk klik di luar player
+document.getElementById("popup-player").addEventListener("click", function (event) {
+    var popupContent = document.querySelector(".popup-content");
+
+    // Jika user klik di luar area .popup-content, tutup popup
+    if (!popupContent.contains(event.target)) {
+        hidePopup();
+        
+
+    }
+});
 
 // Load YouTube IFrame API
 var tag = document.createElement("script");
@@ -219,7 +253,6 @@ document
             hidePopup();
         }
     });
-
 
 // Load YouTube API
 // document.addEventListener("DOMContentLoaded", function () {

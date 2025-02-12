@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 isStreamingPlaying = true;
                 startSpectrumAudio(AudioStream);
                 updatePlayPauseButtonStateS();
+                console.log("hlooo tes stream");
             });
 
             mediaElement.addEventListener("pause", function () {
@@ -487,76 +488,71 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Status play/pause for each podcast based on podcast ID
+    // Status play/pause untuk setiap podcast
     let playPodcastStatus = {};
-    let currentPodcastId = null; // Store the ID of the currently playing podcast
+    let currentPodcastId = null;
 
+    // Fungsi untuk mengganti ID tombol Play/Pause
     function changeIdPlayPausePodcast() {
         const playPauseBtn = document.querySelector(".play-pause");
         if (playPauseBtn) {
-            playPauseBtn.id = "BtnPodcast"; // Set button ID
+            playPauseBtn.id = "BtnPodcast";
         }
     }
 
+    // **🔄 Load Podcast Details Tanpa load()**
     async function loadPodcastDetails(idP) {
         try {
             const response = await fetch(`/podcast/details/${idP}`);
-            if (!response.ok)
-                throw new Error("Failed to fetch podcast details");
+            if (!response.ok) throw new Error("Gagal mengambil data podcast");
 
             const data = await response.json();
             if (data) {
                 musicName.innerHTML = data.judul_podcast;
                 musicArtist.innerHTML = data.genre_podcast;
                 Playimage.src = `./storage/${data.image_podcast}`;
-                AudioPodcast.src = `./storage/${data.file}`;
-                AudioPodcast.load(); // Load only on first time
-                playPodcastStatus[idP] = { isPlaying: false }; // Reset status
-                currentPodcastId = idP; // Set current podcast
+                AudioPodcast.src = `./storage/${data.file}`; // Tanpa `load()`
+                playPodcastStatus[idP] = { isPlaying: false };
+                currentPodcastId = idP;
             } else {
-                console.error("Podcast not found.");
-                alert("Podcast not found. Please try again.");
+                console.error("Podcast tidak ditemukan.");
+                alert("Podcast tidak ditemukan. Coba lagi.");
             }
         } catch (error) {
-            console.error("Failed to load podcast data:", error);
-            alert(
-                "An error occurred while loading podcast data. Please try again later."
-            );
+            console.error("Gagal memuat data podcast:", error);
+            alert("Terjadi kesalahan saat memuat podcast.");
         }
     }
 
+    // **🔄 Load Episode Tanpa load()**
     async function loadEpisode(idP, episode, direction) {
         try {
             const response = await fetch(
                 `/podcast/${idP}/episode/${episode}/${direction}`
             );
-            if (!response.ok)
-                throw new Error("Failed to fetch episode details");
+            if (!response.ok) throw new Error("Gagal mengambil data episode");
 
             const data = await response.json();
             if (data) {
                 musicName.innerHTML = data.judul_podcast;
                 musicArtist.innerHTML = data.genre_podcast;
                 Playimage.src = `./storage/${data.image_podcast}`;
-                AudioPodcast.src = `./storage/${data.file}`;
-                AudioPodcast.load();
-                playPodcastStatus[idP] = { isPlaying: false }; // Reset status
+                AudioPodcast.src = `./storage/${data.file}`; // Tanpa `load()`
+                playPodcastStatus[idP] = { isPlaying: false };
             } else {
-                console.error("Episode not found.");
-                alert("Episode not found. Please try again.");
+                console.error("Episode tidak ditemukan.");
+                alert("Episode tidak ditemukan. Coba lagi.");
             }
         } catch (error) {
-            console.error("Failed to load episode data:", error);
-            alert(
-                "An error occurred while loading episode data. Please try again later."
-            );
+            console.error("Gagal memuat data episode:", error);
+            alert("Terjadi kesalahan saat memuat episode.");
         }
     }
 
-    // Function to play podcast
+    // **▶️ Fungsi Play Podcast (Tanpa load)**
     window.playPodcast = function (idP) {
         if (activeAudioSource !== "podcast") {
-            stopActiveAudio(); // Stop other audio
+            stopActiveAudio(); // Stop audio lain
             activeAudioSource = "podcast";
         }
 
@@ -566,20 +562,35 @@ document.addEventListener("DOMContentLoaded", function () {
         const playPauseBtnS = document.querySelector(".play-pause-stream");
         if (playPauseBtnS) playPauseBtnS.style.display = "none";
 
-        // Check if already playing
-        if (!playPodcastStatus[idP]?.isPlaying) {
+        if (!AudioPodcast) {
+            console.error("❌ AudioPodcast tidak ditemukan!");
+            return;
+        }
+
+        // **🔹 SOLUSI UTAMA: Mulai Audio Tanpa load()**
+        AudioPodcast.currentTime = 0;
+
+        const tryPlayAudio = () => {
             AudioPodcast.play()
                 .then(() => {
-                    playPodcastStatus[idP].isPlaying = true;
-                    currentPodcastId = idP; // Update current podcast ID
+                    playPodcastStatus[idP] = { isPlaying: true };
+                    currentPodcastId = idP;
                     updatePodcastPlayButtonState(idP);
+                    console.log("▶️ Podcast berhasil diputar!");
                 })
                 .catch((error) => {
-                    console.error("Audio play error:", error);
-                    alert(
-                        "Unable to play audio. Please interact with the page first."
-                    );
+                    console.error("❌ Error play di iOS:", error);
                 });
+        };
+
+        // 🔹 Solusi: Jika di iOS, tambahkan event listener sekali
+        if (
+            navigator.userAgent.includes("iPhone") ||
+            navigator.userAgent.includes("iPad")
+        ) {
+            document.addEventListener("click", tryPlayAudio, { once: true });
+        } else {
+            tryPlayAudio();
         }
 
         startSpectrumAudio(AudioPodcast);

@@ -24,7 +24,9 @@ class Podcast extends Model implements HasMedia
         'is_highlight',
         'tanggal_publikasi',
         'link_podcast',
+        'link_youtube',
         'file',
+        'file_video',
         'slug',
         'episode_number',
         'is_episode',
@@ -65,6 +67,55 @@ class Podcast extends Model implements HasMedia
                 if ($oldImage) {
                     Storage::disk('public')->delete($oldImage);
                 }
+            }
+        });
+
+        // file
+        static::deleting(function (Podcast $podcast) {
+            // Cek jika ada nama file gambar
+            if ($podcast->file) {
+                // Hapus file gambar dari disk publik
+                Storage::disk('public')->delete($podcast->file);
+            }
+        });
+
+        static::updating(function (Podcast $podcast) {
+            // Cek jika ada gambar baru yang diupload
+            if ($podcast->isDirty('file')) {
+                // Ambil nama gambar lama
+                $oldImage = $podcast->getOriginal('file');
+
+                // Hapus gambar lama
+                if ($oldImage) {
+                    Storage::disk('public')->delete($oldImage);
+                }
+            }
+        });
+
+        // file video
+        static::deleting(function (Podcast $podcast) {
+            // Cek jika ada nama file gambar
+            if ($podcast->file_video) {
+                // Hapus file gambar dari disk publik
+                Storage::disk('public')->delete($podcast->file_video);
+            }
+        });
+
+        static::updating(function (Podcast $podcast) {
+            // Cek apakah file_video dihapus dari form
+            if (request()->missing('file_video')) {
+                // Hapus dari storage jika ada
+                if ($podcast->file_video) {
+                    Storage::disk('public')->delete($podcast->file_video);
+                    $podcast->file_video = null; // Set null di database
+                }
+            }
+        });
+    
+        static::saving(function (Podcast $podcast) {
+            // Pastikan jika tidak ada file, set null di database
+            if (empty($podcast->file_video)) {
+                $podcast->file_video = null;
             }
         });
     }

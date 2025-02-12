@@ -11,6 +11,7 @@ use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
@@ -18,6 +19,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\IconColumn;
@@ -68,13 +71,13 @@ class PodcastResource extends Resource
                             ])
                             ->validationAttribute('Image Event')
                             ->helperText('The image must have min 800x450 pixel, max dimensions 1920x1080'),
-                        FileUpload::make('file')
-                            ->label('Upload File')// Maksimal ukuran file (dalam KB)
-                            ->acceptedFileTypes(['audio/mpeg', 'audio/mp3', 'audio/wav'])
-                            ->directory('audioPodcast')
-                            ->preserveFilenames(),
+                        // FileUpload::make('file')
+                        //     ->label('Upload File') // Maksimal ukuran file (dalam KB)
+                        //     ->acceptedFileTypes(['audio/mpeg', 'audio/mp3', 'audio/wav'])
+                        //     ->directory('audioPodcast')
+                        //     ->preserveFilenames(),
                         DatePicker::make('date_podcast')->label('Date Podcast :')->required(),
-                        TextInput::make('link_podcast')->label('Link Podcast :')->required(),
+                        // TextInput::make('link_podcast')->label('Link Podcast :')->required(),
                         TextInput::make('slug')
                             ->label('Slug :')
                             ->readOnly()
@@ -113,7 +116,71 @@ class PodcastResource extends Resource
                             ->columnSpan(2),
                     ])
                     ->columns(2), // Membuat Card utama memiliki 2 kolom
+
                 // Bagian Grid kedua
+                Grid::make(2) // Tetapkan Grid memiliki 2 kolom
+                    ->schema([
+                        Card::make('File / Link Video , File Audio')
+                            ->schema([
+                                TextInput::make('link_podcast')
+                                    ->label('Link Podcast :')
+                                    ->live()
+                                    ->reactive()
+                                    ->disabled(
+                                        fn(Get $get, Set $set, $record) =>
+                                        blank($record?->link_podcast) && (filled($get('link_youtube')) || filled($get('file_video')))
+                                    )
+                                    ->placeholder(
+                                        fn(Get $get) =>
+                                        filled($get('link_youtube')) ? 'Tidak bisa memasukkan URL karena sudah ada URL di Link Youtube'
+                                            : (filled($get('file_video')) ? 'Tidak bisa memasukkan URL karena sudah ada File Video'
+                                                : 'Masukkan Link Podcast')
+                                    ),
+
+                                FileUpload::make('file')
+                                    ->label('Upload File Audio :')
+                                    ->acceptedFileTypes(['audio/mpeg', 'audio/mp3', 'audio/wav'])
+                                    ->directory('audioPodcast')
+                                    ->preserveFilenames()
+                                    ->reactive(),
+
+                                TextInput::make('link_youtube')
+                                    ->label('Link Youtube :')
+                                    ->live()
+                                    ->reactive()
+                                    ->disabled(
+                                        fn(Get $get, Set $set, $record) =>
+                                        blank($record?->link_youtube) && (filled($get('link_podcast')) || filled($get('file_video')))
+                                    )
+                                    ->placeholder(
+                                        fn(Get $get) =>
+                                        filled($get('link_podcast')) ? 'Tidak bisa memasukkan URL karena sudah ada URL di Link Podcast'
+                                            : (filled($get('file_video')) ? 'Tidak bisa memasukkan URL karena sudah ada File Video'
+                                                : 'Masukkan Link Youtube')
+                                    ),
+
+                                FileUpload::make('file_video')
+                                    ->label('Upload File Video :')
+                                    ->acceptedFileTypes(['video/mp4'])
+                                    ->directory('videoPodcast')
+                                    ->preserveFilenames()
+                                    ->live()
+                                    ->reactive()
+                                    ->nullable() // Memastikan bisa bernilai null
+                                    ->afterStateUpdated(function ($state, Set $set) {
+                                        if (blank($state)) { // Jika dihapus (tekan "X")
+                                            $set('file_video', null); // Set jadi null di form
+                                        }
+                                    })
+                                    ->dehydrated(fn($state) => filled($state))
+                                    ->hidden( // Gunakan hidden agar elemen hilang
+                                        fn(Get $get) =>
+                                        filled($get('link_podcast')) || filled($get('link_youtube'))
+                                    ), // Hanya kirim jika ada file baru
+                            ])->columns(2),
+
+                    ])->columnSpan(2),
+
                 Grid::make(2) // Tetapkan Grid memiliki 2 kolom
                     ->schema([
                         Card::make()
@@ -187,7 +254,9 @@ class PodcastResource extends Resource
                     }),
                 TextColumn::make('tanggal_publikasi')->sortable(),
                 TextColumn::make('link_podcast'),
+                TextColumn::make('link_youtube'),
                 TextColumn::make('file'),
+                TextColumn::make('file_video'),
                 TextColumn::make('slug'),
                 IconColumn::make('is_episode')
                     ->label('Ada Episode?')

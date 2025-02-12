@@ -85,7 +85,7 @@
                                 {{-- <iframe src="https://live.ardangroup.fm/1b1d14c7-4945-46b6-839d-00eb3d5a5e17.html"
                                     width="640" height="360" frameborder="no" scrolling="no"
                                     allowfullscreen="true"></iframe> --}}
-                                <div id="player" data-link="{{ $streamVideo->stream_url }}"
+                                <div class="player-stream" id="player" data-link="{{ $streamVideo->stream_url }}"
                                     data-poster="./storage/{{ $streamVideo->image_stream }}"></div>
                             </div>
                         </div>
@@ -528,15 +528,16 @@
                     </div>
                     <div class="content-video" id="content-video">
                         @foreach ($videos as $video)
-                            <div class="box-video" data-video-id="{{ $video['videoId'] }}">
+                            <div class="box-video" data-video-url="{{ $video['videoUrl'] }}">
                                 <img class="video-thumbnail"
                                     src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                     alt="Thumbnail">
-                                <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoId'] }}')">
+                                <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoUrl'] }}')">
                                     <span class="material-symbols-rounded">play_arrow</span>
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
                     <div class="popup-player-yt" id="popup-player" style="display:none;">
                         <div class="popup-content-yt">
@@ -973,6 +974,25 @@
                 id: "player", // ID elemen target
                 file: streamURL, // URL streaming dari data-link
                 poster: imageStream, // Poster dari data-poster
+                disableContextMenu: true,
+            });
+
+            // 🔹 Matikan klik kanan & inspeksi elemen
+            document.getElementById("player").addEventListener("contextmenu", function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            // 🔹 Cegah klik kanan di dalam iframe Player.js
+            document.addEventListener("DOMContentLoaded", function() {
+                let iframe = document.querySelector("#player iframe");
+                if (iframe) {
+                    iframe.onload = function() {
+                        iframe.contentWindow.document.addEventListener("contextmenu", function(e) {
+                            e.preventDefault();
+                        });
+                    };
+                }
             });
 
             // Pilih semua elemen dengan class "card-podcast"
@@ -990,6 +1010,8 @@
                 });
             });
 
+
+
             // // Pastikan videojs sudah terdefinisi
             // window.player = videojs("videoPlayer", {
             //     controls: true,
@@ -1000,6 +1022,9 @@
             //     responsive: true,
             // });
 
+            // document.getElementById("videoPlayer").addEventListener("contextmenu", function(e) {
+            //     e.preventDefault(); // Mencegah menu klik kanan muncul
+            // });
 
             // let userInteracted = false; // Flag untuk memastikan interaksi pengguna pertama kali
             // let isManualPiPActive = false; // Flag untuk melacak jika PiP diaktifkan secara manual

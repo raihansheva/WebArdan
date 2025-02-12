@@ -11,27 +11,57 @@ class CreateChart extends CreateRecord
 {
     protected static string $resource = ChartResource::class;
 
-    protected function handleRecordCreation(array $data): Chart
-    {
-        // Ambil kategori_id dari form
-        $kategoriId = $data['kategori_id'];
+    // protected function handleRecordCreation(array $data): Chart
+    // {
+    //     // Ambil kategori_id dari form
+    //     $kategoriId = $data['kategori_id'];
 
-        // Simpan data repeater (lagu)
-        $charts = [];
-        foreach ($data['songs'] as $song) {
-            $charts[] = Chart::create([
-                'kategori_id' => $kategoriId,
-                'name' => $song['name'],
-                'link_audio' => $song['link_audio'],
-            ]);
-        }
+    //     // Simpan data repeater (lagu)
+    //     $charts = [];
+    //     foreach ($data['songs'] as $song) {
+    //         $charts[] = Chart::create([
+    //             'kategori_id' => $kategoriId,
+    //             'name' => $song['name'],
+    //             'link_audio' => $song['link_audio'],
+    //         ]);
+    //     }
 
-        // Kembalikan record pertama untuk rute edit
-        return $charts[0];
+    //     // Kembalikan record pertama untuk rute edit
+    //     return $charts[0];
+    // }
+
+    protected function saveSongs(array $data): Chart
+{
+    // Ambil kategori_id dari form
+    $kategoriId = $data['kategori_id'];
+
+    // Simpan data repeater (lagu)
+    $charts = [];
+    foreach ($data['songs'] as $song) {
+        $charts[] = Chart::create([
+            'kategori_id' => $kategoriId,
+            'name' => $song['name'],
+            'link_audio' => $song['link_audio'],
+        ]);
     }
+
+    // Kembalikan record pertama untuk rute edit
+    return $charts[0];
+}
+
 
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
+    }
+
+    protected function handleRecordCreation(array $data): Chart
+    {
+        return $this->saveSongs($data);
+    }
+
+    protected function handleRecordUpdate(Chart $record, array $data): Chart
+    {
+        return $this->saveSongs($data);
     }
 }

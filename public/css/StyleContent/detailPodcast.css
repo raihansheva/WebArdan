@@ -1,5 +1,13 @@
+.iframe-yt{
+    width: 100%;
+    height: 100%;
+}
 
 
+.frame-yt-home{
+    width: 100%;
+    height: 100%;
+}
 
 /* area detail podcast */
 
@@ -19,7 +27,7 @@
 }
 
 /* area detail kiri */
-.area-detail-kiri {
+.area-detail-kiri { 
     width: 65%;
     height: auto;
     /* border: 1px white solid; */

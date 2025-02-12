@@ -36,7 +36,7 @@
                                                     data-audio-src="./storage/{{ $chart->link_audio }}"
                                                     data-name="{{ $chart->name }}"
                                                     data-kategori="{{ $kategoriList->nama_kategori }}"
-                                                    data-id="{{ $kategoriList->id }}">
+                                                    data-id="{{ $chart->id }}">
                                                     <span class="material-symbols-rounded">play_arrow</span>
                                                 </div>
                                                 <audio src="" id="audio-chart" class="audio-chart"></audio>

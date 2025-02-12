@@ -28,7 +28,7 @@
                                 <p style="display: none;" id="id_podcast">{{ $detail_podcast->podcast_id }}</p>
                                 <p style="display: none;" id="idP">{{ $detail_podcast->id }}</p>
                             </div>
-                            <audio src="" id="audio-podcast"></audio>
+                            <audio src="./storage/{{ $detail_podcast->file }}" id="audio-podcast" preload="metadata"></audio>
                         </div>
                         <div class="card-DP-header">
                             {{-- <div class="DP-author">
@@ -42,16 +42,32 @@
                         <div class="card-body-DP-B">
                             <div class="video-container">
                                 @if (!empty($detail_podcast->link_podcast))
-                                    {{-- <video id="PlayerVid" class="video-js" controls preload="auto" poster="">
-                                        <source src="https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe"/>
+                                    <div id="player" data-link="{{ $detail_podcast->link_podcast }}"></div>
+                                @elseif (!empty($youtubeId))
+                                    {{-- Gunakan Video.js untuk YouTube --}}
+                                    {{-- <video id="PlayerVid" class="video-js vjs-default-skin" controls preload="auto"
+                                        data-setup='{"techOrder": ["youtube"], "sources": [{"type": "video/youtube", "src": "https://www.youtube.com/watch?v={{ $youtubeId }}"}]}'>
                                     </video> --}}
-                                    <video id="PlayerVid" class="video-js" controls preload="auto"
-                                        poster=""
+
+                                    {{-- Alternatif: Gunakan iframe YouTube --}}
+                                    {{-- <iframe class="iframe-yt" src="https://www.youtube.com/embed/{{ $youtubeId }}"
+                                        frameborder="0" allowfullscreen>
+                                    </iframe> --}}
+                                    <div class="iframe-yt" id="player-podcast-yt"
+                                        data-link-youtube="https://www.youtube.com/embed/{{ $youtubeId }}"></div>
+                                @elseif (!empty($detail_podcast->file_video))
+                                    <div id="player" data-link="./storage/{{ $detail_podcast->file_video }}"></div>
+                                @endif
+                                {{-- @if (!empty($detail_podcast->link_podcast))
+                                    <video id="PlayerVid" class="video-js" controls preload="auto" poster="">
+                                        <source src="https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe" />
+                                    </video>
+                                    <video id="PlayerVid" class="video-js" controls preload="auto" poster=""
                                         data-setup='{"techOrder": ["youtube"], "sources": [{"src": "https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe", "type": "video/youtube"}]}'>
                                     </video>
                                 @else
                                     <p>Streaming URL tidak tersedia.</p>
-                                @endif
+                                @endif --}}
                             </div>
 
                         </div>
@@ -136,9 +152,9 @@
                 autoplay-disable-on-interaction="false" loop="true">
                 @foreach ($banner->where('position', 'middle') as $list)
                     <swiper-slide><a class="link-ads-banner" href="{{ $list->link_ads }}">
-                        <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
-                            loading="lazy">
-                    </a></swiper-slide>
+                            <img class="image-banner" src="{{ asset('storage/' . $list->image_banner) }}" alt=""
+                                loading="lazy">
+                        </a></swiper-slide>
                 @endforeach
             </swiper-container>
         </div>
@@ -210,11 +226,11 @@
                     <div class="content-kiri-video">
                         <div class="area-video-top">
                             @foreach (collect($videos)->slice(0, 2) as $video)
-                                <div class="box-video" data-video-id="{{ $video['videoId'] }}">
+                                <div class="box-video" data-video-id="{{ $video['videoUrl'] }}">
                                     <img class="video-thumbnail"
                                         src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                         alt="Thumbnail">
-                                    <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoId'] }}')">
+                                    <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoUrl'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
                                     </div>
                                 </div>
@@ -222,11 +238,11 @@
                         </div>
                         <div class="area-video-mid">
                             @foreach (collect($videos)->slice(2, 1) as $video)
-                                <div class="box-video-mid" data-video-id="{{ $video['videoId'] }}">
+                                <div class="box-video-mid" data-video-id="{{ $video['videoUrl'] }}">
                                     <img class="video-thumbnail"
                                         src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                         alt="Thumbnail">
-                                    <div class="btn-play-video-mid" onclick="showPopupYT('{{ $video['videoId'] }}')">
+                                    <div class="btn-play-video-mid" onclick="showPopupYT('{{ $video['videoUrl'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
                                     </div>
                                 </div>
@@ -234,11 +250,11 @@
                         </div>
                         <div class="area-video-bottom">
                             @foreach (collect($videos)->slice(3, 2) as $video)
-                                <div class="box-video" data-video-id="{{ $video['videoId'] }}">
+                                <div class="box-video" data-video-id="{{ $video['videoUrl'] }}">
                                     <img class="video-thumbnail"
                                         src="https://img.youtube.com/vi/{{ $video['videoId'] }}/hqdefault.jpg"
                                         alt="Thumbnail">
-                                    <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoId'] }}')">
+                                    <div class="btn-play-video" onclick="showPopupYT('{{ $video['videoUrl'] }}')">
                                         <span class="material-symbols-rounded">play_arrow</span>
                                     </div>
                                 </div>
@@ -306,6 +322,8 @@
         </div>
     </section>
     <script src="{{ asset('js/detailPodcast.js?v=' . time()) }}"></script>
+    <script src="{{ asset('js/playerjsPodcast.js?v=' . time()) }}"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/videojs-youtube/dist/Youtube.min.js"></script>
     <script>
@@ -325,26 +343,61 @@
                 });
             });
 
-            const player = videojs('PlayerVid', {
-                controls: true,
-                autoplay: false,
-                preload: 'auto',
-                fluid: true,
-                aspectRatio: '16:9',
-                sources: [{
-                    src: 'https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe',
-                    type: 'video/youtube', // Tipe untuk YouTube
-                }, ],
+            // const player = videojs('PlayerVid', {
+            //     controls: true,
+            //     autoplay: false,
+            //     preload: 'auto',
+            //     fluid: true,
+            //     aspectRatio: '16:9',
+            //     sources: [{
+            //         src: 'https://youtu.be/yBwnU7eQqDs?si=INQbh5OsLRfRN6Xe',
+            //         type: 'video/youtube', // Tipe untuk YouTube
+            //     }, ],
+            // });
+
+            // pjs
+            const playerElement = document.getElementById("player");
+            const streamURL = playerElement ? playerElement.getAttribute("data-link") : null;
+            // const imageStream = playerElement.getAttribute("data-poster");
+
+            window.playerPJS = new Playerjs({
+                id: "player", // ID elemen target
+                file: streamURL, // URL streaming dari data-link
+                // poster: imageStream, // Poster dari data-poster
             });
 
+            // youtube api podcast
+            const playerYoutube = document.getElementById("player-podcast-yt");
+            const ytURL = playerYoutube ?
+                playerYoutube.getAttribute("data-link-youtube") :
+                null;
 
+            let playerYT;
 
+            if (ytURL) {
+                // Membuat URL lengkap berdasarkan ytURL
+                const urlLengkap = ytURL.split("/")[4]; // Mengambil ID dari URL
+                playerYT = new YT.Player("player-podcast-yt", {
+                    height: "360",
+                    width: "640",
+                    videoId: urlLengkap, // Menggunakan ID video saja
+                    events: {
+                        onReady: function(event) {
+                            console.log("Player ready");
+                        },
+                    },
+                });
+            } else {
+                console.log("URL video tidak ditemukan.");
+            }
 
+            // console.log("playerYT:", playerYT);
+            // ------------------
 
             tontonSiaranBtnA.addEventListener("click", function() {
                 hideCard(cardA);
                 pausePodcast(idP)
-                player.play();
+                playerYT.playVideo();
                 setTimeout(() => {
                     showCard(cardB);
                 }, 500);
@@ -352,12 +405,25 @@
 
             tontonSiaranBtnB.addEventListener("click", function() {
                 hideCard(cardB);
-                player.pause();
+                // playerYT.pause();
                 setTimeout(() => {
                     playPodcast(idP);
                     showCard(cardA);
                 }, 500);
             });
+
+            // const youtubeId = "{{ $youtubeId }}"; // ID YouTube dari Blade
+
+            // if (youtubeId) {
+            //     const player = videojs('PlayerVid'); // Inisialisasi pemutar video.js
+            //     player.ready(function() {
+            //         // Menambahkan YouTube sebagai sumber video di video.js
+            //         player.src({
+            //             type: 'video/youtube',
+            //             src: `https://www.youtube.com/watch?v=${youtubeId}`,
+            //         });
+            //     });
+            // }
 
         });
     </script>

@@ -6,12 +6,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <!-- Untuk memastikan halaman merespons layar iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" href="" sizes="any">
     <link rel="apple-touch-icon"
         href="./storage/{{ \App\Helpers\Settings::get('site_apple_touch_icon', 'Default Site Title') }}">
+    {{-- <link rel="apple-touch-icon" sizes="57x57" href=""/assets/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href=""/assets/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href=""/assets/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href=""/assets/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href=""/assets/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href=""/assets/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href=""/assets/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href=""/assets/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href=""/assets/images/apple-icon-180x180.png"> --}}
     <link rel="manifest" href="">
     {{-- <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet"> --}}
     <!-- Mencegah highlight biru pada elemen klik -->
@@ -38,7 +46,11 @@
 
     {{-- Style Page Content --}}
     @stack('Style.css')
-
+    <style>
+        .player-stream {
+            pointer-events: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -365,7 +377,8 @@
 <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
 
 {{-- <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.14.0/dist/videojs-contrib-hls.min.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelement-and-player.min.js" defer></script>
+
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js" defer></script>
 <script>
@@ -374,6 +387,7 @@
     if (!urlCek.includes("detail-podcast") && !urlCek.includes("chart")) {
         document.addEventListener("DOMContentLoaded", () => {
             const btnPlayStream = document.querySelector(".btn-play-streaming");
+            const btnPlayChart = document.querySelector(".btn-play-chart");
             const audioPlayerContainer = document.querySelector(".audio-player-container");
 
             // Pastikan audio player tersembunyi di awal
@@ -394,19 +408,16 @@
 
             // Fungsi untuk mengatur visibilitas Audio Player
             function updateAudioPlayerVisibility() {
-                if (btnPlayStream) {
-                    console.log("BtnStream Found. Checking visibility...");
-                    if (isElementInViewport(btnPlayStream)) {
-                        // console.log("BtnStream is in viewport. Hiding audio player.");
-                        audioPlayerContainer.style.opacity = "0";
-                        audioPlayerContainer.style.visibility = "hidden";
-                    } else {
-                        // console.log("BtnStream is not in viewport. Showing audio player.");
-                        audioPlayerContainer.style.opacity = "1";
-                        audioPlayerContainer.style.visibility = "visible";
-                    }
+                if (btnPlayChart && isElementInViewport(btnPlayChart)) {
+                    console.log("🎵 BtnChart terlihat, menampilkan audio player.");
+                    audioPlayerContainer.style.opacity = "1";
+                    audioPlayerContainer.style.visibility = "visible";
+                } else if (btnPlayStream && isElementInViewport(btnPlayStream)) {
+                    console.log("⛔ BtnStream terlihat, menyembunyikan audio player.");
+                    audioPlayerContainer.style.opacity = "0";
+                    audioPlayerContainer.style.visibility = "hidden";
                 } else {
-                    // console.log("BtnStream not found. Showing audio player.");
+                    console.log("✅ Audio player tetap terlihat.");
                     audioPlayerContainer.style.opacity = "1";
                     audioPlayerContainer.style.visibility = "visible";
                 }
