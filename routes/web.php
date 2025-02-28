@@ -5,8 +5,12 @@ use App\Http\Controllers\GoogleAnalyticsControllers;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SitemapController;
+use App\Models\Artis;
+use App\Models\Event;
 use App\Models\Info;
 use App\Models\Podcast;
+use App\Models\Program;
 use App\Services\GoogleAnalyticsService;
 use App\Services\GoogleAnalyticsServices;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +24,9 @@ use Spatie\Sitemap\Tags\Url;
 // Route::get('/home', function () {
 //     return view('page.home');
 // });
+
+Route::get('/generate-sitemap', [SitemapController::class, 'generateSitemap']);
+
 Route::get('/sitemap.xml', function () {
     $sitemap = Sitemap::create()
         ->add(Url::create('/')
@@ -39,26 +46,71 @@ Route::get('/sitemap.xml', function () {
             ->setChangeFrequency('daily'))
         ->add(Url::create('/event')
             ->setPriority(0.8)
+            ->setChangeFrequency('weekly'))
+        ->add(Url::create('/detail-event')
+            ->setPriority(0.8)
+            ->setChangeFrequency('weekly'))
+        ->add(Url::create('/detail-podcast')
+            ->setPriority(0.8)
+            ->setChangeFrequency('weekly'))
+        ->add(Url::create('/info-detail')
+            ->setPriority(0.8)
+            ->setChangeFrequency('weekly'))
+        ->add(Url::create('/detail-info-artis')
+            ->setPriority(0.8)
+            ->setChangeFrequency('weekly'))
+        ->add(Url::create('/detail-program')
+            ->setPriority(0.8)
             ->setChangeFrequency('weekly'));
-    $podcasts = Podcast::all();
-    foreach ($podcasts as $podcast) {
-        $sitemap->add(
-            Url::create("/detail-podcast/{$podcast->slug}")
-                ->setLastModificationDate($podcast->updated_at)
-                ->setChangeFrequency('weekly')
-                ->setPriority(0.7)
-        );
-    }
+    // $podcasts = Podcast::all();
+    // foreach ($podcasts as $podcast) {
+    //     $sitemap->add(
+    //         Url::create("/detail-podcast/{$podcast->slug}")
+    //             ->setLastModificationDate($podcast->updated_at)
+    //             ->setChangeFrequency('weekly')
+    //             ->setPriority(0.7)
+    //     );
+    // }
 
-    $info = Info::all();
-    foreach ($info as $dataInfo) {
-        $sitemap->add(
-            Url::create("/info-detail/{$dataInfo->slug}")
-                ->setLastModificationDate($dataInfo->updated_at)
-                ->setChangeFrequency('weekly')
-                ->setPriority(0.7)
-        );
-    }
+    // $info = Info::all();
+    // foreach ($info as $dataInfo) {
+    //     $sitemap->add(
+    //         Url::create("/info-detail/{$dataInfo->slug}")
+    //             ->setLastModificationDate($dataInfo->updated_at)
+    //             ->setChangeFrequency('weekly')
+    //             ->setPriority(0.7)
+    //     );
+    // }
+
+    // $event = Event::all();
+    // foreach ($event as $dataInfo) {
+    //     $sitemap->add(
+    //         Url::create("/detail-event/{$dataInfo->slug}")
+    //             ->setLastModificationDate($dataInfo->updated_at)
+    //             ->setChangeFrequency('weekly')
+    //             ->setPriority(0.7)
+    //     );
+    // }
+
+    // $detailInfoArtis = Artis::all();
+    // foreach ($detailInfoArtis as $dataInfo) {
+    //     $sitemap->add(
+    //         Url::create("/detail-info-artis/{$dataInfo->slug}")
+    //             ->setLastModificationDate($dataInfo->updated_at)
+    //             ->setChangeFrequency('weekly')
+    //             ->setPriority(0.7)
+    //     );
+    // }
+
+    // $program = Program::all();
+    // foreach ($program as $dataProgram) {
+    //     $sitemap->add(
+    //         Url::create("/detail-program/{$dataProgram->slug}")
+    //             ->setLastModificationDate($dataProgram->updated_at)
+    //             ->setChangeFrequency('weekly')
+    //             ->setPriority(0.7)
+    //     );
+    // }
     return $sitemap->toResponse(request());
 });
 
@@ -67,8 +119,10 @@ Route::get('/analytics-test', function (GoogleAnalyticsServices $analyticsServic
     return response()->json($data);
 });
 
-Route::get('/get-realtime-analytics', [GoogleAnalyticsControllers::class, 'getGoogleAnalyticsData']);
 
+Route::get('/analytics/realtime', [GoogleAnalyticsControllers::class, 'getGoogleAnalyticsData'])
+    ->name('analytics.realtime');
+// Route::get('/', [GoogleAnalyticsController::class, 'getGoogleAnalyticsData']);
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -88,7 +142,7 @@ Route::get('/chart', [HomeController::class, 'chart']);
 Route::get('/detail-program/{slug}', [HomeController::class, 'detailprogram']);
 
 Route::get('/info-news', [HomeController::class, 'info']);
-Route::get('/info-tag/{tag}', [HomeController::class, 'tagInfo']);
+Route::get('/info-kategori/{tag}', [HomeController::class, 'tagInfo']);
 Route::get('/info-detail/{slug}', [HomeController::class, 'detailInfo']);
 
 Route::get('/ardan-youtube', [HomeController::class, 'youtube']);

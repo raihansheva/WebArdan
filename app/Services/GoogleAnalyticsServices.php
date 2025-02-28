@@ -12,7 +12,7 @@ class GoogleAnalyticsServices
     public function __construct()
     {
         $client = new Google_Client();
-        $client->setAuthConfig(storage_path(env('GOOGLE_ANALYTICS_KEY_PATH')));
+        $client->setAuthConfig('C:\Users\LENOVO\Desktop\WebArdan\storage\app\analytics\service-account-credentials.json');
         $client->addScope('https://www.googleapis.com/auth/analytics.readonly');
 
         $this->analytics = new Google_Service_Analytics($client);
@@ -20,7 +20,7 @@ class GoogleAnalyticsServices
 
     public function getWebsiteTraffic($startDate, $endDate)
     {
-        $viewId = env('GOOGLE_ANALYTICS_VIEW_ID');
+        $viewId = '376105671';
 
         return $this->analytics->data_ga->get(
             'ga:' . $viewId,

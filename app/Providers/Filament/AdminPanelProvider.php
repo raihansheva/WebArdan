@@ -2,6 +2,11 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\YesResource\Widgets\AnalyticsChartWidget\AnalyticsChartWidget;
+use App\Filament\Resources\YesResource\Widgets\AnalyticsWidget;
+use App\Filament\Widgets\CountryChartWidget;
+use App\Filament\Widgets\NewUserChartWidget;
+use App\Filament\Widgets\StatsOverview;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -21,7 +26,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 class AdminPanelProvider extends PanelProvider
 {
 
-    
+
     public function panel(Panel $panel): Panel
     {
         return $panel
@@ -41,8 +46,13 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->spa()
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                // Widgets\AccountWidget::class,
+                // Widgets\FilamentInfoWidget::class,
+                // AnalyticsWidget::class,
+                StatsOverview::class,
+                NewUserChartWidget::class,
+                AnalyticsChartWidget::class,
+                CountryChartWidget::class
             ])
             ->middleware([
                 EncryptCookies::class,

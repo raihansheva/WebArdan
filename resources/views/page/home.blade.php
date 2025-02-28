@@ -226,7 +226,7 @@
                     <div class="content-info">
                         @foreach ($kategoriInfo as $kategoriInfoList)
                             <div class="box-info">
-                                <a class="link-box-info" href="/info-tag/{{ $kategoriInfoList->nama_kategori }}">
+                                <a class="link-box-info" href="/info-kategori/{{ $kategoriInfoList->nama_kategori }}">
                                     <div class="area-tag-info">
                                         <h3 class="tag-info">#{{ $kategoriInfoList->nama_kategori }}</h3>
                                     </div>
